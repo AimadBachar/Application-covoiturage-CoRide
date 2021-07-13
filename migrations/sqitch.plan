@@ -1,0 +1,4 @@
+%syntax-version=1.0.0
+%project=coride
+
+create-tables 2021-07-13T15:07:31Z laurentSavarit <laurent.savarit@laposte.net> # creates tables ans constraints for bdd
