@@ -48,6 +48,60 @@ class coreModel {
         }catch(err){
             throw err.message;
         }
+    };
+
+    /**
+     * This function insert or update in DB for current model
+     * @async
+     * @returns {object} return an instance of current model
+     */
+    async save() {
+        try{
+
+            const sqlQuery = {};
+            sqlQuery.values = [this];
+
+            //Si un id existe dans l'instance alors on update
+            if(this.id){
+                sqlQuery.text = `SELECT update_${this.constructor.name.toLowerCase()}($1);`;
+            //sinon on insert...
+            }else{
+                sqlQuery.text = `SELECT insert_${this.constructor.name.toLowerCase()}($1);`;
+            }
+
+            const {rows} = await pool.query(sqlQuery);
+
+            if(!this.id && rows){
+                this.id = rows[0].id;
+            }
+
+            return rows ? this : new Error("internal error...");
+
+        }catch(err){
+            throw err.message;
+        }
+    };
+
+    /**
+     * This method delete a row in current model for selected id
+     * @param {number} id 
+     * @returns {Boolean|Error} return true if success else Error
+     */
+    async delete(id){
+        try{
+
+            const sqlQuery = {
+                text: `DELETE FROM "${this.constructor.name.toLowerCase()}" WHERE id = $1;`,
+                values:[parseInt(id,10)]
+            };
+
+            const {rowCount} = await pool.query(sqlQuery);
+
+            return rowCount ? true : new Error("delete error...");
+
+        }catch(err){
+            throw err.message;
+        }
     }
 
 
