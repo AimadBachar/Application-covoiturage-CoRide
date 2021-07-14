@@ -53,13 +53,17 @@ const userController = {
 
         try{
             const user = new User(req.body);
+            user.picture_link = req.file.filename;
+
+            console.log(user);
 
             if(user.id && parseInt(req.params.id,10) !== user.id){
                 return res.status(401).json("bad request");
             }
 
-            const result = await user.save();
-            res.status(201).json(result);
+            //const result = await user.save();
+            //res.status(201).json(result);
+            res.json(user);
 
         }catch(err){
             next(err);

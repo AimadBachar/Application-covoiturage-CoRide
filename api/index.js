@@ -1,4 +1,5 @@
 require('dotenv').config({path:"./.env"});
+const { urlencoded } = require('express');
 const express = require('express');
 const router = require("./app/router")
 
@@ -6,7 +7,7 @@ const app = express();
 
 const PORT = process.env.PORT || 5555;
 
-
+app.use(urlencoded({extended:true}));
 app.use(express.json());
 
 //route de test pour vérifier le fonctionnement du serveur
