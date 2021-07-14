@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 5555;
 app.use(urlencoded({extended:true}));
 app.use(express.json());
 
+app.use(express.static("app/pictures"));
 //route de test pour vérifier le fonctionnement du serveur
 app.get("/",(_,res)=>res.json({"message":"hello world!"}));
 

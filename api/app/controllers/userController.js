@@ -52,6 +52,9 @@ const userController = {
     async insertOrUpdate(req,res,next){
 
         try{
+
+            console.log(req.file)
+
             const user = new User(req.body);
             user.picture_link = req.file.filename;
 

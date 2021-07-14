@@ -8,7 +8,7 @@ const router = Router();
 
 router.route("/users")
     .get(userController.getAll)
-    .post(uploadPicture.single("picture"),userController.insertOrUpdate)
+    .post(uploadPicture,userController.insertOrUpdate)
     .delete(userController.delete);
 
 router.route("/user/:id(\\d+)")
