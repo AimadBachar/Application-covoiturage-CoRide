@@ -43,7 +43,11 @@ class coreModel {
             };
 
             const {rows} = await pool.query(sqlQuery);
-            return rows[0] ? new this(rows[0]) : new Error(`id ${id} not found...`);
+            if(rows[0]){
+                return new this(rows[0]);
+            }else{
+                throw new Error(`id ${id} not found...`);
+            } 
 
         }catch(err){
             throw err.message;
