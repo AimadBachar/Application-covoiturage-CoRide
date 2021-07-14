@@ -2,14 +2,20 @@
 import React from 'react';
 
 // == Import
-import reactLogo from './react-logo.svg';
+import Header from '../Header';
+import Search from '../Search';
+import Main from '../Main';
+import Footer from '../Footer';
+
 import './styles.css';
 
 // == Composant
 const App = () => (
   <div className="app">
-    <img src={reactLogo} alt="react logo" />
-    <h1>Composant : App haha</h1>
+    <Header />
+    <Search />
+    <Main />
+    <Footer />
   </div>
 );
 
