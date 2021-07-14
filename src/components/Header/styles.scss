@@ -1,0 +1,42 @@
+.header {
+  background-color: red;
+  max-width: 100%;
+
+  &-logo {
+      /* On met en place le fond d'écran */
+    //min-height: 100%;
+    min-width: 640px;
+    /* On indique un redimensionnement proportionnel */
+    width: 100%;
+    /* L'image est positionnée en haut à gauche */
+    position: fixed;
+    top: 0;
+    left: 0;
+      
+  };
+
+  &-login {
+    width: 50px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  };
+
+  &-menu {
+    width: 50px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    opacity: 60%;
+  };
+  
+};
+
+// @media only screen and (max-width: 640px);
+
+//    @media screen and (max-width: 1024px) { /* Le traitement est ici spécifique à l'image */
+//     img.fondecran {
+//     left: 50%;
+//     margin-left: -512px; /* 50% */
+//     }
+//    }
