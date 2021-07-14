@@ -1,0 +1,42 @@
+.search{
+    margin-top: 0.5em;
+    
+    &-form {
+        width: 100vw;
+        height: 2em;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        
+            &_select {
+                background-color: white;
+            };
+
+            &_input {
+              // width: 25%;
+              text-align: center;
+              
+            };
+            
+            &_date {
+              // width: 17%;
+              text-align: center;
+            };
+
+            &_submit {
+              margin-left: 1em;
+              background-color: white;
+              
+            };
+            &_select, &_input, &_date {
+                width: 40%;
+                border: none;
+            }
+            &_select, &_input {
+                border-right: black 1px solid; 
+            }
+    };
+
+   
+
+}
