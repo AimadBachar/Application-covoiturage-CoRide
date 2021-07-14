@@ -1,1 +1,4 @@
 api/sqitch.conf
+api/node_modules
+api/.env
+
