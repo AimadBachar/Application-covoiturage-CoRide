@@ -6,7 +6,7 @@ const Search = () => (
     <div className="search">
         <form className="search-form">
             <select className="search-form_select" name="pets">
-              <option value="">Quel sport ?</option>
+              <option className="search-form_select_title" value="">Quel sport ?</option>
               <option value="dog">kite</option>
               <option value="cat">surf</option>
               <option value="hamster">skate</option>
