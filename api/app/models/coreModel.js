@@ -1,5 +1,9 @@
 const pool = require("../db");
 
+/**
+ * This class is the base of all models in DB
+ * @class coreModel
+ */
 class coreModel {
 
     constructor(obj={}){
@@ -8,6 +12,11 @@ class coreModel {
         }
     }
 
+    /**
+     * This function find all object for current model in DB
+     * @async
+     * @returns {Array} return an array of model objects OR error
+     */
     static async findAll(){
 
         try{
@@ -20,6 +29,11 @@ class coreModel {
         }
     };
 
+    /**
+     * This function find one object for current model in DB where id in parameter
+     * @param {number} id 
+     * @returns {object} return an instance of current model
+     */
     static async findOne(id){
 
         try{
