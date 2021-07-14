@@ -51,7 +51,7 @@ const Card = () => (
           <p className="card-hour">18h45</p>
         </div>
       </div>
-      <p className="card-destination">Bordeaux -> Quibééééron</p>
+      <p className="card-destination">Bidart -> Lacanau</p>
       <div className="card-bottom">
         <span className="card-tag">KITESURF</span>
         <button className="card-button" type="button">GO !</button>
@@ -68,7 +68,7 @@ const Card = () => (
           <p className="card-hour">18h45</p>
         </div>
       </div>
-      <p className="card-destination">Bordeaux -> Quibééééron</p>
+      <p className="card-destination">Biarritz-> Mundaka</p>
       <div className="card-bottom">
         <span className="card-tag">SKATE</span>
         <button className="card-button" type="button">GO !</button>
