@@ -1,4 +1,4 @@
-// == Import npm
+// Import npm
 import React from 'react';
 
 // == Import
