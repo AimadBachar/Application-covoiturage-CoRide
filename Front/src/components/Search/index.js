@@ -12,12 +12,13 @@ const Search = ({
 }) => {
     const handleSubmit = (evt) => {
         evt.preventDefault();
+        console.log('submit')
     };
 
 return (
     <div className="search">
         <form className="search-form" 
-        onSubmit={handleSubmit}>
+            onSubmit={handleSubmit}>
 
             <select className="search-form_select" 
                 name="sports"

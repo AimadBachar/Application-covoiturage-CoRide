@@ -6,7 +6,7 @@ export default [
     //         },
     //         {
     //             id: 2,
-    //             sport: "kitesurf", 
+    //             sport: "Ski-nautique", 
     //         },
     //         {
     //             id: 3,
@@ -28,9 +28,9 @@ export default [
     //             id: 7,
     //             sport: "bodyboard", 
     //         },
-    //     ]
-    // },
-    // {   profil: [
+    //     ],
+    
+    //   profil: [
     //         {
     //             id: 1,
     //             name: "Aimad", 
@@ -47,9 +47,9 @@ export default [
     //             id: 4,
     //             name: "Laurent",
     //         },
-    //     ]
-    // },
-    // {   cards: [
+    //     ],
+    
+    //   cards: [
         {
             id: 1,
             hour: "9h05",
@@ -82,6 +82,7 @@ export default [
             trajet: "Rosporden - La Torche",
             tag: "Kite",
         },
-//     ]
+
+        // ]
 // }
 ];
