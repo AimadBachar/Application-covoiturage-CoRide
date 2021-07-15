@@ -1,3 +1,5 @@
+const pool = require("../db");
+const Activity = require("../models/Activity");
 const User = require("../models/User");
 
 const userController = {
@@ -91,6 +93,55 @@ const userController = {
                 next(user);
             }
 
+        }catch(err){
+            next(err);
+        }
+    },
+
+    async showActivities(req,res,next){
+        try{
+
+            const { id } = req.params;
+
+            const results = await User.getActivities(id);
+
+            return res.json(results);
+            
+        }catch(err){
+            next(err);
+        }
+    },
+
+    async showVehicleOptions(req,res,next){
+        try{
+
+            const { id } = req.params;
+
+            const results = await User.getVehicleOption(id);
+
+            return res.json(results);
+            
+        }catch(err){
+            next(err);
+        }
+    },
+
+    async addUserActivity(req,res,next){
+        try{
+
+            const { id } = req.params;
+            const { id:activityId } = req.body;
+
+            const user = await User.findOne(id);
+            const activity = await Activity.findOne(activityId);
+
+            if(user && activity){
+                const assoc = await user.addActivity(activity.id);
+                console.log(assoc)
+                res.status(201).json(true);
+            }else{
+                throw new Error("association impossible");
+            }
         }catch(err){
             next(err);
         }

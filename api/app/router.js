@@ -63,8 +63,8 @@ router.patch("/travel/:travelId(\\d+)/user/:userId(\\d+)",travelController.inser
 
 //////GET POST et DELETE activité d'un user///////////////////////////////////////
 router.route("/user/:id(\\d+)/activities")
-    .get(activityController.getAll)
-    .post(activityController.insertOrUpdate)
+    .get(userController.showActivities)
+    .post(userController.addUserActivity)
     .delete(activityController.delete);
 
 //////GET POST et DELETE option véhicule d'un user////////////////////////////////
