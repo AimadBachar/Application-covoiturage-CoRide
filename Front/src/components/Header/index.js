@@ -8,13 +8,13 @@ import menu from '/src/assets/images/menu.png';
 //import 'semantic-ui-css/semantic.min.css';
 import './styles.scss';
 
-const Header = () => (
+const Header = (props) => (
   <div className="header">
     <img className="header-logo" src={appBanner} alt="appBanner" />
-    <a href="/login">
+    <a href="#" onClick={props.onButtonClickLogin}>
       <img className="header-login" src={login} alt="login" />
     </a>
-    <a href="/menu">
+    <a href="#" onClick={props.onButtonClickMenu}>
       <img className="header-menu" src={menu} alt="menu" />
     </a>
   </div>
