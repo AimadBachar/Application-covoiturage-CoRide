@@ -12,6 +12,7 @@ import './styles.css';
 // == Composant
 const App = () => (
   <div className="app">
+
     <Header 
       onButtonClickMenu={() => {
         console.log('clic sur le menu');
@@ -20,27 +21,42 @@ const App = () => (
         console.log('clic sur le login');
       }}
     />
+
     <Search 
-      onSelectChange={(selected) => {
-        console.log('tu as choisi le', selected);
+       onSelectChange={(selectedSport) => {
+        console.log('tu as choisi le', selectedSport);
       }}
-
       textInput="Où pratiquer ?"
-      onInputChange={(textSaisi) => {
-        console.log('change', textSaisi);
+      onInputChange={(placeChose) => {
+        console.log('ton lieu de pratique est', placeChose);
       }} 
-
       onDateChange={(date) => {
-        console.log('la date selectionnée', date);
-      
+        console.log('la date selectionnée est', date);
       }}
-
       onSubmitSearch={()=>{
         console.log("submit");
       }}
     />
+
     <Main />
-    <Footer />
+
+    <Footer 
+        onButtonClickInstagram={() => {
+        console.log('clic sur le lien Instagram');
+      }}
+      onButtonClickFacebook={() => {
+        console.log('clic sur le lien Facebook');
+      }}
+      onButtonClickTwitter={() => {
+        console.log('clic sur le lien Twitter');
+      }}
+      onButtonClickMentions={() => {
+        console.log('clic sur nos mentions légales');
+      }}
+      onButtonClickContact={() => {
+        console.log('clic pour nous contacter');
+      }}
+    />
   </div>
 );
 

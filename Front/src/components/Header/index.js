@@ -1,10 +1,10 @@
 import React from 'react';
-
 //import PropTypes from 'prop-types';
 
 import appBanner from '/src/assets/images/app-covoiturage.png';
 import login from '/src/assets/images/login.png';
 import menu from '/src/assets/images/menu.png';
+
 //import 'semantic-ui-css/semantic.min.css';
 import './styles.scss';
 

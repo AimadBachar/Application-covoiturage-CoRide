@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-//import { Button, Card, Image } from 'semantic-ui-react'
+//import PropTypes from 'prop-types';
 
 import Card from '../Card';
 

@@ -1,17 +1,35 @@
 import React from 'react';
+// import PropTypes from 'prop-types';
 
 import './styles.scss';
 
+/*
+const Search = ({ 
+    selectedSport,
+    placeChose,
+    date,
+}) => {
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+    };
+}
+return (
+    <div className="search">
+        <form className="search-form" 
+        onSubmit={handleSubmit}>
+--fermer la const 
+*/
 const Search = (props) => (
     <div className="search">
         <form className="search-form" onSubmit={(evt)=>{
             evt.preventDefault();
             props.onSubmitSearch();
         }}>
+
             <select className="search-form_select" name="sports"
                 onChange={(evt) => {
-                    const select = evt.target.value;
-                    props.onSelectChange(select); 
+                    const selectSport = evt.target.value;
+                    props.onSelectChange(selectSport); 
                 }}  
             >              
                 <option className="search-form_select_title" value="">Quel sport ?</option>
@@ -26,8 +44,8 @@ const Search = (props) => (
             <input className="search-form_input" type="text" placeholder="Où pratiquer ?"
                 // value={props.textInput}
                 onChange={(evt) => {
-                    const textSaisi = evt.target.value;
-                    props.onInputChange(textSaisi);
+                    const placeChose = evt.target.value;
+                    props.onInputChange(placeChose);
                 }}
             />
 
@@ -44,5 +62,6 @@ const Search = (props) => (
         </form>
     </div>
 );
+// };  
 
 export default Search;
