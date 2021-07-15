@@ -33,7 +33,7 @@ module.exports = (req,res,next)=>{
         }
 
         if(err instanceof multer.MulterError && err.code !== "LIMIT_FILE_SIZE") {
-            res.status(400).json("file not uploaded since it's not a PNG...");
+            res.status(400).json("file not uploaded since it's not a PNG or JPEG...");
         }else{
             next();
         }

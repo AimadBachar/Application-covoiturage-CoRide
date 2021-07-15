@@ -91,12 +91,12 @@ class coreModel {
      * @param {number} id 
      * @returns {Boolean|Error} return true if success else Error
      */
-    async delete(id){
+    async delete(){
         try{
 
             const sqlQuery = {
                 text: `DELETE FROM "${this.constructor.name.toLowerCase()}" WHERE id = $1;`,
-                values:[parseInt(id,10)]
+                values:[parseInt(this.id,10)]
             };
 
             const {rowCount} = await pool.query(sqlQuery);

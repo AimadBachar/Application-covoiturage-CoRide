@@ -1,19 +1,19 @@
-const User = require("../models/User");
+const Activity = require("../models/Activity");
 
-const userController = {
+const activityController = {
 
     /**
-     * This method is an express middleware for get all rows in User model
+     * This method is an express middleware for get all rows in Activity model
      * @async
      * @param {request} req 
      * @param {response} res 
      * @param {function} next 
-     * @returns {array} an array of objects User OR an Error
+     * @returns {array} an array of objects Activity OR an Error
      */
     async getAll(req, res, next) {
 
         try {
-            const results = await User.findAll();
+            const results = await Activity.findAll();
             return res.json(results);
         } catch (err) {
             next(err);
@@ -21,12 +21,12 @@ const userController = {
     },
 
     /**
-     * This function is a express middleware for get one row in User model
+     * This function is a express middleware for get one row in Activity model
      * @async
      * @param {request} req 
      * @param {response} res 
      * @param {function} next 
-     * @returns {object} an object User or error 404 if id don't exist
+     * @returns {object} an object Activity or error 404 if id don't exist
      */
     async getOne(req, res, next) {
 
@@ -34,7 +34,7 @@ const userController = {
             const {
                 id
             } = req.params;
-            const result = await User.findOne(id); 
+            const result = await Activity.findOne(id); 
             return res.json(result);
             
         } catch (err) {
@@ -43,7 +43,7 @@ const userController = {
     },
 
     /**
-     * This method is a express middleware for insert or update one row in User model
+     * This method is a express middleware for insert or update one row in Activity model
      * @param {request} req 
      * @param {response} res 
      * @param {function} next 
@@ -55,15 +55,13 @@ const userController = {
 
             const {id} = req.params;
             
-            const user = new User(req.body);
-
-            if(req.file) user.picture_link = req.file.filename; 
+            const activity = new Activity(req.body);
             
-            if(user.id && parseInt(id,10) !== user.id){
+            if(activity.id && parseInt(id,10) !== activity.id){
                 return res.status(401).json("bad request");
             }
 
-            const result = await user.save();
+            const result = await activity.save();
             res.status(201).json(result);
             
 
@@ -73,7 +71,7 @@ const userController = {
     },
 
     /**
-     * This method is a express middleware for delete one row in User model
+     * This method is a express middleware for delete one row in Activity model
      * @param {request} req 
      * @param {response} res 
      * @param {function} next 
@@ -82,13 +80,12 @@ const userController = {
     async delete(req,res,next){
         try{
             const {id} = req.body;
-            const user = await User.findOne(id);
- 
-            if(user){
-                await user.delete();
+            const activity = await Activity.findOne(id);
+            if(activity){
+                await activity.delete();
                 res.status(204).end();
             }else{
-                next(user);
+                next(activity);
             }
 
         }catch(err){
@@ -97,4 +94,4 @@ const userController = {
     }
 }
 
-module.exports = userController;
+module.exports = activityController;
