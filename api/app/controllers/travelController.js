@@ -1,4 +1,5 @@
 const Travel = require("../models/Travel");
+const User = require("../models/User");
 
 const travelController = {
 
@@ -13,7 +14,13 @@ const travelController = {
     async getAll(req, res, next) {
 
         try {
-            const results = await Travel.findAll();
+            let results;
+            const { id } = req.params;
+            if(id){
+                results = await Travel.findAll({where:{user_id:id}});
+            }else{
+                results = await Travel.findAll();
+            }
             return res.json(results);
         } catch (err) {
             next(err);
@@ -53,13 +60,23 @@ const travelController = {
 
         try{
 
-            const {id} = req.params;
+            const {id,travelId,userId} = req.params;
+
+            const user = await User.findOne(id||userId);
+
+            if(travelId){
+                const updateTravel = await Travel.findOne(travelId);
+                if(!updateTravel){
+                    return res.status(400).json("bad request");
+                }
+            }
+
+            if(!user || user.id != req.body.user_id){
+                return res.status(400).json("bad request");
+            }
             
             const travel = new Travel(req.body);
-            
-            if(travel.id && parseInt(id,10) !== travel.id){
-                return res.status(401).json("bad request");
-            }
+            travel.user_id = user.id;
 
             const result = await travel.save();
             res.status(201).json(result);

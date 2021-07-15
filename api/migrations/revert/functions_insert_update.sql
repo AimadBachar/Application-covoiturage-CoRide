@@ -2,6 +2,7 @@
 
 BEGIN;
 
+DROP FUNCTION update_vehicle;
 DROP FUNCTION insert_vehicle;
 DROP FUNCTION update_travel;
 DROP FUNCTION insert_travel;

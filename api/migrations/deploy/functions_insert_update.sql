@@ -86,5 +86,17 @@ CREATE FUNCTION insert_vehicle(json) RETURNS "vehicle" AS $$
 
 $$LANGUAGE SQL;
 
+--fonction pour update en bdd un vehicle
+CREATE FUNCTION update_vehicle(json) RETURNS "vehicle" AS $$
+
+    UPDATE "vehicle"
+    SET
+        brand = $1->>'brand',
+        model = $1->>'model',
+        user_id = ($1->>'user_id')::int
+     WHERE id = ($1->>'id')::int RETURNING *;
+
+$$LANGUAGE SQL;
+
 
 COMMIT;

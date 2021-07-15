@@ -1,4 +1,5 @@
 const Vehicle = require("../models/Vehicle");
+const User = require("../models/User");
 
 const vehicleController = {
 
@@ -54,13 +55,23 @@ const vehicleController = {
 
         try{
 
-            const {id} = req.params;
+            const {id,userId,vehicleId} = req.params;
+
+            const user = await User.findOne(id||userId);
+
+            if(!user){
+                return res.status(400).json("bad request");
+            }
+
+            if(vehicleId){
+                const updateVehicle = await Vehicle.findOne(vehicleId);
+                if(!updateVehicle || req.body.id != vehicleId ){
+                    return res.status(400).json("bad request");
+                }
+            }
             
             const vehicle = new Vehicle(req.body);
-            
-            if(vehicle.id && parseInt(id,10) !== vehicle.id){
-                return res.status(401).json("bad request");
-            }
+            vehicle.user_id = user.id;
 
             const result = await vehicle.save();
             res.status(201).json(result);
@@ -81,8 +92,15 @@ const vehicleController = {
     async delete(req,res,next){
         try{
             const {id} = req.body;
+            const { id:userId } = req.params;
+
+            const user = await User.findOne(userId);
+            if(!user){
+                return next(user);
+            }
+
             const vehicle = await Vehicle.findOne(id);
-            if(vehicle){
+            if(vehicle && vehicle.user_id == user.id){
                 await vehicle.delete();
                 res.status(204).end();
             }else{

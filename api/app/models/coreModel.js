@@ -22,7 +22,7 @@ class coreModel {
         try{
             const sqlQuery = {text:`SELECT * FROM "${this.tableName}";`};
 
-            if(obj.where){
+            if(obj?.where){
                 sqlQuery.text = `SELECT * FROM "${this.tableName}" WHERE ${Object.keys(obj.where)[0]} = $1;`;
                 sqlQuery.values = Object.values(obj.where);
             }

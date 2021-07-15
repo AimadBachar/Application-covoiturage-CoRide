@@ -44,15 +44,20 @@ router.route("/vehicle-option/:id(\\d+)")
     .get(vehicleOptionController.getOne);
 
 ////////POST OU PATCH un travel//////////////////////////////////////
-//TODO gérer le controlleur pour integrer le user...
 router.post("/travels/user/:id(\\d+)",travelController.insertOrUpdate);
 router.patch("/travel/:travelId(\\d+)/user/:userId(\\d+)",travelController.insertOrUpdate);
 
-////////GET vehicules par user///////////////////////////////////////
+////////CRUD vehicules par user///////////////////////////////////////
 router.route("/user/:id(\\d+)/vehicles")
     .get(vehicleController.getAll)
     .post(vehicleController.insertOrUpdate)
     .delete(vehicleController.delete);
+router.patch("/user/:userId(\\d+)/vehicle/:vehicleId(\\d+)",vehicleController.insertOrUpdate);
+
+///////GET POST or PATCH un travel pour un user////////////////////////////////////
+router.get("/travels/user/:id(\\d+)",travelController.getAll);
+router.post("/travels/user/:id(\\d+)",travelController.insertOrUpdate);
+router.patch("/travel/:travelId(\\d+)/user/:userId(\\d+)",travelController.insertOrUpdate);
 
 
 //middleware gestion erreur
