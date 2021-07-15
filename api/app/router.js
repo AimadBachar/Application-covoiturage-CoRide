@@ -65,13 +65,13 @@ router.patch("/travel/:travelId(\\d+)/user/:userId(\\d+)",travelController.inser
 router.route("/user/:id(\\d+)/activities")
     .get(userController.showActivities)
     .post(userController.addUserActivity)
-    .delete(activityController.delete);
+    .delete(userController.deleteUserActivity);
 
 //////GET POST et DELETE option véhicule d'un user////////////////////////////////
 router.route("/user/:id(\\d+)/vehicle-options")
-    .get(vehicleOptionController.getAll)
-    .post(vehicleOptionController.insertOrUpdate)
-    .delete(vehicleOptionController.delete);
+    .get(userController.showVehicleOptions)
+    .post(userController.addUserOptionVehicle)
+    .delete(userController.deleteUserOptionVehicle);
 
 
 //middleware gestion erreur

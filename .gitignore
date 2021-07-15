@@ -2,3 +2,4 @@ api/sqitch.conf
 api/node_modules
 api/.env
 api/app/pictures
+Front/node_modules

@@ -61,13 +61,9 @@ class User extends coreModel {
 
             const sqlQuery = {
                 text: `INSERT INTO user_activity(user_id,activity_id) 
-                       SELECT $1,$2
-                       FROM VALUES,user_activity AS ua
-                       WHERE ua.id NOT IN (
-                          SELECT id FROM user_activity WHERE user_id = $1 AND activity_id = $2 
-                       )
+                       VALUES($1,$2) 
                        RETURNING id;`,
-                values:[this.id,activityId]
+                values:[parseInt(this.id,10),parseInt(activityId,10)]
             }
 
             const {rows} = await pool.query(sqlQuery);
@@ -77,7 +73,62 @@ class User extends coreModel {
         }catch(err){
             throw err;
         }
+    };
+
+    async deleteActivity(activityId){
+      try{
+
+          const sqlQuery = {
+              text: `DELETE FROM user_activity 
+                     WHERE user_id = $1 AND activity_id = $2;`,
+              values:[parseInt(this.id,10),parseInt(activityId,10)]
+          }
+
+          const { rowCount } = await pool.query(sqlQuery);
+
+          return rowCount ? true : new Error("internal error") ;
+
+      }catch(err){
+          throw err;
+      }
+  };
+
+  async addVehicleOption(vehicleOptionId){
+    try{
+
+        const sqlQuery = {
+            text: `INSERT INTO user_vehicle_option(user_id,vehicle_option_id) 
+                   VALUES($1,$2) 
+                   RETURNING id;`,
+            values:[parseInt(this.id,10),parseInt(vehicleOptionId,10)]
+        }
+
+        const {rows} = await pool.query(sqlQuery);
+
+        return rows ? rows[0] : new Error("internal error...");
+
+    }catch(err){
+        throw err;
     }
+};
+
+async deleteVehicleOption(vehicleOptionId){
+  try{
+
+      const sqlQuery = {
+          text: `DELETE FROM user_vehicle_option 
+                 WHERE user_id = $1 AND vehicle_option_id = $2;`,
+          values:[parseInt(this.id,10),parseInt(vehicleOptionId,10)]
+      }
+
+      const { rowCount } = await pool.query(sqlQuery);
+
+      return rowCount ? true : new Error("internal error") ;
+
+  }catch(err){
+      throw err;
+  }
+}
 
 };
 

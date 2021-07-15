@@ -1,6 +1,7 @@
 const pool = require("../db");
 const Activity = require("../models/Activity");
 const User = require("../models/User");
+const VehicleOption = require("../models/VehicleOption");
 
 const userController = {
 
@@ -136,9 +137,68 @@ const userController = {
             const activity = await Activity.findOne(activityId);
 
             if(user && activity){
-                const assoc = await user.addActivity(activity.id);
-                console.log(assoc)
-                res.status(201).json(true);
+                await user.addActivity(activity.id);
+                res.status(201).end();
+            }else{
+                throw new Error("association impossible");
+            }
+        }catch(err){
+            next(err);
+        }
+    },
+
+    async deleteUserActivity(req,res,next){
+        try{
+
+            const { id } = req.params;
+            const { id:activityId } = req.body;
+
+            const user = await User.findOne(id);
+            const activity = await Activity.findOne(activityId);
+
+            if(user && activity){
+                await user.deleteActivity(activity.id);
+                res.status(204).end();
+            }else{
+                throw new Error("association impossible");
+            }
+        }catch(err){
+            next(err);
+        }
+    },
+
+    async addUserOptionVehicle(req,res,next){
+        try{
+
+            const { id } = req.params;
+            const { id:vehicleOptionId } = req.body;
+
+            const user = await User.findOne(id);
+            const optionVehicle = await VehicleOption.findOne(vehicleOptionId);
+
+            if(user && optionVehicle){
+                await user.addVehicleOption(optionVehicle.id);
+                res.status(201).end();
+            }else{
+                throw new Error("association impossible");
+            }
+        }catch(err){
+            next(err);
+        }
+    },
+
+    async deleteUserOptionVehicle(req,res,next){
+        try{
+
+            const { id } = req.params;
+            const { id:vehicleOptionId } = req.body;
+
+            const user = await User.findOne(id);
+            const vehicleOption = await VehicleOption.findOne(vehicleOptionId);
+
+            if(user && vehicleOption){
+                await user.deleteVehicleOption(vehicleOption.id);
+                res.status(204).end();
             }else{
                 throw new Error("association impossible");
             }
