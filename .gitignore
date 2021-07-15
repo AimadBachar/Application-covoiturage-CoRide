@@ -1,8 +1,10 @@
-node_modules/
+Front/node_modules
+api/node_modules
+Front/package-lock.json
 dist/
 
 .DS_Store
-Thumbs.db
+Thum
 
 yarn-error.log
 .env
