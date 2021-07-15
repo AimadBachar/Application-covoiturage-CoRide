@@ -7,6 +7,8 @@ import Search from '../Search';
 import Main from '../Main';
 import Footer from '../Footer';
 
+import dataTags from '/src/data/data_tag.js';
+
 import './styles.css';
 
 // == Composant
@@ -23,10 +25,7 @@ const App = () => (
     />
 
     <Search 
-
-      selectedSport={}
-      placeChose={}
-      dateSearch={}
+      tags={dataTags}
 
        onSelectChange={(selectedSport) => {
         console.log('tu as choisi le', selectedSport);
@@ -36,7 +35,7 @@ const App = () => (
         console.log('ton lieu de pratique est', placeChose);
       }} 
       onDateChange={(dateSearch) => {
-        console.log('la date selectionnée est', dateSearch);
+        console.log('la date selectionnée est le', dateSearch);
       }}
       onSubmitSearch={()=>{
         console.log("submit");
