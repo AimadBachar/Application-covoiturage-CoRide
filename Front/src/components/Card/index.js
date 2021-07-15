@@ -4,74 +4,82 @@ import React from 'react';
 import iconLike from '/src/assets/images/pouce-en-l_air.png';
 import './styles.scss';
 
-const Card = () => (
+const Card = ({
+      date,
+      heure,
+      trajet,
+      tag,
+      pseudo,
+      onButtonClickProfilUser,
+      onButtonClickValidation,
+}) => (
   <div>
     <div className="card">
       <div className="card-top">
         <div className="card-top_left">
           <img className="card-like" src={iconLike} alt="icon-like" />
-          <a href="/profil" className="card-profil">Laurent</a>
+          <a href="#" className="card-profil"onClick={onButtonClickProfilUser}>{pseudo}</a>
         </div>
         <div className="card-top_right">
-          <p className="card-date">14/07/2021</p>
-          <p className="card-hour">12h45</p>
+          <p className="card-date">{date}</p>
+          <p className="card-hour">{heure}</p>
         </div>
       </div>
-      <p className="card-destination">Bordeaux -> Quibééééron</p>
+      <p className="card-destination">{trajet}</p>
       <div className="card-bottom">
-        <span className="card-tag">SURF</span>
-        <button className="card-button" type="button">GO !</button>
+        <span className="card-tag">{tag}</span>
+        <button className="card-button" type="button" onClick={onButtonClickValidation}>GO !</button>
       </div>
     </div>
     <div className="card">
       <div className="card-top">
         <div className="card-top_left">
           <img className="card-like" src={iconLike} alt="icon-like" />
-          <a href="/profil" className="card-profil">Aimad</a>
+          <a href="#" className="card-profil" onClick={onButtonClickProfilUser}>{name}</a>
         </div>
         <div className="card-top_right">
-          <p className="card-date">16/07/2021</p>
-          <p className="card-hour">11h45</p>
+          <p className="card-date">{date}</p>
+          <p className="card-hour">{heure}</p>
         </div>
       </div>
-      <p className="card-destination">Bordeaux -> Quibééééron</p>
+      <p className="card-destination">{trajet}</p>
       <div className="card-bottom">
-        <span className="card-tag">SURF</span>
-        <button className="card-button" type="button">GO !</button>
+        <span className="card-tag">{tag}</span>
+        <button className="card-button" type="button" onClick={onButtonClickValidation}>GO !</button>
       </div>
     </div>
     <div className="card">
       <div className="card-top">
         <div className="card-top_left">
           <img className="card-like" src={iconLike} alt="icon-like" />
-          <a href="/profil" className="card-profil">Anna</a>
+          <a href="#" className="card-profil" onClick={onButtonClickProfilUser}>{name}</a>
         </div>
         <div className="card-top_right">
-          <p className="card-date">16/07/2021</p>
-          <p className="card-hour">18h45</p>
+          <p className="card-date">{date}</p>
+          <p className="card-hour">{heure}</p>
         </div>
       </div>
-      <p className="card-destination">Bidart -> Lacanau</p>
+      <p className="card-destination">{trajet}</p>
       <div className="card-bottom">
-        <span className="card-tag">KITESURF</span>
-        <button className="card-button" type="button">GO !</button>
+        <span className="card-tag">{tag}</span>
+        <button className="card-button" type="button" onClick={onButtonClickValidation}>GO !</button>
       </div>
     </div>
     <div className="card">
       <div className="card-top">
         <div className="card-top_left">
           <img className="card-like" src={iconLike} alt="icon-like" />
-          <a href="/profil" className="card-profil">Anna</a>
+          <a href="#" className="card-profil" onClick={onButtonClickProfilUser}>{name}</a>
         </div>
         <div className="card-top_right">
-          <p className="card-date">16/07/2021</p>
-          <p className="card-hour">18h45</p>
+          <p className="card-date">{date}</p>
+          <p className="card-hour">{heure}</p>
         </div>
       </div>
-      <p className="card-destination">Biarritz-> Mundaka</p>
+      <p className="card-destination">{trajet}</p>
       <div className="card-bottom">
-        <span className="card-tag">SKATE</span>
-        <button className="card-button" type="button">GO !</button>
+        <span className="card-tag">{tag}</span>
+        <button className="card-button" type="button" onClick={onButtonClickValidation}>GO !</button>
       </div>
     </div>
   </div>

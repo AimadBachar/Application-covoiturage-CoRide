@@ -23,6 +23,11 @@ const App = () => (
     />
 
     <Search 
+
+      selectedSport={}
+      placeChose={}
+      dateSearch={}
+
        onSelectChange={(selectedSport) => {
         console.log('tu as choisi le', selectedSport);
       }}
@@ -30,8 +35,8 @@ const App = () => (
       onInputChange={(placeChose) => {
         console.log('ton lieu de pratique est', placeChose);
       }} 
-      onDateChange={(date) => {
-        console.log('la date selectionnée est', date);
+      onDateChange={(dateSearch) => {
+        console.log('la date selectionnée est', dateSearch);
       }}
       onSubmitSearch={()=>{
         console.log("submit");
