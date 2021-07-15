@@ -79,6 +79,7 @@ const travelController = {
             travel.user_id = user.id;
 
             const result = await travel.save();
+
             res.status(201).json(result);
             
 
@@ -97,12 +98,15 @@ const travelController = {
     async delete(req,res,next){
         try{
             const {id} = req.body;
+            const {id:userId} = req.params;
             const travel = await Travel.findOne(id);
-            if(travel){
+            if(travel && userId == travel.user_id){
+
                 await travel.delete();
+                
                 res.status(204).end();
             }else{
-                next(travel);
+                next();
             }
 
         }catch(err){

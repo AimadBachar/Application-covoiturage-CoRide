@@ -38,7 +38,7 @@ $$LANGUAGE SQL;
 --/////////////////////////////////////////////////////////////////
 --fonction pour insert en bdd un travel
 CREATE FUNCTION insert_travel(json) RETURNS "travel" AS $$
-
+   
     INSERT INTO "travel"(departure_city,destination_city,latitude_departure,longitude_departure,places_available,description,departure_timestamp,activity_id,user_id)
     VALUES(
         $1->>'departure_city',

@@ -55,9 +55,23 @@ router.route("/user/:id(\\d+)/vehicles")
 router.patch("/user/:userId(\\d+)/vehicle/:vehicleId(\\d+)",vehicleController.insertOrUpdate);
 
 ///////GET POST or PATCH un travel pour un user////////////////////////////////////
-router.get("/travels/user/:id(\\d+)",travelController.getAll);
-router.post("/travels/user/:id(\\d+)",travelController.insertOrUpdate);
+router.route("/travels/user/:id(\\d+)")
+    .get(travelController.getAll)
+    .post(travelController.insertOrUpdate)
+    .delete(travelController.delete);
 router.patch("/travel/:travelId(\\d+)/user/:userId(\\d+)",travelController.insertOrUpdate);
+
+//////GET POST et DELETE activité d'un user///////////////////////////////////////
+router.route("/user/:id(\\d+)/activities")
+    .get(activityController.getAll)
+    .post(activityController.insertOrUpdate)
+    .delete(activityController.delete);
+
+//////GET POST et DELETE option véhicule d'un user////////////////////////////////
+router.route("/user/:id(\\d+)/vehicle-options")
+    .get(vehicleOptionController.getAll)
+    .post(vehicleOptionController.insertOrUpdate)
+    .delete(vehicleOptionController.delete);
 
 
 //middleware gestion erreur

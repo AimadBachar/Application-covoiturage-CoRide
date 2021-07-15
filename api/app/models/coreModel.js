@@ -73,10 +73,10 @@ class coreModel {
 
             //Si un id existe dans l'instance alors on update
             if(this.id){
-                sqlQuery.text = `SELECT update_${this.constructor.name.toLowerCase()}($1);`;
+                sqlQuery.text = `SELECT * FROM update_${this.constructor.name.toLowerCase()}($1);`;
             //sinon on insert...
             }else{
-                sqlQuery.text = `SELECT insert_${this.constructor.name.toLowerCase()}($1);`;
+                sqlQuery.text = `SELECT * FROM insert_${this.constructor.name.toLowerCase()}($1);`;
             }
 
             const {rows} = await pool.query(sqlQuery);
