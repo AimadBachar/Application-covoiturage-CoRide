@@ -17,10 +17,16 @@ class coreModel {
      * @async
      * @returns {Array} return an array of model objects OR error
      */
-    static async findAll(){
+    static async findAll(obj=null){
 
         try{
-            const sqlQuery = `SELECT * FROM "${this.tableName}";`;
+            const sqlQuery = {text:`SELECT * FROM "${this.tableName}";`};
+
+            if(obj.where){
+                sqlQuery.text = `SELECT * FROM "${this.tableName}" WHERE ${Object.keys(obj.where)[0]} = $1;`;
+                sqlQuery.values = Object.values(obj.where);
+            }
+
             const {rows} = await pool.query(sqlQuery);
             return rows ? rows.map(row=>new this(row)) : new Error("internal error");
 
@@ -76,7 +82,7 @@ class coreModel {
             const {rows} = await pool.query(sqlQuery);
 
             if(!this.id && rows){
-                this.id = rows[0].id;
+                this.id = rows[0].id;    
             }
 
             return rows ? this : new Error("internal error...");

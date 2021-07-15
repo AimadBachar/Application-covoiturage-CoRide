@@ -2,3 +2,4 @@
 %project=coride
 
 create-tables 2021-07-13T15:07:31Z laurentSavarit <laurent.savarit@laposte.net> # creates tables ans constraints for bdd
+functions_insert_update 2021-07-15T06:07:14Z laurentSavarit <laurent.savarit@laposte.net> # functions for insert and update in db
