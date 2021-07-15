@@ -27,6 +27,23 @@ const travelController = {
         }
     },
 
+    async getAllByCoords(req,res,next){
+        try{
+
+            const {long,lat} = req.query;
+            
+            results = await Travel.findAll({
+                where:{
+                    longitude_departure: parseFloat(long),
+                    latitude_departure: parseFloat(lat)
+                }});
+            
+                return res.json(results);
+        }catch(err){
+            next(err);
+        }
+    },
+
     /**
      * This function is a express middleware for get one row in Travel model
      * @async

@@ -36,6 +36,8 @@ router.route("/travels")
 router.route("/travel/:id(\\d+)")
     .get(travelController.getOne);
 
+router.get("/travels/search",travelController.getAllByCoords);
+
 /////////Model Vehicle Option////////////////////////////////
 router.route("/vehicle-options")
     .get(vehicleOptionController.getAll);

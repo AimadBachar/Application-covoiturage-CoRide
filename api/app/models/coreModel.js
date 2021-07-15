@@ -23,8 +23,22 @@ class coreModel {
             const sqlQuery = {text:`SELECT * FROM "${this.tableName}";`};
 
             if(obj?.where){
-                sqlQuery.text = `SELECT * FROM "${this.tableName}" WHERE ${Object.keys(obj.where)[0]} = $1;`;
-                sqlQuery.values = Object.values(obj.where);
+
+                let search = ``;
+                let count = 1;
+                sqlQuery.values = [];
+            
+                Object.keys(obj.where).forEach((key,index)=>{
+                    search += `${key} = $${count}`;
+                    sqlQuery.values.push(obj.where[key])
+                    if(index < Object.keys(obj.where).length-1){
+                        search += " AND ";
+                        count++;
+                    }
+                })
+
+                sqlQuery.text = `SELECT * FROM "${this.tableName}" WHERE ${search};`;
+                console.log(sqlQuery);
             }
 
             const {rows} = await pool.query(sqlQuery);
