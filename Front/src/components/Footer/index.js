@@ -1,5 +1,5 @@
 import React from 'react';
-//import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import instagram from '/src/assets/images/instagram.png';
 import facebook from '/src/assets/images/facebook.png';

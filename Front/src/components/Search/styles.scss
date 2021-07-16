@@ -1,43 +1,51 @@
+@use 'src/styles/vars';
+
 .search{
-    margin-top: 0.5em;
-    color: #303030;
-    
+  margin-top: 2rem;
+  color: #303030;
+  position: relative;
+  top: -120px;
+
+
     &-form {
-        width: 100vw;
-        height: 2em;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 80%;
+      margin: 0 auto;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      border-radius: 10px;
+      
+      
+        &_input, &_select, &_date, &_submit {
+          font-size: 1rem;
+          border: none;
+          padding: 1.2rem;
+        };
         
-            &_select {
-                background-color: #f5f5f5;
-            };
+        &_input {
+          border-bottom: vars.$color 1px solid;
+        }
 
-            &_input {
-              text-align: center;
-              background-color: #f5f5f5;
-              
-            };
-            
-            &_date {
-              text-align: center;
-              background-color: #f5f5f5;
-            };
+        &_sport__date {
+          display: flex;
+        };
 
-            &_submit {
-              margin-left: 1em;
-              background-color: #f5f5f5;
-              
-            };
-            &_select, &_input, &_date {
-                width: 40%;
-                border: none;
-            }
-            &_select, &_input {
-                border-right: #303030 1px solid; 
-            }
-    };
+        &_select {
+          background-color: white;
+        }
 
-   
+        &_submit {
+          background-color: vars.$color;
+          border-radius: 0 0 10px 10px;
+        }
 
+        &_select, &_date {
+          width: 50%;
+        };
+  };
+};
+
+.depart {
+  border-radius: 10px 10px 0 0;
 }

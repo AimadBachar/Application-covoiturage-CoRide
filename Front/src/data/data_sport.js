@@ -74,14 +74,6 @@ export default [
             trajet: "Redon - La Baule",
             tag: "Skate",  
         },
-        {
-            id: 4,
-            hour: "10h10",
-            date: "06/07/2021", 
-            pseudo: "Julien",
-            trajet: "Rosporden - La Torche",
-            tag: "Kite",
-        },
 
         // ]
 // }

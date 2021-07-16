@@ -1,6 +1,9 @@
+@use 'src/styles/vars';
+
 .footer {
     background-color: #ececec;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
     position: relative;
@@ -10,10 +13,14 @@
 
     &-logo {
         
-
+        // position: ;
         &_instagram, &_facebook, &_twitter {
             width: 15px;
             opacity: 80%;
         }
+    }
+    &-links {
+        display: flex;
+        flex-direction: column;
     }
 }
