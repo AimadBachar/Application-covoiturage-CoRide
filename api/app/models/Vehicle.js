@@ -1,7 +1,10 @@
 const coreModel = require("./coreModel");
 
 /**
- * @class Vehicle extend the coreModel
+ * @typedef Vehicle 
+ * @property {string} brand.required the vehicle brand
+ * @property {string} model.required the vehicle model
+ * @property {integer} user_id the user id
  */
 class Vehicle extends coreModel {
 

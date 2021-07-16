@@ -2,7 +2,15 @@ const coreModel = require("./coreModel");
 const pool = require("../db");
 
 /**
- * @class User extend the coreModel
+ * @typedef User 
+ * @property {string} first_name.required the first name user
+ * @property {string} last_name.required the last name user
+ * @property {string} email.required the user email
+ * @property {string} picture_link the link for user avatar
+ * @property {string} pseudo the user pseudo
+ * @property {string} created_at timestamptz created
+ * @property {string} updated_at timestamptz updated
+ * @property {string} password.required the hash user password
  */
 class User extends coreModel {
 
