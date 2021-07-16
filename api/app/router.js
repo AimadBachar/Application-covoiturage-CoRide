@@ -370,6 +370,10 @@ router.route("/user/:id(\\d+)/vehicle-options")
     .delete(userController.deleteUserOptionVehicle);
 
 
+router.route("/user/:id(\\d+)/travels")
+    .post(userController.addUserTravel)
+    .delete(userController.deleteUserTravel);
+
 //middleware gestion erreur
 router.use((err,req,res,next)=>res.status(404).json({"error":err}))
 
