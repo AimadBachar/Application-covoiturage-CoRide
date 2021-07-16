@@ -22,8 +22,6 @@ const Footer = (props) => (
     </div>
     <div className="footer-links">
         <a href="#" onClick={props.onButtonClickMentions}>Mentions légales</a>
-    </div>
-    <div>
         <a href="#" onClick={props.onButtonClickContact}>Contact</a>
     </div>
   </div>

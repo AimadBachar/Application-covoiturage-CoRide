@@ -2,8 +2,8 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 
 import appBanner from '/src/assets/images/skate2.jpg';
-import login from '/src/assets/images/login.png';
-import menu from '/src/assets/images/menu.png';
+import login from '/src/assets/images/icon user white.png';
+import menu from '/src/assets/images/menu white.png';
 
 // import 'semantic-ui-css/semantic.min.css';
 import './styles.scss';

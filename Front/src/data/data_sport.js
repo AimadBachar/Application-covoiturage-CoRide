@@ -55,7 +55,7 @@ export default [
             hour: "9h05",
             date: "01/01/2021", 
             pseudo: "Laurent",
-            trajet: "Bordeaux - Quibéééron",
+            trajet: "Bordeaux  >  Quibéééron",
             tag: "Surf",
         },
         {
@@ -63,7 +63,7 @@ export default [
             hour: "9h10",
             date: "01/01/2021", 
             pseudo: "Anna",
-            trajet: "Biarritz - Saint-Sébastian",
+            trajet: "Biarritz  >  Mundaka",
             tag: "Wing Foil", 
         },
         {
@@ -71,7 +71,7 @@ export default [
             hour: "10h05",
             date: "01/01/2021", 
             pseudo: "Aimad",
-            trajet: "Redon - La Baule",
+            trajet: "Redon  >  La Baule",
             tag: "Skate",  
         },
 

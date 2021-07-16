@@ -2,50 +2,55 @@
 
 .search{
   margin-top: 2rem;
-  color: #303030;
   position: relative;
   top: -120px;
 
+  &-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 80%;
+    margin: 0 auto;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    
+    &_input, &_select, &_date {
+      font-size: 1rem;
+      border: none;
+      padding: 1.2rem;
+      font-family: 'Roboto Mono', monospace;
+    };
 
-    &-form {
+    &_sport__date {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      max-width: 80%;
-      margin: 0 auto;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-      border-radius: 10px;
-      
-      
-        &_input, &_select, &_date, &_submit {
-          font-size: 1rem;
-          border: none;
-          padding: 1.2rem;
-        };
-        
-        &_input {
-          border-bottom: vars.$color 1px solid;
-        }
+    };
 
-        &_sport__date {
-          display: flex;
-        };
+    &_select {
+      background-color: white;
+    }
 
-        &_select {
-          background-color: white;
-        }
+    &_submit {
+      background-color: vars.$color;
+      border-radius: 0 0 10px 10px;
+      border: none;
+      padding: 0.5rem;
+    }
 
-        &_submit {
-          background-color: vars.$color;
-          border-radius: 0 0 10px 10px;
-        }
-
-        &_select, &_date {
-          width: 50%;
-        };
+    &_select, &_date {
+      width: 50%;
+    };
   };
 };
 
 .depart {
   border-radius: 10px 10px 0 0;
+  border-bottom: #ccc 0.5px solid;
+}
+
+.destination {
+  border-bottom: #ccc 0.5px solid;
+}
+
+.loupe {
+  width: 30px;
 }

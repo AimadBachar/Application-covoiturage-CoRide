@@ -1,5 +1,6 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
+import loupe from '/src/assets/images/loupe white 2.png';
 
 import './styles.scss';
 
@@ -34,7 +35,7 @@ const Search = ({
         />
 
         <input
-          className="search-form_input"
+          className="search-form_input destination"
           type="text"
           name="arrivé"
           placeholder="Destination"
@@ -78,13 +79,13 @@ const Search = ({
               const dateSearch = evt.target.value;
               onDateChange(dateSearch);
             }}
-           />
+          />
         </div>
         <button
           type="submit"
           className="search-form_submit"
         >
-          Rechercher
+          <img className="loupe" src={loupe} alt="loupe" />
         </button>
       </form>
     </div>
