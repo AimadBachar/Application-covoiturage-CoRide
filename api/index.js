@@ -1,6 +1,7 @@
 require('dotenv').config({path:"./.env"});
 const { urlencoded } = require('express');
 const express = require('express');
+const cors = require("cors");
 const router = require("./app/router");
 const loginController = require("./app/controllers/loginController");
 const verifyToken = require("./app/middlewares/verrifyToken");
@@ -9,6 +10,7 @@ const app = express();
 
 const PORT = process.env.PORT || 5555;
 
+app.use(cors());
 app.use(urlencoded({extended:true}));
 app.use(express.json());
 
