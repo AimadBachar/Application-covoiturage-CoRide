@@ -1,7 +1,8 @@
 const coreModel = require("./coreModel");
 
 /**
- * @class Vehicle option extend the coreModel
+ * @typedef VehicleOption 
+ * @property {string} label.required the name of option
  */
 class VehicleOption extends coreModel {
 

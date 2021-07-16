@@ -1,5 +1,6 @@
 const pool = require("../db");
 const Activity = require("../models/Activity");
+const Travel = require("../models/Travel");
 const User = require("../models/User");
 const VehicleOption = require("../models/VehicleOption");
 
@@ -198,6 +199,46 @@ const userController = {
 
             if(user && vehicleOption){
                 await user.deleteVehicleOption(vehicleOption.id);
+                res.status(204).end();
+            }else{
+                throw new Error("association impossible");
+            }
+        }catch(err){
+            next(err);
+        }
+    },
+
+    async addUserTravel(req,res,next){
+        try{
+
+            const { id } = req.params;
+            const { id:travelId } = req.body;
+
+            const user = await User.findOne(id);
+            const travel = await Travel.findOne(travelId);
+
+            if(user && travel){
+                await user.addTravel(travel.id);
+                res.status(201).end();
+            }else{
+                throw new Error("association impossible");
+            }
+        }catch(err){
+            next(err);
+        }
+    },
+
+    async deleteUserTravel(req,res,next){
+        try{
+
+            const { id } = req.params;
+            const { id:travelId } = req.body;
+
+            const user = await User.findOne(id);
+            const travel = await Travel.findOne(travelId);
+
+            if(user && travel){
+                await user.deleteTravel(travel.id);
                 res.status(204).end();
             }else{
                 throw new Error("association impossible");

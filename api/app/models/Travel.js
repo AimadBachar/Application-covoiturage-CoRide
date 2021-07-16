@@ -2,7 +2,17 @@ const coreModel = require("./coreModel");
 const pool = require("../db");
 
 /**
- * @class Travel extend the coreModel
+ * @typedef Travel
+ * @property {string} departure_city.required the name departure city
+ * @property {string} destination_city.required the name destination city
+ * @property {number} latitude_departure.required the latitude coords in float
+ * @property {number} longitude_departure.required the longitude coords in float
+ * @property {integer} places_available.required the number of places
+ * @property {string} description.required the travel description
+ * @property {string} departure_timestamp.required the date and time departure
+ * @property {integer} activity_id.required the id of activity
+ * @property {integer} user_id.required the id of user
+ * @property {string} created_at the timestamptz created
  */
 class Travel extends coreModel {
 
