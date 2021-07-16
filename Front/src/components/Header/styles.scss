@@ -1,3 +1,4 @@
+
 .header {
   max-width: 100%;
   position: relative;
@@ -8,7 +9,9 @@
     //min-height: 100%;
     // max-width: 640px;
     /* On indique un redimensionnement proportionnel */
-    width: 100%;
+    filter: blur(0.6px);
+    height: auto;
+    width: 100%
     /* L'image est positionnée en haut à gauche */
     // position: relative;
     // top: 0;
@@ -16,20 +19,18 @@
   };
 
   &-login {
-    width: 30px;
+    width: 70px;
     position: absolute;
     right: 10px;
     top: 10px;
   };
 
   &-menu {
-    width: 30px;
+    width: 70px;
     position: absolute;
     left: 10px;
     top: 10px;
-    opacity: 60%;
   };
-  
 };
 
 // @media only screen and (min-width: 640px);

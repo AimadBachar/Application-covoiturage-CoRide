@@ -11,25 +11,24 @@ const Card = ({
 }) => (
   <div>
     {cards.map((card) => (
-        <div className="card" key={card.id}>
-          <div className="card-top">
-            <div className="card-top_left">
-              <img className="card-like" src={iconLike} alt="icon-like" />
-              <a href="#" className="card-profil"onClick={onButtonClickProfilUser}>{card.pseudo}</a>
-            </div>
-            <div className="card-top_right">
-              <p className="card-date">{card.date}</p>
-              <p className="card-hour">{card.hour}</p>
-            </div>
+      <div className="card" key={card.id}>
+        <div className="card-top">
+          <div className="card-top_left">
+            <img className="card-like" src={iconLike} alt="icon-like" />
+            <a href="#" className="card-profil" onClick={onButtonClickProfilUser}>{card.pseudo}</a>
           </div>
-          <p className="card-destination">{card.trajet}</p>
-          <div className="card-bottom">
-            <span className="card-tag">{card.tag}</span>
-            <button className="card-button" type="button" onClick={onButtonClickValidation}>GO !</button>
+          <div className="card-top_right">
+            <p className="card-date">{card.date}</p>
+            <p className="card-hour">{card.hour}</p>
           </div>
         </div>
-      ))
-    };
+        <p className="card-destination">{card.trajet}</p>
+        <div className="card-bottom">
+          <span className="card-tag">{card.tag}</span>
+          <button className="card-button" type="button" onClick={onButtonClickValidation}>GO !</button>
+        </div>
+      </div>
+    ))};
   </div>
 );
 

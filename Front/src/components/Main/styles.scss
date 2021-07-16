@@ -1,12 +1,28 @@
-.main {
-    display: flex;
-    flex-direction: column;
-    background-color: #4B4B4B;
-    min-height: 70vh;
+@use 'src/styles/vars';
 
-    &-title{
-        color: #ececec;
-        margin-top: 2rem;
-        font-size: 1.4rem;
-    }
+.main {
+  display: flex;
+  flex-direction: column;
+  background-color: vars.$color;
+  height: 50vh;
+
+    &-title{ 
+    text-align: center;
+    color: vars.$color-light;
+    margin: 1.5rem 0;
+    font-size: 1.4rem;
+    font-weight: bold;
+  };
+};
+
+.slogan{
+  background-color: vars.$color-light;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &-text{
+  font-size: 1.1em;
+  }
 }

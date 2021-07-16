@@ -9,7 +9,7 @@ import Footer from '../Footer';
 
 import dataTags from '/src/data/data_tag.js';
 
-import './styles.css';
+import './styles.scss';
 
 // == Composant
 const App = () => (
@@ -43,7 +43,6 @@ const App = () => (
     />
 
     <Main />
-
     <Footer 
         onButtonClickInstagram={() => {
         console.log('clic sur le lien Instagram');
