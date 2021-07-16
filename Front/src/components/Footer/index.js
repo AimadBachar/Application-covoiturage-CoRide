@@ -1,9 +1,9 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 
-import instagram from '/src/assets/images/instagram.png';
-import facebook from '/src/assets/images/facebook.png';
-import twitter from '/src/assets/images/twitter.png';
+import instagram from '/src/assets/images/instagram white.png';
+import facebook from '/src/assets/images/facebook white.png';
+import twitter from '/src/assets/images/twitter white.png';
 
 import '/src/components/Footer/styles.scss';
 
@@ -21,8 +21,8 @@ const Footer = (props) => (
       </a>
     </div>
     <div className="footer-links">
-        <a href="#" onClick={props.onButtonClickMentions}>Mentions légales</a>
-        <a href="#" onClick={props.onButtonClickContact}>Contact</a>
+      <a href="#" onClick={props.onButtonClickMentions}>Mentions légales</a>
+      <a href="#" onClick={props.onButtonClickContact}>Contact</a>
     </div>
   </div>
 );

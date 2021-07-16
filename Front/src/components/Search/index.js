@@ -69,7 +69,6 @@ const Search = ({
               </option>
             ))}
           </select>
-
           <input
             className="search-form_date"
             type="date"
