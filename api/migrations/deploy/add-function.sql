@@ -17,10 +17,14 @@ WHERE(
         -   --on compte le nombre d'inscrit grace
             (SELECT COUNT(*) FROM user_travel WHERE travel_id = id_travel)
         )>0
+        AND id_user 
+        NOT IN (
+            SELECT user_id FROM user_travel WHERE user_id = id_user AND travel_id = id_travel
+        )
         THEN --Si true on insert 
-        true
+            true
         ELSE
-        false
+            false
         END
 ) RETURNING true
 
