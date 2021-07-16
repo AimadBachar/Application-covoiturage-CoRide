@@ -370,6 +370,26 @@ router.route("/user/:id(\\d+)/vehicle-options")
     .delete(userController.deleteUserOptionVehicle);
 
 
+/**
+ * @route POST /user/{id}/travels
+ * @group Users - Operations about user
+ * @security JWT
+ * @param {integer} id.path.required the user id
+ * @param {integer} id.body.required the travel id
+ * @consumes application/json
+ * @returns {void} 201 - success, no content
+ * @returns {Error} default - Unexpected error
+ */
+/**
+ * @route DELETE /user/{id}/travels
+ * @group Users - Operations about user
+ * @security JWT
+ * @param {integer} id.path.required the user id
+ * @param {integer} id.body.required the travel id 
+ * @returns {void} 204 - success, no content
+ * @returns {Error} 400 - bad request
+ * @returns {Error} default - Unexpected error
+ */
 router.route("/user/:id(\\d+)/travels")
     .post(userController.addUserTravel)
     .delete(userController.deleteUserTravel);
