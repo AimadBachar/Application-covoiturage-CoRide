@@ -1,0 +1,28 @@
+<%- include("partials/header")  %> 
+     
+
+      <h2>Les options de véhicules</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">nom</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <% for(const option of locals.vehicleOptions){ %> 
+            <tr>
+              <td><%= option.id  %> </td>
+              <td><%= option.label  %> </td>
+              <td><a href="/coride/admin/travels/delete?id=<%= option.id %>">supprimer</a></td>
+            </tr>
+
+            <% } %> 
+           
+          </tbody>
+        </table>
+      </div>
+<%- include("partials/footer")  %> 

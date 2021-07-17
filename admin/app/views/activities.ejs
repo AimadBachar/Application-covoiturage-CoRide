@@ -1,0 +1,30 @@
+<%- include("partials/header")  %> 
+     
+
+      <h2>Les Activités</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">nom</th>
+              <th scope="col">couleur</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <% for(const activity of locals.activities){ %> 
+            <tr>
+              <td><%= activity.id  %> </td>
+              <td><%= activity.label  %> </td>
+              <td><%= activity.color  %> </td>
+              <td><a href="/coride/admin/travels/delete?id=<%= activity.id %>">supprimer</a></td>
+            </tr>
+
+            <% } %> 
+           
+          </tbody>
+        </table>
+      </div>
+<%- include("partials/footer")  %> 
