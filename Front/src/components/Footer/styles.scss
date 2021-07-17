@@ -1,7 +1,7 @@
 @use 'src/styles/vars';
 
 .footer {
-  background-color: #dfdfdf; 
+  background-color: vars.$color-grey; 
   display: flex;
   flex-direction: column;
   justify-content: space-around;
