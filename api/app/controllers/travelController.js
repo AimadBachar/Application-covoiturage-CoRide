@@ -38,7 +38,7 @@ const travelController = {
         try{
 
             const {long,lat,ray} = req.query;
-            
+
             const results = await Travel.findByCoords(long,lat,ray||10);
             
             return res.json(results);

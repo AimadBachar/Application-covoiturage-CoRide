@@ -29,7 +29,7 @@ class Travel extends coreModel {
      * @param {integer} rayon 
      * @returns {array} return an array of results
      */
-    async findByCoords(longitude,latitude,rayon){
+    static async findByCoords(longitude,latitude,rayon){
         try{
 
             const sqlQuery = {
@@ -38,7 +38,7 @@ class Travel extends coreModel {
             };
 
             const {rows} = await pool.query(sqlQuery);
-
+        
             return rows ? rows.map(row=>new this(row)) : new Error("internal error...");
 
         }catch(err){
