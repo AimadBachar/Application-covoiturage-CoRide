@@ -22,6 +22,13 @@ class Travel extends coreModel {
         super(obj);
     };
 
+    /**
+     * this method search traval by coords gps
+     * @param {number} longitude 
+     * @param {number} latitude 
+     * @param {integer} rayon 
+     * @returns {array} return an array of results
+     */
     async findByCoords(longitude,latitude,rayon){
         try{
 

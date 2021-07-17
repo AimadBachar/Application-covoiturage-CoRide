@@ -9,7 +9,7 @@ const verifyToken = require("./app/middlewares/verrifyToken");
 const app = express();
 const expressSwagger = require("express-swagger-generator")(app);
 
-////////////////////Options Swagger///////////////////////////
+////////////////////Options Swagger////////////////////////////////
 const options = {
     swaggerDefinition: {
         info: {
@@ -45,9 +45,8 @@ app.use(cors());
 app.use(urlencoded({extended:true}));
 app.use(express.json());
 
+//middleware pour fournir les photos de profiles
 app.use(express.static("app/pictures"));
-//route de test pour vérifier le fonctionnement du serveur
-app.get("/",(_,res)=>res.json({"message":"hello world!"}));
 
 app.post("/login",loginController);
 

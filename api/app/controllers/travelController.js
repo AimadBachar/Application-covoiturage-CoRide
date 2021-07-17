@@ -27,6 +27,13 @@ const travelController = {
         }
     },
 
+    /**
+     * this express middleware returns results by coords geoloc
+     * @param {request} req 
+     * @param {response} res 
+     * @param {function} next 
+     * @returns {Array} return an json array or an error
+     */
     async getAllByCoords(req,res,next){
         try{
 

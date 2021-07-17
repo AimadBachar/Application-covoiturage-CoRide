@@ -100,6 +100,13 @@ const userController = {
         }
     },
 
+    /**
+     * This express middleware returns an array of actvities for one user
+     * @param {request} req 
+     * @param {response} res 
+     * @param {function} next 
+     * @returns {JSON} an json array or error
+     */
     async showActivities(req,res,next){
         try{
 
@@ -114,6 +121,13 @@ const userController = {
         }
     },
 
+    /**
+     * this express middleware returns an array of vehicle options for one user
+     * @param {request} req 
+     * @param {response} res 
+     * @param {function} next 
+     * @returns {JSON} return a json array or error
+     */
     async showVehicleOptions(req,res,next){
         try{
 
@@ -128,6 +142,13 @@ const userController = {
         }
     },
 
+    /**
+     * this express middleware add one activity for one user
+     * @param {request} req 
+     * @param {response} res 
+     * @param {function} next 
+     * @returns {void} return void or error
+     */
     async addUserActivity(req,res,next){
         try{
 
@@ -148,6 +169,13 @@ const userController = {
         }
     },
 
+    /**
+     * this express middleware delete one activity for one user
+     * @param {request} req 
+     * @param {response} res 
+     * @param {function} next 
+     * @returns {void} return voir or error
+     */
     async deleteUserActivity(req,res,next){
         try{
 
@@ -168,6 +196,13 @@ const userController = {
         }
     },
 
+    /**
+     * this express middleware add one vehicle option for one user
+     * @param {request} req 
+     * @param {response} res 
+     * @param {function} next 
+     * @returns {void} return void or error
+     */
     async addUserOptionVehicle(req,res,next){
         try{
 
@@ -188,6 +223,13 @@ const userController = {
         }
     },
 
+    /**
+     * this express middleware delete one vehicle option for one user
+     * @param {request} req 
+     * @param {response} res 
+     * @param {function} next 
+     * @returns {void} return void or error
+     */
     async deleteUserOptionVehicle(req,res,next){
         try{
 
@@ -208,6 +250,13 @@ const userController = {
         }
     },
 
+    /**
+     * this express middleware add one user on one travel
+     * @param {request} req 
+     * @param {response} res 
+     * @param {function} next 
+     * @returns {void} return void or error
+     */
     async addUserTravel(req,res,next){
         try{
 
@@ -228,6 +277,12 @@ const userController = {
         }
     },
 
+    /**
+     * this express middleware delete a user on travel
+     * @param {request} req 
+     * @param {response} res 
+     * @param {function} next 
+     */
     async deleteUserTravel(req,res,next){
         try{
 
