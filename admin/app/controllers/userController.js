@@ -14,6 +14,10 @@ const userController = {
         const users = await results.json();
 
         res.render("users",{users});
+    },
+
+    async delete(){
+        
     }
 }
 

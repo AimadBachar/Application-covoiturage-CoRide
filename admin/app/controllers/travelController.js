@@ -14,6 +14,10 @@ const travelController = {
         const travels = await results.json();
 
         res.render("travels",{travels});
+    },
+
+    async delete(){
+        
     }
 }
 

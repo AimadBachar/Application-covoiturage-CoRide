@@ -13,6 +13,11 @@ router.get("/travels",travelController.getAll);
 router.get("/activities",activityController.getAll);
 router.get("/vehicle-options",vehicleOptionController.getAll);
 
+router.get("/users/delete",userController.delete);
+router.get("/travels/delete",travelController.delete);
+router.get("/activities/delete",activityController.delete);
+router.get("/vehicle-options/delete",vehicleOptionController.delete);
+
 
 
 module.exports = router;

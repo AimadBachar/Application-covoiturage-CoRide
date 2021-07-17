@@ -14,6 +14,10 @@ const activityController = {
         const activities = await results.json();
 
         res.render("activities",{activities});
+    },
+
+    async delete(){
+        
     }
 }
 
