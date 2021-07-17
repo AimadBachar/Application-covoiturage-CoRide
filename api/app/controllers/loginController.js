@@ -1,5 +1,12 @@
 const jwt = require("jsonwebtoken");
 
+/**
+ * This function i a express middleware for login front app
+ * @param {request} req 
+ * @param {response} res 
+ * @param {function} next 
+ * @returns {JSON} return an error 401 or a JWT
+ */
 module.exports = (req,res,next)=>{
 
     const {user,password} = req.body;

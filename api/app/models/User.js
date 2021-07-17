@@ -20,6 +20,11 @@ class User extends coreModel {
         super(obj);
     };
 
+    /**
+     * this method get all activities for one user by id
+     * @param {integer} id 
+     * @returns {array} return an array of User
+     */
     static async getActivities(id) {
         try {
 
@@ -44,6 +49,11 @@ class User extends coreModel {
         }
     };
 
+    /**
+     * this method get all vehicle options for one user by id
+     * @param {integer} id 
+     * @returns {array} return an array of vehicle options
+     */
     static async getVehicleOption(id) {
         try {
 
@@ -68,6 +78,11 @@ class User extends coreModel {
         }
     };
 
+    /**
+     * this method add one activity for one user by id
+     * @param {integer} activityId 
+     * @returns {void} return  void
+     */
     async addActivity(activityId) {
         try {
 
@@ -89,6 +104,11 @@ class User extends coreModel {
         }
     };
 
+    /**
+     * this method delete one activity by id for one user
+     * @param {integer} activityId 
+     * @returns {void}
+     */
     async deleteActivity(activityId) {
         try {
 
@@ -109,6 +129,11 @@ class User extends coreModel {
         }
     };
 
+    /**
+     * this method add one vehicle option for one user
+     * @param {integer} vehicleOptionId 
+     * @returns {void}
+     */
     async addVehicleOption(vehicleOptionId) {
         try {
 
@@ -130,6 +155,11 @@ class User extends coreModel {
         }
     };
 
+    /**
+     * this method delete one vehicle option for one user
+     * @param {integer} vehicleOptionId 
+     * @returns {void}
+     */
     async deleteVehicleOption(vehicleOptionId) {
         try {
 
@@ -150,9 +180,13 @@ class User extends coreModel {
         }
     };
 
+    /**
+     * this function add user for passenger on travel
+     * @param {integer} travelId 
+     * @returns {void}
+     */
     async addTravel(travelId){
         try {
-            //TODO faire la fonction de reservation
             const sqlQuery = {
                 text: `SELECT * FROM add_passenger($1,$2);`,
                 values: [parseInt(this.id,10), parseInt(travelId,10)]
@@ -169,6 +203,11 @@ class User extends coreModel {
         }
     };
 
+    /**
+     * this method delete the user passenger
+     * @param {integer} travelId 
+     * @returns {void}
+     */
     async deleteTravel(travelId){
         try {
 
