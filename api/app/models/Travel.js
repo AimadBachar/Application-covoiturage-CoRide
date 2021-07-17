@@ -22,44 +22,22 @@ class Travel extends coreModel {
         super(obj);
     };
 
-    /**
-     * This function insert in db the relation with travel and user
-     * @returns {number} return id of insert association
-     */
-    async assocUser(){
+    async findByCoords(longitude,latitude,rayon){
         try{
 
             const sqlQuery = {
-                text: `INSERT INTO "user_travel"(user_id,travel_id) VALUES ($1,$2) RETURNING id;`,
-                values: [this.user_id,this.id]
+                text: `SELECT * FROM search_travels($1,$2,$3);`,
+                values: [parseFloat(longitude),parseFloat(latitude),parseInt(rayon,10)]
             };
 
             const {rows} = await pool.query(sqlQuery);
-            return rows ? rows[0] : new Error("internal error...");
+
+            return rows ? rows.map(row=>new this(row)) : new Error("internal error...");
 
         }catch(err){
             throw err;
         }
-    };
-
-    /**
-     * This function delete relation with user and travel
-     * @returns {void} return void or error
-     */
-    async deleteAssocUser(){
-        try{
-            const sqlQuery = {
-                text: `DELETE FROM "user_travel" WHERE user_id = $1 AND travel_id = $2;`,
-                values: [this.user_id,this.id]
-            };
-
-            const { rowCount } = await pool.query(sqlQuery);
-            return rowCount ? rowCount : new Error("internal error...");
-
-        }catch(err){
-            throw err;
-        }
-    };
+    }
 };
 
 module.exports = Travel;

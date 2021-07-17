@@ -5,6 +5,8 @@ BEGIN;
 CREATE FUNCTION search_travels(long double precision, lat double precision,ray int) RETURNS SETOF travel AS $$
 
 SELECT * FROM travel
+
+--équation permettant de définir les points dans un rayon défini...
 WHERE ((
         ((latitude_departure - lat)*111.11)
         *

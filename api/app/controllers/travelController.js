@@ -30,15 +30,12 @@ const travelController = {
     async getAllByCoords(req,res,next){
         try{
 
-            const {long,lat} = req.query;
+            const {long,lat,ray} = req.query;
             
-            results = await Travel.findAll({
-                where:{
-                    longitude_departure: parseFloat(long),
-                    latitude_departure: parseFloat(lat)
-                }});
+            const results = await Travel.findByCoords(long,lat,ray||10);
             
-                return res.json(results);
+            return res.json(results);
+
         }catch(err){
             next(err);
         }
