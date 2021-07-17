@@ -1,0 +1,7 @@
+api/node_modules
+Front/node_modules
+api/.env
+api/sqitch.conf
+api/app/pictures
+admin/.env
+admin/node_modules
