@@ -98,5 +98,51 @@ CREATE FUNCTION update_vehicle(json) RETURNS "vehicle" AS $$
 
 $$LANGUAGE SQL;
 
+--/////////////////////////////////////////////////////////////////
+--fonction pour insert en bdd une activity
+CREATE FUNCTION insert_activity(json) RETURNS "activity" AS $$
+
+    INSERT INTO "activity"(label,color)
+    VALUES(
+        $1->>'label',
+        $1->>'color'
+    ) RETURNING *;
+
+$$LANGUAGE SQL;
+
+--fonction pour update en bdd une activity
+CREATE FUNCTION update_activity(json) RETURNS "activity" AS $$
+
+    UPDATE "activity"
+    SET
+        label = $1->>'label',
+        color = $1->>'color'
+
+    WHERE id = ($1->>'id')::int RETURNING *;
+
+$$LANGUAGE SQL;
+
+
+--/////////////////////////////////////////////////////////////////
+--fonction pour insert en bdd une vehicle option
+CREATE FUNCTION insert_vehicle_option(json) RETURNS "vehicle_option" AS $$
+
+    INSERT INTO "vehicle_option"(label)
+    VALUES(
+        $1->>'label'
+    ) RETURNING *;
+
+$$LANGUAGE SQL;
+
+--fonction pour update en bdd une vehicle option
+CREATE FUNCTION update_vehicle_option(json) RETURNS "vehicle_option" AS $$
+
+    UPDATE "vehicle_option"
+    SET
+        label = $1->>'label'
+
+    WHERE id = ($1->>'id')::int RETURNING *;
+
+$$LANGUAGE SQL;
 
 COMMIT;

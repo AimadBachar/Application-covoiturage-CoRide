@@ -8,10 +8,10 @@ const schemaTravel = Joi.object({
     longitude_departure: Joi.number().required(),
     places_available: Joi.number().integer().min(1).required(),
     description: Joi.string().max(250).optional(),
-    departure_timestamp: Joi.date().timestamp().required(),
+    departure_timestamp: Joi.date().required(),
     activity_id: Joi.number().integer().required(),
     user_id: Joi.number().integer().required(),
-    created_at: Joi.date().timestamp().default(Date.now()).required()
+    created_at: Joi.date().default(Date.now()).optional()
 });
 
 module.exports = schemaTravel;

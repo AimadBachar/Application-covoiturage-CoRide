@@ -7,6 +7,8 @@ const activityController = require("./controllers/activityController");
 const travelController = require("./controllers/travelController");
 const vehicleController = require("./controllers/vehicleController");
 const vehicleOptionController = require("./controllers/vehicleOptionController");
+const joiValidator = require("./middlewares/joiValidator");
+const schemas = require("./schemas");
 
 const router = Router();
 
@@ -48,7 +50,7 @@ const router = Router();
  */
 router.route("/users")
     .get(userController.getAll)
-    .post(uploadPicture,userController.insertOrUpdate)
+    .post(uploadPicture,joiValidator(schemas.user),userController.insertOrUpdate)
     .delete(userController.delete);
 
 /**
@@ -71,7 +73,7 @@ router.route("/users")
  */
 router.route("/user/:id(\\d+)")
     .get(userController.getOne)
-    .patch(userController.insertOrUpdate);
+    .patch(joiValidator(schemas.user),userController.insertOrUpdate);
 
 ////////////Model Activity////////////////////////////////////
 /**
@@ -107,7 +109,7 @@ router.route("/user/:id(\\d+)")
  */
 router.route("/activities")
     .get(activityController.getAll)
-    .post(activityController.insertOrUpdate)
+    .post(joiValidator(schemas.activity),activityController.insertOrUpdate)
     .delete(activityController.delete);
 
 /**
@@ -130,7 +132,7 @@ router.route("/activities")
  */
 router.route("/activity/:id(\\d+)")
     .get(activityController.getOne)
-    .patch(activityController.insertOrUpdate);
+    .patch(joiValidator(schemas.activity),activityController.insertOrUpdate);
 
 //////////Model Travel///////////////////////////////////////
 /**
@@ -244,8 +246,8 @@ router.route("/vehicle-option/:id(\\d+)")
  router.route("/travels/user/:id(\\d+)")
     .get(travelController.getAll)
     .delete(travelController.delete)
-    .post(travelController.insertOrUpdate);
-router.patch("/travel/:travelId(\\d+)/user/:userId(\\d+)",travelController.insertOrUpdate);
+    .post(joiValidator(schemas.travel),travelController.insertOrUpdate);
+router.patch("/travel/:travelId(\\d+)/user/:userId(\\d+)",joiValidator(schemas.travel),travelController.insertOrUpdate);
 
 ////////CRUD vehicules par user///////////////////////////////////////
 /**
@@ -298,7 +300,7 @@ router.route("/user/:id(\\d+)/vehicles")
  * @returns {Vehicle.model} 200 - vehicle details
  * @returns {Error} default - Unexpected error
  */
-router.patch("/user/:userId(\\d+)/vehicle/:vehicleId(\\d+)",vehicleController.insertOrUpdate);
+router.patch("/user/:userId(\\d+)/vehicle/:vehicleId(\\d+)",joiValidator(schemas.vehicle),vehicleController.insertOrUpdate);
 
 //////GET POST et DELETE activité d'un user///////////////////////////////////////
 /**

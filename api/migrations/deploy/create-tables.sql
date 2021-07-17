@@ -25,10 +25,10 @@ CREATE TABLE "user" (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     first_name TEXT NOT NULL,
     last_name TEXT NOT NULL,
-    email check_email,
+    email check_email UNIQUE,
     birthdate check_majority,
     picture_link TEXT UNIQUE,
-    pseudo TEXT NOT NULL,
+    pseudo TEXT NOT NULL UNIQUE,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ,
     password TEXT NOT NULL
