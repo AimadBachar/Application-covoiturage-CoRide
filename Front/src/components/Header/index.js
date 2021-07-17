@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
 import appBanner from '/src/assets/images/skate2.jpg';
@@ -28,9 +29,13 @@ const Header = (props) => (
       </nav>
     </div>
 
-    <a href="#" onClick={props.onButtonClickLogin}>
+    <Link
+      to="/LoginForm"
+      exact
+      onClick={props.onButtonClickLogin}
+    >
       <img className="header-login" src={login} alt="login" />
-    </a>
+    </Link>
   </div>
 );
 
