@@ -9,6 +9,7 @@ const vehicleController = require("./controllers/vehicleController");
 const vehicleOptionController = require("./controllers/vehicleOptionController");
 const joiValidator = require("./middlewares/joiValidator");
 const schemas = require("./schemas");
+const VehicleOption = require("./models/VehicleOption");
 
 const router = Router();
 
@@ -182,9 +183,23 @@ router.get("/travels/search",travelController.getAllByCoords);
  * @param {integer} id.body.required the vehicle option id
  * @returns {void} 204 - return void or error
  * @returns {Error} default - Unexpected error
- */   
+ */
+/**
+ * @typedef postVehicleOption
+ * @property {string} label.required the label of vehicle option
+ */
+/**
+ * @route POST /vehicle-options
+ * @group Vehicle Option - Operations about vehicle option
+ * @security JWT
+ * @param {postVehicleOption.model} postVehicleOption.body.required the post for vehicle option
+ * @consumes application/json
+ * @returns {VehicleOption.model} 204 - return void or error
+ * @returns {Error} default - Unexpected error
+ */    
 router.route("/vehicle-options")
     .get(vehicleOptionController.getAll)
+    .post(vehicleOptionController.insertOrUpdate)
     .delete(vehicleOptionController.delete);
 
 /**
