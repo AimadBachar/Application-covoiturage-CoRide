@@ -13,7 +13,7 @@ const ConnexionRegistration = () => (
     <Login 
       email="email@mail.com"
       password="password"
-      isLogged={false}
+      isLogged={true}
       loggedMessage="Welcome user"
       changeField= {(value, name) => {
         console.log('change in ' + name + ' :', value);

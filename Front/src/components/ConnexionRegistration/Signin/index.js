@@ -7,7 +7,7 @@ import './styles.scss';
 const Signin = () => (
     <div className="registration">
       <h1 className="registration-title">
-        S'inscrire
+        Inscription
       </h1>
       <form
         className="registration-form"

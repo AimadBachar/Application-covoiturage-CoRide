@@ -49,23 +49,31 @@
     //utilisateur connecté
     &-logged {
       display: flex;
+      flex-direction: column;
+      background-color: vars.$color;
+      text-align: center;
       align-items: center;
       justify-content: flex-end;
+      height: 8rem;
     };
 
     &-message {
-      margin: .3em 1em;
+      margin: 1.5rem 1rem;
+      font-size: 2em;
+      color: vars.$color_light;
     };
 
     //se déconnecter
     &-button {
       font-size: 1em;
-      color: #fff;
-      background-color: vars.$color;
-      border-radius: .3em;
+      font-weight: bold;
+      text-align: center;
+      color: vars.$color-grey_more;
+      background-color: vars.$color_light;
+      border-radius: 100px;
       border: 0;
-      padding: .7em;
-      height: 2.5em;
+      padding: 0.8rem 1rem 0.8em 1em;
+      margin-bottom: 0.8rem;
     }
   }
 

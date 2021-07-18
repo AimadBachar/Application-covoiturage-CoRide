@@ -8,10 +8,12 @@ $color-light: #fff;
 $font: 'Roboto Mono', monospace;
 // $transition-fast: 0.2s;
 $color-grey: #ccc;
+$color-grey_more: rgb(99, 98, 98); 
 
-$border-radius-top: 10px 10px 0 0;
 
-$border-radius-bottom: 0 0 10px 10px;
+$border-radius-top: 10px 10px 0px 0px;
+
+$border-radius-bottom: 0px 0px 10px 10px;
 
 $border-radius-global: 10px 10px 10px 10px;
 

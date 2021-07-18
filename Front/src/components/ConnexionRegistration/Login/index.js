@@ -22,7 +22,7 @@ const Login = ({
     return (
       <div className="login-form">
         <h1 className="login-form-title">
-          S'identifier
+          Connexion
         </h1>
 
         {isLogged && (
@@ -35,7 +35,7 @@ const Login = ({
             className="login-form-button"
             onClick={handleLogout}
           >
-            Déconnexion
+            X
           </button>
         </div>
       )}
@@ -45,7 +45,6 @@ const Login = ({
           autoComplete="off"
           className="login-form-element"
           onSubmit={handleSubmit}
-          //{onSubmitLogin}
         >  
           <Field 
           className="login-form-input"
