@@ -1,0 +1,40 @@
+<%- include("partials/header")  %> 
+     
+
+      <h2>Les utilisateurs</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">Prénom</th>
+              <th scope="col">Nom</th>
+              <th scope="col">e-mail</th>
+              <th scope="col">date de naissance</th>
+              <th scope="col">pseudo</th>
+              <th scope="col">photo de profil</th>
+              <th scope="col">date d'inscription</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <% for(const user of locals.users){ %> 
+            <tr>
+              <td><%= user.id  %> </td>
+              <td><%= user.first_name  %> </td>
+              <td><%= user.last_name  %> </td>
+              <td><%= user.email  %> </td>
+              <td><%= new Date(user.birthdate).toLocaleDateString("fr-FR")  %> </td>
+              <td><%= user.pseudo  %> </td>
+              <td><%= user.picture_link  %> </td>
+              <td><%= new Date(user.created_at).toLocaleDateString("fr-FR")  %> </td>
+              <td><a href="/coride/admin/users/delete?id=<%= user.id %>"><span data-feather="trash-2"></span></a></td>
+            </tr>
+
+            <% } %> 
+           
+          </tbody>
+        </table>
+      </div>
+<%- include("partials/footer")  %> 

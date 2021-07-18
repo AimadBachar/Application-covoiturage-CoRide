@@ -1,0 +1,36 @@
+<%- include("partials/header")  %> 
+     
+
+      <h2>Les trajets - total: <%= locals.travels.length %> </h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">ville de départ</th>
+              <th scope="col">ville d'arrivée</th>
+              <th scope="col">nombre de places</th>
+              <th scope="col">date du trajet</th>
+              <th scope="col">description</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <% for(const travel of locals.travels){ %> 
+            <tr>
+              <td><%= travel.id  %> </td>
+              <td><%= travel.departure_city  %> </td>
+              <td><%= travel.destination_city  %> </td>
+              <td><%= travel.places_available  %> </td>
+              <td><%= new Date(travel.departure_timestamp).toLocaleString("fr-FR")  %> </td>
+              <td><%= travel.description  %> </td>
+              <td><a href="/coride/admin/travels/delete?id=<%= travel.id %>"><span data-feather="trash-2"></span></a></td>
+            </tr>
+
+            <% } %> 
+           
+          </tbody>
+        </table>
+      </div>
+<%- include("partials/footer")  %> 

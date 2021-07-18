@@ -1,7 +1,7 @@
-api/sqitch.conf
 api/node_modules
-api/.env
-api/app/pictures
 Front/node_modules
-admin/node_modules
+api/.env
+api/sqitch.conf
+api/app/pictures
 admin/.env
+admin/node_modules
