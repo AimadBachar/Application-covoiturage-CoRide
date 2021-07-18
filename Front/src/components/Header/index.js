@@ -15,6 +15,7 @@ const Header = (props) => (
     <img className="header-logo" src={appBanner} alt="appBanner" />
 
     <Nav />
+    
     <Link
       to="/LoginForm"
       exact
@@ -26,6 +27,7 @@ const Header = (props) => (
       </a>
     </Link>
   </div>
+  
 );
 
  // Header.proptypes = {
