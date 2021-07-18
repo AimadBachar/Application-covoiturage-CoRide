@@ -35,13 +35,18 @@ const homeController = {
                 }
                 res.render("index");
             }else{
-                res.status(401).render("login");
+                res.status(401).render("login",{error:"Utilisateur ou mot de passe incorrect..."});
             }
 
 
         }catch(err){
             next(err);
         }
+    },
+
+    logout(req,res){
+        delete req.session.user;
+        res.render("login",{message: "Vous êtes deconnecté"});
     }
 }
 

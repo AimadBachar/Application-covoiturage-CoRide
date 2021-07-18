@@ -30,6 +30,7 @@ app.get("/",(_,res)=>res.render("login"));
 
 app.get("/login",homeController.login);
 app.post("/login",homeController.connect);
+app.get("/logout",homeController.logout);
 
 app.use("/coride/admin",checkLogin,router);
 

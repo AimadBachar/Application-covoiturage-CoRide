@@ -273,6 +273,12 @@ input[type=text]:placeholder,input[type=password]:placeholder {
     
         <div class="fadeIn first">
             <h2>Connexion Administration Co'Ride</h2>
+            <% if(locals.error){ %> 
+                <h2 class="text-danger"><%= locals.error  %> </h2>
+            <% } %> 
+            <% if(locals.message){ %> 
+                <h2 class="text-success"><%= locals.message  %> </h2>
+            <% } %> 
           </div>
 
       <form action="/login" method="POST">
