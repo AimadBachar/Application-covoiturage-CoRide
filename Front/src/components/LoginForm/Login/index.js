@@ -2,25 +2,35 @@ import React from 'react';
 import './styles.scss';
 
 
-const Field = () => (
+const Login = ({
+    onInputChange,
+    onSubmitLogin
+}) => {
+    const handleChange = (evt) => {
+        onChange(evt.target.value, name);
+    };
+
+   // const inputId = `field-${name}`;
+
+    return (
       <div className="login">
         <h1 className="login-title">
           S'identifier
         </h1>
         <form
           className="login-form"
-          // onSubmit={handleSubmit}
+          onSubmit={onSubmitLogin}
         >
   
           <input
             className="login-form_input pseudo"
             type="text"
-            name="pseudo"
-            placeholder="Pseudo"
-            // onChange={(evt) => {
-            //   const placeChose = evt.target.value;
-            //   onInputChange(placeChose);
-            // }}
+            name="email"
+            placeholder="e-mail"
+            onChange={(evt) => {
+              const textSaisi = evt.target.value;
+              onInputChange(textSaisi);
+            }}
           />
   
           <input
@@ -28,10 +38,10 @@ const Field = () => (
             type="text"
             name="password"
             placeholder="Password"
-            // onChange={(evt) => {
-            //   const placeChose = evt.target.value;
-            //   onInputChange(placeChose);
-            // }}
+            onChange={(evt) => {
+              const textSaisi = evt.target.value;
+              onInputChange(textSaisi);
+            }}
           />
           <button
             type="submit"
@@ -41,9 +51,9 @@ const Field = () => (
           </button>
         </form>
       </div>  
-  );
+    );
+};
 
 
 
-
-export default Field;
+export default Login;
