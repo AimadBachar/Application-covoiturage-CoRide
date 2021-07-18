@@ -4,6 +4,8 @@ import React from 'react';
 import appBanner from '/src/assets/images/skate2.jpg';
 import login from '/src/assets/images/icon user white.png';
 
+import Nav from '../Nav';
+
 // import 'semantic-ui-css/semantic.min.css';
 import './styles.scss';
 
@@ -11,7 +13,9 @@ const Header = (props) => (
   <div className="header">
     <img className="header-logo" src={appBanner} alt="appBanner" />
 
-    <div className="nav" onClick={props.onButtonClickMenu}>
+    <Nav />
+
+    {/* <div className="nav" onClick={props.onButtonClickMenu}>
       <nav role="navigation">
         <div id="menuToggle">
           <input type="checkbox" />
@@ -26,7 +30,7 @@ const Header = (props) => (
           </ul>
         </div>
       </nav>
-    </div>
+    </div> */}
 
     <a href="#" onClick={props.onButtonClickLogin}>
       <img className="header-login" src={login} alt="login" />
