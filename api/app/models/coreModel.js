@@ -38,7 +38,6 @@ class coreModel {
                 })
 
                 sqlQuery.text = `SELECT * FROM "${this.tableName}" WHERE ${search};`;
-                console.log(sqlQuery);
             }
 
             const {rows} = await pool.query(sqlQuery);
