@@ -1,9 +1,10 @@
 @use 'src/styles/vars';
+
 .card {
   padding: 0.5rem;
 
   &-destination {
-    background-color: white;
+    background-color: vars.$color-light;
     text-align: center;
     font-weight: bold;
     max-width: 80%;
