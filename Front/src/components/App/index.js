@@ -16,10 +16,10 @@ import './styles.scss';
 const App = () => (
   <Router>
     <Switch>
-      <div>
-        <Route exact path="/LoginForm">
-            <LoginForm  /> 
-        </Route>
+      <Route exact path="/LoginForm">
+        <LoginForm /> 
+      </Route>
+      <div className="app">
 
         <Header />
 
@@ -35,3 +35,20 @@ const App = () => (
 
 // == Export
 export default App;
+
+/* LoginForm
+
+ email="me@mail.com"
+      password="123"
+      isLogged={false}
+      loggedMessage="Welcome user"
+      changeField= {(value, name) => {
+        console.log('change in ' + name + ' :', value);
+      }}
+      handleLogin={() => {
+        console.log('login')
+      }}
+      handleLogout={() => {
+        console.log('logout')
+      }}
+*/

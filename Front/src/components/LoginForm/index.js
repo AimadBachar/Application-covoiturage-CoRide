@@ -2,50 +2,13 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 
 import loupe from '/src/assets/images/loupe white 2.png';
-
+import Field from './Field';
 import './styles.scss';
 
 const LoginForm = () => (
   <div className="globalForms">
-    <div className="login">
-      <h1 className="login-title">
-        S'identifier
-      </h1>
-      <form
-        className="login-form"
-        // onSubmit={handleSubmit}
-      >
-
-        <input
-          className="login-form_input pseudo"
-          type="text"
-          name="pseudo"
-          placeholder="Pseudo"
-          // onChange={(evt) => {
-          //   const placeChose = evt.target.value;
-          //   onInputChange(placeChose);
-          // }}
-        />
-
-        <input
-          className="login-form_input"
-          type="text"
-          name="password"
-          placeholder="Password"
-          // onChange={(evt) => {
-          //   const placeChose = evt.target.value;
-          //   onInputChange(placeChose);
-          // }}
-        />
-        <button
-          type="submit"
-          className="login-form_submit"
-        >
-          <img className="loupe" src={loupe} alt="loupe" />
-        </button>
-      </form>
-    </div>
-
+    
+    <Field />
     <div className="registration">
       <h1 className="registration-title">
         S'inscrire

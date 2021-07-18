@@ -1,14 +1,10 @@
 @use 'src/styles/vars';
 
-.globalForms {
-  max-width: 80%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-}
 
-// Formulaire d'inscription
-.registration {
+// Formalaire de connexion
+.login {
+  margin-top: 1rem;
+  margin-bottom: 3.5rem;
   box-shadow: vars.$box-shadow;
   border-radius: vars.$border-radius-global;
 
@@ -21,10 +17,6 @@
     border-radius: vars.$border-radius-top;
   };
 
-  &-name {
-    border-bottom: vars.$color-grey solid 0.5px solid;
-  }
-
   &-form {
     display: flex;
     flex-direction: column;
@@ -36,14 +28,6 @@
       border: none;
       padding: 1.2rem;
       font-family: vars.$font;
-
-      &__name {
-        font-size: 0.9rem;
-        border: none;
-        padding: 1.2rem;
-        font-family: vars.$font;
-        max-width: 50%;
-      }
     };
 
     &_submit {
@@ -54,15 +38,3 @@
     };
   };
 };
-
-.pseudo, .password {
-  border-bottom: vars.$color-grey solid 0.5px solid;
-}
-
-.nom {
-  border-right: vars.$color-grey solid 0.5px solid;
-}
-
-.loupe {
-  width: 30px;
-}
