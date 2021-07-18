@@ -17,7 +17,7 @@ const Header = (props) => (
     <Nav />
     
     <Link
-      to="/LoginForm"
+      to="/connexion"
       exact
       onClick={props.onButtonClickLogin}
     >

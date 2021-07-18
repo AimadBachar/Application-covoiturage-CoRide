@@ -1,14 +1,29 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './styles.scss';
 
 
 const Login = ({
+  email,
+  password,
+  ///changeField
+  handleLogin,
+  handleLogout,
+  isLogged,
+  loggedMessage,
+
+
     onInputChange,
     onSubmitLogin
 }) => {
-    const handleChange = (evt) => {
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    handleLogin();
+  };
+   /* const handleChange = (evt) => {
         onChange(evt.target.value, name);
-    };
+    };*/
 
    // const inputId = `field-${name}`;
 
@@ -17,6 +32,24 @@ const Login = ({
         <h1 className="login-title">
           S'identifier
         </h1>
+
+        {isLogged && (
+        <div className="login-logged">
+          <p className="login-message">
+            {loggedMessage}
+          </p>
+          <button
+            type="button"
+            className="login-button"
+            onClick={handleLogout}
+          >
+            Déconnexion
+          </button>
+        </div>
+      )}
+      {!isLogged && (
+        
+
         <form
           className="login-form"
           onSubmit={onSubmitLogin}
@@ -27,6 +60,7 @@ const Login = ({
             type="text"
             name="email"
             placeholder="e-mail"
+            value={email}
             onChange={(evt) => {
               const textSaisi = evt.target.value;
               onInputChange(textSaisi);
@@ -38,6 +72,7 @@ const Login = ({
             type="text"
             name="password"
             placeholder="Password"
+            value={password}
             onChange={(evt) => {
               const textSaisi = evt.target.value;
               onInputChange(textSaisi);
@@ -50,9 +85,27 @@ const Login = ({
             Se connecter
           </button>
         </form>
+      )}
       </div>  
     );
 };
+
+Login.propTypes = {
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  //changeField: PropTypes.func.isRequired,
+  handleLogin: PropTypes.func.isRequired,
+  handleLogout: PropTypes.func.isRequired,
+  isLogged: PropTypes.bool,
+  loggedMessage: PropTypes.string,
+};
+
+Login.defaultProps = {
+  isLogged: false,
+  loggedMessage: 'Connecté',
+};
+
+
 
 
 

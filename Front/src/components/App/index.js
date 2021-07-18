@@ -7,7 +7,7 @@ import Header from 'src/containers/Header';
 import Search from 'src/containers/Search';
 import Main from '../Main';
 import Footer from 'src/containers/Footer';
-import LoginForm from '../LoginForm';
+import ConnexionRegistration from '../ConnexionRegistration';
 
 
 import './styles.scss';
@@ -16,8 +16,8 @@ import './styles.scss';
 const App = () => (
   <Router>
     <Switch>
-      <Route exact path="/LoginForm">
-        <LoginForm /> 
+      <Route exact path="/connexion">
+        <ConnexionRegistration /> 
       </Route>
       <div className="app">
 
