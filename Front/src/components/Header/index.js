@@ -14,23 +14,22 @@ const Header = (props) => (
   <div className="header">
     <img className="header-logo" src={appBanner} alt="appBanner" />
 
+    <Nav />
     <Link
       to="/LoginForm"
       exact
       onClick={props.onButtonClickLogin}
     >
+      <a href="#" onClick={props.onButtonClickLogin}>
 
-    <Nav />
-
-    <a href="#" onClick={props.onButtonClickLogin}>
-
-      <img className="header-login" src={login} alt="login" />
+        <img className="header-login" src={login} alt="login" />
+      </a>
     </Link>
   </div>
 );
 
-// Header.proptypes = {
+ // Header.proptypes = {
 
-// };
+// }; 
 
 export default Header;
