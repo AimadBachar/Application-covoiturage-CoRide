@@ -25,8 +25,10 @@ const Header = (props) => (
     <a href="#" onClick={props.onButtonClickLogin}>
 
       <img className="header-login" src={login} alt="login" />
+    </a>
     </Link>
-  </div>
+    </div>
+  
 );
 
 // Header.proptypes = {
