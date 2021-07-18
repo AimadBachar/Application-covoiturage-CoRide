@@ -1,18 +1,18 @@
-// import { connect } from 'react-redux';
-// import App from 'src/components/App';
-// import { fetchRecipes } from 'src/actions/recipes';
+import { connect } from 'react-redux';
+import App from 'src/components/App';
+// import { fetchaction} from 'src/actions/recipes';
 
-// const mapStateToProps = (state) => ({
-//   loading: state.recipes.loading
-// });
+const mapStateToProps = (state) => ({
+  //loading: state.recipes.loading
+});
 
-// const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => ({
 //   fetchRecipes: () => {
-//     console.log('aller chercher les recettes');
+//     console.log('chercher des trajets');
 
 //     const action = fetchRecipes();
 //     dispatch(action);
-//   }
-// });
+// }
+});
 
-// export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
