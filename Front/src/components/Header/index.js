@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import appBanner from '/src/assets/images/skate2.jpg';
 import login from '/src/assets/images/icon user white.png';
 
+import Nav from '../Nav';
+
 // import 'semantic-ui-css/semantic.min.css';
 import './styles.scss';
 
@@ -17,6 +19,11 @@ const Header = (props) => (
       exact
       onClick={props.onButtonClickLogin}
     >
+
+    <Nav />
+
+    <a href="#" onClick={props.onButtonClickLogin}>
+
       <img className="header-login" src={login} alt="login" />
     </Link>
   </div>
