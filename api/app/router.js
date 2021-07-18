@@ -9,6 +9,7 @@ const vehicleController = require("./controllers/vehicleController");
 const vehicleOptionController = require("./controllers/vehicleOptionController");
 const joiValidator = require("./middlewares/joiValidator");
 const schemas = require("./schemas");
+const VehicleOption = require("./models/VehicleOption");
 
 const router = Router();
 
@@ -175,8 +176,31 @@ router.get("/travels/search",travelController.getAllByCoords);
  * @returns {Array<VehicleOption>} 200 - travels details
  * @returns {Error} default - Unexpected error
  */
+/**
+ * @route DELETE /vehicle-options
+ * @group Vehicle Option - Operations about vehicle option
+ * @security JWT
+ * @param {integer} id.body.required the vehicle option id
+ * @returns {void} 204 - return void or error
+ * @returns {Error} default - Unexpected error
+ */
+/**
+ * @typedef postVehicleOption
+ * @property {string} label.required the label of vehicle option
+ */
+/**
+ * @route POST /vehicle-options
+ * @group Vehicle Option - Operations about vehicle option
+ * @security JWT
+ * @param {postVehicleOption.model} postVehicleOption.body.required the post for vehicle option
+ * @consumes application/json
+ * @returns {VehicleOption.model} 204 - return void or error
+ * @returns {Error} default - Unexpected error
+ */    
 router.route("/vehicle-options")
-    .get(vehicleOptionController.getAll);
+    .get(vehicleOptionController.getAll)
+    .post(vehicleOptionController.insertOrUpdate)
+    .delete(vehicleOptionController.delete);
 
 /**
  * @route GET /vehicle-option/{id}
@@ -185,10 +209,10 @@ router.route("/vehicle-options")
  * @param {number} id.path.required the vehicle option id
  * @returns {VehicleOption.model} 200 - travel details
  * @returns {Error} default - Unexpected error
- */   
+ */  
 router.route("/vehicle-option/:id(\\d+)")
     .get(vehicleOptionController.getOne);
-
+    
 ////////CRUD un travel//////////////////////////////////////
 /**
  * @typedef postTravel 
