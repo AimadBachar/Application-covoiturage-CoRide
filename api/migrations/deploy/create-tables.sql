@@ -38,7 +38,7 @@ CREATE TABLE vehicle (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     brand TEXT NOT NULL,
     model TEXT NOT NULL,
-    user_id INT NOT NULL REFERENCES "user"(id)
+    user_id INT NOT NULL REFERENCES "user"(id) ON DELETE CASCADE
 );
 
 CREATE TABLE vehicle_option (
@@ -61,28 +61,28 @@ CREATE TABLE travel (
     places_available pint NOT NULL,
     description TEXT NOT NULL,
     departure_timestamp TIMESTAMPTZ NOT NULL CHECK (departure_timestamp > NOW()),
-    activity_id INT NOT NULL REFERENCES activity(id),
-    user_id INT NOT NULL REFERENCES "user"(id),
+    activity_id INT NOT NULL REFERENCES activity(id) ON DELETE SET NULL,
+    user_id INT NOT NULL REFERENCES "user"(id) ON DELETE CASCADE,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW() 
 );
 
 CREATE TABLE user_travel (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    user_id INT NOT NULL REFERENCES "user"(id),
-    travel_id INT NOT NULL REFERENCES travel(id),
+    user_id INT NOT NULL REFERENCES "user"(id) ON DELETE CASCADE,
+    travel_id INT NOT NULL REFERENCES travel(id) ON DELETE CASCADE,
     register_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
 CREATE TABLE user_activity (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    user_id INT NOT NULL REFERENCES "user"(id),
-    activity_id INT NOT NULL REFERENCES activity(id)
+    user_id INT NOT NULL REFERENCES "user"(id) ON DELETE CASCADE,
+    activity_id INT NOT NULL REFERENCES activity(id) ON DELETE CASCADE
 );
 
 CREATE TABLE user_vehicle_option (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    user_id INT NOT NULL REFERENCES "user"(id),
-    vehicle_option_id INT NOT NULL REFERENCES vehicle_option(id)
+    user_id INT NOT NULL REFERENCES "user"(id) ON DELETE CASCADE,
+    vehicle_option_id INT NOT NULL REFERENCES vehicle_option(id) ON DELETE CASCADE
 );
 
 COMMIT;
