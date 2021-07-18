@@ -6,7 +6,6 @@ const activityController = require("./controllers/activityController");
 const vehicleOptionController = require("./controllers/vehicleOptionController");
 const router = Router();
 
-
 router.get("/",homeController.home);
 router.get("/users",userController.getAll);
 router.get("/travels",travelController.getAll);

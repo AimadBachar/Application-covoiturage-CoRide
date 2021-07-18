@@ -1,5 +1,9 @@
 require('dotenv').config();
+const { urlencoded } = require('express');
 const express = require('express');
+const session = require("express-session");
+const checkLogin = require("./app/middlewares/checkLogin");
+const homeController = require("./app/controllers/homeController");
 
 
 const app = express();
@@ -11,8 +15,23 @@ const PORT = process.env.PORT || 5000;
 app.set("view engine","ejs");
 app.set("views",__dirname+"/app/views");
 
+app.use(urlencoded({extended:true}));
+app.use(session({
+   secret: process.env.SECRET_SESSION,
+   resave: false,
+   saveUninitialized: true,
+   cookie:{
+       maxAge: 1000*60*60*2
+   } 
+}));
+
 app.use(express.static("public"));
-app.use("/coride/admin",router);
+app.get("/",(_,res)=>res.render("login"));
+
+app.get("/login",homeController.login);
+app.post("/login",homeController.connect);
+
+app.use("/coride/admin",checkLogin,router);
 
 
 app.listen(PORT, () => {
