@@ -21,21 +21,18 @@ const Login = ({
 
     return (
       <div className="login-form">
-        <h1 className="login-form-title">
-          Connexion
-        </h1>
 
         {isLogged && (
-        <div className="login-form-logged">
-          <p className="login-form-message">
+        <div className="login-logged">
+          <p className="login-message">
             {loggedMessage}
           </p>
           <button
             type="button"
-            className="login-form-button"
+            className="login-button"
             onClick={handleLogout}
           >
-            X
+            Déconnexion
           </button>
         </div>
       )}
@@ -46,9 +43,15 @@ const Login = ({
           className="login-form-element"
           onSubmit={handleSubmit}
         >  
+
+              
+      <h1  className="login-form-title">
+      Connexion
+    </h1>
+
+
           <Field 
           className="login-form-input"
-            type="email"
             name="email"
             placeholder="Adresse Email"
             onChange={changeField}
@@ -58,7 +61,7 @@ const Login = ({
             className="login-form-input" 
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder="mot de passe"
             onChange={changeField}
             value={password}
           />
@@ -68,12 +71,10 @@ const Login = ({
           >
             Ok
           </button>
-          
         </form>
       )}
       </div>  
-  );
-  
+    );
   };
 
 Login.propTypes = {

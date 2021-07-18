@@ -45,7 +45,9 @@
       border: none;
       padding: 0.8rem;
     };
-  
+};
+
+    .login {
     //utilisateur connecté
     &-logged {
       display: flex;
@@ -62,6 +64,7 @@
       font-size: 2em;
       color: vars.$color_light;
     };
+
 
     //se déconnecter
     &-button {

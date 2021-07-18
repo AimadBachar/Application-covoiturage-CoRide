@@ -13,7 +13,7 @@ const ConnexionRegistration = () => (
     <Login 
       email="email@mail.com"
       password="password"
-      isLogged={true}
+      isLogged={false}
       loggedMessage="Welcome user"
       changeField= {(value, name) => {
         console.log('change in ' + name + ' :', value);
@@ -24,15 +24,6 @@ const ConnexionRegistration = () => (
       handleLogout={() => {
         console.log('logout')
       }}
-     /* 
-    onInputChange={(textSaisi) => {
-      console.log('change', textSaisi);
-    }}*/
-    /*
-    /*
-    onSubmitLogin={()=>{
-      console.log('submit');
-    }}*/
     />
 
     <Signin />
