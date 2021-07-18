@@ -1,46 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './styles.scss';
+import Field from 'src/components/ConnexionRegistration/Login/Field';
 
+import 'src/components/ConnexionRegistration/Login/styles.scss';
 
 const Login = ({
-  email,
-  password,
-  ///changeField
-  handleLogin,
-  handleLogout,
-  isLogged,
-  loggedMessage,
-
-
-    onInputChange,
-    onSubmitLogin
+    email,
+    password,
+    changeField,
+    handleLogin,
+    handleLogout,
+    isLogged,
+    loggedMessage,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleLogin();
   };
-   /* const handleChange = (evt) => {
-        onChange(evt.target.value, name);
-    };*/
-
-   // const inputId = `field-${name}`;
 
     return (
-      <div className="login">
-        <h1 className="login-title">
+      <div className="login-form">
+        <h1 className="login-form-title">
           S'identifier
         </h1>
 
         {isLogged && (
-        <div className="login-logged">
-          <p className="login-message">
+        <div className="login-form-logged">
+          <p className="login-form-message">
             {loggedMessage}
           </p>
           <button
             type="button"
-            className="login-button"
+            className="login-form-button"
             onClick={handleLogout}
           >
             Déconnexion
@@ -49,64 +41,57 @@ const Login = ({
       )}
       {!isLogged && (
         
-
         <form
-          className="login-form"
-          onSubmit={onSubmitLogin}
-        >
-  
-          <input
-            className="login-form_input pseudo"
-            type="text"
+          autoComplete="off"
+          className="login-form-element"
+          onSubmit={handleSubmit}
+          //{onSubmitLogin}
+        >  
+          <Field 
+          className="login-form-input"
+            type="email"
             name="email"
-            placeholder="e-mail"
+            placeholder="Adresse Email"
+            onChange={changeField}
             value={email}
-            onChange={(evt) => {
-              const textSaisi = evt.target.value;
-              onInputChange(textSaisi);
-            }}
           />
-  
-          <input
-            className="login-form_input"
-            type="text"
+          <Field
+            className="login-form-input" 
+            type="password"
             name="password"
             placeholder="Password"
+            onChange={changeField}
             value={password}
-            onChange={(evt) => {
-              const textSaisi = evt.target.value;
-              onInputChange(textSaisi);
-            }}
           />
           <button
             type="submit"
-            className="login-form_submit"
+            className="login-form-submit"
           >
-            Se connecter
+            Ok
           </button>
+          
         </form>
       )}
       </div>  
-    );
-};
+  );
+  
+  };
 
 Login.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
-  //changeField: PropTypes.func.isRequired,
+  changeField: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
   handleLogout: PropTypes.func.isRequired,
   isLogged: PropTypes.bool,
   loggedMessage: PropTypes.string,
 };
 
+// Valeurs par défaut pour les props
 Login.defaultProps = {
   isLogged: false,
   loggedMessage: 'Connecté',
 };
 
-
-
-
-
+// == Export
 export default Login;

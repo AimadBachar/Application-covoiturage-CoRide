@@ -5,8 +5,6 @@ import loupe from '/src/assets/images/loupe white 2.png';
 import './styles.scss';
 
 const Signin = () => (
-  <div className="globalForms">
-  
     <div className="registration">
       <h1 className="registration-title">
         S'inscrire
@@ -62,11 +60,10 @@ const Signin = () => (
           type="submit"
           className="registration-form_submit"
         >
-          <img className="loupe" src={loupe} alt="loupe" />
+          Ok
         </button>
       </form>
     </div>
-  </div>
 );
 
 export default Signin;

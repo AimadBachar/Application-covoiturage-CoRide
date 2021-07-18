@@ -1,40 +1,71 @@
 @use 'src/styles/vars';
 
 
-// Formalaire de connexion
-.login {
+// Formulaire de connexion
+.login-form {
   margin-top: 1rem;
   margin-bottom: 3.5rem;
   box-shadow: vars.$box-shadow;
   border-radius: vars.$border-radius-global;
 
+  // s'identifier
   &-title {
     font-size: 1.5rem;
     font-weight: bold;
     background-color: vars.$color;
+    color: vars.$color_light;
     text-align: center;
     padding: 1.2rem;
     border-radius: vars.$border-radius-top;
   };
 
-  &-form {
+  &-element {
     display: flex;
     flex-direction: column;
     justify-content: center;
     border-radius: 10px;
     
-    &_input {
+    };
+    
+    &-input {
       font-size: 0.9rem;
       border: none;
       padding: 1.2rem;
       font-family: vars.$font;
+      border-bottom: vars.$color-grey solid 0.5px solid;
+      color: vars.$color-grey 
+      
     };
 
-    &_submit {
+    &-submit {
       background-color: vars.$color;
+      color: vars.$color_light;
+      font-size: 1.3em;
       border-radius: vars.$border-radius-bottom;
       border: none;
-      padding: 0.5rem;
+      padding: 0.8rem;
     };
-  };
-};
+  
+    //utilisateur connecté
+    &-logged {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    };
+
+    &-message {
+      margin: .3em 1em;
+    };
+
+    //se déconnecter
+    &-button {
+      font-size: 1em;
+      color: #fff;
+      background-color: vars.$color;
+      border-radius: .3em;
+      border: 0;
+      padding: .7em;
+      height: 2.5em;
+    }
+  }
+

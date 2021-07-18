@@ -11,28 +11,28 @@ const ConnexionRegistration = () => (
   <div className="globalForms">
     
     <Login 
-      email="me@mail.com"
-      password="123"
+      email="email@mail.com"
+      password="password"
       isLogged={false}
       loggedMessage="Welcome user"
-     
+      changeField= {(value, name) => {
+        console.log('change in ' + name + ' :', value);
+      }}
       handleLogin={() => {
         console.log('login')
       }}
       handleLogout={() => {
         console.log('logout')
       }}
-
-      /* changeField= {(value, name) => {
-        console.log('change in ' + name + ' :', value);
-      }}*/
-      
+     /* 
     onInputChange={(textSaisi) => {
       console.log('change', textSaisi);
-    }}
+    }}*/
+    /*
+    /*
     onSubmitLogin={()=>{
       console.log('submit');
-    }}
+    }}*/
     />
 
     <Signin />
