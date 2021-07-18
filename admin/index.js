@@ -15,7 +15,10 @@ const PORT = process.env.PORT || 5000;
 app.set("view engine","ejs");
 app.set("views",__dirname+"/app/views");
 
+//on utilise urlencoded pour la réception en post
 app.use(urlencoded({extended:true}));
+
+//on active les sessions, durée de vie 2h...
 app.use(session({
    secret: process.env.SECRET_SESSION,
    resave: false,
@@ -26,12 +29,16 @@ app.use(session({
 }));
 
 app.use(express.static("public"));
+
+//quand on demande la page principale on est redirigé vers la page login
 app.get("/",(_,res)=>res.render("login"));
 
+//route concernant le login et le logout
 app.get("/login",homeController.login);
 app.post("/login",homeController.connect);
 app.get("/logout",homeController.logout);
 
+//router vers les routes de l'admin, utilisation d'un middleware pour vérifier si login
 app.use("/coride/admin",checkLogin,router);
 
 

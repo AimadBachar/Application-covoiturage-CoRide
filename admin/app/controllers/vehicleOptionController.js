@@ -2,6 +2,12 @@ const fetch = require("node-fetch");
 
 const vehicleOptionController = {
 
+    /**
+     * this express middleware fetch all vehicle options in co'ride api
+     * @param {request} req 
+     * @param {response} res 
+     * @param {function} next 
+     */
     async getAll(req, res, next) {
 
         const results = await fetch("http://18.235.248.88:3000/api/v1/vehicle-options", {
@@ -18,6 +24,12 @@ const vehicleOptionController = {
         });
     },
 
+    /**
+     * this express middleware delete one activity by id in body
+     * @param {request} req 
+     * @param {response} res 
+     * @param {function} next 
+     */
     async delete(req, res, next) {
 
         try {
@@ -27,8 +39,6 @@ const vehicleOptionController = {
             const body = {
                 id: parseInt(id,10)
             };
-
-            console.log(body)
 
             const results = await fetch("http://18.235.248.88:3000/api/v1/vehicle-options", {
                 method: "DELETE",
@@ -40,8 +50,6 @@ const vehicleOptionController = {
             });
 
             const result = await results.json();
-
-            console.log(result)
 
             res.redirect("/coride/admin/vehicle-options");
         } catch (err) {
