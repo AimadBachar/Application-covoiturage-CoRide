@@ -3,13 +3,12 @@ import React from 'react';
 
 // == Import
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Header from '../Header';
-import Search from '../Search';
+import Header from 'src/containers/Header';
+import Search from 'src/containers/Search';
 import Main from '../Main';
 import Footer from '../Footer';
 import LoginForm from '../LoginForm';
 
-import dataTags from '/src/data/data_tag.js';
 
 import './styles.scss';
 
@@ -20,31 +19,9 @@ const App = () => (
       <Route exact path="/LoginForm" component={LoginForm} />
       <div className="app">
 
-        <Header
-          onButtonClickMenu={() => {
-            console.log('clic sur le menu');
-          }}
-          onButtonClickLogin={() => {
-            console.log('clic sur le login');
-          }}
-        />
+        <Header />
 
-        <Search
-          tags={dataTags}
-          onSelectChange={(selectedSport) => {
-            console.log('tu as choisi le', selectedSport);
-          }}
-          textInput="Où pratiquer ?"
-          onInputChange={(placeChose) => {
-            console.log('ton lieu de pratique est', placeChose);
-          }}
-          onDateChange={(dateSearch) => {
-            console.log('la date selectionnée est le', dateSearch);
-          }}
-          onSubmitSearch={() => {
-            console.log('submit');
-          }}
-        />
+        <Search />
 
         <Main />
 
