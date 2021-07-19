@@ -1,0 +1,63 @@
+@use 'src/styles/vars';
+
+
+// Formulaire d'inscription
+.registration {
+  box-shadow: vars.$box-shadow;
+  border-radius: vars.$border-radius-global;
+
+  &-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: vars.$color;
+    color: vars.$color_light;
+    text-align: center;
+    padding: 1.2rem;
+    border-radius: vars.$border-radius-top;
+  };
+
+  &-name {
+    border-bottom: vars.$color-grey solid 0.5px solid;
+  }
+
+  &-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    
+    &_input {
+      font-size: 0.9rem;
+      border: none;
+      padding: 1.2rem;
+      font-family: vars.$font;
+
+      &__name {
+        font-size: 0.9rem;
+        border: none;
+        padding: 1.2rem;
+        font-family: vars.$font;
+        max-width: 50%;
+      }
+    };
+
+    &_submit {
+      background-color: vars.$color;
+      border-radius: vars.$border-radius-bottom;
+      border: none;
+      padding: 0.8rem;
+      color: vars.$color_light;
+      font-size: 1.3em;
+    };
+  };
+};
+
+.pseudo, .password {
+  border-bottom: vars.$color-grey solid 0.5px solid;
+}
+
+.nom {
+  border-right: vars.$color-grey solid 0.5px solid;
+}
+
+
