@@ -5,3 +5,4 @@ api/app/pictures
 Front/node_modules
 admin/node_modules
 admin/.env
+api/app/services/config.json
