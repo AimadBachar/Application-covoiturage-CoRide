@@ -1,8 +1,7 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import loupe from '/src/assets/images/loupe white 2.png';
 
-import { useState, useEffect } from 'react';
 
 import './styles.scss';
 
@@ -13,17 +12,9 @@ const Search = ({
   onDateChange,
 }) => {
   const handleSubmit = (evt) => {
-    // evt.preventDefault();
+    evt.preventDefault();
     console.log('submit');
   };
-  const [datas, setDatas] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-
-  // useEffect(() => {
-  //   fetch("src/data/dtaa_sport.js")
-  //     .fetch((response) => response.json())
-  //     .then((json) => setDatas);
-  // }, []);
 
   return (
     <div className="search">
@@ -102,5 +93,15 @@ const Search = ({
     </div>
   );
 };
+
+
+Search.propTypes = {
+  onSelectChange: PropTypes.func.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  onDateChange: PropTypes.func.isRequired,
+  tags: PropTypes.shape({
+    sport: PropTypes.string.isRequired,
+  })
+}
 
 export default Search;

@@ -3,7 +3,7 @@ import {
   SEARCH_INPUT_CHANGE,
   SELECT_INPUT_CHANGE,
   DATE_INPUT_CHANGE,
-  SEARCH_SUCCES
+  SEARCH_SUCCESS
 } from 'src/actions/trajets';
 
 
@@ -23,7 +23,7 @@ import {
   
   const reducer = (state = initialState, action = {}) => {
     switch (action.type) {
-      case SEARCH_SUCCES:
+      case SEARCH_SUCCESS:
         return {
           ...state,
           list: action.payload,
@@ -40,6 +40,22 @@ import {
             ...action.payload
           },
         };
+      case SELECT_INPUT_CHANGE:
+        return {
+          ...state,
+          inputs: {
+            ...state.inputs,
+            ...action.payload
+          },
+        };
+      case DATE_INPUT_CHANGE:
+          return {
+            ...state,
+            inputs: {
+              ...state.inputs,
+              ...action.payload
+            },
+          };
       default:
         return state;
     }
