@@ -28,7 +28,7 @@ const Card = ({
           <button className="card-button" type="button" onClick={onButtonClickValidation}>GO !</button>
         </div>
       </div>
-    ))};
+    ))}
   </div>
 );
 

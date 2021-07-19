@@ -8,7 +8,10 @@ import Search from 'src/containers/Search';
 import Main from '../Main';
 import Footer from 'src/containers/Footer';
 import ConnexionRegistration from '../ConnexionRegistration';
+import Card from 'src/components/Card';
 
+//Fake Data
+import dataCards from "../../data/data_sport";
 
 import './styles.scss';
 
@@ -18,6 +21,9 @@ const App = () => (
     <Switch>
       <Route exact path="/connexion">
         <ConnexionRegistration /> 
+      </Route>
+      <Route exact path="/results">
+        <Card cards={dataCards}/> 
       </Route>
       <div className="app">
 
