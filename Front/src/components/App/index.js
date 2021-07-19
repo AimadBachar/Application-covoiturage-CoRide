@@ -9,13 +9,13 @@ import Footer from '../Footer';
 
 import dataTags from '/src/data/data_tag.js';
 
-import './styles.css';
+import './styles.scss';
 
 // == Composant
 const App = () => (
   <div className="app">
 
-    <Header 
+    <Header
       onButtonClickMenu={() => {
         console.log('clic sur le menu');
       }}
@@ -24,28 +24,27 @@ const App = () => (
       }}
     />
 
-    <Search 
+    <Search
       tags={dataTags}
 
-       onSelectChange={(selectedSport) => {
+      onSelectChange={(selectedSport) => {
         console.log('tu as choisi le', selectedSport);
       }}
       textInput="Où pratiquer ?"
       onInputChange={(placeChose) => {
         console.log('ton lieu de pratique est', placeChose);
-      }} 
+      }}
       onDateChange={(dateSearch) => {
         console.log('la date selectionnée est le', dateSearch);
       }}
-      onSubmitSearch={()=>{
-        console.log("submit");
+      onSubmitSearch={() => {
+        console.log('submit');
       }}
     />
 
     <Main />
-
-    <Footer 
-        onButtonClickInstagram={() => {
+    <Footer
+      onButtonClickInstagram={() => {
         console.log('clic sur le lien Instagram');
       }}
       onButtonClickFacebook={() => {
