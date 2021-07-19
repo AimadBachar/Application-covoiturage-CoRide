@@ -55,6 +55,7 @@ export default [
             hour: "9h05",
             date: "20/08/2021", 
             pseudo: "Laurent",
+            trajet: "Bordeaux > Paris",
             departure: "Bordeaux",
             arrival: "Quibéééron",
             tag: "Surf",
@@ -64,6 +65,7 @@ export default [
             hour: "9h10",
             date: "01/08/2021", 
             pseudo: "Anna",
+            trajet: "Bordeaux > Paris",
             departure: "Biarritz",
             arrival: "Mundaka",
             tag: "Wingfoil", 
@@ -73,19 +75,22 @@ export default [
             hour: "10h05",
             date: "05/09/2021", 
             pseudo: "Aimad",
+            trajet: "Bordeaux > Paris",
             departure: "Redon",
             arrival: "La Baule",
             tag: "Surf",  
-        },
-        {
-          id: 4,
-          hour: "12h05",
-          date: "01/01/2021", 
-          pseudo: "Julien",
-          departure: "Nice",
-          arrival: "Marseille",
-          tag: "Surf",  
-      },
+        }
+
+      //   {
+      //     id: 4,
+      //     hour: "12h05",
+      //     date: "01/01/2021", 
+      //     pseudo: "Julien",
+      //     trajet: "Bordeaux > Paris",
+      //     departure: "Nice",
+      //     arrival: "Marseille",
+      //     tag: "Surf",  
+      // },
 
         // ]
 // }

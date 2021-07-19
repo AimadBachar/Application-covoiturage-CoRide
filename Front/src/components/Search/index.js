@@ -11,13 +11,15 @@ const Search = ({
   onDateChange,
 }) => {
   const handleSubmit = (evt) => {
-    evt.preventDefault();
+    // evt.preventDefault();
     console.log('submit');
   };
 
   return (
     <div className="search">
       <form
+        action="/results"
+        method="GET"
         className="search-form"
         onSubmit={handleSubmit}
       >
