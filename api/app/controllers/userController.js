@@ -61,7 +61,7 @@ const userController = {
             
             const user = new User(req.body);
 
-            if(req.file) user.picture_link = req.file.filename; 
+            if(req.file) user.picture_link = req.file.location; 
             
             if(user.id && parseInt(id,10) !== user.id){
                 return res.status(400).json("bad request");
