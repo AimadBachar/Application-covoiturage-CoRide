@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Administrator App Co'Ride">
+    <title>Administration Co'Ride</title>
+
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    <link href="/css/dashboard.css" rel="stylesheet">
+  </head>
+  <body>
+    
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Co'Ride administration</a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <input class="form-control form-control-dark w-100" type="text" placeholder="Rechercher un utilisateur" aria-label="Search">
+  <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <a class="nav-link px-3" href="/logout">Se déconnecter</a>
+    </div>
+  </div>
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="position-sticky pt-3">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/coride/admin">
+              <span data-feather="home"></span>
+              Accueil
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/coride/admin/users">
+              <span data-feather="users"></span>
+              Les utilisateurs
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/coride/admin/travels">
+              <span data-feather="compass"></span>
+              Les trajets
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/coride/admin/vehicle-options">
+              <span data-feather="package"></span>
+              Les options de véhicules
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/coride/admin/activities">
+              <span data-feather="activity"></span>
+              Les activitées
+            </a>
+          </li>
+        </ul>    
+      </div>
+    </nav>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
