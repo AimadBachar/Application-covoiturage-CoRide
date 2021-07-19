@@ -2,7 +2,7 @@
 import React from 'react';
 
 // == Import
-import { BrowserRouter as Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from 'src/containers/Header';
 import Search from 'src/containers/Search';
 import Footer from 'src/containers/Footer';
@@ -14,24 +14,26 @@ import './styles.scss';
 
 // == Composant
 const App = () => (
-  <div className="app">
-    <Switch>
-      <Route exact path="/">
-        <Header />
-        <Search />
-        <Main />
-        <Footer />
-      </Route>
+  <Router>
+    <div className="app">
+      <Switch>
+        <Route exact path="/">
+          <Header />
+          <Search />
+          <Main />
+          <Footer />
+        </Route>
 
-      <Route exact path="/connexion">
-        <ConnexionRegistration />
-      </Route>
+        <Route exact path="/connexion">
+          <ConnexionRegistration />
+        </Route>
 
-      <Route>
-        <NotFoundPage />
-      </Route>
-    </Switch>
-  </div>
+        <Route path="*">
+          <NotFoundPage />
+        </Route>
+      </Switch>
+    </div>
+  </Router>
 );
 
 // == Export
