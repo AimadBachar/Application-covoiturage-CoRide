@@ -2,6 +2,8 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import loupe from '/src/assets/images/loupe white 2.png';
 
+import { useState, useEffect } from 'react';
+
 import './styles.scss';
 
 const Search = ({
@@ -14,6 +16,14 @@ const Search = ({
     // evt.preventDefault();
     console.log('submit');
   };
+  const [datas, setDatas] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // useEffect(() => {
+  //   fetch("src/data/dtaa_sport.js")
+  //     .fetch((response) => response.json())
+  //     .then((json) => setDatas);
+  // }, []);
 
   return (
     <div className="search">

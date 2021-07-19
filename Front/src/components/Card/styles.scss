@@ -51,8 +51,8 @@
   &-button {
     position: relative;
     padding: 0.5rem;
-    background-color: #4B4B4B;
-    color: #46ADAE;
+    background-color: vars.$color;
+    color: vars.$color-light;
   }
 
   &-tag {

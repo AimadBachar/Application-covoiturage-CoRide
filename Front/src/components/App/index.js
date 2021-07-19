@@ -23,7 +23,10 @@ const App = () => (
         <ConnexionRegistration /> 
       </Route>
       <Route exact path="/results">
-        <Card cards={dataCards}/> 
+        <Header />
+        <Search />
+        <Card cards={dataCards}/>
+        <Footer />
       </Route>
       <div className="app">
 

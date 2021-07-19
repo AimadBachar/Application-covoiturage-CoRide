@@ -5,6 +5,7 @@ import iconLike from '/src/assets/images/pouce-en-l_air.png';
 import './styles.scss';
 
 const Card = ({
+  islogged,
   cards,
   onButtonClickProfilUser,
   onButtonClickValidation,
@@ -22,7 +23,8 @@ const Card = ({
             <p className="card-hour">{card.hour}</p>
           </div>
         </div>
-        <p className="card-destination">{card.trajet}</p>
+        <p className="card-destination">Départ: {card.departure}</p>
+        <p className="card-destination">Arrivée: {card.arrival}</p>
         <div className="card-bottom">
           <span className="card-tag">{card.tag}</span>
           <button className="card-button" type="button" onClick={onButtonClickValidation}>GO !</button>
