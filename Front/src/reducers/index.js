@@ -1,26 +1,11 @@
-//import { combineReducers } from 'redux';
+import { combineReducers } from 'redux';
 
-import userReducer from 'src/reducers/user';
 
-//const rootReducer = combineReducers({
-//   recipes: recipesReducer,
-//   user: userReducer,
-// });
+import userReducer from 'src/reducers/user.js';
 
-// export default rootReducer;
+const rootReducer = combineReducers({
 
-const stateInitial = {
-    firstColor: '#f0f',
-   lastColor: '#00f',
- };
- 
- export default (stateActuel = stateInitial, action = {}) => {
-   
-   switch (action.type) {
-     // Dans un case (login)
-     // Si le type d'action qui a eu lieu m'intéresse
-     // Je return un nouveau state
-     default:
-       return stateActuel
-   }
- }
+  user: userReducer,
+});
+
+export default rootReducer;

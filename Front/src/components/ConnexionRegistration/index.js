@@ -4,12 +4,15 @@ import React from 'react';
 import Login from 'src/containers/Login';
 import Signin from './Signin';
 
+import photoKite from 'src/assets/images/kite.jpg';
 import './styles.scss';
 
-
 const ConnexionRegistration = () => (
-  <div className="globalForms">
-    
+<div>
+<img className="photo" src={photoKite} alt="photo kite" />
+
+  <div className="connexionRegistration">
+   
     <Login 
     /*
       email="email@mail.com"
@@ -26,9 +29,8 @@ const ConnexionRegistration = () => (
         console.log('logout')
       }}*/
     />
-
-    <Signin />
-
+   <Signin />
+   </div>
   </div>
 );
 
