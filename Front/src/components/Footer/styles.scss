@@ -1,7 +1,7 @@
 @use 'src/styles/vars';
 
 .footer {
-  background-color: #dfdfdf; 
+  background-color: vars.$color-grey; 
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -10,7 +10,6 @@
   bottom: 0;
   width: 100%;
   padding: 1rem 0;
-  color: white;
   font-weight: bold;
   font-size: 1.1em;
   
@@ -29,6 +28,7 @@
   }
   
   &-links a {
+    color: vars.$color-light;
     margin-bottom: 8px;
     margin-right: 1em;
     margin-left: 1em;

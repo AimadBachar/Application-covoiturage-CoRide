@@ -1,41 +1,39 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
 import appBanner from '/src/assets/images/skate2.jpg';
+import logo from '/src/assets/logo/coride-b.svg';
 import login from '/src/assets/images/icon user white.png';
+import Nav from '../Nav';
 
 // import 'semantic-ui-css/semantic.min.css';
 import './styles.scss';
 
 const Header = (props) => (
   <div className="header">
-    <img className="header-logo" src={appBanner} alt="appBanner" />
+    <img className="header-photo" src={appBanner} alt="appBanner" />
+    <img src={logo} className="header-logo" alt="Logo CoRide" />
+   
 
-    <div className="nav" onClick={props.onButtonClickMenu}>
-      <nav role="navigation">
-        <div id="menuToggle">
-          <input type="checkbox" />
-          <span />
-          <span />
-          <span />
-          <ul id="menu">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Info</a></li>
-            <li><a href="#">Contact</a> </li>
-          </ul>
-        </div>
-      </nav>
-    </div>
+    <Nav />
+    
+    <Link
+      to="/connexion"
+      exact
+      onClick={props.onButtonClickLogin}
+    >
+      <a href="#" onClick={props.onButtonClickLogin}>
 
-    <a href="#" onClick={props.onButtonClickLogin}>
-      <img className="header-login" src={login} alt="login" />
-    </a>
+        <img className="header-login" src={login} alt="login" />
+      </a>
+    </Link>
   </div>
+  
 );
 
-// Header.proptypes = {
+ // Header.proptypes = {
 
-// };
+// }; 
 
 export default Header;

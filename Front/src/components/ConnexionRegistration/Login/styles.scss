@@ -1,0 +1,84 @@
+@use 'src/styles/vars';
+
+
+// Formulaire de connexion
+.login-form {
+  margin-top: 2rem;
+  margin-bottom: 3.5rem;
+  box-shadow: vars.$box-shadow;
+  border-radius: vars.$border-radius-global;
+
+  // s'identifier
+  &-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: vars.$color;
+    color: vars.$color_light;
+    text-align: center;
+    padding: 1.2rem;
+    border-radius: vars.$border-radius-top;
+  };
+
+  &-element {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    
+    };
+    
+    &-input {
+      font-size: 0.9rem;
+      border: none;
+      padding: 1.2rem;
+      font-family: vars.$font;
+      border-bottom: vars.$color-grey solid 0.5px solid;
+      color: vars.$color-grey 
+      
+    };
+
+    &-submit {
+      background-color: vars.$color;
+      color: vars.$color_light;
+      font-size: 1.3em;
+      border-radius: vars.$border-radius-bottom;
+      border: none;
+      padding: 0.8rem;
+    };
+};
+
+    .login {
+    //utilisateur connecté
+    &-logged {
+      display: flex;
+      flex-direction: column;
+      background-color: vars.$color;
+      text-align: center;
+      align-items: center;
+      border-radius: 15px;
+      justify-content: flex-end;
+   
+     
+    };
+
+    &-message {
+      margin: 1.5rem 1rem;
+      font-size: 1.9em;
+      color: vars.$color_light;
+    };
+
+
+    //se déconnecter
+    &-button {
+      font-size: 1em;
+      font-weight: bold;
+      text-align: center;
+      color: vars.$color-grey_more;
+      background-color: vars.$color_light;
+      border-radius: 100px;
+      border: 0;
+      padding: 0.8rem 1rem 0.8em 1em;
+      margin-bottom: 0.8rem;
+    }
+  }
+

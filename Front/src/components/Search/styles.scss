@@ -11,14 +11,14 @@
     justify-content: center;
     max-width: 80%;
     margin: 0 auto;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    border-radius: 10px;
+    box-shadow: vars.$box-shadow;
+    border-radius: vars.$border-radius-bottom;
     
     &_input, &_select, &_date {
       font-size: 1rem;
       border: none;
       padding: 1.2rem;
-      font-family: 'Roboto Mono', monospace;
+      font-family: vars.$font;
     };
 
     &_sport__date {
@@ -26,12 +26,12 @@
     };
 
     &_select {
-      background-color: white;
+      background-color: vars.$color-light;
     }
 
     &_submit {
       background-color: vars.$color;
-      border-radius: 0 0 10px 10px;
+      border-radius: vars.$border-radius-bottom;
       border: none;
       padding: 0.5rem;
     }
@@ -39,16 +39,24 @@
     &_select, &_date {
       width: 50%;
     };
+
+    &_date {
+      background-color: vars.$color-light;
+      border-left: vars.$color-grey 0.5px solid;
+      
+    }
   };
 };
 
+
+
 .depart {
   border-radius: 10px 10px 0 0;
-  border-bottom: #ccc 0.5px solid;
+  border-bottom: vars.$color-grey 0.5px solid;
 }
 
 .destination {
-  border-bottom: #ccc 0.5px solid;
+  border-bottom: vars.$color-grey 0.5px solid;
 }
 
 .loupe {
