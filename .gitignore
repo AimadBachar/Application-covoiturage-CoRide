@@ -1,7 +1,11 @@
 Front/node_modules
 api/node_modules
+api/pictures
 Front/package-lock.json
-dist/
+Front/dist
+api/.env
+admin/.env
+admin/node_modules
 
 .DS_Store
 Thum
