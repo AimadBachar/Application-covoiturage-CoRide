@@ -42,14 +42,10 @@ const Login = ({
           autoComplete="off"
           className="login-form-element"
           onSubmit={handleSubmit}
-        >  
-
-              
+        >               
       <h1  className="login-form-title">
       Connexion
     </h1>
-
-
           <Field 
           className="login-form-input"
             name="email"

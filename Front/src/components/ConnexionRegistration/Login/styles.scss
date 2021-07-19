@@ -3,7 +3,7 @@
 
 // Formulaire de connexion
 .login-form {
-  margin-top: 1rem;
+  margin-top: 2rem;
   margin-bottom: 3.5rem;
   box-shadow: vars.$box-shadow;
   border-radius: vars.$border-radius-global;
@@ -55,13 +55,15 @@
       background-color: vars.$color;
       text-align: center;
       align-items: center;
+      border-radius: 15px;
       justify-content: flex-end;
-      height: 8rem;
+   
+     
     };
 
     &-message {
       margin: 1.5rem 1rem;
-      font-size: 2em;
+      font-size: 1.9em;
       color: vars.$color_light;
     };
 
