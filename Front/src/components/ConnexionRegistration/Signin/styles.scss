@@ -1,49 +1,5 @@
 @use 'src/styles/vars';
 
-.globalForms {
-  max-width: 80%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-}
-
-// Formalaire de connexion
-.login {
-  margin-top: 1rem;
-  margin-bottom: 3.5rem;
-  box-shadow: vars.$box-shadow;
-  border-radius: vars.$border-radius-global;
-
-  &-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    background-color: vars.$color;
-    text-align: center;
-    padding: 1.2rem;
-    border-radius: vars.$border-radius-top;
-  };
-
-  &-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 10px;
-    
-    &_input {
-      font-size: 0.9rem;
-      border: none;
-      padding: 1.2rem;
-      font-family: vars.$font;
-    };
-
-    &_submit {
-      background-color: vars.$color;
-      border-radius: vars.$border-radius-bottom;
-      border: none;
-      padding: 0.5rem;
-    };
-  };
-};
 
 // Formulaire d'inscription
 .registration {
@@ -54,6 +10,7 @@
     font-size: 1.5rem;
     font-weight: bold;
     background-color: vars.$color;
+    color: vars.$color_light;
     text-align: center;
     padding: 1.2rem;
     border-radius: vars.$border-radius-top;
@@ -88,7 +45,9 @@
       background-color: vars.$color;
       border-radius: vars.$border-radius-bottom;
       border: none;
-      padding: 0.5rem;
+      padding: 0.8rem;
+      color: vars.$color_light;
+      font-size: 1.3em;
     };
   };
 };
@@ -101,6 +60,4 @@
   border-right: vars.$color-grey solid 0.5px solid;
 }
 
-.loupe {
-  width: 30px;
-}
+

@@ -1,11 +1,11 @@
-// import { combineReducers } from 'redux';
+import { combineReducers } from 'redux';
 
-// import recipesReducer from './recipes';
-// import userReducer from './user';
 
-// const rootReducer = combineReducers({
-//   recipes: recipesReducer,
-//   user: userReducer,
-// });
+import userReducer from 'src/reducers/user.js';
 
-// export default rootReducer;
+const rootReducer = combineReducers({
+
+  user: userReducer,
+});
+
+export default rootReducer;
