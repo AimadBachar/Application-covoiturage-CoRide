@@ -54,7 +54,6 @@ const router = Router();
 /**
  * @route POST /user/login
  * @group Users - Operations about user
- * @security JWT
  * @param {loginUser.model} loginUser.body.required the new user
  * @consumes application/json
  * @produces application/json
@@ -103,7 +102,6 @@ router.route("/user/:id(\\d+)")
 /**
  * @route GET /activities
  * @group Activities - Operations about activity
- * @security JWT
  * @returns {Array<Activity>} 200 - activities details
  * @returns {Error} default - Unexpected error
  */
@@ -139,7 +137,6 @@ router.route("/activities")
 /**
  * @route GET /activity/{id}
  * @group Activities - Operations about activity
- * @security JWT
  * @param {number} id.path.required the activity id
  * @returns {Activity.model} 200 - user details
  * @returns {Error} default - Unexpected error
@@ -162,7 +159,6 @@ router.route("/activity/:id(\\d+)")
 /**
  * @route GET /travels
  * @group Travels - Operations about travel
- * @security JWT
  * @returns {Array<Travel>} 200 - travels details
  * @returns {Error} default - Unexpected error
  */
@@ -183,7 +179,6 @@ router.route("/travel/:id(\\d+)")
 /**
  * @route GET /travels/search
  * @group Travels - Operations about travel
- * @security JWT
  * @param {number} long.query.required the longitude departure
  * @param {number} lat.query.required the lalitude departure
  * @returns {Array<Travel>} 200 - travels details
@@ -195,7 +190,6 @@ router.get("/travels/search",redis.cache,travelController.getAllByCoords);
 /**
  * @route GET /vehicle-options
  * @group Vehicle Option - Operations about vehicle option
- * @security JWT
  * @returns {Array<VehicleOption>} 200 - travels details
  * @returns {Error} default - Unexpected error
  */
@@ -228,7 +222,6 @@ router.route("/vehicle-options")
 /**
  * @route GET /vehicle-option/{id}
  * @group Vehicle Option - Operations about vehicle option
- * @security JWT
  * @param {number} id.path.required the vehicle option id
  * @returns {VehicleOption.model} 200 - travel details
  * @returns {Error} default - Unexpected error
