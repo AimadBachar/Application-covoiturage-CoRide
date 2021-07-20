@@ -3,8 +3,7 @@ const { urlencoded } = require('express');
 const express = require('express');
 const cors = require("cors");
 const router = require("./app/router");
-const loginController = require("./app/controllers/loginController");
-const verifyToken = require("./app/middlewares/verrifyToken");
+const adminController = require("./app/controllers/adminController");
 
 const app = express();
 const expressSwagger = require("express-swagger-generator")(app);
@@ -48,9 +47,9 @@ app.use(express.json());
 //middleware pour fournir les photos de profiles
 app.use(express.static("app/pictures"));
 
-app.post("/login",loginController);
+app.post("/login",adminController);
 
-app.use("/api/v1",verifyToken,router);
+app.use("/api/v1",router);
 
 app.listen(PORT, () => {
     console.log(`Server for API TEST started on http://localhost:${PORT}`);

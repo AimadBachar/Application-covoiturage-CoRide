@@ -1,10 +1,42 @@
-const pool = require("../db");
 const Activity = require("../models/Activity");
 const Travel = require("../models/Travel");
 const User = require("../models/User");
 const VehicleOption = require("../models/VehicleOption");
+const jwt = require("jsonwebtoken");
 
 const userController = {
+
+    async login(req,res,next){
+
+        try{
+        const {user,password} = req.body;
+
+        if(!user || !password){
+            return res.status(400).json("Error Please enter the correct username and password");
+        }
+
+        const login = await User.findAll({where:{
+            user: user,
+            password: password
+        }});
+
+        if(login){
+            const token = jwt.sign({
+                username: login.email, 
+                id: login.id }, 
+                process.env.TOKEN_SECRET,
+                {expiresIn: "24 hours"}
+                );
+            res.json({token});
+        } else{
+            res.status(401).json("Error username or password");
+        } 
+        
+        }catch(err){
+            next(err);
+        }
+
+    },
 
     /**
      * This method is an express middleware for get all rows in User model
