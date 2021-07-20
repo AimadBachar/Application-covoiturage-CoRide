@@ -6,11 +6,13 @@ import './styles.scss';
 
 const Card = ({
   islogged,
+  searchesValues,
   cards,
   onButtonClickProfilUser,
   onButtonClickValidation,
 }) => (
   <div>
+    {console.log(searchesValues)}
     {cards.map((card) => (
       <div className="card" key={card.id}>
         <div className="card-top">

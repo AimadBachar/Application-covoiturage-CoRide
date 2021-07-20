@@ -15,7 +15,7 @@ const Search = ({
   onSubmitSearch
 }) => {
   const handleSubmit = (evt) => {
-    evt.preventDefault();
+    //evt.preventDefault();
     console.log('submit', evt.target.value);
     onSubmitSearch();
   };
@@ -29,6 +29,7 @@ const Search = ({
   return (
     <div className="search">
       <form
+        action="/results"
         method="POST"
         className="search-form"
         onSubmit={handleSubmit}
