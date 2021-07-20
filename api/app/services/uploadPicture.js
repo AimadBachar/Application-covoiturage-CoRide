@@ -47,10 +47,6 @@ const upload = multer({
 module.exports = (req,res,next)=>{
     upload(req,res, (err)=>{
 
-        if(err){
-            console.log(err);
-        }
-
         if(err?.code === "LIMIT_FILE_SIZE"){
             return res.status(400).json("error size limit...");
         }
@@ -58,7 +54,6 @@ module.exports = (req,res,next)=>{
         if(err instanceof multer.MulterError && err.code !== "LIMIT_FILE_SIZE") {
             res.status(400).json("file not uploaded since it's not a PNG or JPEG...");
         }else{
-            console.log(req.file)
             next();
         }
     })
