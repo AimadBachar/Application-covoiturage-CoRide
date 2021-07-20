@@ -11,15 +11,13 @@ const Search = ({
   arrival,
   sport,
   date,
-  onSelectChange,
   onInputChange,
-  onDateChange,
   onSubmitSearch
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log('submit', departure);
-    
+    console.log('submit', evt.target.value);
+    onSubmitSearch();
   };
   const fieldChange = (evt) => {
     evt.preventDefault();
@@ -39,7 +37,7 @@ const Search = ({
         <input
           className="search-form_input depart"
           type="text"
-          name="depart"
+          name="departure"
           placeholder="Départ"
           value={departure}
           onChange={fieldChange}
@@ -48,7 +46,7 @@ const Search = ({
         <input
           className="search-form_input destination"
           type="text"
-          name="arrivé"
+          name="arrival"
           placeholder="Destination"
           value={arrival}
           onChange={fieldChange}
@@ -56,12 +54,12 @@ const Search = ({
         <div className="search-form_sport__date">
           <select
             className="search-form_select"
-            name="sports"
+            name="sport"
             onChange={fieldChange}
           >
             <option
               className="search-form_select_title"
-              value=""
+              value={sport}
             >Quel sport ?
             </option>
             {tags.map((tag) => (
@@ -96,10 +94,8 @@ const Search = ({
 
 
 Search.propTypes = {
-  onSelectChange: PropTypes.func.isRequired,
   onInputChange: PropTypes.func.isRequired,
-  onDateChange: PropTypes.func.isRequired,
-  tags: PropTypes.shape({
+  tag: PropTypes.shape({
     sport: PropTypes.string.isRequired,
   })
 }

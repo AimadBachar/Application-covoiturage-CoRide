@@ -1,8 +1,6 @@
 // 2. j'importe les actions
 import {
   SEARCH_INPUT_CHANGE,
-  SELECT_INPUT_CHANGE,
-  DATE_INPUT_CHANGE,
   SEARCH_SUCCESS
 } from 'src/actions/trajets';
 
@@ -18,8 +16,8 @@ import dataCards from '/src/data/data_sport.js';
      inputs: {
         departure: '',
         arrival: '',
-        //sport: 'Surf',
-        //date: '20/08/2021',
+        sport: '',
+        date: '',
      }
   };
   
@@ -28,36 +26,15 @@ import dataCards from '/src/data/data_sport.js';
       case SEARCH_SUCCESS:
         return {
           ...state,
-          cards: action.payload,
-          // ci dessus la version courte de:
-          // logged: action.payload.logged,
-          // pseudo: action.payload.pseudo,
-          // token: action.payload.token
         };
       case SEARCH_INPUT_CHANGE:
         return {
           ...state,
           inputs: {
-            ...state,
-            [action.name] : action.payload
-          },
-        };
-      case SELECT_INPUT_CHANGE:
-        return {
-          ...state,
-          inputs: {
             ...state.inputs,
-            ...action.payload
+            [action.name] : action.payload,
           },
         };
-      case DATE_INPUT_CHANGE:
-          return {
-            ...state,
-            inputs: {
-              ...state.inputs,
-              ...action.payload
-            },
-          };
       default:
         return state;
     }

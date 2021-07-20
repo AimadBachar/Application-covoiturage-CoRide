@@ -11,16 +11,6 @@ export const searchInputChange = (payload) => ({
   payload
 });
 
-export const selectInputChange = (payload) => ({
-  type: SElECT_INPUT_CHANGE,
-  payload
-});
-
-export const dateInputChange = (payload) => ({
-  type: DATE_INPUT_CHANGE,
-  payload
-});
-
 export const searchSubmit = () => ({
   type: SEARCH_SUCCESS,
 });
