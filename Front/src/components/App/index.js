@@ -5,31 +5,34 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from 'src/containers/Header';
 import Search from 'src/containers/Search';
-import Main from '../Main';
 import Footer from 'src/containers/Footer';
+import Main from '../Main';
 import ConnexionRegistration from '../ConnexionRegistration';
-
+import NotFoundPage from '../NotFoundPage';
 
 import './styles.scss';
 
 // == Composant
 const App = () => (
   <Router>
-    <Switch>
-      <Route exact path="/connexion">
-        <ConnexionRegistration /> 
-      </Route>
-      <div className="app">
+    <div className="app">
+      <Switch>
+        <Route exact path="/">
+          <Header />
+          <Search />
+          <Main />
+          <Footer />
+        </Route>
 
-        <Header />
+        <Route exact path="/connexion">
+          <ConnexionRegistration />
+        </Route>
 
-        <Search />
-
-        <Main />
-
-        <Footer />
-      </div>
-    </Switch>
+        <Route path="*">
+          <NotFoundPage />
+        </Route>
+      </Switch>
+    </div>
   </Router>
 );
 
