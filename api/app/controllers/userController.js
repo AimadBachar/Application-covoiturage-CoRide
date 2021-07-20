@@ -42,9 +42,7 @@ const userController = {
                         expiresIn: "24 hours"
                     }
                 );
-                res.json({
-                    token
-                });
+                res.json({token,userId:login[0].id});
             } else {
                 res.status(401).json("Error username or password");
             }
