@@ -9,7 +9,7 @@ import {
 
 export default (store) => (next) => (action) => {
     switch(action.type) { 
-         // Lancer une requête avec axios
+      // Lancer une requête avec axios
       // pour demander les profils favoris
       // j'ai donc besoin de dire à mon serveur
       // qui je suis (lui donner le token - bracelet).
@@ -17,16 +17,19 @@ export default (store) => (next) => (action) => {
       // renseigner un header AUTHORIZATION avec comme valeur
       // Bearer letokendelutilisateur
 
+      // pour stocker les token 
+      // utiliser local storage
+
+      // Lancer une requête axios
+      // pour demander que l utilisateur puisse se connecter
+      case USER_LOGIN:
+    //pour transmettre des en têtes personnalisés
+    //mettre objet en tête et le mettre en dernier argument
+    //et modifier la requête axios
 
       /*const axiosConfigured = axios.create({
         headers: {'Authorization': `Bearer ${action.payload.token}`}
       });*/
-
-
-      case USER_LOGIN:
-    //pour transmettre des en têtes personnalisés
-    //fournissez un objet contenant les en têtes comme dernier argument
-    //et modifier la requête axios
    
       //Requête POST sur api/users en envoyant les datas
         axios({
