@@ -6,33 +6,50 @@ const jwt = require("jsonwebtoken");
 
 const userController = {
 
-    async login(req,res,next){
+    /**
+     * this express middleware check if user exist
+     * @param {request} req 
+     * @param {response} res 
+     * @param {function} next 
+     * @returns {JSON} return a JWT
+     * @returns {Error} an error 401
+     */
+    async login(req, res, next) {
 
-        try{
-        const {user,password} = req.body;
+        try {
+            const {
+                user,
+                password
+            } = req.body;
 
-        if(!user || !password){
-            return res.status(400).json("Error Please enter the correct username and password");
-        }
+            if (!user || !password) {
+                return res.status(400).json("Error Please enter the correct username and password");
+            }
 
-        const login = await User.findAll({where:{
-            user: user,
-            password: password
-        }});
+            const login = await User.findAll({
+                where: {
+                    email: user,
+                    password: password
+                }
+            });
 
-        if(login){
-            const token = jwt.sign({
-                username: login.email, 
-                id: login.id }, 
-                process.env.TOKEN_SECRET,
-                {expiresIn: "24 hours"}
+            if (login[0]) {
+                const token = jwt.sign({
+                        username: login.email,
+                        id: login.id
+                    },
+                    process.env.TOKEN_SECRET, {
+                        expiresIn: "24 hours"
+                    }
                 );
-            res.json({token});
-        } else{
-            res.status(401).json("Error username or password");
-        } 
-        
-        }catch(err){
+                res.json({
+                    token
+                });
+            } else {
+                res.status(401).json("Error username or password");
+            }
+
+        } catch (err) {
             next(err);
         }
 
@@ -70,9 +87,9 @@ const userController = {
             const {
                 id
             } = req.params;
-            const result = await User.findOne(id); 
+            const result = await User.findOne(id);
             return res.json(result);
-            
+
         } catch (err) {
             next(err);
         }
@@ -85,25 +102,27 @@ const userController = {
      * @param {function} next 
      * @returns {object} return an object modify or insert in db
      */
-    async insertOrUpdate(req,res,next){
+    async insertOrUpdate(req, res, next) {
 
-        try{
+        try {
 
-            const {id} = req.params;
-            
+            const {
+                id
+            } = req.params;
+
             const user = new User(req.body);
 
-            if(req.file) user.picture_link = req.file.location; 
-            
-            if(user.id && parseInt(id,10) !== user.id){
+            if (req.file) user.picture_link = req.file.location;
+
+            if (user.id && parseInt(id, 10) !== user.id) {
                 return res.status(400).json("bad request");
             }
 
             const result = await user.save();
             res.status(201).json(result);
-            
 
-        }catch(err){
+
+        } catch (err) {
             next(err);
         }
     },
@@ -115,19 +134,21 @@ const userController = {
      * @param {function} next 
      * @returns {null}
      */
-    async delete(req,res,next){
-        try{
-            const {id} = req.body;
+    async delete(req, res, next) {
+        try {
+            const {
+                id
+            } = req.body;
             const user = await User.findOne(id);
- 
-            if(user){
+
+            if (user) {
                 await user.delete();
                 res.status(204).end();
-            }else{
+            } else {
                 next(user);
             }
 
-        }catch(err){
+        } catch (err) {
             next(err);
         }
     },
@@ -139,16 +160,18 @@ const userController = {
      * @param {function} next 
      * @returns {JSON} an json array or error
      */
-    async showActivities(req,res,next){
-        try{
+    async showActivities(req, res, next) {
+        try {
 
-            const { id } = req.params;
+            const {
+                id
+            } = req.params;
 
             const results = await User.getActivities(id);
 
             return res.json(results);
-            
-        }catch(err){
+
+        } catch (err) {
             next(err);
         }
     },
@@ -160,16 +183,18 @@ const userController = {
      * @param {function} next 
      * @returns {JSON} return a json array or error
      */
-    async showVehicleOptions(req,res,next){
-        try{
+    async showVehicleOptions(req, res, next) {
+        try {
 
-            const { id } = req.params;
+            const {
+                id
+            } = req.params;
 
             const results = await User.getVehicleOption(id);
 
             return res.json(results);
-            
-        }catch(err){
+
+        } catch (err) {
             next(err);
         }
     },
@@ -181,22 +206,26 @@ const userController = {
      * @param {function} next 
      * @returns {void} return void or error
      */
-    async addUserActivity(req,res,next){
-        try{
+    async addUserActivity(req, res, next) {
+        try {
 
-            const { id } = req.params;
-            const { id:activityId } = req.body;
+            const {
+                id
+            } = req.params;
+            const {
+                id: activityId
+            } = req.body;
 
             const user = await User.findOne(id);
             const activity = await Activity.findOne(activityId);
 
-            if(user && activity){
+            if (user && activity) {
                 await user.addActivity(activity.id);
                 res.status(201).end();
-            }else{
+            } else {
                 throw new Error("association impossible");
             }
-        }catch(err){
+        } catch (err) {
             next(err);
         }
     },
@@ -208,22 +237,26 @@ const userController = {
      * @param {function} next 
      * @returns {void} return voir or error
      */
-    async deleteUserActivity(req,res,next){
-        try{
+    async deleteUserActivity(req, res, next) {
+        try {
 
-            const { id } = req.params;
-            const { id:activityId } = req.body;
+            const {
+                id
+            } = req.params;
+            const {
+                id: activityId
+            } = req.body;
 
             const user = await User.findOne(id);
             const activity = await Activity.findOne(activityId);
 
-            if(user && activity){
+            if (user && activity) {
                 await user.deleteActivity(activity.id);
                 res.status(204).end();
-            }else{
+            } else {
                 throw new Error("association impossible");
             }
-        }catch(err){
+        } catch (err) {
             next(err);
         }
     },
@@ -235,22 +268,26 @@ const userController = {
      * @param {function} next 
      * @returns {void} return void or error
      */
-    async addUserOptionVehicle(req,res,next){
-        try{
+    async addUserOptionVehicle(req, res, next) {
+        try {
 
-            const { id } = req.params;
-            const { id:vehicleOptionId } = req.body;
+            const {
+                id
+            } = req.params;
+            const {
+                id: vehicleOptionId
+            } = req.body;
 
             const user = await User.findOne(id);
             const optionVehicle = await VehicleOption.findOne(vehicleOptionId);
 
-            if(user && optionVehicle){
+            if (user && optionVehicle) {
                 await user.addVehicleOption(optionVehicle.id);
                 res.status(201).end();
-            }else{
+            } else {
                 throw new Error("association impossible");
             }
-        }catch(err){
+        } catch (err) {
             next(err);
         }
     },
@@ -262,22 +299,26 @@ const userController = {
      * @param {function} next 
      * @returns {void} return void or error
      */
-    async deleteUserOptionVehicle(req,res,next){
-        try{
+    async deleteUserOptionVehicle(req, res, next) {
+        try {
 
-            const { id } = req.params;
-            const { id:vehicleOptionId } = req.body;
+            const {
+                id
+            } = req.params;
+            const {
+                id: vehicleOptionId
+            } = req.body;
 
             const user = await User.findOne(id);
             const vehicleOption = await VehicleOption.findOne(vehicleOptionId);
 
-            if(user && vehicleOption){
+            if (user && vehicleOption) {
                 await user.deleteVehicleOption(vehicleOption.id);
                 res.status(204).end();
-            }else{
+            } else {
                 throw new Error("association impossible");
             }
-        }catch(err){
+        } catch (err) {
             next(err);
         }
     },
@@ -289,22 +330,26 @@ const userController = {
      * @param {function} next 
      * @returns {void} return void or error
      */
-    async addUserTravel(req,res,next){
-        try{
+    async addUserTravel(req, res, next) {
+        try {
 
-            const { id } = req.params;
-            const { id:travelId } = req.body;
+            const {
+                id
+            } = req.params;
+            const {
+                id: travelId
+            } = req.body;
 
             const user = await User.findOne(id);
             const travel = await Travel.findOne(travelId);
 
-            if(user && travel){
+            if (user && travel) {
                 await user.addTravel(travel.id);
                 res.status(201).end();
-            }else{
+            } else {
                 throw new Error("association impossible");
             }
-        }catch(err){
+        } catch (err) {
             next(err);
         }
     },
@@ -315,22 +360,26 @@ const userController = {
      * @param {response} res 
      * @param {function} next 
      */
-    async deleteUserTravel(req,res,next){
-        try{
+    async deleteUserTravel(req, res, next) {
+        try {
 
-            const { id } = req.params;
-            const { id:travelId } = req.body;
+            const {
+                id
+            } = req.params;
+            const {
+                id: travelId
+            } = req.body;
 
             const user = await User.findOne(id);
             const travel = await Travel.findOne(travelId);
 
-            if(user && travel){
+            if (user && travel) {
                 await user.deleteTravel(travel.id);
                 res.status(204).end();
-            }else{
+            } else {
                 throw new Error("association impossible");
             }
-        }catch(err){
+        } catch (err) {
             next(err);
         }
     }
