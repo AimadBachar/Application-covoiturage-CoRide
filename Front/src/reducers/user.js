@@ -24,16 +24,18 @@ import { USER_LOGIN } from 'src/actions/user';
   };
   
   const reducer = (state = initialState, action = {}) => {
+    console.log(action.payload);
     switch (action.type) {
       case USER_LOGIN_SUCCESS:
         return {
           ...state,
           loggedMessage: `Welcome ${action.payload.user}!`,
+          
           ...action.payload,
           // ci dessus la version courte de:
-          logged: action.payload.logged,
+         /* logged: action.payload.logged,
            user: action.payload.firstaname,
-         token: action.payload.token
+         token: action.payload.token*/
         };
       case USER_LOGOUT:
         return {

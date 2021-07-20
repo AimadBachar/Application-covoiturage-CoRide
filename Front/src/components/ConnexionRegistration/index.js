@@ -6,6 +6,7 @@ import Login from 'src/containers/Login';
 
 import photoKite from 'src/assets/images/kite.jpg';
 import './styles.scss';
+//import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 const ConnexionRegistration = () => (
 <div>
@@ -29,9 +30,26 @@ const ConnexionRegistration = () => (
         console.log('logout')
       }}*/
     />
+
     
    </div>
   </div>
 );
 
 export default ConnexionRegistration;
+
+
+   /*
+    {
+      loading && (
+        <Router>
+        <switch>
+          <Redirect from="/login" to="/" />
+          {
+            <Route exact path= "/" >
+            </Route>
+          }
+        </switch>
+        </Router>
+      )
+    }*/

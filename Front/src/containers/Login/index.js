@@ -24,8 +24,8 @@ const mapDispatchToProps = (dispatch) => ({
   dispatch(action);
 },
 handleLogin: () => {
- // console.log('login');
-  console.log(localStorage.getItem('name'));
+  console.log('login');
+  console.log(localStorage.getItem('tokens'));
   const action = userLogin();
   dispatch(action);
 },
