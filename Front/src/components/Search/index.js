@@ -6,7 +6,12 @@ import loupe from '/src/assets/images/loupe white 2.png';
 import './styles.scss';
 
 const Search = ({
+  cards,
   tags,
+  departure,
+  arrival,
+  sport,
+  date,
   onSelectChange,
   onInputChange,
   onDateChange,
@@ -30,11 +35,8 @@ const Search = ({
           type="text"
           name="depart"
           placeholder="Départ"
-                     // value={props.textInput}
-          onChange={(evt) => {
-            const placeChose = evt.target.value;
-            onInputChange(placeChose);
-          }}
+          value={departure}
+          onChange={onInputChange}
         />
 
         <input
@@ -42,20 +44,15 @@ const Search = ({
           type="text"
           name="arrivé"
           placeholder="Destination"
-                     // value={props.textInput}
-          onChange={(evt) => {
-            const placeChose = evt.target.value;
-            onInputChange(placeChose);
-          }}
+          value={arrival}
+          onChange={onInputChange}
         />
         <div className="search-form_sport__date">
           <select
             className="search-form_select"
             name="sports"
-            onChange={(evt) => {
-              const selectSport = evt.target.value;
-              onSelectChange(selectSport);
-            }}
+            value={sport}
+            onChange={onSelectChange}
           >
             <option
               className="search-form_select_title"
@@ -76,11 +73,9 @@ const Search = ({
             className="search-form_date"
             type="date"
             name="date"
+            value={date}
             placeholder="aujourd'hui"
-            onChange={(evt) => {
-              const dateSearch = evt.target.value;
-              onDateChange(dateSearch);
-            }}
+            onChange={onDateChange}
           />
         </div>
         <button

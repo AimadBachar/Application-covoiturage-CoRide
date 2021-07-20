@@ -4,7 +4,6 @@ import Login from 'src/components/ConnexionRegistration/Login';
 // import des actions
 import { userInputChange, userLogin, userLogout } from 'src/actions/user';
 
-
 const mapStateToProps = (state) => ({
   email: state.user.inputs.email,
   password: state.user.inputs.password,

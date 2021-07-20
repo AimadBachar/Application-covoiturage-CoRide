@@ -2,13 +2,15 @@ import {connect} from 'react-redux';
 import Search from 'src/components/Search';
 import { searchSubmit, searchInputChange, selectInputChange, dateInputChange } from 'src/actions/trajets';
 // import datas
-import dataTags from '/src/data/data_tag.js';
-import dataCards from '/src/data/data_sport.js';
+
 
 const mapStateToProps = (state) => ({
-    cards: dataCards,
-    tags: dataTags,
-    textInput: "Où pratiquer ?"
+    cards: state.trajets.cards,
+    tags: state.trajets.tags,
+    departure: state.trajets.inputs.departure,
+    arrival: state.trajets.inputs.arrival,
+    sport: state.trajets.inputs.sport,
+    date: state.trajets.inputs.date
 });
 
 const mapDispatchToProps = (dispatch) => ({

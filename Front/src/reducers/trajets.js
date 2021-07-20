@@ -6,19 +6,21 @@ import {
   SEARCH_SUCCESS
 } from 'src/actions/trajets';
 
-
+import dataTags from '/src/data/data_tag.js';
+import dataCards from '/src/data/data_sport.js';
 // 1. après la création du container Login 
 //j'ajoute un reducer-user.js avec de fausses datas
 //puis je modifie le state du container login avec ces fausses datas
   export const initialState = {
     logged: false,
-    list: [],
-    // inputs: {
-    //    /* email: 'coride@app.com',
-    //     password: 'FrontForLife',*/
-    //     email: 'coride-laurent@app.com',
-    //     password: 'laurent',
-    // }
+    cards: dataCards,
+    tags: dataTags,
+     inputs: {
+        departure: 'Bordeaux',
+        arrival: 'Quibéééron',
+        sport: 'Surf',
+        date: '20/08/2021',
+     }
   };
   
   const reducer = (state = initialState, action = {}) => {
@@ -26,7 +28,7 @@ import {
       case SEARCH_SUCCESS:
         return {
           ...state,
-          list: action.payload,
+          cards: action.payload,
           // ci dessus la version courte de:
           // logged: action.payload.logged,
           // pseudo: action.payload.pseudo,
