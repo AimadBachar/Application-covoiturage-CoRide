@@ -17,7 +17,7 @@ import dataCards from '/src/data/data_sport.js';
     tags: dataTags,
      inputs: {
         departure: '',
-        arrival: 'Quibéééron',
+        arrival: '',
         //sport: 'Surf',
         //date: '20/08/2021',
      }
@@ -39,7 +39,7 @@ import dataCards from '/src/data/data_sport.js';
           ...state,
           inputs: {
             ...state,
-            departure: action.payload
+            [action.name] : action.payload
           },
         };
       case SELECT_INPUT_CHANGE:

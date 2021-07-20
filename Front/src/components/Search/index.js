@@ -19,12 +19,13 @@ const Search = ({
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log('submit', departure);
-
+    
   };
   const fieldChange = (evt) => {
     evt.preventDefault();
     console.log(evt.target.value);
-    onInputChange(evt.target.value)
+    const value = evt.target.value;
+    onInputChange(evt.target.name, value )
   }
 
   return (
@@ -43,20 +44,20 @@ const Search = ({
           value={departure}
           onChange={fieldChange}
         />
-{/* 
+
         <input
           className="search-form_input destination"
           type="text"
           name="arrivé"
           placeholder="Destination"
           value={arrival}
-          onChange={onInputChange}
+          onChange={fieldChange}
         />
         <div className="search-form_sport__date">
           <select
             className="search-form_select"
             name="sports"
-            onChange={onSelectChange}
+            onChange={fieldChange}
           >
             <option
               className="search-form_select_title"
@@ -79,9 +80,9 @@ const Search = ({
             name="date"
             value={date}
             placeholder="aujourd'hui"
-            onChange={onDateChange}
+            onChange={fieldChange}
           />
-        </div> */}
+        </div> 
         <button
           type="submit"
           className="search-form_submit"

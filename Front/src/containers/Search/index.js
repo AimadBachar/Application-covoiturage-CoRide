@@ -20,9 +20,10 @@ const mapDispatchToProps = (dispatch) => ({
       dispatch(action)
     },
     
-    onInputChange: (placeChose) => {
-      console.log('ton lieu de pratique est', placeChose);
-      const action = searchInputChange(placeChose);
+    onInputChange: (name, value) => {
+      console.log('ton lieu de pratique est', name , value);
+      const action = searchInputChange(value);
+      action.name = name;
       dispatch(action)
     },
     onDateChange: (dateSearch) => {
