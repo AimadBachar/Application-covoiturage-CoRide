@@ -5,3 +5,4 @@ api/sqitch.conf
 api/app/pictures
 admin/.env
 admin/node_modules
+api/app/services/config.json
