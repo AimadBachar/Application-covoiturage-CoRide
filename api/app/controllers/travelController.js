@@ -34,13 +34,37 @@ const travelController = {
      * @param {function} next 
      * @returns {Array} return an json array or an error
      */
-    async getAllByCoords(req,res,next){
+    async getAllByFilters(req,res,next){
         try{
+
+            let results;
 
             const {long,lat,ray} = req.query;
 
-            const results = await Travel.findByCoords(long,lat,ray||10);
+            if((long && !lat) || (!long && lat)){
+                return res.status(400).json("query is wrong...");
+            }
+
+            if(long && lat){
+
+            results = await Travel.findByCoords(long,lat,ray||10);
             
+            }else{
+
+                const filters = {};
+
+                for(const key in req.query){
+                    filters[key] = req.query[key];
+                }
+
+                if(filters["ray"]){
+                    return res.status(400).json("query is wrong...");
+                }
+
+                results = await Travel.findAll({where:filters});
+
+            }
+
             return res.json(results);
 
         }catch(err){

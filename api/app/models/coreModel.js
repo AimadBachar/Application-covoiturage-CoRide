@@ -29,7 +29,15 @@ class coreModel {
                 sqlQuery.values = [];
             
                 Object.keys(obj.where).forEach((key,index)=>{
-                    search += `${key} = $${count}`;
+
+                    if(key == "departure_timestamp"){
+                        search += `date(${key}) = $${count}`;
+
+                    }else if(isNaN(parseInt(obj.where[key],10))){
+                        search += `${key} ILIKE $${count}`;
+                    }else{
+                      search += `${key} = $${count}`;  
+                    }                   
                     sqlQuery.values.push(obj.where[key])
                     if(index < Object.keys(obj.where).length-1){
                         search += " AND ";

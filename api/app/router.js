@@ -179,12 +179,18 @@ router.route("/travel/:id(\\d+)")
 /**
  * @route GET /travels/search
  * @group Travels - Operations about travel
- * @param {number} long.query.required the longitude departure
- * @param {number} lat.query.required the lalitude departure
+ * @param {number} long.query the longitude departure
+ * @param {number} lat.query the lalitude departure
+ * @param {number} ray.query the rayon for search coords
+ * @param {string} departure_city.query the name of departure city
+ * @param {string} destination_city the name of destination city
+ * @param {number} activity_id.query the activity id
+ * @param {number} user_id.query the user id
+ * @param {date} departure_timestamp.query the date of departure format YYYY-MM-DD
  * @returns {Array<Travel>} 200 - travels details
  * @returns {Error} default - Unexpected error
  */
-router.get("/travels/search",redis.cache,travelController.getAllByCoords);
+router.get("/travels/search",travelController.getAllByFilters);
 
 /////////Model Vehicle Option////////////////////////////////
 /**
