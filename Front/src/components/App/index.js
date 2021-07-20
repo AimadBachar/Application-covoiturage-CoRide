@@ -9,6 +9,7 @@ import Footer from 'src/containers/Footer';
 import Main from '../Main';
 import ConnexionRegistration from '../ConnexionRegistration';
 import NotFoundPage from '../NotFoundPage';
+import ProfilUser from '../ProfilUser';
 
 import './styles.scss';
 
@@ -26,6 +27,10 @@ const App = () => (
 
         <Route exact path="/connexion">
           <ConnexionRegistration />
+        </Route>
+
+        <Route exact path="/profil">
+          <ProfilUser />
         </Route>
 
         <Route path="*">

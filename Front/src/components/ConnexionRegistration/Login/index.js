@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Field from 'src/components/ConnexionRegistration/Login/Field';
@@ -6,23 +6,24 @@ import Field from 'src/components/ConnexionRegistration/Login/Field';
 import 'src/components/ConnexionRegistration/Login/styles.scss';
 
 const Login = ({
-    email,
-    password,
-    changeField,
-    handleLogin,
-    handleLogout,
-    isLogged,
-    loggedMessage,
+  email,
+  password,
+  changeField,
+  handleLogin,
+  handleLogout,
+  isLogged,
+  loggedMessage,
+
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleLogin();
   };
 
-    return (
-      <div className="login-form">
+  return (
+    <div className="login-form">
 
-        {isLogged && (
+      {isLogged && (
         <div className="login-logged">
           <p className="login-message">
             {loggedMessage}
@@ -37,24 +38,24 @@ const Login = ({
         </div>
       )}
       {!isLogged && (
-        
+
         <form
           autoComplete="off"
           className="login-form-element"
           onSubmit={handleSubmit}
-        >               
-      <h1  className="login-form-title">
-      Connexion
-    </h1>
-          <Field 
-          className="login-form-input"
+        >
+          <h1 className="login-form-title">
+            Connexion
+          </h1>
+          <Field
+            className="login-form-input"
             name="email"
             placeholder="Adresse Email"
             onChange={changeField}
             value={email}
           />
           <Field
-            className="login-form-input" 
+            className="login-form-input"
             type="password"
             name="password"
             placeholder="mot de passe"
@@ -69,9 +70,9 @@ const Login = ({
           </button>
         </form>
       )}
-      </div>  
-    );
-  };
+    </div>
+  );
+};
 
 Login.propTypes = {
   email: PropTypes.string.isRequired,
@@ -91,3 +92,5 @@ Login.defaultProps = {
 
 // == Export
 export default Login;
+
+// http://18.235.248.88:3000/api-docs
