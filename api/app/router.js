@@ -68,7 +68,7 @@ const router = Router();
  */
 router.post("/user/login",userController.login);
 router.route("/users")
-    .get(redis.cache,userController.getAll)
+    .get(verifyToken,redis.cache,userController.getAll)
     .post(verifyToken,redis.flush,uploadPicture,joiValidator(schemas.user),userController.insertOrUpdate)
     .delete(verifyToken,redis.flush,userController.delete);
 
@@ -91,8 +91,8 @@ router.route("/users")
  * @returns {Error} default - Unexpected error
  */
 router.route("/user/:id(\\d+)")
-    .get(redis.cache,userController.getOne)
-    .patch(redis.flush,joiValidator(schemas.user),userController.insertOrUpdate);
+    .get(verifyToken,redis.cache,userController.getOne)
+    .patch(verifyToken,redis.flush,joiValidator(schemas.user),userController.insertOrUpdate);
 
 ////////////Model Activity////////////////////////////////////
 /**
@@ -173,7 +173,7 @@ router.route("/travels")
  * @returns {Error} default - Unexpected error
  */
 router.route("/travel/:id(\\d+)")
-    .get(redis.cache,travelController.getOne);
+    .get(verifyToken,redis.cache,travelController.getOne);
 
 /**
  * @route GET /travels/search
@@ -229,7 +229,7 @@ router.route("/vehicle-options")
  * @returns {Error} default - Unexpected error
  */  
 router.route("/vehicle-option/:id(\\d+)")
-    .get(redis.cache,vehicleOptionController.getOne);
+    .get(verifyToken,redis.cache,vehicleOptionController.getOne);
     
 ////////CRUD un travel//////////////////////////////////////
 /**
@@ -286,7 +286,7 @@ router.route("/vehicle-option/:id(\\d+)")
  * @returns {Error} default - Unexpected error
  */
  router.route("/travels/user/:id(\\d+)")
-    .get(redis.cache,travelController.getAll)
+    .get(verifyToken,redis.cache,travelController.getAll)
     .delete(verifyToken,redis.flush,travelController.delete)
     .post(verifyToken,joiValidator(schemas.travel),redis.flush,travelController.insertOrUpdate);
 router.patch("/travel/:travelId(\\d+)/user/:userId(\\d+)",verifyToken,joiValidator(schemas.travel),redis.flush,travelController.insertOrUpdate);
@@ -327,7 +327,7 @@ router.patch("/travel/:travelId(\\d+)/user/:userId(\\d+)",verifyToken,joiValidat
  * @returns {Error} default - Unexpected error
  */
 router.route("/user/:id(\\d+)/vehicles")
-    .get(redis.cache,vehicleController.getAll)
+    .get(verifyToken,redis.cache,vehicleController.getAll)
     .post(verifyToken,redis.flush,vehicleController.insertOrUpdate)
     .delete(verifyToken,redis.flush,vehicleController.delete);
 /**
@@ -375,7 +375,7 @@ router.patch("/user/:userId(\\d+)/vehicle/:vehicleId(\\d+)",verifyToken,joiValid
  * @returns {Error} default - Unexpected error
  */
 router.route("/user/:id(\\d+)/activities")
-    .get(redis.cache,userController.showActivities)
+    .get(verifyToken,redis.cache,userController.showActivities)
     .post(verifyToken,redis.flush,userController.addUserActivity)
     .delete(verifyToken,redis.flush,userController.deleteUserActivity);
 
@@ -409,7 +409,7 @@ router.route("/user/:id(\\d+)/activities")
  * @returns {Error} default - Unexpected error
  */
 router.route("/user/:id(\\d+)/vehicle-options")
-    .get(redis.cache,userController.showVehicleOptions)
+    .get(verifyToken,redis.cache,userController.showVehicleOptions)
     .post(verifyToken,redis.flush,userController.addUserOptionVehicle)
     .delete(verifyToken,redis.flush,userController.deleteUserOptionVehicle);
 
@@ -439,6 +439,6 @@ router.route("/user/:id(\\d+)/travels")
     .delete(verifyToken,redis.flush,userController.deleteUserTravel);
 
 //middleware gestion erreur
-router.use((err,req,res,next)=>res.status(404).json({"error":err}))
+router.use((err,_,res,__)=>res.status(404).json({"error":err}))
 
 module.exports = router;
