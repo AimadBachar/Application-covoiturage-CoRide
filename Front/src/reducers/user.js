@@ -11,10 +11,17 @@ import { USER_LOGIN } from 'src/actions/user';
 //puis je modifie le state du container login avec ces fausses datas
   export const initialState = {
     logged: false,
-    loggedMessage: 'Welcome Laurent !',
+    loggedMessage: 'Welcome !',
     inputs: {
-       /* email: 'coride@app.com',
-        password: 'FrontForLife',*/
+      // Autres mails pour tester
+       /*
+       email: 'coride-aimad@app.com',
+        password: 'aimad',
+        email: 'coride-anna@app.com',
+        password: 'anna',
+        email: 'coride-julien@app.com',
+        password: 'julien',
+       */
         email: 'coride-laurent@app.com',
         password: 'laurent',
     }
