@@ -6,7 +6,6 @@ import loupe from '/src/assets/images/loupe white 2.png';
 import './styles.scss';
 
 const Search = ({
-  cards,
   tags,
   departure,
   arrival,
@@ -17,7 +16,7 @@ const Search = ({
   onDateChange,
 }) => {
   const handleSubmit = (evt) => {
-    evt.preventDefault();
+    //evt.preventDefault();
     console.log('submit');
   };
 

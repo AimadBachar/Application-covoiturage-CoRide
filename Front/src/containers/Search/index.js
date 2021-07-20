@@ -5,7 +5,6 @@ import { searchSubmit, searchInputChange, selectInputChange, dateInputChange } f
 
 
 const mapStateToProps = (state) => ({
-    cards: state.trajets.cards,
     tags: state.trajets.tags,
     departure: state.trajets.inputs.departure,
     arrival: state.trajets.inputs.arrival,
