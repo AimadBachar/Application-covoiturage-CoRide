@@ -6,7 +6,7 @@ import { userInputChange, userLogin, userLogout } from 'src/actions/user';
 
 
 const mapStateToProps = (state) => ({
-  email: state.user.inputs.email,
+  user: state.user.inputs.user,
   password: state.user.inputs.password,
   isLogged: state.user.logged,
   loggedMessage: state.user.loggedMessage
@@ -24,7 +24,8 @@ const mapDispatchToProps = (dispatch) => ({
   dispatch(action);
 },
 handleLogin: () => {
-  console.log('login');
+ // console.log('login');
+  console.log(localStorage.getItem('name'));
   const action = userLogin();
   dispatch(action);
 },

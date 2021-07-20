@@ -13,17 +13,13 @@ import { USER_LOGIN } from 'src/actions/user';
     logged: false,
     loggedMessage: 'Welcome !',
     inputs: {
-      // Autres mails pour tester
+      // mail pour tester
        /*
-       email: 'coride-aimad@app.com',
-        password: 'aimad',
         email: 'coride-anna@app.com',
         password: 'anna',
-        email: 'coride-julien@app.com',
-        password: 'julien',
        */
-        email: 'coride-laurent@app.com',
-        password: 'laurent',
+        user: 'laurent@savarit.fr',
+        password: '1234',
     }
   };
   
@@ -32,12 +28,12 @@ import { USER_LOGIN } from 'src/actions/user';
       case USER_LOGIN_SUCCESS:
         return {
           ...state,
-          loggedMessage: `Bienvenue ${action.payload.pseudo}!`,
+          loggedMessage: `Welcome ${action.payload.user}!`,
           ...action.payload,
           // ci dessus la version courte de:
-          // logged: action.payload.logged,
-          // pseudo: action.payload.pseudo,
-          // token: action.payload.token
+          logged: action.payload.logged,
+           user: action.payload.firstaname,
+         token: action.payload.token
         };
       case USER_LOGOUT:
         return {

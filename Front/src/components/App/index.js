@@ -12,6 +12,9 @@ import ConnexionRegistration from '../ConnexionRegistration';
 
 import './styles.scss';
 
+console.log(localStorage.getItem('name'));
+
+
 // == Composant
 const App = () => (
   <Router>
@@ -36,19 +39,3 @@ const App = () => (
 // == Export
 export default App;
 
-/* LoginForm
-
- email="me@mail.com"
-      password="123"
-      isLogged={false}
-      loggedMessage="Welcome user"
-      changeField= {(value, name) => {
-        console.log('change in ' + name + ' :', value);
-      }}
-      handleLogin={() => {
-        console.log('login')
-      }}
-      handleLogout={() => {
-        console.log('logout')
-      }}
-*/

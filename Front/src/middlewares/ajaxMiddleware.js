@@ -34,8 +34,8 @@ export default (store) => (next) => (action) => {
       //Requête POST sur api/users en envoyant les datas
         axios({
           method: 'post',
-          url: 'http://localhost:3001/login',
-        //url: 'http://18.235.248.88:3000/api-docs/users',
+          //url: 'http://localhost:3001/login',
+        url: 'http://18.235.248.88:3000/api/v1/user/login',
           data: store.getState().user.inputs,
         },
        //Sans instance préconfigurée, je renseigne le header directement dans la requête 
@@ -45,6 +45,7 @@ export default (store) => (next) => (action) => {
         })
           .then((res) => {
             console.log(res.data);
+            localStorage.setItem('name', res.data.token);
             const actionToSend = userLoginSuccess(res.data);
             store.dispatch(actionToSend);
           })

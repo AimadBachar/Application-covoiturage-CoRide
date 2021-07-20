@@ -6,7 +6,7 @@ import Field from 'src/components/ConnexionRegistration/Login/Field';
 import 'src/components/ConnexionRegistration/Login/styles.scss';
 
 const Login = ({
-    email,
+    user,
     password,
     changeField,
     handleLogin,
@@ -48,10 +48,10 @@ const Login = ({
     </h1>
           <Field 
           className="login-form-input"
-            name="email"
+            name="user"
             placeholder="Adresse Email"
             onChange={changeField}
-            value={email}
+            value={user}
           />
           <Field
             className="login-form-input" 
@@ -74,7 +74,7 @@ const Login = ({
   };
 
 Login.propTypes = {
-  email: PropTypes.string.isRequired,
+  user: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,

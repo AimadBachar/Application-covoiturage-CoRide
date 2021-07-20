@@ -2,7 +2,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 
 import Login from 'src/containers/Login';
-import Signin from './Signin';
+//import Signin from './Signin';
 
 import photoKite from 'src/assets/images/kite.jpg';
 import './styles.scss';
@@ -29,7 +29,7 @@ const ConnexionRegistration = () => (
         console.log('logout')
       }}*/
     />
-   <Signin />
+    
    </div>
   </div>
 );
