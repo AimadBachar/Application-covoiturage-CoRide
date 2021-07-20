@@ -28,7 +28,7 @@ import {
     //mettre objet en tête et le mettre en dernier argument
     //et modifier la requête axios
 
-     /* const axiosConfigured = axios.create({
+      /*const axiosConfigured = axios.create({
         headers: {'Authorization': `Bearer ${action.payload.token}`}
       });*/
       
@@ -38,7 +38,7 @@ import {
           //url: 'http://localhost:3001/login',
           url: 'http://18.235.248.88:3000/api/v1/user/login/',
           data: store.getState().user.inputs,
-          name: store.getState().user.userId,
+          //name: store.getState().user.userId,
         },
        //Sans instance préconfigurée, je renseigne le header directement dans la requête 
        // (à faire pour toutes les requêtes)
@@ -46,18 +46,23 @@ import {
           }
         })
           .then((res) => {
-            console.log(res.data);
+            console.log("res.data", res.data.userId);
+            const {token, userId, firstName, lastName } = res.data;
+            
             //const tokens = await connect(user, password);
-             localStorage.setItem('tokens', res.data.token);
+            // local storage mis en place
+             localStorage.setItem('tokens', res.data);
             // localStorage.setItem('name', JSON.stringify(tokens));
-          
+            
             const actionToSend = userLoginSuccess(res.data);
             store.dispatch(actionToSend);
+
+            
           //},
-          
+          /*
           async function connect(user, password) {
             const headers = new Headers();
-            headers.append('Content-Type', '/userId');
+            headers.append('Content-Type', 'application/userId');
 
             const options = {
               method: 'POST',
@@ -68,21 +73,19 @@ import {
               }),
               headers
             };
+          */
+            // const response = fetch('http://18.235.248.88:3000/api/v1/user/userId');
+            // return response.res.data.token();
           
-            const response = await fetch('http://18.235.248.88:3000/api/v1/user/login/userId', options);
-            return response.res.data.token();
-          };
           })
           
           .catch((err) => {
             console.error(err);
           })
-         
         break;
         }
         next(action);
         };
-
         export default middleware;
 // Link du serveur admin
 //admin:  http://18.235.248.88:3001/login

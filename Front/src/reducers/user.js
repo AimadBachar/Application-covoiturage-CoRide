@@ -18,9 +18,11 @@ import { USER_LOGIN } from 'src/actions/user';
         email: 'coride-anna@app.com',
         password: 'anna',
        */
-        user: 'laurent@savarit.fr',
-        password: '1234',
+        // user: 'laurent@savarit.fr',
+        // password: '1234dzz',
     }
+      
+
   };
   
   const reducer = (state = initialState, action = {}) => {
@@ -29,12 +31,12 @@ import { USER_LOGIN } from 'src/actions/user';
       case USER_LOGIN_SUCCESS:
         return {
           ...state,
-          loggedMessage: `Welcome ${action.payload.user}!`,
-          
+          loggedMessage: `Welcome ${action.payload.firstName}!`,
+          logged: true,
           ...action.payload,
           // ci dessus la version courte de:
          /* logged: action.payload.logged,
-           user: action.payload.firstaname,
+           user: action.payload.firstname,
          token: action.payload.token*/
         };
       case USER_LOGOUT:
@@ -56,3 +58,4 @@ import { USER_LOGIN } from 'src/actions/user';
   };
   
   export default reducer;
+
