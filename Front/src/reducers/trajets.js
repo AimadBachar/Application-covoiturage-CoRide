@@ -16,7 +16,7 @@ import dataCards from '/src/data/data_sport.js';
     cards: dataCards,
     tags: dataTags,
      inputs: {
-        departure: 'Bordeaux',
+        departure: '',
         arrival: 'Quibéééron',
         //sport: 'Surf',
         //date: '20/08/2021',

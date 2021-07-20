@@ -17,17 +17,22 @@ const Search = ({
   onSubmitSearch
 }) => {
   const handleSubmit = (evt) => {
-    //evt.preventDefault();
-    console.log('submit');
+    evt.preventDefault();
+    console.log('submit', departure);
+
   };
+  const fieldChange = (evt) => {
+    evt.preventDefault();
+    console.log(evt.target.value);
+    onInputChange(evt.target.value)
+  }
 
   return (
     <div className="search">
       <form
-        action="/results"
-        method="GET"
+        method="POST"
         className="search-form"
-        onSubmit={onSubmitSearch}
+        onSubmit={handleSubmit}
       >
 
         <input
@@ -36,7 +41,7 @@ const Search = ({
           name="depart"
           placeholder="Départ"
           value={departure}
-          onChange={onInputChange}
+          onChange={fieldChange}
         />
 {/* 
         <input

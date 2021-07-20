@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch) => ({
     
     onInputChange: (placeChose) => {
       console.log('ton lieu de pratique est', placeChose);
-      const action = searchInputChange;
+      const action = searchInputChange(placeChose);
       dispatch(action)
     },
     onDateChange: (dateSearch) => {
@@ -30,7 +30,7 @@ const mapDispatchToProps = (dispatch) => ({
       const action = dateInputChange;
       dispatch(action)
     },
-    onSubmitSearch: () => {
+    onSubmitSearch: (value) => {
       console.log('submit');
       const action = searchSubmit;
       dispatch(action)
