@@ -41,7 +41,12 @@ class coreModel {
             }
 
             const {rows} = await pool.query(sqlQuery);
-            return rows ? rows.map(row=>new this(row)) : new Error("internal error");
+
+            if(rows[0]){
+               return rows.map(row=>new this(row));
+            }else{
+               return new Error("not found"); 
+            } 
 
         }catch(err){
             throw err.message;
