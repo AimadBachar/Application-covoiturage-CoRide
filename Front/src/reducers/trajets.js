@@ -18,8 +18,8 @@ import dataCards from '/src/data/data_sport.js';
      inputs: {
         departure: 'Bordeaux',
         arrival: 'Quibéééron',
-        sport: 'Surf',
-        date: '20/08/2021',
+        //sport: 'Surf',
+        //date: '20/08/2021',
      }
   };
   
@@ -38,8 +38,8 @@ import dataCards from '/src/data/data_sport.js';
         return {
           ...state,
           inputs: {
-            ...state.inputs,
-            ...action.payload
+            ...state,
+            departure: action.payload
           },
         };
       case SELECT_INPUT_CHANGE:

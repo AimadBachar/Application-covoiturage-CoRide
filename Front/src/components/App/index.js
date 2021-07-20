@@ -14,7 +14,6 @@ import Card from 'src/containers/Card';
 //import dataCards from "../../data/data_sport";
 
 import './styles.scss';
-
 // == Composant
 const App = () => (
   <Router>
@@ -29,7 +28,7 @@ const App = () => (
         <Footer />
       </Route>
       <div className="app">
-
+     
         <Header />
 
         <Search />

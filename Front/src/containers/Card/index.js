@@ -1,4 +1,4 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import Card from 'src/components/Card';
 //import { searchSubmit, searchInputChange, selectInputChange, dateInputChange } from 'src/actions/trajets';
 // import datas
