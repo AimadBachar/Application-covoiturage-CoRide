@@ -37,6 +37,11 @@ const router = Router();
  * @property {string} password.required the password user
  */
 /**
+ * @typedef loginResponse 
+ * @property {string} token.required the JWT
+ * @property {number} userId.required the user ID
+ */
+/**
  * @route POST /users
  * @group Users - Operations about user
  * @security JWT
@@ -53,7 +58,7 @@ const router = Router();
  * @param {loginUser.model} loginUser.body.required the new user
  * @consumes application/json
  * @produces application/json
- * @returns {JSON} 200 - JWT
+ * @returns {loginResponse.model} 200 - JWT and user id
  * @returns {Error} 403 - unauthorized
  * @returns {Error} default - Unexpected error
  */
