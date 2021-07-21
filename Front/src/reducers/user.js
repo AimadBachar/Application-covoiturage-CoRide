@@ -19,7 +19,7 @@ import { USER_LOGIN } from 'src/actions/user';
         password: 'anna',
        */
         // user: 'laurent@savarit.fr',
-        // password: '1234dzz',
+        // password: '1234',
     }
       
 

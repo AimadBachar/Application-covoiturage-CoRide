@@ -1,19 +1,21 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 
+// iMPORT
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Login from 'src/containers/Login';
 //import Signin from './Signin';
 
 import photoKite from 'src/assets/images/kite.jpg';
 import './styles.scss';
-//import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 const ConnexionRegistration = () => (
 <div>
 <img className="photo" src={photoKite} alt="photo kite" />
 
   <div className="connexionRegistration">
-   
+ 
+     
     <Login 
     /*
       email="email@mail.com"
@@ -30,8 +32,7 @@ const ConnexionRegistration = () => (
         console.log('logout')
       }}*/
     />
-
-    
+   
    </div>
   </div>
 );

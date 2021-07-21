@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import Field from 'src/components/ConnexionRegistration/Login/Field';
 
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+
 import 'src/components/ConnexionRegistration/Login/styles.scss';
 
 const Login = ({
@@ -17,11 +19,12 @@ const Login = ({
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleLogin();
+   
   };
 
     return (
+      
       <div className="login-form">
-
         {isLogged && (
         <div className="login-logged">
           <p className="login-message">
@@ -41,6 +44,8 @@ const Login = ({
         <form
           autoComplete="off"
           className="login-form-element"
+          <Switch
+          <Redirect from="/login" to="/" />
           onSubmit={handleSubmit}
         >               
       <h1  className="login-form-title">

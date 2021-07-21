@@ -12,7 +12,7 @@ import ConnexionRegistration from '../ConnexionRegistration';
 
 import './styles.scss';
 
-console.log(localStorage.getItem('name'));
+//console.log(localStorage.getItem('name'));
 
 
 // == Composant
