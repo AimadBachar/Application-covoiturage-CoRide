@@ -27,7 +27,8 @@ SELECT
     first_name,
     last_name,
     picture_link,
-    pseudo
+    pseudo,
+    birthdate
 FROM "user";
 
 COMMIT;

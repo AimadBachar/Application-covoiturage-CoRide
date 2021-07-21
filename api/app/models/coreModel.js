@@ -22,6 +22,13 @@ class coreModel {
         try{
             const sqlQuery = {text:`SELECT * FROM "${this.tableName}";`};
 
+            if(this.tableName === "travel"){
+                sqlQuery.text = "SELECT * FROM travels_view;"
+            }
+            if(this.tableName === "user"){
+                sqlQuery.text = "SELECT * FROM users_view;"
+            }
+
             if(obj?.where){
 
                 let search = ``;
@@ -46,6 +53,13 @@ class coreModel {
                 })
 
                 sqlQuery.text = `SELECT * FROM "${this.tableName}" WHERE ${search};`;
+
+                if(this.tableName === "travel"){
+                    sqlQuery.text = `SELECT * FROM travels_view WHERE ${search};`;
+                }
+                if(this.tableName === "user"){
+                    sqlQuery.text = `SELECT * FROM users_view WHERE ${search};`;
+                }
 
             }
 
@@ -74,6 +88,13 @@ class coreModel {
                 text: `SELECT * FROM "${this.tableName}" WHERE id = $1;`,
                 values:[parseInt(id,10)]
             };
+
+            if(this.tableName === "travel"){
+                sqlQuery.text = "SELECT * FROM travels_view WHERE id = $1;"
+            }
+            if(this.tableName === "user"){
+                sqlQuery.text = "SELECT * FROM users_view WHERE id = $1;"
+            }
 
             const {rows} = await pool.query(sqlQuery);
             if(rows[0]){

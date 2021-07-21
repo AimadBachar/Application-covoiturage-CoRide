@@ -2,7 +2,9 @@ const Activity = require("../models/Activity");
 const Travel = require("../models/Travel");
 const User = require("../models/User");
 const VehicleOption = require("../models/VehicleOption");
+
 const jwt = require("jsonwebtoken");
+const {delete:deletePicture} = require("../services/uploadPicture");
 
 const userController = {
 
@@ -145,6 +147,13 @@ const userController = {
             const user = await User.findOne(id);
 
             if (user) {
+
+                const delPicture = await deletePicture(user.picture_link);
+
+                if(!delPicture){
+                    return next();
+                }
+
                 await user.delete();
                 res.status(204).end();
             } else {
