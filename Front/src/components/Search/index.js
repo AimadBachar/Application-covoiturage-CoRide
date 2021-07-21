@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import loupe from '/src/assets/images/loupe white 2.png';
 
 import './styles.scss';
