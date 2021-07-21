@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 
 import Field from 'src/components/ConnexionRegistration/Login/Field';
@@ -15,24 +15,41 @@ const Login = ({
     handleLogout,
     isLogged,
     loggedMessage,
+
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    handleLogin();
-   
+    handleLogin(); 
   };
 
+    
+      // useEffect(() => {
+      //   const timeout = setTimeout(() => {
+          
+      //   }, 3000);
+      //  },[]);
+
+      useEffect(() => {
+      const timeOut = setTimeout(() => {
+        <Redirect from="/connexion" to="/" />
+      }, 3000);
+      
+    // return () => clearTimeout(timeOut);
+      }, []);
+
     return (
-      <div className="login-form">
-        {isLogged && (
+       
+      <div className="login-form"> 
+       {isLogged && (
+          useEffect(),
           <div className="login-logged">
-          <Redirect from="/connexion" to="/" />
-              <p className="login-message">
+          {/* <Redirect from="/connexion" to="/" /> */}
+            <p className="login-message">
+                       
+              {loggedMessage}
             
-                {loggedMessage}
-              
-              </p>
-            <button
+            </p>
+          <button
               type="button"
               className="login-button"
               onClick={handleLogout}
@@ -40,8 +57,9 @@ const Login = ({
               Déconnexion
             </button>
           </div>
-          // <Redirect from="/login" to="/" />
-        )}
+                
+          )};
+    
       {!isLogged && (    
         <form
           autoComplete="off"
@@ -73,8 +91,11 @@ const Login = ({
           >
             Ok
           </button>
+     
         </form>
+      
       )}
+     
       </div>  
     );
   };
