@@ -31,7 +31,13 @@ app.use(session({
 app.use(express.static("public"));
 
 //quand on demande la page principale on est redirigé vers la page login
-app.get("/",(_,res)=>res.render("login"));
+app.get("/",(req,res)=>{
+    if(req.session.user?.token){
+        return res.render("index");
+    }else{
+        return res.render("login");
+    }
+});
 
 //route concernant le login et le logout
 app.get("/login",homeController.login);
