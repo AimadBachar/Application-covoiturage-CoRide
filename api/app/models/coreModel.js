@@ -25,9 +25,7 @@ class coreModel {
             if(this.tableName === "travel"){
                 sqlQuery.text = "SELECT * FROM travels_view;"
             }
-            if(this.tableName === "user"){
-                sqlQuery.text = "SELECT * FROM users_view;"
-            }
+        
 
             if(obj?.where){
 
@@ -57,10 +55,6 @@ class coreModel {
                 if(this.tableName === "travel"){
                     sqlQuery.text = `SELECT * FROM travels_view WHERE ${search};`;
                 }
-                if(this.tableName === "user"){
-                    sqlQuery.text = `SELECT * FROM users_view WHERE ${search};`;
-                }
-
             }
 
             const {rows} = await pool.query(sqlQuery);
