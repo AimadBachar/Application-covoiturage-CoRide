@@ -5,25 +5,22 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from 'src/containers/Header';
 import Search from 'src/containers/Search';
-import Main from '../Main';
 import Footer from 'src/containers/Footer';
+import Main from '../Main';
 import ConnexionRegistration from '../ConnexionRegistration';
-
 
 import './styles.scss';
 
-//console.log(localStorage.getItem('name'));
-
+// console.log(localStorage.getItem('token'));
 
 // == Composant
 const App = () => (
   <Router>
     <Switch>
       <Route exact path="/connexion">
-        <ConnexionRegistration /> 
+        <ConnexionRegistration />
       </Route>
       <div className="app">
-
         <Header />
 
         <Search />
@@ -31,6 +28,7 @@ const App = () => (
         <Main />
 
         <Footer />
+
       </div>
     </Switch>
   </Router>
@@ -38,4 +36,3 @@ const App = () => (
 
 // == Export
 export default App;
-
