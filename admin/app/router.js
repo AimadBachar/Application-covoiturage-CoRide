@@ -20,7 +20,8 @@ router.get("/vehicle-options/delete",vehicleOptionController.delete);
 
 router.get("/activities/add",activityController.add);
 router.post("/activities/add",activityController.add);
-router.get("/vehicle-options/add",vehicleOptionController.add);
 
+router.get("/vehicle-options/add",vehicleOptionController.add);
+router.post("/vehicle-options/add",vehicleOptionController.add);
 
 module.exports = router;
