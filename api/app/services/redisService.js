@@ -13,7 +13,7 @@ const redisService = {
 
     keys: [],
 
-    expiration: 3600,
+    expiration: 300,
 
     /**
      * this express middleware store in cache redis datas requests
