@@ -5,6 +5,8 @@ const cors = require("cors");
 const router = require("./app/router");
 const adminController = require("./app/controllers/adminController");
 
+const searchCities = require("./app/services/searchCities");
+
 const app = express();
 const expressSwagger = require("express-swagger-generator")(app);
 
@@ -48,6 +50,25 @@ app.use(express.json());
 app.use(express.static("app/pictures"));
 
 app.post("/login",adminController);
+
+//test open cage data//////////
+app.get("/cities",async (req,res,next)=>{
+    const results = await searchCities(req.query.city);
+    if(results){
+
+        const datas = results.results.map(city=>{
+            return {
+                city: city.components.village,
+                coords: city.geometry
+            }
+        })
+
+    res.json(datas)
+}else{
+    next();
+}
+})
+///////////////////////////////
 
 app.use("/api/v1",router);
 
