@@ -13,10 +13,12 @@ const Nav = (props) => (
         <span />
         <span />
         <ul id="menu">
-          <li><a href="#">Home</a></li>
+          <li><a href="/">Home</a></li>
           <li><a href="#">About</a></li>
           <li><a href="#">Info</a></li>
-          <li><a href="#">Contact</a> </li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="/connexion">Connexion</a></li>
+          <li><a href="/signin">Inscription</a></li>
         </ul>
       </div>
     </nav>
