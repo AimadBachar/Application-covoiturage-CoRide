@@ -23,31 +23,32 @@ const Login = ({
   };
 
     return (
-      
       <div className="login-form">
         {isLogged && (
-        <div className="login-logged">
-          <p className="login-message">
-            {loggedMessage}
-          </p>
-          <button
-            type="button"
-            className="login-button"
-            onClick={handleLogout}
-          >
-            Déconnexion
-          </button>
-        </div>
-      )}
-      {!isLogged && (
-        
+          <div className="login-logged">
+          <Redirect from="/connexion" to="/" />
+              <p className="login-message">
+            
+                {loggedMessage}
+              
+              </p>
+            <button
+              type="button"
+              className="login-button"
+              onClick={handleLogout}
+            >
+              Déconnexion
+            </button>
+          </div>
+          // <Redirect from="/login" to="/" />
+        )}
+      {!isLogged && (    
         <form
           autoComplete="off"
           className="login-form-element"
-          <Switch
-          <Redirect from="/login" to="/" />
+          // <Redirect from="/connexion" to="/" />
           onSubmit={handleSubmit}
-        >               
+        > 
       <h1  className="login-form-title">
       Connexion
     </h1>
@@ -96,3 +97,5 @@ Login.defaultProps = {
 
 // == Export
 export default Login;
+
+// anna@sion.fr
