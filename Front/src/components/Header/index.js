@@ -12,6 +12,7 @@ import Nav from '../Nav';
 // import 'semantic-ui-css/semantic.min.css';
 import './styles.scss';
 
+
 // JSON.parse(localStorage.getItem('token'))['access_token']
 
 const Header = () => {

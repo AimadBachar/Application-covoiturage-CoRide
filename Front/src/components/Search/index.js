@@ -91,4 +91,13 @@ const Search = ({
   );
 };
 
+Search.propTypes = {
+  onSelectChange: PropTypes.func.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  onDateChange: PropTypes.func.isRequired,
+  tags: PropTypes.shape({
+    sport: PropTypes.string.isRequired,
+  })
+}
+
 export default Search;
