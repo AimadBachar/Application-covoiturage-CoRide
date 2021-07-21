@@ -1,19 +1,24 @@
 const {Router} = require("express");
+const router = Router();
 
-const uploadPicture = require("./services/uploadPicture");
+//controllers////////////////////////////////////////////////////////////////////
 const userController = require("./controllers/userController");
 const activityController = require("./controllers/activityController");
 const travelController = require("./controllers/travelController");
 const vehicleController = require("./controllers/vehicleController");
 const vehicleOptionController = require("./controllers/vehicleOptionController");
+/////////////////////////////////////////////////////////////////////////////////
 
+//services and middlewares///////////////////////////////////////////////////////
+const {upload:uploadPicture} = require("./services/uploadPicture");
 const joiValidator = require("./middlewares/joiValidator");
 const verifyToken = require("./middlewares/verifyToken");
 const schemas = require("./schemas");
 const redis = require("./services/redisService");
 const searchCities = require("./services/searchCities");
+/////////////////////////////////////////////////////////////////////////////////
 
-const router = Router();
+
 
 ////////////Fetch api open Cage Data for find city////////////
 /**

@@ -2,7 +2,6 @@ api/node_modules
 Front/node_modules
 api/.env
 api/sqitch.conf
-api/app/pictures
 admin/.env
 api/app/services/config.json
 admin/node_modules
