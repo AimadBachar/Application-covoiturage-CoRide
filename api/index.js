@@ -16,7 +16,8 @@ const options = {
             title: "API Co'Ride",
             version: '1.0.0',
         },
-        host: '18.235.248.88:3000',
+        //host: '18.235.248.88:3000',
+        host:"localhost:3000",
         basePath: '/api/v1',
         produces: [
             "application/json",

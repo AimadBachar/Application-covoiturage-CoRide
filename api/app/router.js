@@ -1,18 +1,40 @@
 const {Router} = require("express");
 
-
 const uploadPicture = require("./services/uploadPicture");
 const userController = require("./controllers/userController");
 const activityController = require("./controllers/activityController");
 const travelController = require("./controllers/travelController");
 const vehicleController = require("./controllers/vehicleController");
 const vehicleOptionController = require("./controllers/vehicleOptionController");
+
 const joiValidator = require("./middlewares/joiValidator");
 const verifyToken = require("./middlewares/verifyToken");
 const schemas = require("./schemas");
 const redis = require("./services/redisService");
+const searchCities = require("./services/searchCities");
 
 const router = Router();
+
+////////////Fetch api open Cage Data for find city////////////
+/**
+ * @typedef coords 
+ * @property {number} lat the name of city
+ * @property {number} lng the postcode of city
+ */
+/**
+ * @typedef City 
+ * @property {string} city the name of city
+ * @property {number} postcode the postcode of city
+ * @property {coords.model} coords an object with lat and lng
+ */
+/**
+ * @route GET /cities
+ * @group Fetch API open Cage Data
+ * @param {string} city.query.required the name of city search
+ * @returns {Array<City>} 200 - city details (name, postcode and coords)
+ */
+router.get("/cities",redis.cache,searchCities);
+//////////////////////////////////////////////////////////////
 
 ////////////Model User////////////////////////////////////////
 /**
