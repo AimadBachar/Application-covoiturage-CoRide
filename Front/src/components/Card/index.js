@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import iconLike from '/src/assets/images/pouce-en-l_air.png';
 import './styles.scss';
@@ -32,7 +32,18 @@ const Card = ({
   </div>
 );
 
-// Card.proptypes = {
-
-// };
+Card.propTypes = {
+  onButtonClickProfilUser: PropTypes.func.isRequired,
+  onButtonClickValidation: PropTypes.func.isRequired,
+  cards: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    pseudo: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    hour: PropTypes.string.isRequired,
+    trajet: PropTypes.string.isRequired,
+    //departure: PropTypes.string.isRequired, 
+    //arrival: PropTypes.string.isRequired, 
+    tag: PropTypes.string.isRequired,
+  })
+}
 export default Card;

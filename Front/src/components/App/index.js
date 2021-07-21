@@ -9,6 +9,9 @@ import Footer from 'src/containers/Footer';
 import Main from '../Main';
 import ConnexionRegistration from '../ConnexionRegistration';
 
+import NotFoundPage from '../NotFoundPage';
+
+
 import './styles.scss';
 
 // console.log(localStorage.getItem('token'));
@@ -16,23 +19,27 @@ import './styles.scss';
 // == Composant
 const App = () => (
   <Router>
-    <Switch>
-      <Route exact path="/connexion">
-        <ConnexionRegistration />
-      </Route>
-      <div className="app">
-        <Header />
+    <div className="app">
+      <Switch>
+        <Route exact path="/">
+          <Header />
+          <Search />
+          <Main />
+          <Footer />
+        </Route>
 
-        <Search />
+        <Route exact path="/connexion">
+          <ConnexionRegistration />
+        </Route>
 
-        <Main />
-
-        <Footer />
-
-      </div>
-    </Switch>
+        <Route path="*">
+          <NotFoundPage />
+        </Route>
+      </Switch>
+    </div>
   </Router>
 );
 
 // == Export
 export default App;
+
