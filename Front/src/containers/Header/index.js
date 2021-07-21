@@ -5,13 +5,14 @@ import dataTags from '/src/data/data_tag.js';
 
 const mapDispatchToProps = (state) => ({
 
-  // loggedName: state.payload.firstName,
-
   onButtonClickMenu: () => {
     console.log('open menu');
   },
   onButtonClickLogin: () => {
     console.log('open login and suscribe');
+  },
+  onButtonClickLogout: () => {
+    console.log('logout');
   },
 });
 

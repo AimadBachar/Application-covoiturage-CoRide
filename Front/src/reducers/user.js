@@ -43,6 +43,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         logged: false,
+       // ...action.localeStorage.clear();
       };
     case USER_INPUT_CHANGE:
       return {

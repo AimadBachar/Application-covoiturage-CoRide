@@ -54,7 +54,7 @@ const middleware = (store) => (next) => (action) => {
           // const tokens = await connect(user, password);
           // local storage mis en place
           // localStorage.setItem('tokens', res.data.firstName);
-          localStorage.clear();
+           localStorage.clear();
           localStorage.setItem('tokens', JSON.stringify(res.data));
 
           const actionToSend = userLoginSuccess(res.data);
