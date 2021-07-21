@@ -8,9 +8,13 @@ import Search from 'src/containers/Search';
 import Footer from 'src/containers/Footer';
 import Main from '../Main';
 import ConnexionRegistration from '../ConnexionRegistration';
+
 import NotFoundPage from '../NotFoundPage';
 
+
 import './styles.scss';
+
+// console.log(localStorage.getItem('token'));
 
 // == Composant
 const App = () => (
@@ -39,19 +43,3 @@ const App = () => (
 // == Export
 export default App;
 
-/* LoginForm
-
- email="me@mail.com"
-      password="123"
-      isLogged={false}
-      loggedMessage="Welcome user"
-      changeField= {(value, name) => {
-        console.log('change in ' + name + ' :', value);
-      }}
-      handleLogin={() => {
-        console.log('login')
-      }}
-      handleLogout={() => {
-        console.log('logout')
-      }}
-*/
