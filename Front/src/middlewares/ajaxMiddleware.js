@@ -9,7 +9,7 @@ export default (store) => (next) => (action) => {
     switch(action.type) {     
       case USER_LOGIN:
         axios({
-          method: 'post',
+          method: 'POST',
           url: 'http://localhost:3001/login',
           data: store.getState().user.inputs,
         })

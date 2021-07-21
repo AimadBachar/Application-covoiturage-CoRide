@@ -4,8 +4,10 @@ import loupe from '/src/assets/images/loupe white 2.png';
 
 
 import './styles.scss';
+import { Redirect } from 'react-router-dom';
 
 const Search = ({
+  cards,
   tags,
   departure,
   arrival,
@@ -15,22 +17,36 @@ const Search = ({
   onSubmitSearch
 }) => {
   const handleSubmit = (evt) => {
-    //evt.preventDefault();
-    console.log('submit', evt.target.value);
+    evt.preventDefault();
+    console.log('submit');
     onSubmitSearch();
   };
   const fieldChange = (evt) => {
     evt.preventDefault();
-    console.log(evt.target.value);
+    //console.log(evt.target.value);
     const value = evt.target.value;
     onInputChange(evt.target.name, value )
-  }
+  } 
+
 
   return (
+
     <div className="search">
+      {
+        cards && (
+           <Redirect from="/" to={{
+            pathname: "/results",
+            cards: cards
+          }}/>
+
+
+        )
+      }
+
+
       <form
-        action="/results"
-        method="POST"
+        //action="/results"
+
         className="search-form"
         onSubmit={handleSubmit}
       >

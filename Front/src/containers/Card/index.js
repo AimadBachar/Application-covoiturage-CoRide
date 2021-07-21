@@ -5,8 +5,7 @@ import Card from 'src/components/Card';
 
 
 const mapStateToProps = (state) => ({
-    cards: state.trajets.cards,
-    searchesValues: state.trajets.inputs
+  cards: state.trajets.cards
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,7 +1,8 @@
 // 2. j'importe les actions
 import {
   SEARCH_INPUT_CHANGE,
-  SEARCH_SUCCESS
+  SEARCH_SUCCESS,
+  SEARCH_SUBMIT_SUCCESS
 } from 'src/actions/trajets';
 
 import dataTags from '/src/data/data_tag.js';
@@ -11,7 +12,7 @@ import dataCards from '/src/data/data_sport.js';
 //puis je modifie le state du container login avec ces fausses datas
   export const initialState = {
     logged: false,
-    cards: dataCards,
+    cards: [],
     tags: dataTags,
      inputs: {
         departure: '',
@@ -35,6 +36,12 @@ import dataCards from '/src/data/data_sport.js';
             [action.name] : action.payload,
           },
         };
+      case SEARCH_SUBMIT_SUCCESS:
+        console.log(action.payload);
+        return {
+          ...state,
+          cards: action.payload
+        }
       default:
         return state;
     }

@@ -21,7 +21,7 @@ const App = () => (
       <Route exact path="/connexion">
         <ConnexionRegistration /> 
       </Route>
-      <Route exact path="/results">
+       <Route exact path="/results">
         <Header />
         <Search />
         <Card />

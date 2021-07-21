@@ -9,18 +9,19 @@ const mapStateToProps = (state) => ({
     departure: state.trajets.inputs.departure,
     arrival: state.trajets.inputs.arrival,
     sport: state.trajets.inputs.sport,
-    date: state.trajets.inputs.date
+    date: state.trajets.inputs.date,
+    cards: state.trajets.cards
 });
 
 const mapDispatchToProps = (dispatch) => ({  
     onInputChange: (name, value) => {
-      console.log('ton lieu de pratique est', name , value);
+      //console.log('ton lieu de pratique est', name , value);
       const action = searchInputChange(value);
       action.name = name;
       dispatch(action)
     },
     onSubmitSearch: (value) => {
-      console.log('submit');
+      //console.log('submit');
       const action = searchSubmit();
       dispatch(action)
     }
