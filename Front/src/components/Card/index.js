@@ -11,7 +11,7 @@ const Card = ({
   onButtonClickValidation,
 }) => (
   <div>
-    {console.log("compo cars", cards)}
+    {console.log("compo cards", cards)}
     {cards.map((card) => (
       <div className="card" key={card.travel_id}>
         <div className="card-top">

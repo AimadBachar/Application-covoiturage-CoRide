@@ -27,20 +27,22 @@ const Search = ({
     const value = evt.target.value;
     onInputChange(evt.target.name, value )
   } 
-
+  {console.log(cards)}
+  const cardsOk = () => {
+    if (cards.length > 0) {
+      return (
+        <Redirect to={{
+          pathname: "/results",
+        }}/>
+      )
+    }
+  }
 
   return (
-
+    
     <div className="search">
       {
-        cards && (
-           <Redirect from="/" to={{
-            pathname: "/results",
-            cards: cards
-          }}/>
-
-
-        )
+        cardsOk()    
       }
 
 
