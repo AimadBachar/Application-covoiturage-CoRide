@@ -1,4 +1,4 @@
-// création des actions 
+// création des actions
 // ne pas oublier l'importation dans le reducer user.js
 export const USER_LOGIN = 'USER_LOGIN';
 export const USER_LOGOUT = 'USER_LOGOUT';
