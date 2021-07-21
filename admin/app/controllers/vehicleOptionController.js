@@ -36,11 +36,14 @@ const vehicleOptionController = {
             const {
                 id
             } = req.query;
+
             const body = {
                 id: parseInt(id,10)
             };
 
-            const results = await fetch("http://18.235.248.88:3000/api/v1/vehicle-options", {
+            console.log(body)
+
+            const request = await fetch("http://18.235.248.88:3000/api/v1/vehicle-options", {
                 method: "DELETE",
                 headers: {
                     "Content-Type":"application/json",
@@ -49,7 +52,7 @@ const vehicleOptionController = {
                 body: JSON.stringify(body)
             });
 
-            const result = await results.json();
+            console.log(request)
 
             res.redirect("/coride/admin/vehicle-options");
         } catch (err) {
