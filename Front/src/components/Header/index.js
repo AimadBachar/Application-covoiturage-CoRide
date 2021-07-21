@@ -37,10 +37,6 @@ const Header = () => {
       );
     }
 
-    // else if (onClick() {
-    //   logOut()
-    // };
-
     return (
       <Link
         to="/connexion"
