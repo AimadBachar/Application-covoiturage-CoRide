@@ -6,6 +6,8 @@ CREATE VIEW travels_view AS
 SELECT
     t.id AS travel_id,
     t.departure_city,
+    t.latitude_departure,
+    t.longitude_departure,
     t.destination_city,
     t.places_available,
     t.description,
@@ -28,7 +30,8 @@ SELECT
     last_name,
     picture_link,
     pseudo,
-    birthdate
+    birthdate,
+    created_at
 FROM "user";
 
 COMMIT;

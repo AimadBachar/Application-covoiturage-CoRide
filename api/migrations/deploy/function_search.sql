@@ -2,9 +2,9 @@
 
 BEGIN;
 
-CREATE FUNCTION search_travels(long double precision, lat double precision,ray int) RETURNS SETOF travel AS $$
+CREATE FUNCTION search_travels(long double precision, lat double precision,ray int) RETURNS SETOF travels_view AS $$
 
-SELECT * FROM travel
+SELECT * FROM travels_view
 
 --équation permettant de définir les points dans un rayon défini...
 WHERE ((
