@@ -1,4 +1,5 @@
 const fetch = require("node-fetch");
+const { add } = require("./activityController");
 
 const vehicleOptionController = {
 
@@ -43,7 +44,7 @@ const vehicleOptionController = {
 
             console.log(body)
 
-            const request = await fetch("http://18.235.248.88:3000/api/v1/vehicle-options", {
+            await fetch("http://18.235.248.88:3000/api/v1/vehicle-options", {
                 method: "DELETE",
                 headers: {
                     "Content-Type":"application/json",
@@ -52,12 +53,14 @@ const vehicleOptionController = {
                 body: JSON.stringify(body)
             });
 
-            console.log(request)
-
             res.redirect("/coride/admin/vehicle-options");
         } catch (err) {
             next(err);
         }
+    },
+
+    async add(){
+        
     }
 
 }

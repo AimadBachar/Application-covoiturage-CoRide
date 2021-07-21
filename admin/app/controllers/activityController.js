@@ -51,6 +51,34 @@ const activityController = {
         } catch (err) {
             next(err);
         }
+    },
+
+    async add(req,res,next){
+        try {
+
+            if(Object.keys(req.body).length < 1){
+                return res.render("addActivity");
+            }
+
+            const {label,color} = req.body;
+            const body = {
+                label,
+                color
+            };
+
+            await fetch("http://18.235.248.88:3000/api/v1/activities", {
+                method: "POST",
+                headers: {
+                    "Content-Type":"application/json",
+                    "Authorization": `Bearer ${req.session.user.token}`
+                },
+                body: JSON.stringify(body)
+            });
+
+            res.redirect("/coride/admin/activities");
+        } catch (err) {
+            next(err);
+        }
     }
 }
 
