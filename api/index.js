@@ -44,9 +44,6 @@ app.use(cors());
 app.use(urlencoded({extended:true}));
 app.use(express.json());
 
-//middleware pour fournir les photos de profiles
-app.use(express.static("app/pictures"));
-
 app.post("/login",adminController);
 
 app.use("/api/v1",router);

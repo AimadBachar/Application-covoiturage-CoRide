@@ -81,6 +81,7 @@ const vehicleOptionController = {
         try{
             const {id} = req.body;
             const vehicleOption = await VehicleOption.findOne(id);
+
             if(vehicleOption){
                 await vehicleOption.delete();
                 res.status(204).end();
