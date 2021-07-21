@@ -29,7 +29,15 @@ class coreModel {
                 sqlQuery.values = [];
             
                 Object.keys(obj.where).forEach((key,index)=>{
-                    search += `${key} = $${count}`;
+
+                    if(key == "departure_timestamp"){
+                        search += `date(${key}) = $${count}`;
+
+                    }else if(isNaN(parseInt(obj.where[key],10))){
+                        search += `${key} ILIKE $${count}`;
+                    }else{
+                      search += `${key} = $${count}`;  
+                    }                   
                     sqlQuery.values.push(obj.where[key])
                     if(index < Object.keys(obj.where).length-1){
                         search += " AND ";
@@ -38,10 +46,16 @@ class coreModel {
                 })
 
                 sqlQuery.text = `SELECT * FROM "${this.tableName}" WHERE ${search};`;
+
             }
 
             const {rows} = await pool.query(sqlQuery);
-            return rows ? rows.map(row=>new this(row)) : new Error("internal error");
+
+            if(rows[0]){
+               return rows.map(row=>new this(row));
+            }else{
+               return new Error("not found"); 
+            } 
 
         }catch(err){
             throw err.message;
@@ -86,10 +100,10 @@ class coreModel {
 
             //Si un id existe dans l'instance alors on update
             if(this.id){
-                sqlQuery.text = `SELECT * FROM update_${this.constructor.name.toLowerCase()}($1);`;
+                sqlQuery.text = `SELECT * FROM update_${this.constructor.tableName}($1);`;
             //sinon on insert...
             }else{
-                sqlQuery.text = `SELECT * FROM insert_${this.constructor.name.toLowerCase()}($1);`;
+                sqlQuery.text = `SELECT * FROM insert_${this.constructor.tableName}($1);`;
             }
 
             const {rows} = await pool.query(sqlQuery);
@@ -114,7 +128,7 @@ class coreModel {
         try{
 
             const sqlQuery = {
-                text: `DELETE FROM "${this.constructor.name.toLowerCase()}" WHERE id = $1;`,
+                text: `DELETE FROM "${this.constructor.tableName}" WHERE id = $1;`,
                 values:[parseInt(this.id,10)]
             };
 

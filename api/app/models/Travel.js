@@ -27,15 +27,41 @@ class Travel extends coreModel {
      * @param {number} longitude 
      * @param {number} latitude 
      * @param {integer} rayon 
+     * @param {Object} obj object contains keys and values for condition
      * @returns {array} return an array of results
      */
-    static async findByCoords(longitude,latitude,rayon){
+    static async findByCoords(longitude,latitude,rayon=10,obj=null){
         try{
 
             const sqlQuery = {
                 text: `SELECT * FROM search_travels($1,$2,$3);`,
                 values: [parseFloat(longitude),parseFloat(latitude),parseInt(rayon,10)]
             };
+
+            if(obj?.where && Object.keys(obj.where).length>0){
+
+                let search = ``;
+                let count = 4;
+            
+                Object.keys(obj.where).forEach((key,index)=>{
+
+                    if(key == "departure_timestamp"){
+                        search += `date(${key}) = $${count}`;
+
+                    }else if(isNaN(parseInt(obj.where[key],10))){
+                        search += `${key} ILIKE $${count}`;
+                    }else{
+                      search += `${key} = $${count}`;  
+                    }                   
+                    sqlQuery.values.push(obj.where[key])
+                    if(index < Object.keys(obj.where).length-1){
+                        search += " AND ";
+                        count++;
+                    }
+                })
+
+                sqlQuery.text = `SELECT * FROM search_travels($1,$2,$3) WHERE ${search};`;
+            }
 
             const {rows} = await pool.query(sqlQuery);
         

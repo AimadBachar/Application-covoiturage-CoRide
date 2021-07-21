@@ -10,6 +10,7 @@ const activityController = {
      */
     async getAll(req,res,next){
 
+        try{
         const results = await fetch("http://18.235.248.88:3000/api/v1/activities",{
             method: "GET",
             headers: {
@@ -20,6 +21,9 @@ const activityController = {
         const activities = await results.json();
 
         res.render("activities",{activities});
+    }catch(err){
+        next(err);
+    }
     },
 
     /**

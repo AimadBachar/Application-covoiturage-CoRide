@@ -1,17 +1,40 @@
 const {Router} = require("express");
 
-
 const uploadPicture = require("./services/uploadPicture");
 const userController = require("./controllers/userController");
 const activityController = require("./controllers/activityController");
 const travelController = require("./controllers/travelController");
 const vehicleController = require("./controllers/vehicleController");
 const vehicleOptionController = require("./controllers/vehicleOptionController");
+
 const joiValidator = require("./middlewares/joiValidator");
+const verifyToken = require("./middlewares/verifyToken");
 const schemas = require("./schemas");
-const VehicleOption = require("./models/VehicleOption");
+const redis = require("./services/redisService");
+const searchCities = require("./services/searchCities");
 
 const router = Router();
+
+////////////Fetch api open Cage Data for find city////////////
+/**
+ * @typedef coords 
+ * @property {number} lat the name of city
+ * @property {number} lng the postcode of city
+ */
+/**
+ * @typedef City 
+ * @property {string} city the name of city
+ * @property {number} postcode the postcode of city
+ * @property {coords.model} coords an object with lat and lng
+ */
+/**
+ * @route GET /cities
+ * @group Fetch API open Cage Data
+ * @param {string} city.query.required the name of city search
+ * @returns {Array<City>} 200 - city details (name, postcode and coords)
+ */
+router.get("/cities",redis.cache,searchCities);
+//////////////////////////////////////////////////////////////
 
 ////////////Model User////////////////////////////////////////
 /**
@@ -31,6 +54,16 @@ const router = Router();
  * @property {string} password.required the hash user password
  */
 /**
+ * @typedef loginUser 
+ * @property {string} user.required the user name
+ * @property {string} password.required the password user
+ */
+/**
+ * @typedef loginResponse 
+ * @property {string} token.required the JWT
+ * @property {number} userId.required the user ID
+ */
+/**
  * @route POST /users
  * @group Users - Operations about user
  * @security JWT
@@ -38,6 +71,16 @@ const router = Router();
  * @consumes multipart/form-data
  * @produces application/json
  * @returns {User.model} 200 - user details
+ * @returns {Error} default - Unexpected error
+ */
+/**
+ * @route POST /user/login
+ * @group Users - Operations about user
+ * @param {loginUser.model} loginUser.body.required the new user
+ * @consumes application/json
+ * @produces application/json
+ * @returns {loginResponse.model} 200 - JWT and user id
+ * @returns {Error} 403 - unauthorized
  * @returns {Error} default - Unexpected error
  */
 /**
@@ -49,10 +92,11 @@ const router = Router();
  * @returns {Error} 400 - bad request
  * @returns {Error} default - Unexpected error
  */
+router.post("/user/login",userController.login);
 router.route("/users")
-    .get(userController.getAll)
-    .post(uploadPicture,joiValidator(schemas.user),userController.insertOrUpdate)
-    .delete(userController.delete);
+    .get(verifyToken,redis.cache,userController.getAll)
+    .post(verifyToken,redis.flush,uploadPicture,joiValidator(schemas.user),userController.insertOrUpdate)
+    .delete(verifyToken,redis.flush,userController.delete);
 
 /**
  * @route GET /user/{id}
@@ -73,14 +117,13 @@ router.route("/users")
  * @returns {Error} default - Unexpected error
  */
 router.route("/user/:id(\\d+)")
-    .get(userController.getOne)
-    .patch(joiValidator(schemas.user),userController.insertOrUpdate);
+    .get(verifyToken,redis.cache,userController.getOne)
+    .patch(verifyToken,redis.flush,joiValidator(schemas.user),userController.insertOrUpdate);
 
 ////////////Model Activity////////////////////////////////////
 /**
  * @route GET /activities
  * @group Activities - Operations about activity
- * @security JWT
  * @returns {Array<Activity>} 200 - activities details
  * @returns {Error} default - Unexpected error
  */
@@ -109,14 +152,13 @@ router.route("/user/:id(\\d+)")
  * @returns {Error} default - Unexpected error
  */
 router.route("/activities")
-    .get(activityController.getAll)
-    .post(joiValidator(schemas.activity),activityController.insertOrUpdate)
-    .delete(activityController.delete);
+    .get(redis.cache,activityController.getAll)
+    .post(verifyToken,redis.flush,joiValidator(schemas.activity),activityController.insertOrUpdate)
+    .delete(verifyToken,redis.flush,activityController.delete);
 
 /**
  * @route GET /activity/{id}
  * @group Activities - Operations about activity
- * @security JWT
  * @param {number} id.path.required the activity id
  * @returns {Activity.model} 200 - user details
  * @returns {Error} default - Unexpected error
@@ -132,19 +174,18 @@ router.route("/activities")
  * @returns {Error} default - Unexpected error
  */
 router.route("/activity/:id(\\d+)")
-    .get(activityController.getOne)
-    .patch(joiValidator(schemas.activity),activityController.insertOrUpdate);
+    .get(redis.cache,activityController.getOne)
+    .patch(verifyToken,redis.flush,joiValidator(schemas.activity),activityController.insertOrUpdate);
 
 //////////Model Travel///////////////////////////////////////
 /**
  * @route GET /travels
  * @group Travels - Operations about travel
- * @security JWT
  * @returns {Array<Travel>} 200 - travels details
  * @returns {Error} default - Unexpected error
  */
 router.route("/travels")
-    .get(travelController.getAll);
+    .get(redis.cache,travelController.getAll);
 
 /**
  * @route GET /travel/{id}
@@ -155,24 +196,28 @@ router.route("/travels")
  * @returns {Error} default - Unexpected error
  */
 router.route("/travel/:id(\\d+)")
-    .get(travelController.getOne);
+    .get(verifyToken,redis.cache,travelController.getOne);
 
 /**
  * @route GET /travels/search
  * @group Travels - Operations about travel
- * @security JWT
- * @param {number} long.query.required the longitude departure
- * @param {number} lat.query.required the lalitude departure
+ * @param {number} long.query the longitude departure
+ * @param {number} lat.query the lalitude departure
+ * @param {number} ray.query the rayon for search coords
+ * @param {string} departure_city.query the name of departure city
+ * @param {string} destination_city the name of destination city
+ * @param {number} activity_id.query the activity id
+ * @param {number} user_id.query the user id
+ * @param {date} departure_timestamp.query the date of departure format YYYY-MM-DD
  * @returns {Array<Travel>} 200 - travels details
  * @returns {Error} default - Unexpected error
  */
-router.get("/travels/search",travelController.getAllByCoords);
+router.get("/travels/search",travelController.getAllByFilters);
 
 /////////Model Vehicle Option////////////////////////////////
 /**
  * @route GET /vehicle-options
  * @group Vehicle Option - Operations about vehicle option
- * @security JWT
  * @returns {Array<VehicleOption>} 200 - travels details
  * @returns {Error} default - Unexpected error
  */
@@ -198,20 +243,19 @@ router.get("/travels/search",travelController.getAllByCoords);
  * @returns {Error} default - Unexpected error
  */    
 router.route("/vehicle-options")
-    .get(vehicleOptionController.getAll)
-    .post(vehicleOptionController.insertOrUpdate)
-    .delete(vehicleOptionController.delete);
+    .get(redis.cache,vehicleOptionController.getAll)
+    .post(verifyToken,redis.flush,vehicleOptionController.insertOrUpdate)
+    .delete(verifyToken,redis.flush,vehicleOptionController.delete);
 
 /**
  * @route GET /vehicle-option/{id}
  * @group Vehicle Option - Operations about vehicle option
- * @security JWT
  * @param {number} id.path.required the vehicle option id
  * @returns {VehicleOption.model} 200 - travel details
  * @returns {Error} default - Unexpected error
  */  
 router.route("/vehicle-option/:id(\\d+)")
-    .get(vehicleOptionController.getOne);
+    .get(verifyToken,redis.cache,vehicleOptionController.getOne);
     
 ////////CRUD un travel//////////////////////////////////////
 /**
@@ -268,10 +312,10 @@ router.route("/vehicle-option/:id(\\d+)")
  * @returns {Error} default - Unexpected error
  */
  router.route("/travels/user/:id(\\d+)")
-    .get(travelController.getAll)
-    .delete(travelController.delete)
-    .post(joiValidator(schemas.travel),travelController.insertOrUpdate);
-router.patch("/travel/:travelId(\\d+)/user/:userId(\\d+)",joiValidator(schemas.travel),travelController.insertOrUpdate);
+    .get(verifyToken,redis.cache,travelController.getAll)
+    .delete(verifyToken,redis.flush,travelController.delete)
+    .post(verifyToken,joiValidator(schemas.travel),redis.flush,travelController.insertOrUpdate);
+router.patch("/travel/:travelId(\\d+)/user/:userId(\\d+)",verifyToken,joiValidator(schemas.travel),redis.flush,travelController.insertOrUpdate);
 
 ////////CRUD vehicules par user///////////////////////////////////////
 /**
@@ -309,9 +353,9 @@ router.patch("/travel/:travelId(\\d+)/user/:userId(\\d+)",joiValidator(schemas.t
  * @returns {Error} default - Unexpected error
  */
 router.route("/user/:id(\\d+)/vehicles")
-    .get(vehicleController.getAll)
-    .post(vehicleController.insertOrUpdate)
-    .delete(vehicleController.delete);
+    .get(verifyToken,redis.cache,vehicleController.getAll)
+    .post(verifyToken,redis.flush,vehicleController.insertOrUpdate)
+    .delete(verifyToken,redis.flush,vehicleController.delete);
 /**
  * @route PATCH /user/{userId}/vehicle/{vehicleId}
  * @group Users - Operations about user
@@ -324,7 +368,7 @@ router.route("/user/:id(\\d+)/vehicles")
  * @returns {Vehicle.model} 200 - vehicle details
  * @returns {Error} default - Unexpected error
  */
-router.patch("/user/:userId(\\d+)/vehicle/:vehicleId(\\d+)",joiValidator(schemas.vehicle),vehicleController.insertOrUpdate);
+router.patch("/user/:userId(\\d+)/vehicle/:vehicleId(\\d+)",verifyToken,joiValidator(schemas.vehicle),redis.flush,vehicleController.insertOrUpdate);
 
 //////GET POST et DELETE activité d'un user///////////////////////////////////////
 /**
@@ -357,9 +401,9 @@ router.patch("/user/:userId(\\d+)/vehicle/:vehicleId(\\d+)",joiValidator(schemas
  * @returns {Error} default - Unexpected error
  */
 router.route("/user/:id(\\d+)/activities")
-    .get(userController.showActivities)
-    .post(userController.addUserActivity)
-    .delete(userController.deleteUserActivity);
+    .get(verifyToken,redis.cache,userController.showActivities)
+    .post(verifyToken,redis.flush,userController.addUserActivity)
+    .delete(verifyToken,redis.flush,userController.deleteUserActivity);
 
 //////GET POST et DELETE option véhicule d'un user////////////////////////////////
 /**
@@ -391,9 +435,9 @@ router.route("/user/:id(\\d+)/activities")
  * @returns {Error} default - Unexpected error
  */
 router.route("/user/:id(\\d+)/vehicle-options")
-    .get(userController.showVehicleOptions)
-    .post(userController.addUserOptionVehicle)
-    .delete(userController.deleteUserOptionVehicle);
+    .get(verifyToken,redis.cache,userController.showVehicleOptions)
+    .post(verifyToken,redis.flush,userController.addUserOptionVehicle)
+    .delete(verifyToken,redis.flush,userController.deleteUserOptionVehicle);
 
 
 /**
@@ -417,10 +461,10 @@ router.route("/user/:id(\\d+)/vehicle-options")
  * @returns {Error} default - Unexpected error
  */
 router.route("/user/:id(\\d+)/travels")
-    .post(userController.addUserTravel)
-    .delete(userController.deleteUserTravel);
+    .post(verifyToken,redis.flush,userController.addUserTravel)
+    .delete(verifyToken,redis.flush,userController.deleteUserTravel);
 
 //middleware gestion erreur
-router.use((err,req,res,next)=>res.status(404).json({"error":err}))
+router.use((err,_,res,__)=>res.status(404).json({"error":err}))
 
 module.exports = router;

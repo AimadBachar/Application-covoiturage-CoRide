@@ -1,13 +1,24 @@
 const multer = require("multer");
 const path = require("path");
+const aws = require("aws-sdk");
+const multerS3 = require("multer-s3");
+
+
+aws.config.loadFromPath(__dirname+"/config.json");
+
+const s3 = new aws.S3();
 
 //on défini le lieu de stockage ainsi que le nom des fichiers importés
-const storage = multer.diskStorage({
-    destination: function(req,file,callback){
-        callback(null,__dirname+"/../pictures/");
+const storage = multerS3({
+    acl:"public-read",
+    s3: s3,
+    bucket: process.env.S3_BUCKET,
+    metadata: function(req,file,callback){
+        callback(null,{fieldname:file.fieldname});
     },
-    filename: function(req,file,callback){
-        callback(null,`${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
+    key: function(req,file,callback){
+        console.log(file)
+        callback(null, `${file.fieldname}-${Date.now().toString()}${path.extname(file.originalname)}`);
     }
 });
 
