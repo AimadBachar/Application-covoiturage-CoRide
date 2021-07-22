@@ -18,7 +18,7 @@ const Nav = (props) => (
           <li><a href="#">Info</a></li>
           <li><a href="#">Contact</a></li>
           <li><a href="/connexion">Connexion</a></li>
-          <li><a href="/signin">Inscription</a></li>
+          <li><a href="/signin">S'inscrire</a></li>
         </ul>
       </div>
     </nav>

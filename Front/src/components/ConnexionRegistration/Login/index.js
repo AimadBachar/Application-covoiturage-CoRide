@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import Field from 'src/components/ConnexionRegistration/Login/Field';
+import { Link } from 'react-router-dom';
 
 import {
   BrowserRouter as Router, Route, Redirect, Switch,
@@ -91,9 +92,20 @@ const Login = ({
             type="submit"
             className="login-form-submit"
           >
-            Ok
+            <p className="login-form-submit_text">
+               Valider
+            </p>
+            <p className="signin">
+            Nouveau sur Co'Ride ?
+              <Link 
+                className="link" 
+                to="/inscription"
+              >
+                <p className="link-text">S'inscrire</p>
+              </Link>
+            </p>
           </button>
-
+       
         </form>
 
       )}

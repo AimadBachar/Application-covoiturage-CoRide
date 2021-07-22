@@ -8,6 +8,8 @@ import Search from 'src/containers/Search';
 import Footer from 'src/containers/Footer';
 import Main from '../Main';
 import ConnexionRegistration from '../ConnexionRegistration';
+import Signin from 'src/components/ConnexionRegistration/Signin';
+
 
 import NotFoundPage from '../NotFoundPage';
 
@@ -30,6 +32,10 @@ const App = () => (
 
         <Route exact path="/connexion">
           <ConnexionRegistration />
+        </Route>
+        
+        <Route exact path="/inscription">
+          <Signin />
         </Route>
 
         <Route path="*">
