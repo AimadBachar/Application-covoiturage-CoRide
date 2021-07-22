@@ -9,10 +9,10 @@ import { Redirect } from 'react-router-dom';
 const Search = ({
   cards,
   tags,
-  departure,
-  arrival,
-  sport,
-  date,
+  departure_city,
+  destination_city,
+  activity_id,
+  departure_timestamp,
   onInputChange,
   onSubmitSearch
 }) => {
@@ -56,29 +56,29 @@ const Search = ({
         <input
           className="search-form_input depart"
           type="text"
-          name="departure"
+          name="departure_city"
           placeholder="Départ"
-          value={departure}
+          value={departure_city}
           onChange={fieldChange}
         />
 
         <input
           className="search-form_input destination"
           type="text"
-          name="arrival"
+          name="destination_city"
           placeholder="Destination"
-          value={arrival}
+          value={destination_city}
           onChange={fieldChange}
         />
         <div className="search-form_sport__date">
           <select
             className="search-form_select"
-            name="sport"
+            name="activity_id"
+            value={activity_id}
             onChange={fieldChange}
           >
             <option
               className="search-form_select_title"
-              value={sport}
             >Quel sport ?
             </option>
             {tags.map((tag) => (
@@ -94,8 +94,8 @@ const Search = ({
           <input
             className="search-form_date"
             type="date"
-            name="date"
-            value={date}
+            name="departure_timestamp"
+            value={departure_timestamp}
             placeholder="aujourd'hui"
             onChange={fieldChange}
           />

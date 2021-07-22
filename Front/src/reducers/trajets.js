@@ -2,7 +2,9 @@
 import {
   SEARCH_INPUT_CHANGE,
   SEARCH_SUCCESS,
-  SEARCH_SUBMIT_SUCCESS
+  SEARCH_SUBMIT_SUCCESS,
+  FETCH_TRAVELS,
+  FETCH_TRAVELS_SUCCESS
 } from 'src/actions/trajets';
 
 import dataTags from '/src/data/data_tag.js';
@@ -15,10 +17,10 @@ import dataCards from '/src/data/data_sport.js';
     cards: [],
     tags: dataTags,
      inputs: {
-        departure: '',
-        arrival: '',
-        sport: '',
-        date: '',
+        departure_city: '',
+        destination_city: '',
+        activity_id: '',
+        departure_timestamp: '',
      }
   };
   

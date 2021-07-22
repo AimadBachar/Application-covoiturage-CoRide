@@ -6,10 +6,10 @@ import { searchSubmit, searchInputChange } from 'src/actions/trajets';
 
 const mapStateToProps = (state) => ({
     tags: state.trajets.tags,
-    departure: state.trajets.inputs.departure,
-    arrival: state.trajets.inputs.arrival,
-    sport: state.trajets.inputs.sport,
-    date: state.trajets.inputs.date,
+    departure_city: state.trajets.inputs.departure,
+    destination_city: state.trajets.inputs.arrival,
+    activity_id: state.trajets.inputs.sport,
+    departure_timestamp: state.trajets.inputs.date,
     cards: state.trajets.cards
 });
 
