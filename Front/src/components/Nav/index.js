@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
 // import 'semantic-ui-css/semantic.min.css';
@@ -13,8 +14,14 @@ const Nav = (props) => (
         <span />
         <span />
         <ul id="menu">
-          <li><a href="/">Home</a></li>
-          <li><a href="#">About</a></li>
+
+          <Link to="/" exact>
+            <li>Accueil</li>
+          </Link>
+
+          <Link to="/profil" exact>
+            <li>Profil</li>
+          </Link>
           <li><a href="#">Info</a></li>
           <li><a href="#">Contact</a></li>
           <li><a href="/connexion">Connexion</a></li>

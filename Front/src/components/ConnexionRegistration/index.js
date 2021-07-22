@@ -4,13 +4,17 @@ import React from 'react';
 // iMPORT
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Login from 'src/containers/Login';
+import photoKite from 'src/assets/images/kite.jpg';
+import Signin from './Signin';
+
 //import Signin from './Signin';
 
-import photoKite from 'src/assets/images/kite.jpg';
+
 import './styles.scss';
 import Signin from './Signin';
 
 const ConnexionRegistration = () => (
+
 <div>
 
   <div className="connexionRegistration">
@@ -34,6 +38,7 @@ const ConnexionRegistration = () => (
     />
    
    </div>
+
   </div>
 );
 

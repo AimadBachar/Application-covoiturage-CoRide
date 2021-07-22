@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
+
 import PropTypes from 'prop-types';
 
 import Field from 'src/components/ConnexionRegistration/Login/Field';
@@ -11,6 +12,8 @@ import {
 import 'src/components/ConnexionRegistration/Login/styles.scss';
 
 const Login = ({
+
+  email,
   user,
   password,
   changeField,
@@ -24,6 +27,24 @@ const Login = ({
     evt.preventDefault();
     handleLogin();
   };
+
+
+  return (
+    <div className="login-form">
+
+      {isLogged && (
+        <div className="login-logged">
+          <p className="login-message">
+            {loggedMessage}
+          </p>
+          <button
+            type="button"
+            className="login-button"
+            onClick={handleLogout}
+          >
+            Déconnexion
+          </button>
+        </div>
 
   // useEffect(() => {
   //   const timeout = setTimeout(() => {
@@ -61,9 +82,11 @@ const Login = ({
         </button>
       </div>
 
+
       )}
 
       {!isLogged && (
+
         <form
           autoComplete="off"
           className="login-form-element"
@@ -132,3 +155,5 @@ Login.defaultProps = {
 
 // == Export
 export default Login;
+
+// http://18.235.248.88:3000/api-docs

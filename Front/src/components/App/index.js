@@ -13,7 +13,11 @@ import Signin from 'src/components/ConnexionRegistration/Signin';
 
 import Card from 'src/containers/Card';
 import NotFoundPage from '../NotFoundPage';
+
+import ProfilUser from '../ProfilUser';
+
 //import Loading from '../Loading';
+
 
 
 //Fake Data
@@ -62,9 +66,17 @@ const App = ({fetchTravels}) => {
           <Main />
 
 
+        <Route exact path="/profil">
+          <ProfilUser />
+        </Route>
+
+        <Route path="*">
+
+
           <Footer />
         </div>
     <Route path="*">
+
           <NotFoundPage />
     </Route>
       </Switch>
