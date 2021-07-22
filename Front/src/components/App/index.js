@@ -1,5 +1,5 @@
 // Import npm
-import React, { useEffect } from 'react';
+import React from 'react';
 
 // == Import
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -11,10 +11,9 @@ import Card from 'src/containers/Card';
 import Main from '../Main';
 import ConnexionRegistration from '../ConnexionRegistration';
 import Nav from '../Nav';
-
 import NotFoundPage from '../NotFoundPage';
-
 import ProfilUser from '../ProfilUser';
+// import Signin from '../ConnexionRegistration/Signin';
 
 // import Loading from '../Loading';
 
@@ -30,44 +29,39 @@ const App = () => (
   // }
 
   <Router>
-    <Switch>
+    <div className="app">
+      <Switch>
 
-      <Route exact path="/results">
-        <Card />
-      </Route>
+        <Route exact path="/results">
+          <Card />
+        </Route>
 
-      <Route exact path="/connexion">
-        <ConnexionRegistration />
-      </Route>
+        <Route exact path="/connexion">
+          <ConnexionRegistration />
+        </Route>
 
-      <Route exact path="/inscription">
-        <Signin />
-      </Route>
+        <Route exact path="/inscription">
+          <Signin />
+        </Route>
 
-      <Route exact path="/profil">
-        <ProfilUser />
-      </Route>
+        <Route exact path="/profil">
+          <ProfilUser />
+        </Route>
 
-      <div className="app">
-
-        <Route path="/">
+        <Route exact path="/">
           <Header />
-
           <Nav />
-
           <Search />
-
           <Main />
-
           <Footer />
         </Route>
-      </div>
 
-      <Route path="*">
-        <NotFoundPage />
-      </Route>
+        <Route path="*">
+          <NotFoundPage />
+        </Route>
 
-    </Switch>
+      </Switch>
+    </div>
   </Router>
 );
 
