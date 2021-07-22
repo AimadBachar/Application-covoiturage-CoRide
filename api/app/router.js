@@ -16,6 +16,7 @@ const verifyToken = require("./middlewares/verifyToken");
 const schemas = require("./schemas");
 const redis = require("./services/redisService");
 const searchCities = require("./services/searchCities");
+const hashPassword = require("./services/hashPassword");
 /////////////////////////////////////////////////////////////////////////////////
 
 
@@ -100,7 +101,7 @@ router.get("/cities",redis.cache,searchCities);
 router.post("/user/login",userController.login);
 router.route("/users")
     .get(verifyToken,redis.cache,userController.getAll)
-    .post(verifyToken,redis.flush,uploadPicture,joiValidator(schemas.user),userController.insertOrUpdate)
+    .post(redis.flush,uploadPicture,joiValidator(schemas.user),hashPassword.hash,userController.insertOrUpdate)
     .delete(verifyToken,redis.flush,userController.delete);
 
 /**
