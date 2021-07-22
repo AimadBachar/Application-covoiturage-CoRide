@@ -1,60 +1,86 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import Field from 'src/components/ConnexionRegistration/Login/Field';
 
+import {
+  BrowserRouter as Router, Route, Redirect, Switch,
+} from 'react-router-dom';
+
 import 'src/components/ConnexionRegistration/Login/styles.scss';
 
 const Login = ({
-    email,
-    password,
-    changeField,
-    handleLogin,
-    handleLogout,
-    isLogged,
-    loggedMessage,
+  user,
+  password,
+  changeField,
+  handleLogin,
+  handleLogout,
+  isLogged,
+  loggedMessage,
+
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleLogin();
   };
 
-    return (
-      <div className="login-form">
+  // useEffect(() => {
+  //   const timeout = setTimeout(() => {
 
-        {isLogged && (
-        <div className="login-logged">
-          <p className="login-message">
-            {loggedMessage}
-          </p>
-          <button
-            type="button"
-            className="login-button"
-            onClick={handleLogout}
-          >
-            Déconnexion
-          </button>
-        </div>
+  //   }, 3000);
+  //  },[]);
+
+  // useEffect = (() => {
+  //   const timout = setTimeout(() => {
+  //     <Redirect from="/connexion" to="/" />;
+  //     console.log('welcome');
+  //   }, 3000);
+
+  //   // return () => clearTimeout(timeOut);
+  // }, []);
+
+  return (
+
+    <div className="login-form">
+      {isLogged && (
+      // useEffect(),
+      <div className="login-logged">
+        <Redirect from="/connexion" to="/" />
+        <p className="login-message">
+
+          {loggedMessage}
+
+        </p>
+        <button
+          type="button"
+          className="login-button"
+          onClick={handleLogout}
+        >
+          Déconnexion
+        </button>
+      </div>
+
       )}
+
       {!isLogged && (
-        
         <form
           autoComplete="off"
           className="login-form-element"
+          // <Redirect from="/connexion" to="/" />
           onSubmit={handleSubmit}
-        >               
-      <h1  className="login-form-title">
-      Connexion
-    </h1>
-          <Field 
-          className="login-form-input"
-            name="email"
+        >
+          <h1 className="login-form-title">
+            Connexion
+          </h1>
+          <Field
+            className="login-form-input"
+            name="user"
             placeholder="Adresse Email"
             onChange={changeField}
-            value={email}
+            value={user}
           />
           <Field
-            className="login-form-input" 
+            className="login-form-input"
             type="password"
             name="password"
             placeholder="mot de passe"
@@ -67,14 +93,17 @@ const Login = ({
           >
             Ok
           </button>
+
         </form>
+
       )}
-      </div>  
-    );
-  };
+
+    </div>
+  );
+};
 
 Login.propTypes = {
-  email: PropTypes.string.isRequired,
+  user: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,

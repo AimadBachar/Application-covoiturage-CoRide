@@ -113,9 +113,11 @@ const Search = ({
 
 
 Search.propTypes = {
+  onSelectChange: PropTypes.func.isRequired,
   onInputChange: PropTypes.func.isRequired,
-  tag: PropTypes.shape({
-    sport: PropTypes.string.isRequired,
+  onDateChange: PropTypes.func.isRequired,
+  tags: PropTypes.shape({
+   sport: PropTypes.string.isRequired,
   })
 }
 
