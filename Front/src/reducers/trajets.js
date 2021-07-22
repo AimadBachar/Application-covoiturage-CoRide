@@ -8,12 +8,12 @@ import {
 } from 'src/actions/trajets';
 
 import dataTags from '/src/data/data_tag.js';
-import dataCards from '/src/data/data_sport.js';
 // 1. après la création du container Login 
 //j'ajoute un reducer-user.js avec de fausses datas
 //puis je modifie le state du container login avec ces fausses datas
   export const initialState = {
     logged: false,
+    loading: false,
     cards: [],
     tags: dataTags,
      inputs: {
@@ -43,7 +43,19 @@ import dataCards from '/src/data/data_sport.js';
         return {
           ...state,
           cards: action.payload
-        }
+        };
+      case FETCH_TRAVELS:       
+        return {
+          ...state,
+          loading: true
+        };
+      case FETCH_TRAVELS_SUCCESS:
+        console.log(action.payload);
+        return {
+          ...state,
+          loading: false,
+          cards: action.payload
+      };  
       default:
         return state;
     }
