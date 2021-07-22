@@ -29,35 +29,47 @@ const userController = {
                 return res.status(400).json("Error Please enter the correct username and password");
             }
 
+            //on chercher le user en bdd
             const login = await User.findAll({
                 where: {
                     email: user
                 }
             });
 
-            if (login[0]) {
+            const userConnected = login[0];
 
-                const matchPassword = await hashPassword.compare(password,login[0].password);
+            //si il existe...
+            if (userConnected) {
 
+                //on vérifie la correspondance entre le hash et le pass en clair
+                const matchPassword = await hashPassword.compare(password,userConnected.password);
+
+                //si le password ne match pas... 401
                 if(!matchPassword){
                     return res.status(401).json("bad password");
                 }
 
+                //on génere le token
                 const token = jwt.sign({
-                        username: login.email,
-                        id: login.id
+                        username: userConnected.email,
+                        id: userConnected.id
                     },
                     process.env.TOKEN_SECRET, {
                         expiresIn: "24 hours"
                     }
                 );
+                
+                //on delete le password de l'objet User
+                delete userConnected.password;
 
-                res.json({token,
-                    userId:login[0].id,
-                    firstName: login[0].first_name,
-                    lastName: login[0].last_name
-                });
+                //on ajoute le token au User
+                userConnected.token = token;
+                
+                //on répond en envoyant le User
+                res.json(userConnected);
+
             } else {
+                //sinon error 401
                 res.status(401).json("Error username or password");
             }
 
@@ -78,7 +90,7 @@ const userController = {
     async getAll(req, res, next) {
 
         try {
-            const results = await User.findAll();
+            const results = await User.findAll({view: true});
             return res.json(results);
         } catch (err) {
             next(err);
@@ -99,7 +111,7 @@ const userController = {
             const {
                 id
             } = req.params;
-            const result = await User.findOne(id);
+            const result = await User.findOne(id,{view:true});
             return res.json(result);
 
         } catch (err) {

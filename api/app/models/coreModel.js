@@ -26,6 +26,9 @@ class coreModel {
                 sqlQuery.text = "SELECT * FROM travels_view;"
             }
         
+            if(obj?.view && this.tableName === "user"){
+                sqlQuery.text = "SELECT * FROM users_view;"
+            }
 
             if(obj?.where){
 
@@ -55,6 +58,10 @@ class coreModel {
                 if(this.tableName === "travel"){
                     sqlQuery.text = `SELECT * FROM travels_view WHERE ${search};`;
                 }
+
+                if(obj?.view && this.tableName === "user"){
+                    sqlQuery.text = `SELECT * FROM users_view WHERE ${search};`
+                }
             }
 
             const {rows} = await pool.query(sqlQuery);
@@ -75,7 +82,7 @@ class coreModel {
      * @param {number} id 
      * @returns {object} return an instance of current model
      */
-    static async findOne(id){
+    static async findOne(id,obj=null){
 
         try{
             const sqlQuery ={
@@ -86,7 +93,8 @@ class coreModel {
             if(this.tableName === "travel"){
                 sqlQuery.text = "SELECT * FROM travels_view WHERE id = $1;"
             }
-            if(this.tableName === "user"){
+
+            if(this.tableName === "user" && obj?.view){
                 sqlQuery.text = "SELECT * FROM users_view WHERE id = $1;"
             }
 
