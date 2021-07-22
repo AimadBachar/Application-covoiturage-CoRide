@@ -66,8 +66,14 @@ router.get("/cities",redis.cache,searchCities);
  */
 /**
  * @typedef loginResponse 
- * @property {string} token.required the JWT
- * @property {number} userId.required the user ID
+  * @property {number} userId.required the user ID
+  * @property {string} first_name the first name
+  * @property {string} last_name the last name
+  * @property {string} birthdate the user birthdate
+  * @property {string} picture_link the link for catch the profil picture
+  * @property {string} created_at date of register
+  * @property {string} updated_at date of update account
+  * @property {string} token the user JWT
  */
 /**
  * @route POST /users
