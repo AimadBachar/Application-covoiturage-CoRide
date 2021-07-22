@@ -34,7 +34,52 @@ const Signin = () => (
             //   onInputChange(placeChose);
             // }}
           />
-        </div>
+            </div>
+        <input
+            className="registration-form_input__name"
+            type="text"
+            name="text"
+            placeholder="Pseudo"
+            // onChange={(evt) => {
+            //   const placeChose = evt.target.value;
+            //   onInputChange(placeChose);
+            // }}
+          />
+        
+        <input
+          className="registration-form_input"
+          type="date"
+          name="date de naissance"
+          placeholder="Email"
+          // onChange={(evt) => {
+          //   const placeChose = evt.target.value;
+          //   onInputChange(placeChose);
+          // }}
+        />
+
+        <input
+          className="registration-form_input"
+          type="text"
+          name="adresse"
+          placeholder="Adresse"
+          // onChange={(evt) => {
+          //   const placeChose = evt.target.value;
+          //   onInputChange(placeChose);
+          // }}
+        />
+        <input
+          className="registration-form_input"
+          type="email"
+          name="email"
+          placeholder="Email"
+          // onChange={(evt) => {
+          //   const placeChose = evt.target.value;
+          //   onInputChange(placeChose);
+          // }}
+        />
+
+       
+
         <input
           className="registration-form_input password"
           type="text"
@@ -56,6 +101,7 @@ const Signin = () => (
           //   onInputChange(placeChose);
           // }}
         />
+        
         <button
           type="submit"
           className="registration-form_submit"

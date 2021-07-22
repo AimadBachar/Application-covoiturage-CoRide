@@ -8,6 +8,9 @@ import Search from 'src/containers/Search';
 import Footer from 'src/containers/Footer';
 import Main from '../Main';
 import ConnexionRegistration from '../ConnexionRegistration';
+
+import Signin from 'src/components/ConnexionRegistration/Signin';
+
 import Card from 'src/containers/Card';
 import NotFoundPage from '../NotFoundPage';
 //import Loading from '../Loading';
@@ -45,9 +48,19 @@ const App = ({fetchTravels}) => {
       
           <Header />
 
+
+        <Route exact path="/connexion">
+          <ConnexionRegistration />
+        </Route>
+        
+        <Route exact path="/inscription">
+          <Signin />
+        </Route>
+
           <Search />
 
           <Main />
+
 
           <Footer />
         </div>
