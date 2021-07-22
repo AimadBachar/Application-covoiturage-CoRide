@@ -1,11 +1,10 @@
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import PropTypes from 'prop-types';
 
 import Field from 'src/components/ConnexionRegistration/Login/Field';
-import { Link } from 'react-router-dom';
-
 import {
+  Link,
   BrowserRouter as Router, Route, Redirect, Switch,
 } from 'react-router-dom';
 
@@ -13,7 +12,6 @@ import 'src/components/ConnexionRegistration/Login/styles.scss';
 
 const Login = ({
 
-  email,
   user,
   password,
   changeField,
@@ -27,24 +25,6 @@ const Login = ({
     evt.preventDefault();
     handleLogin();
   };
-
-
-  return (
-    <div className="login-form">
-
-      {isLogged && (
-        <div className="login-logged">
-          <p className="login-message">
-            {loggedMessage}
-          </p>
-          <button
-            type="button"
-            className="login-button"
-            onClick={handleLogout}
-          >
-            Déconnexion
-          </button>
-        </div>
 
   // useEffect(() => {
   //   const timeout = setTimeout(() => {
@@ -82,7 +62,6 @@ const Login = ({
         </button>
       </div>
 
-
       )}
 
       {!isLogged && (
@@ -116,21 +95,19 @@ const Login = ({
             className="login-form-submit"
           >
             <p className="login-form-submit_text">
-               Valider
+              Valider
             </p>
             <p className="signin">
-            Nouveau sur Co'Ride ?
-              <Link 
-                className="link" 
-                to="/inscription"
-              >
-                <p className="link-text">S'inscrire</p>
-              </Link>
+              Nouveau sur Co'Ride ?
             </p>
+            <Link
+              className="link"
+              to="/inscription"
+            >
+              <p className="link-text">S'inscrire</p>
+            </Link>
           </button>
-       
         </form>
-
       )}
 
     </div>
