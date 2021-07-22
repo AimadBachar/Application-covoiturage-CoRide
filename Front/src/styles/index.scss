@@ -1,7 +1,9 @@
 @use 'reset';
 @use 'vars';
 
-
+//on a le padding + la bordure
+// *{box-sizing: border-box;
+//}
 
   // site responsive
   @media only screen and (max-width: 600px){
@@ -10,9 +12,8 @@
 
   body {
 
-    // max-width: 600px
-    
-    // margin: 0;
+    //site mobile first
+    margin: 0;
 
     display: flex;
     flex-wrap: wrap;
@@ -25,5 +26,31 @@
   }
 
  
+
+  /*@media screen and (min-width: 800px) {
+
+  
+  
+    main{
+      width: 780px;
+      margin: auto;
+    }*/
+
+ /* @media  screen and(min-width: 1200px) {
+    main{
+      width: 1180px;
+      min-width: 50%;
+    }
+    
+  }*/
+  
+
+  //}
+
+ //@media (min-width: 320px) AND (max-width: 800px)
+  
+ //@media (min-width: 800px) AND (max-width: 960px)
+ 
+
 
  
