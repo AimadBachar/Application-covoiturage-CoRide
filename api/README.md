@@ -8,6 +8,7 @@ This application is produced as part of the end of training project of our Sinba
 - [NodeJS](http://nodejs.org/en/download) (v12 minimal)
 - [PostgreSQL](https://www.postgresql.org/download)(v12 minimal)
 - [Sqitch](https://sqitch.org/download/)(v1)
+- [Redis](https://redis.io/download)(v6)
 
 ## Install
 
