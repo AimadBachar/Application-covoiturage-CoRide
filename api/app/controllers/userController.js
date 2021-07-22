@@ -5,6 +5,7 @@ const VehicleOption = require("../models/VehicleOption");
 
 const jwt = require("jsonwebtoken");
 const {delete:deletePicture} = require("../services/uploadPicture");
+const hashPassword = require("../services/hashPassword");
 
 const userController = {
 
@@ -30,12 +31,18 @@ const userController = {
 
             const login = await User.findAll({
                 where: {
-                    email: user,
-                    password: password
+                    email: user
                 }
             });
 
             if (login[0]) {
+
+                const matchPassword = await hashPassword.compare(password,login[0].password);
+
+                if(!matchPassword){
+                    return res.status(401).json("bad password");
+                }
+
                 const token = jwt.sign({
                         username: login.email,
                         id: login.id
