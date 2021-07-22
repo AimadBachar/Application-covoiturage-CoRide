@@ -48,6 +48,9 @@ const uploadPicture = {
      * @param {function} next 
      */
     upload: (req, res, next) => {
+
+        //TODO gérer lors d'un update, il faudrait pouvoir controler si il y a une image
+
         upload(req, res, (err) => {
 
             if (err?.code === "LIMIT_FILE_SIZE") {

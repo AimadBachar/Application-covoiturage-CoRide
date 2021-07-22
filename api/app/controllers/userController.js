@@ -51,10 +51,10 @@ const userController = {
 
                 //on génere le token
                 const token = jwt.sign({
-                        username: userConnected.email,
                         id: userConnected.id
                     },
-                    process.env.TOKEN_SECRET, {
+                    process.env.TOKEN_SECRET, 
+                    {
                         expiresIn: "24 hours"
                     }
                 );
