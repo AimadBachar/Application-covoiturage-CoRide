@@ -20,7 +20,7 @@ import ProfilUser from '../ProfilUser';
 
 import './styles.scss';
 // == Composant
-const App = () =>
+const App = () => (
 // J'exécute la fonction reçue en props
 // dés que je suis prêt, et une seule fois
 // useEffect(fetchTravels, [])
@@ -28,46 +28,47 @@ const App = () =>
   // if (loading) {
   //  return <Loading />;
   // }
-  (
-    <Router>
-      <Switch>
 
-        <div className="app">
+  <Router>
+    <Switch>
 
-          <Header />
+      <Route exact path="/results">
+        <Card />
+      </Route>
 
-          <Nav />
+      <Route exact path="/connexion">
+        <ConnexionRegistration />
+      </Route>
 
-          <Search />
+      <Route exact path="/inscription">
+        <Signin />
+      </Route>
 
-          <Main />
+      <Route exact path="/profil">
+        <ProfilUser />
+      </Route>
 
-          <Footer />
+      <div className="app">
 
-        </div>
+        <Header />
 
-        <Route exact path="/results">
-          <Card />
-        </Route>
-        <Route exact path="/connexion">
-          <ConnexionRegistration />
-        </Route>
+        <Nav />
 
-        <Route exact path="/inscription">
-          <Signin />
-        </Route>
+        <Search />
 
-        <Route exact path="/profil">
-          <ProfilUser />
-        </Route>
+        <Main />
 
-        <Route path="*">
-          <NotFoundPage />
-        </Route>
+        <Footer />
 
-      </Switch>
-    </Router>
-  )
+      </div>
+
+      <Route path="*">
+        <NotFoundPage />
+      </Route>
+
+    </Switch>
+  </Router>
+);
 
 // == Export
 export default App;
