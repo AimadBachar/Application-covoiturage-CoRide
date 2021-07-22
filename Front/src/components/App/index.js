@@ -50,16 +50,17 @@ const App = () => (
 
       <div className="app">
 
-        <Header />
+        <Route path="/">
+          <Header />
 
-        <Nav />
+          <Nav />
 
-        <Search />
+          <Search />
 
-        <Main />
+          <Main />
 
-        <Footer />
-
+          <Footer />
+        </Route>
       </div>
 
       <Route path="*">
