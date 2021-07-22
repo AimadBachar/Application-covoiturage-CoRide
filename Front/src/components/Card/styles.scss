@@ -25,9 +25,9 @@
 
   &-profil {
     position: relative;
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: bold;
-    left: 20px;
+    left: 5px;
   }
 
   &-destination {
@@ -51,8 +51,8 @@
   &-button {
     position: relative;
     padding: 0.5rem;
-    background-color: #4B4B4B;
-    color: #46ADAE;
+    background-color: vars.$color;
+    color: vars.$color-light;
   }
 
   &-tag {

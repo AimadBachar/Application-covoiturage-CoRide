@@ -120,5 +120,3 @@ Login.defaultProps = {
 
 // == Export
 export default Login;
-
-// anna@sion.fr
