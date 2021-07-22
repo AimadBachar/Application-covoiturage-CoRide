@@ -1,27 +1,29 @@
 import {connect} from 'react-redux';
 import Search from 'src/components/Search';
+import { searchSubmit, searchInputChange } from 'src/actions/trajets';
 // import datas
-import dataTags from '/src/data/data_tag.js';
 
-const mapStateToProps = () => ({
-    tags: dataTags,
-    textInput: "Où pratiquer ?"
+
+const mapStateToProps = (state) => ({
+    tags: state.trajets.tags,
+    departure_city: state.trajets.inputs.departure,
+    destination_city: state.trajets.inputs.arrival,
+    activity_id: state.trajets.inputs.sport,
+    departure_timestamp: state.trajets.inputs.date,
+    cards: state.trajets.cards
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    
-    onSelectChange: (selectedSport) => {
-        console.log('tu as choisi le', selectedSport);
+const mapDispatchToProps = (dispatch) => ({  
+    onInputChange: (name, value) => {
+      //console.log('ton lieu de pratique est', name , value);
+      const action = searchInputChange(value);
+      action.name = name;
+      dispatch(action)
     },
-    
-    onInputChange: (placeChose) => {
-        console.log('ton lieu de pratique est', placeChose);
-    },
-    onDateChange: (dateSearch) => {
-    console.log('la date selectionnée est le', dateSearch);
-    },
-    onSubmitSearch: () => {
-    console.log('submit');
+    onSubmitSearch: (value) => {
+      //console.log('submit');
+      const action = searchSubmit();
+      dispatch(action)
     }
 });
 

@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect,useState } from 'react';
+
 import PropTypes from 'prop-types';
 
 import Field from 'src/components/ConnexionRegistration/Login/Field';
+import { Link } from 'react-router-dom';
+
+import {
+  BrowserRouter as Router, Route, Redirect, Switch,
+} from 'react-router-dom';
 
 import 'src/components/ConnexionRegistration/Login/styles.scss';
 
 const Login = ({
+
   email,
+  user,
   password,
   changeField,
   handleLogin,
@@ -19,6 +27,7 @@ const Login = ({
     evt.preventDefault();
     handleLogin();
   };
+
 
   return (
     <div className="login-form">
@@ -36,12 +45,52 @@ const Login = ({
             Déconnexion
           </button>
         </div>
+
+  // useEffect(() => {
+  //   const timeout = setTimeout(() => {
+
+  //   }, 3000);
+  //  },[]);
+
+  // useEffect = (() => {
+  //   const timout = setTimeout(() => {
+  //     <Redirect from="/connexion" to="/" />;
+  //     console.log('welcome');
+  //   }, 3000);
+
+  //   // return () => clearTimeout(timeOut);
+  // }, []);
+
+  return (
+
+    <div className="login-form">
+      {isLogged && (
+      // useEffect(),
+      <div className="login-logged">
+        <Redirect from="/connexion" to="/" />
+        <p className="login-message">
+
+          {loggedMessage}
+
+        </p>
+        <button
+          type="button"
+          className="login-button"
+          onClick={handleLogout}
+        >
+          Déconnexion
+        </button>
+      </div>
+
+
       )}
+
       {!isLogged && (
 
         <form
           autoComplete="off"
           className="login-form-element"
+          // <Redirect from="/connexion" to="/" />
           onSubmit={handleSubmit}
         >
           <h1 className="login-form-title">
@@ -49,10 +98,10 @@ const Login = ({
           </h1>
           <Field
             className="login-form-input"
-            name="email"
+            name="user"
             placeholder="Adresse Email"
             onChange={changeField}
-            value={email}
+            value={user}
           />
           <Field
             className="login-form-input"
@@ -66,16 +115,30 @@ const Login = ({
             type="submit"
             className="login-form-submit"
           >
-            Ok
+            <p className="login-form-submit_text">
+               Valider
+            </p>
+            <p className="signin">
+            Nouveau sur Co'Ride ?
+              <Link 
+                className="link" 
+                to="/inscription"
+              >
+                <p className="link-text">S'inscrire</p>
+              </Link>
+            </p>
           </button>
+       
         </form>
+
       )}
+
     </div>
   );
 };
 
 Login.propTypes = {
-  email: PropTypes.string.isRequired,
+  user: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,

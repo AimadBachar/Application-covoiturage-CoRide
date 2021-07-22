@@ -2,22 +2,53 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import loupe from '/src/assets/images/loupe white 2.png';
 
+
 import './styles.scss';
+import { Redirect } from 'react-router-dom';
 
 const Search = ({
+  cards,
   tags,
-  onSelectChange,
+  departure_city,
+  destination_city,
+  activity_id,
+  departure_timestamp,
   onInputChange,
-  onDateChange,
+  onSubmitSearch
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log('submit');
+    onSubmitSearch();
   };
+  const fieldChange = (evt) => {
+    evt.preventDefault();
+    //console.log(evt.target.value);
+    const value = evt.target.value;
+    onInputChange(evt.target.name, value )
+  } 
+  {console.log(cards)}
+  const cardsOk = () => {
+    if (cards.length > 0) {
+      return (
+        <Redirect to={{
+          pathname: "/results",
+        }}/>
+      )
+    }
+  }
 
   return (
+    
     <div className="search">
+      {
+        cardsOk()    
+      }
+
+
       <form
+        //action="/results"
+
         className="search-form"
         onSubmit={handleSubmit}
       >
@@ -25,38 +56,29 @@ const Search = ({
         <input
           className="search-form_input depart"
           type="text"
-          name="depart"
+          name="departure_city"
           placeholder="Départ"
-                     // value={props.textInput}
-          onChange={(evt) => {
-            const placeChose = evt.target.value;
-            onInputChange(placeChose);
-          }}
+          value={departure_city}
+          onChange={fieldChange}
         />
 
         <input
           className="search-form_input destination"
           type="text"
-          name="arrivé"
+          name="destination_city"
           placeholder="Destination"
-                     // value={props.textInput}
-          onChange={(evt) => {
-            const placeChose = evt.target.value;
-            onInputChange(placeChose);
-          }}
+          value={destination_city}
+          onChange={fieldChange}
         />
         <div className="search-form_sport__date">
           <select
             className="search-form_select"
-            name="sports"
-            onChange={(evt) => {
-              const selectSport = evt.target.value;
-              onSelectChange(selectSport);
-            }}
+            name="activity_id"
+            value={activity_id}
+            onChange={fieldChange}
           >
             <option
               className="search-form_select_title"
-              value=""
             >Quel sport ?
             </option>
             {tags.map((tag) => (
@@ -72,14 +94,12 @@ const Search = ({
           <input
             className="search-form_date"
             type="date"
-            name="date"
+            name="departure_timestamp"
+            value={departure_timestamp}
             placeholder="aujourd'hui"
-            onChange={(evt) => {
-              const dateSearch = evt.target.value;
-              onDateChange(dateSearch);
-            }}
+            onChange={fieldChange}
           />
-        </div>
+        </div> 
         <button
           type="submit"
           className="search-form_submit"
@@ -91,13 +111,14 @@ const Search = ({
   );
 };
 
+
 Search.propTypes = {
   onSelectChange: PropTypes.func.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onDateChange: PropTypes.func.isRequired,
   tags: PropTypes.shape({
-    sport: PropTypes.string.isRequired,
-  }),
+   sport: PropTypes.string.isRequired,
+  })
 };
 
 export default Search;

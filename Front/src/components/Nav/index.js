@@ -14,6 +14,7 @@ const Nav = (props) => (
         <span />
         <span />
         <ul id="menu">
+
           <Link to="/" exact>
             <li>Accueil</li>
           </Link>
@@ -21,9 +22,10 @@ const Nav = (props) => (
           <Link to="/profil" exact>
             <li>Profil</li>
           </Link>
-
           <li><a href="#">Info</a></li>
-          <li><a href="#">Contact</a> </li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="/connexion">Connexion</a></li>
+          <li><a href="/signin">S'inscrire</a></li>
         </ul>
       </div>
     </nav>
