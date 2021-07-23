@@ -2,7 +2,7 @@ const coreModel = require("./coreModel");
 const pool = require("../db");
 
 /**
- * @typedef activity
+ * @typedef Activity
  * @property {string} label.required The name activity
  * @property {string} color The color for tag activity
  */

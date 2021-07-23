@@ -51,10 +51,10 @@ const userController = {
 
                 //on génere le token
                 const token = jwt.sign({
-                        username: userConnected.email,
                         id: userConnected.id
                     },
-                    process.env.TOKEN_SECRET, {
+                    process.env.TOKEN_SECRET, 
+                    {
                         expiresIn: "24 hours"
                     }
                 );
@@ -138,7 +138,7 @@ const userController = {
 
             if (req.file) user.picture_link = req.file.location;
 
-            if (user.id && parseInt(id, 10) !== user.id) {
+            if (user.id && parseInt(id, 10) !== parseInt(user.id,10)) {
                 return res.status(400).json("bad request");
             }
 

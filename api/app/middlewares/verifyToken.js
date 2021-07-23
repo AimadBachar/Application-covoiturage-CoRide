@@ -6,20 +6,34 @@ const jwt = require("jsonwebtoken");
  * @param {response} res 
  * @param {function} next 
  */
-module.exports = (req,res,next)=>{
+module.exports = (req, res, next) => {
 
+    //on récupere la propriété authorization du header
     const authHeader = req.headers.authorization;
-    if(authHeader){
-        const token = authHeader.split(" ")[1];
-        jwt.verify(token,process.env.TOKEN_SECRET, (err, user)=>{
 
-            if(err){
-                return res.status(403).end();
-            }
-            req.user = user;
+    //si elle existe...
+    if (authHeader) {
+
+        //on récupere le token
+        const token = authHeader.split(" ")[1];
+
+        //on décode le token
+        const decodedToken = jwt.verify(token, process.env.TOKEN_SECRET);
+
+        //on extrait l'id du user du token
+        const userIdinToken = decodedToken.id;
+
+        //on récupere l'id du user dans la requete
+        const userId = req.body.id || req.params.id || req.params.userId;
+
+        //on compare les 2, si different erreur 401 sinon next
+        if (userId && userId != userIdinToken) {
+            res.status(401).json("invalid user id...");
+        } else {
             next();
-        });
+        }
+    //sinon erreur 401
     }else{
-        res.status(401).end();
+        res.Status(401).json("invalid request...");
     }
-};
+}

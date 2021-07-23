@@ -30,6 +30,7 @@ class coreModel {
                 sqlQuery.text = "SELECT * FROM users_view;"
             }
 
+            //si un objet existe dans la propriété where alors on construit la string pour la requete sql
             if(obj?.where){
 
                 let search = ``;

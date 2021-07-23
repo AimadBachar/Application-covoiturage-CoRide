@@ -56,6 +56,7 @@ router.get("/cities",redis.cache,searchCities);
  * @property {string} last_name.required the last name user
  * @property {string} email.required the user email
  * @property {file} picture the avatar file JPEG or PNG 512Ko max
+ * @property {string} picture_link the link for user profil picture
  * @property {string} pseudo.required the user pseudo
  * @property {string} password.required the hash user password
  */
@@ -130,7 +131,7 @@ router.route("/users")
  */
 router.route("/user/:id(\\d+)")
     .get(verifyToken,redis.cache,userController.getOne)
-    .patch(verifyToken,redis.flush,joiValidator(schemas.user),userController.insertOrUpdate);
+    .patch(verifyToken,redis.flush,uploadPicture,joiValidator(schemas.user),hashPassword.hash,userController.insertOrUpdate);
 
 ////////////Model Activity////////////////////////////////////
 /**
@@ -202,13 +203,12 @@ router.route("/travels")
 /**
  * @route GET /travel/{id}
  * @group Travels - Operations about travel
- * @security JWT
  * @param {number} id.path.required the travel id
  * @returns {Activity.model} 200 - travel details
  * @returns {Error} default - Unexpected error
  */
 router.route("/travel/:id(\\d+)")
-    .get(verifyToken,redis.cache,travelController.getOne);
+    .get(redis.cache,travelController.getOne);
 
 /**
  * @route GET /travels/search

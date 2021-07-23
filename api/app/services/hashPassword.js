@@ -11,20 +11,21 @@ const hashPassword = {
      */
     hash: (req, res, next) => {
 
+        //on recupere le mot de passe
         const {
             password
         } = req.body;
 
+        //si il y en a pas erreur 400
         if (!password) {
             res.status(400).json("password required");
         }
 
+        //on utilise bcrypt pour produire un hash
         bcrypt.genSalt(saltRounds, (err, salt) => {
             if(err) throw new Error(err.message);
             bcrypt.hash(password, salt, (err, hash) => {
                 if(err) throw new Error(err.message);
-                console.log(password)
-                console.log(hash)
                 req.body.password = hash;
                 next();
             });
@@ -40,8 +41,10 @@ const hashPassword = {
     compare: async (password, hash) => {
 
         try{
+        //on compare le mot de passe en clair et le hash
         const match = await bcrypt.compare(password, hash);
 
+            //si c'est bon on return match sinon false
             if (match) {
                 return match;
             } else {
