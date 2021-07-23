@@ -1,5 +1,5 @@
 // Import npm
-import React, { useEffect } from 'react';
+import React from 'react';
 
 // == Import
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -11,63 +11,69 @@ import Card from 'src/containers/Card';
 import Main from '../Main';
 import ConnexionRegistration from '../ConnexionRegistration';
 
-
 import NotFoundPage from '../NotFoundPage';
-
 import ProfilUser from '../ProfilUser';
+// import Signin from '../ConnexionRegistration/Signin';
 
-// import Loading from '../Loading';
+import Loading from './Loading';
 
 import './styles.scss';
 // == Composant
-const App = () => (
-// J'exécute la fonction reçue en props
-// dés que je suis prêt, et une seule fois
-// useEffect(fetchTravels, [])
 
-  // if (loading) {
-  //  return <Loading />;
-  // }
+const App = ({loading, fetchTravels}) => {
+  // J'exécute la fonction reçue en props
+  // dés que je suis prêt, et une seule fois
+  useEffect(fetchTravels, [])
 
-  <Router>
-    <Switch>
+  if (loading) {
+    console.log("oui")
+    return <Loading />;
+  }
+  return (
+    <Router>
+      <Switch>
 
-      <Route exact path="/results">
-        <Card />
-      </Route>
-
-      <Route exact path="/connexion">
-        <ConnexionRegistration />
-      </Route>
-
-      <Route exact path="/inscription">
-        <Signin />
-      </Route>
-
-      <Route exact path="/profil">
-        <ProfilUser />
-      </Route>
-
-      <div className="app">
-
-        <Route path="/">
+        <Route exact path="/results">
           <Header />
 
           <Search />
-
-          <Main />
-
+          {/* <Main /> */}
+          <Card />
           <Footer />
         </Route>
-      </div>
 
-      <Route path="*">
-        <NotFoundPage />
-      </Route>
+        <Route exact path="/connexion">
+          <ConnexionRegistration />
+        </Route>
 
-    </Switch>
-  </Router>
-);
+        <Route exact path="/inscription">
+          <Signin />
+        </Route>
+
+        <Route exact path="/profil">
+          <ProfilUser />
+        </Route>
+
+        <div className="app">
+          <Route path="/">
+            <Header />
+            <Nav />
+            <Search />
+            <Card />
+            <Main />
+            <Footer />
+          </Route>
+        </div>
+        <Route path="*">
+          <NotFoundPage />
+        </Route>
+
+      </Switch>
+
+    </Router>
+  );
+};
+
 
 // == Export
 export default App;
