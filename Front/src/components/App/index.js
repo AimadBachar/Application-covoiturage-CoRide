@@ -1,5 +1,5 @@
 // Import npm
-import React, { useEffect } from 'react';
+import React from 'react';
 
 // == Import
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -11,15 +11,15 @@ import Card from 'src/containers/Card';
 import Main from '../Main';
 import ConnexionRegistration from '../ConnexionRegistration';
 import Nav from '../Nav';
-
 import NotFoundPage from '../NotFoundPage';
-
 import ProfilUser from '../ProfilUser';
+// import Signin from '../ConnexionRegistration/Signin';
 
 import Loading from './Loading';
 
 import './styles.scss';
 // == Composant
+
 const App = ({loading, fetchTravels}) => {
   // J'exécute la fonction reçue en props
   // dés que je suis prêt, et une seule fois
@@ -64,15 +64,16 @@ const App = ({loading, fetchTravels}) => {
             <Footer />
           </Route>
         </div>
-
         <Route path="*">
           <NotFoundPage />
         </Route>
 
       </Switch>
+
     </Router>
   );
 };
+
 
 // == Export
 export default App;
