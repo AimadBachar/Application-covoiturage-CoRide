@@ -9,6 +9,7 @@ import Footer from 'src/containers/Footer';
 import Signin from 'src/components/ConnexionRegistration/Signin';
 import Card from 'src/containers/Card';
 import Main from '../Main';
+import Nav from '../Nav';
 import ConnexionRegistration from '../ConnexionRegistration';
 
 import NotFoundPage from '../NotFoundPage';
@@ -18,6 +19,7 @@ import ProfilUser from '../ProfilUser';
 import Loading from './Loading';
 
 import './styles.scss';
+import { useEffect } from 'react';
 // == Composant
 
 const App = ({loading, fetchTravels}) => {
