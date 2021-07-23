@@ -5,7 +5,7 @@
 
 body {
 // Formulaire d'inscription
-.registration {
+.signin {
   box-shadow: vars.$box-shadow;
   border-radius: vars.$border-radius-global;
   min-width: 320px;
@@ -31,7 +31,7 @@ body {
     justify-content: center;
     border-radius: 10px;
     
-    &_input {
+    &-input {
       width: 100%;
       font-size: 1em;
       border: 0.2px solid vars.$color-grey;
@@ -39,7 +39,7 @@ body {
       padding: 1.2rem;
       font-family: vars.$font;
 
-      &__name {
+      &-name {
         //width: 100%;
         font-size: 1em;
         border: none;
@@ -49,7 +49,7 @@ body {
       }
     };
 
-    &_submit {
+    &-submit {
       background-color: vars.$color;
       border-radius: vars.$border-radius-bottom;
       border: none;

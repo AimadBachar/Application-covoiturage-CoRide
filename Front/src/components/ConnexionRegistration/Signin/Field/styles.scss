@@ -1,0 +1,84 @@
+@use 'src/styles/vars';
+
+@media  screen and (min-width: 360px){
+}
+body {
+.field {
+  position: relative;
+
+  //Option ovale :
+  //margin: .3em .3em .3em 0;
+
+
+  &-input {
+      width: 100%;
+      font-size: 1.1em;
+      border: 0.5px solid vars.$color-grey;
+      color: vars.$color-grey_more;
+      height: 6rem;
+      border: none;
+      border-bottom: vars.$color-grey solid 0.5px solid;
+      padding-left: 1rem;
+    
+    // Option ovale
+    //border-radius: .3em;
+
+    &:focus {
+      border-color: vars.$color;
+
+      & + .field-label {
+        color: vars.$color;
+      }
+    }
+  }
+
+  &-label {
+    display: none;
+    position: absolute;
+    top: 0.4rem;
+    left: 0.9rem;
+    color: vars.$color-grey_more;
+    font-size: 1em;
+    text-transform: uppercase;
+    animation: labelSlideUpAndShow 0.3s;
+  }
+
+  &--has-content {
+    .field-label {
+      display: block;
+    }
+    .field-input {
+      padding: 1rem 0.5rem 0.5rem 1rem;
+    }
+  }
+}
+
+
+@keyframes labelSlideUpAndShow{
+  0% {
+    transform: translateY(1em);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0em);
+    opacity: 1;
+  }
+}
+}
+
+
+//-----@media queries-----
+
+@media  screen and (max-width: 360px){
+
+}
+
+body {
+  .field{
+  &-input {
+    width: 100%;
+    font-size: 1.1em;
+    height: 4rem;
+   }
+   }
+}

@@ -1,12 +1,13 @@
 @use 'src/styles/vars';
 
 
-@media only screen and (max-width: 600px){
+@media only screen and (min-width: 600px){
 }
 
 body {
 
   .login {
+    margin: 0;
     display: flex;
     justify-content: center;
     min-width: 320px;
@@ -31,7 +32,7 @@ body {
   display: block;
   justify-content: center;
   position: absolute;
-  max-width: 600px;
+  //width: 100vh;
 
   // s'identifier
   &-title {
@@ -49,7 +50,7 @@ body {
     flex-direction: column;
     justify-content: center;
     border-radius: 10px;
-    
+   // background-color: vars.$color_light;
     };
 
     &-submit {
@@ -66,7 +67,7 @@ body {
       display: inline-block;
      text-align: start;
      
-      width: 50vmax;
+      width: 100vh;
     };
 
   };
@@ -96,6 +97,9 @@ body {
       }
     }
 
+    .button {
+      background-color: vars.$color_light;
+    }
   };
 
 
@@ -127,7 +131,8 @@ body {
           padding-top: 1rem;
           padding-bottom: 1rem;        
           font-size: 1.3em;
-          width: 50vmax;
+         width: 50vmax;
+          
         };
     
       };

@@ -101,7 +101,7 @@ Signin.propTypes = {
 // Valeurs par défaut pour les props
 Signin.defaultProps = {
   isLogged: false,
-  loggedMessage: 'Signin Done',
+  loggedMessage: 'Connecté',
 };
 
 

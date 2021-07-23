@@ -3,10 +3,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Field from 'src/components/ConnexionRegistration/Login/Field';
-import {
-  Link,
-  BrowserRouter as Router, Route, Redirect, Switch,
-} from 'react-router-dom';
+import { Link, BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
 import 'src/components/ConnexionRegistration/Login/styles.scss';
 import photoKite from 'src/assets/images/kite.jpg';
@@ -76,15 +73,15 @@ const Login = ({
             onChange={changeField}
             value={password}
           />
-          <div>
-        
+          
+        <div className="button">
           <button
             type="submit"
             className="login-form-submit"
          > 
          Valider
           </button>
-        
+        </div>
          <div className="signin">
             <p className="signin-text">
               Nouveau sur Co'Ride ?
@@ -96,7 +93,7 @@ const Login = ({
             S'inscrire
             </Link>
             </div>
-          </div>
+          
         </form>
       )}
         </div>
