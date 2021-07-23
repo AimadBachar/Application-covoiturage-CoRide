@@ -13,10 +13,10 @@
   height: 100vh;
   // l'image se coupe pour s adapter à la taille de l'écran
   object-fit: cover;
-  width: 100%;
+  max-width: 100%;
   opacity: 100%;
 }
 }
- @media screen and (min-width: 600px) {
+ @media screen and (max-width: 600px) {
    
  }

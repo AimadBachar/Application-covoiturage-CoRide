@@ -1,22 +1,37 @@
 @use 'src/styles/vars';
 
-*{box-sizing: border-box;
+
+@media only screen and (max-width: 600px){
 }
 
-@media screen and (min-width: 600px) {
-  
-}
+body {
+
+  .login {
+    display: flex;
+    justify-content: center;
+    min-width: 320px;
+    //max-width: 600px;
+    text-align: center;
+
+    &-photo {
+      background-image: none;
+      opacity: 70%;
+      background-color: transparent;
+      filter: blur(0.6px);
+      height: auto;
+      width: 100%;
+    }
+  }
+
 // Formulaire de connexion
 .login-form {
-  margin-top: 3rem;
   box-shadow: vars.$box-shadow;
   border-radius: vars.$border-radius-global;
-  height: auto;
+  font-family: vars.$font;
+  display: block;
+  justify-content: center;
   position: absolute;
-  //max-width: 80%;
-
-
-
+  max-width: 600px;
 
   // s'identifier
   &-title {
@@ -25,7 +40,7 @@
     background-color: vars.$color;
     color: vars.$color_light;
     text-align: center;
-    padding: 1.2rem;
+    padding: 2rem;
     border-radius: vars.$border-radius-top;
   };
 
@@ -36,57 +51,120 @@
     border-radius: 10px;
     
     };
-    
-    &-input {
-      font-size: 1em;
-      border: none;
-      padding: 1.3rem;
-      font-family: vars.$font;
-      border-bottom: vars.$color-grey solid 0.5px solid;
-      color: vars.$color-grey 
-      
-    };
 
     &-submit {
       background-color: vars.$color;
-    
-      text-overflow: clip;
-      border-radius: vars.$border-radius-bottom;
-      border: none;
-      padding: 2rem;
-    };
-
-    &-submit_text {
+      display: flex;
+       justify-content: center;
+      border: vars.$color-grey_more;
+      padding-top: 2.5rem;
+      padding-bottom: 2rem;
       color: vars.$color_light;
-      font-family: vars.$font;
-      text-shadow: 0.1em 0.1em 0.1em vars.$color-grey_more;
-      font-size: 1.5em;
+     // text-shadow: 0.1em 0.1em 0.1em vars.$color-grey_more;
+      font-size: 1.3em;
       font-weight: bold;
+      display: inline-block;
+     text-align: start;
+     
+      width: 50vmax;
     };
 
   };
     .signin {
-      padding-top: 3rem;
-      font-size: 1em;
+      background-color: vars.$color;
+      padding-bottom: 2rem;
       font-family: vars.$font;
       color: vars.$color_light;
+      border-radius: vars.$border-radius-bottom;
+      text-align: center;
+      text-overflow: clip;
+      
+
+    &-text {
+      padding: 1.5rem;
+      font-size: 1.1em;
     };
     
-    .link {
-      text-shadow: 0.1em 0.1em 0.2em vars.$color-grey_more;
-      //text-overflow: clip;
-      color: vars.$color_light;
-     
-      //float: right;
-    
-        padding-top: 1.5rem;
-        color: vars.$color_light;
-        font-size: 1em;
+    &-link {
+        text-shadow: 0.1em 0.1em 0.2em vars.$color-grey_more;
+        text-overflow: clip;
+        color: vars.$color_light;              
+        font-size: 1.2em;
         font-family: vars.$font;
-      
+         //float: center;
     
+      }
+    }
+
+  };
+
+
+
+  @media only screen and (max-width: 360px){
+  }
+  
+  body {
+    .login {
+     
+    &-photo {
+       width: 100%;
+       height: 100vh;
+      object-fit: cover
+    }
+    
+    .login-form {
+      margin: 2rem;
+    
+      // s'identifier
+      &-title {
+        font-size: 1.5em;
+        padding: 1rem;
+      };
+    
+        &-submit {
+          background-color: rgba($color: #ffffff00, $alpha: 1.0);  
+          color:  vars.$color;    
+          padding-top: 1rem;
+          padding-bottom: 1rem;        
+          font-size: 1.3em;
+          width: 50vmax;
+        };
+    
+      };
+        .signin {
+         background-color: vars.$color;
+         background-color: rgba($color: #FC982C, $alpha: 1.0);
+          padding-bottom: 1.5rem;
+       
+          
+    
+        &-text {
+          padding: 1rem;
+          font-size: 1em;
+          font-weight: bold;
+        };
+        
+        &-link {
+            text-shadow: 0.1em 0.1em 0.2em vars.$color-grey_more;             
+            font-size: 1.1em;
+            
+        
+          }
+        }
+
+
+      }
+
+
+
+
   }
 
+
+
+
+
+/*
     .login {
     //utilisateur connecté
     &-logged {
@@ -121,3 +199,24 @@
     }
   }
 
+*/
+
+/*
+.connexion {
+  display: flex;
+  flex-direction: column;
+
+ box-shadow: vars.$box-shadow;
+ border-radius: vars.$border-radius-global;
+
+&-photo{
+  background-image: none;
+  background-color: transparent;
+  filter: blur(0.5px);
+  height: 100vh;
+  // l'image se coupe pour s adapter à la taille de l'écran
+  //object-fit: cover;
+  max-width: 100%;
+  opacity: 100%;
+}
+}*/

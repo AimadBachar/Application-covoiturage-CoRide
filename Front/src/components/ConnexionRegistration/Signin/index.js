@@ -1,9 +1,12 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 
-import './styles.scss';
+import 'src/components/ConnexionRegistration/Signin/styles.scss';
 
 const Signin = () => (
+
+//props
+
   <div className="registration">
     <h1 className="registration-title">
       Inscription
@@ -55,19 +58,6 @@ const Signin = () => (
       />
 
       <input
-        className="registration-form_input__name nom"
-        type="text"
-        name="nom"
-        placeholder="Nom"
-      />
-      <input
-        className="registration-form_input__name"
-        type="text"
-        name="prénom"
-        placeholder="Prénom"
-      />
-
-      <input
         className="registration-form_input password"
         type="text"
         name="password"
@@ -84,7 +74,7 @@ const Signin = () => (
         type="submit"
         className="registration-form_submit"
       >
-        Ok
+        Valider
       </button>
     </form>
   </div>

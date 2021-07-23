@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
-// import 'semantic-ui-css/semantic.min.css';
+
 import './styles.scss';
 
 const Nav = (props) => (
@@ -25,7 +25,7 @@ const Nav = (props) => (
           <li><a href="#">Info</a></li>
           <li><a href="#">Contact</a></li>
           <li><a href="/connexion">Connexion</a></li>
-          <li><a href="/signin">S'inscrire</a></li>
+          <li><a href="/inscription">S'inscrire</a></li>
         </ul>
       </div>
     </nav>

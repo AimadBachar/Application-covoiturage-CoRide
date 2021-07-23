@@ -10,7 +10,7 @@ import Signin from 'src/components/ConnexionRegistration/Signin';
 import Card from 'src/containers/Card';
 import Main from '../Main';
 import ConnexionRegistration from '../ConnexionRegistration';
-import Nav from '../Nav';
+
 
 import NotFoundPage from '../NotFoundPage';
 
@@ -52,8 +52,6 @@ const App = () => (
 
         <Route path="/">
           <Header />
-
-          <Nav />
 
           <Search />
 

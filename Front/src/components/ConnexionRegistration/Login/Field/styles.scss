@@ -1,7 +1,8 @@
   @use 'src/styles/vars';
 
-
-
+  @media  screen and (min-width: 360px){
+  }
+body {
   .field {
     position: relative;
 
@@ -10,12 +11,15 @@
 
 
     &-input {
-      width: 100%;
-      font-size: 0.9em;
-      border: 0.5px solid vars.$color-grey;
-      color: vars.$color-grey_more;
-      height: 4rem;
-     
+        width: 100%;
+        font-size: 1.1em;
+        border: 0.5px solid vars.$color-grey;
+        color: vars.$color-grey_more;
+        height: 6rem;
+        border: none;
+        border-bottom: vars.$color-grey solid 0.5px solid;
+        padding-left: 1rem;
+      
       // Option ovale
       //border-radius: .3em;
 
@@ -27,14 +31,14 @@
         }
       }
     }
-  
+
     &-label {
       display: none;
       position: absolute;
       top: 0.4rem;
       left: 0.9rem;
       color: vars.$color-grey_more;
-      font-size: 0.9em;
+      font-size: 1em;
       text-transform: uppercase;
       animation: labelSlideUpAndShow 0.3s;
     }
@@ -44,7 +48,7 @@
         display: block;
       }
       .field-input {
-        padding: 1rem 0.7rem 0.2rem 0.9rem;
+        padding: 1rem 0.5rem 0.5rem 1rem;
       }
     }
   }
@@ -60,5 +64,21 @@
       opacity: 1;
     }
   }
-  
-  
+}
+
+
+//-----@media queries-----
+
+  @media  screen and (max-width: 360px){
+
+  }
+
+  body {
+    .field{
+    &-input {
+      width: 100%;
+      font-size: 1.1em;
+      height: 4rem;
+     }
+     }
+  }

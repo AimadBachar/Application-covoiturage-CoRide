@@ -6,23 +6,25 @@
 //}
 
   // site responsive
-  @media only screen and (max-width: 600px){
+  @media  screen and (max-width: 600px){
     /* ici, le scss s'appliquera aux écrans de 600px min */
   }
 
   body {
 
     //site mobile first
-    margin: 0;
+    //margin: 0;
 
     display: flex;
-    flex-wrap: wrap;
+   // flex-wrap: wrap;
     justify-content: center;
-  
     font-family: sans-serif;
     background-color: #f6f2f2;
     color: #4B4B4B;
-    height: 100vh;
+    //height: 100vh;
+    min-width: 320px;
+    //max-width: 800px;
+    object-fit: cover;
   }
 
  
