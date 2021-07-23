@@ -24,7 +24,12 @@ module.exports = (req, res, next) => {
         const userIdinToken = decodedToken.id;
 
         //on récupere l'id du user dans la requete
-        const userId = req.body.id || req.params.id || req.params.userId;
+        let userId;
+        if(req.params.userId){
+            userId = req.params.userId;
+        }else{
+            userId = req.body.id || req.params.id;
+        }
 
         //on compare les 2, si different erreur 401 sinon next
         if (userId && userId != userIdinToken) {

@@ -146,26 +146,29 @@ router.route("/user/:id(\\d+)")
  * @property {string} color.required the color tag activity
  */
 /**
- * @route POST /activities
+ * @route POST /admin/{userId}/activities
  * @group Activities - Operations about activity
  * @security JWT
  * @param {postActivity.model} postActivity.body.required the new user
+ * @param {number} userId.path.required the user id
  * @consumes application/json
  * @produces application/json
  * @returns {Activity.model} 200 - activity details
  * @returns {Error} default - Unexpected error
  */
 /**
- * @route DELETE /activities
+ * @route DELETE /admin/{userId}/activities
  * @group Activities - Operations about activity
  * @security JWT
  * @param {number} id.body.required the activity id 
+ * @param {number} userId.path.required the id admin
  * @returns {void} 204 - success, no content
  * @returns {Error} 400 - bad request
  * @returns {Error} default - Unexpected error
  */
 router.route("/activities")
-    .get(redis.cache,activityController.getAll)
+    .get(redis.cache,activityController.getAll);
+router.route("/admin/:userId/activities")
     .post(verifyToken,redis.flush,joiValidator(schemas.activity),activityController.insertOrUpdate)
     .delete(verifyToken,redis.flush,activityController.delete);
 
@@ -177,7 +180,7 @@ router.route("/activities")
  * @returns {Error} default - Unexpected error
  */
 /**
- * @route PATCH /activity/{id}
+ * @route PATCH /admin/{userId}/activity/{id}
  * @group Activities - Operations about activity
  * @security JWT
  * @param {number} id.path.required the activity id
@@ -187,7 +190,8 @@ router.route("/activities")
  * @returns {Error} default - Unexpected error
  */
 router.route("/activity/:id(\\d+)")
-    .get(redis.cache,activityController.getOne)
+    .get(redis.cache,activityController.getOne);
+router.route("/admin/:userId/activity/:id(\\d+)")
     .patch(verifyToken,redis.flush,joiValidator(schemas.activity),activityController.insertOrUpdate);
 
 //////////Model Travel///////////////////////////////////////
@@ -234,10 +238,11 @@ router.get("/travels/search",travelController.getAllByFilters);
  * @returns {Error} default - Unexpected error
  */
 /**
- * @route DELETE /vehicle-options
+ * @route DELETE /admin/{userId}/vehicle-options
  * @group Vehicle Option - Operations about vehicle option
  * @security JWT
  * @param {integer} id.body.required the vehicle option id
+ * @param {integer} userId.path.required
  * @returns {void} 204 - return void or error
  * @returns {Error} default - Unexpected error
  */
@@ -246,16 +251,18 @@ router.get("/travels/search",travelController.getAllByFilters);
  * @property {string} label.required the label of vehicle option
  */
 /**
- * @route POST /vehicle-options
+ * @route POST /admin/{userId}/vehicle-options
  * @group Vehicle Option - Operations about vehicle option
  * @security JWT
  * @param {postVehicleOption.model} postVehicleOption.body.required the post for vehicle option
+ * @param {integer} userId.path.required the admin id
  * @consumes application/json
  * @returns {VehicleOption.model} 204 - return void or error
  * @returns {Error} default - Unexpected error
  */    
 router.route("/vehicle-options")
-    .get(redis.cache,vehicleOptionController.getAll)
+    .get(redis.cache,vehicleOptionController.getAll);
+    router.route("/admin/:userId/vehicle-options")
     .post(verifyToken,redis.flush,vehicleOptionController.insertOrUpdate)
     .delete(verifyToken,redis.flush,vehicleOptionController.delete);
 
