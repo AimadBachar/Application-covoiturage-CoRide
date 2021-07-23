@@ -82,12 +82,12 @@ const Login = ({
          Valider
           </button>
         </div>
-         <div className="signin">
-            <p className="signin-text">
+         <div className="signin-redirection">
+            <p className="signin-redirection-text">
               Nouveau sur Co'Ride ?
             </p>
             <Link
-              className="signin-link"
+              className="signin-redirection-link"
               to="/inscription"
             >
             S'inscrire

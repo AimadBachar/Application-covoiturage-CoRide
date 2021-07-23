@@ -71,7 +71,7 @@ body {
     };
 
   };
-    .signin {
+    .signin-redirection {
       background-color: vars.$color;
       padding-bottom: 2rem;
       font-family: vars.$font;
@@ -136,7 +136,7 @@ body {
         };
     
       };
-        .signin {
+        .signin-redirection {
          background-color: vars.$color;
          background-color: rgba($color: #FC982C, $alpha: 1.0);
           padding-bottom: 1.5rem;
@@ -156,13 +156,7 @@ body {
         
           }
         }
-
-
       }
-
-
-
-
   }
 
 
