@@ -1,8 +1,12 @@
  // == import axios
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
 
-import { SEARCH_SUCCESS, searchSubmitSucces } from '../actions/trajets';
+import { 
+  SEARCH_SUCCESS, 
+  searchSubmitSucces, 
+  FETCH_TRAVELS, 
+  fetchTravelsSuccess 
+} from '../actions/trajets';
 
 
 
@@ -65,6 +69,21 @@ export default (store) => (next) => (action) => {
         })
 
       
+    break;
+    case FETCH_TRAVELS:
+      // Je lance la requête
+      axios({
+        method: 'get',
+        url: 'http://18.235.248.88:3000/api/v1/travels'
+      })
+        .then((res) => {
+          console.log("fetch_succes", res.data);
+          const action = fetchTravelsSuccess(res.data);
+          store.dispatch(action);
+        })
+        .catch((err) => {
+          console.error(err);
+        })
     break;
 }
 next(action);

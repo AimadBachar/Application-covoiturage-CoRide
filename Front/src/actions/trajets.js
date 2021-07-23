@@ -26,5 +26,6 @@ export const fetchTravels = () => ({
 });
 
 export const fetchTravelsSuccess = (payload) => ({
-   type: FETCH_TRAVELS_SUCCESS, payload 
+   type: FETCH_TRAVELS_SUCCESS, 
+   payload 
 });

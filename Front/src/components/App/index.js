@@ -15,25 +15,31 @@ import NotFoundPage from '../NotFoundPage';
 import ProfilUser from '../ProfilUser';
 // import Signin from '../ConnexionRegistration/Signin';
 
-// import Loading from '../Loading';
+import Loading from './Loading';
 
 import './styles.scss';
 // == Composant
-const App = () => (
-// J'exécute la fonction reçue en props
-// dés que je suis prêt, et une seule fois
-// useEffect(fetchTravels, [])
 
-  // if (loading) {
-  //  return <Loading />;
-  // }
+const App = ({loading, fetchTravels}) => {
+  // J'exécute la fonction reçue en props
+  // dés que je suis prêt, et une seule fois
+  useEffect(fetchTravels, [])
 
-  <Router>
-    <div className="app">
+  if (loading) {
+    console.log("oui")
+    return <Loading />;
+  }
+  return (
+    <Router>
       <Switch>
 
         <Route exact path="/results">
+          <Header />
+          <Nav />
+          <Search />
+          {/* <Main /> */}
           <Card />
+          <Footer />
         </Route>
 
         <Route exact path="/connexion">
@@ -48,22 +54,26 @@ const App = () => (
           <ProfilUser />
         </Route>
 
-        <Route exact path="/">
-          <Header />
-          <Nav />
-          <Search />
-          <Main />
-          <Footer />
-        </Route>
-
+        <div className="app">
+          <Route path="/">
+            <Header />
+            <Nav />
+            <Search />
+            <Card />
+            <Main />
+            <Footer />
+          </Route>
+        </div>
         <Route path="*">
           <NotFoundPage />
         </Route>
 
       </Switch>
-    </div>
-  </Router>
-);
+
+    </Router>
+  );
+};
+
 
 // == Export
 export default App;

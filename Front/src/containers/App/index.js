@@ -3,7 +3,8 @@ import App from 'src/components/App';
 import { fetchTravels} from 'src/actions/trajets';
 
 const mapStateToProps = (state) => ({
-  loading: state.trajets.loading
+  loading: state.trajets.loading,
+  cards: state.trajets.cards
 });
 
 const mapDispatchToProps = (dispatch) => ({
