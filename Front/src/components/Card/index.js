@@ -14,22 +14,22 @@ const Card = ({
     {console.log("compo cards", cards)}
     {cards.map((card) => (
       <div className="card" key={card.travel_id}>
-        <div className="card-top">
-          <div className="card-top_left">
+        <div className="card-left">
+          <div className="card-left_travel">
             {/* <img className="card-like" src={iconLike} alt="icon-like" /> */}
             <a href="#" className="card-profil" onClick={onButtonClickProfilUser}>{card.driver}</a>
+            <p className="card-destination">Départ: {card.departure_city}</p>
+            <p className="card-destination">Arrivée: {card.destination_city}</p>
           </div>
-          <div className="card-top_right">
-            <p className="card-date">{card.departure_timestamp}</p>
-            <p className="card-hour">heure</p>
+          <div className="card-left_infos">
+             <p className="card-date">{new Date(card.departure_timestamp).toLocaleDateString("fr-FR")}</p> 
+            <p className="card-hour">{new Date(card.departure_timestamp).getUTCHours()}h{new Date(card.departure_timestamp).getUTCMinutes()}</p>
           </div>
         </div>
-        <p className="card-destination">Départ: {card.departure_city}</p>
-        <p className="card-destination">Arrivée: {card.destination_city}</p>
-        <div className="card-bottom">
+        {/* <div className="card-right"> */}
           <span className="card-tag">{card.activity}</span>
           <button className="card-button" type="button" onClick={onButtonClickValidation}>GO !</button>
-        </div>
+        {/* </div> */}
       </div>
     ))}
   </div>
