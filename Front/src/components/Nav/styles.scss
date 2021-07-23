@@ -1,17 +1,24 @@
 @use 'src/styles/vars';
 
+
+
+@media only screen and (max-width: 600px){
+}
+
+body {
 .nav {
   width: 70px;
   position: absolute;
   left: 10px;
   top: 10px;
+  //min-width: 320px;
 }
 
 a {
   text-decoration: none;
-  color: #1E1E23;
+  color: white;
   opacity:1;
-  font-size: 1.5em;
+  font-size: 1.1em;
   font-weight: 400;
   transition: 200ms;
 }
@@ -45,7 +52,7 @@ nav {
 {
   display: flex;
   width: 40px;
-  height: 32px;
+  height: 30px;
   position: absolute;
   cursor: pointer;
   opacity: 0;
@@ -58,8 +65,9 @@ nav {
   width: 29px;
   height: 2px;
   margin-bottom: 5px;
+  background: white;
+  text-shadow: 0.1em 0.1em 0.2em vars.$color-grey_more;
   position: relative;
-  background: vars.$color-light;
   border-radius: 3px;
   z-index: 1;
   transform-origin: 5px 0px;
@@ -67,6 +75,8 @@ nav {
               background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
               opacity 0.55s ease;
 }
+
+
 
 #menuToggle span:first-child
 {
@@ -82,7 +92,7 @@ nav {
 {
   opacity: 1;
   transform: rotate(45deg) translate(-3px, -1px);
-  background: #36383F;
+  //background: #36383F;
 }
 
 #menuToggle input:checked ~ span:nth-last-child(3)
@@ -99,13 +109,16 @@ nav {
 #menu
 {
   position: absolute;
-  width: 180px;
-  height: 400px;
+  width: 130px;
+  height: 300px;
   box-shadow: 0 0 10px #85888C;
-  margin: -50px 0 0 -50px;
-  padding: 50px;
-  padding-top: 125px;
-  background-color: #F5F6FA;
+  margin: -35px 0 0 -35px;
+  padding: 15px;
+  padding-top: 80px;
+ // background-color: #F5F6FA;
+  //opacity: 50%;
+  text-shadow: 0.1em 0.1em 0.2em vars.$color-grey_more;
+
   -webkit-font-smoothing: antialiased;
   transform-origin: 0% 0%;
   transform: translate(-100%, 0);
@@ -114,11 +127,38 @@ nav {
 
 #menu li
 {
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
   transition-delay: 2s;
 }
 
 #menuToggle input:checked ~ ul
 {
   transform: none;
+}
+}
+
+
+
+// media queries 
+@media only screen and (max-width: 360px){
+}
+
+body {
+     //responsive menu
+     a {
+      
+      font-size: 1.3em;
+      font-weight: bold;
+    
+    };
+
+    #menu {
+  position: absolute;
+  width: 150px;
+  height: 300px;
+  box-shadow: 0 0 10px #85888C;
+  margin: -35px 0 0 -35px;
+  padding: 10px;
+  padding-top: 70px;
+}
 }

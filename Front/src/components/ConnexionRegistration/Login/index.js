@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom';
 
 import 'src/components/ConnexionRegistration/Login/styles.scss';
+import photoKite from 'src/assets/images/kite.jpg';
 
 const Login = ({
 
@@ -26,27 +27,13 @@ const Login = ({
     handleLogin();
   };
 
-  // useEffect(() => {
-  //   const timeout = setTimeout(() => {
-
-  //   }, 3000);
-  //  },[]);
-
-  // useEffect = (() => {
-  //   const timout = setTimeout(() => {
-  //     <Redirect from="/connexion" to="/" />;
-  //     console.log('welcome');
-  //   }, 3000);
-
-  //   // return () => clearTimeout(timeOut);
-  // }, []);
-
   return (
-
+<div className="login">
+<img className="login-photo" src={photoKite} alt="photo kite" />
     <div className="login-form">
       {isLogged && (
       // useEffect(),
-      <div className="login-logged">
+      <div className="login-form-logged">
         <Redirect from="/connexion" to="/" />
         <p className="login-message">
 
@@ -55,7 +42,7 @@ const Login = ({
         </p>
         <button
           type="button"
-          className="login-button"
+          className="login-form-button"
           onClick={handleLogout}
         >
           Déconnexion
@@ -69,7 +56,6 @@ const Login = ({
         <form
           autoComplete="off"
           className="login-form-element"
-          // <Redirect from="/connexion" to="/" />
           onSubmit={handleSubmit}
         >
           <h1 className="login-form-title">
@@ -90,27 +76,32 @@ const Login = ({
             onChange={changeField}
             value={password}
           />
+          <div>
+        
           <button
             type="submit"
             className="login-form-submit"
-          >
-            <p className="login-form-submit_text">
-              Valider
-            </p>
-            <p className="signin">
+         > 
+         Valider
+          </button>
+        
+         <div className="signin">
+            <p className="signin-text">
               Nouveau sur Co'Ride ?
             </p>
             <Link
-              className="link"
+              className="signin-link"
               to="/inscription"
             >
-              <p className="link-text">S'inscrire</p>
+            S'inscrire
             </Link>
-          </button>
+            </div>
+          </div>
         </form>
       )}
-
-    </div>
+        </div>
+        </div>
+        
   );
 };
 
@@ -134,3 +125,8 @@ Login.defaultProps = {
 export default Login;
 
 // http://18.235.248.88:3000/api-docs
+
+/*
+<div className="connexion">
+<img className="connexion-photo" src={photoKite} alt="photo kite" />
+*/
