@@ -6,10 +6,6 @@ body {
 .field {
   position: relative;
 
-  //Option ovale :
-  //margin: .3em .3em .3em 0;
-
-
   &-input {
       width: 100%;
       font-size: 1.1em;
@@ -19,9 +15,6 @@ body {
       border: none;
       border-bottom: vars.$color-grey solid 0.5px solid;
       padding-left: 1rem;
-    
-    // Option ovale
-    //border-radius: .3em;
 
     &:focus {
       border-color: vars.$color;
@@ -77,7 +70,7 @@ body {
   .field{
   &-input {
     width: 100%;
-    font-size: 1.1em;
+    font-size: 1em;
     height: 4rem;
    }
    }

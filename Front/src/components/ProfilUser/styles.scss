@@ -1,5 +1,115 @@
 @use './src/styles/vars';
+
+@media only screen and (min-width: 850px) and (max-width: 950px){
+}
+
+body {
+
 .pageProfil {
+  max-width: 80%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  position: relative;
+  object-fit: cover;
+  top: -400px;
+
+}
+.profil {
+  box-shadow: vars.$box-shadow;
+  border-radius: vars.$border-radius-global;
+  margin: 2rem 0;
+
+  &-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: vars.$color;
+    color: vars.$color_light;
+    text-align: center;
+    padding: 1.2rem;
+    border-radius: vars.$border-radius-top;
+  };
+
+  &-form {
+    //display: flex;
+    //float: center;
+  
+    &_input {
+      padding: 1.5rem 0;
+      font-size: 1.5rem;
+      max-width: 50%;
+      border: none;
+      
+      &_date {
+        background-color: vars.$color-light;
+      }
+    }
+  }
+}
+
+.date {
+  background-color: vars.$color-light;
+}
+
+.checkbox {
+
+  &_text{
+    background-color: red;
+    font-size: 1.5rem;
+  }
+
+  &_input {
+    font-size: 1.5rem;
+    padding: 1rem;
+
+  }
+}
+
+}
+
+@media only screen and (min-width: 550px) and (max-width: 850px){
+}
+body {
+  .pageProfil {
+    max-width: 80%;
+    margin: 0 auto;
+    margin-top: 2rem;
+    position: relative;
+    object-fit: cover;
+    top: -250px;
+  }
+}
+
+@media only screen and (min-width: 400px) and (max-width: 550px){
+}
+body {
+  .pageProfil {
+    max-width: 80%;
+    margin: 0 auto;
+    margin-top: 2rem;
+    position: relative;
+    object-fit: cover;
+    top: -150px;
+  }
+}
+
+
+@media only screen and (min-width: 320px) and (max-width: 400px){
+}
+body {
+  .pageProfil {
+    max-width: 100%;
+    margin: 0 auto;
+    margin-top: 2rem;
+    position: relative;
+    object-fit: cover;
+    top: -180px;
+  }
+}
+
+
+//
+/*
+pageProfil {
   max-width: 80%;
   margin: 0 auto;
 
@@ -51,3 +161,4 @@
 
   }
 }
+*/

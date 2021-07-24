@@ -14,13 +14,13 @@ import ConnexionRegistration from '../ConnexionRegistration';
 
 import NotFoundPage from '../NotFoundPage';
 import ProfilUser from '../ProfilUser';
-// import Signin from '../ConnexionRegistration/Signin';
+
 
 import Loading from './Loading';
 
 import './styles.scss';
 import { useEffect } from 'react';
-// == Composant
+
 
 const App = ({loading, fetchTravels}) => {
   // J'exécute la fonction reçue en props
@@ -53,11 +53,11 @@ const App = ({loading, fetchTravels}) => {
       //props
       isSignedIn={false} 
       signedMessage="Signin done !"
-      lastname="yourlastname"
-      firstname="yourfirstname"
-      user="email@mail.com"
+      lastname="nom"
+      firstname="prénom"
+      user="lolo@sasa.fr"
       password="password"
-      birthdate="jj/mm/aaaa"
+      birthdate="00/00/0000"
       // fonctions
       changeField= {(value, name) => {
         console.log('change in ' + name + ' :', value);

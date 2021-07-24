@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
-// import datepicker
+import { Link, BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+
+// import
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
 import PropTypes from 'prop-types';
 
 import Field from 'src/components/ConnexionRegistration/Signin/Field';
-import { Link, BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
-
 import 'src/components/ConnexionRegistration/Signin/styles.scss';
 import photoKite from 'src/assets/images/kitewindsurf.jpg';
 
+
 const Signin = ({
 
-    //props
     isSignedIn,
     signedMessage,
     firstname,
@@ -23,8 +22,8 @@ const Signin = ({
     birthdate,
     changeField,
     handleSignin,
-    handleDateSelect,
-    handleDateChange,
+    //handleDateSelect,
+    //handleDateChange,
   
 
 }) => {
@@ -80,34 +79,7 @@ const Signin = ({
           value={firstname}
         />
 
-  <DatePicker 
-  className="Datepicker"
-  required
- // selected={startDate}
-  //onChange={(date) => setStartDate(Date)} 
-  selected={birthdate}
-  name="birthdate"
-  value="00/00/0000"
-  //onSelect={handleDateSelect} //when day is clicked
-  onChange={handleDateChange} //only when value has changed
-  //showTimeSelect
-  placeholderText="Date de naissance"
-  dateFormat="Pp"
-  calendarClassName="rasta-stripes"
-  popperModifiers={{
-           offset: {
-          enabled: true,
-          offset: "0px, 0px"
-                        },
-         preventOverflow: {
-         enabled: true,
-         escapeWithReference: false,
-         boundariesElement: "scrollParent"
-                        }
-                      }}
  
- 
-  />  
   
       <Field
         className="signin-form-input"
@@ -187,7 +159,7 @@ const Signin = ({
   lastname: PropTypes.string.isRequired,
   firstname: PropTypes.string.isRequired,
   user: PropTypes.string.isRequired,
-  birthdate: PropTypes.number.isRequired,
+  birthdate: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   handleSignin: PropTypes.func.isRequired,
@@ -203,3 +175,38 @@ Signin.defaultProps = {
 
 
 export default Signin;
+
+
+
+/*
+ <DatePicker 
+  className="Datepicker"
+  required
+ // selected={startDate}
+  //onChange={(date) => setStartDate(Date)} 
+  selected={birthdate}
+  name="birthdate"
+ 
+  //onSelect={handleDateSelect} //when day is clicked
+  onChange={handleDateChange} //only when value has changed
+  //showTimeSelect
+  placeholderText="Date de naissance"
+  dateFormat="Pp"
+  calendarClassName="rasta-stripes"
+  popperModifiers={{
+           offset: {
+          enabled: true,
+          offset: "0px, 0px"
+                        },
+         preventOverflow: {
+         enabled: true,
+         escapeWithReference: false,
+         boundariesElement: "scrollParent"
+                        }
+                      }}
+ 
+ 
+  />  
+
+
+*/
