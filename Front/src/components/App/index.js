@@ -50,30 +50,51 @@ const App = ({loading, fetchTravels}) => {
 
         <Route exact path="/inscription">
           <Signin 
-      //props
-      isSignedIn={false} 
-      signedMessage="Signin done !"
-      lastname="nom"
-      firstname="prénom"
-      user="lolo@sasa.fr"
-      password="password"
-      birthdate="00/00/0000"
-      // fonctions
-      changeField= {(value, name) => {
-        console.log('change in ' + name + ' :', value);
-      }}
-      handleSignin={() => {
-        console.log('login')
-      }}
-      handleDateChange={() => {
-        console.log('date change')
-      }}
+          //props
+          isSignedIn={false} 
+          signedMessage="Signin done !"
+          lastname="nom"
+          firstname="prénom"
+          user="lolo@sasa.fr"
+          password="password"
+          birthdate="00/00/0000"
+          // fonctions
+          changeField= {(value, name) => {
+            console.log('change in ' + name + ' :', value);
+          }}
+          handleSignin={() => {
+            console.log('login')
+          }}
 
           />
         </Route>
 
         <Route exact path="/profil">
-          <ProfilUser />
+          <ProfilUser
+           //props
+            isCompleted={false} 
+            profilCompletedMessage="Signin done !"
+            lastname="nom"
+            firstname="prénom"
+            pseudo="username"
+            user="lolo@sasa.fr"
+            password="password"
+            date="00/00/0000"
+            age="age"
+            adress="adress"
+            city="city"
+            codeZip="codeZip"
+            country="country"
+            typeCar="typeCar"
+            modelCar="modelCar"
+            // fonctions
+            changeField= {(value, name) => {
+              console.log('change in ' + name + ' :', value);
+            }}
+            handleProfil={() => {
+              console.log('login')
+            }}         
+           />
         </Route>
 
         <div className="app">

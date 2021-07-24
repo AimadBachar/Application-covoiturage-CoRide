@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link, BrowserRouter, Redirect } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import Header from '../Header';
 import Footer from '../Footer';
 
 import Field from 'src/components/ProfilUser/Field';
-import './styles.scss';
+import 'src/components/ProfilUser/styles.scss';
 
 const ProfilUser = ({
 
@@ -73,7 +73,7 @@ return (
             name="prénom"
             placeholder="Prénom"
             onChange={changeField}
-            value={lastname}
+            value={firstname}
           />
           <Field
             className="profil-form-input"
@@ -231,8 +231,22 @@ return (
 );
 };
 
-// Footer.proptypes = {
+ProfilUser.propTypes = {
+  lastname: PropTypes.string.isRequired,
+  firstname: PropTypes.string.isRequired,
+  user: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  age: PropTypes.number,
+  password: PropTypes.string.isRequired,
+  changeField: PropTypes.func.isRequired,
+  handleProfil: PropTypes.func.isRequired,
+  isCompleted: PropTypes.bool,
+};
 
-// };
+// Valeurs par défaut pour les props
+ProfilUser.defaultProps = {
+  isCompleted: false,
+  profilCompletedMessage: 'Profil completed',
+};
 
 export default ProfilUser;

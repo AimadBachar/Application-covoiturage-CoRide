@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import 'src/components/ProfilUser/Field/styles.scss';
+import 'src/components/ProfilUser/styles.scss';
 
 
 const Field = ({
@@ -54,6 +54,7 @@ const Field = ({
 Field.defaultProps = {
   value: '',
   type: 'text',
+  type: 'date',
 };
 
 // == Export

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Link, BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import { Link, BrowserRouter as Router, Redirect } from 'react-router-dom';
 
-// import
-import DatePicker from "react-datepicker";
+//import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import PropTypes from 'prop-types';
 
@@ -22,18 +21,12 @@ const Signin = ({
     birthdate,
     changeField,
     handleSignin,
-    //handleDateSelect,
-    //handleDateChange,
-  
 
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleSignin();
   };
-
-  const [startDate, setStartDate] = useState(new Date());
-  
 
   return (
   <div className="signin">
@@ -78,22 +71,16 @@ const Signin = ({
           onChange={changeField}
           value={firstname}
         />
-
- 
   
       <Field
         className="signin-form-input"
         type="text"
         name="birthdate"
         placeholder="jj/mm/aaaa"
-        maxlength="10"
         autocorrect="off"
-        title="saisissez ici votre date de naissance au format indiqué"
         onChange={changeField} 
         value={birthdate} //date?
         /* type="date"
-        name="date de naissance"
-        placeholder="date de naissance"
         label="date de naissance"
         defaultValue="23-05-1990"*/
       />
@@ -175,36 +162,3 @@ Signin.defaultProps = {
 export default Signin;
 
 
-
-/*
- <DatePicker 
-  className="Datepicker"
-  required
- // selected={startDate}
-  //onChange={(date) => setStartDate(Date)} 
-  selected={birthdate}
-  name="birthdate"
- 
-  //onSelect={handleDateSelect} //when day is clicked
-  onChange={handleDateChange} //only when value has changed
-  //showTimeSelect
-  placeholderText="Date de naissance"
-  dateFormat="Pp"
-  calendarClassName="rasta-stripes"
-  popperModifiers={{
-           offset: {
-          enabled: true,
-          offset: "0px, 0px"
-                        },
-         preventOverflow: {
-         enabled: true,
-         escapeWithReference: false,
-         boundariesElement: "scrollParent"
-                        }
-                      }}
- 
- 
-  />  
-
-
-*/
