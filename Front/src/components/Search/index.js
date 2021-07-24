@@ -20,13 +20,16 @@ const Search = ({
     evt.preventDefault();
     console.log('submit');
     onSubmitSearch();
+
   };
+
   const fieldChange = (evt) => {
     evt.preventDefault();
     //console.log(evt.target.value);
     const value = evt.target.value;
     onInputChange(evt.target.name, value )
   } 
+  
   {console.log(cards)}
   const cardsOk = () => {
     if (cards.length > 0) {
@@ -37,22 +40,18 @@ const Search = ({
       )
     }
   }
+  
 
   return (
-    
     <div className="search">
       {
         cardsOk()    
       }
-
-
       <form
         //action="/results"
-
         className="search-form"
         onSubmit={handleSubmit}
       >
-
         <input
           className="search-form_input depart"
           type="text"
@@ -104,6 +103,8 @@ const Search = ({
           type="submit"
           className="search-form_submit"
         >
+
+      
           <img className="loupe" src={loupe} alt="loupe" />
         </button>
       </form>
