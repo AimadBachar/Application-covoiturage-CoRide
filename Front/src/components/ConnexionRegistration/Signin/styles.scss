@@ -5,6 +5,7 @@
 
 body {
 // Formulaire d'inscription
+
 .signin {
     margin: 0;
     display: flex;
@@ -47,9 +48,8 @@ body {
     flex-direction: column;
     justify-content: center;
     border-radius: 10px;
-   // background-color: vars.$color_light;
     };
-
+/*
   &-name {
        border-bottom: vars.$color-grey solid 0.5px solid;
         //width: 100%;
@@ -58,12 +58,9 @@ body {
         padding: 1.2rem;
         font-family: vars.$font;
         max-width: 50%;
-    };
-
-    &-submit {
-      border-radius: vars.$border-radius-bottom;
-      border: none;
+    };*/
     
+    &-submit {
       background-color: vars.$color;
       display: flex;
        justify-content: center;
@@ -71,18 +68,46 @@ body {
       padding-top: 2.5rem;
       padding-bottom: 2rem;
       color: vars.$color_light;
-     // text-shadow: 0.1em 0.1em 0.1em vars.$color-grey_more;
+      text-shadow: 0.1em 0.1em 0.1em vars.$color-grey;
       font-size: 1.3em;
       font-weight: bold;
       display: inline-block;
      text-align: start;
      
       width: 100vh;
-    }
-    }
+    };
   };
 
+  .login-redirection {
+    background-color: vars.$color;
+    padding: 0.2rem;
+    font-family: vars.$font;
+    color: vars.$color_light;
+    border-radius: vars.$border-radius-bottom;
+    text-align: center;
+    text-overflow: clip;
+    
 
+  &-text {
+    font-size: 1.1em;
+  };
+  
+  &-link {
+      text-shadow: 0.1em 0.1em 0.2em vars.$color-grey_more;
+      text-overflow: clip;
+      color: vars.$color_light;              
+      font-size: 1.2em;
+       //float: center;
+  
+    }
+  }
+
+  .signin-button {
+    background-color: vars.$color_light;
+    
+}
+
+};
 
 
   @media only screen and (max-width: 360px){
@@ -96,51 +121,51 @@ body {
        height: 100vh;
       object-fit: cover
     }
-    
+  
     .signin-form {
       margin: 2rem;
-    
+
       // s'identifier
       &-title {
         font-size: 1.5em;
         padding: 1rem;
       };
     
-        &-submit {
-          background-color: rgba($color: #ffffff00, $alpha: 1.0);  
-          color:  vars.$color;    
-          padding-top: 1rem;
-          padding-bottom: 1rem;        
-          font-size: 1.3em;
-         width: 50vmax;
-          
+          &-submit {
+           background-color: rgba($color: #ffffff00, $alpha: 1.0);   
+            text-shadow: 0.1em 0.1em 0.1em vars.$color-grey; 
+            color: vars.$color;  
+            padding-top: 1rem;
+            padding-bottom: 1rem;        
+            font-size: 1.3em;
+           width: 50vmax; 
+
+          };
         };
-    
-      };
-        .signin-redirection {
+
+
+        .login-redirection {
          background-color: vars.$color;
          background-color: rgba($color: #FC982C, $alpha: 1.0);
-          padding-bottom: 1.5rem;
-       
-          
     
         &-text {
-          padding: 1rem;
+          padding-top: 0.5rem;
+          padding-bottom: 0.7rem;
           font-size: 1em;
           font-weight: bold;
         };
         
         &-link {
             text-shadow: 0.1em 0.1em 0.2em vars.$color-grey_more;             
-            font-size: 1.1em;
+            font-size: 1em;
+            padding-left: 1rem;
             
         
           }
-        }
+    
       }
+
+    }
+
   }
-
-
-
-
 

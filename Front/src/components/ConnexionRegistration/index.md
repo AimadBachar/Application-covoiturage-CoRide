@@ -4,11 +4,14 @@ import PropTypes from 'prop-types';
 import Field from 'src/components/ConnexionRegistration/Signin/Field';
 import 'src/components/ConnexionRegistration/Signin/styles.scss';
 
+import photoKite from 'src/assets/images/kitewindsurf.jpg';
+
 const Signin = () => (
 
 //props
 
   <div className="signin">
+  <img className="login-photo" src={photoKite} alt="photo kite" />
   <div className="signin-form">
     <form
       autoComplete="off"
@@ -19,7 +22,7 @@ const Signin = () => (
       Inscription
     </h1>
   
-      <div className="signin-form-name">
+   
         <Field 
           className="signin-form-input"
           type="text"
@@ -32,7 +35,6 @@ const Signin = () => (
           name="prénom"
           placeholder="Prénom"
         />
-      </div>
 
       <Field
         className="signin-form-input"
@@ -65,7 +67,7 @@ const Signin = () => (
       />
 
       <Field
-        className="signin-form-input password"
+        className="signin-form-input"
         type="text"
         name="password"
         placeholder="Mot de passe"
@@ -101,7 +103,7 @@ Signin.propTypes = {
 // Valeurs par défaut pour les props
 Signin.defaultProps = {
   isLogged: false,
-  loggedMessage: 'Connecté',
+  loggedMessage: 'Signin Done',
 };
 
 

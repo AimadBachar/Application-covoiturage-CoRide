@@ -42,7 +42,7 @@ const Field = ({
      );
   };
 
-Field.propTypes = {
+  Field.propTypes = {
   value: PropTypes.string,
   type: PropTypes.string,
   name: PropTypes.string.isRequired,

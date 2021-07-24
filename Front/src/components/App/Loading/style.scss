@@ -34,7 +34,7 @@
   transform: translate(-50%, -50%);
   color: vars.$color;
   font-size: 2em;
-  animation: fade .75s infinite alternate;
+  animation: fade .95s infinite alternate;
 
   &::after {
     content: "";
