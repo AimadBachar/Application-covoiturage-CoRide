@@ -8,7 +8,7 @@ const mapStateToProps = (state) => ({
     tags: state.trajets.tags,
     departure_city: state.trajets.inputs.departure,
     destination_city: state.trajets.inputs.arrival,
-    activity_id: state.trajets.inputs.sport,
+    activity: state.trajets.inputs.sport,
     departure_timestamp: state.trajets.inputs.date,
     cards: state.trajets.cards
 });

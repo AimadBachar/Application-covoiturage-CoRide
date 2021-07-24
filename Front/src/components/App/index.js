@@ -38,14 +38,11 @@ const App = ({loading, fetchTravels}) => {
 
       <Route exact path="/">
           <Header />
-          <Nav />
           <Search />
-          {/* <Card /> */}
+          <Card />
           <Main />
           <Footer />
         </Route>
-
-        
 
         <Route exact path="/connexion">
           <ConnexionRegistration />
@@ -57,13 +54,6 @@ const App = ({loading, fetchTravels}) => {
 
         <Route exact path="/profil">
           <ProfilUser />
-        </Route>
-
-        <Route exact path="/results">
-          <Header />
-          <Search />
-          <Card />
-          <Footer />
         </Route>
 
         <Route path="*">
