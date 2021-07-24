@@ -1,20 +1,56 @@
 @use 'src/styles/vars';
 
-.card {
-  background-color: red;
+.cardInfos {
   // position: relative;
   // margin: 10px 0px 10px 0px;
-  color: #303030;
-  padding: 0.5em 0.5em 0.5em 0.5em;
+  // Position relative si besoin de remonter
+  
   max-width: 80%;
   margin: 0 auto;
+  box-shadow: vars.$box-shadow;
+  border-radius: vars.$border-radius-global;
+  margin-bottom: 1.5rem;
+  font-family: vars.$font;
+  border: vars.$color, 2px solid;
 
+  &-travel {
+    display: flex;
+    text-align: center;
+    margin: 1rem;
 
-  &-left {
-    // display: flex;
-    // flex-direction: row;
-    // justify-content: space-between;
+    &_left {
+      min-width: 50%;
+      border-right: 1px solid vars.$color-grey;
+
+      &__profil {
+        color: vars.$color;
+      }
+
+      &__destination {
+        font-size: 1.5rem;
+        margin-top: 1rem;
+        color: vars.$color-grey_more;
+      }
+    }
+
+    &_right {
+      min-width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      font-size: 1.5rem;
+
+      &__date, &__hour {
+        color: vars.$color-grey_more;
+      }
+
+      &__tag {
+        color: vars.$color;
+      }
+    }
   }
+
+  
 
   &-bottom {
     // display: flex;
