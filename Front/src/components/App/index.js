@@ -33,16 +33,19 @@ const App = ({loading, fetchTravels}) => {
   }
   return (
     <Router>
+      <div className="app">
       <Switch>
 
-        <Route exact path="/results">
+      <Route exact path="/">
           <Header />
-
+          <Nav />
           <Search />
-          {/* <Main /> */}
-          <Card />
+          {/* <Card /> */}
+          <Main />
           <Footer />
         </Route>
+
+        
 
         <Route exact path="/connexion">
           <ConnexionRegistration />
@@ -56,22 +59,19 @@ const App = ({loading, fetchTravels}) => {
           <ProfilUser />
         </Route>
 
-        <div className="app">
-          <Route path="/">
-            <Header />
-            <Nav />
-            <Search />
-            <Card />
-            <Main />
-            <Footer />
-          </Route>
-        </div>
+        <Route exact path="/results">
+          <Header />
+          <Search />
+          <Card />
+          <Footer />
+        </Route>
+
         <Route path="*">
           <NotFoundPage />
         </Route>
 
       </Switch>
-
+      </div>
     </Router>
   );
 };
