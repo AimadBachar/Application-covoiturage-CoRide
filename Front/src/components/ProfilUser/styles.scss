@@ -5,22 +5,28 @@
 
 body {
 
-.pageProfil {
+.profil {
   max-width: 80%;
   margin: 0 auto;
-  margin-top: 2rem;
+  margin-top: 15rem;
   position: relative;
   object-fit: cover;
   top: -400px;
 
 }
-.profil {
+
+//Formulaire pour créer ou modifier son profil
+.profil-form {
   box-shadow: vars.$box-shadow;
   border-radius: vars.$border-radius-global;
-  margin: 2rem 0;
+  font-family: vars.$font;
+  display: block;
+  justify-content: center;
+  position: absolute;
+ // margin: 2rem 0;
 
   &-title {
-    font-size: 1.5rem;
+    font-size: 1.5em;
     font-weight: bold;
     background-color: vars.$color;
     color: vars.$color_light;
@@ -29,43 +35,56 @@ body {
     border-radius: vars.$border-radius-top;
   };
 
-  &-form {
-    //display: flex;
-    //float: center;
-  
-    &_input {
-      padding: 1.5rem 0;
-      font-size: 1.5rem;
-      max-width: 50%;
-      border: none;
+  &-element {
+    background-color: vars.$color_light;
+    display: block;
+    justify-content: center;
+    border-radius: 10px;
+  };
+  &-input {
+    border-bottom: vars.$color-grey solid 0.5px solid;
+    border: 0.5px solid vars.$color-grey;
+    border: none;
+    //padding: 1.5rem 0;
+    font-size: 1.3em;
+    max-width: 50%;
+    padding-left: 1rem;
+    height: 4rem;
+    //border-radius: 10px;
       
-      &_date {
-        background-color: vars.$color-light;
+      &-date {
+        color: vars.$color-grey_more;
+       // background-color: vars.$color-light;
       }
     }
   }
-}
 
+/*
 .date {
-  background-color: vars.$color-light;
-}
+  //color: vars.$color-grey_more;
+}*/
 
 .checkbox {
 
   &_text{
-    background-color: red;
-    font-size: 1.5rem;
+    padding: 1rem;
+    background-color: vars.$color;
+    color: vars.$color_light;
+    font-size: 1.3em;
   }
 
   &_input {
-    font-size: 1.5rem;
+    color: vars.$color-grey_more;
+    font-size: 1.3em;
     padding: 1rem;
+    padding-top: 1rem;
+   
 
   }
 }
 
 }
-
+/*
 @media only screen and (min-width: 550px) and (max-width: 850px){
 }
 body {
@@ -97,7 +116,7 @@ body {
 }
 body {
   .pageProfil {
-    max-width: 100%;
+    //max-width: 80%;
     margin: 0 auto;
     margin-top: 2rem;
     position: relative;

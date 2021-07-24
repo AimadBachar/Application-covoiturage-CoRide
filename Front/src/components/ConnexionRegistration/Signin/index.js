@@ -108,7 +108,6 @@ const Signin = ({
 
       <Field
         className="signin-form-input"
-        className="login-form-input"
         type="password"
         name="password"
         placeholder="Mot de passe"
@@ -118,7 +117,6 @@ const Signin = ({
  
       <Field
         className="signin-form-input"
-        className="login-form-input"
         type="password"
         name="password"
         placeholder="Confirmez votre mot de passe"
@@ -141,7 +139,7 @@ const Signin = ({
               className="login-redirection-link"
               to="/connexion"
             >
-            Connecter-vous
+            Connectez-vous
             </Link>
             </p>
             </div>
