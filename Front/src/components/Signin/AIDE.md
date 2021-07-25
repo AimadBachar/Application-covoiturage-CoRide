@@ -108,8 +108,9 @@ export const userSignin = () => ({
 ------------------------------------------
 
 
-note : si tu as plus d actions que nécessaire ce n'est pas grave
+* note : si tu as plus d actions que nécessaire ce n'est pas grave
        tu vas dispatcher celles dont tu auras besoin 
+
 **etape 5**
 --tes actions prêtes
 --tu vas pouvoir les injecter dans le REDUCER 
@@ -123,7 +124,7 @@ note : si tu as plus d actions que nécessaire ce n'est pas grave
 
 **etape 6**
 --tu peux dispatcher tes actions dans les fonctions
---dans le container trip
+--dans le container 
 -- ne pas oublier // == Import des actions
 //import { noms des actions qui sont en minuscules } from 'src/actions/user';
 
@@ -134,5 +135,44 @@ note : si tu as plus d actions que nécessaire ce n'est pas grave
 -- dans ce cas tu peux supprimer ou commenter tes fonctions dans APP index.js
 
 **ETAPE 7**
---
+--tu peux créer un middleware dans le dossier MIDDLEWARES
+--exemple: signinMiddleware.js
+
+--voici l ossature du middleware
+
+import axios from 'axios';
+import {ACTION EN MAJUSCULE, action en minuscule} 
+from 'src/actions/nomdufichier';
+
+const middleware (store) => (next) => (action) => {
+  // J'examine le type d'action, pour les CAS qui m'intéressent
+  switch(action.type) {
+   case FETCH_RECIPES:
+     // Je lance ma requête avec axios
+     axios({
+       method: 'get',
+       url: 'http://monapi.com/maroute'
+     })
+      .then((res) => {
+        // axios met dans res.data la réponse du serveur
+        console.log(res.data);
+        // J'ai besoin d'avoir une action pour informer le reducer que la requête s'est bien passée.
+        // Si j'ai reçu une réponde du serveur, il y a de grandes chances pour que ça intéresse mon reducer.
+        // Je vais donc mettre les données de ma réponse
+        // dans l'objet d'action
+        const actionToSend = userLoginSuccess(res.data);
+        // Et je n'oublie pas de la dispatcher
+        store.dispatch(actionToSend);
+
+      })
+      .catch((err) => {
+        console.error(err);
+        // J'ai besoin d'avoir une action pour informer le reducer que la requête s'est mal passée.
+        const actionToSend = userLoginError();
+        store.dispatch(actionToSend)
+      });
+   break;
+  }
+  next(action);
+}
 
