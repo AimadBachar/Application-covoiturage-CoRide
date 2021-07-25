@@ -80,3 +80,13 @@ const reducer = (state = initialState, action = {}) => {
 
 export default reducer;
 -----------------------------
+--en parallele tu changes ton state ds le container 
+--ds cet ex tu recuperes le user et password ds le state du reducer usersignin:
+
+    user: state.usersignin.inputs.user,
+    password: state.usersignin.inputs.password,
+
+--tu relances yarn start pour vérifier (dans la console) que tu as bien recup les fausses datas du state
+
+**etape 4**
+
