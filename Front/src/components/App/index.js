@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from 'src/containers/Header';
 import Search from 'src/containers/Search';
 import Footer from 'src/containers/Footer';
-import Signin from 'src/components/Signin';
+import Signin from 'src/containers/Signin';
 import Card from 'src/containers/Card';
 import Main from '../Main';
 import Nav from '../Nav';
