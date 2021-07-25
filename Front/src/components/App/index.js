@@ -80,19 +80,20 @@ const App = ({loading, fetchTravels}) => {
             user="lolo@sasa.fr"
             password="password"
             date="00/00/0000"
-            age="age"
-            adress="adress"
+            age="18"
+            adress="adresse"
             city="city"
             codeZip="codeZip"
             country="country"
             typeCar="typeCar"
             modelCar="modelCar"
+            activity_id="activity"
             // fonctions
             changeField= {(value, name) => {
               console.log('change in ' + name + ' :', value);
             }}
             handleProfil={() => {
-              console.log('login')
+              console.log('profil')
             }}         
            />
         </Route>

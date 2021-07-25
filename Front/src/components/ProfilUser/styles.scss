@@ -1,29 +1,31 @@
 @use './src/styles/vars';
-
+/*
 @media only screen and (min-width: 850px) and (max-width: 950px){
+}*/
+@media only screen and (min-width: 600px){
 }
 
 body {
-
+  background-color: rgba(255, 123, 0, 0.356);
+// formulaire pour compléter le profil et le mettre à jour
 .profil {
-  max-width: 80%;
-  margin: 0 auto;
-  margin-top: 15rem;
+  //margin-top: 2rem;
   position: relative;
-  object-fit: cover;
-  top: -400px;
-
-}
-
+  //min-width: 320px;
+  
+   
+//}
 //Formulaire pour créer ou modifier son profil
-.profil-form {
+&-form {
   box-shadow: vars.$box-shadow;
   border-radius: vars.$border-radius-global;
   font-family: vars.$font;
-  display: block;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  position: absolute;
- // margin: 2rem 0;
+  text-align: center;
+  margin: 0 auto;
+ // object-fit: cover;
 
   &-title {
     font-size: 1.5em;
@@ -36,54 +38,193 @@ body {
   };
 
   &-element {
-    background-color: vars.$color_light;
-    display: block;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     border-radius: 10px;
   };
+
+&-text {
+  background-color: vars.$color;
+  color: vars.$color_light;
+  font-size: 1.3em;
+  padding: 0.5rem;
+};
+
+/*
   &-input {
     border-bottom: vars.$color-grey solid 0.5px solid;
     border: 0.5px solid vars.$color-grey;
     border: none;
-    //padding: 1.5rem 0;
-    font-size: 1.3em;
-    max-width: 50%;
-    padding-left: 1rem;
+    //max-width: 30%;
+    //padding-left: 3rem;
     height: 4rem;
-    //border-radius: 10px;
-      
+    
       &-date {
         color: vars.$color-grey_more;
-       // background-color: vars.$color-light;
+      };
+    };
+*/
+
+    &-button {
+        //background-color: vars.$color_light; 
+        margin: auto;
+        padding-top: 1.5rem;
+      }
+
+    &-submit {
+      background-color: vars.$color_light;
+      //justify-content: center;
+      border: vars.$color solid 0.1px;
+      color: vars.$color;
+      text-shadow: 0.1em 0.1em 0.1em vars.$color-grey;
+      font-size: 1.2em;
+      font-weight: bold;
+      //border: none;
+      padding: 1rem;
+      border-radius:25px;
+     // display: inline-block;
+      //text-align: start;    
+      //width: 50vh;
+    };
+
+/*
+.checkbox {
+
+    &-text{
+      padding: 1rem;
+      background-color: vars.$color;
+      color: vars.$color_light;
+      font-size: 1.3em;
+    };
+
+    &-input {
+     display: flex;
+     flex-direction: row;
+      background-color: vars.$color_light;
+      color: vars.$color-grey_more;
+      font-size: 1.3em;
+     padding: 1rem;
+      padding-top: 1rem;
+      height: 1rem;
+      };
+
+      &-field {
+        padding: 0.2rem;
+      };
+    };
+*/
+
+&-sport {
+ display: flex;
+flex-direction: column;
+background-color: vars.$color-light;
+ padding: 1rem;
+  
+};
+
+&-select {
+  background-color: vars.$color-light;
+  padding: 2rem;
+  margin: auto;
+  border-radius: 25px;
+  border-color: vars.$color;
+  color: vars.$color-grey_more;
+  font-size: 1.2em;
+  font-family: vars.$font;
+
+&_select {
+  width: 50%;
+
+ 
+}
+}
+}
+};
+    .home-redirection {
+      background-color: vars.$color;
+      padding: 0.8rem;
+      font-family: vars.$font;
+      color: vars.$color_light;
+      border-radius: vars.$border-radius-bottom;
+      text-align: center;
+      text-overflow: clip;
+      
+  
+    &-text {
+     
+      font-size: 1.1em;
+    };
+    
+    &-link {
+        text-shadow: 0.1em 0.1em 0.2em vars.$color-grey_more;
+        text-overflow: clip;
+        color: vars.$color_light;              
+        font-size: 1.1em;
+        padding-left: 1rem;
+         //float: center;
+    
+      }
+    }
+  
+  
+    
+  };
+
+/*
+  @media only screen and (max-width: 360px){
+  }
+  
+  body {
+    .profil {
+  
+    .profil-form {
+      margin: 2rem;
+
+      // s'identifier
+      &-title {
+        font-size: 1.5em;
+        padding: 1rem;
+      };
+    
+          &-submit {
+           background-color: rgba($color: #ffffff00, $alpha: 1.0);   
+            text-shadow: 0.1em 0.1em 0.1em vars.$color-grey; 
+            color: vars.$color;  
+            padding-top: 1rem;
+            padding-bottom: 1rem;        
+            font-size: 1.3em;
+           width: 50vmax; 
+
+          };
+        };
+
+
+        .profil-redirection {
+         background-color: vars.$color;
+         background-color: rgba($color: #FC982C, $alpha: 1.0);
+    
+        &-text {
+          padding-top: 0.5rem;
+          padding-bottom: 0.7rem;
+          font-size: 1em;
+          font-weight: bold;
+        };
+        
+        &-link {
+            text-shadow: 0.1em 0.1em 0.2em vars.$color-grey_more;             
+            font-size: 1em;
+            padding-left: 1rem;       
+          }    
       }
     }
   }
 
-/*
-.date {
-  //color: vars.$color-grey_more;
-}*/
 
-.checkbox {
+*/
 
-  &_text{
-    padding: 1rem;
-    background-color: vars.$color;
-    color: vars.$color_light;
-    font-size: 1.3em;
-  }
 
-  &_input {
-    color: vars.$color-grey_more;
-    font-size: 1.3em;
-    padding: 1rem;
-    padding-top: 1rem;
-   
 
-  }
-}
-
-}
 /*
 @media only screen and (min-width: 550px) and (max-width: 850px){
 }

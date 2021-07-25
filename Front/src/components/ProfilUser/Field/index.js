@@ -13,6 +13,8 @@ const Field = ({
     
 }) => {
   const handleChange = (evt) => {
+    evt.preventDefault();
+    //const value = evt.target.value;
     onChange(evt.target.value, name);
   };
     const inputId = `field-${name}`;

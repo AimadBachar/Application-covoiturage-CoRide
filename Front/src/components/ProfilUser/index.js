@@ -1,15 +1,17 @@
 import React from 'react';
-import { Link, BrowserRouter, Redirect } from 'react-router-dom';
+import { Link, BrowserRouter, Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import Header from '../Header';
-import Footer from '../Footer';
+//import Header from '../Header';
+//import Footer from '../Footer';
 
 import Field from 'src/components/ProfilUser/Field';
 import 'src/components/ProfilUser/styles.scss';
 
 const ProfilUser = ({
 
+activity_id,
+tags,
 lastname,
 firstname,
 pseudo,
@@ -26,21 +28,26 @@ age,
 
 isCompleted,
 profilCompletedMessage,
-changeField,
+//changeField,
 handleProfil,
 
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    console.log('submit');
     handleProfil();
   };
 
-
+  const changeField = (evt) => {
+    evt.preventDefault();
+    //console.log(evt.target.value);
+    const value = evt.target.value;
+    onInputChange(evt.target.name, value )
+  } 
 
 return (
-  <div>
-    <Header />
     <div className="profil">
+   
       <div className="profil-form">
         {/* picture */}
         {/*est ce que l'on propose au submit le redirect vers le rendu profil ?
@@ -112,6 +119,7 @@ return (
 
           <Field
             className="profil-form-input"
+            type="email"
             name="user"
             placeholder="Adresse Email" //ou modifier son email ?
             onChange={changeField}
@@ -158,29 +166,7 @@ return (
             onChange={changeField}
             value={country}
           />
-
-          <div className="checkbox">
-            <p className="checkbox-text">Choisi une ou plusieurs activités:</p>
-            <label className="checkbox-input">
-              <Field
-                className="checkbox-field"
-                type="checkbox"
-                name="surf"
-              />
-              Surf
-            </label>
-
-            <label className="checkbox-input">
-              <Field
-                className="checkbox-field"
-                type="checkbox"
-                name="kite"
-              />
-              Kite
-            </label>
-          </div>
-          {/* checkbox */}
-
+             <p className="profil-form-text">Ajout d'un véhicule</p>
           <Field
             className="profil-form-input"
             type="text"
@@ -196,8 +182,68 @@ return (
             placeholder="Modele"
             onChange={changeField}
             value={modelCar}
-          />
-          <div className="profil-button">
+          />       
+        
+        <p className="profil-form-text">Choisir une ou plusieurs activités</p>
+      {/*   <Field
+           className="profil-form-input"
+           type="select"
+           multiple="oui"
+           name="activity"
+           placeholder="activity"
+           onChange={changeField}
+           value={activity_id}
+           option value="kite"
+           option value="skate"
+          />*/}
+
+      <div className="profil-form-sport">
+          <select
+            className="profil-form-select"
+            name="activity_id"
+            value={activity_id}
+            onChange={changeField}
+          >
+            <option
+              className="profil-form-select_title"
+            >Sports pratiqués
+            </option>
+          {/*  {tags.map((tag) => (
+              <option
+                name="tag"
+                key={tag.id}
+                value={tag.sport}
+              >
+                {tag.sport}
+              </option>
+            ))}    */}
+          </select>
+
+         {/* checked="list" // {this.state.chkbox}
+          onChange={this.handleChangeChk} */}
+        
+{/*
+             <div className="checkbox">
+         <label className="checkbox-input">
+              <Field
+                className="checkbox-field"
+                type="checkbox"
+                name="surf"
+              />
+              Surf
+            </label>
+            <label className="checkbox-input">
+              <Field
+                className="checkbox-field"
+                type="checkbox"
+                name="kite"
+              />
+              Kite
+            </label>
+          </div>
+          {/* checkbox */}
+
+          <div className="profil-form-button">
                 <button 
                 type="submit" 
                 className="profil-form-submit"
@@ -205,10 +251,7 @@ return (
                   Sauvegarder
                 </button>
 
-                <button type="submit" 
-                className="profil-form-submit">
-                  Annuler
-                </button>
+                </div>
                 </div>
           <div className="home-redirection">
             <p className="home-redirection-text">
@@ -221,13 +264,11 @@ return (
               </Link>
             </p>
          </div>
-
         </form>
+       
         )}
       </div>
     </div>
-    <Footer />
-  </div>
 );
 };
 
@@ -236,13 +277,15 @@ ProfilUser.propTypes = {
   firstname: PropTypes.string.isRequired,
   user: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  age: PropTypes.number,
+  age: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   handleProfil: PropTypes.func.isRequired,
   isCompleted: PropTypes.bool,
+  tags: PropTypes.shape({
+  sport: PropTypes.string.isRequired,
+})
 };
-
 // Valeurs par défaut pour les props
 ProfilUser.defaultProps = {
   isCompleted: false,
