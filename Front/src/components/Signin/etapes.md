@@ -57,7 +57,7 @@ handleSignin: () => {
 **étape 3**
 --tu vas devoir parametrer ton state
 --pour cela tu vas créer un reducer dans le dossier "REDUCERS" 
-exemple : signin.js
+exemple : usersignin.js
 --tu peux importer ton reducer dans l'index.js de REDUCERS
 
 structure du fichier.js reducer avec ex de state
@@ -93,3 +93,13 @@ export default reducer;
 
 **etape 4**
 -- maintenant tu vas t'occuper des fonctions/actions
+--dans le dossier ACTIONS
+--exemple : usersignin.js
+---------------
+exemple:
+export const USER_SIGNIN = 'USER_SIGNIN';
+
+export const userSignin = () => ({
+  type: USER_SIGNIN,
+});
+------------------------------------------
