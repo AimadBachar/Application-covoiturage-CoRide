@@ -1,3 +1,6 @@
+## passage REDUX
+tu peux te faire un commit entre chaque étape
+
 une fois le composant terminé avec les props
 vérifier les fonctionnalités du composant avec l'affichage en console
 tu dois voir le nom des fonctions au clic ou en écrivant dans les inputs
@@ -50,3 +53,30 @@ handleSignin: () => {
       }
 
 --tu relances yarn start pour vérifier (dans la console) que tu as bien copier coller tes datas et fonctions côté redux
+
+**étape 3**
+--tu vas devoir parametrer ton state
+--pour cela tu vas créer un reducer dans le dossier "REDUCERS" 
+exemple : signin.js
+--tu peux importer ton reducer dans l'index.js de REDUCERS
+
+structure du fichier.js reducer avec ex de state
+----------------
+export const initialState = {
+    logged: false,
+    loggedMessage: 'Welcome !',
+    inputs: {
+      // user: 'laurent@savarit.fr',
+      // password: '1234',
+    }
+    },
+
+const reducer = (state = initialState, action = {}) => {
+  switch (action.type) {
+    default:
+      return state;
+  }
+};
+
+export default reducer;
+-----------------------------
