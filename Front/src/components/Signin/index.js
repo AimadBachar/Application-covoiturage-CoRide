@@ -74,10 +74,11 @@ const Signin = ({
   
       <Field
         className="signin-form-input"
-        type="text"
+        type="date"
         name="birthdate"
-        placeholder="jj/mm/aaaa"
+        placeholder="your birthdate"
         autocorrect="off"
+        data-date-split-input="true"
         onChange={changeField} 
         value={birthdate} //date?
         /* type="date"

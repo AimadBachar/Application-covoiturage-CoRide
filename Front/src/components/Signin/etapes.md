@@ -88,5 +88,8 @@ export default reducer;
 
 --tu relances yarn start pour vérifier (dans la console) que tu as bien recup les fausses datas du state
 
-**etape 4**
+--si c'est ok
+--tu peux supprimer ou commenter les datas dans APP index.js
 
+**etape 4**
+-- maintenant tu vas t'occuper des fonctions/actions

@@ -72,13 +72,13 @@ const App = ({loading, fetchTravels}) => {
         <Route exact path="/inscription">
           <Signin 
           //props
-          isSignedIn={false} 
+        /*  isSignedIn={false} 
           signedMessage="Signin done !"
           lastname="nom"
           firstname="prénom"
           user="lolo@sasa.fr"
           password="password"
-          birthdate="00/00/0000"
+          birthdate="00/00/0000"*/
           // fonctions
           changeField= {(value, name) => {
             console.log('change in ' + name + ' :', value);
