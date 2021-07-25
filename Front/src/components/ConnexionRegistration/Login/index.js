@@ -2,7 +2,7 @@ import React  from 'react';
 import PropTypes from 'prop-types';
 
 import Field from 'src/components/ConnexionRegistration/Login/Field';
-import { Link, BrowserRouter as  Redirect } from 'react-router-dom';
+import { Link, Redirect, BrowserRouter as Route } from 'react-router-dom';
 
 import 'src/components/ConnexionRegistration/Login/styles.scss';
 import photoKite from 'src/assets/images/kite.jpg';
