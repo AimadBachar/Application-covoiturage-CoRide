@@ -31,22 +31,10 @@ const Search = ({
   } 
   
   {console.log(cards)}
-  /* const cardsOk = () => {
-    if (cards.length > 0) {
-      return (
-        <Redirect to={{
-          pathname: "/results",
-        }}/>
-      )
-    }
-  } */
-  
 
   return (
     <div className="search">
-     {/*  {
-        cardsOk()    
-      } */}
+
       <form
         //action="/results"
         className="search-form"

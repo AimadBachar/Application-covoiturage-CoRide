@@ -28,7 +28,6 @@ const App = ({loading, fetchTravels}) => {
   useEffect(fetchTravels, [])
 
   if (loading) {
-    console.log("oui")
     return <Loading />;
   }
   return (
