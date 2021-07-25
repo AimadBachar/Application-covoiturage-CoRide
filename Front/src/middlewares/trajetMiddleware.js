@@ -15,7 +15,7 @@ export default (store) => (next) => (action) => {
     case SEARCH_SUCCESS:
 
       const inputs = store.getState().trajets.inputs;
-
+      console.log(inputs);
       let fetchUrl = "http://18.235.248.88:3000/api/v1/travels";
 
       let count = 0;

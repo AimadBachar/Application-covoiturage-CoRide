@@ -11,7 +11,7 @@ const Search = ({
   tags,
   departure_city,
   destination_city,
-  activity_id,
+  activity,
   departure_timestamp,
   onInputChange,
   onSubmitSearch
@@ -31,22 +31,10 @@ const Search = ({
   } 
   
   {console.log(cards)}
-  const cardsOk = () => {
-    if (cards.length > 0) {
-      return (
-        <Redirect to={{
-          pathname: "/results",
-        }}/>
-      )
-    }
-  }
-  
 
   return (
     <div className="search">
-      {
-        cardsOk()    
-      }
+
       <form
         //action="/results"
         className="search-form"
@@ -72,8 +60,8 @@ const Search = ({
         <div className="search-form_sport__date">
           <select
             className="search-form_select"
-            name="activity_id"
-            value={activity_id}
+            name="activity"
+            value={activity}
             onChange={fieldChange}
           >
             <option

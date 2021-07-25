@@ -28,7 +28,6 @@ const App = ({loading, fetchTravels}) => {
   useEffect(fetchTravels, [])
 
   if (loading) {
-    console.log("oui")
     return <Loading />;
   }
   return (
@@ -38,14 +37,11 @@ const App = ({loading, fetchTravels}) => {
 
       <Route exact path="/">
           <Header />
-          <Nav />
           <Search />
-          {/* <Card /> */}
+          <Card />
           <Main />
           <Footer />
         </Route>
-
-        
 
         <Route exact path="/connexion">
           <ConnexionRegistration />
@@ -99,13 +95,6 @@ const App = ({loading, fetchTravels}) => {
               console.log('profil')
             }}         
            />
-        </Route>
-
-        <Route exact path="/results">
-          <Header />
-          <Search />
-          <Card />
-          <Footer />
         </Route>
 
         <Route path="*">
