@@ -11,9 +11,9 @@ import Card from 'src/containers/Card';
 import Main from '../Main';
 import Nav from '../Nav';
 import ConnexionRegistration from '../ConnexionRegistration';
-
 import NotFoundPage from '../NotFoundPage';
 import ProfilUser from '../ProfilUser';
+import Trip from '../Trip'
 // import Signin from '../ConnexionRegistration/Signin';
 
 import Loading from './Loading';
@@ -45,6 +45,9 @@ const App = ({loading, fetchTravels}) => {
           <Footer />
         </Route>
 
+        <Route exact path="/trip">
+          <Trip />
+        </Route>
         
 
         <Route exact path="/connexion">
@@ -59,12 +62,12 @@ const App = ({loading, fetchTravels}) => {
           <ProfilUser />
         </Route>
 
-        <Route exact path="/results">
+        {/* <Route exact path="/results">
           <Header />
           <Search />
           <Card />
           <Footer />
-        </Route>
+        </Route> */}
 
         <Route path="*">
           <NotFoundPage />

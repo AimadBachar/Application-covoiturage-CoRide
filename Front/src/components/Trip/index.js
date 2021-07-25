@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import loupe from '/src/assets/images/loupe white 2.png';
-
+import Header from '../Header';
+import Footer from '../Footer';
 
 import './styles.scss';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
-const Search = ({
+const Trip = ({
   cards,
   tags,
   departure_city,
@@ -44,11 +45,12 @@ const Search = ({
 
   return (
     <div>
-    <div className="search">
-      {/* {
+      <Header />
+      <h1>coucou</h1> 
+      {/* {/* {
         cardsOk()    
       } */}
-      <form
+      {/* <form
         //action="/results"
         className="search-form"
         onSubmit={handleSubmit}
@@ -108,29 +110,20 @@ const Search = ({
       
           <img className="loupe" src={loupe} alt="loupe" />
         </button>
-      </form>
+      </form>  */}
+      <Footer />
     </div>
-
-    <Link
-      to="/trip"
-      className="search-trip"
-    >
-      <p className="search-trip_text">
-        Ajouter un trajet
-      </p>
-    </Link>
-  </div>
   );
 };
 
 
-Search.propTypes = {
-  onSelectChange: PropTypes.func.isRequired,
-  onInputChange: PropTypes.func.isRequired,
-  onDateChange: PropTypes.func.isRequired,
-  tags: PropTypes.shape({
-   sport: PropTypes.string.isRequired,
-  })
-};
+// Search.propTypes = {
+//   onSelectChange: PropTypes.func.isRequired,
+//   onInputChange: PropTypes.func.isRequired,
+//   onDateChange: PropTypes.func.isRequired,
+//   tags: PropTypes.shape({
+//    sport: PropTypes.string.isRequired,
+//   })
+// };
 
-export default Search;
+export default Trip;
