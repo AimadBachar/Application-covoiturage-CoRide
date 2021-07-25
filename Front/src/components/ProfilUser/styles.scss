@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: rgba(255, 123, 0, 0.356);
+  //background-color: rgba(255, 123, 0, 0.356);
 // formulaire pour compléter le profil et le mettre à jour
 .profil {
   //margin-top: 2rem;
@@ -127,17 +127,12 @@ background-color: vars.$color-light;
   background-color: vars.$color-light;
   padding: 2rem;
   margin: auto;
-  border-radius: 25px;
+  //border-radius: 25px;
   border-color: vars.$color;
   color: vars.$color-grey_more;
   font-size: 1.2em;
   font-family: vars.$font;
-
-&_select {
-  width: 50%;
-
- 
-}
+  //width: 50%;
 }
 }
 };

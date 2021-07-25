@@ -184,7 +184,7 @@ return (
             value={modelCar}
           />       
         
-        <p className="profil-form-text">Choisir une ou plusieurs activités</p>
+        <p className="profil-form-text">Sport de glisse pratiqué</p>
       {/*   <Field
            className="profil-form-input"
            type="select"
@@ -206,7 +206,7 @@ return (
           >
             <option
               className="profil-form-select_title"
-            >Sports pratiqués
+            >Choisir une ou plusieurs activités
             </option>
           {/*  {tags.map((tag) => (
               <option
