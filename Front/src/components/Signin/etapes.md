@@ -92,9 +92,12 @@ export default reducer;
 --tu peux supprimer ou commenter les datas dans APP index.js
 
 **etape 4**
--- maintenant tu vas t'occuper des fonctions/actions
+-- maintenant tu vas t'occuper des actions
 --dans le dossier ACTIONS
 --exemple : usersignin.js
+
+--quelles fonctions a besoin ton container TRIP? 
+--Quelles actions il a?
 ---------------
 exemple:
 export const USER_SIGNIN = 'USER_SIGNIN';
@@ -103,3 +106,13 @@ export const userSignin = () => ({
   type: USER_SIGNIN,
 });
 ------------------------------------------
+
+**etape 5**
+--tes actions prêtes
+--tu vas pouvoir les injecter dans le REDUCER 
+
+--tu as le squelette du reducer en place
+--au dessus d'export const initialState
+--tu peux importer tes actions
+
+--en dessous de switch tu vas injecter tes actions
