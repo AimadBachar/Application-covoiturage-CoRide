@@ -1,2 +1,16 @@
 import { connect } from 'react-redux';
-import Login from 'src/components/ConnexionRegistration/Login';
+import Signin from 'src/components/ConnexionRegistration/Signin';
+
+// == Import des actions
+//import {  } from 'src/actions/user';
+
+const mapStateToProps = (state) => ({
+  
+  });
+
+
+  const mapDispatchToProps = (dispatch) => ({
+    
+  });
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signin);

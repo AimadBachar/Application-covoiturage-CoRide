@@ -57,8 +57,8 @@ const App = ({loading, fetchTravels}) => {
             console.log('trip created')
           }}
 
-          fieldChange = {(value, name) => {
-            console.log('change in' + name + ' :', value);
+          onInputChange = {(value, name) => {
+            console.log('change in ' + name + ' :', value);
           }}
 
 
@@ -84,7 +84,7 @@ const App = ({loading, fetchTravels}) => {
             console.log('change in ' + name + ' :', value);
           }}
           handleSignin={() => {
-            console.log('login')
+            console.log('Signin')
           }}
 
           />

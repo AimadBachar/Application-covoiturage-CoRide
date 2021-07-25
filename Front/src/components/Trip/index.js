@@ -111,7 +111,7 @@ const Trip = ({
             name="place-available"
             value={places_available}
             placeholder="Nombre de place"
-            // onChange={fieldChange}
+            onChange={fieldChange}
           />
 
           <input
@@ -120,7 +120,7 @@ const Trip = ({
             name="description"
             value={description}
             placeholder="Spécificité du véhicule, informations sur le trajet"
-            // onChange={fieldChange}
+            onChange={fieldChange}
           />
 
         <button
