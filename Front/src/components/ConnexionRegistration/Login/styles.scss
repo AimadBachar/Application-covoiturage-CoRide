@@ -1,12 +1,13 @@
 @use 'src/styles/vars';
 
 
-@media only screen and (max-width: 600px){
+@media only screen and (min-width: 600px){
 }
 
 body {
 
   .login {
+    margin: 0;
     display: flex;
     justify-content: center;
     min-width: 320px;
@@ -31,7 +32,7 @@ body {
   display: block;
   justify-content: center;
   position: absolute;
-  max-width: 600px;
+  //width: 100vh;
 
   // s'identifier
   &-title {
@@ -49,7 +50,7 @@ body {
     flex-direction: column;
     justify-content: center;
     border-radius: 10px;
-    
+   // background-color: vars.$color_light;
     };
 
     &-submit {
@@ -60,17 +61,17 @@ body {
       padding-top: 2.5rem;
       padding-bottom: 2rem;
       color: vars.$color_light;
-     // text-shadow: 0.1em 0.1em 0.1em vars.$color-grey_more;
+      text-shadow: 0.1em 0.1em 0.1em vars.$color-grey;
       font-size: 1.3em;
       font-weight: bold;
       display: inline-block;
      text-align: start;
      
-      width: 50vmax;
+      width: 100vh;
     };
 
   };
-    .signin {
+    .signin-redirection {
       background-color: vars.$color;
       padding-bottom: 2rem;
       font-family: vars.$font;
@@ -96,6 +97,9 @@ body {
       }
     }
 
+    .button {
+      background-color: vars.$color_light;
+    }
   };
 
 
@@ -127,11 +131,12 @@ body {
           padding-top: 1rem;
           padding-bottom: 1rem;        
           font-size: 1.3em;
-          width: 50vmax;
+         width: 50vmax;
+          
         };
     
       };
-        .signin {
+        .signin-redirection {
          background-color: vars.$color;
          background-color: rgba($color: #FC982C, $alpha: 1.0);
           padding-bottom: 1.5rem;
@@ -151,13 +156,7 @@ body {
         
           }
         }
-
-
       }
-
-
-
-
   }
 
 

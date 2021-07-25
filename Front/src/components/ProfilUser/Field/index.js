@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import 'src/components/ConnexionRegistration/Login/Field/styles.scss';
+import 'src/components/ProfilUser/styles.scss';
 
 
 const Field = ({
@@ -13,6 +13,8 @@ const Field = ({
     
 }) => {
   const handleChange = (evt) => {
+    evt.preventDefault();
+    //const value = evt.target.value;
     onChange(evt.target.value, name);
   };
     const inputId = `field-${name}`;
@@ -42,7 +44,7 @@ const Field = ({
      );
   };
 
-Field.propTypes = {
+  Field.propTypes = {
   value: PropTypes.string,
   type: PropTypes.string,
   name: PropTypes.string.isRequired,
@@ -54,6 +56,7 @@ Field.propTypes = {
 Field.defaultProps = {
   value: '',
   type: 'text',
+  type: 'date',
 };
 
 // == Export

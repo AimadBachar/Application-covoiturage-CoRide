@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import 'src/components/ConnexionRegistration/Login/Field/styles.scss';
+import 'src/components/ConnexionRegistration/Signin/Field/styles.scss';
 
 
 const Field = ({
@@ -42,7 +42,7 @@ const Field = ({
      );
   };
 
-Field.propTypes = {
+  Field.propTypes = {
   value: PropTypes.string,
   type: PropTypes.string,
   name: PropTypes.string.isRequired,
