@@ -5,8 +5,8 @@ import { Link, BrowserRouter as Router, Redirect } from 'react-router-dom';
 import "react-datepicker/dist/react-datepicker.css";
 import PropTypes from 'prop-types';
 
-import Field from 'src/components/ConnexionRegistration/Signin/Field';
-import 'src/components/ConnexionRegistration/Signin/styles.scss';
+import Field from 'src/components/Signin/Field';
+import 'src/components/Signin/styles.scss';
 import photoKite from 'src/assets/images/kitewindsurf.jpg';
 
 
