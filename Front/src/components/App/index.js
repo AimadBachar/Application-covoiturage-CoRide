@@ -11,10 +11,10 @@ import Card from 'src/containers/Card';
 import Main from '../Main';
 import Nav from '../Nav';
 import ConnexionRegistration from '../ConnexionRegistration';
-
 import NotFoundPage from '../NotFoundPage';
 import ProfilUser from '../ProfilUser';
-
+import Trip from '../Trip'
+// import Signin from '../ConnexionRegistration/Signin';
 
 import Loading from './Loading';
 
@@ -41,6 +41,28 @@ const App = ({loading, fetchTravels}) => {
           <Card />
           <Main />
           <Footer />
+        </Route>
+
+        <Route exact path="/trip">
+          <Trip 
+          // data
+          departure_city="city"
+          destination_city="city"
+          activity_id="activity"
+          departure_timestamp="date"
+          description="blabla"
+          places_available="2"
+          // fonctions
+          onSubmitSearch={() => {
+            console.log('trip created')
+          }}
+
+          fieldChange = {(value, name) => {
+            console.log('change in' + name + ' :', value);
+          }}
+
+
+          />
         </Route>
 
         <Route exact path="/connexion">

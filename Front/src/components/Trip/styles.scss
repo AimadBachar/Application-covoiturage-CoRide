@@ -1,19 +1,30 @@
 @use 'src/styles/vars';
 
-.search{
-  margin-top: 2rem;
-  position: relative;
-  top: -120px;
+.trip {
 
   &-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     max-width: 80%;
-    margin: 0 auto;
+    margin: 2rem auto;
     box-shadow: vars.$box-shadow;
-    border-radius: vars.$border-radius-bottom;
-    
+    border-radius: vars.$border-radius-global;
+
+    &_title {
+      // max-width: 80%;
+      // margin: 0 auto;
+      text-align: center;
+      background-color: vars.$color;
+      border-radius: vars.$border-radius-top;
+      border: none;
+      padding: 0.5rem;
+      font-size: 1.5rem;
+      color: vars.$color-light;
+      font-weight: bold;
+      //border-radius: 10px 10px 0 0;
+    }
+      
     &_input, &_select, &_date {
       font-size: 1rem;
       border: none;
@@ -34,6 +45,9 @@
       border-radius: vars.$border-radius-bottom;
       border: none;
       padding: 0.5rem;
+      font-size: 1.5rem;
+      color: vars.$color-light;
+      font-weight: bold;
     }
 
     &_select, &_date {
@@ -43,43 +57,18 @@
     &_date {
       background-color: vars.$color-light;
       border-left: vars.$color-grey 0.5px solid;
-      
     }
   };
 
-  &-trip {
-    border: vars.$color, 2px solid;
-    max-width: 80%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    box-shadow: vars.$box-shadow;
-    border-radius: vars.$border-radius-global;
-    margin-top: 2rem;
-    position: relative;
-    top: -120px;
-
-    &_text {
-      margin-top: 2rem;
-      margin-bottom: 2rem;
-      font-size: 1.5rem;
-      color: vars.$color-grey_more;
-    }
-  }
+    // &_text {
+    //   margin-top: 2rem;
+    //   margin-bottom: 2rem;
+    //   font-size: 1.5rem;
+    //   color: vars.$color-grey_more;
+    // }
+  
 };
 
-
-
-.depart {
-  border-radius: 10px 10px 0 0;
+.depart, .destanation {
   border-bottom: vars.$color-grey 0.5px solid;
-}
-
-.destination {
-  border-bottom: vars.$color-grey 0.5px solid;
-}
-
-.loupe {
-  width: 30px;
 }
