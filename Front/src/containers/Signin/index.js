@@ -5,13 +5,13 @@ import Signin from 'src/components/Signin';
 //import {  } from 'src/actions/user';
 
 const mapStateToProps = (state) => ({
-    isSignedIn: false,
-    signedMessage: "Signin done !",
-    lastname: "nom",
-    firstname: "prénom",
-    user: "lolo@sasa.fr",
-    password: "password",
-    birthdate: "00/00/0000",
+    isSignedIn: state.usersignin.signed,
+    signedMessage: state.usersignin.signedMessage,
+    lastname: state.usersignin.inputs.lastname,
+    firstname: state.usersignin.inputs.firstname,
+    user: state.usersignin.inputs.user,
+    password: state.usersignin.inputs.password,
+    birthdate: state.usersignin.inputs.birthdate,
   });
 
 

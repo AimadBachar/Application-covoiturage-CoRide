@@ -2,7 +2,7 @@
   // j'ajoute un reducer-user.js avec de fausses datas
   // puis je modifie le state du container signin avec ces fausses datas
   export const initialState = {
-    isSigned: false,
+    isSignedIn: false,
     signedMessage: 'Welcome !',
     inputs: {
       lastname: "Sion",
