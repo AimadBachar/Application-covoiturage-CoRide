@@ -2,7 +2,12 @@ import { connect } from 'react-redux';
 import Signin from 'src/components/Signin';
 
 // == Import des actions
-//import {  } from 'src/actions/user';
+import { 
+  userSignin, 
+  userSigninInputChange, 
+  userSigninSubmit,
+  userSigninSuccess
+ } from 'src/actions/usersignin';
 
 const mapStateToProps = (state) => ({
     isSignedIn: state.usersignin.signed,
@@ -18,11 +23,19 @@ const mapStateToProps = (state) => ({
   const mapDispatchToProps = (dispatch) => ({
     changeField: (value, name) => {
         console.log('change in ' + name + ' :', value);
-      },
+      
+      const action = userSigninInputChange({
+        [name]: value,
+      });
+      dispatch(action);
+    },
 
       handleSignin: () => {
         console.log('Signin')
-      }
+        console.log(localStorage.getItem('tokens'));
+        const action = userSignin();
+        dispatch(action);
+      },
   });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signin);

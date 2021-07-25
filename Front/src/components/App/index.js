@@ -80,12 +80,12 @@ const App = ({loading, fetchTravels}) => {
           password="password"
           birthdate="00/00/0000"*/
           // fonctions
-          changeField= {(value, name) => {
+         /* changeField= {(value, name) => {
             console.log('change in ' + name + ' :', value);
           }}
           handleSignin={() => {
             console.log('Signin')
-          }}
+          }}*/
 
           />
         </Route>

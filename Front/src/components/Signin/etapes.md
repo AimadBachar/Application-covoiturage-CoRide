@@ -107,6 +107,9 @@ export const userSignin = () => ({
 });
 ------------------------------------------
 
+
+note : si tu as plus d actions que nécessaire ce n'est pas grave
+       tu vas dispatcher celles dont tu auras besoin 
 **etape 5**
 --tes actions prêtes
 --tu vas pouvoir les injecter dans le REDUCER 
@@ -116,3 +119,20 @@ export const userSignin = () => ({
 --tu peux importer tes actions
 
 --en dessous de switch tu vas injecter tes actions
+(voir ex ds le dossier REDUCERS)
+
+**etape 6**
+--tu peux dispatcher tes actions dans les fonctions
+--dans le container trip
+-- ne pas oublier // == Import des actions
+//import { noms des actions qui sont en minuscules } from 'src/actions/user';
+
+--tu verifies encore une fois que ça fonctionne
+--dans la console tu vas dans REDUX  et ACTION
+--il faut écrire ds tes input et les boutons
+-- si c est ok tes actions vont s afficher 
+-- dans ce cas tu peux supprimer ou commenter tes fonctions dans APP index.js
+
+**ETAPE 7**
+--
+
