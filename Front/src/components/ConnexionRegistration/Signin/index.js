@@ -1,83 +1,164 @@
-import React from 'react';
-// import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import { Link, BrowserRouter as Router, Redirect } from 'react-router-dom';
 
+//import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import PropTypes from 'prop-types';
+
+import Field from 'src/components/ConnexionRegistration/Signin/Field';
 import 'src/components/ConnexionRegistration/Signin/styles.scss';
+import photoKite from 'src/assets/images/kitewindsurf.jpg';
 
-const Signin = () => (
 
-//props
+const Signin = ({
 
-  <div className="registration">
-    <h1 className="registration-title">
-      Inscription
-    </h1>
+    isSignedIn,
+    signedMessage,
+    firstname,
+    lastname,
+    user, // mail de l'utilisateur
+    password,
+    birthdate,
+    changeField,
+    handleSignin,
+
+}) => {
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    handleSignin();
+  };
+
+  return (
+  <div className="signin">
+  <img className="login-photo" src={photoKite} alt="photo kite" />
+  <div className="signin-form">
+  {isSignedIn && (
+
+<div className="signin-form-signed">
+<Redirect from="/inscription" to="/" />
+<p className="signin-message">
+
+  {signedMessage}
+
+</p>
+</div>
+
+  )}
+  {!isSignedIn && (
+
     <form
-      className="registration-form"
+      autoComplete="off"
+      className="signin-form-element"
+      onSubmit={handleSubmit}
     >
-      <div className="registration-name">
-        <input
-          className="registration-form_input__name nom"
-          type="text"
+      <h1 className="signin-form-title">
+      Inscription
+    </h1> 
+        <Field 
+          className="signin-form-input"
+          type="text" //name?
           name="nom"
           placeholder="Nom"
+          onChange={changeField}
+          value={lastname}
+          
         />
-        <input
-          className="registration-form_input__name"
+        <Field
+          className="signin-form-input"
           type="text"
-          name="prénom"
+          name="firstname"
           placeholder="Prénom"
+          onChange={changeField}
+          value={firstname}
         />
-      </div>
-
-      <input
-        className="registration-form_input__name"
+  
+      <Field
+        className="signin-form-input"
         type="text"
-        name="text"
-        placeholder="Pseudo"
+        name="birthdate"
+        placeholder="jj/mm/aaaa"
+        autocorrect="off"
+        onChange={changeField} 
+        value={birthdate} //date?
+        /* type="date"
+        label="date de naissance"
+        defaultValue="23-05-1990"*/
       />
 
-      <input
-        className="registration-form_input"
-        type="date"
-        name="date de naissance"
-        placeholder="Email"
+      <Field
+        className="signin-form-input"
+        name="user"
+        placeholder="Adresse Email"
+        onChange={changeField}
+        value={user}
       />
 
-      <input
-        className="registration-form_input"
-        type="text"
-        name="adresse"
-        placeholder="Adresse"
-      />
-
-      <input
-        className="registration-form_input"
-        type="email"
-        name="email"
-        placeholder="Email"
-      />
-
-      <input
-        className="registration-form_input password"
-        type="text"
+      <Field
+        className="signin-form-input"
+        type="password"
         name="password"
         placeholder="Mot de passe"
+        onChange={changeField}
+        value={password}
       />
-
-      <input
-        className="registration-form_input"
-        type="text"
+ 
+      <Field
+        className="signin-form-input"
+        type="password"
         name="password"
-        placeholder="confirmer votre mot de passe"
+        placeholder="Confirmez votre mot de passe"
+        onChange={changeField}
+        value={password}
+        
       />
+       <div className="signin-button">
       <button
         type="submit"
-        className="registration-form_submit"
+        className="signin-form-submit"
       >
         Valider
       </button>
-    </form>
-  </div>
-);
+      </div>
+      <div className="login-redirection">
+            <p className="login-redirection-text">
+              Déjà membre ?            
+            <Link
+              className="login-redirection-link"
+              to="/connexion"
+            >
+            Connectez-vous
+            </Link>
+            </p>
+            </div>
+          
+        </form>
+    )}
+        </div>
+        </div>
+        
+  );
+};
+
+
+  Signin.propTypes = {
+  lastname: PropTypes.string.isRequired,
+  firstname: PropTypes.string.isRequired,
+  user: PropTypes.string.isRequired,
+  birthdate: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  changeField: PropTypes.func.isRequired,
+  handleSignin: PropTypes.func.isRequired,
+  isSignedIn: PropTypes.bool,
+};
+
+// Valeurs par défaut pour les props
+Signin.defaultProps = {
+  isSignedIn: false,
+  signedMessage: 'Signin Done',
+};
+
+
 
 export default Signin;
+
+

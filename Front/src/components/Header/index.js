@@ -35,17 +35,22 @@ const Header = () => {
           <img className="header-logout" src={logout} alt="logout" />
         </a>
       );
-    }
+    } 
 
-    return (
-      <Link
-        to="/connexion"
-        exact
-        // onClick={props.onButtonClickLogin}
-      >
-        <img className="header-login" src={login} alt="login" />
-      </Link>
-    );
+      return (
+        <Link
+          to="/connexion"
+          exact
+          // onClick={props.onButtonClickLogin}
+        >
+          <img className="header-login" src={login} alt="login" />
+        </Link>
+      );
+
+
+
+    
+
   };
 
   return (

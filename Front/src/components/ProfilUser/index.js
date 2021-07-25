@@ -1,104 +1,240 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import { Link, BrowserRouter, Route, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-import Header from '../Header';
-import Footer from '../Footer';
+//import Header from '../Header';
+//import Footer from '../Footer';
 
-import './styles.scss';
+import Field from 'src/components/ProfilUser/Field';
+import 'src/components/ProfilUser/styles.scss';
 
-const NotFoundPage = () => (
-  <div>
-    <Header />
+const ProfilUser = ({
 
-    <div className="pageProfil">
-      <div className="profil">
+activity_id,
+tags,
+lastname,
+firstname,
+pseudo,
+user,
+password,
+adress,
+city,
+codeZip,
+country,
+typeCar,
+modelCar,
+date,
+age,
+
+isCompleted,
+profilCompletedMessage,
+//changeField,
+handleProfil,
+
+}) => {
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    console.log('submit');
+    handleProfil();
+  };
+
+  const changeField = (evt) => {
+    evt.preventDefault();
+    //console.log(evt.target.value);
+    const value = evt.target.value;
+    onInputChange(evt.target.name, value )
+  } 
+
+return (
+    <div className="profil">
+   
+      <div className="profil-form">
         {/* picture */}
-        <h1 className="profil-title">Informations du profil</h1>
-        <form className="profil-form">
-          <input
-            className="profil-form_input"
+        {/*est ce que l'on propose au submit le redirect vers le rendu profil ?
+          si non, il faudra supprimer ce qu il y a ci-dessous */}
+          {isCompleted && (
+
+        <div className="profil-form-completed">
+        <Redirect from="/profil" to="/profilcard" />
+        <p className="profil-message">
+
+          {profilCompletedMessage}
+
+        </p>
+        </div>
+
+        )}
+        {!isCompleted && (
+
+        <form 
+          className="profil-form-element"
+          autoComplete="off"        
+         onSubmit={handleSubmit}
+        >
+        <h1 className="profil-form-title">
+        À propos de vous
+        </h1>
+          <Field
+            className="profil-form-input"
             type="text"
             name="prénom"
             placeholder="Prénom"
+            onChange={changeField}
+            value={firstname}
           />
-          <input
-            className="profil-form_input"
+          <Field
+            className="profil-form-input"
             type="text"
             name="nom"
             placeholder="Nom"
+            onChange={changeField}
+            value={lastname}
           />
 
-          <input
-            className="profil-form_input"
+          <Field
+            className="profil-form-input"
             type="text"
             name="pseudo"
             placeholder="Pseudo"
+            onChange={changeField}
+            value={pseudo}
           />
-          <input
-            className="profil-form_input date"
+          <Field
+            className="profil-form-input-date"
             type="date"
             name="date"
-            placeholder="Date"
+            placeholder="Date de naissance"
+            autocorrect="off"
+            onChange={changeField}
+            value={date}
           />
-          <input
-            className="profil-form_input"
+          <Field
+            className="profil-form-input"
             type="number"
             name="age"
             placeholder="Age"
+            onChange={changeField}
+            value={age}
           />
 
-          <input
-            className="profil-form_input"
+          <Field
+            className="profil-form-input"
             type="email"
-            name="email"
-            placeholder="Email"
+            name="user"
+            placeholder="Adresse Email" //ou modifier son email ?
+            onChange={changeField}
+            value={user}
           />
-          <input
-            className="profil-form_input"
+          <Field
+            className="profil-form-input"
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder="Mot de passe"
+            onChange={changeField}
+            value={password}
           />
 
-          <input
-            className="profil-form_input"
+          <Field
+            className="profil-form-input"
             type="text"
             name="adresse"
             placeholder="Adresse"
+            onChange={changeField}
+           value={adress}
           />
-          <input
-            className="profil-form_input"
+          <Field
+            className="profil-form-input"
             type="text"
             name="ville"
             placeholder="Ville"
+            onChange={changeField}
+            value={city}
           />
-          <input
-            className="profil-form_input"
+          <Field
+            className="profil-form-input"
             type="number"
             name="code postal"
             placeholder="Code postal"
+            onChange={changeField}
+            value={codeZip}
           />
-          <input
-            className="profil-form_input"
+          <Field
+            className="profil-form-input"
             type="text"
             name="pays"
             placeholder="Pays"
+            onChange={changeField}
+            value={country}
           />
+             <p className="profil-form-text">Ajout d'un véhicule</p>
+          <Field
+            className="profil-form-input"
+            type="text"
+            name="voiture"
+            placeholder="Voiture"
+            onChange={changeField}
+            value={typeCar}
+          />
+          <Field
+            className="profil-form-input"
+            type="text"
+            name="modele"
+            placeholder="Modele"
+            onChange={changeField}
+            value={modelCar}
+          />       
+        
+        <p className="profil-form-text">Choisir une ou plusieurs activités</p>
+      {/*   <Field
+           className="profil-form-input"
+           type="select"
+           multiple="oui"
+           name="activity"
+           placeholder="activity"
+           onChange={changeField}
+           value={activity_id}
+           option value="kite"
+           option value="skate"
+          />*/}
 
-          <div className="checkbox">
-            <p className="checkbox_text">Choisi une ou plusieurs activités:</p>
-            <label className="checkbox_input">
-              <input
+      <div className="profil-form-sport">
+          <select
+            className="profil-form-select"
+            name="activity_id"
+            value={activity_id}
+            onChange={changeField}
+          >
+            <option
+              className="profil-form-select_title"
+            >Sports pratiqués
+            </option>
+          {/*  {tags.map((tag) => (
+              <option
+                name="tag"
+                key={tag.id}
+                value={tag.sport}
+              >
+                {tag.sport}
+              </option>
+            ))}    */}
+          </select>
+
+         {/* checked="list" // {this.state.chkbox}
+          onChange={this.handleChangeChk} */}
+        
+{/*
+             <div className="checkbox">
+         <label className="checkbox-input">
+              <Field
+                className="checkbox-field"
                 type="checkbox"
                 name="surf"
               />
               Surf
             </label>
-
-            <label className="checkbox_input">
-              <input
-                className="blabla"
+            <label className="checkbox-input">
+              <Field
+                className="checkbox-field"
                 type="checkbox"
                 name="kite"
               />
@@ -107,35 +243,53 @@ const NotFoundPage = () => (
           </div>
           {/* checkbox */}
 
-          <input
-            className="profil-form_input"
-            type="text"
-            name="voiture"
-            placeholder="Voiture"
-          />
-          <input
-            className="profil-form_input"
-            type="text"
-            name="modele"
-            placeholder="Modele"
-          />
+          <div className="profil-form-button">
+                <button 
+                type="submit" 
+                className="profil-form-submit"
+                >
+                  Sauvegarder
+                </button>
 
-          <button type="submit" className="profil-form_button">
-            Sauvegarder vos informations
-          </button>
-
-          <button type="submit" className="profil-form_button">
-            Annuler
-          </button>
+                </div>
+                </div>
+          <div className="home-redirection">
+            <p className="home-redirection-text">
+                Retour sur la        
+               <Link
+                className="home-redirection-link"
+                to="/"
+               >
+              page d'accueil
+              </Link>
+            </p>
+         </div>
         </form>
+       
+        )}
       </div>
     </div>
-    <Footer />
-  </div>
 );
+};
 
-// Footer.proptypes = {
+ProfilUser.propTypes = {
+  lastname: PropTypes.string.isRequired,
+  firstname: PropTypes.string.isRequired,
+  user: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  age: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  changeField: PropTypes.func.isRequired,
+  handleProfil: PropTypes.func.isRequired,
+  isCompleted: PropTypes.bool,
+  tags: PropTypes.shape({
+  sport: PropTypes.string.isRequired,
+})
+};
+// Valeurs par défaut pour les props
+ProfilUser.defaultProps = {
+  isCompleted: false,
+  profilCompletedMessage: 'Profil completed',
+};
 
-// };
-
-export default NotFoundPage;
+export default ProfilUser;
