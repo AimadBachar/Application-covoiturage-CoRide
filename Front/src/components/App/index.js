@@ -40,7 +40,7 @@ const App = ({loading, fetchTravels}) => {
           <Header />
           <Search />
           <Card />
-          <Main />
+         {/*  <Main /> */}
           <Footer />
         </Route>
 
