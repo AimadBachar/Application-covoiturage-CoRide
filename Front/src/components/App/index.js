@@ -96,18 +96,18 @@ const App = ({loading, fetchTravels}) => {
            //props
             isCompleted={false} 
             profilCompletedMessage="Signin done !"
-            lastname="nom"
-            firstname="prénom"
+            last_name="nom"
+            first_name="prénom"
             pseudo="username"
-            user="lolo@sasa.fr"
+            email="lolo@sasa.fr"
             password="password"
-            date="00/00/0000"
-            adress="adresse"
+            birthdate="00/00/0000"
+            coords="adresse"
             city="city"
-            codeZip="codeZip"
+            postcode="00000"
             country="country"
-            typeCar="typeCar"
-            modelCar="modelCar"
+            brand="typeCar"
+            model="modelCar"
             activity_id="activity"
             // fonctions
             changeField= {(value, name) => {

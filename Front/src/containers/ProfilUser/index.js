@@ -3,7 +3,7 @@ import ProfilUser from 'src/components/ProfilUser';
 
 const mapStateToProps = (state) => ({ 
 
-    isCompleted:false,
+    isCompleted: false,
     profilCompletedMessage:"Signin done !",
     lastname:"nom",
     firstname:"prénom",
