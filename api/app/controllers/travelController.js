@@ -21,7 +21,7 @@ const travelController = {
             if (id) {
                 results = await Travel.findAll({
                     where: {
-                        user_id: id
+                        driver_id: id
                     }
                 });
             } else {
@@ -176,7 +176,7 @@ const travelController = {
                 id: userId
             } = req.params;
             const travel = await Travel.findOne(id);
-            if (travel && userId == travel.user_id) {
+            if (travel && userId == travel.driver_id) {
 
                 await travel.delete();
 

@@ -4,7 +4,7 @@ BEGIN;
 
 CREATE VIEW travels_view AS 
 SELECT
-    t.id AS travel_id,
+    t.id,
     t.departure_city,
     t.latitude_departure,
     t.longitude_departure,
