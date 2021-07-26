@@ -2,8 +2,8 @@
 import {
     USER_PROFIL_INPUT_CHANGE,
     USER_PROFIL_SUCCESS,
-  } from 'src/actions/user';
-  import { USER_PROFIL } from 'src/actions/user';
+  } from 'src/actions/userprofil';
+  import { USER_PROFIL } from 'src/actions/userprofil';
   
   // 1. après la création du container Login
   // j'ajoute un reducer-user.js avec de fausses datas
