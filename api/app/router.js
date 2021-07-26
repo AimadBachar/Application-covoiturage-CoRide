@@ -55,6 +55,7 @@ router.get("/cities",redis.cache,searchCities);
  * @property {string} first_name.required the first name user
  * @property {string} last_name.required the last name user
  * @property {string} email.required the user email
+ * @property {string} birthdate.required the user birthdate
  * @property {file} picture the avatar file JPEG or PNG 512Ko max
  * @property {string} picture_link the link for user profil picture
  * @property {string} pseudo.required the user pseudo
@@ -79,11 +80,10 @@ router.get("/cities",redis.cache,searchCities);
 /**
  * @route POST /users
  * @group Users - Operations about user
- * @security JWT
  * @param {postUser.model} postUser.body.required the new user
  * @consumes multipart/form-data
  * @produces application/json
- * @returns {User.model} 200 - user details
+ * @returns {integer} 200 - user id
  * @returns {Error} default - Unexpected error
  */
 /**
@@ -126,7 +126,7 @@ router.route("/users")
  * @param {number} id.path.required the user id
  * @param {postUser.model} postUser.body.required
  * @consumes multipart/form-data
- * @returns {User.model} 200 - user details
+ * @returns {integer} 200 - the user id
  * @returns {Error} default - Unexpected error
  */
 router.route("/user/:id(\\d+)")
@@ -208,7 +208,7 @@ router.route("/travels")
  * @route GET /travel/{id}
  * @group Travels - Operations about travel
  * @param {number} id.path.required the travel id
- * @returns {Activity.model} 200 - travel details
+ * @returns {Travel.model} 200 - travel details
  * @returns {Error} default - Unexpected error
  */
 router.route("/travel/:id(\\d+)")
@@ -294,7 +294,7 @@ router.route("/vehicle-option/:id(\\d+)")
  * @group Travels - Operations about travel
  * @security JWT
  * @param {integer} id.path.required the user id
- * @param {postTravel.model} postTravel.body.required the new user
+ * @param {postTravel.model} postTravel.body.required the new travel
  * @consumes application/json
  * @produces application/json
  * @returns {Travel.model} 200 - user details

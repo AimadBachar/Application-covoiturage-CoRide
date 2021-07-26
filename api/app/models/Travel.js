@@ -11,7 +11,9 @@ const pool = require("../db");
  * @property {string} description.required the travel description
  * @property {string} departure_timestamp.required the date and time departure
  * @property {integer} activity_id.required the id of activity
- * @property {integer} user_id.required the id of user
+ * @property {string} activity the name of activity
+ * @property {integer} driver_id.required the id of user
+ * @property {string} driver the name of driver
  * @property {string} created_at the timestamptz created
  */
 class Travel extends coreModel {
