@@ -13,7 +13,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   changeField: (value, name) => {
-    console.log(`change in ${name} :`, value);
+    /* console.log(`change in ${name} :`, value); */
     // object avec nom de l'input
     // et la value de ce que tape le user
 
@@ -23,13 +23,13 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(action);
   },
   handleLogin: () => {
-    console.log('login');
+    /* console.log('login'); */
     console.log(localStorage.getItem('tokens'));
     const action = userLogin();
     dispatch(action);
   },
   handleLogout: () => {
-    console.log('logout');
+    /* console.log('logout'); */
     const action = userLogout();
     dispatch(action);
   },

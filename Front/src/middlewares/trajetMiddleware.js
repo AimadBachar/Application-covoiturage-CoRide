@@ -1,11 +1,13 @@
  // == import axios
 import axios from 'axios';
+import {useQuery}
 
 import { 
   SEARCH_SUCCESS, 
   searchSubmitSucces, 
   FETCH_TRAVELS, 
-  fetchTravelsSuccess 
+  fetchTravelsSuccess,
+  FETCH_ONE_TRAVEL,
 } from '../actions/trajets';
 
 
@@ -15,7 +17,7 @@ export default (store) => (next) => (action) => {
     case SEARCH_SUCCESS:
 
       const inputs = store.getState().trajets.inputs;
-      console.log(inputs);
+      /* console.log(inputs); */
       let fetchUrl = "http://18.235.248.88:3000/api/v1/travels";
 
       let count = 0;
@@ -47,22 +49,18 @@ export default (store) => (next) => (action) => {
           }
       }
 
-      console.log(fetchUrl)
+      /* console.log(fetchUrl) */
 
       axios({
         method: 'GET',
         url: fetchUrl
       })
         .then((res) => {
-          console.log("res.data", res.data);
+          /* console.log("res.data", res.data); */
           //console.log(departure);
           const actionToSend = searchSubmitSucces(res.data);
           store.dispatch(actionToSend);
-          
-         
-          //localStorage.setItem("cards", res.data);
-          //const cards = localStorage.getItem("cards");
-          
+              
         })
         .catch((err) => {
           console.error(err);
@@ -71,13 +69,34 @@ export default (store) => (next) => (action) => {
       
     break;
     case FETCH_TRAVELS:
+
+      const id = store.getState().id;
+      console.log(id);
       // Je lance la requête
       axios({
         method: 'get',
         url: 'http://18.235.248.88:3000/api/v1/travels'
       })
         .then((res) => {
-          console.log("fetch_succes", res.data);
+          /* console.log("fetch_succes", res.data); */
+          const action = fetchTravelsSuccess(res.data);
+          store.dispatch(action);
+        })
+        .catch((err) => {
+          console.error(err);
+        })
+    break;
+    case FETCH_ONE_TRAVEL:
+      const query = useQuery();
+      const idRoad = query.get('id');
+      console.log(id);
+      // Je lance la requête
+      axios({
+        method: 'get',
+        url: `http://18.235.248.88:3000/api/v1/travels/${idRoad}`
+      })
+        .then((res) => {
+          console.log("fetch_travel", res.data);
           const action = fetchTravelsSuccess(res.data);
           store.dispatch(action);
         })

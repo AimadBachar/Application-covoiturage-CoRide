@@ -34,7 +34,7 @@ handleProfil,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log('submit');
+    /* console.log('submit'); */
     handleProfil();
   };
 

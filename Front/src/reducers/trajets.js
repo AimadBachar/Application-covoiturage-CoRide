@@ -4,7 +4,8 @@ import {
   SEARCH_SUCCESS,
   SEARCH_SUBMIT_SUCCESS,
   FETCH_TRAVELS,
-  FETCH_TRAVELS_SUCCESS
+  FETCH_TRAVELS_SUCCESS,
+  FETCH_ONE_TRAVEL
 } from 'src/actions/trajets';
 
 import dataTags from '/src/data/data_tag.js';
@@ -15,6 +16,7 @@ import dataTags from '/src/data/data_tag.js';
     logged: false,
     loading: false,
     cards: [],
+    detailsCard: [],
     tags: dataTags,
      inputs: {
         departure_city: '',
@@ -39,7 +41,7 @@ import dataTags from '/src/data/data_tag.js';
           },
         };
       case SEARCH_SUBMIT_SUCCESS:
-        console.log(action.payload);
+        /* console.log(action.payload); */
         return {
           ...state,
           cards: action.payload
@@ -50,12 +52,19 @@ import dataTags from '/src/data/data_tag.js';
           loading: true
         };
       case FETCH_TRAVELS_SUCCESS:
-        console.log(action.payload);
+        /* console.log(action.payload); */
         return {
           ...state,
           loading: false,
           cards: action.payload
-      };  
+      };
+      case FETCH_ONE_TRAVEL:
+        console.log(action.payload);
+        return {
+          ...state,
+          loading: false,
+          detailsCard: action.payload
+      };
       default:
         return state;
     }
