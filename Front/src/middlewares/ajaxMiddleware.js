@@ -46,11 +46,11 @@ const middleware = (store) => (next) => (action) => {
       })
         .then((res) => {
           console.log('res.data', res.data.userId);
-          const {token, userId, firstName, lastName } = res.data;
+          const {token, userId, firstname_, lastname_ } = res.data;
 
           // const tokens = await connect(user, password);
           // local storage mis en place
-          // localStorage.setItem('tokens', res.data.firstName);
+          // localStorage.setItem('tokens', res.data.firstname_);
           localStorage.clear();
           localStorage.setItem('tokens', JSON.stringify(res.data));
 

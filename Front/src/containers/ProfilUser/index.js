@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
     pseudo:"username",
     user: "lolo@sasa.fr",
     password:"password",
-    date:"00/00/0000",
+    birthdate:"00/00/0000",
     adress:"adresse",
     city:"city",
     codeZip:"codeZip",
