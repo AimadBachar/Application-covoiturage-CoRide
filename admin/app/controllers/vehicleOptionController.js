@@ -44,7 +44,7 @@ const vehicleOptionController = {
 
             console.log(body)
 
-            await fetch("http://18.235.248.88:3000/api/v1/vehicle-options", {
+            await fetch(`http://18.235.248.88:3000/api/v1/admin/${process.env.ADMIN_ID}/vehicle-options`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type":"application/json",
@@ -71,7 +71,7 @@ const vehicleOptionController = {
                 label
             };
 
-            await fetch("http://18.235.248.88:3000/api/v1/vehicle-options", {
+            await fetch(`http://18.235.248.88:3000/api/v1/admin/${process.env.ADMIN_ID}/vehicle-options`, {
                 method: "POST",
                 headers: {
                     "Content-Type":"application/json",

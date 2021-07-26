@@ -42,7 +42,7 @@ const activityController = {
                 id: parseInt(id,10)
             };
 
-            await fetch("http://18.235.248.88:3000/api/v1/activities", {
+            await fetch(`http://18.235.248.88:3000/api/v1/admin/${process.env.ADMIN_ID}/activities`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type":"application/json",
@@ -70,7 +70,7 @@ const activityController = {
                 color
             };
 
-            await fetch("http://18.235.248.88:3000/api/v1/activities", {
+            await fetch(`http://18.235.248.88:3000/api/v1/admin/${process.env.ADMIN_ID}/activities`, {
                 method: "POST",
                 headers: {
                     "Content-Type":"application/json",
