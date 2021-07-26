@@ -24,7 +24,6 @@ country,
 typeCar,
 modelCar,
 date,
-age,
 
 isCompleted,
 profilCompletedMessage,
@@ -107,14 +106,6 @@ return (
             autocorrect="off"
             onChange={changeField}
             value={date}
-          />
-          <Field
-            className="profil-form-input"
-            type="number"
-            name="age"
-            placeholder="Age"
-            onChange={changeField}
-            value={age}
           />
 
           <Field

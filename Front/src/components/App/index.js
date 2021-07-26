@@ -6,15 +6,16 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from 'src/containers/Header';
 import Search from 'src/containers/Search';
 import Footer from 'src/containers/Footer';
-import Signin from 'src/components/ConnexionRegistration/Signin';
+import Signin from 'src/containers/Signin';
+import ProfilUser from 'src/containers/ProfilUser';
 import Card from 'src/containers/Card';
 import Main from '../Main';
 import Nav from '../Nav';
 import ConnexionRegistration from '../ConnexionRegistration';
 import NotFoundPage from '../NotFoundPage';
-import ProfilUser from '../ProfilUser';
+
 import Trip from '../Trip'
-// import Signin from '../ConnexionRegistration/Signin';
+
 
 import Loading from './Loading';
 
@@ -57,8 +58,8 @@ const App = ({loading, fetchTravels}) => {
             console.log('trip created')
           }}
 
-          fieldChange = {(value, name) => {
-            console.log('change in' + name + ' :', value);
+          onInputChange = {(value, name) => {
+            console.log('change in ' + name + ' :', value);
           }}
 
 
@@ -72,20 +73,20 @@ const App = ({loading, fetchTravels}) => {
         <Route exact path="/inscription">
           <Signin 
           //props
-          isSignedIn={false} 
+        /*  isSignedIn={false} 
           signedMessage="Signin done !"
           lastname="nom"
           firstname="prénom"
           user="lolo@sasa.fr"
           password="password"
-          birthdate="00/00/0000"
+          birthdate="00/00/0000"*/
           // fonctions
-          changeField= {(value, name) => {
+         /* changeField= {(value, name) => {
             console.log('change in ' + name + ' :', value);
           }}
           handleSignin={() => {
-            console.log('login')
-          }}
+            console.log('Signin')
+          }}*/
 
           />
         </Route>
@@ -101,7 +102,6 @@ const App = ({loading, fetchTravels}) => {
             user="lolo@sasa.fr"
             password="password"
             date="00/00/0000"
-            age="18"
             adress="adresse"
             city="city"
             codeZip="codeZip"

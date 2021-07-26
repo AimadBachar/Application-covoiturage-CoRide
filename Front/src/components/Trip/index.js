@@ -111,7 +111,7 @@ const Trip = ({
             name="place-available"
             value={places_available}
             placeholder="Nombre de place"
-            // onChange={fieldChange}
+            onChange={fieldChange}
           />
 
           <input
@@ -120,7 +120,7 @@ const Trip = ({
             name="description"
             value={description}
             placeholder="Spécificité du véhicule, informations sur le trajet"
-            // onChange={fieldChange}
+            onChange={fieldChange}
           />
 
         <button
@@ -137,11 +137,10 @@ const Trip = ({
 
 
  Trip.propTypes = {
-  onSelectChange: PropTypes.func.isRequired,
   onInputChange: PropTypes.func.isRequired,
-  onDateChange: PropTypes.func.isRequired,
+  onSubmitSearch: PropTypes.func.isRequired,
   description: PropTypes.string,
-  places_available: PropTypes.number.isRequired,
+  places_available: PropTypes.string.isRequired,
   tags: PropTypes.shape({
     sport: PropTypes.string.isRequired,
   })
