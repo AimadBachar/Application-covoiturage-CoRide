@@ -7,12 +7,13 @@ import Header from 'src/containers/Header';
 import Search from 'src/containers/Search';
 import Footer from 'src/containers/Footer';
 import Signin from 'src/containers/Signin';
+import ProfilUser from 'src/containers/ProfilUser';
 import Card from 'src/containers/Card';
 import Main from '../Main';
 import Nav from '../Nav';
 import ConnexionRegistration from '../ConnexionRegistration';
 import NotFoundPage from '../NotFoundPage';
-import ProfilUser from '../ProfilUser';
+
 import Trip from '../Trip'
 
 
@@ -101,7 +102,6 @@ const App = ({loading, fetchTravels}) => {
             user="lolo@sasa.fr"
             password="password"
             date="00/00/0000"
-            age="18"
             adress="adresse"
             city="city"
             codeZip="codeZip"
