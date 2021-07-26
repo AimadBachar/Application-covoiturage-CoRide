@@ -14,7 +14,7 @@ import {
     signed: false,
     signedMessage: 'Welcome in our community',
     inputs: {
-      lastname: '',
+      lastname: 'Sion',
       firstname: 'Anna',
       user: 'anna@coride.fr',
       password: '1234',
