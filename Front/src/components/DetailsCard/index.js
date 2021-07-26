@@ -30,7 +30,7 @@ return (
           </div>
           <div className="card-top_right">
             <p className="card-date">{new Date(card.departure_timestamp).toLocaleDateString("fr-FR")}</p>
-            <p className="card-hour">{new Date(card.departure_timestamp).getUTCHours()}h{new Date(card.departure_timestamp).getUTCMinutes()}</p>
+            <p className="card-hour">{new Intl.DateTimeFormat('fr-FR', { timeStyle: 'short' }).format(new Date(card.departure_timestamp))}</p>
           </div>
         </div>
         <p className="card-destination">Départ: {card.departure_city}</p>

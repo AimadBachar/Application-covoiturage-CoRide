@@ -34,7 +34,7 @@ const Card = ({
             </div>
             <div className="cardInfos-travel_right">
               <p className="cardInfos-travel_right__date">{new Date(card.departure_timestamp).toLocaleDateString("fr-FR")}</p> 
-              <p className="cardInfos-travel_right__hour">{new Date(card.departure_timestamp).toLocaleTimeString("fr-FR")}</p>
+              <p className="cardInfos-travel_right__hour">{new Intl.DateTimeFormat('fr-FR', { timeStyle: 'short' }).format(new Date(card.departure_timestamp))}</p>
             
 
               <span className="cardInfos-travel_right__tag">{card.activity}</span>
