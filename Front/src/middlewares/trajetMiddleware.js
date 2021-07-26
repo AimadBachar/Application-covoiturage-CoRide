@@ -1,6 +1,7 @@
  // == import axios
 import axios from 'axios';
-import {useQuery}
+import { useLocation } from 'react-router-dom';
+
 
 import { 
   SEARCH_SUCCESS, 
@@ -56,7 +57,7 @@ export default (store) => (next) => (action) => {
         url: fetchUrl
       })
         .then((res) => {
-          /* console.log("res.data", res.data); */
+          console.log("res.data", res.data);
           //console.log(departure);
           const actionToSend = searchSubmitSucces(res.data);
           store.dispatch(actionToSend);
@@ -86,8 +87,8 @@ export default (store) => (next) => (action) => {
           console.error(err);
         })
     break;
-    case FETCH_ONE_TRAVEL:
-      const query = useQuery();
+   /*  case FETCH_ONE_TRAVEL:
+      const query = new URLSearchParams(useLocation().search)
       const idRoad = query.get('id');
       console.log(id);
       // Je lance la requête
@@ -103,7 +104,7 @@ export default (store) => (next) => (action) => {
         .catch((err) => {
           console.error(err);
         })
-    break;
+    break; */
 }
 next(action);
 }

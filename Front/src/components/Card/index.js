@@ -11,15 +11,17 @@ const Card = ({
   onButtonClickProfilUser,
   onClickCardDetails,
 }) => {
-  
+  localStorage.setItem("travels", JSON.stringify(cards))
   return (
     <div>
       {/* {console.log("compo cards", cards)} */}
       {cards.map((card) => (
+
+
         <Link onClick={onClickCardDetails} to={{
-          pathname: "/travel",
-          search: `?=${card.id}`,
-          state: {card : card}
+          pathname: `/travel`,
+          search: `?id=${card.id}`,
+          state: {card: card}
         }} key={card.id}
         >
         <div className="cardInfos"  >
@@ -32,7 +34,7 @@ const Card = ({
             </div>
             <div className="cardInfos-travel_right">
               <p className="cardInfos-travel_right__date">{new Date(card.departure_timestamp).toLocaleDateString("fr-FR")}</p> 
-              <p className="cardInfos-travel_right__hour">{new Date(card.departure_timestamp).getUTCHours()}h{new Date(card.departure_timestamp).getUTCMinutes()}</p>
+              <p className="cardInfos-travel_right__hour">{new Date(card.departure_timestamp).toLocaleTimeString("fr-FR")}</p>
             
 
               <span className="cardInfos-travel_right__tag">{card.activity}</span>

@@ -1,19 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import './styles.scss';
 
 
+
 const DetailsCard = ({
   islogged,
-  card,
   onButtonClickProfilUser,
   onButtonClickValidation,
-}) => (
-    <div>
-    {console.log("compo Detailscard", card)}
+}) => {
+    
+    const query = new URLSearchParams(useLocation().search);
 
+    const id = query.get("id");    
+    
+    const cards = JSON.parse(localStorage.getItem("travels"));
+    
+    const card = cards.find(card=>card.id == id);
+    
+
+return (
+    <div>
       <div className="card" >
         <div className="card-top">
           <div className="card-top_left">
@@ -34,7 +43,8 @@ const DetailsCard = ({
         </div>
       </div>
   </div>
-);
+)}
+
 
 DetailsCard.propTypes = {
   onButtonClickProfilUser: PropTypes.func.isRequired,

@@ -97,7 +97,7 @@ const App = ({loading, fetchTravels}) => {
            />
         </Route>
 
-        <Route exact path="/travel/:id">
+        <Route exact path="/travel">
           <DetailsCard />
         </Route>
   
