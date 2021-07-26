@@ -17,7 +17,6 @@ const mapStateToProps = (state) => ({
     pseudo: state.usersignin.inputs.pseudo,
     email: state.usersignin.inputs.email,
     password: state.usersignin.inputs.password,
-   //password: state.userSignin.inputs.password,
     birthdate: state.usersignin.inputs.birthdate,
     //picture: state.usersignin.inputs.picture,
   });
