@@ -12,11 +12,14 @@ import {
 const mapStateToProps = (state) => ({
     isSignedIn: state.usersignin.signed,
     signedMessage: state.usersignin.signedMessage,
-    lastname: state.usersignin.inputs.lastname,
-    firstname: state.usersignin.inputs.firstname,
-    user: state.usersignin.inputs.user,
+    last_name: state.usersignin.inputs.last_name,
+    first_name: state.usersignin.inputs.first_name,
+    pseudo: state.usersignin.inputs.pseudo,
+    email: state.usersignin.inputs.email,
     password: state.usersignin.inputs.password,
+   //password: state.userSignin.inputs.password,
     birthdate: state.usersignin.inputs.birthdate,
+    //picture: state.usersignin.inputs.picture,
   });
 
 
@@ -30,11 +33,12 @@ const mapStateToProps = (state) => ({
       dispatch(action);
     },
 
-      handleSignin: () => {
+      handleSignin: (event) => {
         console.log('Signin')
-        console.log(localStorage.getItem('tokens'));
-        const action = userSignin();
+        const action = userSignin(event);
+        console.log(action);
         dispatch(action);
+
       },
   });
 

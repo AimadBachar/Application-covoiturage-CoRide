@@ -4,31 +4,34 @@
  // Import des actions
  import {
    USER_SIGNIN,
-   userSigninSubmit,
-   USER_SIGNIN_SUCCESS,
    userSigninSuccess,
    
- } from 'src/actions/user';
+ } from 'src/actions/usersignin';
  
- // export default (store) => (next) => (action) => {
+ 
  const middleware = (store) => (next) => (action) => {
    switch (action.type) {
     case USER_SIGNIN: 
-     
-      const frm = $('#frm');
-      let formData = new formData(frm[0]);
-      let accessToken = localStorage.getItem('access_token');
+      console.log('user-signin in middleware', action.type);
+
+      console.log(action);
+
+ 
+      const formData = new FormData(action.payload);
     
+      for(const key of formData.entries()){
+      console.log(`${key[0]}:${key[1]}`);
+      }
+
+
       //multipart/form-data
         axios({
           method: 'post',
           url: 'http://18.235.248.88:3000/api/v1/users',
-          data: { user, password: hashPassword },
+          //upload,
           data: formData,
           headers: {
-            Accept: 'application/json',
-            'Content-Type': 'multipart/form-data',
-            Authorization: accessToken
+            'Content-Type': 'multipart/form-data'
           }
           })
 
@@ -46,27 +49,34 @@
            console.error(err);
          })
        break; 
-       case USER_SIGNIN_SUCCESS:
-
-        const inputs = store.getState().users.inputs;
-        console.log(inputs);
-        
-        axios({
-            method: 'GET',
-            url: "http://18.235.248.88:3000/api/v1/users"
-        })
-        .then((res) => {
-            console.log("res.data", res.data);
-            const actionToSend = signinSubmitSuccess(res.data);
-            store.dispatch(actionToSend);
-            
-          })
-          .catch((err) => {
-            console.error(err);
-          })
-        
-         break;   
+     
    }
    next(action);
  };
  export default middleware;
+
+
+
+ /* 
+    try {
+      axios({
+      method: 'post',
+      url: 'http://18.235.248.88:3000/api/v1/users',
+    })
+      .then(function(response) {
+        alert(response.data.message);
+        console.log("check response ==>", response);
+      })
+        //setData(response.data.response);
+        .catch(function(error) {
+          console.log("check error ==>", error);
+        })
+        .then(function() {
+          console.log("check executed ==>");
+        });
+      } catch (err) {
+        alert(err);
+      }      
+
+
+ */

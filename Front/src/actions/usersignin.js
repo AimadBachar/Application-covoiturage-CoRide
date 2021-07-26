@@ -8,8 +8,9 @@ export const USER_SIGNIN_SUCCESS = 'USER_SIGNIN_SUCCESS';
 
 
 // l'utilisateur
-export const userSignin = () => ({
+export const userSignin = (payload) => ({
     type: USER_SIGNIN,
+    payload
   });
 // informations de l'utilisateur
 export const userSigninInputChange = (payload) => ({
