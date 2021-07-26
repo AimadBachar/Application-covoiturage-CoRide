@@ -32,27 +32,15 @@ const Trip = ({
     onInputChange(evt.target.name, value )
   } 
   
-  {console.log(cards)}
-  // const cardsOk = () => {
-  //   if (cards.length > 0) {
-  //     return (
-  //       <Redirect to={{
-  //         pathname: "/results",
-  //       }}/>
-  //     )
-  //   }
-  // }
-  
+  {console.log("Trip component")}
 
+  
   return (
     <div className="trip">
       <Header />
-       
-      {/* {/* {
-        cardsOk()    
-      } */}
+
       <form
-        //action="/results"
+ 
         className="trip-form"
         onSubmit={handleSubmit}
       >
@@ -140,7 +128,7 @@ const Trip = ({
   onInputChange: PropTypes.func.isRequired,
   onSubmitSearch: PropTypes.func.isRequired,
   description: PropTypes.string,
-  places_available: PropTypes.string.isRequired,
+  places_available: PropTypes.number.isRequired,
   tags: PropTypes.shape({
     sport: PropTypes.string.isRequired,
   })
