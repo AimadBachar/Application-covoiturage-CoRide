@@ -5,18 +5,18 @@ const mapStateToProps = (state) => ({
 
     isCompleted: false,
     profilCompletedMessage:"Signin done !",
-    lastname:"nom",
-    firstname:"prénom",
+    last_name:"nom",
+    first_name:"prénom",
     pseudo:"username",
-    user: "lolo@sasa.fr",
+    email: "lolo@sasa.fr",
     password:"password",
     birthdate:"00/00/0000",
-    adress:"adresse",
+    coords:"adresse",
     city:"city",
-    codeZip:"codeZip",
+    postcode:"0000",
     country:"country",
-    typeCar:"typeCar",
-    modelCar:"modelCar",
+    brand:"typeCar",
+    model:"modelCar",
     activity_id:"activity",
 
 });
@@ -25,14 +25,11 @@ const mapDispatchToProps = (dispatch) => ({
     changeField: (value, name) => {
         console.log('change in ' + name + ' :', value);
       
-     // const action = userProfilInputChange({
-       // [name]: value,
-     // });
-     // dispatch(action);
+    
     },
 
       handleProfil: () => {
-        console.log('profil')
+        console.log('profil completed')
        // console.log(localStorage.getItem('tokens'));
         //const action = profilUser();
        // dispatch(action);

@@ -94,7 +94,7 @@ const App = ({loading, fetchTravels}) => {
         <Route exact path="/profil">
           <ProfilUser
            //props
-            isCompleted={false} 
+           /* isCompleted={false} 
             profilCompletedMessage="Signin done !"
             last_name="nom"
             first_name="prénom"
@@ -104,7 +104,7 @@ const App = ({loading, fetchTravels}) => {
             birthdate="00/00/0000"
             coords="adresse"
             city="city"
-            postcode="00000"
+            postcode="0000"
             country="country"
             brand="typeCar"
             model="modelCar"
@@ -115,7 +115,7 @@ const App = ({loading, fetchTravels}) => {
             }}
             handleProfil={() => {
               console.log('profil')
-            }}         
+            }} */        
            />
         </Route>
 
