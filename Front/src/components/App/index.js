@@ -47,20 +47,20 @@ const App = ({loading, fetchTravels}) => {
         <Route exact path="/trip">
           <Trip 
           // data
-          departure_city="city"
-          destination_city="city"
-          activity_id="activity"
-          departure_timestamp="date"
-          description="blabla"
-          places_available="2"
+          // departure_city="city"
+          // destination_city="city"
+          // activity_id="activity"
+          // departure_timestamp="date"
+          // description="blabla"
+          // places_available="2"
           // fonctions
-          onSubmitSearch={() => {
-            console.log('trip created')
-          }}
+          // onSubmitSearch={() => {
+          //   console.log('trip created')
+          // }}
 
-          onInputChange = {(value, name) => {
-            console.log('change in ' + name + ' :', value);
-          }}
+          // onInputChange = {(value, name) => {
+          //   console.log('change in ' + name + ' :', value);
+          // }}
 
 
           />
