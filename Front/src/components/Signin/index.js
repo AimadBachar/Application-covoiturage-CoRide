@@ -14,8 +14,10 @@ const Signin = ({
 
     isSignedIn,
     signedMessage,
+    picture,
     first_name,
     last_name,
+    pseudo,
     email, // mail de l'utilisateur
     password,
     birthdate,
@@ -25,8 +27,16 @@ const Signin = ({
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    handleSignin();
+    handleSignin(evt.target);
   };
+
+  /*
+  handleUpload = (evt) => {
+    console.log(evt.target.files[0]);
+    this.setState({ picture: evt.target.files[0] });
+  };
+  
+  */
 
   return (
   <div className="signin">
@@ -35,7 +45,7 @@ const Signin = ({
   {isSignedIn && (
 
 <div className="signin-form-signed">
-<Redirect from="/inscription" to="/" />
+<Redirect from="/inscription" to="/connexion" />
 <p className="signin-message">
 
   {signedMessage}
@@ -50,17 +60,20 @@ const Signin = ({
       autoComplete="off"
       className="signin-form-element"
       onSubmit={handleSubmit}
+      enctype="application/x-www-form-urlencoded"
     >
       <h1 className="signin-form-title">
       Inscription
     </h1> 
-    <Field 
+ {/*}   <Field 
           className="signin-form-input"
           type="file" //name?
           name="picture"
           placeholder="Picture"
+          accept="image/png, image/jpeg"
+          onChange={this.handleUpload}
                    
-        />
+        />*/}
         <Field 
           className="signin-form-input"
           type="text" //name?
@@ -77,6 +90,15 @@ const Signin = ({
           placeholder="Prénom"
           onChange={changeField}
           value={first_name}
+        />
+
+        <Field
+          className="signin-form-input"
+          type="text"
+          name="pseudo"
+          placeholder="Pseudo"
+          onChange={changeField}
+          value={pseudo}
         />
   
       <Field
@@ -109,16 +131,18 @@ const Signin = ({
         onChange={changeField}
         value={password}
       />
- 
+ {/*
       <Field
         className="signin-form-input"
         type="password"
-        name="password"
+        name="confirmpassword"
         placeholder="Confirmez votre mot de passe"
         onChange={changeField}
-        value={password}
-        
+        value={password}       
       />
+  */}
+
+
        <div className="signin-button">
       <button
         type="submit"
@@ -127,20 +151,22 @@ const Signin = ({
         Valider
       </button>
       </div>
-      <div className="login-redirection">
-            <p className="login-redirection-text">
-              Déjà membre ?            
-            <Link
-              className="login-redirection-link"
-              to="/connexion"
-            >
-            Connectez-vous
-            </Link>
-            </p>
-            </div>
+      
           
         </form>
-    )}
+       )}  
+        <div className="login-redirection">
+        <p className="login-redirection-text">
+          Déjà membre ?            
+        <Link
+          className="login-redirection-link"
+          to="/connexion"
+        >
+        Connectez-vous
+        </Link>
+        </p>
+        </div>
+   
         </div>
         </div>
         
@@ -152,6 +178,7 @@ const Signin = ({
   last_name: PropTypes.string.isRequired,
   first_name: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
+  pseudo: PropTypes.string.isRequired,
   birthdate: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,

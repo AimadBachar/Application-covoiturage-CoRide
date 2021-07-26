@@ -4,9 +4,9 @@
  // Import des actions
  import {
    USER_SIGNIN,
-   userSignin,
+   userSigninSuccess,
    
- } from 'src/actions/user';
+ } from 'src/actions/usersignin';
  
  
  const middleware = (store) => (next) => (action) => {
@@ -14,15 +14,21 @@
     case USER_SIGNIN: 
       console.log('user-signin in middleware', action.type);
 
-      const frm = $('#frm');
-      let formData = new formData(frm);
+      console.log(action);
+
+ 
+      const formData = new FormData(action.payload);
     
-      console.log("data post:",formData);
+      for(const key of formData.entries()){
+      console.log(`${key[0]}:${key[1]}`);
+      }
+
 
       //multipart/form-data
         axios({
           method: 'post',
           url: 'http://18.235.248.88:3000/api/v1/users',
+          //upload,
           data: formData,
           headers: {
             'Content-Type': 'multipart/form-data'
@@ -36,7 +42,7 @@
            localStorage.clear();
            localStorage.setItem('tokens', JSON.stringify(res.data));  
            
-           const action = userSignin(res.data);
+           const action = userSigninSuccess(res.data);
            store.dispatch(action);
          })
          .catch((err) => {

@@ -14,9 +14,11 @@ const mapStateToProps = (state) => ({
     signedMessage: state.usersignin.signedMessage,
     last_name: state.usersignin.inputs.last_name,
     first_name: state.usersignin.inputs.first_name,
+    pseudo: state.usersignin.inputs.pseudo,
     email: state.usersignin.inputs.email,
     password: state.usersignin.inputs.password,
     birthdate: state.usersignin.inputs.birthdate,
+    //picture: state.usersignin.inputs.picture,
   });
 
 
@@ -30,10 +32,12 @@ const mapStateToProps = (state) => ({
       dispatch(action);
     },
 
-      handleSignin: () => {
+      handleSignin: (event) => {
         console.log('Signin')
-        const action = userSignin();
+        const action = userSignin(event);
+        console.log(action);
         dispatch(action);
+
       },
   });
 
