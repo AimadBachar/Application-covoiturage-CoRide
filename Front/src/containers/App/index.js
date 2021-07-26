@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     fetchTravels: () => {
-        console.log('chercher des trajets');
+        /* console.log('chercher des trajets'); */
 
         const action = fetchTravels();
         dispatch(action);

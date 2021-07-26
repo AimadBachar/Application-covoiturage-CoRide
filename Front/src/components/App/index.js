@@ -9,8 +9,8 @@ import Footer from 'src/containers/Footer';
 import Signin from 'src/containers/Signin';
 import ProfilUser from 'src/containers/ProfilUser';
 import Card from 'src/containers/Card';
+import DetailsCard from 'src/containers/DetailsCard';
 import Main from '../Main';
-import Nav from '../Nav';
 import ConnexionRegistration from '../ConnexionRegistration';
 import NotFoundPage from '../NotFoundPage';
 
@@ -118,6 +118,13 @@ const App = ({loading, fetchTravels}) => {
             }}         
            />
         </Route>
+
+        <Route exact path="/travel">
+          <Header />
+          <DetailsCard />
+          <Footer />
+        </Route>
+  
 
         <Route path="*">
           <NotFoundPage />

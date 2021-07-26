@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Card from 'src/components/Card';
-//import { searchSubmit, searchInputChange, selectInputChange, dateInputChange } from 'src/actions/trajets';
+import { fetchTravel } from 'src/actions/trajets';
 // import datas
 
 
@@ -9,7 +9,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    
+  onClickCardDetails: () => {
+    const action = fetchTravel();
+    dispatch(action)
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Card);
