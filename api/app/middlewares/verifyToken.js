@@ -39,6 +39,6 @@ module.exports = (req, res, next) => {
         }
     //sinon erreur 401
     }else{
-        res.Status(401).json("invalid request...");
+        res.status(401).json("invalid request...");
     }
 }
