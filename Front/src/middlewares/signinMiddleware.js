@@ -4,31 +4,28 @@
  // Import des actions
  import {
    USER_SIGNIN,
-   userSigninSubmit,
-   USER_SIGNIN_SUCCESS,
-   userSigninSuccess,
+   userSignin,
    
  } from 'src/actions/user';
  
- // export default (store) => (next) => (action) => {
+ 
  const middleware = (store) => (next) => (action) => {
    switch (action.type) {
     case USER_SIGNIN: 
-     
+      console.log('user-signin in middleware', action.type);
+
       const frm = $('#frm');
-      let formData = new formData(frm[0]);
-      let accessToken = localStorage.getItem('access_token');
+      let formData = new formData(frm);
     
+      console.log("data post:",formData);
+
       //multipart/form-data
         axios({
           method: 'post',
           url: 'http://18.235.248.88:3000/api/v1/users',
-          data: { user, password: hashPassword },
           data: formData,
           headers: {
-            Accept: 'application/json',
-            'Content-Type': 'multipart/form-data',
-            Authorization: accessToken
+            'Content-Type': 'multipart/form-data'
           }
           })
 
@@ -39,33 +36,14 @@
            localStorage.clear();
            localStorage.setItem('tokens', JSON.stringify(res.data));  
            
-           const action = userSigninSuccess(res.data);
+           const action = userSignin(res.data);
            store.dispatch(action);
          })
          .catch((err) => {
            console.error(err);
          })
        break; 
-       case USER_SIGNIN_SUCCESS:
-
-        const inputs = store.getState().users.inputs;
-        console.log(inputs);
-        
-        axios({
-            method: 'GET',
-            url: "http://18.235.248.88:3000/api/v1/users"
-        })
-        .then((res) => {
-            console.log("res.data", res.data);
-            const actionToSend = signinSubmitSuccess(res.data);
-            store.dispatch(actionToSend);
-            
-          })
-          .catch((err) => {
-            console.error(err);
-          })
-        
-         break;   
+     
    }
    next(action);
  };

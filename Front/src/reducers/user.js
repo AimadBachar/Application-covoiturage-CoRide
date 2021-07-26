@@ -30,8 +30,8 @@ const reducer = (state = initialState, action = {}) => {
     case USER_LOGIN_SUCCESS:
       return {
         ...state,
-        loggedMessage: `Welcome ${action.payload.firstname_}!`,
-        loggedName: action.payload.firstname_,
+        loggedMessage: `Welcome ${action.payload.first_name}!`,
+        loggedName: action.payload.first_name,
         logged: true,
         ...action.payload,
         // ci dessus la version courte de:

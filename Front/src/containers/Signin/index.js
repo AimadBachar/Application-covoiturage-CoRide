@@ -12,9 +12,9 @@ import {
 const mapStateToProps = (state) => ({
     isSignedIn: state.usersignin.signed,
     signedMessage: state.usersignin.signedMessage,
-    lastname: state.usersignin.inputs.lastname,
-    firstname: state.usersignin.inputs.firstname,
-    user: state.usersignin.inputs.user,
+    last_name: state.usersignin.inputs.last_name,
+    first_name: state.usersignin.inputs.first_name,
+    email: state.usersignin.inputs.email,
     password: state.usersignin.inputs.password,
     birthdate: state.usersignin.inputs.birthdate,
   });
@@ -32,7 +32,6 @@ const mapStateToProps = (state) => ({
 
       handleSignin: () => {
         console.log('Signin')
-        console.log(localStorage.getItem('tokens'));
         const action = userSignin();
         dispatch(action);
       },

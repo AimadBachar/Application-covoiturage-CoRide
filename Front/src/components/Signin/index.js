@@ -14,9 +14,9 @@ const Signin = ({
 
     isSignedIn,
     signedMessage,
-    firstname,
-    lastname,
-    user, // mail de l'utilisateur
+    first_name,
+    last_name,
+    email, // mail de l'utilisateur
     password,
     birthdate,
     changeField,
@@ -54,22 +54,29 @@ const Signin = ({
       <h1 className="signin-form-title">
       Inscription
     </h1> 
+    <Field 
+          className="signin-form-input"
+          type="file" //name?
+          name="picture"
+          placeholder="Picture"
+                   
+        />
         <Field 
           className="signin-form-input"
           type="text" //name?
-          name="nom"
+          name="last_name"
           placeholder="Nom"
           onChange={changeField}
-          value={lastname}
+          value={last_name}
           
         />
         <Field
           className="signin-form-input"
           type="text"
-          name="firstname"
+          name="first_name"
           placeholder="Prénom"
           onChange={changeField}
-          value={firstname}
+          value={first_name}
         />
   
       <Field
@@ -88,10 +95,10 @@ const Signin = ({
 
       <Field
         className="signin-form-input"
-        name="user"
+        name="email"
         placeholder="Adresse Email"
         onChange={changeField}
-        value={user}
+        value={email}
       />
 
       <Field
@@ -142,9 +149,9 @@ const Signin = ({
 
 
   Signin.propTypes = {
-  lastname: PropTypes.string.isRequired,
-  firstname: PropTypes.string.isRequired,
-  user: PropTypes.string.isRequired,
+  last_name: PropTypes.string.isRequired,
+  first_name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
   birthdate: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,

@@ -14,11 +14,12 @@ import {
     signed: false,
     signedMessage: 'Welcome in our community',
     inputs: {
-      lastname: 'Sion',
-      firstname: 'Anna',
-      user: 'anna@coride.fr',
-      password: '1234',
-      birthdate: "23/05/1990"
+      picture: '',
+      last_name: '',
+      first_name: '',
+      email: '',
+      password: '',
+      birthdate: '',
     }, 
   };
   
@@ -27,6 +28,8 @@ import {
       case USER_SIGNIN:
         return {
           ...state,
+          signed: false,
+          ...action.payload,
         };
 
      case USER_SIGNIN_INPUT_CHANGE:
@@ -54,10 +57,6 @@ import {
             signedName: action.payload.firstname,
             signed: true,
             ...action.payload,
-            // ci dessus la version courte de:
-            /* logged: action.payload.logged,
-               user: action.payload.firstname,
-             token: action.payload.token */
           };    
       
       default:
