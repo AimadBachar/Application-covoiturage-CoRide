@@ -2,12 +2,12 @@ import { connect } from 'react-redux';
 import Trip from 'src/components/Trip';
 
 const mapStateToProps = (state) => ({
-  departure_city:"city",
-  destination_city:"city",
-  activity_id:"activity",
-  departure_timestamp:"date",
-  description:"blabla",
-  places_available:"2",
+  departure_city: state.usersignin.inputs.departure_city,
+  destination_city: state.usersignin.inputs.destination_city,
+  activity_id: state.usersignin.inputs.activity_id,
+  departure_timestamp: state.usersignin.inputs.departure_timestamp,
+  description: state.usersignin.inputs.description,
+  places_available: state.usersignin.inputs.places_available,
 });
 
 const mapDispatchToProps = (dispatch) => ({
