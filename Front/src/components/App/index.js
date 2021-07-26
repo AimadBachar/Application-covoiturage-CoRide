@@ -98,7 +98,9 @@ const App = ({loading, fetchTravels}) => {
         </Route>
 
         <Route exact path="/travel">
+          <Header />
           <DetailsCard />
+          <Footer />
         </Route>
   
 

@@ -14,14 +14,13 @@ const Card = ({
   localStorage.setItem("travels", JSON.stringify(cards))
   return (
     <div>
-      {/* {console.log("compo cards", cards)} */}
       {cards.map((card) => (
 
 
         <Link onClick={onClickCardDetails} to={{
           pathname: `/travel`,
           search: `?id=${card.id}`,
-          state: {card: card}
+          /* state: {card: card} */
         }} key={card.id}
         >
         <div className="cardInfos"  >

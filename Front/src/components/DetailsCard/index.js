@@ -22,27 +22,25 @@ const DetailsCard = ({
     
 
 return (
-    <div>
-      <div className="card" >
-        <div className="card-top">
-          <div className="card-top_left">
-            <a href="#" className="card-profil" onClick={onButtonClickProfilUser}>{card.driver}</a>
-          </div>
-          <div className="card-top_right">
-            <p className="card-date">{new Date(card.departure_timestamp).toLocaleDateString("fr-FR")}</p>
-            <p className="card-hour">{new Intl.DateTimeFormat('fr-FR', { timeStyle: 'short' }).format(new Date(card.departure_timestamp))}</p>
-          </div>
+    <div className="card" >
+      <div className="card-top">
+        <div className="card-top_left">
+          <a href="#" className="card-profil" onClick={onButtonClickProfilUser}>{card.driver}</a>
         </div>
-        <p className="card-destination">Départ: {card.departure_city}</p>
-        <p className="card-destination">Arrivée: {card.destination_city}</p>
-        <p className="card-description">description trajet : {card.description}</p>
-        <div className="card-bottom">
-          <span className="card-tag">{card.activity}</span>
-          <span className="card-place">{card.places_available}</span>
-          <button className="card-button" type="button" onClick={onButtonClickValidation}>GO !</button>
+        <div className="card-top_right">
+          <p className="card-date">{new Date(card.departure_timestamp).toLocaleDateString("fr-FR")}</p>
+          <p className="card-hour">{new Intl.DateTimeFormat('fr-FR', { timeStyle: 'short' }).format(new Date(card.departure_timestamp))}</p>
         </div>
       </div>
-  </div>
+      <p className="card-destination">Départ: {card.departure_city}</p>
+      <p className="card-destination">Arrivée: {card.destination_city}</p>
+      <p className="card-description">description trajet dsgfshsfhsdhsdghsdgsdg sdgsdvsd dsbvsvsvsdv: {card.description}</p>
+      <div className="card-bottom">
+        <span className="card-tag">{card.activity}</span>
+        <span className="card-place">{card.places_available} place(s)</span>
+        <button className="card-button" type="button" onClick={onButtonClickValidation}>GO !</button>
+      </div>
+    </div>
 )}
 
 

@@ -1,10 +1,11 @@
 @use 'src/styles/vars';
 .card {
-  background-color: #ececec;
-  position: relative;
-  margin: 10px 0px 10px 0px;
-  color: #303030;
-  padding: 0.5em 0.5em 0.5em 0.5em;
+  max-width: 80%;
+  margin: 1.5rem auto;
+  box-shadow: vars.$box-shadow;
+  border-radius: vars.$border-radius-global;
+  font-family: vars.$font;
+  border: vars.$color, 2px solid;
 
   &-top {
     display: flex;
@@ -18,16 +19,12 @@
     justify-content: space-between;
   }
 
-  &-like {
-    position: relative;
-    width: 20px;
-  }
-
   &-profil {
     position: relative;
     font-size: 1em;
     font-weight: bold;
     left: 5px;
+    color: vars.$color;
   }
 
   &-destination {
@@ -37,6 +34,14 @@
     margin: 1.5rem auto 1.5rem auto;
     padding: 1rem 1rem;
     color: vars.$color;
+  }
+
+  &-description {
+    position: relative;
+    border: 1px solid vars.$color;
+    padding: 0.8rem auto;
+    text-align: center;
+    margin: 1rem auto;
   }
 
   &-date {
@@ -57,6 +62,9 @@
 
   &-tag {
     position: relative;
+    color: vars.$color;
+    border: 1px solid vars.$color;
+    padding: 0.5rem;
   }
     
 }
