@@ -35,10 +35,9 @@ const middleware = (store) => (next) => (action) => {
       // Requête POST sur api/users en envoyant les datas
       axios({
         method: 'post',
-        // url: 'http://localhost:3001/login',
         url: 'http://18.235.248.88:3000/api/v1/user/login/',
         data: store.getState().user.inputs,
-        // name: store.getState().user.userId,
+       // name: store.getState().user.userId,
       },
       // Sans instance préconfigurée, je renseigne le header directement dans la requête
       // (à faire pour toutes les requêtes)
@@ -47,14 +46,12 @@ const middleware = (store) => (next) => (action) => {
       })
         .then((res) => {
           console.log('res.data', res.data.userId);
-          const {
-            token, userId, firstName, lastName,
-          } = res.data;
+          const {token, userId, firstName, lastName } = res.data;
 
           // const tokens = await connect(user, password);
           // local storage mis en place
           // localStorage.setItem('tokens', res.data.firstName);
-           localStorage.clear();
+          localStorage.clear();
           localStorage.setItem('tokens', JSON.stringify(res.data));
 
           const actionToSend = userLoginSuccess(res.data);
