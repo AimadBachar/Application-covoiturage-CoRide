@@ -15,8 +15,12 @@
    switch (action.type) {
     case USER_SIGNIN_SUCCESS:
 
+    const inputs = store.getState().users.inputs;
+    console.log(inputs);
+    
     axios({
-
+        method: 'GET',
+        url: "http://18.235.248.88:3000/api/v1/users"
     })
     .then((res) => {
         console.log("res.data", res.data);
@@ -40,7 +44,7 @@
            const action = userSigninSuccess(res.data);
            store.dispatch(action);
            //const tokens = await connect(user, password);        
-           //localStorage.clear();
+           localStorage.clear();
            localStorage.setItem('tokens', JSON.stringify(res.data));          
          })
          .catch((err) => {
