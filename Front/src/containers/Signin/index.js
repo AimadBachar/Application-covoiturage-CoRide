@@ -5,8 +5,6 @@ import Signin from 'src/components/Signin';
 import { 
   userSignin, 
   userSigninInputChange, 
-  userSigninSubmit,
-  userSigninSuccess
  } from 'src/actions/usersignin';
 
 const mapStateToProps = (state) => ({
@@ -17,7 +15,6 @@ const mapStateToProps = (state) => ({
     pseudo: state.usersignin.inputs.pseudo,
     email: state.usersignin.inputs.email,
     password: state.usersignin.inputs.password,
-   //password: state.userSignin.inputs.password,
     birthdate: state.usersignin.inputs.birthdate,
     //picture: state.usersignin.inputs.picture,
   });

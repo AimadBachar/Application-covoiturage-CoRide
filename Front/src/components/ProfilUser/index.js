@@ -11,24 +11,25 @@ import 'src/components/ProfilUser/styles.scss';
 const ProfilUser = ({
 
 activity_id,
-tags,
-lastname,
-firstname,
+last_name,
+first_name,
 pseudo,
-user,
+email,
 password,
-adress,
+coords,
 city,
-codeZip,
+postcode,
 country,
-typeCar,
-modelCar,
-date,
+brand,
+model,
+birthdate,
 
 isCompleted,
 profilCompletedMessage,
-//changeField,
+changeField,
 handleProfil,
+
+picture,
 
 }) => {
   const handleSubmit = (evt) => {
@@ -37,12 +38,12 @@ handleProfil,
     handleProfil();
   };
 
-  const changeField = (evt) => {
+  /*const changeField = (evt) => {
     evt.preventDefault();
     //console.log(evt.target.value);
     const value = evt.target.value;
     onInputChange(evt.target.name, value )
-  } 
+  } */
 
 return (
     <div className="profil">
@@ -79,7 +80,7 @@ return (
             name="prénom"
             placeholder="Prénom"
             onChange={changeField}
-            value={firstname}
+            value={first_name}
           />
           <Field
             className="profil-form-input"
@@ -87,7 +88,7 @@ return (
             name="nom"
             placeholder="Nom"
             onChange={changeField}
-            value={lastname}
+            value={last_name}
           />
 
           <Field
@@ -105,7 +106,7 @@ return (
             placeholder="Date de naissance"
             autocorrect="off"
             onChange={changeField}
-            value={date}
+            value={birthdate}
           />
 
           <Field
@@ -114,7 +115,7 @@ return (
             name="user"
             placeholder="Adresse Email" //ou modifier son email ?
             onChange={changeField}
-            value={user}
+            value={email}
           />
           <Field
             className="profil-form-input"
@@ -129,9 +130,9 @@ return (
             className="profil-form-input"
             type="text"
             name="adresse"
-            placeholder="Adresse"
+            placeholder="Adresse postale"
             onChange={changeField}
-           value={adress}
+           value={coords}
           />
           <Field
             className="profil-form-input"
@@ -147,7 +148,7 @@ return (
             name="code postal"
             placeholder="Code postal"
             onChange={changeField}
-            value={codeZip}
+            value={postcode}
           />
           <Field
             className="profil-form-input"
@@ -162,17 +163,17 @@ return (
             className="profil-form-input"
             type="text"
             name="voiture"
-            placeholder="Voiture"
+            placeholder="Marque"
             onChange={changeField}
-            value={typeCar}
+            value={brand}
           />
           <Field
             className="profil-form-input"
             type="text"
-            name="modele"
-            placeholder="Modele"
+            name="model"
+            placeholder="Modèle"
             onChange={changeField}
-            value={modelCar}
+            value={model}
           />       
         
         <p className="profil-form-text">Sport de glisse pratiqué</p>
@@ -264,18 +265,21 @@ return (
 };
 
 ProfilUser.propTypes = {
-  lastname: PropTypes.string.isRequired,
-  firstname: PropTypes.string.isRequired,
-  user: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  age: PropTypes.string.isRequired,
+  last_name: PropTypes.string.isRequired,
+  first_name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  birthdate: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
+  coords: PropTypes.string.isRequired,
+  city: PropTypes.string.isRequired,
+  postcode: PropTypes.string.isRequired,
+  country:  PropTypes.string.isRequired,
+  activity_id: PropTypes.string.isRequired,
+
   changeField: PropTypes.func.isRequired,
   handleProfil: PropTypes.func.isRequired,
   isCompleted: PropTypes.bool,
-  tags: PropTypes.shape({
-  sport: PropTypes.string.isRequired,
-})
+  
 };
 // Valeurs par défaut pour les props
 ProfilUser.defaultProps = {
