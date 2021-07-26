@@ -14,7 +14,7 @@ import Nav from '../Nav';
 import ConnexionRegistration from '../ConnexionRegistration';
 import NotFoundPage from '../NotFoundPage';
 
-import Trip from '../Trip'
+import Trip from 'src/containers/Trip'
 
 
 import Loading from './Loading';
