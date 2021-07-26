@@ -28,14 +28,14 @@ const mapDispatchToProps = (dispatch) => ({
      // const action = userProfilInputChange({
        // [name]: value,
      // });
-      dispatch(action);
+     // dispatch(action);
     },
 
       handleProfil: () => {
         console.log('profil')
-        console.log(localStorage.getItem('tokens'));
+       // console.log(localStorage.getItem('tokens'));
         //const action = profilUser();
-        dispatch(action);
+       // dispatch(action);
       },
       });  
 
