@@ -54,7 +54,7 @@ const uploadPicture = {
 
             //en cas d'upload on vérifie la présence d'un fichier enregistré et la présence d'un lien
             //si il y a un lien alors on delete le fichier pour ne pas cumuler les fichiers dans le bucket
-            if(req.file.location && req.body.picture_link){
+            if(req.file?.location && req.body?.picture_link){
                 uploadPicture.delete(req.body.picture_link);
             }
 
