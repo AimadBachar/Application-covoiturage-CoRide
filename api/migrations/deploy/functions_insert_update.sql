@@ -3,7 +3,7 @@
 BEGIN;
 
 --fonction pour insert en bdd un user
-CREATE FUNCTION insert_user(json) RETURNS "user" AS $$
+CREATE FUNCTION insert_user(json) RETURNS int AS $$
 
     INSERT INTO "user"(first_name,last_name,email,birthdate,picture_link,pseudo,password)
     VALUES(
@@ -14,12 +14,12 @@ CREATE FUNCTION insert_user(json) RETURNS "user" AS $$
         $1->>'picture_link',
         $1->>'pseudo',
         $1->>'password'
-    ) RETURNING *;
+    ) RETURNING id;
 
 $$LANGUAGE SQL;
 
 --fonction pour update un user
-CREATE FUNCTION update_user(json) RETURNS "user" AS $$
+CREATE FUNCTION update_user(json) RETURNS int AS $$
 
     UPDATE "user"
     SET 
@@ -31,7 +31,7 @@ CREATE FUNCTION update_user(json) RETURNS "user" AS $$
         pseudo = $1->>'pseudo',
         password = $1->>'password',
         updated_at = NOW()
-    WHERE id = ($1->>'id')::int RETURNING *;
+    WHERE id = ($1->>'id')::int RETURNING id;
 
 $$LANGUAGE SQL;
 

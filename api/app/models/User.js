@@ -7,7 +7,8 @@ const pool = require("../db");
  * @property {string} last_name.required the last name user
  * @property {string} email.required the user email
  * @property {string} picture_link the link for user avatar
- * @property {string} pseudo the user pseudo
+ * @property {string} pseudo.required the user pseudo
+ * @property {string} birthdate.required the user birthdate
  * @property {string} created_at timestamptz created
  * @property {string} updated_at timestamptz updated
  * @property {string} password.required the hash user password
