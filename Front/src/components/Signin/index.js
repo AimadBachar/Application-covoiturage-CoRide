@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link, BrowserRouter as Router, Redirect } from 'react-router-dom';
+import axios from 'axios';
 
 //import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import PropTypes from 'prop-types';
+import PropTypes, { func } from 'prop-types';
 
 import Field from 'src/components/Signin/Field';
 import 'src/components/Signin/styles.scss';
@@ -20,6 +21,7 @@ const Signin = ({
     pseudo,
     email, // mail de l'utilisateur
     password,
+    
     birthdate,
     changeField,
     handleSignin,
@@ -30,6 +32,12 @@ const Signin = ({
     handleSignin(evt.target);
   };
 
+  
+  /*
+  const [password, setPassword] = useState("");
+  const [confirmPassword, checkValidation] = useState("");*/
+
+    
   /*
   handleUpload = (evt) => {
     console.log(evt.target.files[0]);
@@ -110,7 +118,10 @@ const Signin = ({
         data-date-split-input="true"
         onChange={changeField} 
         value={birthdate} //date?
-        /* type="date"
+
+        
+ 
+        /* 
         label="date de naissance"
         defaultValue="23-05-1990"*/
       />
@@ -125,23 +136,27 @@ const Signin = ({
 
       <Field
         className="signin-form-input"
+        id="password"
         type="password"
         name="password"
         placeholder="Mot de passe"
         onChange={changeField}
+        //onChange={(evt) => setPassword(evt.target.value)}
         value={password}
       />
- {/*
+ {/*<div data-validate="Confirm Password is required">
       <Field
         className="signin-form-input"
+        id="confirmpassword"
         type="password"
-        name="confirmpassword"
+        name="confirmPass"
         placeholder="Confirmez votre mot de passe"
         onChange={changeField}
+        //onChange={(evt) => checkValidation(evt.target.value)}
         value={password}       
       />
-  */}
 
+</div>*/}
 
        <div className="signin-button">
       <button
@@ -180,6 +195,7 @@ const Signin = ({
   email: PropTypes.string.isRequired,
   pseudo: PropTypes.string.isRequired,
   birthdate: PropTypes.string.isRequired,
+  //confirmPassword: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   handleSignin: PropTypes.func.isRequired,

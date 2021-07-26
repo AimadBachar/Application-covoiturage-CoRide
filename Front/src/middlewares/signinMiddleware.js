@@ -54,3 +54,29 @@
    next(action);
  };
  export default middleware;
+
+
+
+ /* 
+    try {
+      axios({
+      method: 'post',
+      url: 'http://18.235.248.88:3000/api/v1/users',
+    })
+      .then(function(response) {
+        alert(response.data.message);
+        console.log("check response ==>", response);
+      })
+        //setData(response.data.response);
+        .catch(function(error) {
+          console.log("check error ==>", error);
+        })
+        .then(function() {
+          console.log("check executed ==>");
+        });
+      } catch (err) {
+        alert(err);
+      }      
+
+
+ */
