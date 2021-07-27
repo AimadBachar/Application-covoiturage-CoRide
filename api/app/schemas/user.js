@@ -11,7 +11,8 @@ const schemaUser = Joi.object({
     pseudo: Joi.string().optional(),
     created_at: Joi.date().optional(),
     updated_at: Joi.date().optional(),
-    password: Joi.string().required()
+    password: Joi.string().required(),
+    verifyPassword: Joi.string().optional()
 });
 
 module.exports = schemaUser;
