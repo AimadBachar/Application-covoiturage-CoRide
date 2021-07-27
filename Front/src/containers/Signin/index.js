@@ -13,10 +13,11 @@ const mapStateToProps = (state) => ({
     last_name: state.usersignin.inputs.last_name,
     first_name: state.usersignin.inputs.first_name,
     pseudo: state.usersignin.inputs.pseudo,
+    picture: state.usersignin.inputs.picture,
     email: state.usersignin.inputs.email,
     password: state.usersignin.inputs.password,
-    birthdate: state.usersignin.inputs.birthdate,
-    //picture: state.usersignin.inputs.picture,
+    verifyPassword: state.usersignin.inputs.verifyPassword,
+    birthdate: state.usersignin.inputs.birthdate
   });
 
 

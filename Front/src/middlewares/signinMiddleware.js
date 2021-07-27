@@ -12,16 +12,9 @@
  const middleware = (store) => (next) => (action) => {
    switch (action.type) {
     case USER_SIGNIN: 
-      console.log('user-signin in middleware', action.type);
 
-      console.log(action);
-
- 
       const formData = new FormData(action.payload);
     
-      for(const key of formData.entries()){
-      console.log(`${key[0]}:${key[1]}`);
-      }
 
 
       //multipart/form-data
@@ -37,10 +30,6 @@
 
          .then((res) => {
            console.log('signin_success', res.data);
-           
-           //const tokens = await connect(user, password);        
-           localStorage.clear();
-           localStorage.setItem('tokens', JSON.stringify(res.data));  
            
            const action = userSigninSuccess(res.data);
            store.dispatch(action);
