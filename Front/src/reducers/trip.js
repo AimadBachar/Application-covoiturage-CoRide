@@ -14,8 +14,9 @@ export const initialState = {
     departure_timestamp: "",
     description: "",
     places_available: "",
-  }
-};
+    longitude_departure: -0.594,
+    latitude_departure: 44.8378,
+  }};
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
