@@ -28,7 +28,7 @@ isCompleted,
 profilCompletedMessage,
 changeField,
 handleProfil,
-
+//ajout picture
 picture,
 
 }) => {
@@ -44,6 +44,23 @@ picture,
     const value = evt.target.value;
     onInputChange(evt.target.name, value )
   } */
+
+  {/*const [image, setImage] = useState({ preview: "", file: "" });
+  const handleChange = (e) => {
+     e.preventDefault();
+     if (e.target.files.length) {
+       setImage({
+         preview: URL.createObjectURL(e.target.files[0]),
+         file: e.target.files[0],
+       });
+     }
+   };
+   useEffect(() => {
+     const formData = new FormData();
+     formData.append("file", image.file);
+     console.log(formData);
+   }, [image]);  */}
+
 
 return (
     <div className="profil">
@@ -192,9 +209,11 @@ return (
       <div className="profil-form-sport">
           <select
             className="profil-form-select"
+            type="select"
+            //multiple="oui"
             name="activity_id"
             value={activity_id}
-            onChange={changeField}
+            //onChange={changeField}
           >
             <option
               className="profil-form-select_title"

@@ -96,18 +96,4 @@ export default middleware;
 mdp: BackForLife
 */
 
-//
-// requête POST sur admin/login en envoyant les datas
-/*  axios({
-        method: 'post',
-        url: 'http://18.235.248.88:3000/login',
-        headers:{"Contente-Type":"application/json"},
-        data: JSON.stringify(loginAdmin)
-      })
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    break; */
+

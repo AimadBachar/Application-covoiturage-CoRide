@@ -5,8 +5,11 @@ import axios from 'axios';
 import {
   USER_PROFIL,
   userProfilSuccess,
+  USER_PROFIL_ACTIVITIES,
+  userProfilActivities
   
 } from 'src/actions/userprofil';
+
 
 
 const middleware = (store) => (next) => (action) => {
@@ -21,18 +24,22 @@ const middleware = (store) => (next) => (action) => {
    
      for(const key of formData.entries()){
      console.log(`${key[0]}:${key[1]}`);
-     }
+     };
+
+     /*const axiosConfigured = axios.create({
+      headers: {'Authorization': `Bearer ${action.payload.token}`}
+    }); */
 
 
      //multipart/form-data
        axios({
          method: 'post',
          url: 'http://18.235.248.88:3000/api/v1/users',
-         //upload,
-         data: formData,
+         data: formData, 
+         data: store.getState().user.inputs,
          headers: {
            'Content-Type': 'multipart/form-data'
-         }
+         },
          })
 
         .then((res) => {
@@ -47,8 +54,38 @@ const middleware = (store) => (next) => (action) => {
         })
         .catch((err) => {
           console.error(err);
-        })
-      break; 
+        });
+        break;
+
+
+// choisir les sports pratiqués
+case USER_PROFIL_ACTIVITIES:
+  const id = store.getState().id;
+  console.log(id);
+  // Je lance la requête
+  axios({
+    method: 'get',
+    mode: 'cors',
+    url: 'http://18.235.248.88:3000/api/v1/activities'
+  //},
+ // {
+   // headers: { Authorization: `Bearer ${store.getState().user.token}` },
+  })
+
+
+    .then((res) => {
+      console.log('res.data', res.data.activityId);
+      const action = userProfilActivities(res.data);
+      store.dispatch(action);
+
+      const response = fetch('http://18.235.248.88:3000/api/v1/activities/activityId');
+      return response.res.data.activityId();
+
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+break;
     
   }
   next(action);
