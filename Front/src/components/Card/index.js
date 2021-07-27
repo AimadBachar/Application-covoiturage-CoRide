@@ -6,18 +6,23 @@ import { Link, Redirect } from 'react-router-dom'
 import './styles.scss';
 
 const Card = ({
-  islogged,
+  logged,
+  detailsCard,
   cards,
   onButtonClickProfilUser,
   onClickCardDetails,
 }) => {
-  localStorage.setItem("travels", JSON.stringify(cards))
+  const handleClick = (oneCard) => {
+    const card = localStorage.setItem("card", oneCard)
+    onClickCardDetails(detailsCard);
+  }
+
   return (
     <div>
+      
       {cards.map((card) => (
-
-
-        <Link onClick={onClickCardDetails} to={{
+         
+        <Link onClick={handleClick} to={{
           pathname: `/travel`,
           search: `?id=${card.id}`,
           state: {card}

@@ -6,25 +6,19 @@ import './styles.scss';
 
 
 const DetailsCard = ({
+  detailsCard,
   logged,
   onButtonClickProfilUser,
-  /* onButtonClickValidation, */
+  onButtonClickValidation,
 }) => {
     const location = useLocation();
     const stateLink = location.state;
     const card = stateLink.card;
     console.log("stateLink", card);
-
-    /* const query = new URLSearchParams(useLocation().search);
-
-    const id = query.get("id");    
-    
-    const cards = JSON.parse(localStorage.getItem("travels"));
-    
-    const card = cards.find(card=>card.id == id); */
-    
-    const onButtonClickValidation = () => {
+  
+    const onButtonClick = () => {
       console.log("participe form details-card-connected");
+      onButtonClickValidation()
     }
 
     if (!logged) {
@@ -71,7 +65,7 @@ const DetailsCard = ({
         <div className="card-bottom">
           <span className="card-tag">{card.activity}</span>
           <span className="card-place">{card.places_available} place(s)</span>
-          <button className="card-button" type="button" onClick={onButtonClickValidation}>GO !</button>
+          <button className="card-button" type="button" onClick={onButtonClick}>GO !</button>
         </div>
       </div>
 
