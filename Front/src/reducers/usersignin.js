@@ -19,6 +19,7 @@ import { USER_SIGNIN } from 'src/actions/usersignin';
       pseudo: '',
       email: '',
       password: '',
+      verifyPassword:'',
       birthdate: '',
     }, 
   };

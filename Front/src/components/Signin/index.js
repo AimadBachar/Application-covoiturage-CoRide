@@ -21,7 +21,7 @@ const Signin = ({
     pseudo,
     email, // mail de l'utilisateur
     password,
-    
+    verifyPassword,
     birthdate,
     changeField,
     handleSignin,
@@ -29,7 +29,43 @@ const Signin = ({
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
+
+    //on récupere la date de naissance et la date actuelle puis on calcule le nombre d'année en décimale
+    const yearOfBirth = new Date(evt.target.querySelector('input[name="birthdate"]').value);  
+    const dateNow = new Date();
+
+    const isMajor = (dateNow - yearOfBirth)/(1000*3600*24*365);
+
+    //on récupere le password, on construit notre regexp et on check
+    const password = evt.target.querySelector('input[name="password"]').value;
+    const regexp = new RegExp("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[-+!*#$@%_])([-+!*#$@%_\\w]{8,})$");
+
+    const checkPassword = regexp.test(password);
+
+    //on check le verifyPassword avec le password
+    const verifyPassword = evt.target.querySelector('input[name="verifyPassword"]').value;
+
+    //si mineur return
+    if(isMajor < 18) {
+      console.log("tu es mineur...")
+      return;
+    }
+
+    //si password non conform return
+    if(!checkPassword) {
+      console.log("ton mot de passe n'est pas conforme au format attendu")
+      return;
+    }
+
+    if(checkPassword && (verifyPassword !== password)){
+      console.log("attention les 2 mots de passe ne sont pas identique...")
+      return;
+    }
+   
+    //si les controles sont ok PARFAIT on valide
+    console.log("tu es majeur et le mot de passe est conforme au format attendu, pas d'erreur entre les 2 champs password");
     handleSignin(evt.target);
+    
   };
 
   
@@ -38,13 +74,12 @@ const Signin = ({
   const [confirmPassword, checkValidation] = useState("");*/
 
     
-  /*
-  handleUpload = (evt) => {
+  
+  const handleUpload = (evt) => {
     console.log(evt.target.files[0]);
     this.setState({ picture: evt.target.files[0] });
   };
-  
-  */
+
 
   return (
   <div className="signin">
@@ -73,15 +108,7 @@ const Signin = ({
       <h1 className="signin-form-title">
       Inscription
     </h1> 
- {/*}   <Field 
-          className="signin-form-input"
-          type="file" //name?
-          name="picture"
-          placeholder="Picture"
-          accept="image/png, image/jpeg"
-          onChange={this.handleUpload}
-                   
-        />*/}
+    
         <Field 
           className="signin-form-input"
           type="text" //name?
@@ -107,6 +134,18 @@ const Signin = ({
           placeholder="Pseudo"
           onChange={changeField}
           value={pseudo}
+        />
+
+    
+      <input 
+          className="signin-form-input"
+          type="file"
+          name="picture"
+          placeholder="Picture"
+          accept="image/png, image/jpeg"
+          onChange={handleUpload}
+        //TODO style du champ file à faire
+                      
         />
   
       <Field
@@ -144,6 +183,18 @@ const Signin = ({
         //onChange={(evt) => setPassword(evt.target.value)}
         value={password}
       />
+
+    <Field
+        className="signin-form-input"
+        id="verifyPassword"
+        type="password"
+        name="verifyPassword"
+        placeholder="Confirmez votre mot de passe"
+        onChange={changeField}
+        //onChange={(evt) => setPassword(evt.target.value)}
+        value={verifyPassword}
+      />
+
  {/*<div data-validate="Confirm Password is required">
       <Field
         className="signin-form-input"
@@ -195,7 +246,7 @@ const Signin = ({
   email: PropTypes.string.isRequired,
   pseudo: PropTypes.string.isRequired,
   birthdate: PropTypes.string.isRequired,
-  //confirmPassword: PropTypes.string.isRequired,
+  verifyPassword: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   handleSignin: PropTypes.func.isRequired,
