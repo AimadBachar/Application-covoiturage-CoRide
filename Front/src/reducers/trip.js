@@ -3,8 +3,10 @@ import {
   ON_INPUT_CHANGE,
 } from 'src/actions/trip';
 
+import dataTags from '/src/data/data_tag.js';
 
 export const initialState = {
+  tags: dataTags,
   inputs: {
     departure_city: "",
     destination_city: "",
@@ -26,6 +28,7 @@ const reducer = (state = initialState, action = {}) => {
         },
       };
     case ON_SUBMIT_CHANGE:
+      console.log("Trip reducer on submit_change", action.type);
       return {
         ...state,
       };

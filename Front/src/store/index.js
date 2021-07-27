@@ -5,7 +5,7 @@ import reducer from '/src/reducers';
 
 import ajaxMiddleware from 'src/middlewares/ajaxMiddleware';
 import trajetMiddleware from 'src/middlewares/trajetMiddleware';
-import tripMiddleware from 'src/middlewares/trajetMiddleware';
+import tripMiddleware from 'src/middlewares/tripMiddleware';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const enhancers = composeEnhancers(

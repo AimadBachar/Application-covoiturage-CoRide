@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Header from '../Header';
 import Footer from '../Footer';
 
+
 import './styles.scss';
 import { Redirect } from 'react-router-dom';
 
@@ -73,7 +74,7 @@ const Trip = ({
               className="trip-form_select_title"
             >Quel sport ?
             </option>
-            {/* {tags.map((tag) => (
+            {tags.map((tag) => (
               <option
                 name="tag"
                 key={tag.id}
@@ -81,7 +82,7 @@ const Trip = ({
               >
                 {tag.sport}
               </option>
-            ))} */}
+            ))}
           </select>
           <input
             className="trip-form_date"
@@ -96,7 +97,7 @@ const Trip = ({
         <input
             className="trip-form_input"
             type="number"
-            name="place-available"
+            name="places_available"
             value={places_available}
             placeholder="Nombre de place"
             onChange={fieldChange}

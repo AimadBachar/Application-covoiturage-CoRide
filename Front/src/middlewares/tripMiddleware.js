@@ -5,17 +5,27 @@ import {
   onSubmitSearch,
   ON_INPUT_CHANGE,
   onInputChange
-} from 'src/actions/nomdufichier';
+} from 'src/actions/trip.js';
 
 const middleware = (store) => (next) => (action) => {
   // J'examine le type d'action, pour les CAS qui m'intéressent
   switch(action.type) {
     case ON_SUBMIT_CHANGE:
       
+      /* const inputs = store.getState().trip.inputs; */
+
+      const token = JSON.parse(localStorage.getItem('tokens'));
+      console.log(token.first_name);
+
+      console.log('middleware token', token);
       // Je lance ma requête avec axios
       axios({
         method: 'post',
-        url: 'http://18.235.248.88:3000/api/v1/travels​/user​/{id}'
+        data: store.getState().user.inputs,
+        url: `http://18.235.248.88:3000/api/v1/travels​/${token.pseudo}​/${token.id}`
+      },
+      {
+        headers: { Authorization: `Bearer ${token}` },
       })
         .then((res) => {
           // axios met dans res.data la réponse du serveur
@@ -30,10 +40,10 @@ const middleware = (store) => (next) => (action) => {
 
         })
         .catch((err) => {
-          console.error(err);
+          console.error('erreur:',err);
           // J'ai besoin d'avoir une action pour informer le reducer que la requête s'est mal passée.
-          const actionToSend = userLoginError();
-          store.dispatch(actionToSend)
+          /* const actionToSend = userLoginError();
+          store.dispatch(actionToSend) */
         });
     break;
   }

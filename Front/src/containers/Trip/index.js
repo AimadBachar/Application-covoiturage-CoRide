@@ -3,6 +3,7 @@ import Trip from 'src/components/Trip';
 import { onSubmitSearch, onInputChange } from 'src/actions/trip';
 
 const mapStateToProps = (state) => ({
+  tags: state.trip.tags,
   departure_city: state.trip.inputs.departure_city,
   destination_city: state.trip.inputs.destination_city,
   activity_id: state.trip.inputs.activity_id,
