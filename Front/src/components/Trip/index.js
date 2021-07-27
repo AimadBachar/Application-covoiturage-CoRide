@@ -78,7 +78,7 @@ const Trip = ({
               <option
                 name="tag"
                 key={tag.id}
-                value={tag.sport}
+                value={tag.id}
               >
                 {tag.sport}
               </option>

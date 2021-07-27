@@ -4,7 +4,7 @@ import axios from 'axios';
 import { 
   SEARCH_SUCCESS, 
   searchSubmitSucces, 
-  FETCH_TRAVELS, 
+  FETCH_TRAVELS,
   fetchTravelsSuccess 
 } from '../actions/trajets';
 

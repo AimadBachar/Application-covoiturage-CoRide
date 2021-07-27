@@ -12,22 +12,24 @@ const middleware = (store) => (next) => (action) => {
   switch(action.type) {
     case ON_SUBMIT_CHANGE:
       
-      /* const inputs = store.getState().trip.inputs; */
-
+      const inputs = store.getState().trip.inputs;
+      console.log(inputs);
       const token = JSON.parse(localStorage.getItem('tokens'));
       console.log(token.first_name);
 
+      const fetchUrl = "http://18.235.248.88:3000/api/v1/travels/user/";
+      console.log(fetchUrl);
       console.log('middleware token', token);
       // Je lance ma requête avec axios
       axios({
         method: 'post',
-        data: store.getState().user.inputs,
-        url: `http://18.235.248.88:3000/api/v1/travels​/${token.pseudo}​/${token.id}`
-      },
-      {
-        headers: { Authorization: `Bearer ${token}` },
+        url: fetchUrl + token.id,
+        data: inputs, 
+        headers: { Authorization: `Bearer ${token.token}`},
       })
+      
         .then((res) => {
+          console.log(store.getState().user.inputs,);
           // axios met dans res.data la réponse du serveur
           console.log('Trip success', res.data);
           // J'ai besoin d'avoir une action pour informer le reducer que la requête s'est bien passée.
