@@ -32,7 +32,9 @@ const DetailsCard = ({
       <div className="card" >
         <div className="card-top">
           <div className="card-top_left">
-            <a href="#" className="card-profil" onClick={onButtonClickProfilUser}>{card.driver}</a>
+            <Link className="card-profil" to="/connexion">
+              <p>{card.driver}</p>
+            </Link>
           </div>
           <div className="card-top_right">
             <p className="card-date">{new Date(card.departure_timestamp).toLocaleDateString("fr-FR")}</p>
@@ -45,7 +47,7 @@ const DetailsCard = ({
         <div className="card-bottom">
           <span className="card-tag">{card.activity}</span>
           <span className="card-place">{card.places_available} place(s)</span>
-          <Link id="link-connexion" to="/connexion">
+          <Link to="/connexion">
             <button className="card-button" type="button">GO !</button>
           </Link>
         </div>
