@@ -14,7 +14,7 @@ import ConnexionRegistration from '../ConnexionRegistration';
 import Signin from 'src/containers/Signin';
 import ProfilUser from 'src/containers/ProfilUser';
 import DetailsProfil from 'src/containers/DetailsProfil';
-import Trip from '../Trip'
+import Trip from 'src/containers/Trip'
 import Card from 'src/containers/Card';
 import DetailsCard from 'src/containers/DetailsCard';
 import NotFoundPage from '../NotFoundPage';

@@ -7,6 +7,7 @@ import Footer from '../Footer';
 import './styles.scss';
 import { Redirect } from 'react-router-dom';
 
+
 const Trip = ({
   cards,
   tags,
@@ -42,6 +43,7 @@ const Trip = ({
   }
 
 {
+  console.log(tags)
   if(tags.length<1){
     handleFetchActivities();
   }
@@ -157,10 +159,7 @@ const Trip = ({
   onInputChange: PropTypes.func.isRequired,
   onSubmitSearch: PropTypes.func.isRequired,
   description: PropTypes.string,
-  places_available: PropTypes.number.isRequired,
-  tags: PropTypes.shape({
-    sport: PropTypes.string.isRequired,
-  })
+  places_available: PropTypes.number.isRequired
 };
 
 export default Trip;

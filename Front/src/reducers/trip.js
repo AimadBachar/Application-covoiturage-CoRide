@@ -1,5 +1,4 @@
 import {
-  ON_SUBMIT_CHANGE,
   ON_INPUT_CHANGE,
   FETCH_SUCCESS_ACTIVITIES,
   TRIP_SUCCESS
@@ -37,11 +36,7 @@ const reducer = (state = initialState, action = {}) => {
           [action.name] : action.payload
         },
       };
-    case ON_SUBMIT_CHANGE:
-      console.log("Trip reducer on submit_change", action.type);
-      return {
-        ...state,
-      };
+    
     case FETCH_SUCCESS_ACTIVITIES:
       console.log("reducers",action.payload);
       return{

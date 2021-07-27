@@ -1,11 +1,12 @@
-export const TRIP_SUCCES = 'TRIP_SUCCES';
+
+export const TRIP_SUCCESS = 'TRIP_SUCCESS';
 export const ON_INPUT_CHANGE = 'ON_INPUT_CHANGE';
 export const ON_SUBMIT_TRIP = 'ON_SUBMIT_TRIP';
 export const FETCH_ACTIVITIES = 'FETCH_ACTIVITIES';
 export const FETCH_SUCCESS_ACTIVITIES = 'FETCH_SUCCESS_ACTIVITIES';
 
 export const tripSucces = (payload) => ({
-  type: TRIP_SUCCES,
+  type: TRIP_SUCCESS,
   payload
 });
 
