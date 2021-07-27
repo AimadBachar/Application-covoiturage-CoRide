@@ -18,7 +18,7 @@ const Header = () => {
   // let user;
   const logOut = () => {
     localStorage.clear();
-   /*  window.location.reload(); */
+    window.location.reload();
   };
 
   const userLogged = () => {

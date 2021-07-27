@@ -5,6 +5,7 @@ import DetailsCard from 'src/components/DetailsCard';
 
 
 const mapStateToProps = (state) => ({
+  logged: state.user.logged,
   card: state.trajets.card
 });
 

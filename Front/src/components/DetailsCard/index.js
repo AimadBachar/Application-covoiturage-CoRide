@@ -6,7 +6,7 @@ import './styles.scss';
 
 
 const DetailsCard = ({
-  islogged,
+  logged,
   onButtonClickProfilUser,
   /* onButtonClickValidation, */
 }) => {
@@ -27,7 +27,7 @@ const DetailsCard = ({
       console.log("participe form details-card-connected");
     }
 
-    if (!islogged) {
+    if (!logged) {
       return (
       <div className="card" >
         <div className="card-top">
@@ -51,8 +51,6 @@ const DetailsCard = ({
         </div>
       </div>
   )} else {
-    var elem = document.getElementById("link-connexion");
-    elem.parentNode.removeChild(elem);
 
     return (
       <div className="card" >
