@@ -3,11 +3,14 @@ import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
 
+
 import { 
   SEARCH_SUCCESS, 
   searchSubmitSucces, 
   FETCH_TRAVELS, 
+  FETCH_SEARCH_CITY,
   fetchTravelsSuccess,
+  fetchCitiesSuccess,
   FETCH_ONE_TRAVEL,
 } from '../actions/trajets';
 
@@ -50,7 +53,7 @@ export default (store) => (next) => (action) => {
           }
       }
 
-      /* console.log(fetchUrl) */
+      console.log(fetchUrl)
 
       axios({
         method: 'GET',
@@ -86,6 +89,26 @@ export default (store) => (next) => (action) => {
         .catch((err) => {
           console.error(err);
         })
+    break;
+
+    case FETCH_SEARCH_CITY:
+
+    console.log(action.payload);
+    axios({
+      method: 'get',
+      url: `http://18.235.248.88:3000/api/v1/cities?city=${action.payload}`
+    })
+      .then((res) => {
+        
+        console.log(res.data);
+        const action = fetchCitiesSuccess(res.data);
+        store.dispatch(action);
+
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+
     break;
    /*  case FETCH_ONE_TRAVEL:
       const query = new URLSearchParams(useLocation().search)

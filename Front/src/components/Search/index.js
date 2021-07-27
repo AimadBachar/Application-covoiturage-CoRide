@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import loupe from '/src/assets/images/loupe white 2.png';
+import Combobox from "react-widgets/Combobox";
 
 
 import './styles.scss';
+import "react-widgets/scss/styles.scss";
 import { Redirect, Link } from 'react-router-dom';
 
 const Search = ({
@@ -12,8 +14,13 @@ const Search = ({
   departure_city,
   destination_city,
   activity,
+  long,
+  lat,
+  resultsFetch,
   departure_timestamp,
   onInputChange,
+  onInputCityChange,
+  onInputsCoords,
   onSubmitSearch
 }) => {
   const handleSubmit = (evt) => {
@@ -25,11 +32,29 @@ const Search = ({
 
   const fieldChange = (evt) => {
     evt.preventDefault();
-    //console.log(evt.target.value);
     const value = evt.target.value;
     onInputChange(evt.target.name, value )
   } 
-  
+
+  const cityFetch = (evt)=>{
+    evt.preventDefault();
+    const name = evt.target.name;
+    const value = evt.target.value;
+
+    if(value.length>4){
+      onInputCityChange(name,value);
+    }
+  }
+
+  const citySelected = (evt)=>{  
+    
+    console.log(evt);
+    onInputsCoords(evt.coords);
+    //document.querySelector('input[name="long"]') = evt.coords.lng;
+    //document.querySelector('input[name="lat"]') = evt.coords.lat;
+
+  }
+
   /* {console.log(cards)} */
 
   return (
@@ -39,13 +64,33 @@ const Search = ({
         className="search-form"
         onSubmit={handleSubmit}
       >
-        <input
-          className="search-form_input depart"
-          type="text"
+        <Combobox busy
+          hideCaret
+          hideEmptyPopup
           name="departure_city"
           placeholder="Départ"
+          data={resultsFetch}
+          dataKey="city"
+          textField="city"
           value={departure_city}
-          onChange={fieldChange}
+          onInput={cityFetch}
+          onSelect={citySelected}
+        />
+
+        <input
+          className="search-form_input long"
+          type="hidden"
+          name="long"
+          value={long}
+          onInput={fieldChange}
+        />
+
+        <input
+          className="search-form_input lat"
+          type="hidden"
+          name="lat"
+          value={lat}
+          onInput={fieldChange}
         />
 
         <input
@@ -114,6 +159,7 @@ Search.propTypes = {
   onSelectChange: PropTypes.func.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onDateChange: PropTypes.func.isRequired,
+  onInputCityChange: PropTypes.func.isRequired,
   tags: PropTypes.shape({
    sport: PropTypes.string.isRequired,
   })
