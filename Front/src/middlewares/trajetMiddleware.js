@@ -9,6 +9,7 @@ import {
   FETCH_TRAVELS, 
   fetchTravelsSuccess,
   FETCH_ONE_TRAVEL,
+
 } from '../actions/trajets';
 
 

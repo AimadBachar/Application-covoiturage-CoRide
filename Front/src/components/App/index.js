@@ -9,18 +9,18 @@ import Search from 'src/containers/Search';
 import Footer from 'src/containers/Footer';
 import Main from '../Main';
 import ConnexionRegistration from '../ConnexionRegistration';
+
+
 import Signin from 'src/containers/Signin';
 import ProfilUser from 'src/containers/ProfilUser';
 import DetailsProfil from 'src/containers/DetailsProfil';
 import Trip from '../Trip'
 import Card from 'src/containers/Card';
 import DetailsCard from 'src/containers/DetailsCard';
-
 import NotFoundPage from '../NotFoundPage';
 import Loading from './Loading';
 
 import './styles.scss';
-
 
 const App = ({loading, fetchTravels}) => {
   // J'exécute la fonction reçue en props
