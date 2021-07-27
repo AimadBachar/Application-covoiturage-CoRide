@@ -22,7 +22,6 @@ import Loading from './Loading';
 import './styles.scss';
 import { useEffect } from 'react';
 
-
 const App = ({loading, fetchTravels}) => {
   // J'exécute la fonction reçue en props
   // dés que je suis prêt, et une seule fois

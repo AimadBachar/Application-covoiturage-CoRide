@@ -1,12 +1,14 @@
 import {
   ON_SUBMIT_CHANGE,
   ON_INPUT_CHANGE,
+  FETCH_SUCCESS_ACTIVITIES,
+  TRIP_SUCCESS
 } from 'src/actions/trip';
 
-import dataTags from '/src/data/data_tag.js';
+
 
 export const initialState = {
-  tags: dataTags,
+  tags: [],
   inputs: {
     departure_city: "",
     destination_city: "",
@@ -14,12 +16,19 @@ export const initialState = {
     departure_timestamp: "",
     description: "",
     places_available: "",
-    longitude_departure: -0.594,
-    latitude_departure: 44.8378,
+    longitude_departure: "",
+    latitude_departure: "",
   }};
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
+
+    case TRIP_SUCCESS:
+        console.log("success",action.payload);
+      return{
+        ...state
+      }
+
     case ON_INPUT_CHANGE:
       return {
         ...state,
@@ -33,6 +42,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
       };
+    case FETCH_SUCCESS_ACTIVITIES:
+      console.log("reducers",action.payload);
+      return{
+        ...state,
+        tags: action.payload
+      }
     default:
       return state;
   }
