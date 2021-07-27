@@ -136,6 +136,8 @@ const userController = {
                 id
             } = req.params;
 
+            delete req.body.verifyPassword;
+
             const user = new User(req.body);
 
             if (req.file) user.picture_link = req.file?.location;
@@ -144,7 +146,13 @@ const userController = {
                 return res.status(400).json("bad request");
             }
 
+
             await user.save();
+
+            const result = await user.save();
+
+            delete result.password;
+
 
             res.status(201).json(result);
 
