@@ -1,0 +1,70 @@
+@use 'src/styles/vars';
+.card {
+  max-width: 80%;
+  margin: 1.5rem auto;
+  box-shadow: vars.$box-shadow;
+  border-radius: vars.$border-radius-global;
+  font-family: vars.$font;
+  border: vars.$color, 2px solid;
+
+  &-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &-profil {
+    position: relative;
+    font-size: 1em;
+    font-weight: bold;
+    left: 5px;
+    color: vars.$color;
+  }
+
+  &-destination {
+    background-color: #E5E5E5;
+    text-align: center;
+    max-width: 80%;
+    margin: 1.5rem auto 1.5rem auto;
+    padding: 1rem 1rem;
+    color: vars.$color;
+  }
+
+  &-description {
+    position: relative;
+    border: 1px solid vars.$color;
+    padding: 0.8rem auto;
+    text-align: center;
+    margin: 1rem auto;
+  }
+
+  &-date {
+    position: relative;
+    right: 0;
+  }
+
+  &-hour {
+    position: relative;
+  }
+  
+  &-button {
+    position: relative;
+    padding: 0.5rem;
+    background-color: vars.$color;
+    color: vars.$color-light;
+  }
+
+  &-tag {
+    position: relative;
+    color: vars.$color;
+    border: 1px solid vars.$color;
+    padding: 0.5rem;
+  }
+    
+}

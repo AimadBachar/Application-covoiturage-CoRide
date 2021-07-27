@@ -5,18 +5,19 @@ import Signin from 'src/components/Signin';
 import { 
   userSignin, 
   userSigninInputChange, 
-  userSigninSubmit,
-  userSigninSuccess
  } from 'src/actions/usersignin';
 
 const mapStateToProps = (state) => ({
     isSignedIn: state.usersignin.signed,
     signedMessage: state.usersignin.signedMessage,
-    lastname: state.usersignin.inputs.lastname,
-    firstname: state.usersignin.inputs.firstname,
-    user: state.usersignin.inputs.user,
+    last_name: state.usersignin.inputs.last_name,
+    first_name: state.usersignin.inputs.first_name,
+    pseudo: state.usersignin.inputs.pseudo,
+    picture: state.usersignin.inputs.picture,
+    email: state.usersignin.inputs.email,
     password: state.usersignin.inputs.password,
-    birthdate: state.usersignin.inputs.birthdate,
+    verifyPassword: state.usersignin.inputs.verifyPassword,
+    birthdate: state.usersignin.inputs.birthdate
   });
 
 
@@ -30,11 +31,12 @@ const mapStateToProps = (state) => ({
       dispatch(action);
     },
 
-      handleSignin: () => {
+      handleSignin: (event) => {
         console.log('Signin')
-        console.log(localStorage.getItem('tokens'));
-        const action = userSignin();
+        const action = userSignin(event);
+        console.log(action);
         dispatch(action);
+
       },
   });
 

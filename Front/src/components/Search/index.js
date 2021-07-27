@@ -30,13 +30,12 @@ const Search = ({
     onInputChange(evt.target.name, value )
   } 
   
-  {console.log(cards)}
+  /* {console.log(cards)} */
 
   return (
     <div>
     <div className="search">
       <form
-        //action="/results"
         className="search-form"
         onSubmit={handleSubmit}
       >

@@ -1,73 +1,73 @@
 // == import axios
 import axios from 'axios';
 
-// Import des actions
-import {
-  USER_SIGNIN,
-  userSigninSubmit,
-  USER_SIGNIN_SUCCESS,
-  userSigninSuccess,
-  
-} from 'src/actions/user';
 
-// export default (store) => (next) => (action) => {
-const middleware = (store) => (next) => (action) => {
-  switch (action.type) {
-  case USER_SIGNIN: 
+
+ // Import des actions
+ import {
+   USER_SIGNIN,
+   userSigninSuccess,
+   
+ } from 'src/actions/usersignin';
+ 
+ 
+ const middleware = (store) => (next) => (action) => {
+   switch (action.type) {
+    case USER_SIGNIN: 
+
+      const formData = new FormData(action.payload);
     
-    const frm = $('#frm');
-    let formData = new formData(frm[0]);
-    let accessToken = localStorage.getItem('access_token');
-  
-    //multipart/form-data
+
+
+      //multipart/form-data
+        axios({
+          method: 'post',
+          url: 'http://18.235.248.88:3000/api/v1/users',
+          //upload,
+          data: formData,
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+          })
+
+         .then((res) => {
+           console.log('signin_success', res.data);
+           
+           const action = userSigninSuccess(res.data);
+           store.dispatch(action);
+         })
+         .catch((err) => {
+           console.error(err);
+         })
+       break; 
+     
+   }
+   next(action);
+ };
+ export default middleware;
+
+
+
+ /* 
+    try {
       axios({
-        method: 'post',
-        url: 'http://18.235.248.88:3000/api/v1/users',
-        data: { user, password: hashPassword },
-        data: formData,
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'multipart/form-data',
-          Authorization: accessToken
-        }
+      method: 'post',
+      url: 'http://18.235.248.88:3000/api/v1/users',
+    })
+      .then(function(response) {
+        alert(response.data.message);
+        console.log("check response ==>", response);
       })
+        //setData(response.data.response);
+        .catch(function(error) {
+          console.log("check error ==>", error);
+        })
+        .then(function() {
+          console.log("check executed ==>");
+        });
+      } catch (err) {
+        alert(err);
+      }      
 
-        .then((res) => {
-          console.log('signin_success', res.data);
-          
-          //const tokens = await connect(user, password);        
-          localStorage.clear();
-          localStorage.setItem('tokens', JSON.stringify(res.data));  
-          
-          const action = userSigninSuccess(res.data);
-          store.dispatch(action);
-        })
-        .catch((err) => {
-          console.error(err);
-        })
-      break; 
-      case USER_SIGNIN_SUCCESS:
 
-      const inputs = store.getState().users.inputs;
-      console.log(inputs);
-      
-      axios({
-          method: 'GET',
-          url: "http://18.235.248.88:3000/api/v1/users"
-      })
-      .then((res) => {
-          console.log("res.data", res.data);
-          const actionToSend = signinSubmitSuccess(res.data);
-          store.dispatch(actionToSend);
-          
-        })
-        .catch((err) => {
-          console.error(err);
-        })
-      
-        break;   
-  }
-  next(action);
-};
-
-export default middleware;
+ */

@@ -14,30 +14,35 @@ import './styles.scss';
 
 // JSON.parse(localStorage.getItem('token'))['access_token']
 
-const Header = () => {
+const Header = ({
+  logged,
+  onButtonClickLogout
+}) => {
   // let user;
   const logOut = () => {
     localStorage.clear();
-    window.location.reload();
+    onButtonClickLogout();
   };
 
-  const userLogged = () => {
-    if (localStorage.getItem('tokens')) {
-      JSON.parse(localStorage.getItem('tokens'));
-      // onClick=(logOut());
-      return (
-        // <div>
-        //   <p className="header-login">{user?.firstName}</p>
-        // </div>
+  if (logged) {
+    return (
+      <div className="header">
+        <img className="header-photo" src={appBanner} alt="appBanner" />
+        <img src={logo} className="header-logo" alt="Logo CoRide" />
+        <Nav />
         <a
-          onClick={logOut}
-        >
-          <img className="header-logout" src={logout} alt="logout" />
-        </a>
-      );
-    } 
-
-      return (
+            onClick={logOut}
+          >
+            <img className="header-logout" src={logout} alt="logout" />
+          </a>
+      </div>
+    )
+  } else {
+    return (
+      <div className="header">
+        <img className="header-photo" src={appBanner} alt="appBanner" />
+        <img src={logo} className="header-logo" alt="Logo CoRide" />
+        <Nav />
         <Link
           to="/connexion"
           exact
@@ -45,22 +50,10 @@ const Header = () => {
         >
           <img className="header-login" src={login} alt="login" />
         </Link>
-      );
-
-
-
-    
-
-  };
-
-  return (
-    <div className="header">
-      <img className="header-photo" src={appBanner} alt="appBanner" />
-      <img src={logo} className="header-logo" alt="Logo CoRide" />
-      <Nav />
-      {userLogged()}
-    </div>
-  );
+      </div>
+  )
+  }
+      
 };
 
 // Header.proptypes = {
