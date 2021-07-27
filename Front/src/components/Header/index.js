@@ -18,11 +18,12 @@ const Header = () => {
   // let user;
   const logOut = () => {
     localStorage.clear();
-    window.location.reload();
+   /*  window.location.reload(); */
   };
 
   const userLogged = () => {
     if (localStorage.getItem('tokens')) {
+      // faire par rapport à un state isLogged
       JSON.parse(localStorage.getItem('tokens'));
       // onClick=(logOut());
       return (
