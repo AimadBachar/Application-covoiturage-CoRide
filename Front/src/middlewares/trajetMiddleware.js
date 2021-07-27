@@ -12,6 +12,7 @@ import {
   fetchTravelsSuccess,
   fetchCitiesSuccess,
   FETCH_ONE_TRAVEL,
+  searchFormDisplay
 } from '../actions/trajets';
 
 
@@ -88,7 +89,21 @@ export default (store) => (next) => (action) => {
         })
         .catch((err) => {
           console.error(err);
+        });
+
+        axios({
+          method: 'get',
+          url: 'http://18.235.248.88:3000/api/v1/activities'
         })
+          .then((res) => {
+            /* console.log("fetch_succes", res.data); */
+            const action = searchFormDisplay(res.data);
+            store.dispatch(action);
+          })
+          .catch((err) => {
+            console.error(err);
+          })
+
     break;
 
     case FETCH_SEARCH_CITY:

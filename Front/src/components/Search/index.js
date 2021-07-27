@@ -50,9 +50,6 @@ const Search = ({
     
     console.log(evt);
     onInputsCoords(evt.coords);
-    //document.querySelector('input[name="long"]') = evt.coords.lng;
-    //document.querySelector('input[name="lat"]') = evt.coords.lat;
-
   }
 
   /* {console.log(cards)} */
@@ -104,7 +101,7 @@ const Search = ({
         <div className="search-form_sport__date">
           <select
             className="search-form_select"
-            name="activity"
+            name="activity_id"
             value={activity}
             onChange={fieldChange}
           >
@@ -114,11 +111,10 @@ const Search = ({
             </option>
             {tags.map((tag) => (
               <option
-                name="tag"
                 key={tag.id}
-                value={tag.sport}
+                value={tag.id}
               >
-                {tag.sport}
+                {tag.label}
               </option>
             ))}
           </select>

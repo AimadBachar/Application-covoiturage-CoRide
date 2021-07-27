@@ -9,12 +9,18 @@ export const FETCH_TRAVELS_SUCCESS = 'FETCH_TRAVELS_SUCCESS';
 export const FETCH_CITIES_SUCCESS = 'FETCH_CITIES_SUCCESS';
 export const FETCH_ONE_TRAVEL = 'FETCH_ONE_TRAVEL';
 export const SEARCH_INPUTS_COORDS = 'SEARCH_INPUTS_COORDS';
+export const SEARCH_FORM_DISPLAY = 'SEARCH_FORM_DISPLAY';
 
 
 export const searchInputChange = (payload) => ({
   type: SEARCH_INPUT_CHANGE,
   payload
 });
+
+export const searchFormDisplay = (payload)=>({
+  type: SEARCH_FORM_DISPLAY,
+  payload
+})
 
 export const searchInputsCoords = (payload)=>({
   type: SEARCH_INPUTS_COORDS,
