@@ -3,25 +3,30 @@ import PropTypes from 'prop-types';
 import Header from '../Header';
 import Footer from '../Footer';
 
+
 import './styles.scss';
 import { Redirect } from 'react-router-dom';
+
 
 const Trip = ({
   cards,
   tags,
   departure_city,
+  longitude_departure,
+  latitude_departure,
   destination_city,
   activity_id,
   departure_timestamp,
   places_available,
   description,
   onInputChange,
-  onSubmitSearch
+  onSubmitTrip,
+  handleFetchActivities
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log('submit');
-    onSubmitSearch();
+    onSubmitTrip();
 
   };
 
@@ -32,27 +37,25 @@ const Trip = ({
     onInputChange(evt.target.name, value )
   } 
   
-  {console.log(cards)}
-  // const cardsOk = () => {
-  //   if (cards.length > 0) {
-  //     return (
-  //       <Redirect to={{
-  //         pathname: "/results",
-  //       }}/>
-  //     )
-  //   }
-  // }
-  
+  {
+    //TODO importer combobox et faire champ de recherche
+    console.log("Trip component")
+  }
 
+{
+  console.log(tags)
+  if(tags.length<1){
+    handleFetchActivities();
+  }
+}
+
+  
   return (
     <div className="trip">
       <Header />
-       
-      {/* {/* {
-        cardsOk()    
-      } */}
+
       <form
-        //action="/results"
+ 
         className="trip-form"
         onSubmit={handleSubmit}
       >
@@ -63,6 +66,22 @@ const Trip = ({
           name="departure_city"
           placeholder="Départ"
           value={departure_city}
+          onChange={fieldChange}
+        />
+
+        <input
+          className="trip-form_input depart"
+          type="hidden"
+          name="latitute_departure"
+          value={latitude_departure}
+          onChange={fieldChange}
+        />
+
+        <input
+          className="trip-form_input depart"
+          type="hidden"
+          name="longitude_departure"
+          value={longitude_departure}
           onChange={fieldChange}
         />
 
@@ -85,19 +104,19 @@ const Trip = ({
               className="trip-form_select_title"
             >Quel sport ?
             </option>
-            {/* {tags.map((tag) => (
+            {tags.map((tag) => (
               <option
                 name="tag"
                 key={tag.id}
-                value={tag.sport}
+                value={tag.id}
               >
-                {tag.sport}
+                {tag.label}
               </option>
-            ))} */}
+            ))}
           </select>
           <input
             className="trip-form_date"
-            type="date"
+            type="datetime-local"
             name="departure_timestamp"
             value={departure_timestamp}
             placeholder="aujourd'hui"
@@ -108,7 +127,7 @@ const Trip = ({
         <input
             className="trip-form_input"
             type="number"
-            name="place-available"
+            name="places_available"
             value={places_available}
             placeholder="Nombre de place"
             onChange={fieldChange}
@@ -140,10 +159,7 @@ const Trip = ({
   onInputChange: PropTypes.func.isRequired,
   onSubmitSearch: PropTypes.func.isRequired,
   description: PropTypes.string,
-  places_available: PropTypes.string.isRequired,
-  tags: PropTypes.shape({
-    sport: PropTypes.string.isRequired,
-  })
+  places_available: PropTypes.number.isRequired
 };
 
 export default Trip;

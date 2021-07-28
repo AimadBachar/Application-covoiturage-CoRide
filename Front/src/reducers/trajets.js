@@ -8,10 +8,11 @@ import {
   FETCH_ONE_TRAVEL,
   PARTICIPE_TRAVEL_SUCCES,
   PARTICIPE_TRAVEL,
-  FETCH_PROFIL_DRIVER
+  FETCH_PROFIL_DRIVER,
+  SEARCH_FORM_DISPLAY
+
 } from 'src/actions/trajets';
 
-import dataTags from '/src/data/data_tag.js';
 // 1. après la création du container Login 
 //j'ajoute un reducer-user.js avec de fausses datas
 //puis je modifie le state du container login avec ces fausses datas
@@ -19,10 +20,12 @@ import dataTags from '/src/data/data_tag.js';
     loading: false,
     cards: [],
     detailsCard: [],
-    tags: dataTags,
+    tags: [],
      inputs: {
-        departure_city: '',
         destination_city: '',
+        departure_city:"",
+        long:"",
+        lat:"",
         activity_id: '',
         departure_timestamp: '',
      }
@@ -81,6 +84,13 @@ import dataTags from '/src/data/data_tag.js';
           loading: false,
           detailsCard: action.payload
       };
+      case SEARCH_FORM_DISPLAY:
+        console.log(action.payload);
+        return{
+          ...state,
+          tags: action.payload
+        }
+ 
       default:
         return state;
     }

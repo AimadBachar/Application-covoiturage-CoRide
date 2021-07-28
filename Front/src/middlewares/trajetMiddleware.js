@@ -1,6 +1,6 @@
- // == import axios
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
+
 
 
 import { 
@@ -9,11 +9,10 @@ import {
   FETCH_TRAVELS, 
   fetchTravelsSuccess,
   FETCH_ONE_TRAVEL,
-  PARTICIPE_TRAVEL,
+  searchFormDisplay,
   particpeTravelSucces,
   FETCH_PROFIL_DRIVER,
 } from '../actions/trajets';
-import Card from '../containers/Card';
 
 
 
@@ -22,6 +21,14 @@ export default (store) => (next) => (action) => {
     case SEARCH_SUCCESS:
 
       const inputs = store.getState().trajets.inputs;
+      const longitude = store.getState().comboBoxCities.long;
+      const latitude = store.getState().comboBoxCities.lat;
+
+      if(longitude && latitude){
+        inputs.long = longitude;
+        inputs.lat = latitude;
+      }
+
       /* console.log(inputs); */
       let fetchUrl = "http://18.235.248.88:3000/api/v1/travels";
 
@@ -54,7 +61,7 @@ export default (store) => (next) => (action) => {
           }
       }
 
-      /* console.log(fetchUrl) */
+      console.log(fetchUrl)
 
       axios({
         method: 'GET',
@@ -89,7 +96,21 @@ export default (store) => (next) => (action) => {
         })
         .catch((err) => {
           console.error(err);
+        });
+
+        axios({
+          method: 'get',
+          url: 'http://18.235.248.88:3000/api/v1/activities'
         })
+          .then((res) => {
+            /* console.log("fetch_succes", res.data); */
+            const action = searchFormDisplay(res.data);
+            store.dispatch(action);
+          })
+          .catch((err) => {
+            console.error(err);
+          })
+
     break;
     case PARTICIPE_TRAVEL:
       console.log('participe traval succes in middleware', action.payload);
@@ -125,5 +146,3 @@ export default (store) => (next) => (action) => {
     break; 
 }
 next(action);
-}
- 
