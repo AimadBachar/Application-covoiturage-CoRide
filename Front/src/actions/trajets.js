@@ -1,6 +1,5 @@
 // création des actions 
 // Vers Search/Card
-=======
 
 // ne pas oublier l'importation dans le reducer user.js
 

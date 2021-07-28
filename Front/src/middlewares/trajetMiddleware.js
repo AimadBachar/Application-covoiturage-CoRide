@@ -1,8 +1,6 @@
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
-
-
 import { 
   SEARCH_SUCCESS, 
   searchSubmitSucces, 
@@ -10,6 +8,7 @@ import {
   fetchTravelsSuccess,
   FETCH_ONE_TRAVEL,
   searchFormDisplay,
+  PARTICIPE_TRAVEL,
   particpeTravelSucces,
   FETCH_PROFIL_DRIVER,
 } from '../actions/trajets';
@@ -146,3 +145,4 @@ export default (store) => (next) => (action) => {
     break; 
 }
 next(action);
+};

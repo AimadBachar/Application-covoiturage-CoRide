@@ -6,21 +6,15 @@ import './styles.scss';
 
 
 const DetailsCard = ({
-
   updateCard,
-
   logged,
   onButtonClickProfilUser,
-  /* onButtonClickValidation, */
+  onButtonClickValidation,
 }) => {
     const location = useLocation();
     const stateLink = location.state;
     const card = stateLink.card;
     console.log("stateLink", card);
-
-    const onButtonClickValidation = () => {
-      console.log("participe form details-card-connected");
-    }
 
     const Onecard = localStorage.setItem("card", JSON.stringify(card))
 
