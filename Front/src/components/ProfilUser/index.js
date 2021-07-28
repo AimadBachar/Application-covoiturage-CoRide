@@ -52,7 +52,7 @@ picture,
 
     const checkPassword = regexp.test(password);
 
-    $(document).ready(function() {
+   /* $(document).ready(function() {
     $(".element_hide").hide();
     $('select[name=categories]').change(function() {
       var categories = $(this).val();
@@ -63,7 +63,7 @@ picture,
         $(".element_hide").hide();
       }
     });
-  })
+  })*/
   
      //si password non conform return
      if(!checkPassword) {
