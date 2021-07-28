@@ -2,6 +2,30 @@ const coreModel = require("./coreModel");
 const pool = require("../db");
 
 /**
+ * @typedef UserActivities
+ * @property {integer} id the id activity
+ * @property {string} label the name of activity
+ * @property {string} color the tag color for activity
+ */
+/**
+ * @typedef UserTravels
+ * @property {integer} id the travel id
+ * @property {string} departure_city the name of city departure
+ * @property {string} destination_city the name of city destination
+ * @property {string} departure_timestamp the date and time of travel
+ */
+/**
+ * @typedef UserVehicles
+ * @property {integer} id the vehicle id
+ * @property {string} brand the brand of vehicle
+ * @property {string} model the model of vehicle
+ */
+/**
+ * @typedef UserVehicleOptions
+ * @property {integer} id the vehicle option id
+ * @property {string} label the name of vehicle option
+ */
+/**
  * @typedef User 
  * @property {string} first_name.required the first name user
  * @property {string} last_name.required the last name user
@@ -11,7 +35,11 @@ const pool = require("../db");
  * @property {string} birthdate.required the user birthdate
  * @property {string} created_at timestamptz created
  * @property {string} updated_at timestamptz updated
- * @property {string} password.required the hash user password
+ * @property {Array<UserActivities>} activities the list of activities
+ * @property {Array<UserTravels>} travels_passenger the list of travels passenger
+ * @property {Array<UserTravels>} driver_passenger the list of travels driver
+ * @property {Array<UserVehicles>} vehicles the list of vehicles
+ * @property {Array<UserVehicleOptions>} vehicle_options the list of vehicle options
  */
 class User extends coreModel {
 
