@@ -6,14 +6,17 @@ import {
   FETCH_TRAVELS,
   FETCH_TRAVELS_SUCCESS,
   FETCH_ONE_TRAVEL,
+  PARTICIPE_TRAVEL_SUCCES,
+  PARTICIPE_TRAVEL,
+  FETCH_PROFIL_DRIVER,
   SEARCH_FORM_DISPLAY
+
 } from 'src/actions/trajets';
 
 // 1. après la création du container Login 
 //j'ajoute un reducer-user.js avec de fausses datas
 //puis je modifie le state du container login avec ces fausses datas
   export const initialState = {
-    logged: false,
     loading: false,
     cards: [],
     detailsCard: [],
@@ -61,6 +64,20 @@ import {
           cards: action.payload
       };
       case FETCH_ONE_TRAVEL:
+        console.log(action.payload);
+        return {
+          ...state,
+          loading: false,
+          detailsCard: action.payload
+      };
+      case PARTICIPE_TRAVEL:
+        console.log(action.payload);
+        return {
+          ...state,
+          loading: false,
+          detailsCard: action.payload
+      };
+      case PARTICIPE_TRAVEL_SUCCES:
         console.log(action.payload);
         return {
           ...state,

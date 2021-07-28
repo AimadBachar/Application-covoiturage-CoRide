@@ -23,7 +23,7 @@ const Header = ({
     localStorage.clear();
     onButtonClickLogout();
   };
-
+  
   if (logged) {
     return (
       <div className="header">
