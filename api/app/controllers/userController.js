@@ -90,7 +90,6 @@ const userController = {
     async getAll(req, res, next) {
 
         try {
-            console.log("je suis la")
             const results = await User.findAll({view: true});
             
             return res.json(results);
