@@ -9,7 +9,11 @@ import {
   FETCH_TRAVELS, 
   fetchTravelsSuccess,
   FETCH_ONE_TRAVEL,
+  PARTICIPE_TRAVEL,
+  particpeTravelSucces,
+  FETCH_PROFIL_DRIVER,
 } from '../actions/trajets';
+import Card from '../containers/Card';
 
 
 
@@ -87,24 +91,38 @@ export default (store) => (next) => (action) => {
           console.error(err);
         })
     break;
-   /*  case FETCH_ONE_TRAVEL:
-      const query = new URLSearchParams(useLocation().search)
-      const idRoad = query.get('id');
-      console.log(id);
+    case PARTICIPE_TRAVEL:
+      console.log('participe traval succes in middleware', action.payload);
+      const { id : travelId } = action.payload;
+      console.log("travelID", travelId);
+
+      const objData = { id : travelId};
+
+      const token = JSON.parse(localStorage.getItem('tokens'));
+      /* console.log("token",token); */
+      const {id : userId} = token;
+      console.log("userID",userId);
+      const participeUrl = "http://18.235.248.88:3000/api/v1/user/";
+      
       // Je lance la requête
       axios({
-        method: 'get',
-        url: `http://18.235.248.88:3000/api/v1/travels/${idRoad}`
+        method: 'post',
+        url: participeUrl + userId + "/travels",
+        data: JSON.stringify(objData),
+        headers: { 
+          "content-Type" : "application/JSON",
+          Authorization: `Bearer ${token.token}`
+         }
       })
-        .then((res) => {
-          console.log("fetch_travel", res.data);
-          const action = fetchTravelsSuccess(res.data);
+      .then((res) => {
+          console.log("participe travel succes", res.data);
+          const action = particpeTravelSucces(res.data);
           store.dispatch(action);
         })
         .catch((err) => {
           console.error(err);
         })
-    break; */
+    break; 
 }
 next(action);
 }

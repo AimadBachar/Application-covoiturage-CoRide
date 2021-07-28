@@ -6,7 +6,7 @@ import './styles.scss';
 
 
 const DetailsCard = ({
-  detailsCard,
+  updateCard,
   logged,
   onButtonClickProfilUser,
   onButtonClickValidation,
@@ -15,11 +15,14 @@ const DetailsCard = ({
     const stateLink = location.state;
     const card = stateLink.card;
     console.log("stateLink", card);
-  
-    const onButtonClick = () => {
-      console.log("participe form details-card-connected");
-      onButtonClickValidation()
-    }
+    const Onecard = localStorage.setItem("card", JSON.stringify(card))
+
+    console.log(localStorage.getItem("card"));
+    const handleSubmit = (evt) => {
+      evt.preventDefault();
+      console.log("participe form details-card-connected", evt.target.value);
+      onButtonClickValidation(card);
+    };
 
     if (!logged) {
       return (
@@ -65,7 +68,10 @@ const DetailsCard = ({
         <div className="card-bottom">
           <span className="card-tag">{card.activity}</span>
           <span className="card-place">{card.places_available} place(s)</span>
-          <button className="card-button" type="button" onClick={onButtonClick}>GO !</button>
+          <form onSubmit={handleSubmit}>
+            <input type="hidden" value={card.id}></input>
+            <button className="card-button">GO !</button> 
+          </form>
         </div>
       </div>
 

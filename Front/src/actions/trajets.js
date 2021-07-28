@@ -8,6 +8,7 @@ export const FETCH_TRAVELS = 'FETCH_TRAVELS';
 export const FETCH_TRAVELS_SUCCESS = 'FETCH_TRAVELS_SUCCESS';
 //Vers DetailsCard
 export const FETCH_ONE_TRAVEL = 'FETCH_ONE_TRAVEL';
+export const PARTICIPE_TRAVEL = 'PARTICIPE_TRAVEL';
 export const PARTICIPE_TRAVEL_SUCCES = 'PARTICIPE_TRAVEL_SUCCES';
 export const FETCH_PROFIL_DRIVER = 'FETCH_PROFIL_DRIVER';
 
@@ -41,6 +42,11 @@ export const fetchTravel = (payload) => ({
 });
 
 export const particpeTravel = (payload) => ({ 
+  type: PARTICIPE_TRAVEL,
+  payload
+});
+
+export const particpeTravelSucces = (payload) => ({ 
   type: PARTICIPE_TRAVEL_SUCCES,
   payload
 });

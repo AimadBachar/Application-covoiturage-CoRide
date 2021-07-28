@@ -6,7 +6,7 @@ import { particpeTravel, fetchProfilDriver } from 'src/actions/trajets';
 
 const mapStateToProps = (state) => ({
   logged: state.user.logged,
-  detailsCard: localStorage.getItem("card")
+  updateCard : state.trajets.DetailsCard
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -15,9 +15,9 @@ const mapDispatchToProps = (dispatch) => ({
     const action = fetchProfilDriver();
     dispatch(action);
   },
-  onButtonClickValidation: () => {
-    console.log("participe  Containers-detailsCard");
-    const action = particpeTravel();
+  onButtonClickValidation: (card) => {
+    console.log("participe  Containers-detailsCard", card);
+    const action = particpeTravel(card);
     dispatch(action);
   }
 });

@@ -7,14 +7,12 @@ import './styles.scss';
 
 const Card = ({
   logged,
-  detailsCard,
   cards,
   onButtonClickProfilUser,
   onClickCardDetails,
 }) => {
   const handleClick = (oneCard) => {
-    const card = localStorage.setItem("card", oneCard)
-    onClickCardDetails(detailsCard);
+    onClickCardDetails();
   }
 
   return (

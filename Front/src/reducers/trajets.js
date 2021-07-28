@@ -7,6 +7,7 @@ import {
   FETCH_TRAVELS_SUCCESS,
   FETCH_ONE_TRAVEL,
   PARTICIPE_TRAVEL_SUCCES,
+  PARTICIPE_TRAVEL,
   FETCH_PROFIL_DRIVER
 } from 'src/actions/trajets';
 
@@ -60,6 +61,13 @@ import dataTags from '/src/data/data_tag.js';
           cards: action.payload
       };
       case FETCH_ONE_TRAVEL:
+        console.log(action.payload);
+        return {
+          ...state,
+          loading: false,
+          detailsCard: action.payload
+      };
+      case PARTICIPE_TRAVEL:
         console.log(action.payload);
         return {
           ...state,
