@@ -29,7 +29,7 @@ const Header = ({
       <div className="header">
         <img className="header-photo" src={appBanner} alt="appBanner" />
         <img src={logo} className="header-logo" alt="Logo CoRide" />
-        <Nav />
+        <Nav logged={logged}/>
 
         <a
             onClick={logOut}
@@ -43,7 +43,7 @@ const Header = ({
       <div className="header">
         <img className="header-photo" src={appBanner} alt="appBanner" />
         <img src={logo} className="header-logo" alt="Logo CoRide" />
-        <Nav />
+        <Nav logged={logged}/>
         <Link
           to="/connexion"
           exact
