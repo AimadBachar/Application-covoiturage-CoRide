@@ -37,7 +37,13 @@ return (
       <p className="profil-bio">Bio de l'utilisateur Bio de l'utilisateur Bio de l'utilisateur: {card.bio}</p>
       <div className="profil-bottom">
         <span className="profil-tag">{userprofil.activity}</span>
-        <span className="profil-véhicule">{userprofil.brand} {userprofil.rmodel}</span>
+       <span className="profil-véhicule">{userprofil.brand} {userprofil.rmodel}</span>
+       <form method="post" action="mailto:votreemail@email.com">
+
+        <textarea rows="5" cols="20" wrap="physique" name="commentaires">Ecrivez un commentaire</textarea><br />
+        <input type="submit" value="M'envoyer un Email" />  
+       </form>
+       
         <button className="profil-button" type="button" onClick={onButtonClickContact}>Contactez moi!</button>
       </div>
     </div>

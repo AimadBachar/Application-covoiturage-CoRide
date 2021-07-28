@@ -28,6 +28,8 @@ const reducer = (state = initialState, action = {}) => {
   /* console.log(action.payload); */
   switch (action.type) {
     case USER_LOGIN_SUCCESS:
+
+  
       return {
         ...state,
         loggedMessage: `Welcome ${action.payload.first_name}!`,
