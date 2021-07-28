@@ -62,11 +62,14 @@ const userController = {
                 //on delete le password de l'objet User
                 delete userConnected.password;
 
+                //on récuper la view du user connecté
+                const theUserConnected = await User.findOne(userConnected.id,{view:true});
+
                 //on ajoute le token au User
-                userConnected.token = token;
+                theUserConnected.token = token;
                 
                 //on répond en envoyant le User
-                res.json(userConnected);
+                res.json(theUserConnected);
 
             } else {
                 //sinon error 401
@@ -261,8 +264,8 @@ const userController = {
             const activity = await Activity.findOne(activityId);
 
             if (user && activity) {
-                await user.addActivity(activity.id);
-                res.status(201).end();
+                const insert = await user.addActivity(activity.id);
+                return insert ? res.status(201).end() : res.status(400).json("existing association");
             } else {
                 throw new Error("association impossible");
             }
@@ -323,8 +326,8 @@ const userController = {
             const optionVehicle = await VehicleOption.findOne(vehicleOptionId);
 
             if (user && optionVehicle) {
-                await user.addVehicleOption(optionVehicle.id);
-                res.status(201).end();
+                const insert = await user.addVehicleOption(optionVehicle.id);
+                return insert ? res.status(201).end() : res.status(400).json("existing association");
             } else {
                 throw new Error("association impossible");
             }
@@ -385,8 +388,9 @@ const userController = {
             const travel = await Travel.findOne(travelId);
 
             if (user && travel) {
-                await user.addTravel(travel.id);
-                res.status(201).end();
+                const insert = await user.addTravel(travel.id);
+
+                return insert.add_passenger ? res.status(201).end() : res.status(400).json("reservation impossible...");
             } else {
                 throw new Error("association impossible");
             }

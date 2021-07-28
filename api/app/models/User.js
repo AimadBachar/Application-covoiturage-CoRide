@@ -89,7 +89,18 @@ class User extends coreModel {
 
             const sqlQuery = {
                 text: `INSERT INTO user_activity(user_id,activity_id) 
-                       VALUES($1,$2) 
+                       SELECT $1,$2
+                       WHERE (
+                         CASE
+                         WHEN
+                         (
+                             SELECT COUNT(*) FROM user_activity
+                             WHERE user_id = $1 AND activity_id = $2
+                         ) = 0
+                         THEN true
+                         ELSE false
+                         END
+                       ) 
                        RETURNING id;`,
                 values: [parseInt(this.id, 10), parseInt(activityId, 10)]
             }
@@ -140,8 +151,19 @@ class User extends coreModel {
 
             const sqlQuery = {
                 text: `INSERT INTO user_vehicle_option(user_id,vehicle_option_id) 
-                   VALUES($1,$2) 
-                   RETURNING id;`,
+                       SELECT $1,$2
+                       WHERE (
+                         CASE
+                         WHEN
+                         (
+                             SELECT COUNT(*) FROM user_vehicle_option
+                             WHERE user_id = $1 AND vehicle_option_id = $2
+                         ) = 0
+                         THEN true
+                         ELSE false
+                         END
+                       ) 
+                       RETURNING id;`,
                 values: [parseInt(this.id, 10), parseInt(vehicleOptionId, 10)]
             }
 

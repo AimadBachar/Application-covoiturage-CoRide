@@ -2,7 +2,7 @@
 
 BEGIN;
 
-CREATE FUNCTION add_passenger(id_user int,id_travel int) RETURNS bool AS $$
+CREATE FUNCTION add_passenger(id_user int,id_travel int) RETURNS int AS $$
 
 INSERT INTO user_travel(user_id,travel_id)
 
@@ -26,7 +26,7 @@ WHERE(
         ELSE
             false
         END
-) RETURNING true
+) RETURNING id
 
 $$ LANGUAGE SQL;
 
