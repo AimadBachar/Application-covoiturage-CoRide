@@ -8,9 +8,7 @@ import {
   SEARCH_SUCCESS, 
   searchSubmitSucces, 
   FETCH_TRAVELS, 
-  FETCH_SEARCH_CITY,
   fetchTravelsSuccess,
-  fetchCitiesSuccess,
   FETCH_ONE_TRAVEL,
   searchFormDisplay
 } from '../actions/trajets';
@@ -22,6 +20,14 @@ export default (store) => (next) => (action) => {
     case SEARCH_SUCCESS:
 
       const inputs = store.getState().trajets.inputs;
+      const longitude = store.getState().comboBoxCities.long;
+      const latitude = store.getState().comboBoxCities.lat;
+
+      if(longitude && latitude){
+        inputs.long = longitude;
+        inputs.lat = latitude;
+      }
+
       /* console.log(inputs); */
       let fetchUrl = "http://18.235.248.88:3000/api/v1/travels";
 
@@ -106,25 +112,7 @@ export default (store) => (next) => (action) => {
 
     break;
 
-    case FETCH_SEARCH_CITY:
-
-    console.log(action.payload);
-    axios({
-      method: 'get',
-      url: `http://18.235.248.88:3000/api/v1/cities?city=${action.payload}`
-    })
-      .then((res) => {
-        
-        console.log(res.data);
-        const action = fetchCitiesSuccess(res.data);
-        store.dispatch(action);
-
-      })
-      .catch((err) => {
-        console.error(err);
-      })
-
-    break;
+    
    /*  case FETCH_ONE_TRAVEL:
       const query = new URLSearchParams(useLocation().search)
       const idRoad = query.get('id');

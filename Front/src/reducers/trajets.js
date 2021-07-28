@@ -4,11 +4,8 @@ import {
   SEARCH_SUCCESS,
   SEARCH_SUBMIT_SUCCESS,
   FETCH_TRAVELS,
-  FETCH_SEARCH_CITIES,
   FETCH_TRAVELS_SUCCESS,
-  FETCH_CITIES_SUCCESS,
   FETCH_ONE_TRAVEL,
-  SEARCH_INPUTS_COORDS,
   SEARCH_FORM_DISPLAY
 } from 'src/actions/trajets';
 
@@ -21,13 +18,12 @@ import {
     cards: [],
     detailsCard: [],
     tags: [],
-    resultsFetch: [],
      inputs: {
-        departure_city: '',
         destination_city: '',
+        departure_city:"",
+        long:"",
+        lat:"",
         activity_id: '',
-        long:'',
-        lat:'',
         departure_timestamp: '',
      }
   };
@@ -71,29 +67,13 @@ import {
           loading: false,
           detailsCard: action.payload
       };
- 
-      case FETCH_CITIES_SUCCESS:
+      case SEARCH_FORM_DISPLAY:
         console.log(action.payload);
         return{
           ...state,
-          loading: false,
-          resultsFetch: action.payload
-        };
-        case SEARCH_INPUTS_COORDS:
-          console.log(action.payload);
-          return{
-            ...state,
-            inputs:{
-              long: action.payload.lng,
-              lat: action.payload.lat
-            }
-          };
-        case SEARCH_FORM_DISPLAY:
-          console.log(action.payload);
-          return{
-            ...state,
-            tags: action.payload
-          }
+          tags: action.payload
+        }
+ 
       default:
         return state;
     }

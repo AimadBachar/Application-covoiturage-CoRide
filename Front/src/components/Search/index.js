@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import loupe from '/src/assets/images/loupe white 2.png';
-import Combobox from "react-widgets/Combobox";
+import ComboBoxCities from '../../containers/ComboBoxCities';
 
 
 import './styles.scss';
@@ -9,18 +9,12 @@ import "react-widgets/scss/styles.scss";
 import { Redirect, Link } from 'react-router-dom';
 
 const Search = ({
-  cards,
   tags,
-  departure_city,
   destination_city,
   activity,
-  long,
-  lat,
-  resultsFetch,
   departure_timestamp,
+  departure_city,
   onInputChange,
-  onInputCityChange,
-  onInputsCoords,
   onSubmitSearch
 }) => {
   const handleSubmit = (evt) => {
@@ -36,59 +30,17 @@ const Search = ({
     onInputChange(evt.target.name, value )
   } 
 
-  const cityFetch = (evt)=>{
-    evt.preventDefault();
-    const name = evt.target.name;
-    const value = evt.target.value;
-
-    if(value.length>4){
-      onInputCityChange(name,value);
-    }
-  }
-
-  const citySelected = (evt)=>{  
-    
-    console.log(evt);
-    onInputsCoords(evt.coords);
-  }
-
-  /* {console.log(cards)} */
-
   return (
     <div>
     <div className="search">
+      
       <form
         className="search-form"
         onSubmit={handleSubmit}
       >
-        <Combobox busy
-          hideCaret
-          hideEmptyPopup
-          name="departure_city"
-          placeholder="Départ"
-          data={resultsFetch}
-          dataKey="city"
-          textField="city"
-          value={departure_city}
-          onInput={cityFetch}
-          onSelect={citySelected}
-        />
 
-        <input
-          className="search-form_input long"
-          type="hidden"
-          name="long"
-          value={long}
-          onInput={fieldChange}
-        />
+        <ComboBoxCities onChange={fieldChange}/>
 
-        <input
-          className="search-form_input lat"
-          type="hidden"
-          name="lat"
-          value={lat}
-          onInput={fieldChange}
-        />
 
         <input
           className="search-form_input destination"
@@ -107,6 +59,7 @@ const Search = ({
           >
             <option
               className="search-form_select_title"
+              value=""
             >Quel sport ?
             </option>
             {tags.map((tag) => (
