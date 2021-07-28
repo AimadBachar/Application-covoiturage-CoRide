@@ -24,7 +24,6 @@ const Header = ({
     onButtonClickLogout();
   };
 
-
   if (logged) {
     return (
       <div className="header">

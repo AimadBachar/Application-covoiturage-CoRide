@@ -9,8 +9,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onClickCardDetails: () => {
-    const action = fetchTravel();
+  onClickCardDetails: (payload) => {
+    console.log("card in containersCard");
+    const action = fetchTravel(payload);
     dispatch(action)
   }
 });

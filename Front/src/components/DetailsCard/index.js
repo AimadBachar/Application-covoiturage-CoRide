@@ -6,6 +6,9 @@ import './styles.scss';
 
 
 const DetailsCard = ({
+
+  updateCard,
+
   logged,
   onButtonClickProfilUser,
   /* onButtonClickValidation, */
@@ -15,23 +18,30 @@ const DetailsCard = ({
     const card = stateLink.card;
     console.log("stateLink", card);
 
-    /* const query = new URLSearchParams(useLocation().search);
-    const id = query.get("id");    
-    
-    const cards = JSON.parse(localStorage.getItem("travels"));
-    
-    const card = cards.find(card=>card.id == id); */
-    
     const onButtonClickValidation = () => {
       console.log("participe form details-card-connected");
     }
+
+    const Onecard = localStorage.setItem("card", JSON.stringify(card))
+
+    console.log(localStorage.getItem("card"));
+    const handleSubmit = (evt) => {
+      evt.preventDefault();
+      console.log("participe form details-card-connected", evt.target.value);
+      onButtonClickValidation(card);
+    };
+
 
     if (!logged) {
       return (
       <div className="card" >
         <div className="card-top">
           <div className="card-top_left">
-            <a href="#" className="card-profil" onClick={onButtonClickProfilUser}>{card.driver}</a>
+
+            <Link className="card-profil" to="/connexion">
+              <p>{card.driver}</p>
+            </Link>
+
           </div>
           <div className="card-top_right">
             <p className="card-date">{new Date(card.departure_timestamp).toLocaleDateString("fr-FR")}</p>
@@ -44,7 +54,9 @@ const DetailsCard = ({
         <div className="card-bottom">
           <span className="card-tag">{card.activity}</span>
           <span className="card-place">{card.places_available} place(s)</span>
-          <Link id="link-connexion" to="/connexion">
+
+          <Link to="/connexion">
+
             <button className="card-button" type="button">GO !</button>
           </Link>
         </div>
@@ -68,7 +80,12 @@ const DetailsCard = ({
         <div className="card-bottom">
           <span className="card-tag">{card.activity}</span>
           <span className="card-place">{card.places_available} place(s)</span>
-          <button className="card-button" type="button" onClick={onButtonClickValidation}>GO !</button>
+
+          <form onSubmit={handleSubmit}>
+            <input type="hidden" value={card.id}></input>
+            <button className="card-button">GO !</button> 
+          </form>
+
         </div>
       </div>
 
