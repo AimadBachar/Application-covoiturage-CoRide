@@ -23,6 +23,7 @@ const Header = () => {
 
   const userLogged = () => {
     if (localStorage.getItem('tokens')) {
+      // faire par rapport à un state isLogged
       JSON.parse(localStorage.getItem('tokens'));
       // onClick=(logOut());
       return (
@@ -68,3 +69,4 @@ const Header = () => {
 // };
 
 export default Header;
+

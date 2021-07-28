@@ -9,23 +9,29 @@ import {
   // 1. après la création du container Login
   // j'ajoute un reducer-user.js avec de fausses datas
   // puis je modifie le state du container login avec ces fausses datas
+
+  const user = JSON.parse(localStorage.getItem("tokens"));
+  console.log(user.pseudo);
+
   export const initialState = {
     completed: false,
     profilCompletedMessage: 'Profil success !',
+    tags: [],
     inputs: {
-      last_name: 'sasa',
-      first_name: 'lolo',
-      pseudo: 'Lolo',
-      email: 'lolo@sasafr',
-      password: 'tatayoyo',
-      birthdate: '23/02/1989',
-      coords: 'hh',
-      city: 'ciboure',
-      postcode: '64500',
-      country: 'France',
-      brand: 'Peugeot',
-      model: 'Expert',
-      activity_id: '1',
+      last_name: '',
+      first_name: '',
+      pseudo: user.pseudo,
+      email: '',
+      password: '',
+      birthdate: '',
+      coords: '',
+      city: '',
+      postcode: '',
+      country: '',
+      brand: '',
+      model: '',
+      activity_id: '',
+      
     },
   
   };
@@ -34,7 +40,7 @@ import {
     /* console.log(action.payload); */
     switch (action.type) {
       case USER_PROFIL_SUCCESS:
-        console.log(action.payload);
+        console.log("success",action.payload);
         return {
           ...state,
           profilCompletedMessage: `Profil Success !`,
@@ -52,12 +58,12 @@ import {
           },
         };
 
-       /* case USER_PROFIL_ACTIVITIES:
-          console.log(action.payload);
+       case USER_PROFIL_ACTIVITIES:
+          console.log("reducers", action.payload);
           return {
             ...state,
-            ...action.payload
-          }*/
+            tags: action.payload
+          }
 
       default:
         return state;

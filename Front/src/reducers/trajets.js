@@ -13,7 +13,6 @@ import dataTags from '/src/data/data_tag.js';
 //j'ajoute un reducer-user.js avec de fausses datas
 //puis je modifie le state du container login avec ces fausses datas
   export const initialState = {
-    logged: false,
     loading: false,
     cards: [],
     detailsCard: [],
