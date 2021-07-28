@@ -28,7 +28,7 @@ module.exports = (req, res, next) => {
         if(req.params.userId){
             userId = req.params.userId;
         }else{
-            userId = req.body.id || req.params.id;
+            userId = req.params.id || req.body.id;
         }
 
         //on compare les 2, si different erreur 401 sinon next
