@@ -5,36 +5,56 @@ import { Link } from 'react-router-dom';
 
 import './styles.scss';
 
-const Nav = (props) => (
-
-  //logged,
-
-//return (
-  <div className="nav" onClick={props.onButtonClickMenu}>
-    <nav role="navigation">
-      <div id="menuToggle">
-        <input type="checkbox" />
-        <span />
-        <span />
-        <span />
-        <ul id="menu">
-
-          <Link to="/" exact>
-            <li>Accueil</li>
-          </Link>
-
-          <Link to="/profil" exact>
-            <li>Profil</li>
-          </Link>
-          <li><a href="#">Info</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="/connexion">Connexion</a></li>
-          <li><a href="/inscription">S'inscrire</a></li>
-        </ul>
+const Nav = (props) => {
+  if (!props.logged) {
+    return (
+      <div className="nav" onClick={props.onButtonClickMenu}>
+        <nav role="navigation">
+          <div id="menuToggle">
+            <input type="checkbox" />
+            <span />
+            <span />
+            <span />
+            <ul id="menu">
+              <Link to="/" exact>
+                <li>Accueil</li>
+              </Link>
+              <li><a href="#">Info</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="/connexion">Connexion</a></li>
+              <li><a href="/inscription">S'inscrire</a></li>
+            </ul>
+          </div>
+        </nav>
       </div>
-    </nav>
-  </div>
-);
+    );
+  } else {
+    return (
+      <div className="nav" onClick={props.onButtonClickMenu}>
+        <nav role="navigation">
+          <div id="menuToggle">
+            <input type="checkbox" />
+            <span />
+            <span />
+            <span />
+            <ul id="menu">  
+              <Link to="/" exact>
+                <li>Accueil</li>
+              </Link>
+              <Link to="/profil" exact>
+                <li>Profil</li>
+              </Link>
+              <li><a href="#">Info</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="/connexion">Connexion</a></li>
+              <li><a href="/inscription">S'inscrire</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    ); 
+  }
+}
 
 // Header.proptypes = {
 
