@@ -40,6 +40,7 @@ const pool = require("../db");
  * @property {Array<UserTravels>} driver_passenger the list of travels driver
  * @property {Array<UserVehicles>} vehicles the list of vehicles
  * @property {Array<UserVehicleOptions>} vehicle_options the list of vehicle options
+ * @property {string} token the token for user
  */
 class User extends coreModel {
 
