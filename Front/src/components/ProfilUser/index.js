@@ -145,7 +145,7 @@ return (
                   type="date"
                   name="birthdate"
                   placeholder="Date de naissance"
-                  autocorrect="off"
+                  //autocorrect="off"
                   data-date-split-input="true"
                   onChange={changeField}
                   value={birthdate}
@@ -160,15 +160,8 @@ return (
                   value={email}
                 />
 
-                <Field
-                  className="profil-form-input"
-                  type="password"
-                  name="password"
-                  placeholder="Mot de passe"
-                  onChange={changeField}
-                  value={password}
-                />
-
+           
+{/*}
                 <Field
                   className="profil-form-input"
                   type="text"
@@ -222,7 +215,7 @@ return (
                   onChange={changeField}
                   value={model}
                 />       
-              
+              */}
                 <p className="profil-form-text">Quel(s) sport(s) de glisse pratiquez vous ?</p>
           
               <div className="profil-form-sport">
@@ -253,7 +246,15 @@ return (
                 <p className="profil-form-text">Bio</p>
                 <textarea className="profil-form-textarea" cols="20" rows="5" wrap="hard"></textarea>
               </div>
-            
+              <Field
+                  className="profil-form-input"
+                  type="password"
+                  name="password"
+                  placeholder="Mot de passe"
+                  onChange={changeField}
+                  value={password}
+                />
+
               <div className="profil-form-button">
                 <button 
                 type="submit" 
@@ -262,6 +263,8 @@ return (
                   Sauvegarder
                 </button>
               </div>
+       
+
           </form>
         )}
               <div className="home-redirection">
