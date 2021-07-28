@@ -11,19 +11,19 @@ import { USER_PROFIL } from 'src/actions/userprofil';
 // puis je modifie le state du container login avec ces fausses datas
 
 const user = JSON.parse(localStorage.getItem('tokens'));
-console.log(user.pseudo);
+
 
 export const initialState = {
   completed: false,
   profilCompletedMessage: 'Profil success !',
   tags: [],
   inputs: {
-    last_name: user.last_name,
-    first_name: user.first_name,
-    pseudo: user.pseudo,
-    email: user.email,
+    last_name: user?.last_name,
+    first_name: user?.first_name,
+    pseudo: user?.pseudo,
+    email: user?.email,
     password: '',
-    birthdate: new Date(user.birthdate).toISOString().split('T')[0],
+    birthdate: user?.birthdate ? new Date(user.birthdate).toISOString().split('T')[0] : "",
     coords: '',
     city: '',
     postcode: '',
