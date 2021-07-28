@@ -3,6 +3,7 @@ const pool = require("../db");
 
 /**
  * @typedef Activity
+ * @property {integer} id.required the id of activity
  * @property {string} label.required The name activity
  * @property {string} color The color for tag activity
  */
