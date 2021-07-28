@@ -1,27 +1,26 @@
 // Import npm
 import React from 'react';
+import { useEffect } from 'react';
 
 // == Import
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from 'src/containers/Header';
 import Search from 'src/containers/Search';
 import Footer from 'src/containers/Footer';
-import Signin from 'src/containers/Signin';
-import ProfilUser from 'src/containers/ProfilUser';
-import Card from 'src/containers/Card';
-import DetailsCard from 'src/containers/DetailsCard';
 import Main from '../Main';
 import ConnexionRegistration from '../ConnexionRegistration';
+
+
+import Signin from 'src/containers/Signin';
+import ProfilUser from 'src/containers/ProfilUser';
+import DetailsProfil from 'src/containers/DetailsProfil';
+import Trip from 'src/containers/Trip'
+import Card from 'src/containers/Card';
+import DetailsCard from 'src/containers/DetailsCard';
 import NotFoundPage from '../NotFoundPage';
-
-import Trip from '../Trip'
-
-
 import Loading from './Loading';
 
 import './styles.scss';
-import { useEffect } from 'react';
-
 
 const App = ({loading, fetchTravels}) => {
   // J'exécute la fonction reçue en props
@@ -45,25 +44,7 @@ const App = ({loading, fetchTravels}) => {
         </Route>
 
         <Route exact path="/trip">
-          <Trip 
-          // data
-          departure_city="city"
-          destination_city="city"
-          activity_id="activity"
-          departure_timestamp="date"
-          description="blabla"
-          places_available="2"
-          // fonctions
-          onSubmitSearch={() => {
-            console.log('trip created')
-          }}
-
-          onInputChange = {(value, name) => {
-            console.log('change in ' + name + ' :', value);
-          }}
-
-
-          />
+          <Trip />
         </Route>
 
         <Route exact path="/connexion">
@@ -71,52 +52,17 @@ const App = ({loading, fetchTravels}) => {
         </Route>
 
         <Route exact path="/inscription">
-          <Signin 
-          //props
-        /*  isSignedIn={false} 
-          signedMessage="Signin done !"
-          lastname="nom"
-          firstname="prénom"
-          user="lolo@sasa.fr"
-          password="password"
-          birthdate="00/00/0000"*/
-          // fonctions
-         /* changeField= {(value, name) => {
-            console.log('change in ' + name + ' :', value);
-          }}
-          handleSignin={() => {
-            console.log('Signin')
-          }}*/
-
-          />
+          <Signin />
         </Route>
 
         <Route exact path="/profil">
-          <ProfilUser
-           //props
-           /* isCompleted={false} 
-            profilCompletedMessage="Signin done !"
-            last_name="nom"
-            first_name="prénom"
-            pseudo="username"
-            email="lolo@sasa.fr"
-            password="password"
-            birthdate="00/00/0000"
-            coords="adresse"
-            city="city"
-            postcode="0000"
-            country="country"
-            brand="typeCar"
-            model="modelCar"
-            activity_id="activity"
-            // fonctions
-            changeField= {(value, name) => {
-              console.log('change in ' + name + ' :', value);
-            }}
-            handleProfil={() => {
-              console.log('profil')
-            }} */        
-           />
+          <ProfilUser />
+        </Route>
+
+        <Route exact path="/profilpage">
+        <Header />
+          <DetailsProfil />
+          <Footer />
         </Route>
 
         <Route exact path="/travel">

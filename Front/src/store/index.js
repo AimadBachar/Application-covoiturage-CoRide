@@ -5,6 +5,7 @@ import reducer from '/src/reducers';
 
 import ajaxMiddleware from 'src/middlewares/ajaxMiddleware';
 import trajetMiddleware from 'src/middlewares/trajetMiddleware';
+import tripMiddleware from 'src/middlewares/tripMiddleware';
 import signinMiddleware from 'src/middlewares/signinMiddleware';
 import userprofilMiddleware from 'src/middlewares/userprofilMiddleware';
 import comboBoxCitiesMiddleware from 'src/middlewares/comboBoxCitiesMiddleware';
@@ -15,6 +16,7 @@ const enhancers = composeEnhancers(
   applyMiddleware(
     ajaxMiddleware,
     trajetMiddleware,
+    tripMiddleware,
     signinMiddleware,
     userprofilMiddleware,
     comboBoxCitiesMiddleware

@@ -11,6 +11,7 @@ import {
   fetchTravelsSuccess,
   FETCH_ONE_TRAVEL,
   searchFormDisplay
+
 } from '../actions/trajets';
 
 
