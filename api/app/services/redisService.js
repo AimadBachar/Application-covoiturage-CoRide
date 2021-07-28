@@ -58,7 +58,6 @@ const redisService = {
   
         //on vide les clefs du cache redis présentes  dans le tableau keys
         for(const key of redisService.keys){
-            console.log(key)
             await del(key);
         }
         redisService.keys.length = 0;
