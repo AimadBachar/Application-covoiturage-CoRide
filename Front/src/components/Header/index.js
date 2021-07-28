@@ -23,13 +23,14 @@ const Header = ({
     localStorage.clear();
     onButtonClickLogout();
   };
-  
+
   if (logged) {
     return (
       <div className="header">
         <img className="header-photo" src={appBanner} alt="appBanner" />
         <img src={logo} className="header-logo" alt="Logo CoRide" />
         <Nav />
+
         <a
             onClick={logOut}
           >
@@ -61,3 +62,4 @@ const Header = ({
 // };
 
 export default Header;
+

@@ -19,7 +19,7 @@ const Signin = ({
     first_name,
     last_name,
     pseudo,
-    email, // mail de l'utilisateur
+    email, 
     password,
     verifyPassword,
     birthdate,
@@ -69,12 +69,6 @@ const Signin = ({
   };
 
   
-  /*
-  const [password, setPassword] = useState("");
-  const [confirmPassword, checkValidation] = useState("");*/
-
-    
-  
   const handleUpload = (evt) => {
     console.log(evt.target.files[0]);
     this.setState({ picture: evt.target.files[0] });
@@ -83,13 +77,13 @@ const Signin = ({
 
   return (
   <div className="signin">
-  <img className="login-photo" src={photoKite} alt="photo kite" />
-  <div className="signin-form">
-  {isSignedIn && (
+    <img className="login-photo" src={photoKite} alt="photo kite" />
+       <div className="signin-form">
+      {isSignedIn && (
 
-<div className="signin-form-signed">
-<Redirect from="/inscription" to="/connexion" />
-<p className="signin-message">
+        <div className="signin-form-signed">
+        <Redirect from="/inscription" to="/connexion" />
+        <p className="signin-message">
 
   {signedMessage}
 
@@ -106,8 +100,8 @@ const Signin = ({
       enctype="application/x-www-form-urlencoded"
     >
       <h1 className="signin-form-title">
-      Inscription
-    </h1> 
+       Inscription
+      </h1> 
     
         <Field 
           className="signin-form-input"
@@ -152,21 +146,16 @@ const Signin = ({
         className="signin-form-input"
         type="date"
         name="birthdate"
-        placeholder="your birthdate"
+        placeholder="Date de naissance"
         autocorrect="off"
         data-date-split-input="true"
         onChange={changeField} 
-        value={birthdate} //date?
-
-        
- 
-        /* 
-        label="date de naissance"
-        defaultValue="23-05-1990"*/
+        value={birthdate} 
       />
 
       <Field
         className="signin-form-input"
+        type="email"
         name="email"
         placeholder="Adresse Email"
         onChange={changeField}
@@ -175,12 +164,10 @@ const Signin = ({
 
       <Field
         className="signin-form-input"
-        id="password"
         type="password"
         name="password"
         placeholder="Mot de passe"
         onChange={changeField}
-        //onChange={(evt) => setPassword(evt.target.value)}
         value={password}
       />
 
@@ -195,47 +182,33 @@ const Signin = ({
         value={verifyPassword}
       />
 
- {/*<div data-validate="Confirm Password is required">
-      <Field
-        className="signin-form-input"
-        id="confirmpassword"
-        type="password"
-        name="confirmPass"
-        placeholder="Confirmez votre mot de passe"
-        onChange={changeField}
-        //onChange={(evt) => checkValidation(evt.target.value)}
-        value={password}       
-      />
-
-</div>*/}
-
-       <div className="signin-button">
-      <button
-        type="submit"
-        className="signin-form-submit"
-      >
-        Valider
-      </button>
-      </div>
-      
-          
+   <div className="signin-button">
+         <button
+          type="submit"
+          className="signin-form-submit"
+          >
+            Valider
+          </button>
+   </div>
+            
+                
         </form>
-       )}  
-        <div className="login-redirection">
-        <p className="login-redirection-text">
-          Déjà membre ?            
-        <Link
-          className="login-redirection-link"
-          to="/connexion"
-        >
-        Connectez-vous
-        </Link>
-        </p>
-        </div>
-   
-        </div>
+            )}  
+              <div className="login-redirection">
+              <p className="login-redirection-text">
+                Déjà membre ?            
+              <Link
+                className="login-redirection-link"
+                to="/connexion"
+              >
+              Connectez-vous
+              </Link>
+          </p>
         </div>
         
+       </div>
+    </div>
+              
   );
 };
 

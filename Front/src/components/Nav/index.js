@@ -6,6 +6,10 @@ import { Link } from 'react-router-dom';
 import './styles.scss';
 
 const Nav = (props) => (
+
+  //logged,
+
+//return (
   <div className="nav" onClick={props.onButtonClickMenu}>
     <nav role="navigation">
       <div id="menuToggle">

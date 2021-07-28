@@ -6,15 +6,22 @@ import './styles.scss';
 
 
 const DetailsCard = ({
+
   updateCard,
+
   logged,
   onButtonClickProfilUser,
-  onButtonClickValidation,
+  /* onButtonClickValidation, */
 }) => {
     const location = useLocation();
     const stateLink = location.state;
     const card = stateLink.card;
     console.log("stateLink", card);
+
+    const onButtonClickValidation = () => {
+      console.log("participe form details-card-connected");
+    }
+
     const Onecard = localStorage.setItem("card", JSON.stringify(card))
 
     console.log(localStorage.getItem("card"));
@@ -24,14 +31,17 @@ const DetailsCard = ({
       onButtonClickValidation(card);
     };
 
+
     if (!logged) {
       return (
       <div className="card" >
         <div className="card-top">
           <div className="card-top_left">
+
             <Link className="card-profil" to="/connexion">
               <p>{card.driver}</p>
             </Link>
+
           </div>
           <div className="card-top_right">
             <p className="card-date">{new Date(card.departure_timestamp).toLocaleDateString("fr-FR")}</p>
@@ -44,7 +54,9 @@ const DetailsCard = ({
         <div className="card-bottom">
           <span className="card-tag">{card.activity}</span>
           <span className="card-place">{card.places_available} place(s)</span>
+
           <Link to="/connexion">
+
             <button className="card-button" type="button">GO !</button>
           </Link>
         </div>
@@ -68,10 +80,12 @@ const DetailsCard = ({
         <div className="card-bottom">
           <span className="card-tag">{card.activity}</span>
           <span className="card-place">{card.places_available} place(s)</span>
+
           <form onSubmit={handleSubmit}>
             <input type="hidden" value={card.id}></input>
             <button className="card-button">GO !</button> 
           </form>
+
         </div>
       </div>
 
