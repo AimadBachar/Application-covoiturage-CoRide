@@ -7,16 +7,20 @@ import {
   userProfilSuccess,
   USER_PROFIL_ACTIVITIES,
   userProfilActivities,
-  FETCH_ACTIVITIES
+  FETCH_ACTIVITIES,
+  fetchActivities,
+  fetchSuccessActivities,
+  USER_PROFIL_SUBMIT,
   
 } from 'src/actions/userprofil';
+
 
 
 
 const middleware = (store) => (next) => (action) => {
   switch (action.type) {
 // choisir les sports pratiqués
-case FETCH_ACTIVITIES:
+case  FETCH_ACTIVITIES:
   const id = store.getState().id;
   console.log(id);
   // Je lance la requête
@@ -28,7 +32,8 @@ case FETCH_ACTIVITIES:
     .then((res) => {
       console.log('res.data', res.data);
       const action = userProfilActivities(res.data);
-      store.dispatch(action);
+      //const action
+      store.dispatch(action)
 
     })
     .catch((err) => {

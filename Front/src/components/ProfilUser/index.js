@@ -9,69 +9,48 @@ import icone from 'src/assets/images/login.png';
 
 const ProfilUser = ({
 
-activity_id,
+activity,
 last_name,
 first_name,
 pseudo,
 email,
 password,
-coords,
-city,
-postcode,
-country,
-brand,
-model,
 birthdate,
 tags,
 
-isCompleted,
-profilCompletedMessage,
-changeField,
-handleProfil,
+onInputProfilChange,
+onSubmitProfil,
 handleFetchActivities,
 //ajout picture
 picture,
 
 }) => {
 
-
-
   if(tags.length<1){
     handleFetchActivities();
   }
-
-
-
-
-  const handleSubmit = (evt) => {
+    const handleSubmit = (evt) => {   
     evt.preventDefault();
-    
+    console.log('submit');
+    onSubmitProfil();
+
     //on récupere le password, on construit notre regexp et on check
     const password = evt.target.querySelector('input[name="password"]').value;
     const regexp = new RegExp("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[-+!*#$@%_])([-+!*#$@%_\\w]{8,})$");
-
-    const checkPassword = regexp.test(password);
-
-   /* $(document).ready(function() {
-    $(".element_hide").hide();
-    $('select[name=categories]').change(function() {
-      var categories = $(this).val();
-      if(categories=="hidden") {
-        $("element_hide").show();
-      }
-      else{
-        $(".element_hide").hide();
-      }
-    });
-  })*/
-  
+    const checkPassword = regexp.test(password); 
      //si password non conform return
      if(!checkPassword) {
-      console.log("ton mot de passe n'est pas conforme au format attendu")
+     console.log("ton mot de passe n'est pas conforme au format attendu")
       return;
     }
-    handleProfil();
   };
+
+  //
+  const changeField = (evt) => {
+    evt.preventDefault();
+    const value = evt.target.value;
+    onInputProfilChange(evt.target.name, value )
+  } 
 
   //on permet le téléchargement d'une photo
   const handleUpload = (evt) => {
@@ -83,17 +62,6 @@ picture,
 return (
     <div className="profil">
       <div className="profil-form">
-          {isCompleted && (
-
-        <div className="profil-form-completed">
-          <Redirect from="/profil" to="/profilpage" />
-          <p className="profil-message">
-            {profilCompletedMessage}
-          </p>
-        </div>
-
-        )}
-        {!isCompleted && (
           <form 
             className="profil-form-element"
             autoComplete="off"        
@@ -155,8 +123,6 @@ return (
                   type="date"
                   name="birthdate"
                   placeholder="Date de naissance"
-                  autocorrect="off"
-                  data-date-split-input="true"
                   onChange={changeField}
                   value={birthdate}
                 />
@@ -167,12 +133,15 @@ return (
                   className="profil-form-sport_select"
                   type="select"
                   name="activity_id"
-                  value={activity_id}
+                  value={activity}
                   onChange={changeField}
                 >
                   <option
-                  className="profil-form-sport_title" >Choisissez votre sport passion n°1</option>
-                 { tags.map((tag) => (
+                  className="profil-form-sport_title" 
+                  value=""
+                  >Choisissez votre sport passion n°1
+                  </option>
+                 {tags.map((tag) => (
                     <option
                       name="tag"
                       key={tag.id}
@@ -180,8 +149,9 @@ return (
                     >
                       {tag.label}
                     </option>
-                  ))}    
+                  ))}
                 </select>
+                
             <div className="profil-form-sport_others">       
             <input type="text" className="profil-form-sport_input" placeholder="Sport passion n°2"></input>    
             <input type="text" className="profil-form-sport_input" placeholder="Sport passion n°3"></input>
@@ -220,7 +190,6 @@ return (
                 </button>
               </div>
           </form>
-        )}
               <div className="home-redirection">
                 <p className="home-redirection-text">
                     Retour sur la        
@@ -239,25 +208,18 @@ return (
 
 ProfilUser.propTypes = {
   last_name: PropTypes.string.isRequired,
-  tags: PropTypes.string,
   first_name: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   birthdate: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
-  coords: PropTypes.string.isRequired,
-  city: PropTypes.string.isRequired,
-  postcode: PropTypes.string.isRequired,
-  country:  PropTypes.string.isRequired,
-  activity_id: PropTypes.string.isRequired,
-  changeField: PropTypes.func.isRequired,
-  handleProfil: PropTypes.func.isRequired,
-  isCompleted: PropTypes.bool,
+  activity: PropTypes.string.isRequired,
+  onSubmitProfil: PropTypes.func.isRequired,
+  onInputProfilChange: PropTypes.func.isRequired,
+  tags: PropTypes.shape({
+    sport: PropTypes.string.isRequired,
+   })
+ 
   
-};
-// Valeurs par défaut pour les props
-ProfilUser.defaultProps = {
-  isCompleted: false,
-  profilCompletedMessage: 'Profil completed',
 };
 
 export default ProfilUser;
