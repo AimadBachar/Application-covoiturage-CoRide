@@ -15,9 +15,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   usersignin: usersigninReducer,
   trajets: trajetsReducer,
-
   trip: tripReducer,
-
   userprofil: userprofilReducer,
   comboBoxCities: comboBoxCities
 });
