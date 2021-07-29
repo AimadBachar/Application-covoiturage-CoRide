@@ -14,19 +14,24 @@ const searchCities = async (req, res, next) => {
         //on récupere les resultats de l'api externe depuis la query string de notre requete
         const datas = await openCage.geocode({
             q: req.query.city,
-            countrycode: "fr"
+            countrycode: "fr",
+            language:"fr",
+            pretty:1
         });
 
         //si on a des résultats on return les résultats en gardant uniquement les infos qu'ils nous faut
         if (datas) {
 
-            const cities = datas.results.map(city => {
-                return {
+            const cities = [];
+            for(const city of datas.results){
+                if(city.components.city || city.components.village){                
+                cities.push({
                     city: city.components.city || city.components.village,
                     postcode: city.components.postcode,
                     coords: city.geometry
-                }
-            });
+                })
+            }}
+            
 
             res.json(cities);
 
