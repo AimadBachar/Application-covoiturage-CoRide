@@ -10,7 +10,8 @@ import 'src/components/DetailsProfil/styles.scss';
 const DetailsProfil = ({
   onButtonClickContact,
   getAllUsers,
-  usersProfils
+  usersProfils,
+  submitEmail
 }) => {
 
   if(usersProfils.length ===0){
@@ -19,7 +20,8 @@ const DetailsProfil = ({
 
   const handleSubmitMessageForm = (event)=>{
     event.preventDefault();
-    console.log("message",event.target)
+    const mail = new FormData(event.target);
+    submitEmail(mail);
   }
 
 
@@ -48,7 +50,9 @@ return (
         <div className="profil-contact">
        <form className="profil-form" method="post" action="" onSubmit={handleSubmitMessageForm}>
         <div>
-        <textarea className="profil-commentaire" rows="5" cols="20" wrap="physique" name="commentaires">Ecrivez moi...</textarea>
+          <input type="hidden" name="recipient" value={userprofil.pseudo}/>
+          <input type="hidden" name="email" value={userprofil.email}/>
+        <textarea className="profil-commentaire" rows="5" cols="20" wrap="physique" name="message">Ecrivez moi...</textarea>
         </div>
         <div>
         <input className="profil-submit" type="submit" value="M'envoyer un message" />

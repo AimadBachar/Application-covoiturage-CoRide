@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import DetailsProfil from 'src/components/DetailsProfil';
-import { fetchUsers } from "src/actions/detailsProfil";
+import { fetchUsers,fetchEmail } from "src/actions/detailsProfil";
 
 
 const mapStateToProps = (state) => ({
@@ -11,6 +11,11 @@ const mapDispatchToProps = (dispatch) => ({
   getAllUsers:()=>{
     console.log("containers detailsProfils");
     const action = fetchUsers();
+    dispatch(action);
+  },
+
+  submitEmail:(formData)=>{
+    const action = fetchEmail(formData);
     dispatch(action);
   }
 });
