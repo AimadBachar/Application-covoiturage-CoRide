@@ -27,9 +27,10 @@ import {
         case SEARCH_INPUTS_COORDS:
           console.log("reducers combo",action.payload);
           return{
-            ...state,          
-              long: action.payload.lng,
-              lat: action.payload.lat
+            ...state, 
+              departure_city: action.payload.city,         
+              long: action.payload.coords.lng,
+              lat: action.payload.coords.lat
             
           };
         

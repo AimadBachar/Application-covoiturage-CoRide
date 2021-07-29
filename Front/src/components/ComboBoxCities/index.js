@@ -29,7 +29,7 @@ const ComboBoxCities = ({
   const citySelected = (evt)=>{  
     
     console.log(evt);
-    onInputsCoords(evt.coords);
+    onInputsCoords(evt);
   }
 
   const fieldChange = (evt) => {

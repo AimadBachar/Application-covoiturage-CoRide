@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../Header';
 import Footer from '../Footer';
+import ComboBoxCities from '../../containers/ComboBoxCities';
 
 
 import './styles.scss';
@@ -60,14 +61,7 @@ const Trip = ({
         onSubmit={handleSubmit}
       >
         <h1 className="trip-form_title">Proposer votre trajet </h1>
-        <input
-          className="trip-form_input depart"
-          type="text"
-          name="departure_city"
-          placeholder="Départ"
-          value={departure_city}
-          onChange={fieldChange}
-        />
+        <ComboBoxCities onChange={fieldChange}/>
 
         <input
           className="trip-form_input depart"
