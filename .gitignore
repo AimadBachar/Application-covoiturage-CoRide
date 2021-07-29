@@ -5,4 +5,3 @@ api/sqitch.conf
 admin/.env
 api/app/services/configAws.json
 admin/node_modules
-
