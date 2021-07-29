@@ -40,22 +40,27 @@ case  FETCH_ACTIVITIES:
    case USER_PROFIL_SUBMIT: 
      console.log('user-profil in middleware', action.type);
      console.log(action);
-
-     const formData = new FormData(action.payload);
    
-     for(const key of formData.entries()){
+     const datas = action.payload;
+
+     const user = JSON.parse(localStorage.getItem("tokens"));
+
+     for(const key of datas.entries()){
      console.log(`${key[0]}:${key[1]}`);
      };
+
+     console.log("user",user)
+     
      /*const axiosConfigured = axios.create({
       headers: {'Authorization': `Bearer ${action.payload.token}`}
     }); */
        axios({
-         method: 'post',
-         url: 'http://18.235.248.88:3000/api/v1/users',
-         data: formData, 
-         data: store.getState().user.inputs,
+         method: 'PATCH',
+         url: `http://18.235.248.88:3000/api/v1/user/${user.id}`,
+         data: datas,
          headers: {
-           'Content-Type': 'multipart/form-data'
+           'Content-Type': 'multipart/form-data',
+           'Authorization': `Bearer ${user.token}`
          },
          })
 

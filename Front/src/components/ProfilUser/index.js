@@ -17,12 +17,12 @@ email,
 password,
 birthdate,
 tags,
-
+id,
 onInputChange,
 onSubmitProfil,
 handleFetchActivities,
 //ajout picture
-picture,
+picture_link,
 
 }) => {
 
@@ -45,21 +45,32 @@ picture,
       return;
     }
     console.log('submit');
-    onSubmitProfil();
+
+    const updateUser = new FormData(evt.target)
+
+    onSubmitProfil(updateUser);
   };
 
   //
   const changeField = (evt) => {
-    //evt.preventDefault();
+    evt.preventDefault();
     const value = evt.target.value;
     onInputChange(evt.target.name, value )
   };
 
 
-  //on permet le téléchargement d'une photo
+ /* //on permet le téléchargement d'une photo
   const handleUpload = (evt) => {
     console.log(evt.target.files[0]);
     this.setState({ picture: evt.target.files[0] });
+  };*/
+
+  const ifPictureLink = ()=>{
+    if(picture_link){
+      return (
+        <input type="hidden" name="picture_link" value={picture_link}/>
+      )
+    }
   };
 
 
@@ -68,7 +79,7 @@ return (
       <div className="profil-form">
           <form 
             className="profil-form-element"
-            autoComplete="off"        
+            //autoComplete="off"        
             onSubmit={handleSubmit}
             enctype="application/x-www-form-urlencoded"
           >
@@ -78,37 +89,41 @@ return (
         <div className="profil-form-header">
           <div className="profil-form-upper">
             <div className="profil-form-upper_picture">
-            <img className="profil-form-upper_picture_icone" src={icone} alt="photo kite" />
+            <img className="profil-form-upper_picture_icone" src={picture_link} alt="photo" />
             </div>
                 <input
                   className="profil-form-upper_upload"
                   type="file"
                   name="picture"
                   placeholder="Picture"
-                  accept="image/png, image/jpeg"
-                  onChange={handleUpload}          
+                  accept="image/png, image/jpeg"        
                 /> 
                </div>
               <div className="profil-form-identity">
               <div className="profil-form-firstname">
+                <input type="hidden" name="id" value={id}/>
+
+                {ifPictureLink()}
+
                 <input
                   className="profil-form-firstname"
                   type="text"
-                  name="prénom"
+                  name="first_name"
                   placeholder="Prénom"
+                  defaultValue={first_name}
                   onChange={changeField}
-                  value={first_name}
                 />
                 </div>
                 <div className="profil-form-lastname">
                 <input
                   className="profil-form-lastname"
                   type="text"
-                  name="nom"
+                  name="last_name"
                   placeholder="Nom"
+                  defaultValue={last_name}
                   onChange={changeField}
-                  value={last_name}
                 />
+                
                 </div>
                 </div>
                  </div>
@@ -118,8 +133,7 @@ return (
                   type="text"
                   name="pseudo"
                   placeholder="Pseudo"
-                  onChange={changeField}
-                  value={pseudo}
+                  defaultValue={pseudo}
                 />
                
                 <input
@@ -127,17 +141,18 @@ return (
                   type="date"
                   name="birthdate"
                   placeholder="Date de naissance"
-                  onChange={changeField}
-                  value={birthdate}
+                  defaultValue={birthdate}
                 />
               </div>
               
               <div className="profil-form-sport">
+              
+              
                 <select
                   className="profil-form-sport_select"
                   type="select"
                   name="activity_id"
-                  value={activity}
+                  defaultValue={activity}
                   onChange={changeField}
                 >
                   <option
@@ -154,7 +169,7 @@ return (
                       {tag.label}
                     </option>
                   ))}
-                </select>
+                 </select>
                 
             <div className="profil-form-sport_others">       
             <input type="text" className="profil-form-sport_input" placeholder="Sport passion n°2"></input>    
@@ -167,8 +182,7 @@ return (
                 
                 className="profil-form-textarea" 
                 cols="20" rows="5" wrap="hard" 
-                placeholder="plus d'informations sur vous, vos spots préférés"
-                onChange={changeField}  
+                placeholder="plus d'informations sur vous, vos spots préférés" 
                 
                >
                 </textarea>  
@@ -180,8 +194,7 @@ return (
                   type="email"
                   name="email"
                   placeholder="E-mail" 
-                  onChange={changeField}
-                  value={email}
+                  defaultValue={email}
                 />
 
               <input
@@ -189,8 +202,6 @@ return (
                   type="password"
                   name="password"
                   placeholder="Mot de passe"
-                  onChange={changeField}
-                  value={password}
                 />
                 </div>
               <div className="profil-form-button">

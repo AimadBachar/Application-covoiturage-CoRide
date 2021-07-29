@@ -5,13 +5,13 @@ import ProfilUser from 'src/components/ProfilUser';
 import {  
   userProfilInputChange,
   fetchActivities,
+  userProfilSubmit 
  } from 'src/actions/userprofil';
-import { userProfilSubmit } from '../../actions/userprofil';
 
 
 const mapStateToProps = (state) => ({ 
   isCompleted: state.userprofil.completed,
-  profilCompletedMessage: state.userprofil.inputs.profilCompletedMessage,
+  id: state.userprofil.inputs.id,
   last_name: state.userprofil.inputs.last_name,
   first_name: state.userprofil.inputs.first_name,
   pseudo: state.userprofil.inputs.pseudo,
@@ -20,7 +20,7 @@ const mapStateToProps = (state) => ({
   birthdate: state.userprofil.inputs.birthdate,
   activity_id: state.userprofil.inputs.activity_id,
   tags: state.userprofil.tags,
-  picture: state.userprofil.inputs.picture,
+  picture_link: state.userprofil.inputs.picture_link,
   /*coords: state.userprofil.inputs.coords,
   city: state.userprofil.inputs.city,
   postcode: state.userprofil.inputs.postcode,
@@ -31,13 +31,13 @@ const mapStateToProps = (state) => ({
 
 
 const mapDispatchToProps = (dispatch) => ({
-  changeField: (value, name) => {
+  /*changeField: (value, name) => {
     console.log('change in ' + name + ' :', value); 
     const action = userProfilInputChange({
       [name]: value,
     });
     dispatch(action);
-  },
+  },*/
 
   // input des sports
   onInputChange: (name, value) => {
@@ -53,10 +53,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(action);
   },
 
-  onSubmitProfil: (value) => {
+  onSubmitProfil: (formData) => {
     console.log('profil completed')
     //console.log(localStorage.getItem('tokens'));
-    const action = userProfilSubmit();
+    const action = userProfilSubmit(formData);
     dispatch(action);
   },
 

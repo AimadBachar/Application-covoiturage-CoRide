@@ -16,7 +16,8 @@ export const initialState = {
   completed: false,
   tags: [],
   inputs: {
-    picture: '',
+    picture_link: user?.picture_link,
+    id: user?.id,
     last_name: user?.last_name,
     first_name: user?.first_name,
     pseudo: user?.pseudo,
@@ -24,7 +25,7 @@ export const initialState = {
     password: user?.password,
     birthdate: user?.birthdate ? new Date(user.birthdate).toISOString().split('T')[0] : "",
     activity_id: [],
-    /*coords: '',
+   /* coords: '',
     city: '',
     postcode: '',
     country: '',
