@@ -8,6 +8,9 @@ import {
 } from "../actions/usersignin";
 import { USER_SIGNIN } from 'src/actions/usersignin';
 
+const user = localStorage.getItem("tokens");
+console.log(user);
+
   // puis je modifie le state du container signin avec ces fausses datas
   export const initialState = {
     signed: false,
