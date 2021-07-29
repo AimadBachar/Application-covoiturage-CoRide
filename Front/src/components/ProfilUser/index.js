@@ -18,7 +18,7 @@ password,
 birthdate,
 tags,
 
-onInputProfilChange,
+onInputChange,
 onSubmitProfil,
 handleFetchActivities,
 //ajout picture
@@ -47,10 +47,11 @@ picture,
 
   //
   const changeField = (evt) => {
-    evt.preventDefault();
+    //evt.preventDefault();
     const value = evt.target.value;
-    onInputProfilChange(evt.target.name, value )
-  } 
+    onInputChange(evt.target.name, value )
+  };
+
 
   //on permet le téléchargement d'une photo
   const handleUpload = (evt) => {
@@ -87,7 +88,7 @@ return (
                </div>
               <div className="profil-form-identity">
               <div className="profil-form-firstname">
-                <Field
+                <input
                   className="profil-form-firstname"
                   type="text"
                   name="prénom"
@@ -97,7 +98,7 @@ return (
                 />
                 </div>
                 <div className="profil-form-lastname">
-                <Field
+                <input
                   className="profil-form-lastname"
                   type="text"
                   name="nom"
@@ -109,7 +110,7 @@ return (
                 </div>
                  </div>
                  <div className="profil-form-pseudobirthdate">
-                <Field
+                <input
                   className="profil-form-input"
                   type="text"
                   name="pseudo"
@@ -157,13 +158,21 @@ return (
             <input type="text" className="profil-form-sport_input" placeholder="Sport passion n°3"></input>
               </div>                
               </div> 
+             
               <div className="profil-form-bio">
-               
-                <textarea className="profil-form-textarea" 
-                cols="20" rows="5" wrap="hard" placeholder="plus d'informations sur vous, vos spots préférés"></textarea>
+                <textarea 
+                
+                className="profil-form-textarea" 
+                cols="20" rows="5" wrap="hard" 
+                placeholder="plus d'informations sur vous, vos spots préférés"
+                onChange={changeField}  
+                
+               >
+                </textarea>  
               </div>
+              
               <div className="profil-form-emailpassword">
-              <Field
+              <input
                   className="profil-form-input"
                   type="email"
                   name="email"
@@ -172,7 +181,7 @@ return (
                   value={email}
                 />
 
-              <Field
+              <input
                   className="profil-form-input"
                   type="password"
                   name="password"
@@ -214,7 +223,7 @@ ProfilUser.propTypes = {
   password: PropTypes.string.isRequired,
   activity: PropTypes.string.isRequired,
   onSubmitProfil: PropTypes.func.isRequired,
-  onInputProfilChange: PropTypes.func.isRequired,
+  //onChange: PropTypes.func.isRequired,
   tags: PropTypes.shape({
     sport: PropTypes.string.isRequired,
    })

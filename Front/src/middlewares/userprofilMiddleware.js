@@ -3,15 +3,10 @@ import axios from 'axios';
 
 // Import des actions
 import {
-  USER_PROFIL,
   userProfilSuccess,
-  USER_PROFIL_ACTIVITIES,
   userProfilActivities,
   FETCH_ACTIVITIES,
-  fetchActivities,
-  fetchSuccessActivities,
-  USER_PROFIL_SUBMIT,
-  
+  USER_PROFIL_SUBMIT, 
 } from 'src/actions/userprofil';
 
 
@@ -42,7 +37,7 @@ case  FETCH_ACTIVITIES:
   break;  
 
 
-   case USER_PROFIL: 
+   case USER_PROFIL_SUBMIT: 
      console.log('user-profil in middleware', action.type);
      console.log(action);
 
@@ -66,7 +61,8 @@ case  FETCH_ACTIVITIES:
 
         .then((res) => {
           console.log('profil_completed_success', res.data);
-                  
+          
+          // enlever la clef
           localStorage.clear();
           localStorage.setItem('tokens', JSON.stringify(res.data));  
           

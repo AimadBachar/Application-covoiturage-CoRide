@@ -2,11 +2,11 @@ import { connect } from 'react-redux';
 import ProfilUser from 'src/components/ProfilUser';
 
 // == Import des actions
-import { 
-  userProfil, 
+import {  
   userProfilInputChange,
   fetchActivities,
  } from 'src/actions/userprofil';
+import { userProfilSubmit } from '../../actions/userprofil';
 
 
 const mapStateToProps = (state) => ({ 
@@ -32,12 +32,19 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   changeField: (value, name) => {
-    console.log('change in ' + name + ' :', value);
-  
+    console.log('change in ' + name + ' :', value); 
     const action = userProfilInputChange({
       [name]: value,
     });
     dispatch(action);
+  },
+
+  // input des sports
+  onInputChange: (name, value) => {
+    console.log('change', name , value);
+    const action = userProfilInputChange(value);
+    action.name = name,
+    dispatch(action)
   },
 
   handleFetchActivities:()=>{
@@ -46,14 +53,12 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(action);
   },
 
-  onSubmitProfil: (event) => {
+  onSubmitProfil: (value) => {
     console.log('profil completed')
     //console.log(localStorage.getItem('tokens'));
-    const action = userProfil(event);
-    console.log(action);
+    const action = userProfilSubmit();
     dispatch(action);
   },
-
 
 });  
 

@@ -5,7 +5,7 @@ import {
   USER_PROFIL_SUBMIT,
   USER_PROFIL_SUCCESS,
 } from 'src/actions/userprofil';
-import { USER_PROFIL } from 'src/actions/userprofil';
+
 
 
 const user = JSON.parse(localStorage.getItem('tokens'));
@@ -14,7 +14,6 @@ console.log(user);
 
 export const initialState = {
   completed: false,
-  profilCompletedMessage: 'Profil success !',
   tags: [],
   inputs: {
     picture: '',
@@ -47,8 +46,8 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         inputs: {
           ...state.inputs,
-         [action.name]: action.payload,
-        // ...action.payload,
+         //[action.name]: action.payload,
+        ...action.payload,
         },
       };
 
@@ -72,7 +71,6 @@ const reducer = (state = initialState, action = {}) => {
           console.log('success', action.payload);
           return {
             ...state,
-            profilCompletedMessage: 'Profil Success !',
             completed: true,
             ...action.payload,
           };
