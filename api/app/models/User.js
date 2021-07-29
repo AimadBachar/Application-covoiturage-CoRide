@@ -33,6 +33,7 @@ const pool = require("../db");
  * @property {string} picture_link the link for user avatar
  * @property {string} pseudo.required the user pseudo
  * @property {string} birthdate.required the user birthdate
+ * @property {string} biography the user biography
  * @property {string} created_at timestamptz created
  * @property {string} updated_at timestamptz updated
  * @property {Array<UserActivities>} activities the list of activities

@@ -56,6 +56,7 @@ router.get("/cities",redis.cache,searchCities);
  * @property {string} last_name.required the last name user
  * @property {string} email.required the user email
  * @property {string} birthdate.required the user birthdate
+ * @property {string} biography the user biography
  * @property {file} picture the avatar file JPEG or PNG 512Ko max
  * @property {string} picture_link the link for user profil picture
  * @property {string} pseudo.required the user pseudo
@@ -65,17 +66,6 @@ router.get("/cities",redis.cache,searchCities);
  * @typedef loginUser 
  * @property {string} user.required the user name
  * @property {string} password.required the password user
- */
-/**
- * @typedef loginResponse 
-  * @property {number} userId.required the user ID
-  * @property {string} first_name the first name
-  * @property {string} last_name the last name
-  * @property {string} birthdate the user birthdate
-  * @property {string} picture_link the link for catch the profil picture
-  * @property {string} created_at date of register
-  * @property {string} updated_at date of update account
-  * @property {string} token the user JWT
  */
 /**
  * @route POST /users
@@ -483,6 +473,13 @@ router.route("/user/:id(\\d+)/travels")
     .post(verifyToken,redis.flush,userController.addUserTravel)
     .delete(verifyToken,redis.flush,userController.deleteUserTravel);
 
+/**
+ * @typedef PostMail 
+ * @property {string} email.required the recipient email
+ * @property {string} recipient.required the pseudo of recipient
+ * @property {string} sender.required the pseudo of sender
+ * @property {string} message.required the mail content
+ */
 /**
  * @route POST /user/{id}/send-email
  * @group Users - Operations about user
