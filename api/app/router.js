@@ -131,7 +131,7 @@ router.route("/users")
  */
 router.route("/user/:id(\\d+)")
     .get(verifyToken,redis.cache,userController.getOne)
-    .patch(verifyToken,redis.flush,uploadPicture,joiValidator(schemas.user),hashPassword.hash,userController.insertOrUpdate);
+    .patch(verifyToken,redis.flush,uploadPicture,joiValidator(schemas.user),userController.insertOrUpdate);
 
 ////////////Model Activity////////////////////////////////////
 /**
