@@ -9,8 +9,7 @@ import Search from 'src/containers/Search';
 import Footer from 'src/containers/Footer';
 import Main from '../Main';
 import ConnexionRegistration from '../ConnexionRegistration';
-
-
+import Info from '../Info';
 import Signin from 'src/containers/Signin';
 import ProfilUser from 'src/containers/ProfilUser';
 import DetailsProfil from 'src/containers/DetailsProfil';
@@ -55,6 +54,10 @@ const App = ({loading, fetchTravels, isLogged}) => {
           <Footer />
         </Route>
 
+        <Route exact path="/info">
+          <Info />
+        </Route>
+
         <Route exact path="/trip">
           <Trip />
         </Route>
@@ -72,7 +75,7 @@ const App = ({loading, fetchTravels, isLogged}) => {
         </Route>
 
         <Route exact path="/profilpage">
-        <Header />
+          <Header />
           <DetailsProfil />
           <Footer />
         </Route>
