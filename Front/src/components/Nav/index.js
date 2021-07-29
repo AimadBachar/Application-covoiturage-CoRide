@@ -21,6 +21,7 @@ const Nav = (props) => {
               </Link>
               <li><a href="#">Info</a></li>
               <li><a href="#">Contact</a></li>
+              <li><a href="/profilpage">Les utilisateurs</a></li>
               <li><a href="/connexion">Connexion</a></li>
               <li><a href="/inscription">S'inscrire</a></li>
             </ul>

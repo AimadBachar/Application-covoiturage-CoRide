@@ -52,7 +52,7 @@ return (
         <div>
           <input type="hidden" name="recipient" value={userprofil.pseudo}/>
           <input type="hidden" name="email" value={userprofil.email}/>
-        <textarea className="profil-commentaire" rows="5" cols="20" wrap="physique" name="message">Ecrivez moi...</textarea>
+        <textarea className="profil-commentaire" rows="5" cols="28" wrap="physique" name="message">Ecrivez moi...</textarea>
         </div>
         <div>
         <input className="profil-submit" type="submit" value="M'envoyer un message" />
