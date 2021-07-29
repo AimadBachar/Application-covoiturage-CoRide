@@ -32,8 +32,8 @@ const reducer = (state = initialState, action = {}) => {
   
       return {
         ...state,
-        loggedMessage: `Welcome ${action.payload.first_name}!`,
-        loggedName: action.payload.first_name,
+        /* loggedMessage: `Welcome ${action.payload.first_name}!`,
+        loggedName: action.payload.first_name, */
         logged: true,
         ...action.payload,
         // ci dessus la version courte de:

@@ -6,7 +6,7 @@ Front/dist
 api/.env
 admin/.env
 admin/node_modules
-
+api/app/services/configAws.json
 .DS_Store
 Thum
 
