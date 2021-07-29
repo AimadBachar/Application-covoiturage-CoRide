@@ -31,8 +31,9 @@ picture,
   }
     const handleSubmit = (evt) => {   
     evt.preventDefault();
-    console.log('submit');
-    onSubmitProfil();
+
+    
+   
 
     //on récupere le password, on construit notre regexp et on check
     const password = evt.target.querySelector('input[name="password"]').value;
@@ -43,6 +44,8 @@ picture,
      console.log("ton mot de passe n'est pas conforme au format attendu")
       return;
     }
+    console.log('submit');
+    onSubmitProfil();
   };
 
   //

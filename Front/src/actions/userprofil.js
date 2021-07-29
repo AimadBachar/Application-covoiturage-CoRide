@@ -5,7 +5,7 @@ export const USER_PROFIL_SUBMIT = 'USER_PROFIL_SUBMIT';
 export const USER_PROFIL_SUCCESS = 'USER_PROFIL_SUCCESS';
 export const USER_PROFIL_ACTIVITIES = 'USER_PROFIL_ACTIVITIES';
 export const FETCH_ACTIVITIES = 'FETCH_ACTIVITIES';
-//export const USER_INPUT_CHANGE = 'USER_INPUT_CHANGE';
+
 
 // valider la création ou la modification du profil
 export const userProfilSubmit = (payload) => ({
@@ -18,10 +18,6 @@ export const userProfilInputChange = (payload) => ({
   payload
 });
 
-/*export const userInputChange = (payload) => ({
-  type: USER_INPUT_CHANGE,
-  payload
-})*/
 
 export const userProfilSuccess = (payload) => ({
   type: USER_PROFIL_SUCCESS,
