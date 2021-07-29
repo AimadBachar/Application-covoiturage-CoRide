@@ -27,10 +27,17 @@ const App = ({loading, fetchTravels, isLogged}) => {
   // dés que je suis prêt, et une seule fois
   useEffect(fetchTravels, [])
 
-  if (localStorage.getItem('tokens')) {
+  useEffect(()=>{
+    if (localStorage.getItem('tokens')) {
+      isLogged();
+    }
+
+  }, [])
+
+  /* if (localStorage.getItem('tokens')) {
     useEffect(isLogged, [])
     
-  }
+  } */
 
   if (loading) {
     return <Loading />;
