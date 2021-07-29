@@ -139,7 +139,34 @@ const userController = {
                 id
             } = req.params;
 
-            delete req.body.verifyPassword;
+            const {id:idUserUpdate,password} = req.body;
+
+            if(req.body.verifyPassword) delete req.body.verifyPassword;
+
+            if(password && idUserUpdate){
+
+                const login = await User.findAll({
+                    where: {
+                        email: req.body.email
+                    }
+                });
+    
+                const userConnected = login[0];
+
+                //si il existe...
+                if (userConnected) {
+
+                    //on vérifie la correspondance entre le hash et le pass en clair
+                    const matchPassword = await hashPassword.compare(password,userConnected.password);
+                    
+                    //si le password ne match pas... 401
+                    if(!matchPassword){
+                        return res.status(401).json("bad password");
+                    }
+
+                    req.body.password = userConnected.password;
+                }
+            }
 
             const user = new User(req.body);
 

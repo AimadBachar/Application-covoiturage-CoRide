@@ -28,6 +28,7 @@ CREATE TABLE "user" (
     email check_email UNIQUE,
     birthdate check_majority,
     picture_link TEXT UNIQUE,
+    biography TEXT,
     pseudo TEXT NOT NULL UNIQUE,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ,
