@@ -15,7 +15,7 @@ const Signin = ({
 
     isSignedIn,
     signedMessage,
-    picture,
+    //picture,
     first_name,
     last_name,
     pseudo,
@@ -68,11 +68,11 @@ const Signin = ({
     
   };
 
-  
+  /*
   const handleUpload = (evt) => {
     console.log(evt.target.files[0]);
     this.setState({ picture: evt.target.files[0] });
-  };
+  };*/
 
 
   return (
@@ -128,18 +128,6 @@ const Signin = ({
           placeholder="Pseudo"
           onChange={changeField}
           value={pseudo}
-        />
-
-    
-      <input 
-          className="signin-form-input"
-          type="file"
-          name="picture"
-          placeholder="Picture"
-          accept="image/png, image/jpeg"
-          onChange={handleUpload}
-        //TODO style du champ file à faire
-                      
         />
   
       <Field
