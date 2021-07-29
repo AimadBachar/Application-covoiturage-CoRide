@@ -9,6 +9,7 @@ import tripReducer from 'src/reducers/trip.js';
 
 import userprofilReducer from 'src/reducers/userprofil.js';
 import comboBoxCities from 'src/reducers/comboBoxCities.js';
+import detailsProfilReducer from 'src/reducers/detailsProfil.js';
 
 
 const rootReducer = combineReducers({
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
   trip: tripReducer,
 
   userprofil: userprofilReducer,
-  comboBoxCities: comboBoxCities
+  comboBoxCities: comboBoxCities,
+  detailsProfil: detailsProfilReducer
 });
 
 export default rootReducer;

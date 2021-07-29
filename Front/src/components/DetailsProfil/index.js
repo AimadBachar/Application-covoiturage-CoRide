@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import profilVide from "src/assets/images/profil_vide.jpg"
 import { Link, useLocation } from 'react-router-dom'
 
 import 'src/components/DetailsProfil/styles.scss';
@@ -8,46 +9,61 @@ import 'src/components/DetailsProfil/styles.scss';
 
 const DetailsProfil = ({
   onButtonClickContact,
+  getAllUsers,
+  usersProfils
 }) => {
-    /*
-    const query = new URLSearchParams(useLocation().search);
 
-    const id = query.get("id");    
-    
-    const profils = JSON.parse(localStorage.getItem("users"));
-    
-    const userprofil = profils.find(user=>user.id == id);
-    */
+  if(usersProfils.length ===0){
+    getAllUsers();
+  }
+
+  const handleSubmitMessageForm = (event)=>{
+    event.preventDefault();
+    console.log("message",event.target)
+  }
+
 
 return (
-    <div className="profil" >
-      <div className="profil-top">
-        <div className="profil-top_left">
-          <a href="#" className="card-profil" onClick={onButtonClickContact}>{userprofil.pseudo}</a>
-          <p className="profil-picture">{userprofil.picture}</p>
-          <p>PROFIL UTILISATEUR</p>
-        </div>
-        <div className="profil-top_right">
-          <p className="profil-email">{userprofil.email}</p>
-          <p className="profil-cellular">{userprofil.cellular}</p>        
-        </div>
-      </div>
-      <p className="profil-localisation">localisation: {userprofil.city}</p>
-      <p className="profil-localisation">localisation: {userprofil.country}</p>
-      <p className="profil-bio">Bio de l'utilisateur Bio de l'utilisateur Bio de l'utilisateur: {card.bio}</p>
-      <div className="profil-bottom">
-        <span className="profil-tag">{userprofil.activity}</span>
-       <span className="profil-véhicule">{userprofil.brand} {userprofil.rmodel}</span>
-       <form method="post" action="mailto:votreemail@email.com">
 
-        <textarea rows="5" cols="20" wrap="physique" name="commentaires">Ecrivez un commentaire</textarea><br />
-        <input type="submit" value="M'envoyer un Email" />  
-       </form>
-       
-        <button className="profil-button" type="button" onClick={onButtonClickContact}>Contactez moi!</button>
+    
+
+      usersProfils.map((userprofil)=>(
+
+
+<div className="profil" >
+
+  <img className="profil-picture"src={userprofil.picture_link || profilVide}/>
+ 
+
+      <div className="profil-top">
+          <a href="#" className="profil-pseudo" onClick={onButtonClickContact}>{userprofil.pseudo}</a>                          
       </div>
-    </div>
+      
+        <div className="profil-activities">
+        {userprofil.activities.map((activity)=>(
+        <span className="profil-tag" style={{background: activity.color }}>{activity.label}</span>
+        ))}
+        </div>
+        <div className="profil-bottom">
+        <div className="profil-contact">
+       <form className="profil-form" method="post" action="" onSubmit={handleSubmitMessageForm}>
+        <div>
+        <textarea className="profil-commentaire" rows="5" cols="20" wrap="physique" name="commentaires">Ecrivez moi...</textarea>
+        </div>
+        <div>
+        <input className="profil-submit" type="submit" value="M'envoyer un message" />
+        </div> 
+       </form>
+       </div>
+      </div>
+</div>
+      ))
+
+    
+
+  
 )}
+
 
 
 DetailsProfil.propTypes = {
