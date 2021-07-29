@@ -483,6 +483,18 @@ router.route("/user/:id(\\d+)/travels")
     .post(verifyToken,redis.flush,userController.addUserTravel)
     .delete(verifyToken,redis.flush,userController.deleteUserTravel);
 
+/**
+ * @route POST /user/{id}/send-email
+ * @group Users - Operations about user
+ * @security JWT
+ * @param {integer} id.path.required the user id
+ * @param {PostMail.model} postModel.body.required the content mail
+ * @returns {json} 200 - success
+ * @returns {Error} 400 - bad content body
+ * @returns {Error} 500 - internal error
+ */
+router.post("/user/:id(\\d+)/send-email",verifyToken,userController.sendMessage);
+
 //middleware gestion erreur
 router.use((err,_,res,__)=>res.status(404).json({"error":err}))
 

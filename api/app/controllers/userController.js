@@ -6,6 +6,7 @@ const VehicleOption = require("../models/VehicleOption");
 const jwt = require("jsonwebtoken");
 const {delete:deletePicture} = require("../services/uploadPicture");
 const hashPassword = require("../services/hashPassword");
+const mailSender = require("../services/mailSender");
 
 const userController = {
 
@@ -425,6 +426,35 @@ const userController = {
                 throw new Error("association impossible");
             }
         } catch (err) {
+            next(err);
+        }
+    },
+
+    /**
+     * this express middleware send an email between 2 users
+     * @param {request} req 
+     * @param {response} res 
+     * @param {function} next 
+     * @returns {string} return success if success else an error
+     */
+    async sendMessage(req,res,next){
+        try{
+
+            const {email,recipient,sender,message} = req.body;
+
+            if(!email || !recipient || !sender || !message){
+                return res.status(400).json("bad request");
+            }
+
+            const sendMessage = await mailSender({email,recipient,sender,message});
+
+            if(!sendMessage){
+                throw new Error("impossible to sent...")
+            }
+
+            res.status(204).end();
+
+        }catch(err){
             next(err);
         }
     }
