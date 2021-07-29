@@ -18,6 +18,7 @@ import Trip from 'src/containers/Trip'
 import Card from 'src/containers/Card';
 import DetailsCard from 'src/containers/DetailsCard';
 import NotFoundPage from '../NotFoundPage';
+import Contact from 'src/containers/Contact';
 import Loading from './Loading';
 
 import './styles.scss';
@@ -82,7 +83,12 @@ const App = ({loading, fetchTravels, isLogged}) => {
           <DetailsCard />
           <Footer />
         </Route>
-  
+
+        <Route exact path="/contact">
+          <Header />
+          <Contact />
+          <Footer />
+        </Route>
 
         <Route path="*">
           <NotFoundPage />
