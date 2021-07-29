@@ -9,7 +9,11 @@ SELECT
     t.latitude_departure,
     t.longitude_departure,
     t.destination_city,
-    t.places_available,
+	t.places_available,
+    (t.places_available - (
+		SELECT COUNT(*) FROM user_travel AS ut
+		WHERE t.id = ut.travel_id
+	))::int AS remaining_places,
     t.description,
     t.departure_timestamp,
     a.id AS activity_id,
