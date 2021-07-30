@@ -156,6 +156,7 @@ return (
       </form>
               
 
+
       <form // FORM 2  CHOIX DES SPORTS + BOUTON
         className="profil-form-element"       
             onSubmit={handleSubmitActivities}

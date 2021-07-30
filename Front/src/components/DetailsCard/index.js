@@ -48,10 +48,10 @@ const DetailsCard = ({
         </div>     
         <p className="card-destination">Départ: {card.departure_city}</p>      
         <p className="card-destination">Arrivée: {card.destination_city}</p>
-        <p className="card-description">description trajet dsgfshsfhsdhsdghsdgsdg sdgsdvsd dsbvsvsvsdv: {card.description}</p>
+        <p className="card-description">description: {card.description}</p>
         <div className="card-bottom">
-          <span className="card-tag">#{card.activity}</span>
-          <span className="card-place">{card.places_available} place(s)</span>
+          <span className="card-tag">{card.activity}</span>
+          <span className="card-place">{card.remaining_places} place(s) restante(s)</span>
 
           <Link to="/connexion">
 

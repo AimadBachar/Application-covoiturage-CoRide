@@ -944,56 +944,49 @@
     "@babel/helper-validator-identifier" "^7.14.8"
     to-fast-properties "^2.0.0"
 
-"@bundle-stats/cli-utils@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@bundle-stats/cli-utils/-/cli-utils-3.1.1.tgz#42f05819bdc105955b9d015ebf1bf69e7d30223b"
-  integrity sha512-Kto7FQ7L5zPLO6Rb3kxmdTs2xBwEbd7y5pNhKrJXP08Y6ySTCPjFHa0UUvD9Bgrm7s9fLcMNkOU+7H9W1lltZg==
+"@bundle-stats/cli-utils@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@bundle-stats/cli-utils/-/cli-utils-3.0.1.tgz#f9c282c8d58478a5253636c247063230fda5c05b"
+  integrity sha512-NTTs6ktkRIpiOWJjlUOO0l58zO8PjnWZlWvYeJosuNgrXqm/U9p4XVoEIL6an/8VinHOJ5BwPOWDlflasaExGg==
   dependencies:
-    "@bundle-stats/html-templates" "^3.1.1"
-    "@bundle-stats/utils" "^3.1.1"
-    core-js "^3.15.2"
+    "@bundle-stats/html-templates" "^3.0.1"
+    "@bundle-stats/utils" "^3.0.1"
+    core-js "^3.10.2"
     find-cache-dir "^3.1.0"
     fs-extra "^10.0.0"
     lodash "4.17.21"
 
-"@bundle-stats/html-templates@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@bundle-stats/html-templates/-/html-templates-3.1.1.tgz#dc36d5bb8f6879e5ecf9637173556c7a660600df"
-  integrity sha512-0mjt8+Cshcb0a66QNwTFwykYBmvRL4ln6FGRweE3OIrFyq7G2md1if2I1VeDVa/2tow1qJRlBcvkXahvBO3P0g==
+"@bundle-stats/html-templates@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@bundle-stats/html-templates/-/html-templates-3.0.1.tgz#7479f2d9b1c9c2f11a79dcf5427806c069b6ead0"
+  integrity sha512-2Js7qUmpGkJMFIyzlbRcdWeqFJcBSQ5h6qdi5JML+bU5irvX480a1kB6E3Of+XmjbI03Qnf4jkaZqC6st1ZGEw==
   dependencies:
-    "@bundle-stats/ui" "^3.1.1"
-    "@bundle-stats/utils" "^3.1.1"
+    "@bundle-stats/ui" "^3.0.1"
+    "@bundle-stats/utils" "^3.0.1"
     classnames "2.3.1"
-    lodash "^4.17.21"
-    preact "10.5.14"
+    lodash "^4.17.11"
+    preact "10.5.13"
     prop-types "15.7.2"
     react "16.14.0"
     react-dom "16.14.0"
     react-router-dom "^5.2.0"
     recompose "0.30.0"
 
-"@bundle-stats/plugin-webpack-filter@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@bundle-stats/plugin-webpack-filter/-/plugin-webpack-filter-3.1.0.tgz#658f312e1aa379a81595e21255898dda34557657"
-  integrity sha512-C/etxSDDmM1m2MLDw1brWIxVHsIxTUSP8XcyTkbT1sy0FxefL/tZuh9by0Gjtaet0qAyr8FWJOU5K2WUuLXkqw==
-
-"@bundle-stats/ui@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@bundle-stats/ui/-/ui-3.1.1.tgz#031ac4da3f04df411b57a3ff7df9356ee95f47fa"
-  integrity sha512-AASIvbMhNuwz9fSqfEWmYiCkzRRCrSH+Ur+AEDqH8BBApPG/g9lejNjonxSOgiPKqM89i8titPzcQKrkQJX13Q==
+"@bundle-stats/ui@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@bundle-stats/ui/-/ui-3.0.1.tgz#64398ce10b579f44a019b88979a3fd182ee0dea6"
+  integrity sha512-fBWh2rV+RTm7FWDZMatuAwLvnPuzJXo+7ph4iF4Jjph8XEHH+FswwD8KxMb7W55IMBIbci/6M9Z4AHCw/NyPCA==
   dependencies:
-    "@bundle-stats/utils" "^3.1.1"
     date-fns "^2.6.0"
     query-string "^7.0.0"
     reakit "^1.3.6"
     use-query-params "^1.2.2"
 
-"@bundle-stats/utils@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@bundle-stats/utils/-/utils-3.1.1.tgz#c1fbcc472baf6ccf999b3e98cd65729f604aed1d"
-  integrity sha512-p2zktvMLxO77tAwCjZI8VrNZJwsqai0bPa8QNXh5AtNCV37JMd25Np6gbwsRD2vKYiqwmO4LGRmbXJUtFZlJqg==
+"@bundle-stats/utils@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@bundle-stats/utils/-/utils-3.0.1.tgz#24edcecd5a8cb9aa811603d099f2852f17efcb39"
+  integrity sha512-FWGtsbEUyEpKpAN2hA7cZQIUqbH2I9WHClOcKmv7kdsNRhvNn2YPAho0eGz0ZMxjH2Goz3a17Y5BjIxDHJMDQA==
   dependencies:
-    "@bundle-stats/plugin-webpack-filter" "^3.1.0"
     convert-units "^2.3.4"
     query-string "^7.0.0"
     serialize-query-params "^1.3.3"
@@ -1159,9 +1152,11 @@
   integrity sha512-Klz949h02Gz2uZCMGwDUSDS1YBlTdDDgbWHi+81l29tQALUtvz4rAYi5uoVhE5Lagoq6DeqAUlbrHvW/mXDgdQ==
 
 "@types/node@*":
+
   version "16.4.7"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.4.7.tgz#f7afa78769d4b477f5092d7c3468e2e8653d779c"
   integrity sha512-aDDY54sst8sx47CWT6QQqIZp45yURq4dic0+HCYfYNcY5Ejlb/CLmFnRLfy3wQuYafOeh3lB/DAKaqRKBtcZmA==
+
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -1707,9 +1702,9 @@ babel-plugin-polyfill-corejs2@^0.2.2:
     semver "^6.1.1"
 
 babel-plugin-polyfill-corejs3@^0.2.2:
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/babel-plugin-polyfill-corejs3/-/babel-plugin-polyfill-corejs3-0.2.4.tgz#68cb81316b0e8d9d721a92e0009ec6ecd4cd2ca9"
-  integrity sha512-z3HnJE5TY/j4EFEa/qpQMSbcUJZ5JQi+3UFjXzn6pQCmIKc5Ug5j98SuYyH+m4xQnvKlMDIW4plLfgyVnd0IcQ==
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/babel-plugin-polyfill-corejs3/-/babel-plugin-polyfill-corejs3-0.2.3.tgz#72add68cf08a8bf139ba6e6dfc0b1d504098e57b"
+  integrity sha512-rCOFzEIJpJEAU14XCcV/erIf/wZQMmMT5l5vXOpL5uoznyOGfDIjPj6FVytMvtzaKSTSVKouOCTPJ5OMUZH30g==
   dependencies:
     "@babel/helper-define-polyfill-provider" "^0.2.2"
     core-js-compat "^3.14.0"
@@ -1857,13 +1852,13 @@ buffer-indexof@^1.0.0:
   integrity sha512-4/rOEg86jivtPTeOUUT61jJO1Ya1TrR/OkqCSZDyq84WJh3LuuiphBYJN+fm5xufIk4XAFcEwte/8WzC8If/1g==
 
 bundle-stats-webpack-plugin@^3.0.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/bundle-stats-webpack-plugin/-/bundle-stats-webpack-plugin-3.1.1.tgz#0fb1be326bf54c8b0ad50b7941feaa67b20404f3"
-  integrity sha512-HV7dQ8aIx5NvfL2n3YU0zLSq1XVqHd82UHNC5a4QhrndReQP5qTV8hITvYj8uoKgKlsfputde6PzZ4XyoCvbaQ==
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/bundle-stats-webpack-plugin/-/bundle-stats-webpack-plugin-3.0.1.tgz#8ff334a6399c796d0c03558c1398224e5d139c16"
+  integrity sha512-mEcolMQ9eDzpg/VdVMUIbW4H3zkU2XY2mseZEBtgju8Ym0Lb2WkUOl3C3kG1CrFsL+TNK1y9ldt0MyvdjEgRHw==
   dependencies:
-    "@bundle-stats/cli-utils" "^3.1.1"
-    "@bundle-stats/utils" "^3.1.1"
-    core-js "^3.15.2"
+    "@bundle-stats/cli-utils" "^3.0.1"
+    "@bundle-stats/utils" "^3.0.1"
+    core-js "^3.10.2"
     lodash "4.17.21"
 
 bytes@3.0.0:
@@ -2690,9 +2685,11 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.723:
+
   version "1.3.791"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.791.tgz#e38f325ff22470bdcff34409d58c0baf9c2e3e93"
   integrity sha512-Tdx7w1fZpeWOOBluK+kXTAKCXyc79K65RB6Zp0+sPSZZhDjXlrxfGlXrlMGVVQUrKCyEZFQs1UBBLNz5IdbF0g==
+
 
 emoji-regex@^7.0.1:
   version "7.0.3"
@@ -2783,11 +2780,14 @@ es-abstract@^1.18.0-next.1, es-abstract@^1.18.0-next.2, es-abstract@^1.18.2:
     get-intrinsic "^1.1.1"
     has "^1.0.3"
     has-symbols "^1.0.2"
+
     internal-slot "^1.0.3"
+
     is-callable "^1.2.3"
     is-negative-zero "^2.0.1"
     is-regex "^1.1.3"
     is-string "^1.0.6"
+
     object-inspect "^1.11.0"
     object-keys "^1.1.1"
     object.assign "^4.1.2"
@@ -3329,9 +3329,9 @@ flat-cache@^3.0.4:
     rimraf "^3.0.2"
 
 flatted@^3.1.0:
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.2.tgz#64bfed5cb68fe3ca78b3eb214ad97b63bedce561"
-  integrity sha512-JaTY/wtrcSyvXJl4IMFHPKyFur1sE9AUqc0QnhOaJ0CxHtAoIV8pYDzeEfAaNEtGkOfq4gr3LBFmdXW5mOQFnA==
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.1.tgz#bbef080d95fca6709362c73044a1634f7c6e7d05"
+  integrity sha512-OMQjaErSFHmHqZe+PSidH5n8j3O0F2DdnVh8JB4j4eUQ2k6KvB0qGfrKIhapvez5JerBbmWkaLYUYWISaESoXg==
 
 flatten@^1.0.2:
   version "1.0.3"
@@ -5874,10 +5874,10 @@ postcss@^8.2.15, postcss@^8.3.5:
     nanoid "^3.1.23"
     source-map-js "^0.6.2"
 
-preact@10.5.14:
-  version "10.5.14"
-  resolved "https://registry.yarnpkg.com/preact/-/preact-10.5.14.tgz#0b14a2eefba3c10a57116b90d1a65f5f00cd2701"
-  integrity sha512-KojoltCrshZ099ksUZ2OQKfbH66uquFoxHSbnwKbTJHeQNvx42EmC7wQVWNuDt6vC5s3nudRHFtKbpY4ijKlaQ==
+preact@10.5.13:
+  version "10.5.13"
+  resolved "https://registry.yarnpkg.com/preact/-/preact-10.5.13.tgz#85f6c9197ecd736ce8e3bec044d08fd1330fa019"
+  integrity sha512-q/vlKIGNwzTLu+jCcvywgGrt+H/1P/oIRSD6mV4ln3hmlC+Aa34C7yfPI4+5bzW8pONyVXYS7SvXosy2dKKtWQ==
 
 prelude-ls@^1.2.1:
   version "1.2.1"
@@ -7602,6 +7602,7 @@ webpack-sources@^3.1.1:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-3.1.2.tgz#614c962ac45dfac7f0f482052db8324a6e0dc274"
   integrity sha512-//DeuK5SzM6yFRXNOGK+4tX7QB8PghkL8kFBPyqSlN62oJOUkmby8ptV7+IBGH6BkIuIw5Rjd7OvvwZaoiF4ag==
+
 
 webpack@^5.38.1:
   version "5.47.1"

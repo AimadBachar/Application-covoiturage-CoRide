@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../Header';
 import Footer from '../Footer';
+import ComboBoxCities from '../../containers/ComboBoxCities';
 
 
 import './styles.scss';
@@ -9,7 +10,6 @@ import { Redirect } from 'react-router-dom';
 
 
 const Trip = ({
-  cards,
   tags,
   departure_city,
   longitude_departure,
@@ -32,7 +32,7 @@ const Trip = ({
 
   const fieldChange = (evt) => {
     evt.preventDefault();
-    //console.log(evt.target.value);
+    console.log("on change",evt.target.value);
     const value = evt.target.value;
     onInputChange(evt.target.name, value )
   } 
@@ -60,15 +60,8 @@ const Trip = ({
         onSubmit={handleSubmit}
       >
         <h1 className="trip-form_title">Proposer votre trajet </h1>
-        <input
-          className="trip-form_input depart"
-          type="text"
-          name="departure_city"
-          placeholder="Départ"
-          value={departure_city}
-          onChange={fieldChange}
-        />
-
+        <ComboBoxCities  placeholder="Départ" name="departure_city" />
+        <ComboBoxCities placeholder="Destination" name="destination_city" />
         <input
           className="trip-form_input depart"
           type="hidden"
@@ -85,14 +78,14 @@ const Trip = ({
           onChange={fieldChange}
         />
 
-        <input
+        {/*<input
           className="trip-form_input destination"
           type="text"
           name="destination_city"
           placeholder="Destination"
           value={destination_city}
           onChange={fieldChange}
-        />
+        />*/}
         <div className="trip-form_sport__date">
           <select
             className="trip-form_select"

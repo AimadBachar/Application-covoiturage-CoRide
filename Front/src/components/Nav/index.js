@@ -19,6 +19,10 @@ const Nav = (props) => {
               <Link to="/" exact>
                 <li>Accueil</li>
               </Link>
+              <li><a href="#">Info</a></li>
+              <Link to="/contact" exact>
+                <li>Contact</li>
+              </Link>
               <Link to="/info" exact>
                 <li>Info</li>
               </Link>
@@ -55,7 +59,10 @@ const Nav = (props) => {
                 <li>Co'Riders</li>
               </Link>
 
-              <li><a href="#">Contact</a></li>
+              <li><a href="#">Info</a></li>
+              <Link to="/contact" exact>
+                <li>Contact</li>
+              </Link>
             </ul>
           </div>
         </nav>
