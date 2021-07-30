@@ -11,7 +11,6 @@ import {
 
 
 
-
 const middleware = (store) => (next) => (action) => {
   switch (action.type) {
 // choisir les sports pratiqués

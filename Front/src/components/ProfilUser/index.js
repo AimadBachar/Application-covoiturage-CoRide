@@ -20,6 +20,9 @@ onSubmitProfil,
 handleFetchActivities,
 picture_link,
 
+
+usersprofil,
+
 }) => {
 
   if(tags.length<1){
@@ -67,6 +70,8 @@ picture_link,
 
 
 return (
+
+  
     <div className="profil-form">
       <h1 className="profil-form-title">Modifier le profil</h1>
             
@@ -162,11 +167,15 @@ return (
                 </select>
            </div>
 
+
+          
           <div // RECUPERER LES TAGS DES SPORTS
-              className="profil-form-sport_others">       
-                  <input type="text" className="profil-form-sport_input" placeholder="Sport passion n°2"></input>    
-                  <input type="text" className="profil-form-sport_input" placeholder="Sport passion n°3"></input>
-          </div>                
+              className="profil-form-sport_others">   
+             
+                <input type="text" className="profil-form-sport_input" placeholder="Sport passion n°2"></input>    
+               <input type="text" className="profil-form-sport_input" placeholder="Sport passion n°3"></input>
+           
+               </div>                
                            
           <div className="profil-form-button">
                 <button type="submit" className="profil-form-submit">
@@ -275,3 +284,8 @@ export default ProfilUser;
 
                 <p className="profil-form-text">Quel(s) sport(s) de glisse pratiquez vous ?</p>
           */
+
+
+                /*
+                  
+                */

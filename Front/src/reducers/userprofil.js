@@ -14,6 +14,7 @@ console.log(user);
 
 export const initialState = {
   completed: false,
+
   tags: [],
   inputs: {
     picture_link: user?.picture_link,
