@@ -148,7 +148,7 @@ return (
               <div className="profil-form-sport">
               
               
-                <select
+                {/*<select
                   className="profil-form-sport_select"
                   type="select"
                   name="activity_id"
@@ -170,12 +170,12 @@ return (
                     </option>
                   ))}
                  </select>
-                
+                 */}
             <div className="profil-form-sport_others">       
             <input type="text" className="profil-form-sport_input" placeholder="Sport passion n°2"></input>    
             <input type="text" className="profil-form-sport_input" placeholder="Sport passion n°3"></input>
               </div>                
-              </div> 
+                 </div> 
              
               <div className="profil-form-bio">
                 <textarea 
