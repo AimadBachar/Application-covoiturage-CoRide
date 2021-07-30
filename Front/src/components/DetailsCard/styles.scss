@@ -87,13 +87,13 @@
 
       &-description {
         position: relative;
-        border: 1px solid vars.$color-grey;
+        border: 1px solid vars.$color-opacity;
         color: vars.$color-grey_more;
-        padding: 0.8rem auto;
+        padding: 0.8rem;
         text-align: center;
         margin: 1rem auto;
         border-radius: 15px;
-        height: 4rem;
+        height: 6rem;
       }
 
       &-date {
@@ -110,40 +110,36 @@
         flex-direction: row;
         justify-content: space-between;
         padding-top: 2rem;
-        padding-left: 1rem;
+        padding-left: 0.4rem;
         padding-right: 1rem;
-        padding-bottom: 0.2rem;
+        padding-bottom: 0.5rem;
       
       &-tag {
-       position: relative;
         color: vars.$color;
-        //border: 1px solid vars.$color;
-      //  padding: 0.5rem;
+        font-size: 1.5em;
+        padding-top: 1rem;
       }
 
       &-place {
-        //display: inline-block;
-        //position: relative;
-        padding-bottom: 1rem;
+        font-size: 1.5em;
+       // padding-bottom: 1rem;
+        padding-right: 1rem;
         color: vars.$color;
 
       &_sit {
         height: 40px;
         width: 40px;
-
-      }
+        }
       }
     }
       &-button {
-       // position: relative;
-        padding: 0.5rem;
         background-color: vars.$color;
         color: vars.$color-light;
         border-radius: 15px;
         border: none;
         outline: none;
-        height: 50%;
-        width: 100%;
+        height: 100%;
+        width: 130%;
       }
     
     } 

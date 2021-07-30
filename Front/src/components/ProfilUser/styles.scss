@@ -1,159 +1,67 @@
 @use './src/styles/vars';
 
 
-.profil {
- /*display: flex;
- flex-direction: column;
- position: absolute;
- max-width: 80%;*/
-  max-width: 85%;
-  margin: 1.5rem auto;
+.profil-form {
+  width: 85%;
+  margin: 0;
   box-shadow: vars.$box-shadow;
   border-radius: vars.$border-radius-global;
   background-color: vars.$color_light;
   color: vars.$color-grey_more;
   font-family: vars.$font;
+  border: vars.$color, 2px solid;
   font-size: 1em;
-  border: vars.$color, 1px solid;
-  outline: none;
-
-
-//Formulaire pour créer ou modifier son profil
-&-form {
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  outline: none;
-  font-size: 1.2em;
   
- 
-  &-title {
-   
-    font-size: 1.5em;
-    font-weight: bold;
-    background-color: vars.$color;
-    color: vars.$color_light;
-    text-align: center;
-    padding: 1.5rem;
-    border-radius: vars.$border-radius-top;
-  };
+    &-element {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-radius: 10px; 
+    };
 
-
-
-  &-element {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 10px; 
-  };
-
-    &-text {
+    &-title {
+      font-size: 1.3em;
+      font-weight: bold;
       background-color: vars.$color;
       color: vars.$color_light;
       text-align: center;
-      font-size: 1.2em;
       padding: 0.5rem;
+      border-radius: vars.$border-radius-top;
     };
 
-    &-button {
-        margin: auto 0;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-        background-color: vars.$color_light;
-        outline: none;
-       
-      };
-
-    &-submit {
-      background-color: vars.$color_light;
-      border: vars.$color solid 0.1px;
-      color: vars.$color;
-      text-shadow: 0.1em 0.1em 0.1em vars.$color-grey;
-      font-size: 1.2em;
-      font-weight: bold;
-      padding: 1rem;
-      margin: auto;
-      border-radius:25px;
-      display: flex;
-      text-align: center;
-      outline: none;
-      //width: 100vh;
-    };
-
-      &-sport {
-      display: flex;
-      flex-direction: column;
-      background-color: vars.$color-light;
-      padding: 1rem;
-      justify-content: space-between;
-      height: 11rem;
-     
-      
-      
-      &_select {
-        background-color: vars.$color-light;      
-        //margin: auto;
-        border-color: vars.$color;
-        border-radius: 8px;
-        height: 3rem;
-        color: vars.$color;
-        font-size: 1em;
-        font-family: vars.$font;
-        
-        width: 100%;
-        padding-bottom: 1rem;
-      }
-
-      &_others {
-        display: flex;
-        flex-direction: column;
-       // justify-content: space-between;
-       padding-top: 0rem;
-        
-      }
-          &_title{
-            color: vars.$color;
-            font-size: 1em;
-          }
-
-          &_input {
-            width: 100%;
-            justify-content: space-between;
-            text-align: center;
-            border: vars.$color-grey solid 0.1px;
-            margin-top: 1rem;
-            border-radius: 25px;
-            height: 2.5rem;
-            font-size: 1em
-            
-
-          }
-      };
-
-
+    // photo nom prenom date de naissance upload pseudo
       &-header {
         display: flex;
         background: vars.$color_light; 
       };
 
-      &-identity {
-          
+      //top right NOM et prenom
+      &-identity {          
           display: flex;
           flex-direction: column;
           justify-content: space-between; 
-        
-         padding-left: 0rem;
+          padding-left: 0rem;
           padding-right: 1.5rem;
-      }
-          &-firstname {
-            padding-top: 4rem;
+         
+          &_firstname {
+            padding-top: 3rem;
+            border: vars.$color-grey solid 1px; ;
+          //border-bottom:  0.1px;
+            //outline: none;
           }
 
-          &-lastname{
+          &_lastname{
             padding-bottom: 1rem;
           }
-      
+           &_input {
+             border: none;
+           }
+      };
 
+      // upload photo et affichage
       &-upper {
           display: flex;
           flex-direction: column;
@@ -180,33 +88,38 @@
             padding-left: 3rem;
             color: rgba(255, 255, 255, 0);
           }
+        };
 
-      };
-      
+       // bloc pseudo et date de naissance  
       &-pseudobirthdate {
           display: flex;
           justify-content: space-around;
           background-color:  vars.$color_light;
           padding-right: 1.5rem;
-          //padding-top: 0rem;
-          padding-bottom: 1rem;
-         
+          padding-bottom: 1rem;       
       };
     
         &-date {   
-          //outline: none; 
       border-right: none;
       border-left: none;
       border-top: none;
       border-bottom: vars.$color-grey 1px solid;
-      padding-left: 0rem; 
-      
-          
+      padding-left: 0rem;         
+      background-color: vars.$color_light;
+      color: vars.$color-grey_more;
+        };
+
+        &-pseudo {    
+      border-right: none;
+      border-left: none;
+      border-top: none;
+      border-bottom: vars.$color-grey 1px solid;
+      padding-left: 0rem;         
       background-color: vars.$color_light;
       color: vars.$color-grey_more;
         };
         
-
+      // espace bio
       &-bio {
         padding-top: 1.5rem;
         background-color: vars.$color_light;
@@ -230,13 +143,49 @@
       &-emailpassword {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        //justify-content: space-between;
         background: vars.$color_light; 
         padding: 1.5rem;
         padding-left: 1rem;
         padding-right: 1rem;
+        
+
+        &_input {       
+          border-right: none;
+          border-left: none;
+          border-top: none;
+          border-bottom: vars.$color-grey 1px solid;
+          padding-top: 1rem;
+          height: 2rem;
+            }
+        };
+
+
+  // bouton sauvegarder
+    &-button {
+      margin: auto 0;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      background-color: vars.$color_light;
+      outline: none;     
     };
-};
+
+    &-submit {
+      background-color: vars.$color_light;
+      border: vars.$color solid 0.1px;
+      color: vars.$color;
+      text-shadow: 0.1em 0.1em 0.1em vars.$color-grey;
+      font-size: 1.2em;
+      font-weight: bold;
+      padding: 1rem;
+      margin: auto;
+      border-radius:25px;
+      display: flex;
+      text-align: center;
+      outline: none;
+    };
+
+    // bas de page avec link etour vers la page d'accueil
     .home-redirection {
       background-color: vars.$color;
       padding: 0.8rem;
@@ -245,24 +194,25 @@
       border-radius: vars.$border-radius-bottom;
       text-overflow: clip;
       display: flex;
-     justify-content: center;
+      justify-content: center;
       position: relative;
        
     &-text {   
-      font-size: 0.8em;
+      font-size: 1.3em;
       text-align: right;
     };
     
     &-link {
         text-shadow: 0.1em 0.1em 0.2em vars.$color-grey_more;
-        text-overflow: clip;
-        color: vars.$color_light;              
+        color: vars.$color_light; 
+        text-overflow: clip;            
         font-size: 0.8em;
         padding-left: 1rem;
-        text-align: right;
-    
+        text-align: right;   
       }
     };
-};
+
+
+  };
 
 
