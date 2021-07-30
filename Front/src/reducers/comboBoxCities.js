@@ -35,11 +35,12 @@ import {
               lat: action.payload.coords.lat           
           };
         }else{
+          if(state.name){
           return{
             ...state, 
               [state.name]: action.payload.city          
           };
-        }
+        }}
         
       default:
         return state;
