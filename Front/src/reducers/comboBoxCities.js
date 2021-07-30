@@ -7,7 +7,7 @@ import {
   export const initialState = {
     resultsFetch: [],
     loading: false, 
-    departure_city: "",
+    name:"",
     long:"",
     lat:""   
   };
@@ -22,17 +22,24 @@ import {
         return{
           ...state,
           loading: false,
-          resultsFetch: action.payload
+          name: action.payload.name,
+          resultsFetch: action.payload.cities
         };
         case SEARCH_INPUTS_COORDS:
           console.log("reducers combo",action.payload);
+          if(state.name ==="departure_city"){
           return{
             ...state, 
-              departure_city: action.payload.city,         
+              [state.name]: action.payload.city,         
               long: action.payload.coords.lng,
-              lat: action.payload.coords.lat
-            
+              lat: action.payload.coords.lat           
           };
+        }else{
+          return{
+            ...state, 
+              [state.name]: action.payload.city          
+          };
+        }
         
       default:
         return state;

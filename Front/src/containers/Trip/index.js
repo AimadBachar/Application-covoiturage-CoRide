@@ -7,7 +7,7 @@ const mapStateToProps = (state) => ({
   departure_city: state.comboBoxCities.departure_city,
   longitude_departure: state.comboBoxCities.long,
   latitute_departure: state.comboBoxCities.lat,
-  destination_city: state.trip.inputs.destination_city,
+  destination_city: state.comboBoxCities.destination_city,
   activity_id: state.trip.inputs.activity_id,
   departure_timestamp: state.trip.inputs.departure_timestamp,
   description: state.trip.inputs.description,

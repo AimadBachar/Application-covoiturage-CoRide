@@ -40,6 +40,7 @@ const middleware = (store) => (next) => (action) => {
       inputs.longitude_departure = store.getState().comboBoxCities.long;
       inputs.latitude_departure = store.getState().comboBoxCities.lat;
       inputs.departure_city = store.getState().comboBoxCities.departure_city;
+      inputs.destination_city = store.getState().comboBoxCities.destination_city;
       
       console.log(inputs);
 
