@@ -7,6 +7,7 @@ import { fetchSearchCity,searchInputsCoords } from 'src/actions/comboBoxCities';
 const mapStateToProps = (state) => ({
     resultsFetch: state.comboBoxCities.resultsFetch,
     departure_city: state.comboBoxCities.departure_city,
+    destination_city: state.comboBoxCities.destination_city,
     long: state.comboBoxCities.long,
     lat: state.comboBoxCities.lat
 });
@@ -14,7 +15,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({  
 
     onInputCityChange:(name,city)=>{
-      const action = fetchSearchCity(city);
+      const action = fetchSearchCity({name:name,city:city});
       action.name = name;
       console.log("name",name)
       dispatch(action);
