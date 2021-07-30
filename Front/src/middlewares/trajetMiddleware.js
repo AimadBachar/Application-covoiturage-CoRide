@@ -22,6 +22,10 @@ export default (store) => (next) => (action) => {
       const inputs = store.getState().trajets.inputs;
       const longitude = store.getState().comboBoxCities.long;
       const latitude = store.getState().comboBoxCities.lat;
+     
+      if(store.getState().comboBoxCities.destination_city){
+      inputs.destination_city = store.getState().comboBoxCities.destination_city;
+      }
 
       if(longitude && latitude){
         inputs.long = longitude;

@@ -3,20 +3,19 @@ import axios from 'axios';
 
 // Import des actions
 import {
-  USER_PROFIL,
   userProfilSuccess,
-  USER_PROFIL_ACTIVITIES,
   userProfilActivities,
-  FETCH_ACTIVITIES
-  
+  FETCH_ACTIVITIES,
+  USER_PROFIL_SUBMIT, 
 } from 'src/actions/userprofil';
+
 
 
 
 const middleware = (store) => (next) => (action) => {
   switch (action.type) {
 // choisir les sports pratiqués
-case FETCH_ACTIVITIES:
+case  FETCH_ACTIVITIES:
   const id = store.getState().id;
   console.log(id);
   // Je lance la requête
@@ -28,7 +27,8 @@ case FETCH_ACTIVITIES:
     .then((res) => {
       console.log('res.data', res.data);
       const action = userProfilActivities(res.data);
-      store.dispatch(action);
+      //const action
+      store.dispatch(action)
 
     })
     .catch((err) => {
@@ -37,31 +37,37 @@ case FETCH_ACTIVITIES:
   break;  
 
 
-   case USER_PROFIL: 
+   case USER_PROFIL_SUBMIT: 
      console.log('user-profil in middleware', action.type);
      console.log(action);
-
-     const formData = new FormData(action.payload);
    
-     for(const key of formData.entries()){
+     const datas = action.payload;
+
+     const user = JSON.parse(localStorage.getItem("tokens"));
+
+     for(const key of datas.entries()){
      console.log(`${key[0]}:${key[1]}`);
      };
+
+     console.log("user",user)
+     
      /*const axiosConfigured = axios.create({
       headers: {'Authorization': `Bearer ${action.payload.token}`}
     }); */
        axios({
-         method: 'post',
-         url: 'http://18.235.248.88:3000/api/v1/users',
-         data: formData, 
-         data: store.getState().user.inputs,
+         method: 'PATCH',
+         url: `http://18.235.248.88:3000/api/v1/user/${user.id}`,
+         data: datas,
          headers: {
-           'Content-Type': 'multipart/form-data'
+           'Content-Type': 'multipart/form-data',
+           'Authorization': `Bearer ${user.token}`
          },
          })
 
         .then((res) => {
           console.log('profil_completed_success', res.data);
-                  
+          
+          // enlever la clef
           localStorage.clear();
           localStorage.setItem('tokens', JSON.stringify(res.data));  
           

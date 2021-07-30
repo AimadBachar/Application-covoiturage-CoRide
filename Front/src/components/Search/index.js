@@ -39,17 +39,9 @@ const Search = ({
         onSubmit={handleSubmit}
       >
 
-        <ComboBoxCities onChange={fieldChange}/>
+        <ComboBoxCities  placeholder="Départ" name="departure_city" />
+        <ComboBoxCities placeholder="Arrivé" name="destination_city" />
 
-
-        <input
-          className="search-form_input destination"
-          type="text"
-          name="destination_city"
-          placeholder="Destination"
-          value={destination_city}
-          onChange={fieldChange}
-        />
         <div className="search-form_sport__date">
           <select
             className="search-form_select"

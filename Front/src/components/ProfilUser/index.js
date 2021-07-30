@@ -5,163 +5,252 @@ import PropTypes from 'prop-types';
 
 import Field from 'src/components/ProfilUser/Field';
 import 'src/components/ProfilUser/styles.scss';
-//import photoKite from 'src/assets/images/kitewindsurf.jpg';
+import icone from 'src/assets/images/login.png';
 
 const ProfilUser = ({
 
-activity_id,
+activity,
 last_name,
 first_name,
 pseudo,
 email,
 password,
-coords,
-city,
-postcode,
-country,
-brand,
-model,
 birthdate,
 tags,
-
-isCompleted,
-profilCompletedMessage,
-changeField,
-handleProfil,
+id,
+onInputChange,
+onSubmitProfil,
 handleFetchActivities,
 //ajout picture
-picture,
+picture_link,
 
 }) => {
-
-
 
   if(tags.length<1){
     handleFetchActivities();
   }
-
-
-
-
-  const handleSubmit = (evt) => {
+    const handleSubmit = (evt) => {   
     evt.preventDefault();
+
     
+   
+
     //on récupere le password, on construit notre regexp et on check
     const password = evt.target.querySelector('input[name="password"]').value;
     const regexp = new RegExp("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[-+!*#$@%_])([-+!*#$@%_\\w]{8,})$");
-
-    const checkPassword = regexp.test(password);
-
-    $(document).ready(function() {
-    $(".element_hide").hide();
-    $('select[name=categories]').change(function() {
-      var categories = $(this).val();
-      if(categories=="hidden") {
-        $("element_hide").show();
-      }
-      else{
-        $(".element_hide").hide();
-      }
-    });
-  })
-  
+    const checkPassword = regexp.test(password); 
      //si password non conform return
      if(!checkPassword) {
-      console.log("ton mot de passe n'est pas conforme au format attendu")
+     console.log("ton mot de passe n'est pas conforme au format attendu")
       return;
     }
-    handleProfil();
+    console.log('submit');
+
+    const updateUser = new FormData(evt.target)
+
+    onSubmitProfil(updateUser);
   };
 
-  //on permet le téléchargement d'une photo
+  //
+  const changeField = (evt) => {
+    evt.preventDefault();
+    const value = evt.target.value;
+    onInputChange(evt.target.name, value )
+  };
+
+
+ /* //on permet le téléchargement d'une photo
   const handleUpload = (evt) => {
     console.log(evt.target.files[0]);
     this.setState({ picture: evt.target.files[0] });
+  };*/
+
+  const ifPictureLink = ()=>{
+    if(picture_link){
+      return (
+        <input type="hidden" name="picture_link" value={picture_link}/>
+      )
+    }
   };
 
 
 return (
     <div className="profil">
       <div className="profil-form">
-          {isCompleted && (
-
-        <div className="profil-form-completed">
-          <Redirect from="/profil" to="/profilpage" />
-          <p className="profil-message">
-            {profilCompletedMessage}
-          </p>
-        </div>
-
-        )}
-        {!isCompleted && (
           <form 
             className="profil-form-element"
-            autoComplete="off"        
+            //autoComplete="off"        
             onSubmit={handleSubmit}
             enctype="application/x-www-form-urlencoded"
           >
             <h1 className="profil-form-title">
-            À propos de vous
+            Modifier le profil
             </h1>
+        <div className="profil-form-header">
+          <div className="profil-form-upper">
+            <div className="profil-form-upper_picture">
+            <img className="profil-form-upper_picture_icone" src={picture_link} alt="photo" />
+            </div>
+                <input
+                  className="profil-form-upper_upload"
+                  type="file"
+                  name="picture"
+                  placeholder="Picture"
+                  accept="image/png, image/jpeg"        
+                /> 
+               </div>
+              <div className="profil-form-identity">
+              <div className="profil-form-firstname">
+                <input type="hidden" name="id" value={id}/>
 
-                <Field
-                  className="profil-form-input"
+                {ifPictureLink()}
+
+                <input
+                  className="profil-form-firstname"
                   type="text"
-                  name="prénom"
+                  name="first_name"
                   placeholder="Prénom"
+                  defaultValue={first_name}
                   onChange={changeField}
-                  value={first_name}
                 />
-                <Field
-                  className="profil-form-input"
+                </div>
+                <div className="profil-form-lastname">
+                <input
+                  className="profil-form-lastname"
                   type="text"
-                  name="nom"
+                  name="last_name"
                   placeholder="Nom"
+                  defaultValue={last_name}
                   onChange={changeField}
-                  value={last_name}
                 />
-
-                <Field
+                
+                </div>
+                </div>
+                 </div>
+                 <div className="profil-form-pseudobirthdate">
+                <input
                   className="profil-form-input"
                   type="text"
                   name="pseudo"
                   placeholder="Pseudo"
-                  onChange={changeField}
-                  value={pseudo}
+                  defaultValue={pseudo}
                 />
-
+               
                 <input
-                  className="signin-form-input"
-                  type="file"
-                  name="picture"
-                  placeholder="Picture"
-                  accept="image/png, image/jpeg"
-                  onChange={handleUpload}
-                //TODO style du champ file à faire           
-                />
-
-                <Field
-                  className="profil-form-input-date"
+                  className="profil-form-date"
                   type="date"
                   name="birthdate"
                   placeholder="Date de naissance"
-                  //autocorrect="off"
-                  data-date-split-input="true"
-                  onChange={changeField}
-                  value={birthdate}
+                  defaultValue={birthdate}
                 />
-
-                <Field
+              </div>
+              
+              <div className="profil-form-sport">
+              
+              
+                {/*<select
+                  className="profil-form-sport_select"
+                  type="select"
+                  name="activity_id"
+                  defaultValue={activity}
+                  onChange={changeField}
+                >
+                  <option
+                  className="profil-form-sport_title" 
+                  value=""
+                  >Choisissez votre sport passion n°1
+                  </option>
+                 {tags.map((tag) => (
+                    <option
+                      name="tag"
+                      key={tag.id}
+                      value={tag.id}
+                    >
+                      {tag.label}
+                    </option>
+                  ))}
+                 </select>
+                 */}
+            <div className="profil-form-sport_others">       
+            <input type="text" className="profil-form-sport_input" placeholder="Sport passion n°2"></input>    
+            <input type="text" className="profil-form-sport_input" placeholder="Sport passion n°3"></input>
+              </div>                
+                 </div> 
+             
+              <div className="profil-form-bio">
+                <textarea 
+                
+                className="profil-form-textarea" 
+                cols="20" rows="5" wrap="hard" 
+                placeholder="plus d'informations sur vous, vos spots préférés" 
+                
+               >
+                </textarea>  
+              </div>
+              
+              <div className="profil-form-emailpassword">
+              <input
                   className="profil-form-input"
                   type="email"
                   name="email"
-                  placeholder="Adresse Email" 
-                  onChange={changeField}
-                  value={email}
+                  placeholder="E-mail" 
+                  defaultValue={email}
                 />
 
-           
-{/*}
+              <input
+                  className="profil-form-input"
+                  type="password"
+                  name="password"
+                  placeholder="Mot de passe"
+                />
+                </div>
+              <div className="profil-form-button">
+                <button 
+                type="submit" 
+                className="profil-form-submit"
+                >
+                  Sauvegarder
+                </button>
+              </div>
+          </form>
+              <div className="home-redirection">
+                <p className="home-redirection-text">
+                    Retour sur la        
+                  <Link
+                    className="home-redirection-link"
+                    to="/"
+                  >
+                  page d'accueil
+                  </Link>
+                </p>
+              </div>         
+        </div>
+      </div>
+    );
+};
+
+ProfilUser.propTypes = {
+  last_name: PropTypes.string.isRequired,
+  first_name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  birthdate: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  activity: PropTypes.string.isRequired,
+  onSubmitProfil: PropTypes.func.isRequired,
+  //onChange: PropTypes.func.isRequired,
+  tags: PropTypes.shape({
+    sport: PropTypes.string.isRequired,
+   })
+ 
+  
+};
+
+export default ProfilUser;
+
+
+
+// autres champs  pour le profil de l'utilisateur
+/*}
                 <Field
                   className="profil-form-input"
                   type="text"
@@ -215,95 +304,15 @@ return (
                   onChange={changeField}
                   value={model}
                 />       
-              */}
+              */
+
+                /*
+                 <p className="profil-form-text">Bio</p>
+                 */
+
+
+                 /*
+
+
                 <p className="profil-form-text">Quel(s) sport(s) de glisse pratiquez vous ?</p>
-          
-              <div className="profil-form-sport">
-                <select
-                  className="profil-form-input"
-                  type="select"
-                  name="activity_id"
-                  value={activity_id}
-                  onChange={changeField}
-                >
-                  <option
-                  className="profil-form-select_title" >Sport 1</option>
-                 { tags.map((tag) => (
-                    <option
-                      name="tag"
-                      key={tag.id}
-                      value={tag.id}
-                    >
-                      {tag.label}
-                    </option>
-                  ))}    
-                </select>
-              
-
-              </div>                
-            
-              <div className="profil-form-bio">
-                <p className="profil-form-text">Bio</p>
-                <textarea className="profil-form-textarea" cols="20" rows="5" wrap="hard"></textarea>
-              </div>
-              <Field
-                  className="profil-form-input"
-                  type="password"
-                  name="password"
-                  placeholder="Mot de passe"
-                  onChange={changeField}
-                  value={password}
-                />
-
-              <div className="profil-form-button">
-                <button 
-                type="submit" 
-                className="profil-form-submit"
-                >
-                  Sauvegarder
-                </button>
-              </div>
-       
-
-          </form>
-        )}
-              <div className="home-redirection">
-                <p className="home-redirection-text">
-                    Retour sur la        
-                  <Link
-                    className="home-redirection-link"
-                    to="/"
-                  >
-                  page d'accueil
-                  </Link>
-                </p>
-              </div>         
-        </div>
-      </div>
-    );
-};
-
-ProfilUser.propTypes = {
-  last_name: PropTypes.string.isRequired,
-  tags: PropTypes.string,
-  first_name: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  birthdate: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
-  coords: PropTypes.string.isRequired,
-  city: PropTypes.string.isRequired,
-  postcode: PropTypes.string.isRequired,
-  country:  PropTypes.string.isRequired,
-  activity_id: PropTypes.string.isRequired,
-  changeField: PropTypes.func.isRequired,
-  handleProfil: PropTypes.func.isRequired,
-  isCompleted: PropTypes.bool,
-  
-};
-// Valeurs par défaut pour les props
-ProfilUser.defaultProps = {
-  isCompleted: false,
-  profilCompletedMessage: 'Profil completed',
-};
-
-export default ProfilUser;
+          */

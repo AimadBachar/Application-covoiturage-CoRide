@@ -23,6 +23,10 @@ const Nav = (props) => {
               <Link to="/contact" exact>
                 <li>Contact</li>
               </Link>
+              <Link to="/info" exact>
+                <li>Info</li>
+              </Link>
+              <li><a href="#">Contact</a></li>
               <li><a href="/connexion">Connexion</a></li>
               <li><a href="/inscription">S'inscrire</a></li>
             </ul>
@@ -46,6 +50,11 @@ const Nav = (props) => {
               <Link to="/profil" exact>
                 <li>Profil</li>
               </Link>
+
+              <Link to="/info" exact>
+                <li>Info</li>
+              </Link>
+
               <Link to="/profilpage" exact>
                 <li>Les utilisateurs</li>
               </Link>
@@ -53,6 +62,7 @@ const Nav = (props) => {
               <Link to="/contact" exact>
                 <li>Contact</li>
               </Link>
+
             </ul>
           </div>
         </nav>
