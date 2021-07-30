@@ -20,7 +20,7 @@ const ComboBoxCities = ({
    
     const name = evt.target.name;
     const value = evt.target.value;
-
+    console.log(value)
     if(value.length>4){
       onInputCityChange(name,value);
     }
@@ -35,6 +35,7 @@ const ComboBoxCities = ({
   const fieldChange = (evt) => {
     evt.preventDefault();
     const value = evt.target.value;
+    
     onInputChange(evt.target.name, value )
   } 
 
@@ -45,10 +46,10 @@ const ComboBoxCities = ({
    * @returns {array} an array of cities
    */
   const filterCities = (city,value)=>{
-    const formatCity = city.city.toLowerCase().split(" ").join("").split("-").join("").split("é").join("e").split("è").join("e");    
+    const formatCity = city.city?.toLowerCase().split(" ").join("").split("-").join("").split("é").join("e").split("è").join("e");    
     const formatValue = value.toLowerCase().split(" ").join("").split("é").join("e").split("è").join("e");
   
-    return formatCity.includes(formatValue) === true;
+    return formatCity?.includes(formatValue) === true;
   }
 
   const insertCoords = ()=>{
@@ -85,6 +86,7 @@ const ComboBoxCities = ({
           dataKey="city"
           textField="city"
           filter={filterCities}
+          focusFirstItem="true"
           renderListItem={
             ({item})=>(
               <span>
