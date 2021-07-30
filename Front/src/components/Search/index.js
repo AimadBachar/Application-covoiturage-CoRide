@@ -38,9 +38,9 @@ const Search = ({
         className="search-form"
         onSubmit={handleSubmit}
       >
-
+      <div className="search-comboboxcities">
         <ComboBoxCities onChange={fieldChange}/>
-
+      </div>
 
         <input
           className="search-form_input destination"
@@ -60,7 +60,7 @@ const Search = ({
             <option
               className="search-form_select_title"
               value=""
-            >Quel sport ?
+            > Kitesurf
             </option>
             {tags.map((tag) => (
               <option
@@ -76,7 +76,7 @@ const Search = ({
             type="date"
             name="departure_timestamp"
             value={departure_timestamp}
-            placeholder="aujourd'hui"
+            placeholder="Aujourd'hui"
             onChange={fieldChange}
           />
         </div> 

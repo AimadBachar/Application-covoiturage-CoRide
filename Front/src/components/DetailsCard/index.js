@@ -2,6 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect, useLocation } from 'react-router-dom'
 
+import driver from '/src/assets/images/driver-orange0.png';
+import pin from '/src/assets/images/pin.png';
+import sit from '/src/assets/images/sit-orange0.png';
+
 import './styles.scss';
 
 
@@ -41,12 +45,12 @@ const DetailsCard = ({
             <p className="card-date">{new Date(card.departure_timestamp).toLocaleDateString("fr-FR")}</p>
             <p className="card-hour">{new Intl.DateTimeFormat('fr-FR', { timeStyle: 'short' }).format(new Date(card.departure_timestamp))}</p>
           </div>
-        </div>
-        <p className="card-destination">Départ: {card.departure_city}</p>
+        </div>     
+        <p className="card-destination">Départ: {card.departure_city}</p>      
         <p className="card-destination">Arrivée: {card.destination_city}</p>
         <p className="card-description">description trajet dsgfshsfhsdhsdghsdgsdg sdgsdvsd dsbvsvsvsdv: {card.description}</p>
         <div className="card-bottom">
-          <span className="card-tag">{card.activity}</span>
+          <span className="card-tag">#{card.activity}</span>
           <span className="card-place">{card.places_available} place(s)</span>
 
           <Link to="/connexion">
@@ -61,6 +65,7 @@ const DetailsCard = ({
       <div className="card" >
         <div className="card-top">
           <div className="card-top_left">
+          <img src={driver} className="card-destination-driver" alt="driver" />
             <a href="#" className="card-profil" onClick={onButtonClickProfilUser}>{card.driver}</a>
           </div>
           <div className="card-top_right">
@@ -68,13 +73,25 @@ const DetailsCard = ({
             <p className="card-hour">{new Intl.DateTimeFormat('fr-FR', { timeStyle: 'short' }).format(new Date(card.departure_timestamp))}</p>
           </div>
         </div>
-        <p className="card-destination">Départ: {card.departure_city}</p>
-        <p className="card-destination">Arrivée: {card.destination_city}</p>
-        <p className="card-description">description trajet dsgfshsfhsdhsdghsdgsdg sdgsdvsd dsbvsvsvsdv: {card.description}</p>
-        <div className="card-bottom">
-          <span className="card-tag">{card.activity}</span>
-          <span className="card-place">{card.places_available} place(s)</span>
+        
+        <div className="card-destination">
+        <div className="card-destination-departure">
+        <img src={pin} className="card-destination-pin" alt="pin" />
+        <p className="card-destination-departure_text">{card.departure_city}</p>
+        </div>
+        <div className="card-destination-arrival">
+        <img src={pin} className="card-destination-pin" alt="pin" />
+        <p className="card-destination-arrival_text">{card.destination_city}</p>
+        </div>
+        </div>
 
+        <p className="card-description">description trajet dsgfshsfhsdhsdghsdgsdg sdgsdvsd dsbvsvsvsdv: {card.description}</p>
+
+        <div className="card-bottom">
+          <span className="card-bottom-tag">#{card.activity}</span>
+          <span className="card-bottom-place">{card.places_available}
+          <img src={sit} className="card-bottom-place_sit" alt="sit" />
+          </span>
           <form onSubmit={handleSubmit}>
             <input type="hidden" value={card.id}></input>
             <button className="card-button">GO !</button> 
