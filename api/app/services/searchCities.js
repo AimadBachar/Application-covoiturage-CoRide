@@ -15,23 +15,34 @@ const searchCities = async (req, res, next) => {
         const datas = await openCage.geocode({
             q: req.query.city,
             countrycode: "fr",
-            language:"fr",
-            pretty:1
+            language: "fr",
+            pretty: 1
         });
 
         //si on a des résultats on return les résultats en gardant uniquement les infos qu'ils nous faut
         if (datas) {
 
             const cities = [];
-            for(const city of datas.results){
-                if(city.components.city || city.components.village){                
-                cities.push({
-                    city: city.components.city || city.components.village,
-                    postcode: city.components.postcode,
-                    coords: city.geometry
-                })
-            }}
-            
+            for (const city of datas.results) {
+
+                //on précise les emplacements possible de ville
+                const cityAvailable = city.components.city 
+                    || city.components.village 
+                    || city.components.town 
+                    || city.components.municipality;
+
+                //on check si elle n'est pas déja présente dans le tableau de résultats...
+                const check = cities.find(index=>index.city === cityAvailable);                    
+
+                //si non alors on push dans le tableau
+                if (!check) {
+                    cities.push({
+                        city: cityAvailable,
+                        postcode: city.components.postcode || city.components.county,
+                        coords: city.geometry
+                    })
+                }
+            }
 
             res.json(cities);
 
