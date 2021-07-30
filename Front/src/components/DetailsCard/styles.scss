@@ -1,70 +1,146 @@
 @use 'src/styles/vars';
-.card {
-  max-width: 80%;
-  margin: 1.5rem auto;
-  box-shadow: vars.$box-shadow;
-  border-radius: vars.$border-radius-global;
-  font-family: vars.$font;
-  border: vars.$color, 2px solid;
 
-  &-top {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
 
-  &-bottom {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
+    .card {
+        max-width: 85%;
+        margin: 1.5rem auto;
+        box-shadow: vars.$box-shadow;
+        border-radius: vars.$border-radius-global;
+        background-color: vars.$color_light;
+        color: vars.$color-grey_more;
+        font-family: vars.$font;
+        border: vars.$color, 2px solid;
+        margin-top: 2rem;
+        position: relative;
+        padding: 1rem;
+        top: -120px;
+        
 
-  &-profil {
-    position: relative;
-    font-size: 1em;
-    font-weight: bold;
-    left: 5px;
-    color: vars.$color;
-  }
+      &-top {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
 
-  &-destination {
-    background-color: #E5E5E5;
-    text-align: center;
-    max-width: 80%;
-    margin: 1.5rem auto 1.5rem auto;
-    padding: 1rem 1rem;
-    color: vars.$color;
-  }
+        &_left {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+      }
 
-  &-description {
-    position: relative;
-    border: 1px solid vars.$color;
-    padding: 0.8rem auto;
-    text-align: center;
-    margin: 1rem auto;
-  }
+      &-profil {
+        position: relative;
+        font-size: 1em;
+        font-weight: bold;
+        left: 5px;
+        color: vars.$color;
+        padding-top: 1.5rem;
+      }
 
-  &-date {
-    position: relative;
-    right: 0;
-  }
+      &-destination {
+        background-color: vars.$color-opacity;
+        text-align: center;
+        max-width: 97%;
+        margin: 1.5rem auto 1.5rem auto;
+        color: vars.$color-grey_more;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        font-size: 1.2em;
 
-  &-hour {
-    position: relative;
-  }
-  
-  &-button {
-    position: relative;
-    padding: 0.5rem;
-    background-color: vars.$color;
-    color: vars.$color-light;
-  }
+        &-driver {
+          width: 50px;
+          height: 50px;
+          display: flex;
+          flex-direction: row;
+        }
+        
+        &-departure {
+        display: flex;
+        flex-direction: row;
+        padding-left: 0.5rem;
+        padding-top: 1rem;
+        padding-bottom: 2.5rem;
 
-  &-tag {
-    position: relative;
-    color: vars.$color;
-    border: 1px solid vars.$color;
-    padding: 0.5rem;
-  }
+        &_text {
+          padding-left: 1rem;
+          }
+        }
+
+        &-arrival {
+        display: flex;
+        flex-direction: row;
+        padding-left: 0.5rem;
+
+        &_text {
+          padding-bottom: 1rem;
+          padding-left: 1rem;
+          }
+        }
+
+        &-pin {
+          width: 17px;
+          height: 17px;
+          opacity: 70%;
+           }
+      }
+
+      &-description {
+        position: relative;
+        border: 1px solid vars.$color-opacity;
+        color: vars.$color-grey_more;
+        padding: 0.8rem;
+        text-align: center;
+        margin: 1rem auto;
+        border-radius: 15px;
+        height: 6rem;
+      }
+
+      &-date {
+        position: relative;
+        right: 0;
+      }
+
+      &-hour {
+        position: relative;
+      }
+      
+      &-bottom {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-top: 2rem;
+        padding-left: 0.4rem;
+        padding-right: 1rem;
+        padding-bottom: 0.5rem;
+      
+      &-tag {
+        color: vars.$color;
+        font-size: 1.5em;
+        padding-top: 1rem;
+      }
+
+      &-place {
+        font-size: 1.5em;
+       // padding-bottom: 1rem;
+        padding-right: 1rem;
+        color: vars.$color;
+
+      &_sit {
+        height: 40px;
+        width: 40px;
+        }
+      }
+    }
+      &-button {
+        background-color: vars.$color;
+        color: vars.$color-light;
+        border-radius: 15px;
+        border: none;
+        outline: none;
+        height: 100%;
+        width: 130%;
+      }
     
-}
+    } 
+    
