@@ -5,30 +5,50 @@ import React from 'react';
 import './styles.scss';
 
 const Contact = ({
-    onInputChange,
-    onSubmitSearch
+    submitEmail,
+    logged,
+    email,
+    pseudo
 }) => {
-    const handleSubmit = (evt) => {
-        evt.preventDefault();
-        console.log('submit');
-        onSubmitSearch();
-    
-      };
-      const fieldChange = (evt) => {
-        evt.preventDefault();
-        const value = evt.target.value;
-        onInputChange(evt.target.name, value )
+    const handleSubmitMessageForm = (event)=>{
+        event.preventDefault();
+        const mail = new FormData(event.target);
+        submitEmail(mail);
       }
-      return (
+
+     if (!logged) {
+        return (
+            <div className="contact" >
+                <h1 className="contact-title">Nous contacter</h1>
+                <p className="contact-info">Une demande, un renseignement, veuillez nous écire à cet email:</p>
+                <a className="contact-title" href="mailto:application.coride@gmail.com">application.coride@gamil.com</a>
+            </div>
+            )
+    }  else {
+        return (
     <div className="contact" >
         <h1 className="contact-title">Nous contacter</h1>
-        <p className="contact-info">Une demande, un renseignement, veuillez remplir ce formulaire:</p>
-        <form onSubmit={handleSubmit} className="contact-form">
-            <textarea onChange={fieldChange} className="contact-form_input" value="" placeholder="veuillez écrire votre intérogation ici"></textarea>
-            <button className="contact-form_btn">Envoyer</button>  
-        </form>
+            <p className="contact-info">Une demande, un renseignement, veuillez remplir ce formulaire:</p>
+        <div className="profil-bottom">
+            <div className="profil-contact">
+                <form className="profil-form" method="post" action="" onSubmit={handleSubmitMessageForm}>
+                        <div>
+                        <input type="hidden" name="recipient" value="Admin"/>
+                        <input type="hidden" name="email" value="application.coride@gmail.com"/>
+                        <textarea className="profil-commentaire" rows="5" cols="28" wrap="physique" name="message" placeholder="Posez votre question ici..."></textarea>
+                        </div>
+                        <div>
+                        <input className="profil-submit" type="submit" value="Envoyer" />
+                        </div> 
+                </form>
+        </div>
+      </div>
     </div>
-    )
+      
+      )
+
+    } 
+
 };
 
 // Card.proptypes = {

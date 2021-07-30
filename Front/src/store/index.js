@@ -10,6 +10,7 @@ import signinMiddleware from 'src/middlewares/signinMiddleware';
 import userprofilMiddleware from 'src/middlewares/userprofilMiddleware';
 import comboBoxCitiesMiddleware from 'src/middlewares/comboBoxCitiesMiddleware';
 import detailsProfilMiddleware from 'src/middlewares/detailsProfilMiddleware';
+import contactMiddleware from 'src/middlewares/contactMiddleware';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -21,7 +22,8 @@ const enhancers = composeEnhancers(
     signinMiddleware,
     userprofilMiddleware,
     comboBoxCitiesMiddleware,
-    detailsProfilMiddleware
+    detailsProfilMiddleware,
+    contactMiddleware
   ),
 );
 
