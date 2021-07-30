@@ -19,16 +19,18 @@ const Nav = (props) => {
               <Link to="/" exact>
                 <li>Accueil</li>
               </Link>
-              <li><a href="#">Info</a></li>
               <Link to="/contact" exact>
                 <li>Contact</li>
               </Link>
               <Link to="/info" exact>
                 <li>Info</li>
               </Link>
-              <li><a href="#">Contact</a></li>
-              <li><a href="/connexion">Connexion</a></li>
-              <li><a href="/inscription">S'inscrire</a></li>
+              <Link to="/connexion" exact>
+              <li>Connexion</li>
+              </Link>
+              <Link to="/inscription" exact>
+              <li>S'inscrire</li>
+              </Link>
             </ul>
           </div>
         </nav>
@@ -59,7 +61,6 @@ const Nav = (props) => {
                 <li>Co'Riders</li>
               </Link>
 
-              <li><a href="#">Info</a></li>
               <Link to="/contact" exact>
                 <li>Contact</li>
               </Link>
