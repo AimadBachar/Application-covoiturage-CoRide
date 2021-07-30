@@ -22,7 +22,7 @@ const mailSender = (mail = {}) => {
                 }],
                 "Subject": `Co'Ride - ${mail.sender} t'as envoyé un message.`,
                 "HTMLPart": `<h3>Salut ${mail.recipient}!</h3>
-                            <p>${mail.sender}, utilisateur de Co'Ride viens de t'envoyer le message ci dessous: </p>
+                            <p>${mail.sender}, utilisateur de Co'Ride vient de t'envoyer le message ci dessous: </p>
                             <p><em>${mail.message}</em></p>
                             <br/>
                             <p>Co'Ride, l'application de covoiturage pour les passionnés!</>`
