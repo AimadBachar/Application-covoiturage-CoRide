@@ -7,6 +7,8 @@ import {
   userProfilActivities,
   FETCH_ACTIVITIES,
   USER_PROFIL_SUBMIT, 
+  FETCH_ADD_ACTIVITIES,
+  addActivityUserSuccess
 } from 'src/actions/userprofil';
 
 
@@ -78,6 +80,37 @@ case  FETCH_ACTIVITIES:
         });
         break;
 
+        case FETCH_ADD_ACTIVITIES:
+
+        const {token, id:userId} = JSON.parse(localStorage.getItem("tokens"));
+        const activityId = store.getState().userprofil.inputs.activity_id;
+
+        const activity = {
+          id: activityId
+        };
+        console.log("activity",activity)
+          axios({
+            method: 'POST',
+            headers:{
+              'Content-Type':'application/json',
+              'Authorization' : `Baerer ${token}`
+            },
+            url: `http://18.235.248.88:3000/api/v1/user/${userId}/activities`,
+            data:JSON.stringify(activity)
+              })
+        
+            .then((res) => {
+              console.log('res.data', res.data);
+              const action = addActivityUserSuccess(res.data);
+              //const action
+              store.dispatch(action);
+        
+            })
+            .catch((err) => {
+              console.error(err);
+            });
+
+            break;
   }
   next(action);
 }

@@ -19,9 +19,10 @@ onInputChange,
 onSubmitProfil,
 handleFetchActivities,
 picture_link,
-
-
+activities,
+onSubmitActivities,
 usersprofil,
+
 
 }) => {
 
@@ -68,6 +69,12 @@ usersprofil,
     }
   };
 
+  const handleSubmitActivities =(event)=>{
+    event.preventDefault();
+    console.log("handle submit activities");
+    onSubmitActivities();
+  }
+
 
 return (
 
@@ -84,12 +91,14 @@ return (
           <div className="profil-form-upper">
               <img className="profil-form-upper_picture" src={picture_link || profilVide}/>
             
+                <br/><br/>
                 <input
                   className="profil-form-upload" type="file"
                   name="picture" placeholder="Picture"
                   accept="image/png, image/jpeg"/> 
 
                      {ifPictureLink()}
+                     
                      </div>
 
             <div className="profil-form-identity">
@@ -149,12 +158,12 @@ return (
 
       <form // FORM 2  CHOIX DES SPORTS + BOUTON
         className="profil-form-element"       
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmitActivities}
             enctype="application/x-www-form-urlencoded">
            
            <div className="profil-form-sport">     
                 <select className="profil-form-sport_select" type="select" name="activity_id" 
-                       defaultValue={activity} onChange={changeField}>
+                        onChange={changeField}>
                    <option
                       className="profil-form-sport_title" value="">
                       Choisissez votre sport passion n°1
@@ -172,9 +181,10 @@ return (
           <div // RECUPERER LES TAGS DES SPORTS
               className="profil-form-sport_others">   
              
-                <input type="text" className="profil-form-sport_input" placeholder="Sport passion n°2"></input>    
-               <input type="text" className="profil-form-sport_input" placeholder="Sport passion n°3"></input>
-           
+             {activities?.map(activity=>(
+                <span className="profil-form-sport_input">{activity.label}</span>   
+               
+             ))}
                </div>                
                            
           <div className="profil-form-button">
