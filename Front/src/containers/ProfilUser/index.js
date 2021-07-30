@@ -5,7 +5,8 @@ import ProfilUser from 'src/components/ProfilUser';
 import {  
   userProfilInputChange,
   fetchActivities,
-  userProfilSubmit 
+  userProfilSubmit,
+  fetchAddActivities 
  } from 'src/actions/userprofil';
 
 
@@ -19,6 +20,7 @@ const mapStateToProps = (state) => ({
   password: state.userprofil.inputs.password,
   birthdate: state.userprofil.inputs.birthdate,
   activity_id: state.userprofil.inputs.activity_id,
+  activities: state.userprofil.activities,
   tags: state.userprofil.tags,
   picture_link: state.userprofil.inputs.picture_link,
   /*coords: state.userprofil.inputs.coords,
@@ -59,6 +61,12 @@ const mapDispatchToProps = (dispatch) => ({
     const action = userProfilSubmit(formData);
     dispatch(action);
   },
+
+  onSubmitActivities: ()=>{
+    console.log("containers add activities");
+    const action = fetchAddActivities();
+    dispatch(action);
+  }
 
 });  
 

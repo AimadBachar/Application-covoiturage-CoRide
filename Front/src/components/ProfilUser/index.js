@@ -1,14 +1,11 @@
 import React from 'react';
 import { Link, BrowserRouter, Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
-
-import Field from 'src/components/ProfilUser/Field';
+import profilVide from "src/assets/images/profil_vide.jpg"
 import 'src/components/ProfilUser/styles.scss';
-import icone from 'src/assets/images/login.png';
+
 
 const ProfilUser = ({
-
 activity,
 last_name,
 first_name,
@@ -21,8 +18,11 @@ id,
 onInputChange,
 onSubmitProfil,
 handleFetchActivities,
-//ajout picture
 picture_link,
+activities,
+onSubmitActivities,
+usersprofil,
+
 
 }) => {
 
@@ -33,8 +33,6 @@ picture_link,
     evt.preventDefault();
 
     
-   
-
     //on récupere le password, on construit notre regexp et on check
     const password = evt.target.querySelector('input[name="password"]').value;
     const regexp = new RegExp("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[-+!*#$@%_])([-+!*#$@%_\\w]{8,})$");
@@ -51,13 +49,11 @@ picture_link,
     onSubmitProfil(updateUser);
   };
 
-  //
   const changeField = (evt) => {
     evt.preventDefault();
     const value = evt.target.value;
     onInputChange(evt.target.name, value )
   };
-
 
  /* //on permet le téléchargement d'une photo
   const handleUpload = (evt) => {
@@ -73,159 +69,144 @@ picture_link,
     }
   };
 
+  const handleSubmitActivities =(event)=>{
+    event.preventDefault();
+    console.log("handle submit activities");
+    onSubmitActivities();
+  }
+
 
 return (
-    <div className="profil">
-      <div className="profil-form">
-          <form 
-            className="profil-form-element"
-            //autoComplete="off"        
+
+  
+    <div className="profil-form">
+      <h1 className="profil-form-title">Modifier le profil</h1>
+            
+      <form // FORM 1 HEADER
+            className="profil-form-element"       
             onSubmit={handleSubmit}
-            enctype="application/x-www-form-urlencoded"
-          >
-            <h1 className="profil-form-title">
-            Modifier le profil
-            </h1>
-        <div className="profil-form-header">
+            enctype="application/x-www-form-urlencoded">
+          
+       <div className="profil-form-header">
           <div className="profil-form-upper">
-            <div className="profil-form-upper_picture">
-            <img className="profil-form-upper_picture_icone" src={picture_link} alt="photo" />
+              <img className="profil-form-upper_picture" src={picture_link || profilVide}/>
+            
+                <br/><br/>
+                <input
+                  className="profil-form-upload" type="file"
+                  name="picture" placeholder="Picture"
+                  accept="image/png, image/jpeg"/> 
+
+                     {ifPictureLink()}
+                     
+                     </div>
+
+            <div className="profil-form-identity">
+                <div className="profil-form-identity_firstname">
+                    <input type="hidden" name="id" value={id}/>
+                    <input
+                      className="profil-form-identity_input" type="text" name="first_name"
+                      placeholder="Prénom" defaultValue={first_name}
+                      onChange={changeField} />
+                </div>
+
+                <div className="profil-form-identity_lastname">
+                    <input
+                      className="profil-form-identity_input" type="text" name="last_name"
+                      placeholder="Nom" defaultValue={last_name}
+                      onChange={changeField} />               
+                </div>
             </div>
-                <input
-                  className="profil-form-upper_upload"
-                  type="file"
-                  name="picture"
-                  placeholder="Picture"
-                  accept="image/png, image/jpeg"        
-                /> 
-               </div>
-              <div className="profil-form-identity">
-              <div className="profil-form-firstname">
-                <input type="hidden" name="id" value={id}/>
+        </div>
 
-                {ifPictureLink()}
 
+              <div className="profil-form-pseudobirthdate">
                 <input
-                  className="profil-form-firstname"
-                  type="text"
-                  name="first_name"
-                  placeholder="Prénom"
-                  defaultValue={first_name}
-                  onChange={changeField}
-                />
-                </div>
-                <div className="profil-form-lastname">
+                  className="profil-form-pseudo" type="text" name="pseudo"
+                  placeholder="Pseudo" defaultValue={pseudo} />             
                 <input
-                  className="profil-form-lastname"
-                  type="text"
-                  name="last_name"
-                  placeholder="Nom"
-                  defaultValue={last_name}
-                  onChange={changeField}
-                />
-                
-                </div>
-                </div>
-                 </div>
-                 <div className="profil-form-pseudobirthdate">
-                <input
-                  className="profil-form-input"
-                  type="text"
-                  name="pseudo"
-                  placeholder="Pseudo"
-                  defaultValue={pseudo}
-                />
-               
-                <input
-                  className="profil-form-date"
-                  type="date"
-                  name="birthdate"
-                  placeholder="Date de naissance"
-                  defaultValue={birthdate}
-                />
+                  className="profil-form-date" type="date" name="birthdate"
+                  placeholder="Date de naissance" defaultValue={birthdate} />
               </div>
+
+              <div // ESPACE BIO
+                  className="profil-form-bio">
+                  <textarea className="profil-form-textarea" cols="20" rows="5" wrap="hard" 
+                    placeholder="plus d'informations sur vous, vos spots préférés">
+                  </textarea>  
+              </div>
+
+            <div className="profil-form-emailpassword">
+              <div className="profil-form-emailpassword_email">
+                <input
+                    className="profil-form-emailpassword_input" type="email" name="email"
+                    placeholder="E-mail" defaultValue={email}/>
+                    </div>
+              <div className="profil-form-emailpassword_password">
+                <input
+                  className="profil-form-emailpasssword_input" type="password"
+                  name="password" placeholder="Mot de passe"/>
+                </div>
+              </div>
+            <div className="profil-form-button">
+                <button type="submit" className="profil-form-submit">
+                       Sauvegarder
+                </button>
+           </div>
+      </form>
               
-              <div className="profil-form-sport">
-              
-              
-                {/*<select
-                  className="profil-form-sport_select"
-                  type="select"
-                  name="activity_id"
-                  defaultValue={activity}
-                  onChange={changeField}
-                >
-                  <option
-                  className="profil-form-sport_title" 
-                  value=""
-                  >Choisissez votre sport passion n°1
-                  </option>
-                 {tags.map((tag) => (
-                    <option
-                      name="tag"
-                      key={tag.id}
-                      value={tag.id}
-                    >
+
+
+      <form // FORM 2  CHOIX DES SPORTS + BOUTON
+        className="profil-form-element"       
+            onSubmit={handleSubmitActivities}
+            enctype="application/x-www-form-urlencoded">
+           
+           <div className="profil-form-sport">     
+                <select className="profil-form-sport_select" type="select" name="activity_id" 
+                        onChange={changeField}>
+                   <option
+                      className="profil-form-sport_title" value="">
+                      Choisissez votre sport passion n°1
+                   </option>
+                      {tags.map((tag) => (
+                    <option name="tag" key={tag.id} value={tag.id}>
                       {tag.label}
                     </option>
-                  ))}
-                 </select>
-                 */}
-            <div className="profil-form-sport_others">       
-            <input type="text" className="profil-form-sport_input" placeholder="Sport passion n°2"></input>    
-            <input type="text" className="profil-form-sport_input" placeholder="Sport passion n°3"></input>
-              </div>                
-                 </div> 
-             
-              <div className="profil-form-bio">
-                <textarea 
-                
-                className="profil-form-textarea" 
-                cols="20" rows="5" wrap="hard" 
-                placeholder="plus d'informations sur vous, vos spots préférés" 
-                
-               >
-                </textarea>  
-              </div>
-              
-              <div className="profil-form-emailpassword">
-              <input
-                  className="profil-form-input"
-                  type="email"
-                  name="email"
-                  placeholder="E-mail" 
-                  defaultValue={email}
-                />
+                      ))}
+                </select>
+           </div>
 
-              <input
-                  className="profil-form-input"
-                  type="password"
-                  name="password"
-                  placeholder="Mot de passe"
-                />
-                </div>
-              <div className="profil-form-button">
-                <button 
-                type="submit" 
-                className="profil-form-submit"
-                >
-                  Sauvegarder
+
+          
+          <div // RECUPERER LES TAGS DES SPORTS
+              className="profil-form-sport_others">   
+             
+             {activities?.map(activity=>(
+                <span className="profil-form-sport_input">{activity.label}</span>   
+               
+             ))}
+               </div>                
+                           
+          <div className="profil-form-button">
+                <button type="submit" className="profil-form-submit">
+                        Sauvegarder
                 </button>
-              </div>
-          </form>
-              <div className="home-redirection">
+          </div>               
+     </form>
+
+
+              <div // REDIRECTION VERS LA PAGE D'ACCUEIL
+               className="home-redirection">
                 <p className="home-redirection-text">
-                    Retour sur la        
+                   Retour sur la        
                   <Link
-                    className="home-redirection-link"
-                    to="/"
-                  >
-                  page d'accueil
+                    className="home-redirection-link" to="/">
+                   page d'accueil
                   </Link>
                 </p>
-              </div>         
-        </div>
-      </div>
+             </div>         
+       </div>    
     );
 };
 
@@ -240,9 +221,7 @@ ProfilUser.propTypes = {
   //onChange: PropTypes.func.isRequired,
   tags: PropTypes.shape({
     sport: PropTypes.string.isRequired,
-   })
- 
-  
+   }) 
 };
 
 export default ProfilUser;
@@ -316,3 +295,8 @@ export default ProfilUser;
 
                 <p className="profil-form-text">Quel(s) sport(s) de glisse pratiquez vous ?</p>
           */
+
+
+                /*
+                  
+                */

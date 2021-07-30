@@ -4,6 +4,7 @@ import {
   USER_PROFIL_ACTIVITIES,
   USER_PROFIL_SUBMIT,
   USER_PROFIL_SUCCESS,
+  ADD_ACTIVITY_USER_SUCCESS
 } from 'src/actions/userprofil';
 
 
@@ -14,7 +15,9 @@ console.log(user);
 
 export const initialState = {
   completed: false,
+
   tags: [],
+  activities: user?.activities,
   inputs: {
     picture_link: user?.picture_link,
     id: user?.id,
@@ -24,7 +27,7 @@ export const initialState = {
     email: user?.email,
     password: user?.password,
     birthdate: user?.birthdate ? new Date(user.birthdate).toISOString().split('T')[0] : "",
-    activity_id: [],
+    activity_id: "",  
    /* coords: '',
     city: '',
     postcode: '',
@@ -45,10 +48,8 @@ const reducer = (state = initialState, action = {}) => {
       console.log(action.payload);
       return {
         ...state,
-        inputs: {
-          ...state.inputs,
-         //[action.name]: action.payload,
-        ...action.payload,
+        inputs: {   
+         [action.name]: action.payload,
         },
       };
 
@@ -75,6 +76,13 @@ const reducer = (state = initialState, action = {}) => {
             completed: true,
             ...action.payload,
           };
+
+      case ADD_ACTIVITY_USER_SUCCESS:
+          console.log('success',action.payload);
+          return{
+            ...state,
+            ...action.payload
+          }
 
     default:
       return state;
