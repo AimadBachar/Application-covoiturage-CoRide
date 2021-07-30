@@ -1,0 +1,36 @@
+@use 'src/styles/vars';
+
+.footer {
+  background-color: vars.$color-grey; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem 0;
+  font-weight: bold;
+  font-size: 1.1em;
+  
+  &-logo {
+    // position: ;
+    &_instagram, &_facebook, &_twitter {
+      width: 60px;
+      // margin-right: 8px;
+    }
+  }
+
+  &-links {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  &-links a {
+    color: vars.$color-light;
+    margin-bottom: 8px;
+    margin-right: 1em;
+    margin-left: 1em;
+  }
+}

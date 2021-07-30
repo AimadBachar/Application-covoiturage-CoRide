@@ -1,0 +1,105 @@
+@use 'src/styles/vars';
+
+.cardInfos {
+  // position: relative;
+  // margin: 10px 0px 10px 0px;
+  // Position relative si besoin de remonter
+  
+  max-width: 80%;
+  margin: 0 auto;
+  box-shadow: vars.$box-shadow;
+  border-radius: vars.$border-radius-global;
+  margin-bottom: 1.5rem;
+  font-family: vars.$font;
+  border: vars.$color, 2px solid;
+
+  &-travel {
+    display: flex;
+    text-align: center;
+    margin: 1rem;
+
+    &_left {
+      min-width: 50%;
+      border-right: 1px solid vars.$color-grey;
+
+      &__profil {
+        color: vars.$color;
+      }
+
+      &__destination {
+        font-size: 1.5rem;
+        margin-top: 1rem;
+        color: vars.$color-grey_more;
+      }
+    }
+
+    &_right {
+      min-width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      font-size: 1.5rem;
+
+      &__date, &__hour {
+        color: vars.$color-grey_more;
+      }
+
+      &__tag {
+        color: vars.$color;
+      }
+    }
+  }
+  &-no_card_message {
+    font-size: 1.5rem;
+    padding: 1rem;
+  }
+
+
+  &-bottom {
+    // display: flex;
+    // flex-direction: row;
+    // justify-content: space-between;
+  }
+
+  &-like {
+    // position: relative;
+    // width: 20px;
+  }
+
+  &-profil {
+    // position: relative;
+    // font-size: 1em;
+    // font-weight: bold;
+    // left: 5px;
+  }
+
+  &-destination {
+    // background-color: #E5E5E5;
+    // text-align: center;
+    // max-width: 80%;
+    // margin: 1.5rem auto 1.5rem auto;
+    // padding: 1rem 1rem;
+    // color: vars.$color;
+  }
+
+  &-date {
+    // position: relative;
+    // right: 0;
+  }
+
+  &-hour {
+    // position: relative;
+  }
+  
+  &-button {
+    // position: relative;
+    // padding: 0.5rem;
+    // background-color: vars.$color;
+    // color: vars.$color-light;
+  }
+
+  &-tag {
+    // position: relative;
+  }
+    
+}

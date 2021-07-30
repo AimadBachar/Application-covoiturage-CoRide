@@ -1,0 +1,27 @@
+@use './src/styles/vars';
+
+.not-found-page {
+  border: vars.$color, 2px solid;
+  max-width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  box-shadow: vars.$box-shadow;
+  border-radius: vars.$border-radius-global;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  &_text {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+  }
+  
+  &_link {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    color: vars.$color-grey_more;
+  }
+}

@@ -1,0 +1,133 @@
+@use 'src/styles/vars';
+
+
+.profil {
+  min-width: 80%;
+  margin: 1.5rem auto;
+  box-shadow: vars.$box-shadow;
+  border-radius: vars.$border-radius-global;
+  font-family: vars.$font;
+  border: vars.$color, 2px solid;
+  padding: 1rem;
+  box-sizing: content-box;
+
+  &-top {
+    width: 100%;
+    margin: .75rem auto;
+  }
+
+  &-pseudo {
+    display:block;
+    width: 100%;
+    text-align: center;
+    color: darkgray;
+    text-transform:uppercase;
+  }
+
+  &-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &-profil {
+    position: relative;
+    font-size: 1em;
+    font-weight: bold;
+    left: 5px;
+    color: vars.$color;
+  }
+
+  &-contact{
+    width:100%;
+  }
+
+  &-localisation {
+    background-color: #E5E5E5;
+    text-align: center;
+    max-width: 80%;
+    margin: 1.5rem auto 1.5rem auto;
+    padding: 1rem 1rem;
+    color: vars.$color;
+  }
+
+  &-bio {
+    position: relative;
+    border: 1px solid vars.$color;
+    padding: 0.8rem auto;
+    text-align: center;
+    margin: 1rem auto;
+  }
+
+  &-email {
+    position: relative;
+    right: 0;
+  }
+
+  &-cellular {
+    position: relative;
+  }
+  
+  &-button {
+    position: relative;
+    padding: 0.5rem;
+    background-color: vars.$color;
+    color: vars.$color-light;
+  }
+
+  &-tag {
+    position: relative;
+    color: vars.$color;
+    border: 1px solid vars.$color;
+    padding: 0.25rem;
+    font-size: .75rem;
+    margin: .25rem;
+    border-radius: 1rem;
+    border: none;
+    color:white;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  &-picture{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+  }
+
+  &-activities{
+    box-sizing: content-box;
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  &-form{
+    width: 100%;
+    display:block;
+    box-sizing: border-box;
+  }
+
+  &-commentaire{
+    width: 100%;
+    border: none;
+    margin: .25rem auto;
+    padding: .75rem;
+    border-radius: .5rem;
+    background-color: white;
+  }
+
+  &-submit{
+    width: 100%;
+    border: none;
+    background: #FC982C;
+    padding: .25rem;
+    color: white;
+    font-weight: 700;
+    border-radius: .5rem;
+  }
+    
+}
