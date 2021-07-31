@@ -8,7 +8,8 @@ import Header from 'src/containers/Header';
 import Search from 'src/containers/Search';
 import Footer from 'src/containers/Footer';
 import Main from '../Main';
-import ConnexionRegistration from '../ConnexionRegistration';
+//import ConnexionRegistration from '../ConnexionRegistration';
+import Login from 'src/containers/Login';
 import Info from '../Info';
 import Signin from 'src/containers/Signin';
 import ProfilUser from 'src/containers/ProfilUser';
@@ -66,7 +67,7 @@ const App = ({loading, fetchTravels, isLogged}) => {
         </Route>
 
         <Route exact path="/connexion">
-          <ConnexionRegistration />
+          <Login />
         </Route>
 
         <Route exact path="/inscription">

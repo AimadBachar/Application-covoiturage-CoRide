@@ -1,10 +1,10 @@
 import React  from 'react';
 import PropTypes from 'prop-types';
 
-import Field from 'src/components/ConnexionRegistration/Login/Field';
+import Field from 'src/components/Login/Field';
 import { Link, Redirect, BrowserRouter as Route } from 'react-router-dom';
 
-import 'src/components/ConnexionRegistration/Login/styles.scss';
+import 'src/components/Login/styles.scss';
 import photoKite from 'src/assets/images/kite.jpg';
 
 const Login = ({
