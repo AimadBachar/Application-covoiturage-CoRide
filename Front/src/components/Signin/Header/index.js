@@ -2,16 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
-import loginBanner from '/src/assets/images/kite.jpg';
+import signinBanner from '/src/assets/images/kitewindsurf.jpg';
 import logo from '/src/assets/logo/coride-b.svg';
 import login from '/src/assets/images/icon user white.png';
 import logout from '/src/assets/images/logout-white.png';
 import Nav from 'src/components/Nav';
 
-// import 'semantic-ui-css/semantic.min.css';
-import 'src/components/Login/Header/styles.scss';
 
-// JSON.parse(localStorage.getItem('token'))['access_token']
+import 'src/components/Signin/Header/styles.scss';
+
 
 const Header = ({
   logged,
@@ -26,7 +25,7 @@ const Header = ({
   if (logged) {
     return (
       <div className="header">
-        <img className="header-photo" src={loginBanner} alt="loginBanner" />
+        <img className="header-photo" src={signinBanner} alt="signinBanner" />
         <img src={logo} className="header-logo" alt="Logo CoRide" />
         <Nav logged={logged}/>
 
@@ -40,7 +39,7 @@ const Header = ({
   } else {
     return (
       <div className="header">
-        <img className="header-photo" src={loginBanner} alt="loginBanner" />
+        <img className="header-photo" src={signinBanner} alt="signinBanner" />
         <img src={logo} className="header-logo" alt="Logo CoRide" />
         <Nav logged={logged}/>
         <Link
@@ -61,4 +60,3 @@ const Header = ({
 // };
 
 export default Header;
-

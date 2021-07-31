@@ -73,7 +73,6 @@ const App = ({loading, fetchTravels, isLogged}) => {
         </Route>
 
         <Route exact path="/inscription">
-         <Header />
           <Signin />
           <Footer />
         </Route>
