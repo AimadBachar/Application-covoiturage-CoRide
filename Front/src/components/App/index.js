@@ -1,25 +1,26 @@
 // Import npm
 import React from 'react';
 import { useEffect } from 'react';
-
-// == Import
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+// == Import
+import Loading from './Loading';
 import Header from 'src/containers/Header';
 import Search from 'src/containers/Search';
 import Footer from 'src/containers/Footer';
+import NotFoundPage from '../NotFoundPage';
 import Main from '../Main';
-//import ConnexionRegistration from '../ConnexionRegistration';
-import Login from 'src/containers/Login';
 import Info from '../Info';
+import Contact from 'src/containers/Contact';
+import Login from 'src/containers/Login';
 import Signin from 'src/containers/Signin';
 import ProfilUser from 'src/containers/ProfilUser';
 import DetailsProfil from 'src/containers/DetailsProfil';
 import Trip from 'src/containers/Trip'
 import Card from 'src/containers/Card';
 import DetailsCard from 'src/containers/DetailsCard';
-import NotFoundPage from '../NotFoundPage';
-import Contact from 'src/containers/Contact';
-import Loading from './Loading';
+
+
+
 
 import './styles.scss';
 
@@ -67,7 +68,6 @@ const App = ({loading, fetchTravels, isLogged}) => {
         </Route>
 
         <Route exact path="/connexion">
-         <Header />
           <Login />
           <Footer />
         </Route>

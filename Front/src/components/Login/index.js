@@ -5,8 +5,9 @@ import Field from 'src/components/Login/Field';
 import { Link, Redirect, BrowserRouter as Route } from 'react-router-dom';
 
 import 'src/components/Login/styles.scss';
-import photoKite from 'src/assets/images/kite.jpg';
-<img className="login-photo" src={photoKite} alt="photo kite" />
+import Header from 'src/components/Login/Header';
+//import photoKite from 'src/assets/images/kite.jpg';
+//<img className="login-photo" src={photoKite} alt="photo kite" />
 
 const Login = ({
 
@@ -23,10 +24,11 @@ const Login = ({
     evt.preventDefault();
     handleLogin();
   };
-
+ 
   return (
+   
 <div className="login">
-<img className="login-photo" src={photoKite} alt="photo kite" />
+<Header />
     <div className="login-form">
       {isLogged && (
       // useEffect(),
@@ -49,7 +51,7 @@ const Login = ({
       )}
 
       {!isLogged && (
-
+        
         <form
           autoComplete="off"
           className="login-form-element"
