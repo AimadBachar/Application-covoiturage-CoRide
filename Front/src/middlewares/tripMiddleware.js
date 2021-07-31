@@ -10,6 +10,8 @@ import {
   ON_SUBMIT_TRIP,
 } from 'src/actions/trip.js';
 
+import { activeModal } from "src/actions/modalInfo";
+
 const middleware = (store) => (next) => (action) => {
   // J'examine le type d'action, pour les CAS qui m'intéressent
   switch (action.type) {
@@ -63,11 +65,21 @@ const middleware = (store) => (next) => (action) => {
           // Je vais donc mettre les données de ma réponse
           // dans l'objet d'action
           const actionToSend = tripSucces(res.data);
+          const success = activeModal({
+            header:"Félicitation!",
+            message:"Votre offre de covoiturage est en ligne!"
+          })
           // Et je n'oublie pas de la dispatcher
           store.dispatch(actionToSend);
+          store.dispatch(success);
         })
         .catch((err) => {
           console.error('erreur:', err);
+          const error = activeModal({
+            header:"Attention",
+            message:"Nous n'avons pas pu valider votre offre de covoiturage, une erreur s'est produite."
+          });
+          store.dispatch(error);
           // J'ai besoin d'avoir une action pour informer le reducer que la requête s'est mal passée.
           /*const actionToSend = userLoginError();
           store.dispatch(actionToSend) */

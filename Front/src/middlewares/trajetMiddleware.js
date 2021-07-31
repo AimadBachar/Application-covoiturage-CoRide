@@ -13,6 +13,8 @@ import {
   FETCH_PROFIL_DRIVER,
 } from '../actions/trajets';
 
+import { activeModal } from "src/actions/modalInfo";
+
 
 
 export default (store) => (next) => (action) => {
@@ -124,7 +126,7 @@ export default (store) => (next) => (action) => {
 
       const token = JSON.parse(localStorage.getItem('tokens'));
       /* console.log("token",token); */
-      const {id : userId} = token;
+      const {id : userId, pseudo} = token;
       console.log("userID",userId);
       const participeUrl = "http://18.235.248.88:3000/api/v1/user/";
       
@@ -141,10 +143,20 @@ export default (store) => (next) => (action) => {
       .then((res) => {
           console.log("participe travel succes", res.data);
           const action = particpeTravelSucces(res.data);
+          const success = activeModal({
+            header:"Félicitation!",
+            message:`Votre participation au covoiturage de ${pseudo} est validé!`
+          })
           store.dispatch(action);
+          store.dispatch(success);
         })
         .catch((err) => {
           console.error(err);
+          const error = activeModal({
+            header:"Attention",
+            message:`Nous n'avons pas pu valider votre particpation car vous êtes surement déjà inscrit`
+          });
+          store.dispatch(error);
         })
     break; 
 }
