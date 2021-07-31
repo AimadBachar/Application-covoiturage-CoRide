@@ -6,6 +6,7 @@ import { Link, Redirect, BrowserRouter as Route } from 'react-router-dom';
 
 import 'src/components/Login/styles.scss';
 import photoKite from 'src/assets/images/kite.jpg';
+<img className="login-photo" src={photoKite} alt="photo kite" />
 
 const Login = ({
 
