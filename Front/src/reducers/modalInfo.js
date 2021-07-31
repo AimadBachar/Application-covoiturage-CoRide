@@ -23,6 +23,7 @@ const reducer = (state = initialState, action = {}) => {
         case ACTIVE_MODAL:
             console.log("open",action.payload)
             return{
+                ...state,
                 open: true,
                 header: action.payload.header,
                 message: action.payload.message

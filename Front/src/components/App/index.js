@@ -19,10 +19,11 @@ import DetailsCard from 'src/containers/DetailsCard';
 import NotFoundPage from '../NotFoundPage';
 import Contact from 'src/containers/Contact';
 import Loading from './Loading';
+import ModalInfo from 'src/containers/ModalInfo';
 
 import './styles.scss';
 
-const App = ({loading, fetchTravels, isLogged}) => {
+const App = ({loading, fetchTravels, isLogged,open,header,message}) => {
   // J'exécute la fonction reçue en props
   // dés que je suis prêt, et une seule fois
   useEffect(fetchTravels, [])
@@ -30,6 +31,7 @@ const App = ({loading, fetchTravels, isLogged}) => {
   useEffect(()=>{
     if (localStorage.getItem('tokens')) {
       isLogged();
+    
     }
 
   }, [])
@@ -45,6 +47,7 @@ const App = ({loading, fetchTravels, isLogged}) => {
   return (
     <Router>
       <div className="app">
+      <ModalInfo open={open} header={header} message={message}/>  
       <Switch>
 
       <Route exact path="/">

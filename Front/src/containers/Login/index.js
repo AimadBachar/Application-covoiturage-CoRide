@@ -9,6 +9,9 @@ const mapStateToProps = (state) => ({
   password: state.user.inputs.password,
   isLogged: state.user.logged,
   loggedMessage: state.user.loggedMessage,
+  open: state.modalInfo.open,
+  header: state.modalInfo.header,
+  message: state.modalInfo.message
 });
 
 const mapDispatchToProps = (dispatch) => ({
