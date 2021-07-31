@@ -1,7 +1,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
-import Header from '../Header';
-import Footer from '../Footer';
+//import Header from '../Header';
+//import Footer from '../Footer';
 
 import Laurent from '../../assets/images/laurent.png';
 import Aimad from '../../assets/images/Aimad.png';
@@ -11,9 +11,6 @@ import Julien from '../../assets/images/Julien.png';
 import '/src/components/Info/styles.scss';
 
 const Info = () => (
-  <div>
-        <Header />
-
         <div className="info">
             <p className="info-text">
                 Cette application s’adresse à toute personne ayant pour passion un sport de glisse et souhaitant se rendre sur les lieux de pratique en covoiturage avec d’autres passionnés.
@@ -41,10 +38,7 @@ const Info = () => (
                 <img  className="info-detail_img" src={Julien} alt="image Julien"/>
                 <p className="info-detail_description">Julien: Git Master</p>
             </div>
-        </div>
-
-        <Footer />
-  </div>
+        </div>  
 );
 
 // Footer.proptypes = {
