@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Header from '../Header';
 import Footer from '../Footer';
 import ComboBoxCities from '../../containers/ComboBoxCities';
+import ModalInfo from '../../containers/ModalInfo';
 
 
 import './styles.scss';
@@ -21,11 +22,70 @@ const Trip = ({
   description,
   onInputChange,
   onSubmitTrip,
-  handleFetchActivities
+  handleFetchActivities,
+  open,
+  header,
+  message,
+  checkInputsContent
 }) => {
+
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log('submit');
+
+
+    if(evt.target.querySelector('input[name="departure_city"]').value ===""){
+      return checkInputsContent({
+        header:"Attention",
+        message:"Vous devez choisir une ville de départ!"
+      })
+    };
+
+    if(evt.target.querySelector('input[name="destination_city"]').value ===""){
+        return checkInputsContent({
+          header:"Attention",
+          message:"Vous devez choisir une ville d'arrivée!"
+        })
+    };
+
+    if(evt.target.querySelector('select[name="activity_id"]').value ===""){
+      return checkInputsContent({
+        header:"Attention",
+        message:"Vous devez choisir une activitée!"
+      })
+  };
+
+  
+  if(evt.target.querySelector('input[name="departure_timestamp"]').value ===""){
+    return checkInputsContent({
+      header:"Attention",
+      message:"Vous devez choisir une date et une heure de départ!"
+    })
+  };
+
+  if(new Date(evt.target.querySelector('input[name="departure_timestamp"]').value) <= Date.now()){
+    return checkInputsContent({
+      header:"Attention",
+      message:`Vous ne pouvez pas choisir une date anterieur au ${(new Date()).toLocaleDateString("fr-FR")}!`
+    })
+  };
+
+  if(evt.target.querySelector('input[name="places_available"]').value <= 0){
+    return checkInputsContent({
+      header:"Attention",
+      message:"Vous devez choisir un nombre de place disponible..."
+    })
+  };
+
+  if(evt.target.querySelector('input[name="description"]').value ===""){
+    return checkInputsContent({
+      header:"Attention",
+      message:"Vous devez écrire une description de votre offre de covoiturage..."
+    })
+  };
+
+
     onSubmitTrip();
     evt.target.reset();
   };
@@ -53,7 +113,7 @@ const Trip = ({
   return (
     <div className="trip">
       <Header />
-
+      <ModalInfo open={open} header={header} message={message}/>
       <form
  
         className="trip-form"
@@ -95,6 +155,7 @@ const Trip = ({
           >
             <option
               className="trip-form_select_title"
+              value=""
             >Quel sport ?
             </option>
             {tags.map((tag) => (
