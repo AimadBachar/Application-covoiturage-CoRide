@@ -46,6 +46,8 @@ const ComboBoxCities = ({
    * @returns {array} an array of cities
    */
   const filterCities = (city,value)=>{
+
+    
     const formatCity = city.city?.toLowerCase().split(" ").join("").split("-").join("").split("é").join("e").split("è").join("e");    
     const formatValue = value.toLowerCase().split(" ").join("").split("é").join("e").split("è").join("e");
   

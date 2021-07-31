@@ -48,6 +48,7 @@ travels_driver
     const updateUser = new FormData(evt.target)
 
     onSubmitProfil(updateUser);
+    evt.target.reset();
   };
 
   const changeField = (evt) => {
@@ -74,6 +75,7 @@ travels_driver
     event.preventDefault();
     console.log("handle submit activities");
     onSubmitActivities();
+    event.target.reset();
   }
 
 

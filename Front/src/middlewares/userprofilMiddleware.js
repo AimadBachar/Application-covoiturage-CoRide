@@ -44,7 +44,7 @@ case  FETCH_ACTIVITIES:
    
      const datas = action.payload;
 
-     const user = JSON.parse(localStorage.getItem("tokens"));
+     let user = JSON.parse(localStorage.getItem("tokens"));
 
      for(const key of datas.entries()){
      console.log(`${key[0]}:${key[1]}`);
@@ -68,9 +68,10 @@ case  FETCH_ACTIVITIES:
         .then((res) => {
           console.log('profil_completed_success', res.data);
           
+          user = {...user,...res.data};
           // enlever la clef
           localStorage.clear();
-          localStorage.setItem('tokens', JSON.stringify(res.data));  
+          localStorage.setItem('tokens', JSON.stringify(user));  
           
           const action = userProfilSuccess(res.data);
           store.dispatch(action);
