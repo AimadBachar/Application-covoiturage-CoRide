@@ -22,7 +22,8 @@ picture_link,
 activities,
 onSubmitActivities,
 usersprofil,
-
+travels_passenger,
+travels_driver
 
 }) => {
 
@@ -194,6 +195,61 @@ return (
                 </button>
           </div>               
      </form>
+
+
+
+     <div // RECUPERER LES TRAJETS EN TANT QUE PASSAGER
+              className="profil-form-sport_others">   
+             <table>
+               <thead>
+            <tr>
+                  <th>Ville de départ</th>           
+                  <th>Ville d'arrivée</th>           
+                  <th>date et heure de départ</th>
+            </tr>
+            </thead>
+            <tbody>
+             {travels_passenger?.map(travel=>(
+               
+                  <tr>
+                    <td>{travel.departure_city}</td>                  
+                    <td>{travel.destination_city}</td>
+                    <td>{new Date(travel.departure_timestamp).toLocaleString('fr-FR')}</td>
+                  </tr> 
+                                              
+             ))}
+             </tbody>
+             </table>
+               </div>    
+
+
+
+
+               <div // RECUPERER LES TRAJETS EN TANT QUE DRIVER
+              className="profil-form-sport_others">   
+             <table>
+               <thead>
+            <tr>
+                  <th>Ville de départ</th>                        
+                  <th>Ville d'arrivée</th>                        
+                  <th>date et heure de départ</th>
+            </tr>
+            </thead>
+            <tbody>
+             {travels_passenger?.map(travel=>(
+              
+                  <tr>
+                    <td>{travel.departure_city}</td>                 
+                    <td>{travel.destination_city}</td>                  
+                    <td>{new Date(travel.departure_timestamp).toLocaleString('fr-FR')}</td>
+                  </tr> 
+                                            
+             ))}
+             </tbody>
+             </table>
+               </div>                    
+          
+
 
 
               <div // REDIRECTION VERS LA PAGE D'ACCUEIL

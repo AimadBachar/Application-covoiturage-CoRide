@@ -18,6 +18,8 @@ export const initialState = {
 
   tags: [],
   activities: user?.activities,
+  travels_passenger: user?.travels_passenger,
+  travels_driver: user?.travels_driver,
   inputs: {
     picture_link: user?.picture_link,
     id: user?.id,

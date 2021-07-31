@@ -23,6 +23,8 @@ const mapStateToProps = (state) => ({
   activities: state.userprofil.activities,
   tags: state.userprofil.tags,
   picture_link: state.userprofil.inputs.picture_link,
+  travels_passenger: state.userprofil.travels_passenger,
+  travels_driver: state.userprofil.travels_driver
   /*coords: state.userprofil.inputs.coords,
   city: state.userprofil.inputs.city,
   postcode: state.userprofil.inputs.postcode,
