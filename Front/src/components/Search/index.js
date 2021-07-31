@@ -8,6 +8,7 @@ import './styles.scss';
 import "react-widgets/scss/styles.scss";
 import { Redirect, Link } from 'react-router-dom';
 
+
 const Search = ({
   tags,
   destination_city,
@@ -19,9 +20,9 @@ const Search = ({
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log('submit');
+    console.log('submit',evt.target);
     onSubmitSearch();
-
+    evt.target.reset();
   };
 
   const fieldChange = (evt) => {
@@ -53,9 +54,9 @@ const Search = ({
             <option
               className="search-form_select_title"
               value=""
-            > Kitesurf
+            > Sport
             </option>
-            {tags.map((tag) => (
+            {tags?.map((tag) => (
               <option
                 key={tag.id}
                 value={tag.id}

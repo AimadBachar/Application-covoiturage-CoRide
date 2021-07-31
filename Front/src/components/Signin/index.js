@@ -11,6 +11,7 @@ import 'src/components/Signin/styles.scss';
 import photoKite from 'src/assets/images/kitewindsurf.jpg';
 
 
+
 const Signin = ({
 
     isSignedIn,
@@ -65,7 +66,7 @@ const Signin = ({
     //si les controles sont ok PARFAIT on valide
     console.log("tu es majeur et le mot de passe est conforme au format attendu, pas d'erreur entre les 2 champs password");
     handleSignin(evt.target);
-    
+    evt.target.reset();
   };
 
   /*

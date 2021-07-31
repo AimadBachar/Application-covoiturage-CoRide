@@ -27,7 +27,7 @@ const Trip = ({
     evt.preventDefault();
     console.log('submit');
     onSubmitTrip();
-
+    evt.target.reset();
   };
 
   const fieldChange = (evt) => {
