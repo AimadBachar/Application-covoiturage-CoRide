@@ -11,6 +11,8 @@ import {
   addActivityUserSuccess
 } from 'src/actions/userprofil';
 
+import { activeModal } from 'src/actions/modalInfo';
+
 
 
 const middleware = (store) => (next) => (action) => {
@@ -46,11 +48,6 @@ case  FETCH_ACTIVITIES:
 
      let user = JSON.parse(localStorage.getItem("tokens"));
 
-     for(const key of datas.entries()){
-     console.log(`${key[0]}:${key[1]}`);
-     };
-
-     console.log("user",user)
      
      /*const axiosConfigured = axios.create({
       headers: {'Authorization': `Bearer ${action.payload.token}`}
@@ -70,14 +67,24 @@ case  FETCH_ACTIVITIES:
           
           user = {...user,...res.data};
           // enlever la clef
-          localStorage.clear();
+          localStorage.removeItem('tokens');
           localStorage.setItem('tokens', JSON.stringify(user));  
           
           const action = userProfilSuccess(res.data);
+          const success = activeModal({
+            header:"Félicitation!",
+            message:"Votre profil a bien été mis à jour"
+          });
           store.dispatch(action);
+          store.dispatch(success);
         })
         .catch((err) => {
           console.error(err);
+          const error = activeModal({
+            header:"Attention",
+            message:"Nous n'avons pas pu mettre à jour votre profil."
+          });
+          store.dispatch(error);
         });
         break;
 

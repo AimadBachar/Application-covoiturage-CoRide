@@ -25,6 +25,7 @@ export const initialState = {
     id: user?.id,
     last_name: user?.last_name,
     first_name: user?.first_name,
+    biography: user?.biography,
     pseudo: user?.pseudo,
     email: user?.email,
     password: user?.password,
