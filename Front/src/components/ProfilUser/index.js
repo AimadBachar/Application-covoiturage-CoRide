@@ -86,12 +86,14 @@ return (
     <HeaderProfilUser />
    
     <div className="profil-form">
-    <h1 className="profil-form-title">Modifier le profil</h1>
+   
       <form // FORM 1 HEADER
             className="profil-form-element"       
             onSubmit={handleSubmit}
             enctype="application/x-www-form-urlencoded">
-          
+      <h1 className="profil-form-title">
+      Modifier le profil
+      </h1> 
        <div className="profil-form-header">
           <div className="profil-form-upper">
               <img className="profil-form-upper_picture" src={picture_link || profilVide}/>
@@ -183,7 +185,7 @@ return (
            </div>
 
 
-          
+      
           <div // RECUPERER LES TAGS DES SPORTS
               className="profil-form-sport_others">   
              
@@ -201,9 +203,9 @@ return (
      </form>
 
 
-
+     <div className="profil-form-element">
      <div // RECUPERER LES TRAJETS EN TANT QUE PASSAGER
-              className="profil-form-sport_others">   
+              className="profil-form-mytravelspassenger">   
              <table>
                <thead>
             <tr>
@@ -212,8 +214,8 @@ return (
                   <th>date et heure de départ</th>
             </tr>
             </thead>
-            <tbody>
-             {travels_passenger?.map(travel=>(
+                 <tbody>
+                   {travels_passenger?.map(travel=>(
                
                   <tr>
                     <td>{travel.departure_city}</td>                  
@@ -222,23 +224,20 @@ return (
                   </tr> 
                                               
              ))}
-             </tbody>
+                </tbody>
              </table>
-               </div>    
+           </div>    
 
-
-
-
-               <div // RECUPERER LES TRAJETS EN TANT QUE DRIVER
-              className="profil-form-sport_others">   
+           <div // RECUPERER LES TRAJETS EN TANT QUE DRIVER
+              className="profil-form-mytravelsdriver">   
              <table>
                <thead>
-            <tr>
-                  <th>Ville de départ</th>                        
-                  <th>Ville d'arrivée</th>                        
-                  <th>date et heure de départ</th>
-            </tr>
-            </thead>
+                <tr>
+                    <th>Ville de départ</th>                        
+                    <th>Ville d'arrivée</th>                        
+                    <th>date et heure de départ</th>
+                </tr>
+              </thead>
             <tbody>
              {travels_passenger?.map(travel=>(
               
@@ -247,13 +246,13 @@ return (
                     <td>{travel.destination_city}</td>                  
                     <td>{new Date(travel.departure_timestamp).toLocaleString('fr-FR')}</td>
                   </tr> 
-                                            
-             ))}
-             </tbody>
-             </table>
-          </div>                    
-       </div>  
-
+                                                
+                ))}
+                </tbody>
+                </table>
+              </div>                    
+          </div>  
+      
 
 
               <div // REDIRECTION VERS LA PAGE D'ACCUEIL
@@ -265,7 +264,8 @@ return (
                    page d'accueil
                   </Link>
                 </p>
-             </div>         
+             </div>  
+            </div>       
       </div>  
     );
 };
