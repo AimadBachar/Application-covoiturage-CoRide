@@ -3,24 +3,29 @@
 
 .profil {
   margin: 0 auto;
-  max-width: 100%;
+ max-width: 85%;
+
 }
 
 .profil-form {
   box-shadow: vars.$box-shadow;
   border-radius: vars.$border-radius-global;
-  background-color: vars.$color_light;
+  //background-color: vars.$color_light;
   color: vars.$color-grey_more;
   font-family: vars.$font;
   display: flex;
   flex-direction: column;
   position: relative;
-  font-size: 1em;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
   margin-top: -4.5rem;
   margin-bottom: 2rem;
   margin-left: 2.5rem;
   margin-right: 1rem;
   max-width: 85%;
+  border: none;
+  outline: none;
  
   &-title {
     font-size: 1.2em;
