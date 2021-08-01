@@ -2,17 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
-import signinBanner from '/src/assets/images/kitesurf.jpg';
+import detailsCardBanner from '/src/assets/images/canoe.jpg';
 import logo from '/src/assets/logo/coride-b.svg';
 import login from '/src/assets/images/icon user white.png';
 import logout from '/src/assets/images/logout-white.png';
 import Nav from 'src/components/Nav';
 
 
-import 'src/components/Signin/HeaderSignin/styles.scss';
+import 'src/components/DetailsCard/HeaderDetailsCard/styles.scss';
 
 
-const HeaderSignin = ({
+const HeaderDetailsCard = ({
   logged,
   onButtonClickLogout
 }) => {
@@ -25,7 +25,7 @@ const HeaderSignin = ({
   if (logged) {
     return (
       <div className="header">
-        <img className="header-photo" src={signinBanner} alt="signinBanner" />
+        <img className="header-photo" src={detailsCardBanner} alt="detailsCardBanner" />
         <img src={logo} className="header-logo" alt="Logo CoRide" />
         <Nav logged={logged}/>
 
@@ -39,7 +39,7 @@ const HeaderSignin = ({
   } else {
     return (
       <div className="header">
-        <img className="header-photo" src={signinBanner} alt="signinBanner" />
+        <img className="header-photo" src={detailsCardBanner} alt="detailsCardBanner" />
         <img src={logo} className="header-logo" alt="Logo CoRide" />
         <Nav logged={logged}/>
         <Link
@@ -59,4 +59,4 @@ const HeaderSignin = ({
 
 // };
 
-export default HeaderSignin;
+export default HeaderDetailsCard;

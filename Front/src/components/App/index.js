@@ -20,6 +20,7 @@ import DetailsProfil from 'src/containers/DetailsProfil';
 import Trip from 'src/containers/Trip'
 import Card from 'src/containers/Card';
 import DetailsCard from 'src/containers/DetailsCard';
+import HeaderDetailsCard from 'src/containers/HeaderDetailsCard';
 
 
 import './styles.scss';
@@ -92,7 +93,7 @@ const App = ({loading, fetchTravels, isLogged}) => {
         </Route>
 
         <Route exact path="/travel">
-          <Header />
+          <HeaderDetailsCard />
           <DetailsCard />
           <Footer />
         </Route>
