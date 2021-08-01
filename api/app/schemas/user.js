@@ -5,6 +5,7 @@ const schemaUser = Joi.object({
     first_name: Joi.string().required(),
     last_name: Joi.string().required(),
     email: Joi.string().email().required(),
+    biography: Joi.string().optional().empty(),
     birthdate: Joi.date().required(),
     picture: Joi.any().optional(),
     picture_link: Joi.string().optional(),
