@@ -19,6 +19,7 @@ import HeaderProfilUser from 'src/containers/HeaderProfilUser';
 import DetailsProfil from 'src/containers/DetailsProfil';
 import HeaderDetailsProfil from 'src/containers/HeaderDetailsProfil';
 import Trip from 'src/containers/Trip'
+import HeaderTrip from 'src/containers/HeaderTrip';
 import Card from 'src/containers/Card';
 import DetailsCard from 'src/containers/DetailsCard';
 import HeaderDetailsCard from 'src/containers/HeaderDetailsCard';
@@ -68,7 +69,9 @@ const App = ({loading, fetchTravels, isLogged}) => {
         </Route>
 
         <Route exact path="/trip">
+          <HeaderTrip />
           <Trip />
+          <Footer />
         </Route>
 
         <Route exact path="/connexion">
