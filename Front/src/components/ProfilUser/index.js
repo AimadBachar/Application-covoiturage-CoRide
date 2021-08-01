@@ -3,7 +3,8 @@ import { Link, BrowserRouter, Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import profilVide from "src/assets/images/profil_vide.jpg"
 import 'src/components/ProfilUser/styles.scss';
-import Header from 'src/components/ProfilUser/Header';
+//import HeaderProfilUser from 'src/components/ProfilUser/HeaderProfilUser';
+import HeaderProfilUser from 'src/containers/HeaderProfilUser';
 
 
 const ProfilUser = ({
@@ -82,7 +83,7 @@ return (
 
   
     <div className="profil-form">
-    <Header />
+    <HeaderProfilUser />
       <h1 className="profil-form-title">Modifier le profil</h1>
             
       <form // FORM 1 HEADER

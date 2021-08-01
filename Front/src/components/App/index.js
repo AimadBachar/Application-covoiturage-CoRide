@@ -58,7 +58,7 @@ const App = ({loading, fetchTravels, isLogged}) => {
         </Route>
 
         <Route exact path="/info">
-        <Header />
+          <Header />
           <Info />
           <Footer />
         </Route>
@@ -68,7 +68,7 @@ const App = ({loading, fetchTravels, isLogged}) => {
         </Route>
 
         <Route exact path="/connexion">
-        <HeaderLogin />
+          <HeaderLogin />
           <Login />
           <Footer />
         </Route>
@@ -79,7 +79,6 @@ const App = ({loading, fetchTravels, isLogged}) => {
         </Route>
 
         <Route exact path="/profil">
-          <Header />
           <ProfilUser />
           <Footer />
         </Route>

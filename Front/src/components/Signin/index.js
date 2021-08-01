@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import Field from 'src/components/Signin/Field';
 import 'src/components/Signin/styles.scss';
-import Header from 'src/components/Signin/Header';
+import Header from 'src/components/Signin/HeaderSignin';
 //import photoKite from 'src/assets/images/kitewindsurf.jpg';
 //   <img className="login-photo" src={photoKite} alt="photo kite" />
 

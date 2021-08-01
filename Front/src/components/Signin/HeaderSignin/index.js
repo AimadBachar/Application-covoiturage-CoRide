@@ -9,10 +9,10 @@ import logout from '/src/assets/images/logout-white.png';
 import Nav from 'src/components/Nav';
 
 
-import 'src/components/Signin/Header/styles.scss';
+import 'src/components/Signin/HeaderSignin/styles.scss';
 
 
-const Header = ({
+const HeaderSignin = ({
   logged,
   onButtonClickLogout
 }) => {
@@ -59,4 +59,4 @@ const Header = ({
 
 // };
 
-export default Header;
+export default HeaderSignin;
