@@ -10,6 +10,7 @@ import Footer from 'src/containers/Footer';
 import NotFoundPage from '../NotFoundPage';
 import Main from '../Main';
 import Info from '../Info';
+import HeaderInfo from 'src/containers/HeaderInfo';
 import Contact from 'src/containers/Contact';
 import Login from 'src/containers/Login';
 import HeaderLogin from 'src/containers/HeaderLogin';
@@ -63,7 +64,7 @@ const App = ({loading, fetchTravels, isLogged}) => {
         </Route>
 
         <Route exact path="/info">
-          <Header />
+          <HeaderInfo />
           <Info />
           <Footer />
         </Route>
