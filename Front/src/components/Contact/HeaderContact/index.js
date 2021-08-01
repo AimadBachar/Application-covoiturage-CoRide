@@ -2,17 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
-import headerInfoBanner from '/src/assets/images/surf.jpg';
+import headerContactBanner from '/src/assets/images/surfers.jpg';
 import logo from '/src/assets/logo/coride-b.svg';
 import login from '/src/assets/images/icon user white.png';
 import logout from '/src/assets/images/logout-white.png';
 import Nav from 'src/components/Nav';
 
 
-import 'src/components/Info/HeaderInfo/styles.scss';
+import 'src/components/Contact/HeaderContact/styles.scss';
 
 
-const HeaderInfo = ({
+const HeaderContact = ({
   logged,
   onButtonClickLogout
 }) => {
@@ -25,7 +25,7 @@ const HeaderInfo = ({
   if (logged) {
     return (
       <div className="header">
-        <img className="header-photo" src={headerInfoBanner} alt="headerInfoBanner" />
+        <img className="header-photo" src={headerContactBanner} alt="headerContactBanner" />
         <img src={logo} className="header-logo" alt="Logo CoRide" />
         <Nav logged={logged}/>
 
@@ -39,7 +39,7 @@ const HeaderInfo = ({
   } else {
     return (
       <div className="header">
-        <img className="header-photo" src={headerInfoBanner} alt="headerInfoBanner" />
+        <img className="header-photo" src={headerContactBanner} alt="headerContactBanner" />
         <img src={logo} className="header-logo" alt="Logo CoRide" />
         <Nav logged={logged}/>
         <Link
@@ -59,4 +59,4 @@ const HeaderInfo = ({
 
 // };
 
-export default HeaderInfo;
+export default HeaderContact;
