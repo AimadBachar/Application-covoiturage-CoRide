@@ -1,32 +1,23 @@
 @use './src/styles/vars';
 
 
-.profil {
-  margin: 0 auto;
- max-width: 85%;
-
-}
 
 .profil-form {
   box-shadow: vars.$box-shadow;
   border-radius: vars.$border-radius-global;
-  //background-color: vars.$color_light;
+  background-color: vars.$color_light;
   color: vars.$color-grey_more;
   font-family: vars.$font;
   display: flex;
   flex-direction: column;
   position: relative;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
   margin-top: -4.5rem;
   margin-bottom: 2rem;
   margin-left: 2.5rem;
   margin-right: 1rem;
   max-width: 85%;
-  border: none;
-  outline: none;
- 
+
+
   &-title {
     font-size: 1.2em;
     font-weight: bold;
@@ -40,95 +31,39 @@
       width:100%;
       border-radius: 10px; 
     }
-
-   
-
-    // photo nom prenom date de naissance upload pseudo
-      &-header {
-        display: flex;
-        flex-direction: column;
-        background: vars.$color_light; 
-      }
-
-      //top right NOM et prenom
-      &-identity {   
-         position: absolute;      
-         display: block;
-          padding-left: 12rem;
-         
-          &_firstname {
-            padding-top: 3rem;
-            color: vars.$color-grey_more;
+ 
+    &-identity {     
+          // upload photo et affichage 
+          &_picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            padding: 2rem;   
+          }          
+        } 
+          &-upload {
+            padding-top: 1rem;
+            padding-bottom: 0.2rem;
+            margin: 0;
+            color: vars.$color;
           }
-
-          &_lastname{
-            padding-top: 2rem;
-            padding-bottom: 1rem;
-            
-          }
-           &_input {
+  
+           &-input {
             border: none;
             outline: none;
             border-right: none;
             border-left: none;
             border-top: none;
             border-bottom: vars.$color-grey 1px solid;
-            color: vars.$color-grey_more;          
-           }
-      }
+            background-color: vars.$color_light ;
+            color: vars.$color-grey_more;   
+            padding-top: 1rem;
+            height: 3rem;
+          }       
+       
+                   
+     
 
-      // upload photo et affichage
-      &-upper {
-          display: block;
-          padding: 2rem;
-          height: 13rem;
-             
-            &_picture {
-              width: 100px;
-              height: 100px;
-              border-radius: 50%;
-             // margin: auto;
-              // transform: translate(8px);    
-            }            
-          }
-
-            &-upload {
-              padding-top: 1.5rem;
-              padding-bottom: 0.2rem;
-              margin: 0;
-              color: vars.$color;
-            }
-      
-
-       // bloc pseudo et date de naissance  
-      &-pseudobirthdate {
-          display: flex;
-          justify-content: space-between;
-          background-color:  vars.$color_light;
-          padding-right: 1rem;
-          padding-left: 1rem;
-          padding-bottom: 1rem;       
-      }
-    
-        &-date {   
-      border-right: none;
-      border-left: none;
-      border-top: none;
-      border-bottom: vars.$color-grey 1px solid;
-      padding-left: 0rem;         
-      background-color: vars.$color_light;
-      color: vars.$color-grey_more;
-        }
-
-        &-pseudo {    
-      border-right: none;
-      border-left: none;
-      border-top: none;
-      border-bottom: vars.$color-grey 1px solid;       
-      background-color: vars.$color_light;
-      color: vars.$color-grey_more;
-        }
-        
       // espace bio
       &-bio {
         padding-top: 1rem;
@@ -149,34 +84,7 @@
         text-align: center;
         font-size: 0.9em;
       }
-
-      &-emailpassword {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        background: vars.$color_light; 
-        width: 100%;
-       
-        &_email {
-          padding-top: 1rem;
-        }
-
-        &_password {
-          padding-top: 2rem;
-          padding-bottom: 1rem;
-        }
-
-        &_input {       
-          outline: none;
-          border-right: none;
-          border-left: none;
-          border-top: none;
-          border-bottom: vars.$color-grey 1px solid;
-          color: vars.$color-grey_more;
-          padding-top: 1rem;
-          height: 3rem;
-            }
-        }
+        
 
 // sports
 &-sport {

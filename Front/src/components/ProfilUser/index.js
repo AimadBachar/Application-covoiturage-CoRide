@@ -81,87 +81,77 @@ travels_driver
 
 return (
 
-  
-     
-  <div className="profil-form">
    
-  <form // FORM 1 HEADER
+  <div className="profil-form"> 
+  <form // FORM 1 IDENTITY
         className="profil-form-element"       
         onSubmit={handleSubmit}
         enctype="application/x-www-form-urlencoded">
   <h1 className="profil-form-title">
   Modifier le profil
   </h1> 
-   <div className="profil-form-header">
-      <div className="profil-form-upper">
-          <img className="profil-form-upper_picture" src={picture_link || profilVide}/>
-        
-            <br/><br/>
-            <input
-              className="profil-form-upload" type="file"
+   <div className="profil-form-identity">
+       <img className="profil-form-identity_picture" src={picture_link || profilVide}/>      
+           <input className="profil-form-upload" type="file"
               name="picture" placeholder="Picture"
               accept="image/png, image/jpeg"/> 
+                 {ifPictureLink()}       
 
-                 {ifPictureLink()}
-                 
-                 </div>
-
-        <div className="profil-form-identity">
-            <div className="profil-form-identity_firstname">
+         
                 <input type="hidden" name="id" value={id}/>
+
                 <input
-                  className="profil-form-identity_input" type="text" name="first_name"
+                  className="profil-form-input" type="text" name="first_name"
                   placeholder="Prénom" defaultValue={first_name}
                   onChange={changeField} />
-            </div>
-
-            <div className="profil-form-identity_lastname">
+                   
                 <input
-                  className="profil-form-identity_input" type="text" name="last_name"
+                  className="profil-form-input" type="text" name="last_name"
                   placeholder="Nom" defaultValue={last_name}
                   onChange={changeField} />               
+            
+                <input
+                  className="profil-form-input" type="text" name="pseudo"
+                  placeholder="Pseudo" defaultValue={pseudo} />     
+                          
+                <input
+                  className="profil-form-input" type="date" name="birthdate"
+                  placeholder="Date de naissance" defaultValue={birthdate} />
+
+                  <input
+                      className="profil-form-input" type="email" name="email"
+                      placeholder="E-mail" defaultValue={email}/>
+               
+                  <input
+                    className="profil-form-input" type="password"
+                    name="password" placeholder="Mot de passe"/>
+               </div>
+              <div className="profil-form-button">
+                  <button type="submit" className="profil-form-submit">
+                        Sauvegarder
+                  </button>
             </div>
-        </div>
-    </div>
+        </form>
 
 
-          <div className="profil-form-pseudobirthdate">
-            <input
-              className="profil-form-pseudo" type="text" name="pseudo"
-              placeholder="Pseudo" defaultValue={pseudo} />             
-            <input
-              className="profil-form-date" type="date" name="birthdate"
-              placeholder="Date de naissance" defaultValue={birthdate} />
+        <form // FORM 2 BIO
+            className="profil-form-element"       
+            onSubmit={handleSubmit}
+            enctype="application/x-www-form-urlencoded">
+          <div className="profil-form-bio">
+                <textarea className="profil-form-textarea" cols="20" rows="5" wrap="hard" 
+                  placeholder="plus d'informations sur vous, vos spots préférés">
+                </textarea>  
           </div>
-
-          <div // ESPACE BIO
-              className="profil-form-bio">
-              <textarea className="profil-form-textarea" cols="20" rows="5" wrap="hard" 
-                placeholder="plus d'informations sur vous, vos spots préférés">
-              </textarea>  
-          </div>
-
-        <div className="profil-form-emailpassword">
-          <div className="profil-form-emailpassword_email">
-            <input
-                className="profil-form-emailpassword_input" type="email" name="email"
-                placeholder="E-mail" defaultValue={email}/>
-                </div>
-          <div className="profil-form-emailpassword_password">
-            <input
-              className="profil-form-emailpasssword_input" type="password"
-              name="password" placeholder="Mot de passe"/>
-            </div>
-          </div>
-        <div className="profil-form-button">
-            <button type="submit" className="profil-form-submit">
-                   Sauvegarder
-            </button>
-       </div>
-  </form>
           
-
-
+             <div className="profil-form-button">
+                  <button type="submit" className="profil-form-submit">
+                        Sauvegarder
+                  </button>
+            </div>
+          </form>
+       
+          
   <form // FORM 2  CHOIX DES SPORTS + BOUTON
     className="profil-form-element"       
         onSubmit={handleSubmitActivities}
@@ -183,15 +173,13 @@ return (
        </div>
 
 
-  
       <div // RECUPERER LES TAGS DES SPORTS
-          className="profil-form-sport_others">   
-         
-         {activities?.map(activity=>(
+          className="profil-form-sport_others">          
+              {activities?.map(activity=>(
             <span className="profil-form-sport_input">{activity.label}</span>   
            
-         ))}
-           </div>                
+             ))}
+     </div>                
                        
       <div className="profil-form-button">
             <button type="submit" className="profil-form-submit">
