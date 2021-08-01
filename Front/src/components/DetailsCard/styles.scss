@@ -97,12 +97,15 @@
       }
 
       &-date {
+        padding-top: 1rem;
+        color: vars.$color;
         position: relative;
         right: 0;
       }
 
       &-hour {
         position: relative;
+        color: vars.$color;
       }
       
       &-bottom {
@@ -113,6 +116,7 @@
         padding-left: 0.4rem;
         padding-right: 1rem;
         padding-bottom: 0.5rem;
+        color: vars.$color;
       
       &-tag {
         color: vars.$color;

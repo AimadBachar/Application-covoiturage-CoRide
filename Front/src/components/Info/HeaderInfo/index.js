@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
-import headerInfoBanner from '/src/assets/images/surf.jpg';
+import headerInfoBanner from '/src/assets/images/sup.jpg';
 import logo from '/src/assets/logo/coride-b.svg';
 import login from '/src/assets/images/icon user white.png';
 import logout from '/src/assets/images/logout-white.png';

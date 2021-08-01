@@ -35,26 +35,38 @@ const DetailsCard = ({
       <div className="card" >
         <div className="card-top">
           <div className="card-top_left">
-
+          <img src={driver} className="card-destination-driver" alt="driver" />
             <Link className="card-profil" to="/connexion">
               <p>{card.driver}</p>
             </Link>
-
           </div>
           <div className="card-top_right">
             <p className="card-date">{new Date(card.departure_timestamp).toLocaleDateString("fr-FR")}</p>
             <p className="card-hour">{new Intl.DateTimeFormat('fr-FR', { timeStyle: 'short' }).format(new Date(card.departure_timestamp))}</p>
           </div>
-        </div>     
-        <p className="card-destination">Départ: {card.departure_city}</p>      
-        <p className="card-destination">Arrivée: {card.destination_city}</p>
-        <p className="card-description">description: {card.description}</p>
+        </div> 
+
+        <div className="card-destination">
+        <div className="card-destination-departure">
+        <img src={pin} className="card-destination-pin" alt="pin" />  
+        <p className="card-destination-departure_text">{card.departure_city}</p> 
+        </div>   
+        <div className="card-destination-arrival">
+        <img src={pin} className="card-destination-pin" alt="pin" />  
+        <p className="card-destination-arrival_text">{card.destination_city}</p>
+        </div>
+        </div>
+
+        <p className="card-description">Description du trajet <br/> Place restante pour le matériel<br/>
+        Point de rendez-vous<br/>  Équipement voiture: {card.description}</p>
+
         <div className="card-bottom">
-          <span className="card-tag">{card.activity}</span>
-          <span className="card-place">{card.remaining_places} place(s) restante(s)</span>
+          <span className="card-bottom-tag">#{card.activity}</span>
+          <span className="card-bottom-place">{card.remaining_places} 
+          <img src={sit} className="card-bottom-place_sit" alt="sit" />
+          </span>
 
           <Link to="/connexion">
-
             <button className="card-button" type="button">GO !</button>
           </Link>
         </div>
