@@ -17,6 +17,7 @@ import Signin from 'src/containers/Signin';
 import ProfilUser from 'src/containers/ProfilUser';
 import HeaderProfilUser from 'src/containers/HeaderProfilUser';
 import DetailsProfil from 'src/containers/DetailsProfil';
+import HeaderDetailsProfil from 'src/containers/HeaderDetailsProfil';
 import Trip from 'src/containers/Trip'
 import Card from 'src/containers/Card';
 import DetailsCard from 'src/containers/DetailsCard';
@@ -26,9 +27,10 @@ import HeaderDetailsCard from 'src/containers/HeaderDetailsCard';
 import './styles.scss';
 
 
+
 const App = ({loading, fetchTravels, isLogged}) => {
   // J'exécute la fonction reçue en props
-  // dés que je suis prêt, et une seule fois
+  // dès que je suis prêt, et une seule fois
   useEffect(fetchTravels, [])
 
   useEffect(()=>{
@@ -81,13 +83,13 @@ const App = ({loading, fetchTravels, isLogged}) => {
         </Route>
 
         <Route exact path="/profil">
-        <HeaderProfilUser />
+          <HeaderProfilUser />
           <ProfilUser />
           <Footer />
         </Route>
 
         <Route exact path="/profilpage">
-          <Header />
+          <HeaderDetailsProfil />
           <DetailsProfil />
           <Footer />
         </Route>
