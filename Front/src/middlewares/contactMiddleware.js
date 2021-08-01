@@ -6,6 +6,8 @@ import {
  fetchEmailSuccess
 } from '../actions/detailsProfil';
 
+import { activeModal } from 'src/actions/modalInfo';
+
 
 export default (store) => (next) => (action) => {
   switch(action.type) {     
@@ -35,11 +37,21 @@ export default (store) => (next) => (action) => {
          console.log("res.data", res.data);
        
          const actionToSend = fetchEmailSuccess(res.data);
+         const success = activeModal({
+           header:"Informations",
+           message:"Félicitation! Votre message a bien été envoyé."
+         });
          store.dispatch(actionToSend);
+         store.dispatch(success);
              
        })
        .catch((err) => {
          console.error(err);
+         const error = activeModal({
+          header:"Erreur",
+          message:"Votre message n'a pas été envoyé."
+        });
+        store.dispatch(error);
        })
     
 }
