@@ -34,7 +34,7 @@ checkInputsContent
 
 }) => {
 
-  if(tags.length<1){
+  if(tags?.length<1){
     handleFetchActivities();
   }
     const handleSubmit = (evt) => {   
@@ -143,7 +143,8 @@ return (
               <div // ESPACE BIO
                   className="profil-form-bio">
                   <textarea className="profil-form-textarea" cols="20" rows="5" wrap="hard" 
-                    placeholder="plus d'informations sur vous, vos spots préférés" name="biography" defaultValue={biography}>
+                    placeholder="plus d'informations sur vous, vos spots préférés" name="biography">
+                      {biography}
                   </textarea>  
               </div>
 
@@ -180,7 +181,7 @@ return (
                       className="profil-form-sport_title" value="">
                       Choisissez votre sport passion n°1
                    </option>
-                      {tags.map((tag) => (
+                      {tags?.map((tag) => (
                     <option name="tag" key={tag.id} value={tag.id}>
                       {tag.label}
                     </option>
@@ -246,7 +247,7 @@ return (
             </tr>
             </thead>
             <tbody>
-             {travels_passenger?.map(travel=>(
+             {travels_driver?.map(travel=>(
               
                   <tr>
                     <td>{travel.departure_city}</td>                 

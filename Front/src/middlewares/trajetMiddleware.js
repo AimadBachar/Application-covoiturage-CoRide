@@ -140,9 +140,20 @@ export default (store) => (next) => (action) => {
           Authorization: `Bearer ${token.token}`
          }
       })
-      .then((res) => {
+      .then( async (res) => {
           console.log("participe travel succes", res.data);
           const action = particpeTravelSucces(res.data);
+          const updateTravels = await axios({
+            method:"GET",
+            url:`http://18.235.248.88:3000/api/v1/user/${userId}`,
+            headers:{
+              "Authorization":`Barer ${token.token}`
+            }
+          });
+
+          localStorage.removeItem("tokens");
+          localStorage.setItem("tokens",JSON.stringify(updateTravels));
+
           const success = activeModal({
             header:"Félicitation!",
             message:`Votre participation au covoiturage de ${pseudo} est validé!`
