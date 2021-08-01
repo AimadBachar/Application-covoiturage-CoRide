@@ -82,10 +82,11 @@ travels_driver
 return (
 
   
-    <div className="profil-form">
+    <div className="profil">
     <HeaderProfilUser />
-      <h1 className="profil-form-title">Modifier le profil</h1>
-            
+   
+    <div className="profil-form">
+    <h1 className="profil-form-title">Modifier le profil</h1>
       <form // FORM 1 HEADER
             className="profil-form-element"       
             onSubmit={handleSubmit}
@@ -250,8 +251,8 @@ return (
              ))}
              </tbody>
              </table>
-               </div>                    
-          
+          </div>                    
+       </div>  
 
 
 
@@ -265,7 +266,7 @@ return (
                   </Link>
                 </p>
              </div>         
-       </div>    
+      </div>  
     );
 };
 
