@@ -76,11 +76,11 @@ const Signin = ({
     this.setState({ picture: evt.target.files[0] });
   };*/
 
-
+  
   return (
-   
-  <div className="signin">
-   <Header />
+    
+  <div className="signin"> 
+    <Header />
        <div className="signin-form">
       {isSignedIn && (
 
@@ -199,7 +199,7 @@ const Signin = ({
         
        </div>
     </div>
-              
+          
   );
 };
 

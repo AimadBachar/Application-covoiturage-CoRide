@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
-import signinBanner from '/src/assets/images/kitewindsurf.jpg';
+import signinBanner from '/src/assets/images/kite0.jpg';
 import logo from '/src/assets/logo/coride-b.svg';
 import login from '/src/assets/images/icon user white.png';
 import logout from '/src/assets/images/logout-white.png';

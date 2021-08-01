@@ -12,6 +12,7 @@ import Main from '../Main';
 import Info from '../Info';
 import Contact from 'src/containers/Contact';
 import Login from 'src/containers/Login';
+import HeaderLogin from 'src/containers/HeaderLogin';
 import Signin from 'src/containers/Signin';
 import ProfilUser from 'src/containers/ProfilUser';
 import DetailsProfil from 'src/containers/DetailsProfil';
@@ -20,9 +21,8 @@ import Card from 'src/containers/Card';
 import DetailsCard from 'src/containers/DetailsCard';
 
 
-
-
 import './styles.scss';
+
 
 const App = ({loading, fetchTravels, isLogged}) => {
   // J'exécute la fonction reçue en props
@@ -68,6 +68,7 @@ const App = ({loading, fetchTravels, isLogged}) => {
         </Route>
 
         <Route exact path="/connexion">
+        <HeaderLogin />
           <Login />
           <Footer />
         </Route>

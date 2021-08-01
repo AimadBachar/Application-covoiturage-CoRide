@@ -5,7 +5,7 @@ import Field from 'src/components/Login/Field';
 import { Link, Redirect, BrowserRouter as Route } from 'react-router-dom';
 
 import 'src/components/Login/styles.scss';
-import Header from 'src/components/Login/Header';
+//import Header from 'src/components/Login/Header';
 //import photoKite from 'src/assets/images/kite.jpg';
 //<img className="login-photo" src={photoKite} alt="photo kite" />
 
@@ -28,7 +28,6 @@ const Login = ({
   return (
    
 <div className="login">
-<Header />
     <div className="login-form">
       {isLogged && (
       // useEffect(),

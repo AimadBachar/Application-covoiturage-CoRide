@@ -2,18 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
-import loginBanner from '/src/assets/images/kite.jpg';
+import loginBanner from 'src/assets/images/snowbaord2.jpg';
 import logo from '/src/assets/logo/coride-b.svg';
 import login from '/src/assets/images/icon user white.png';
 import logout from '/src/assets/images/logout-white.png';
 import Nav from 'src/components/Nav';
 
 // import 'semantic-ui-css/semantic.min.css';
-import 'src/components/Login/Header/styles.scss';
+import 'src/components/HeaderLogin/styles.scss';
 
 // JSON.parse(localStorage.getItem('token'))['access_token']
 
-const Header = ({
+const HeaderLogin = ({
   logged,
   onButtonClickLogout
 }) => {
@@ -60,5 +60,5 @@ const Header = ({
 
 // };
 
-export default Header;
+export default HeaderLogin;
 
