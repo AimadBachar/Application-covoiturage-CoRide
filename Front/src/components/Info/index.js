@@ -1,13 +1,14 @@
+// == Import : npm
 import React from 'react';
-// import PropTypes from 'prop-types';
 
+// == Import : local
 import Laurent from '../../assets/images/laurent.png';
 import Aimad from '../../assets/images/Aimad.png';
 import Anna from '../../assets/images/Anna.png';
 import Julien from '../../assets/images/Julien.png';
-
 import '/src/components/Info/styles.scss';
 
+// == Composant
 const Info = () => (
         <div className="info">
             <p className="info-text">
@@ -39,8 +40,5 @@ const Info = () => (
         </div>  
 );
 
-// Footer.proptypes = {
-
-// };
-
+// == Export 
 export default Info;
