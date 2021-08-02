@@ -1,31 +1,40 @@
 // Import npm
 import React from 'react';
 import { useEffect } from 'react';
-
-// == Import
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+// == Import
+import Loading from './Loading';
 import Header from 'src/containers/Header';
 import Search from 'src/containers/Search';
 import Footer from 'src/containers/Footer';
+import NotFoundPage from '../NotFoundPage';
 import Main from '../Main';
-import ConnexionRegistration from '../ConnexionRegistration';
 import Info from '../Info';
+import HeaderContact from 'src/containers/HeaderContact';
+import HeaderInfo from 'src/containers/HeaderInfo';
+import Contact from 'src/containers/Contact';
+import Login from 'src/containers/Login';
+import HeaderLogin from 'src/containers/HeaderLogin';
 import Signin from 'src/containers/Signin';
 import ProfilUser from 'src/containers/ProfilUser';
+import HeaderProfilUser from 'src/containers/HeaderProfilUser';
 import DetailsProfil from 'src/containers/DetailsProfil';
+import HeaderDetailsProfil from 'src/containers/HeaderDetailsProfil';
 import Trip from 'src/containers/Trip'
+import HeaderTrip from 'src/containers/HeaderTrip';
 import Card from 'src/containers/Card';
 import DetailsCard from 'src/containers/DetailsCard';
-import NotFoundPage from '../NotFoundPage';
-import Contact from 'src/containers/Contact';
-import Loading from './Loading';
+import HeaderDetailsCard from 'src/containers/HeaderDetailsCard';
 import ModalInfo from 'src/containers/ModalInfo';
+
 
 import './styles.scss';
 
+
+
 const App = ({loading, fetchTravels, isLogged,open,header,message}) => {
   // J'exécute la fonction reçue en props
-  // dés que je suis prêt, et une seule fois
+  // dès que je suis prêt, et une seule fois
   useEffect(fetchTravels, [])
 
   useEffect(()=>{
@@ -59,43 +68,48 @@ const App = ({loading, fetchTravels, isLogged,open,header,message}) => {
         </Route>
 
         <Route exact path="/info">
-        <Header />
+          <HeaderInfo />
           <Info />
           <Footer />
         </Route>
 
         <Route exact path="/trip">
+          <HeaderTrip />
           <Trip />
+          <Footer />
         </Route>
 
         <Route exact path="/connexion">
-          <ConnexionRegistration />
+          <HeaderLogin />
+          <Login />
+          <Footer />
         </Route>
 
         <Route exact path="/inscription">
           <Signin />
+          <Footer />
         </Route>
 
         <Route exact path="/profil">
-          <Header />
+          <HeaderProfilUser />
           <ProfilUser />
           <Footer />
         </Route>
 
         <Route exact path="/profilpage">
-          <Header />
+          <HeaderDetailsProfil />
           <DetailsProfil />
           <Footer />
         </Route>
 
         <Route exact path="/travel">
-          <Header />
+          <HeaderDetailsCard />
           <DetailsCard />
           <Footer />
         </Route>
 
         <Route exact path="/contact">
-          <Header />
+          <HeaderContact />
           <Contact />
           <Footer />
         </Route>

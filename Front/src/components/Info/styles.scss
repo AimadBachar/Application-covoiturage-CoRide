@@ -3,6 +3,7 @@
 .info {
     max-width: 80%;
     margin: 0 auto;
+   
     
     &-text {
         border: vars.$color, 2px solid;
@@ -14,9 +15,13 @@
         align-items: center;
         box-shadow: vars.$box-shadow;
         border-radius: vars.$border-radius-global;
+        background-color: vars.$color_light;
         margin-top: 2rem;
-        margin-bottom: 2rem;
-        padding: 1rem 0.5rem;
+        position: relative;
+        margin-bottom: 1rem;
+        padding: 1.5rem 1rem; 
+        top: -120px;
+       
     }
 
     &-detail {
@@ -32,6 +37,7 @@
             width: 100px;
 	        height: 100px;
             margin-bottom: 0.5rem;
+            
         }
 
         &_description {

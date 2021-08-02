@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Header from '../Header';
-import Footer from '../Footer';
 import ComboBoxCities from '../../containers/ComboBoxCities';
 import ModalInfo from '../../containers/ModalInfo';
 
@@ -112,8 +110,10 @@ const Trip = ({
   
   return (
     <div className="trip">
+
       <Header />
       <ModalInfo open={open} header={header} message={message}/>
+
       <form
  
         className="trip-form"
@@ -203,7 +203,6 @@ const Trip = ({
           Valider le trajet ?
         </button>
       </form>
-      <Footer />
     </div>
   );
 };

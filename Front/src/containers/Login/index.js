@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Login from 'src/components/ConnexionRegistration/Login';
+import Login from 'src/components/Login';
 
 // import des actions
 import { userInputChange, userLogin, userLogout } from 'src/actions/user';
