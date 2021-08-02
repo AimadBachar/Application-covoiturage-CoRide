@@ -108,8 +108,6 @@ const Trip = ({
   return (
     <div className="trip">
 
-      <Header />
-
       <form
  
         className="trip-form"

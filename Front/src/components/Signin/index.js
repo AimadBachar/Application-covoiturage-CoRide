@@ -112,7 +112,6 @@ const Signin = ({
 
   return (
   <div className="signin">
-    <Header />
 
        <div className="signin-form">
       {isSignedIn && (
