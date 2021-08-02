@@ -9,22 +9,28 @@ import {
   fetchAddActivities 
  } from 'src/actions/userprofil';
 
+ import { activeModal } from 'src/actions/modalInfo';
+
 
 const mapStateToProps = (state) => ({ 
   isCompleted: state.userprofil.completed,
-  id: state.userprofil.inputs.id,
-  last_name: state.userprofil.inputs.last_name,
-  first_name: state.userprofil.inputs.first_name,
-  pseudo: state.userprofil.inputs.pseudo,
-  email: state.userprofil.inputs.email,
-  password: state.userprofil.inputs.password,
-  birthdate: state.userprofil.inputs.birthdate,
-  activity_id: state.userprofil.inputs.activity_id,
-  activities: state.userprofil.activities,
-  tags: state.userprofil.tags,
-  picture_link: state.userprofil.inputs.picture_link,
-  travels_passenger: state.userprofil.travels_passenger,
-  travels_driver: state.userprofil.travels_driver
+  id: state.user.inputs.id || state.userprofil.inputs.id,
+  last_name: state.user.inputs.last_name || state.userprofil.inputs.last_name,
+  first_name: state.user.inputs.first_name || state.userprofil.inputs.first_name,
+  pseudo: state.user.inputs.pseudo || state.userprofil.inputs.pseudo,
+  email: state.user.inputs.email || state.userprofil.inputs.email,
+  password: state.user.inputs.password,
+  birthdate: state.user.inputs.birthdate || state.userprofil.inputs.birthdate,
+  activity_id: state.user.inputs.activity_id || state.userprofil.inputs.activty_id,
+  activities: state.user.inputs.activities || state.userprofil.activities,
+  tags: state.user.inputs.tags || state.userprofil.inputs.tags,
+  picture_link: state.user.inputs.picture_link || state.userprofil.inputs.picture_link,
+  travels_passenger: state.user.inputs.travels_passenger || state.userprofil.travels_passenger,
+  travels_driver: state.user.inputs.travels_driver || state.userprofil.travels_driver,
+  biography: state.user.inputs.biography || state.userprofil.inputs.biography,
+  open: state.modalInfo.open,
+  header: state.modalInfo.header,
+  message: state.modalInfo.message
   /*coords: state.userprofil.inputs.coords,
   city: state.userprofil.inputs.city,
   postcode: state.userprofil.inputs.postcode,
@@ -67,6 +73,12 @@ const mapDispatchToProps = (dispatch) => ({
   onSubmitActivities: ()=>{
     console.log("containers add activities");
     const action = fetchAddActivities();
+    dispatch(action);
+  },
+
+  checkInputsContent: (content)=>{
+    console.log("containers profiluser");
+    const action = activeModal(content);
     dispatch(action);
   }
 

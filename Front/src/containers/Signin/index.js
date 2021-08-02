@@ -7,6 +7,8 @@ import {
   userSigninInputChange, 
  } from 'src/actions/usersignin';
 
+ import { activeModal } from 'src/actions/modalInfo';
+
 const mapStateToProps = (state) => ({
     isSignedIn: state.usersignin.signed,
     signedMessage: state.usersignin.signedMessage,
@@ -17,7 +19,10 @@ const mapStateToProps = (state) => ({
     email: state.usersignin.inputs.email,
     password: state.usersignin.inputs.password,
     verifyPassword: state.usersignin.inputs.verifyPassword,
-    birthdate: state.usersignin.inputs.birthdate
+    birthdate: state.usersignin.inputs.birthdate,
+    open: state.modalInfo.open,
+    header: state.modalInfo.header,
+    message: state.modalInfo.message
   });
 
 
@@ -36,8 +41,13 @@ const mapStateToProps = (state) => ({
         const action = userSignin(event);
         console.log(action);
         dispatch(action);
-
       },
+
+      checkInputsContent:(content)=>{
+        console.log("check",content)
+        const action = activeModal(content);
+        dispatch(action);
+      }
   });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signin);

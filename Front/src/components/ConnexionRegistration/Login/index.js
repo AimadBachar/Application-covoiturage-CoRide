@@ -7,6 +7,8 @@ import { Link, Redirect, BrowserRouter as Route } from 'react-router-dom';
 import 'src/components/ConnexionRegistration/Login/styles.scss';
 import photoKite from 'src/assets/images/kite.jpg';
 
+import ModalInfo from '../../../containers/ModalInfo';
+
 const Login = ({
 
   user,
@@ -16,6 +18,9 @@ const Login = ({
   handleLogout,
   isLogged,
   loggedMessage,
+  open,
+  header,
+  message
 
 }) => {
   const handleSubmit = (evt) => {
@@ -26,6 +31,7 @@ const Login = ({
   return (
 <div className="login">
 <img className="login-photo" src={photoKite} alt="photo kite" />
+<ModalInfo open={open} header={header} message={message}/>
     <div className="login-form">
       {isLogged && (
       // useEffect(),

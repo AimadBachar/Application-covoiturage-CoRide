@@ -9,6 +9,8 @@ import axios from 'axios';
    userSigninSuccess,
    
  } from 'src/actions/usersignin';
+
+ import { activeModal } from 'src/actions/modalInfo';
  
  
  const middleware = (store) => (next) => (action) => {
@@ -35,13 +37,26 @@ import axios from 'axios';
            
            // j efface
            localStorage.removeItem('tokens');
-           localStorage.setItem('tokens', JSON.stringify(res.data)); 
+
+           const success = activeModal({
+             header:"Félicitation!",
+             message:`Bienvenue dans la communauté! Merci de vous connecter`
+           });
 
            const action = userSigninSuccess(res.data);
+
            store.dispatch(action);
+           store.dispatch(success);
+
+          
          })
          .catch((err) => {
            console.error(err);
+           const error = activeModal({
+             header:"Erreur",
+             message:"Une erreur est arrivée, merci de recommencer..."
+           });
+           store.dispatch(error);
          })
        break; 
      

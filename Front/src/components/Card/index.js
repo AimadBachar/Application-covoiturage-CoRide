@@ -15,10 +15,12 @@ const Card = ({
     onClickCardDetails();
   };
 
-  if (cards.length > 0) {
+  const valideCards = cards?.filter(card=>new Date(card.departure_timestamp)>=Date.now());
+
+  if (valideCards.length > 0) {
     return (
       <div>  
-        {cards.map((card) => (
+        {valideCards.sort((firstCard,secondCard)=>new Date(firstCard.departure_timestamp)-new Date(secondCard.departure_timestamp)).map((card) => (
            
           <Link onClick={handleClick} to={{
             pathname: `/travel`,

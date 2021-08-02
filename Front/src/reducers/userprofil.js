@@ -25,6 +25,7 @@ export const initialState = {
     id: user?.id,
     last_name: user?.last_name,
     first_name: user?.first_name,
+    biography: user?.biography,
     pseudo: user?.pseudo,
     email: user?.email,
     password: user?.password,
@@ -76,7 +77,7 @@ const reducer = (state = initialState, action = {}) => {
           return {
             ...state,
             completed: true,
-            ...action.payload,
+            inputs:{...action.payload},
           };
 
       case ADD_ACTIVITY_USER_SUCCESS:

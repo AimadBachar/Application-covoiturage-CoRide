@@ -11,7 +11,7 @@
   fetchEmailSuccess
  } from '../actions/detailsProfil';
  
- 
+ import { activeModal } from 'src/actions/modalInfo';
  
  export default (store) => (next) => (action) => {
    switch(action.type) {     
@@ -39,6 +39,12 @@
          })
          .catch((err) => {
            console.error(err);
+           const error = activeModal({
+             header:"Attention",
+             message:"Erreur interne..."
+           });
+
+           store.dispatch(error);
          })
  
        

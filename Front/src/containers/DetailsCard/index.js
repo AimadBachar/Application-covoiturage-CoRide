@@ -6,7 +6,10 @@ import { particpeTravel, fetchProfilDriver } from 'src/actions/trajets';
 
 const mapStateToProps = (state) => ({
   logged: state.user.logged,
-  updateCard : state.trajets.DetailsCard
+  updateCard : state.trajets.DetailsCard,
+  open: state.modalInfo.open,
+  header: state.modalInfo.header,
+  message: state.modalInfo.message
 });
 
 const mapDispatchToProps = (dispatch) => ({

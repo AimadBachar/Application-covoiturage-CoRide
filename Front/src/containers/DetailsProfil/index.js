@@ -4,7 +4,10 @@ import { fetchUsers,fetchEmail } from "src/actions/detailsProfil";
 
 
 const mapStateToProps = (state) => ({
-  usersProfils: state.detailsProfil.usersProfils
+  usersProfils: state.detailsProfil.usersProfils,
+  open: state.modalInfo.open,
+  header: state.modalInfo.header,
+  message: state.modalInfo.message
 });
 
 const mapDispatchToProps = (dispatch) => ({

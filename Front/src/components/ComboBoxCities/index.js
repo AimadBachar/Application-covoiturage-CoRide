@@ -1,5 +1,6 @@
 import React from 'react';
 import Combobox from "react-widgets/Combobox";
+import ModalInfo from '../../containers/ModalInfo';
 
 
 import "react-widgets/scss/styles.scss";
@@ -13,6 +14,9 @@ const ComboBoxCities = ({
   onInputsCoords,
   long,
   lat,
+  open,
+  header,
+  message
 }) => {
 
   const cityFetch = (evt)=>{
@@ -46,6 +50,8 @@ const ComboBoxCities = ({
    * @returns {array} an array of cities
    */
   const filterCities = (city,value)=>{
+
+    
     const formatCity = city.city?.toLowerCase().split(" ").join("").split("-").join("").split("é").join("e").split("è").join("e");    
     const formatValue = value.toLowerCase().split(" ").join("").split("é").join("e").split("è").join("e");
   
@@ -78,6 +84,7 @@ const ComboBoxCities = ({
   return (
     
     <div>
+      <ModalInfo open={open} header={header} message={message}/>
         <Combobox 
           containerClassName="search-form_input departure"
           name={name}

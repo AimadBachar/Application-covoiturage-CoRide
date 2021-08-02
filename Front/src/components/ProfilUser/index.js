@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import profilVide from "src/assets/images/profil_vide.jpg"
 import 'src/components/ProfilUser/styles.scss';
 
+import ModalInfo from "src/containers/ModalInfo";
+
 
 const ProfilUser = ({
 activity,
@@ -23,31 +25,37 @@ activities,
 onSubmitActivities,
 usersprofil,
 travels_passenger,
-travels_driver
+travels_driver,
+biography,
+open,
+header,
+message,
+checkInputsContent
 
 }) => {
 
-  if(tags.length<1){
+  if(tags?.length<1){
     handleFetchActivities();
   }
     const handleSubmit = (evt) => {   
     evt.preventDefault();
 
-    
-    //on récupere le password, on construit notre regexp et on check
-    const password = evt.target.querySelector('input[name="password"]').value;
-    const regexp = new RegExp("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[-+!*#$@%_])([-+!*#$@%_\\w]{8,})$");
-    const checkPassword = regexp.test(password); 
-     //si password non conform return
-     if(!checkPassword) {
-     console.log("ton mot de passe n'est pas conforme au format attendu")
-      return;
-    }
+    const inputs = evt.target.querySelectorAll("input");
+
+    const checkInputs = Array.from(inputs).find(input=>input.value === "" && input.type != "file");
+
+    if(checkInputs) return checkInputsContent({
+      header:"Attention",
+      message:"Tous les champs doivent être saisis"
+    })
+
+  
     console.log('submit');
 
     const updateUser = new FormData(evt.target)
 
     onSubmitProfil(updateUser);
+    evt.target.reset();
   };
 
   const changeField = (evt) => {
@@ -74,6 +82,7 @@ travels_driver
     event.preventDefault();
     console.log("handle submit activities");
     onSubmitActivities();
+    event.target.reset();
   }
 
 
@@ -81,6 +90,7 @@ return (
 
   
     <div className="profil-form">
+      <ModalInfo open={open} header={header} message={message}/>
       <h1 className="profil-form-title">Modifier le profil</h1>
             
       <form // FORM 1 HEADER
@@ -133,7 +143,8 @@ return (
               <div // ESPACE BIO
                   className="profil-form-bio">
                   <textarea className="profil-form-textarea" cols="20" rows="5" wrap="hard" 
-                    placeholder="plus d'informations sur vous, vos spots préférés">
+                    placeholder="plus d'informations sur vous, vos spots préférés" name="biography">
+                      {biography}
                   </textarea>  
               </div>
 
@@ -170,7 +181,7 @@ return (
                       className="profil-form-sport_title" value="">
                       Choisissez votre sport passion n°1
                    </option>
-                      {tags.map((tag) => (
+                      {tags?.map((tag) => (
                     <option name="tag" key={tag.id} value={tag.id}>
                       {tag.label}
                     </option>
@@ -236,7 +247,7 @@ return (
             </tr>
             </thead>
             <tbody>
-             {travels_passenger?.map(travel=>(
+             {travels_driver?.map(travel=>(
               
                   <tr>
                     <td>{travel.departure_city}</td>                 

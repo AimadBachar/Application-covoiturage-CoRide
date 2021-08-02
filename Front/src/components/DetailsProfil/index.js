@@ -5,13 +5,18 @@ import { Link, useLocation } from 'react-router-dom'
 
 import 'src/components/DetailsProfil/styles.scss';
 
+import ModalInfo from '../../containers/ModalInfo';
+
 
 
 const DetailsProfil = ({
   onButtonClickContact,
   getAllUsers,
   usersProfils,
-  submitEmail
+  submitEmail,
+  open,
+  header,
+  message
 }) => {
 
   if(usersProfils.length ===0){
@@ -33,6 +38,8 @@ return (
 
 
 <div className="profil" >
+
+        <ModalInfo open={open} header={header} message={message}/>
 
   <img className="profil-picture"src={userprofil.picture_link || profilVide}/>
  

@@ -10,6 +10,9 @@ import Field from 'src/components/Signin/Field';
 import 'src/components/Signin/styles.scss';
 import photoKite from 'src/assets/images/kitewindsurf.jpg';
 
+import ModalInfo from '../../containers/ModalInfo';
+
+
 
 const Signin = ({
 
@@ -25,10 +28,27 @@ const Signin = ({
     birthdate,
     changeField,
     handleSignin,
+    open,
+    header,
+    message,
+    checkInputsContent
 
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
+
+    //on vérifie que tous les input sont remplis...
+    const inputs = evt.target.querySelectorAll("input");
+    const checkInputs = Array.from(inputs).find(input=>input.value ==="");
+
+    if(checkInputs){
+      console.log("tous les champs doivent être remplis");
+      checkInputsContent({
+        header:"Attention",
+        message:"Tous les champs doivent être remplis."
+      })
+      return;
+    }
 
     //on récupere la date de naissance et la date actuelle puis on calcule le nombre d'année en décimale
     const yearOfBirth = new Date(evt.target.querySelector('input[name="birthdate"]').value);  
@@ -45,38 +65,60 @@ const Signin = ({
     //on check le verifyPassword avec le password
     const verifyPassword = evt.target.querySelector('input[name="verifyPassword"]').value;
 
+    //on check l'email
+    const regexpMail = new RegExp("^[a-zA-Z0-9.!#$%&*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$");
+    const email = evt.target.querySelector('input[name="email"]').value;
+
+    const checkEmail = regexpMail.test(email);
+
+
     //si mineur return
     if(isMajor < 18) {
-      console.log("tu es mineur...")
+      console.log("tu es mineur...");
+      checkInputsContent({
+        header:"Attention",
+        message:"Tu dois avoir plus de 18 ans pour t'inscrire."
+      })
+      return;
+    }
+
+    if(!checkEmail){
+      console.log("email non valide");
+      checkInputsContent({
+        header:"Attention",
+        message:"Le format de l'email n'est pas valide."
+      })
       return;
     }
 
     //si password non conform return
     if(!checkPassword) {
-      console.log("ton mot de passe n'est pas conforme au format attendu")
+      console.log("ton mot de passe n'est pas conforme au format attendu");
+      checkInputsContent({
+        header:"Attention",
+        message:"Le mot de passe doit contenir au minimum 8 caractères dont un symbole (#&@$), 1 lettre en majuscule, 1 lettre en minuscule et 1 chiffre."
+      });
       return;
     }
 
     if(checkPassword && (verifyPassword !== password)){
-      console.log("attention les 2 mots de passe ne sont pas identique...")
+      console.log("attention les 2 mots de passe ne sont pas identique...");
+      checkInputsContent({
+        header:"Attention",
+        message:"Les 2 mots de passe doivent être identique."
+      });
       return;
     }
    
     //si les controles sont ok PARFAIT on valide
-    console.log("tu es majeur et le mot de passe est conforme au format attendu, pas d'erreur entre les 2 champs password");
     handleSignin(evt.target);
-    
+    evt.target.reset();
   };
-
-  /*
-  const handleUpload = (evt) => {
-    console.log(evt.target.files[0]);
-    this.setState({ picture: evt.target.files[0] });
-  };*/
 
 
   return (
   <div className="signin">
+    <ModalInfo open={open} header={header} message={message}/>
     <img className="login-photo" src={photoKite} alt="photo kite" />
        <div className="signin-form">
       {isSignedIn && (
