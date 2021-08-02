@@ -1,5 +1,5 @@
 // == Import : npm
-import React from 'react';
+import React,{Suspense} from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
  
@@ -20,6 +20,11 @@ const HeaderDetailsProfil = ({
     localStorage.clear();
     onButtonClickLogout();
   };
+
+  const imagePreload = ()=>{
+    const {src} = useImage({srcList:detailsProfilBanner});
+    return <img className="header-photo" src={ src } alt="detailsProfilBanner" />
+  }
 
   if (logged) {
     return (

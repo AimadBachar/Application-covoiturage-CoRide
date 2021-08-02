@@ -43,11 +43,14 @@ const Card = ({
 
               </div>
             </div>
+            </div>
           </Link>
         ))}
-      </div>
-    )
-  } else {
+        </div>
+    )}
+      
+    
+   else {
     return(
       <div className="cardInfos">
         <p className="cardInfos-no_card_message">Aucun trajet pour votre recherche, veuillez recommencer</p>

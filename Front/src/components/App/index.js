@@ -110,6 +110,10 @@ const App = ({loading, fetchTravels, isLogged, open, header, message, logged}) =
         </Route>
 
         <Route exact path="/mentions">
+          <Header/>
+          <Mentions/>
+          <Footer/>
+        </Route>
 
         <Route path="*">
           <NotFoundPage />
@@ -190,89 +194,7 @@ const App = ({loading, fetchTravels, isLogged, open, header, message, logged}) =
       </div>
     </Router>
   );
- } else {
-  if (loading) {
-    return <Loading />;
-  }
-  return (
-    <Router>
-      <div className="app">
-      <ModalInfo open={open} header={header} message={message}/>  
-      <Switch>
-
-      <Route exact path="/">
-          <Header />
-          <Search />
-          <Card />
-          <Footer />
-        </Route>
-
-        <Route exact path="/info">
-          <HeaderInfo />
-          <Info />
-          <Footer />
-        </Route>
-
-        <Route exact path="/trip">
-          <Redirect from="/trip" to="/connexion" />
-          <HeaderTrip />
-          <Trip />
-          <Footer />
-        </Route>
-
-        <Route exact path="/connexion">
-          <HeaderLogin />
-          <Login />
-          <Footer />
-        </Route>
-
-        <Route exact path="/inscription">
-          <Signin />
-          <Footer />
-        </Route>
-
-        <Route exact path="/profil">
-          <Redirect from="/profil" to="/connexion" />
-          <HeaderProfilUser />
-          <ProfilUser />
-          <Footer />
-        </Route>
-
-        <Route exact path="/profilpage">
-          <Redirect from="/profilpage" to="/connexion" />
-          <HeaderDetailsProfil />
-          <DetailsProfil />
-          <Footer />
-        </Route>
-
-        <Route exact path="/travel">
-          <HeaderDetailsCard />
-          <DetailsCard />
-          <Footer />
-        </Route>
-
-        <Route exact path="/contact">
-          <HeaderContact />
-          <Contact />
-          <Footer />
-        </Route>
-
-        <Route exact path="/mentions">
-          <Header />
-          <Mentions />
-          <Footer />
-        </Route>
-
-        <Route path="*">
-          <NotFoundPage />
-        </Route>
-
-      </Switch>
-
-      </div>
-    </Router>
-  );
-
+ 
  }
 };
 
