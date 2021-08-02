@@ -3,7 +3,7 @@ import Header from 'src/components/Header';
 // import { action } from 'src/actions/user';
 import dataTags from '/src/data/data_tag.js';
 import { userLogout } from 'src/actions/user';
-
+import { activeModal } from 'src/actions/modalInfo';
 
 const mapStateToProps = (state) => ({
   tags: dataTags,
@@ -23,7 +23,12 @@ const mapDispatchToProps = (dispatch) => ({
   onButtonClickLogout: () => {
     console.log('logout');
     const action = userLogout();
+    const success = activeModal({
+      header:"Information",
+      message:"Vous êtes déconnecté"
+    })
     dispatch(action);
+    dispatch(success);
   },
 });
 

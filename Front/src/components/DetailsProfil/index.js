@@ -5,16 +5,12 @@ import { Link, useLocation } from 'react-router-dom'
 
 import 'src/components/DetailsProfil/styles.scss';
 
-import ModalInfo from '../../containers/ModalInfo';
 
 const DetailsProfil = ({
   onButtonClickContact,
   getAllUsers,
   usersProfils,
-  submitEmail,
-  open,
-  header,
-  message
+  submitEmail
 }) => {
   if(usersProfils.length ===0){
     getAllUsers();
@@ -26,15 +22,22 @@ const DetailsProfil = ({
     submitEmail(mail);
   }
 
-  return (
-    usersProfils.map((userprofil)=>(
-      <div className="profil" >
-        <ModalInfo open={open} header={header} message={message}/>
-        <img className="profil-picture"src={userprofil.picture_link || profilVide}/>
-        <div className="profil-top">
-            <a href="#" className="profil-pseudo" onClick={onButtonClickContact}>{userprofil.pseudo}</a>                          
-        </div>
-        
+
+return (
+
+    
+
+      usersProfils.map((userprofil)=>(
+
+
+<div className="profil" >
+
+  <img className="profil-picture"src={userprofil.picture_link || profilVide}/>
+ 
+
+      <div className="profil-top">
+          <a href="#" className="profil-pseudo" onClick={onButtonClickContact}>{userprofil.pseudo}</a>                          
+      </div>
         <div className="profil-activities">
           {userprofil.activities.map((activity)=>(
             <span className="profil-tag" style={{background: activity.color }}>{activity.label}</span>

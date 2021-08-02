@@ -1,18 +1,19 @@
+// == Import : npm
 import React from 'react';
 import PropTypes from 'prop-types';
-import loupe from '/src/assets/images/loupe white 2.png';
-import ComboBoxCities from '../../containers/ComboBoxCities';
-
-import './styles.scss';
+import { Link } from 'react-router-dom';
 import "react-widgets/scss/styles.scss";
-import { Redirect, Link } from 'react-router-dom';
 
+// == Import : local
+import ComboBoxCities from '../../containers/ComboBoxCities';
+import loupe from '/src/assets/images/loupe white 2.png';
+import './styles.scss';
+
+// == Composant
 const Search = ({
   tags,
-  destination_city,
   activity,
   departure_timestamp,
-  departure_city,
   onInputChange,
   onSubmitSearch
 }) => {
@@ -102,4 +103,5 @@ Search.propTypes = {
   })
 };
 
+// == Export
 export default Search;

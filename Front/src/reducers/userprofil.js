@@ -77,7 +77,7 @@ const reducer = (state = initialState, action = {}) => {
           return {
             ...state,
             completed: true,
-            inputs:{...action.payload},
+            inputs:{...state.inputs,...action.payload},
           };
 
       case ADD_ACTIVITY_USER_SUCCESS:

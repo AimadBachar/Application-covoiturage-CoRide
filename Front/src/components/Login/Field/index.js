@@ -1,9 +1,11 @@
+// == Import npm
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// == Import : local
 import 'src/components/Login/Field/styles.scss';
 
-
+// == Composant
 const Field = ({
     placeholder,
     onChange,
@@ -15,32 +17,31 @@ const Field = ({
   const handleChange = (evt) => {
     onChange(evt.target.value, name);
   };
-    const inputId = `field-${name}`;
+  const inputId = `field-${name}`;
 
-    return (
-   
-      <div className={value.length > 0 ? 'field field--has-content' : 'field'}>
-          <input
-             // React - State
-             value={value}
-             onChange={handleChange}
-             // Les informations de base
-            id={inputId}
-            type={type}
-            className="field-input"
-            placeholder={placeholder}
-            name={name}        
-           />
+  return (
+    <div className={value.length > 0 ? 'field field--has-content' : 'field'}>
+      <input
+        // React - State
+        value={value}
+        onChange={handleChange}
+        // informations de base
+        id={inputId}
+        type={type}
+        className="field-input"
+        placeholder={placeholder}
+        name={name}        
+      />
         
-          <label
-          htmlFor={inputId}
-          className="field-label"
-           >
-          {placeholder}
-          </label>
-      </div>   
-     );
-  };
+      <label
+        htmlFor={inputId}
+        className="field-label"
+      >
+        {placeholder}
+      </label>
+    </div>   
+  );
+};
 
 Field.propTypes = {
   value: PropTypes.string,

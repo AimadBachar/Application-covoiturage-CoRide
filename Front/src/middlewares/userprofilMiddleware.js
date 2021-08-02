@@ -110,12 +110,21 @@ case  FETCH_ACTIVITIES:
             .then((res) => {
               console.log('res.data', res.data);
               const action = addActivityUserSuccess(res.data);
-              //const action
+              const success = activeModal({
+                header:"Félicitation",
+                message:"L'activitée a bien été ajoutée!"
+              })
               store.dispatch(action);
+              store.dispatch(success);
         
             })
             .catch((err) => {
               console.error(err);
+              const error = activeModal({
+                header:"Attention",
+                message:"Nous n'avons pas ajouter cette activitée car elle est déjà présente dans votre liste"
+              });
+              store.dispatch(error);
             });
 
             break;

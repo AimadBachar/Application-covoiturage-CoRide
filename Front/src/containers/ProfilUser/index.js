@@ -23,7 +23,7 @@ const mapStateToProps = (state) => ({
   birthdate: state.user.inputs.birthdate || state.userprofil.inputs.birthdate,
   activity_id: state.user.inputs.activity_id || state.userprofil.inputs.activty_id,
   activities: state.user.inputs.activities || state.userprofil.activities,
-  tags: state.user.inputs.tags || state.userprofil.inputs.tags,
+  tags: state.user.inputs.tags || state.userprofil.tags,
   picture_link: state.user.inputs.picture_link || state.userprofil.inputs.picture_link,
   travels_passenger: state.user.inputs.travels_passenger || state.userprofil.travels_passenger,
   travels_driver: state.user.inputs.travels_driver || state.userprofil.travels_driver,

@@ -1,40 +1,34 @@
+// == Import : npm
 import React  from 'react';
 import PropTypes from 'prop-types';
-
-import Field from 'src/components/Login/Field';
 import { Link, Redirect, BrowserRouter as Route } from 'react-router-dom';
 
+
+import Field from 'src/components/Login/Field';
+
 import 'src/components/Login/styles.scss';
-//import Header from 'src/components/Login/Header';
-//import photoKite from 'src/assets/images/kite.jpg';
-//<img className="login-photo" src={photoKite} alt="photo kite" />
 
-import ModalInfo from 'src/containers/ModalInfo';
-
+// == Composant
 const Login = ({
-
   user,
   password,
   changeField,
   handleLogin,
   handleLogout,
   isLogged,
-  loggedMessage,
-  open,
-  header,
-  message
+  loggedMessage
 
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleLogin();
   };
- 
+
   return (
    
 <div className="login">
 
-<ModalInfo open={open} header={header} message={message}/>
+
     <div className="login-form">
       {isLogged && (
       // useEffect(),
@@ -56,68 +50,61 @@ const Login = ({
 
       )}
 
-      {!isLogged && (
-        
-        <form
-          autoComplete="off"
-          className="login-form-element"
-          onSubmit={handleSubmit}
-        >
-          <h1 className="login-form-title">
-            Connexion
-          </h1>
-          <Field
-            className="login-form-input"
-            name="user"
-            placeholder="Adresse Email"
-            onChange={changeField}
-            value={user}
-          />
-          <Field
-            className="login-form-input"
-            type="password"
-            name="password"
-            placeholder="mot de passe"
-            onChange={changeField}
-            value={password}
-          />
-          
-        <div className="button">
-          <button
-            type="submit"
-            className="login-form-submit"
-         > 
-         Valider
-          </button>
+     
+          {!isLogged && (
+            
+            <form autoComplete="off" className="login-form-element" onSubmit={handleSubmit}>
+              <h1 className="login-form-title">
+                Connexion
+              </h1>
+                <Field
+                  className="login-form-input"
+                  name="user"
+                  placeholder="Adresse Email"
+                  onChange={changeField}
+                  value={user}
+                />
+                <Field
+                  className="login-form-input"
+                  type="password"
+                  name="password"
+                  placeholder="mot de passe"
+                  onChange={changeField}
+                  value={password}
+                />         
+                <div className="button">
+                  <button
+                    type="submit"
+                    className="login-form-submit"
+                  > 
+                    Valider
+                  </button>
+                </div>
+                  <div className="signin-redirection">
+                    <p className="signin-redirection-text">
+                      Nouveau sur Co'Ride ?
+                    </p>
+                  <Link className="signin-redirection-link" to="/inscription">
+                      S'inscrire
+                  </Link>
+                </div>         
+            </form>
+          )}
         </div>
-         <div className="signin-redirection">
-            <p className="signin-redirection-text">
-              Nouveau sur Co'Ride ?
-            </p>
-            <Link
-              className="signin-redirection-link"
-              to="/inscription"
-            >
-            S'inscrire
-            </Link>
-            </div>
-          
-        </form>
-      )}
-        </div>
-        </div>
-        
+    </div>       
   );
 };
 
 Login.propTypes = {
-  user: PropTypes.string.isRequired,
+  user: PropTypes.string,
   password: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
   handleLogout: PropTypes.func.isRequired,
   isLogged: PropTypes.bool,
   loggedMessage: PropTypes.string,
+  header: PropTypes.string,
+  message: PropTypes.string,
 };
 
 // Valeurs par défaut pour les props
@@ -129,9 +116,3 @@ Login.defaultProps = {
 // == Export
 export default Login;
 
-// http://18.235.248.88:3000/api-docs
-
-/*
-<div className="connexion">
-<img className="connexion-photo" src={photoKite} alt="photo kite" />
-*/
