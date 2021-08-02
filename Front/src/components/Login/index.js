@@ -50,54 +50,7 @@ const Login = ({
 
       )}
 
-      {!isLogged && (
-        
-        <form
-          autoComplete="off"
-          className="login-form-element"
-          onSubmit={handleSubmit}
-        >
-          <h1 className="login-form-title">
-            Connexion
-          </h1>
-          <Field
-            className="login-form-input"
-            name="user"
-            placeholder="Adresse Email"
-            onChange={changeField}
-            value={user}
-          />
-          <Field
-            className="login-form-input"
-            type="password"
-            name="password"
-            placeholder="mot de passe"
-            onChange={changeField}
-            value={password}
-          />
-          
-        <div className="button">
-          <button
-            type="submit"
-            className="login-form-submit"
-         > 
-         Valider
-          </button>
-          
-        </div>
-         <div className="signin-redirection">
-            <p className="signin-redirection-text">
-              Nouveau sur Co'Ride ?
-            </p>
-            <Link
-              className="signin-redirection-link"
-              to="/inscription"
-            >
-            S'inscrire
-            </Link>
-            </div>
-            </form>
-          )}
+     
           {!isLogged && (
             
             <form autoComplete="off" className="login-form-element" onSubmit={handleSubmit}>

@@ -3,7 +3,7 @@ import React from 'react';
 import { useEffect } from 'react';
 
 // == Import
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Header from 'src/containers/Header';
 import HeaderContact from 'src/containers/HeaderContact';
 import HeaderDetailsCard from 'src/containers/HeaderDetailsCard';
@@ -94,7 +94,7 @@ const App = ({loading, fetchTravels, isLogged, header, message, logged}) => {
         </Route>
 
         <Route exact path="/profilpage">
-          <HeaderDetailsProfil />
+          <HeaderProfilUser />
           <DetailsProfil />
           <Footer />
         </Route>
@@ -170,7 +170,7 @@ const App = ({loading, fetchTravels, isLogged, header, message, logged}) => {
 
         <Route exact path="/profilpage">
           <Redirect from="/profilpage" to="/connexion" />
-          <HeaderDetailsProfil />
+          <HeaderProfilUser/>
           <DetailsProfil />
           <Footer />
         </Route>
