@@ -1,16 +1,15 @@
+// == Import : npm
 import React from 'react';
 import PropTypes from 'prop-types';
-import profilVide from "src/assets/images/profil_vide.jpg"
 import { Link, useLocation } from 'react-router-dom'
 
+// == Import : local
+import ModalInfo from '../../containers/ModalInfo';
+import profilVide from "src/assets/images/profil_vide.jpg"
 import 'src/components/DetailsProfil/styles.scss';
 
-import ModalInfo from '../../containers/ModalInfo';
-
-
-
+// == Composant
 const DetailsProfil = ({
-  onButtonClickContact,
   getAllUsers,
   usersProfils,
   submitEmail,
@@ -45,7 +44,7 @@ return (
  
 
       <div className="profil-top">
-          <a href="#" className="profil-pseudo" onClick={onButtonClickContact}>{userprofil.pseudo}</a>                          
+          <p>{userprofil.pseudo}</p>                          
       </div>
       
         <div className="profil-activities">
@@ -69,26 +68,26 @@ return (
       </div>
 </div>
       ))
-
-    
-
-  
+ 
 )}
 
 
 
 DetailsProfil.propTypes = {
-  onButtonClickProfilUser: PropTypes.func.isRequired,
-  onButtonClickValidation: PropTypes.func.isRequired,
-  profil: PropTypes.shape({
+  submitEmail: PropTypes.func.isRequired,
+  getAllUsers: PropTypes.func.isRequired,
+  usersProfils: PropTypes.shape({
     email: PropTypes.string.isRequired,
-    cellular: PropTypes.string.isRequired,
-    city: PropTypes.string.isRequired,
-    country: PropTypes.string.isRequired, 
+    pseudo: PropTypes.string.isRequired,
     bio: PropTypes.string.isRequired, 
     activity: PropTypes.string.isRequired,
     brand: PropTypes.string.isRequired,
     model: PropTypes.string.isRequired,
-  })
+  }),
+  message: PropTypes.string.isRequired,
+  pseudo: PropTypes.string.isRequired,
+  open: PropTypes.bool.isRequired,
 };
+
+// == Export
 export default DetailsProfil;

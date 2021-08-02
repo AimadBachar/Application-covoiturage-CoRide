@@ -1,13 +1,13 @@
+// == Import : npm
 import React from 'react';
-// import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-
+// == Import : local
 import instagram from '/src/assets/images/instagram white.png';
 import facebook from '/src/assets/images/facebook white.png';
 import twitter from '/src/assets/images/twitter white.png';
-
 import '/src/components/Footer/styles.scss';
 
+// == Composant
 const Footer = (props) => (
   <div className="footer">
     <div className="footer-logo">
@@ -28,8 +28,5 @@ const Footer = (props) => (
   </div>
 );
 
-// Footer.proptypes = {
-
-// };
-
+// == Export
 export default Footer;

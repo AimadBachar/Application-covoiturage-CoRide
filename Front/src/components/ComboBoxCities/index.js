@@ -1,10 +1,13 @@
+// == Import : npm
 import React from 'react';
+import PropTypes from 'prop-types';
 import Combobox from "react-widgets/Combobox";
-import ModalInfo from '../../containers/ModalInfo';
-
-
 import "react-widgets/scss/styles.scss";
 
+// == Import : local
+import ModalInfo from '../../containers/ModalInfo';
+
+// == Composant
 const ComboBoxCities = ({
   name,
   placeholder,
@@ -112,4 +115,18 @@ const ComboBoxCities = ({
   );
 };
 
+ComboBoxCities.propTypes = {
+  name: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  resultsFetch: PropTypes.array.isRequired,
+  onInputCityChange: PropTypes.func.isRequired,
+  onInputsCoords: PropTypes.func.isRequired,
+  long: PropTypes.string.isRequired,
+  lat: PropTypes.string.isRequired,
+  open: PropTypes.bool.isRequired,
+  header: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+};
+
+// == Export
 export default ComboBoxCities

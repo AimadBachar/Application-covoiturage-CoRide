@@ -91,14 +91,13 @@ const Login = ({
 };
 
 Login.propTypes = {
-  user: PropTypes.string.isRequired,
+  user: PropTypes.string,
   password: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
   handleLogout: PropTypes.func.isRequired,
   isLogged: PropTypes.bool,
   loggedMessage: PropTypes.string,
-  open: PropTypes.string,
   header: PropTypes.string,
   message: PropTypes.string,
 };

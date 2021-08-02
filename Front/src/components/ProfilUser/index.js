@@ -1,14 +1,14 @@
+// == Import : npm
 import React from 'react';
-import { Link, BrowserRouter, Route, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
+// == Import : local
 import profilVide from "src/assets/images/profil_vide.jpg"
 import 'src/components/ProfilUser/styles.scss';
-//import HeaderProfilUser from 'src/components/ProfilUser/HeaderProfilUser';
-
-
 import ModalInfo from "src/containers/ModalInfo";
 
-
+// == Composant
 const ProfilUser = ({
 activity,
 last_name,
@@ -66,12 +66,6 @@ checkInputsContent
     onInputChange(evt.target.name, value )
   };
 
- /* //on permet le téléchargement d'une photo
-  const handleUpload = (evt) => {
-    console.log(evt.target.files[0]);
-    this.setState({ picture: evt.target.files[0] });
-  };*/
-
   const ifPictureLink = ()=>{
     if(picture_link){
       return (
@@ -92,8 +86,7 @@ return (
 
   <div className="profil-form"> 
   <ModalInfo open={open} header={header} message={message}/>
-  <form // FORM 1 IDENTITY
-        className="profil-form-element"       
+  <form className="profil-form-element"       
         onSubmit={handleSubmit}
         enctype="application/x-www-form-urlencoded">
   <h1 className="profil-form-title">
@@ -143,8 +136,7 @@ return (
         </form>
 
 
-        <form // FORM 2 BIO
-            className="profil-form-element"       
+        <form className="profil-form-element"       
             onSubmit={handleSubmit}
             enctype="application/x-www-form-urlencoded">
           <div className="profil-form-bio">
@@ -161,8 +153,7 @@ return (
           </form>
        
           
-  <form // FORM 2  CHOIX DES SPORTS + BOUTON
-    className="profil-form-element"       
+  <form className="profil-form-element"       
         onSubmit={handleSubmitActivities}
         enctype="application/x-www-form-urlencoded">
        
@@ -182,8 +173,7 @@ return (
        </div>
 
 
-      <div // RECUPERER LES TAGS DES SPORTS
-          className="profil-form-sport_others">          
+      <div className="profil-form-sport_others">          
               {activities?.map(activity=>(
             <span className="profil-form-sport_input">{activity.label}</span>   
            
@@ -199,8 +189,7 @@ return (
 
 
  <div className="profil-form-element">
- <div // RECUPERER LES TRAJETS EN TANT QUE PASSAGER
-          className="profil-form-mytravelspassenger">   
+ <div className="profil-form-mytravelspassenger">   
          <table>
            <thead>
         <tr>
@@ -223,8 +212,7 @@ return (
          </table>
        </div>    
 
-       <div // RECUPERER LES TRAJETS EN TANT QUE DRIVER
-          className="profil-form-mytravelsdriver">   
+       <div className="profil-form-mytravelsdriver">   
          <table>
            <thead>
             <tr>
@@ -251,8 +239,7 @@ return (
   
 
 
-          <div // REDIRECTION VERS LA PAGE D'ACCUEIL
-           className="home-redirection">
+          <div className="home-redirection">
             <p className="home-redirection-text">
                Retour sur la        
               <Link
@@ -265,9 +252,6 @@ return (
       );
     };
                
-    
-
-
 ProfilUser.propTypes = {
   last_name: PropTypes.string.isRequired,
   first_name: PropTypes.string.isRequired,
@@ -276,7 +260,6 @@ ProfilUser.propTypes = {
   password: PropTypes.string.isRequired,
   activity: PropTypes.string.isRequired,
   onSubmitProfil: PropTypes.func.isRequired,
-  //onChange: PropTypes.func.isRequired,
   tags: PropTypes.shape({
     sport: PropTypes.string.isRequired,
    }) 
@@ -284,77 +267,3 @@ ProfilUser.propTypes = {
 
 export default ProfilUser;
 
-
-
-// autres champs  pour le profil de l'utilisateur
-/*}
-                <Field
-                  className="profil-form-input"
-                  type="text"
-                  name="adresse"
-                  placeholder="Adresse postale"
-                  onChange={changeField}
-                  value={coords}
-                />
-
-                <Field
-                  className="profil-form-input"
-                  type="text"
-                  name="ville"
-                  placeholder="Ville"
-                  onChange={changeField}
-                  value={city}
-                />
-
-                <Field
-                  className="profil-form-input"
-                  type="number"
-                  name="code postal"
-                  placeholder="Code postal"
-                  onChange={changeField}
-                  value={postcode}
-                />
-                <Field
-                  className="profil-form-input"
-                  type="text"
-                  name="pays"
-                  placeholder="Pays"
-                  onChange={changeField}
-                  value={country}
-                />
-                  <p className="profil-form-text">Ajout d'un véhicule</p>
-
-                <Field
-                  className="profil-form-input"
-                  type="text"
-                  name="voiture"
-                  placeholder="Marque"
-                  onChange={changeField}
-                  value={brand}
-                />
-
-                <Field
-                  className="profil-form-input"
-                  type="text"
-                  name="model"
-                  placeholder="Modèle"
-                  onChange={changeField}
-                  value={model}
-                />       
-              */
-
-                /*
-                 <p className="profil-form-text">Bio</p>
-                 */
-
-
-                 /*
-
-
-                <p className="profil-form-text">Quel(s) sport(s) de glisse pratiquez vous ?</p>
-          */
-
-
-                /*
-                  
-                */

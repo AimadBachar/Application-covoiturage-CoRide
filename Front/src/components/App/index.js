@@ -1,14 +1,15 @@
 // Import npm
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
-// == Import
+
+// == Import : local
 import Loading from './Loading';
 import Header from 'src/containers/Header';
 import Search from 'src/containers/Search';
 import Footer from 'src/containers/Footer';
 import NotFoundPage from '../NotFoundPage';
-import Main from '../Main';
 import Info from '../Info';
 import Mentions from '../Mentions';
 import HeaderContact from 'src/containers/HeaderContact';
@@ -27,8 +28,6 @@ import Card from 'src/containers/Card';
 import DetailsCard from 'src/containers/DetailsCard';
 import HeaderDetailsCard from 'src/containers/HeaderDetailsCard';
 import ModalInfo from 'src/containers/ModalInfo';
-
-
 
 import './styles.scss';
 
@@ -207,83 +206,22 @@ const App = ({loading, fetchTravels, isLogged, open, header, message, logged}) =
     </Router>
   );
 
-
-
  }
-
-  /* if (loading) {
-    return <Loading />;
-  }
-  return (
-    <Router>
-      <div className="app">
-      <ModalInfo open={open} header={header} message={message}/>  
-      <Switch>
-
-      <Route exact path="/">
-          <Header />
-          <Search />
-          <Card />
-          <Footer />
-        </Route>
-
-        <Route exact path="/info">
-          <HeaderInfo />
-          <Info />
-          <Footer />
-        </Route>
-
-        <Route exact path="/trip">
-          <HeaderTrip />
-          <Trip />
-          <Footer />
-        </Route>
-
-        <Route exact path="/connexion">
-          <HeaderLogin />
-          <Login />
-          <Footer />
-        </Route>
-
-        <Route exact path="/inscription">
-          <Signin />
-          <Footer />
-        </Route>
-
-        <Route exact path="/profil">
-          <HeaderProfilUser />
-          <ProfilUser />
-          <Footer />
-        </Route>
-
-        <Route exact path="/profilpage">
-          <HeaderDetailsProfil />
-          <DetailsProfil />
-          <Footer />
-        </Route>
-
-        <Route exact path="/travel">
-          <HeaderDetailsCard />
-          <DetailsCard />
-          <Footer />
-        </Route>
-
-        <Route exact path="/contact">
-          <HeaderContact />
-          <Contact />
-          <Footer />
-        </Route>
-
-        <Route path="*">
-          <NotFoundPage />
-        </Route>
-
-      </Switch>
-      </div>
-    </Router>
-  ); */
 };
 
+App.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  logged: PropTypes.bool.isRequired,
+  fetchTravels: PropTypes.func.isRequired,
+  isLogged: PropTypes.func.isRequired,
+  header: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+  open: PropTypes.bool.isRequired, 
+};
 
+// Valeurs par défaut pour les props
+App.defaultProps = {
+  logged: false,
+};
 // == Export
 export default App;

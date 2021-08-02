@@ -47,7 +47,6 @@ const HeaderContact = ({
 };
 
 HeaderContact.propTypes = {
-  onButtonClickLogout: PropTypes.string.isRequired,
   logged: PropTypes.bool,
 };
 

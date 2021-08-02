@@ -48,7 +48,6 @@ const HeaderLogin = ({
 };
 
 HeaderLogin.propTypes = {
-  onButtonClickLogout: PropTypes.string.isRequired,
   logged: PropTypes.bool,
 };
 
@@ -57,5 +56,6 @@ HeaderLogin.defaultProps = {
   logged: false, 
 };
 
+// == Export
 export default HeaderLogin;
 
