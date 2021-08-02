@@ -4,15 +4,14 @@ import PropTypes from 'prop-types';
 import { Link, Redirect, useLocation } from 'react-router-dom'
 
 // == Import : local
+import ModalInfo from 'src/containers/ModalInfo';
 import driver from '/src/assets/images/driver-orange0.png';
 import pin from '/src/assets/images/pin.png';
 import sit from '/src/assets/images/sit-orange0.png';
-import ModalInfo from 'src/containers/ModalInfo';
 import './styles.scss';
 
 // == Composant
 const DetailsCard = ({
-  updateCard,
   logged,
   onButtonClickProfilUser,
   onButtonClickValidation
@@ -133,7 +132,6 @@ DetailsCard.propTypes = {
     id: PropTypes.number.isRequired,
   })
 };
-
 
 // == Export
 export default DetailsCard;
