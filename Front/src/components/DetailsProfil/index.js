@@ -3,19 +3,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom'
 
+<<<<<<< HEAD
 // == Import : local
 import ModalInfo from '../../containers/ModalInfo';
 import profilVide from "src/assets/images/profil_vide.jpg"
 import 'src/components/DetailsProfil/styles.scss';
 
 // == Composant
+=======
+import 'src/components/DetailsProfil/styles.scss';
+
+
+>>>>>>> ff7f23e80b78a394d22e81b8ea341cace627aa7e
 const DetailsProfil = ({
   getAllUsers,
   usersProfils,
-  submitEmail,
-  open,
-  header,
-  message
+  submitEmail
 }) => {
 
   if(usersProfils.length ===0){
@@ -37,8 +40,6 @@ return (
 
 
 <div className="profil" >
-
-        <ModalInfo open={open} header={header} message={message}/>
 
   <img className="profil-picture"src={userprofil.picture_link || profilVide}/>
  

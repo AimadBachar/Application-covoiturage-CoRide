@@ -7,7 +7,12 @@ import { Link, Redirect, useLocation } from 'react-router-dom'
 import driver from '/src/assets/images/driver-orange0.png';
 import pin from '/src/assets/images/pin.png';
 import sit from '/src/assets/images/sit-orange0.png';
+<<<<<<< HEAD
 import ModalInfo from 'src/containers/ModalInfo';
+=======
+
+
+>>>>>>> ff7f23e80b78a394d22e81b8ea341cace627aa7e
 import './styles.scss';
 
 // == Composant
@@ -15,10 +20,7 @@ const DetailsCard = ({
   updateCard,
   logged,
   onButtonClickProfilUser,
-  onButtonClickValidation,
-  open,
-  message,
-  header
+  onButtonClickValidation
 }) => {
     const location = useLocation();
     const stateLink = location.state;
@@ -80,7 +82,6 @@ const DetailsCard = ({
 
     return (
       <div className="card" >
-        <ModalInfo open={open} header={header} message={message}/>
         <div className="card-top">
           <div className="card-top_left">
           <img src={driver} className="card-destination-driver" alt="driver" />

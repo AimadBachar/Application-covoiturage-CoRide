@@ -2,17 +2,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// == Import : local
-import ModalInfo from '../../containers/ModalInfo';
 import './styles.scss';
 
 // == Composant
 const Contact = ({
     submitEmail,
     logged,
-    open,
-    header,
-    message,
+    email,
+    pseudo
 }) => {
     const handleSubmitMessageForm = (event)=>{
         event.preventDefault();
@@ -31,7 +28,6 @@ const Contact = ({
     }  else {
         return (
     <div className="contact" >
-        <ModalInfo open={open} header={header} message={message}/>
         <h1 className="contact-title">Nous contacter</h1>
             <p className="contact-info">Une demande, un renseignement, veuillez remplir ce formulaire:</p>
         <div className="profil-bottom">
