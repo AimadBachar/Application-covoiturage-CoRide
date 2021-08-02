@@ -1,7 +1,5 @@
 @use './src/styles/vars';
 
-
-
 .profil-form {
   box-shadow: vars.$box-shadow;
   border-radius: vars.$border-radius-global;
@@ -10,13 +8,13 @@
   font-family: vars.$font;
   display: flex;
   flex-direction: column;
+  align-items: center;
   position: relative;
   margin-top: -4.5rem;
   margin-bottom: 2rem;
   margin-left: 2.5rem;
   margin-right: 1rem;
   max-width: 85%;
-
 
   &-title {
     font-size: 1.2em;
@@ -27,169 +25,166 @@
     padding: 1.5rem;
     border-radius: vars.$border-radius-top;
   }
-    &-element {
-      width:100%;
-      border-radius: 10px; 
-    }
- 
-    &-identity {     
-          // upload photo et affichage 
-          &_picture {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            padding: 2rem;   
-          }          
-        } 
-          &-upload {
-            padding-top: 1rem;
-            padding-bottom: 0.2rem;
-            margin: 0;
-            color: vars.$color;
-          }
-  
-           &-input {
-            border: none;
-            outline: none;
-            border-right: none;
-            border-left: none;
-            border-top: none;
-            border-bottom: vars.$color-grey 1px solid;
-            background-color: vars.$color_light ;
-            color: vars.$color-grey_more;   
-            padding-top: 1rem;
-            height: 3rem;
-          }       
-       
-                   
-     
 
-      // espace bio
-      &-bio {
-        padding-top: 1rem;
-        background-color: vars.$color_light;
-       text-align: center;
-      }
-
-      &-textarea {
-        border-radius: 10px;
-        margin-top: 1rem;
-        margin-right: 0.5rem;
-        margin-left: 0.5rem;
-        border: none;
-        outline: none;
-        width: 85%;
-        border: vars.$color solid 0.1px;
-        color: vars.$color-grey_more;
-        text-align: center;
-        font-size: 0.9em;
-      }
-        
-
-// sports
-&-sport {
-  display: flex;
-  flex-direction: column;
-  background-color: vars.$color-light;
-  padding: 1rem;
-  justify-content: space-between;
-  height: 5rem;
- 
-  
-  
-  &_select {
-    background-color: vars.$color-light;      
-    border-color: vars.$color;
-    border-radius: 8px;
-    height: 3rem;
-    color: vars.$color;
-    font-size: 1em;
-    font-family: vars.$font;
-    width: 100%;
-    padding-bottom: 1rem;
+  &-element {
+    width:100%;
+    border-radius: 10px; 
   }
 
-  &_others {
+  &-identity {
+    // upload photo et affichage
     display: flex;
     flex-direction: column;
-    padding-top: 0rem;
-    padding-left: 1.5rem;
-    
-  }
-      &_title{
-        color: vars.$color;
-        font-size: 1em;
-      }
 
-      &_input {
-        width: 90%;
-        justify-content: space-between;
-        text-align: center;
-        border: vars.$color-grey solid 0.1px;
-        margin-top: 1rem;
-        border-radius: 25px;
-        height: 2.5rem;
-        font-size: 1em
-        
-
-      }
+    &_picture {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 0 auto;
+    }          
   }
 
+  &-upload {
+    padding-top: 1rem;
+    padding-bottom: 0.2rem;
+    margin: 0 auto;
+    color: vars.$color;
+  }
 
+  &-input {
+    border: none;
+    border-bottom: vars.$color-grey 1px solid;
+    background-color: vars.$color_light;
+    color: vars.$color-grey_more;   
+    padding-top: 1rem;
+    height: 3rem;
+  }       
 
+  // espace bio
+  &-bio {
+    padding-top: 1rem;
+    background-color: vars.$color_light;
+    text-align: center;
+  }
+
+  &-textarea {
+    border-radius: 10px;
+    margin-top: 1rem;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    border: none;
+    outline: none;
+    width: 85%;
+    border: vars.$color solid 0.1px;
+    color: vars.$color-grey_more;
+    text-align: center;
+    font-size: 0.9em;
+  }
+
+// sports
+  &-sport {
+    display: flex;
+    flex-direction: column;
+    background-color: vars.$color-light;
+    padding: 1rem;
+    justify-content: space-between;
+    height: 5rem;
+
+    &_select {
+      background-color: vars.$color-light;      
+      border-color: vars.$color;
+      border-radius: 8px;
+      height: 3rem;
+      color: vars.$color;
+      font-size: 1em;
+      font-family: vars.$font;
+      width: 100%;
+      padding-bottom: 1rem;
+    }
+
+    &_others {
+      display: flex;
+      flex-direction: column;
+      padding-top: 0rem;
+      padding-left: 1.5rem;
+    }
+
+    &_title{
+      color: vars.$color;
+      font-size: 1em;
+    }
+
+    &_input {
+      width: 90%;
+      justify-content: space-between;
+      text-align: center;
+      border: vars.$color-grey solid 0.1px;
+      margin-top: 1rem;
+      border-radius: 25px;
+      height: 2.5rem;
+      font-size: 1em
+    }
+  }
 
   // bouton sauvegarder
-    &-button {
-      margin: auto 0;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-      background-color: vars.$color_light;
-      outline: none;   
-      display: flex;
-      justify-content: flex-end;
-    }
+  &-button {
+    margin: auto 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: vars.$color_light;
+    outline: none;   
+    display: flex;
+    justify-content: flex-end;
+  }
 
-    &-submit {
-      background-color: vars.$color_light;
-      border: vars.$color solid 0.1px;
-      color: vars.$color;
-      text-shadow: 0.1em 0.1em 0.1em vars.$color-grey;
-      font-size: 1em;
-      font-weight: bold;
-      padding: 0.5rem;
-      margin: auto;
-      border-radius:25px;
-      text-align: center;
-      outline: none;
-    }
+  &-submit {
+    background-color: vars.$color_light;
+    border: vars.$color solid 0.1px;
+    color: vars.$color;
+    text-shadow: 0.1em 0.1em 0.1em vars.$color-grey;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin: auto;
+    border-radius:25px;
+    text-align: center;
+    outline: none;
+  }
 
     // bas de page avec link etour vers la page d'accueil
-    .home-redirection {
-      background-color: vars.$color;
-      padding: 0.8rem;
-      font-family: vars.$font;
-      color: vars.$color_light;
-      border-radius: vars.$border-radius-bottom;
-      text-overflow: clip;
-      display: flex;
-      justify-content: center;
-      position: relative;
-      margin-top: 1.5rem;
-       
+  .home-redirection {
+    background-color: vars.$color;
+    padding: 0.8rem;
+    font-family: vars.$font;
+    color: vars.$color_light;
+    border-radius: vars.$border-radius-bottom;
+    text-overflow: clip;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-top: 1.5rem;
+      
     &-text {   
       font-size: 1.3em;
       text-align: right;
     }
     
     &-link {
-        text-shadow: 0.1em 0.1em 0.2em vars.$color-grey_more;
-        color: vars.$color_light; 
-        text-overflow: clip;            
-        font-size: 0.8em;
-        padding-left: 1rem;
-        text-align: right;   
-      }
+      text-shadow: 0.1em 0.1em 0.2em vars.$color-grey_more;
+      color: vars.$color_light; 
+      text-overflow: clip;            
+      font-size: 0.8em;
+      padding-left: 1rem;
+      text-align: right;   
     }
   }
+}
 
+tr {
+  display: flex;
+  justify-content: space-between;
+}
 
+td {
+  text-align: center;
+}

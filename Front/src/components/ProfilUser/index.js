@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 // == Import : local
 import profilVide from "src/assets/images/profil_vide.jpg"
 import 'src/components/ProfilUser/styles.scss';
+
 import ModalInfo from "src/containers/ModalInfo";
 
 // == Composant
@@ -30,29 +31,23 @@ travels_passenger,
 travels_driver,
 biography,
 checkInputsContent
-
 }) => {
-
   if(tags?.length<1){
     handleFetchActivities();
   }
-    const handleSubmit = (evt) => {   
+
+  const handleSubmit = (evt) => {   
     evt.preventDefault();
-
     const inputs = evt.target.querySelectorAll("input");
-
     const checkInputs = Array.from(inputs).find(input=>input.value === "" && input.type != "file");
-
     if(checkInputs) return checkInputsContent({
       header:"Attention",
       message:"Tous les champs doivent être saisis"
     })
 
-  
     console.log('submit');
 
     const updateUser = new FormData(evt.target)
-
     onSubmitProfil(updateUser);
     evt.target.reset();
   };
@@ -78,10 +73,12 @@ checkInputsContent
     event.target.reset();
   }
 
+
 return (
 
   <div className="profil-form"> 
   <form // FORM 1 IDENTITY 
+
         className="profil-form-element"       
 
         onSubmit={handleSubmit}
@@ -207,26 +204,61 @@ return (
                 <th>Ville de départ</th>                        
                 <th>Ville d'arrivée</th>                        
                 <th>date et heure de départ</th>
-            </tr>
-          </thead>
-        <tbody>
-         {travels_driver?.map(travel=>(
-          
-              <tr>
-                <td>{travel.departure_city}</td>                 
-                <td>{travel.destination_city}</td>                  
-                <td>{new Date(travel.departure_timestamp).toLocaleString('fr-FR')}</td>
-              </tr> 
-                                            
-            ))}
+              </tr>
+            </thead>
+
+            <tbody>
+              {travels_passenger?.map(travel=>(
+                <tr>
+                  <td>{travel.departure_city}</td>                  
+                  <td>{travel.destination_city}</td>
+                  <td>{new Date(travel.departure_timestamp).toLocaleString('fr-FR')}</td>
+                </tr>
+              ))}
             </tbody>
-            </table>
-          </div>                    
+          </table>
+        </div>    
+
+        <div // RECUPERER LES TRAJETS EN TANT QUE DRIVER
+        className="profil-form-mytravelsdriver">   
+          <table>
+            <thead>
+              <tr>
+                <th>Départ</th>                        
+                <th>Arrivée</th>                        
+                <th>date et heure</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {travels_driver?.map(travel=>(
+                <tr>
+                  <td>{travel.departure_city}</td>                 
+                  <td>{travel.destination_city}</td>                  
+                  <td>{new Date(travel.departure_timestamp).toLocaleString('fr-FR')}</td>
+                </tr>                          
+              ))}
+            </tbody>
+          </table>
+        </div>                    
+      </div>
+
+      <div className="profil-form-button">
+        <button type="submit" className="profil-form-submit">
+          Supprimer le profil
+        </button>
+      </div>
+
+      <div // REDIRECTION VERS LA PAGE D'ACCUEIL
+      className="home-redirection">
+        <p className="home-redirection-text">
+          Retour sur la        
+          <Link
+            className="home-redirection-link" to="/">
+          page d'accueil
+          </Link>
+        </p>
       </div>  
-   
-  
-
-
           <div className="home-redirection">
             <p className="home-redirection-text">
                Retour sur la        

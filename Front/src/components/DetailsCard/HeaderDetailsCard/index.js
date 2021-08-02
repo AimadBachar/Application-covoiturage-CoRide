@@ -9,6 +9,7 @@ import logo from '/src/assets/logo/coride-b.svg';
 import login from '/src/assets/images/icon user white.png';
 import logout from '/src/assets/images/logout-white.png';
 import Nav from 'src/components/Nav';
+
 import 'src/components/DetailsCard/HeaderDetailsCard/styles.scss';
 
 // == Composant
@@ -26,6 +27,7 @@ const HeaderDetailsCard = ({
       <div className="header">
         <img className="header-photo" src={detailsCardBanner} alt="detailsCardBanner" />
         <img src={logo} className="header-logo" alt="Logo CoRide" />
+
          <Nav logged={logged}/>
           <a onClick={logOut}>
             <img className="header-logout" src={logout} alt="logout" />

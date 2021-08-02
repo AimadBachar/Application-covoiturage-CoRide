@@ -26,6 +26,7 @@ const HeaderContact = ({
       <div className="header">
         <img className="header-photo" src={headerContactBanner} alt="headerContactBanner" />
         <img src={logo} className="header-logo" alt="Logo CoRide" />
+
           <Nav logged={logged}/>
             <a onClick={logOut}>
               <img className="header-logout" src={logout} alt="logout" />
@@ -43,6 +44,7 @@ const HeaderContact = ({
            </Link>
       </div>
     )
+
   };     
 };
 

@@ -19,20 +19,19 @@ const ComboBoxCities = ({
   long,
   lat
 }) => {
-
   const cityFetch = (evt)=>{
     evt.preventDefault();
-   
+
     const name = evt.target.name;
     const value = evt.target.value;
     console.log(value)
+
     if(value.length>4){
       onInputCityChange(name,value);
     }
   }
 
   const citySelected = (evt)=>{  
-    
     console.log("city selected",evt);
     onInputsCoords(evt);
   }
@@ -83,8 +82,8 @@ const ComboBoxCities = ({
   }
 
   return (
-    
     <div>
+
         <Combobox 
           containerClassName="search-form_input departure"
           name={name}
@@ -106,9 +105,8 @@ const ComboBoxCities = ({
          
         /> 
 
-        {insertCoords()}
-        
-        </div>
+      {insertCoords()}
+    </div>
   );
 };
 

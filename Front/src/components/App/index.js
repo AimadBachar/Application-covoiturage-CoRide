@@ -27,9 +27,6 @@ import Loading from './Loading';
 import Login from 'src/containers/Login';
 import ModalInfo from 'src/containers/ModalInfo';
 
-
-
-
 import './styles.scss';
 
 
@@ -44,7 +41,6 @@ const App = ({loading, fetchTravels, isLogged, header, message, logged}) => {
     if (localStorage.getItem('tokens')) {
       isLogged();
     }
-
   }, [])
 
  if (logged) {
@@ -126,6 +122,7 @@ const App = ({loading, fetchTravels, isLogged, header, message, logged}) => {
   return (
     <Router>
       <div className="app">
+
         <ModalInfo header={header} message={message}/>
       <Switch>
 
@@ -270,11 +267,11 @@ const App = ({loading, fetchTravels, isLogged, header, message, logged}) => {
         </Route>
 
       </Switch>
+
       </div>
     </Router>
   ); */
 };
-
 
 // == Export
 export default App;
