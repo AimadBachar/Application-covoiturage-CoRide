@@ -38,7 +38,7 @@ const HeaderSignin = ({
       <div className="header">
         <img className="header-photo" src={signinBanner} alt="signinBanner" />
         <img src={logo} className="header-logo" alt="Logo CoRide" />
-        <Nav logged={logged}/>
+         <Nav logged={logged}/>
           <Link to="/connexion" exact>
             <img className="header-login" src={login} alt="login" />
           </Link>
