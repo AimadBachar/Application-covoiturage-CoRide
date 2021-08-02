@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import HeaderLogin from 'src/components/HeaderLogin';
+import HeaderLogin from 'src/components/Login/HeaderLogin';
 import dataTags from '/src/data/data_tag.js';
 import { userLogout } from 'src/actions/user';
 

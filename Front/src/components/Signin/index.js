@@ -117,7 +117,6 @@ const Signin = ({
     <div className="signin">
       <Header />
         <ModalInfo open={open} header={header} message={message}/>
-        <img className="login-photo" src={photoKite} alt="photo kite" />
           <div className="signin-form">
             {isSignedIn && (
               <div className="signin-form-signed">
@@ -226,12 +225,12 @@ Signin.propTypes = {
   password: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   handleSignin: PropTypes.func.isRequired,
-  open: PropTypes.string,
+  //open: PropTypes.string,
   header: PropTypes.string,
   message: PropTypes.string,
   isSignedIn: PropTypes.bool,
   signedMessage: PropTypes.string,
-  checkInputsContent: PropTypes.string,
+  //checkInputsContent: PropTypes.string,
 };
 
 // Valeurs par défaut pour les props

@@ -48,7 +48,6 @@ const HeaderSignin = ({
 };
 
 HeaderSignin.propTypes = {
-  onButtonClickLogout: PropTypes.string.isRequired,
   logged: PropTypes.bool,
 };
 
