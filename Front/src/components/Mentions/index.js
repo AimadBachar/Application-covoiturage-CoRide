@@ -1,6 +1,9 @@
+// == Import : npm
 import React from 'react';
-// import PropTypes from 'prop-types';
+
 /* 
+/*
+Import : local
 import '/src/components/Info/styles.scss'; */
 
 const Mentions = () => (
@@ -62,8 +65,5 @@ const Mentions = () => (
     </div>    
 );
 
-// Footer.proptypes = {
-
-// };
-
+// == Export
 export default Mentions;

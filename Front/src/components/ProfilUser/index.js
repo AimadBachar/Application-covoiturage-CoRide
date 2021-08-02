@@ -4,38 +4,35 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 // == Import : local
+import ModalInfo from "src/containers/ModalInfo";
 import profilVide from "src/assets/images/profil_vide.jpg"
 import 'src/components/ProfilUser/styles.scss';
 
-import ModalInfo from "src/containers/ModalInfo";
+
 
 // == Composant
 const ProfilUser = ({
-activity,
-last_name,
-first_name,
-pseudo,
-email,
-password,
-birthdate,
-tags,
-id,
-onInputChange,
-onSubmitProfil,
-handleFetchActivities,
-picture_link,
-activities,
-onSubmitActivities,
-usersprofil,
-travels_passenger,
-travels_driver,
-biography,
-checkInputsContent
+  last_name,
+  first_name,
+  pseudo,
+  email,
+  birthdate,
+  tags,
+  id,
+  onInputChange,
+  onSubmitProfil,
+  handleFetchActivities,
+  picture_link,
+  activities,
+  onSubmitActivities,
+  travels_passenger,
+  travels_driver,
+  biography,
+  checkInputsContent
 }) => {
   if(tags?.length<1){
     handleFetchActivities();
   }
-
   const handleSubmit = (evt) => {   
     evt.preventDefault();
     const inputs = evt.target.querySelectorAll("input");
@@ -71,71 +68,61 @@ checkInputsContent
     console.log("handle submit activities");
     onSubmitActivities();
     event.target.reset();
-  }
+  };
 
-
-return (
-
-  <div className="profil-form"> 
-  <form // FORM 1 IDENTITY 
-
-        className="profil-form-element"       
-
-        onSubmit={handleSubmit}
-        enctype="application/x-www-form-urlencoded">
-     
-  <h1 className="profil-form-title">
-  Modifier le profil
-  </h1> 
-   <div className="profil-form-identity">
-       <img className="profil-form-identity_picture" src={picture_link || profilVide}/>      
-           <input className="profil-form-upload" type="file"
+  return (
+    <div className="profil-form"> 
+      <form className="profil-form-element" onSubmit={handleSubmit} enctype="application/x-www-form-urlencoded">   
+       <h1 className="profil-form-title">Modifier le profil</h1> 
+        <div className="profil-form-identity">
+          <img className="profil-form-identity_picture" src={picture_link || profilVide}/>      
+            <input 
+              className="profil-form-upload" 
+              type="file"
               name="picture" placeholder="Picture"
-              accept="image/png, image/jpeg"/> 
-                 {ifPictureLink()}       
-
-         
+              accept="image/png, image/jpeg" /> 
+                {ifPictureLink()}       
                 <input type="hidden" name="id" value={id}/>
 
-                <input
-                  className="profil-form-input" type="text" name="first_name"
-                  placeholder="Prénom" defaultValue={first_name}
-                  onChange={changeField} />
+            <input
+              className="profil-form-input" type="text" name="first_name"
+              placeholder="Prénom" defaultValue={first_name}
+              onChange={changeField} />
                    
-                <input
-                  className="profil-form-input" type="text" name="last_name"
-                  placeholder="Nom" defaultValue={last_name}
-                  onChange={changeField} />               
+            <input
+              className="profil-form-input" type="text" name="last_name"
+              placeholder="Nom" defaultValue={last_name}
+              onChange={changeField} />               
             
-                <input
-                  className="profil-form-input" type="text" name="pseudo"
-                  placeholder="Pseudo" defaultValue={pseudo} />     
+            <input
+              className="profil-form-input" type="text" name="pseudo"
+              placeholder="Pseudo" defaultValue={pseudo} />     
                           
-                <input
-                  className="profil-form-input" type="date" name="birthdate"
-                  placeholder="Date de naissance" defaultValue={birthdate} />
+            <input
+              className="profil-form-input" type="date" name="birthdate"
+              placeholder="Date de naissance" defaultValue={birthdate} />
 
-                <div className="profil-form-bio">
+              <div className="profil-form-bio">
                   <textarea className="profil-form-textarea" cols="20" rows="5" wrap="hard" 
                     placeholder="plus d'informations sur vous, vos spots préférés" name="biography">
-                      {biography}
+                    {biography}
                   </textarea>  
-                </div>
+              </div>
 
                   <input
-                      className="profil-form-input" type="email" name="email"
-                      placeholder="E-mail" defaultValue={email}/>
+                    className="profil-form-input" type="email" name="email"
+                    placeholder="E-mail" defaultValue={email}/>
                
                   <input
                     className="profil-form-input" type="password"
                     name="password" placeholder="Mot de passe"/>
                </div>
               <div className="profil-form-button">
-                  <button type="submit" className="profil-form-submit">
-                        Sauvegarder
-                  </button>
-            </div>
-        </form>
+                <button type="submit" className="profil-form-submit">
+                   Sauvegarder
+                </button>
+          </div>
+      </form>
        
           
   <form className="profil-form-element"       
@@ -167,7 +154,7 @@ return (
                        
       <div className="profil-form-button">
             <button type="submit" className="profil-form-submit">
-                    Sauvegarder
+              Sauvegarder
             </button>
       </div>               
  </form>
@@ -219,8 +206,7 @@ return (
           </table>
         </div>    
 
-        <div // RECUPERER LES TRAJETS EN TANT QUE DRIVER
-        className="profil-form-mytravelsdriver">   
+        <div className="profil-form-mytravelsdriver">   
           <table>
             <thead>
               <tr>
@@ -249,8 +235,7 @@ return (
         </button>
       </div>
 
-      <div // REDIRECTION VERS LA PAGE D'ACCUEIL
-      className="home-redirection">
+      <div className="home-redirection">
         <p className="home-redirection-text">
           Retour sur la        
           <Link
@@ -285,5 +270,6 @@ ProfilUser.propTypes = {
    }) 
 };
 
+// == Export
 export default ProfilUser;
 

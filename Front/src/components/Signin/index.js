@@ -7,6 +7,7 @@ import { Link, BrowserRouter as Route, Redirect } from 'react-router-dom';
 import Field from 'src/components/Signin/Field';
 import Header from 'src/components/Signin/HeaderSignin';
 
+// == Style
 import 'src/components/Signin/styles.scss';
 
 
@@ -224,12 +225,10 @@ Signin.propTypes = {
   password: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   handleSignin: PropTypes.func.isRequired,
-  //open: PropTypes.string,
   header: PropTypes.string,
   message: PropTypes.string,
   isSignedIn: PropTypes.bool,
   signedMessage: PropTypes.string,
-  //checkInputsContent: PropTypes.string,
 };
 
 // Valeurs par défaut pour les props
