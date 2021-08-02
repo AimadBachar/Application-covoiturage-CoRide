@@ -1,13 +1,15 @@
+// == Import : npm
 import React  from 'react';
 import PropTypes from 'prop-types';
+import { Link, Redirect, BrowserRouter as Route } from 'react-router-dom';
+
 
 import Field from 'src/components/Login/Field';
-import { Link, Redirect, BrowserRouter as Route } from 'react-router-dom';
 
 import 'src/components/Login/styles.scss';
 
+// == Composant
 const Login = ({
-
   user,
   password,
   changeField,
@@ -15,6 +17,7 @@ const Login = ({
   handleLogout,
   isLogged,
   loggedMessage
+
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -92,23 +95,61 @@ const Login = ({
             S'inscrire
             </Link>
             </div>
-          
-        </form>
-      )}
+          )}
+          {!isLogged && (
+            
+            <form autoComplete="off" className="login-form-element" onSubmit={handleSubmit}>
+              <h1 className="login-form-title">
+                Connexion
+              </h1>
+                <Field
+                  className="login-form-input"
+                  name="user"
+                  placeholder="Adresse Email"
+                  onChange={changeField}
+                  value={user}
+                />
+                <Field
+                  className="login-form-input"
+                  type="password"
+                  name="password"
+                  placeholder="mot de passe"
+                  onChange={changeField}
+                  value={password}
+                />         
+                <div className="button">
+                  <button
+                    type="submit"
+                    className="login-form-submit"
+                  > 
+                    Valider
+                  </button>
+                </div>
+                  <div className="signin-redirection">
+                    <p className="signin-redirection-text">
+                      Nouveau sur Co'Ride ?
+                    </p>
+                  <Link className="signin-redirection-link" to="/inscription">
+                      S'inscrire
+                  </Link>
+                </div>         
+            </form>
+          )}
         </div>
-        </div>
-        
+    </div>       
   );
 };
 
 Login.propTypes = {
-  user: PropTypes.string.isRequired,
+  user: PropTypes.string,
   password: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
   handleLogout: PropTypes.func.isRequired,
   isLogged: PropTypes.bool,
   loggedMessage: PropTypes.string,
+  header: PropTypes.string,
+  message: PropTypes.string,
 };
 
 // Valeurs par défaut pour les props
@@ -120,9 +161,3 @@ Login.defaultProps = {
 // == Export
 export default Login;
 
-// http://18.235.248.88:3000/api-docs
-
-/*
-<div className="connexion">
-<img className="connexion-photo" src={photoKite} alt="photo kite" />
-*/

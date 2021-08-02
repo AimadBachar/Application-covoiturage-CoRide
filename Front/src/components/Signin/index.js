@@ -1,22 +1,19 @@
-import React, { useState } from 'react';
-import PropTypes, { func } from 'prop-types';
-import { Link, BrowserRouter as Router, Redirect } from 'react-router-dom';
-import axios from 'axios';
+// == Import : npm
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link, BrowserRouter as Route, Redirect } from 'react-router-dom';
 
-//import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-
+// == Import : local
 import Field from 'src/components/Signin/Field';
-import 'src/components/Signin/styles.scss';
 import Header from 'src/components/Signin/HeaderSignin';
 
+import 'src/components/Signin/styles.scss';
 
 
+// == Composant
 const Signin = ({
-
     isSignedIn,
     signedMessage,
-    //picture,
     first_name,
     last_name,
     pseudo,
@@ -27,7 +24,6 @@ const Signin = ({
     changeField,
     handleSignin,
     checkInputsContent
-
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -42,6 +38,7 @@ const Signin = ({
         header:"Attention",
         message:"Tous les champs doivent être remplis."
       })
+
       return;
     }
 
@@ -66,14 +63,14 @@ const Signin = ({
 
     const checkEmail = regexpMail.test(email);
 
-
-    //si mineur return
+    //si l'utilisateur est mineur : return
     if(isMajor < 18) {
       console.log("tu es mineur...");
       checkInputsContent({
         header:"Attention",
         message:"Tu dois avoir plus de 18 ans pour t'inscrire."
       })
+
       return;
     }
 
@@ -83,16 +80,18 @@ const Signin = ({
         header:"Attention",
         message:"Le format de l'email n'est pas valide."
       })
+
       return;
     }
 
-    //si password non conform return
+    //si le password est non conforme : return
     if(!checkPassword) {
       console.log("ton mot de passe n'est pas conforme au format attendu");
       checkInputsContent({
         header:"Attention",
         message:"Le mot de passe doit contenir au minimum 8 caractères dont un symbole (#&@$), 1 lettre en majuscule, 1 lettre en minuscule et 1 chiffre."
-      });
+      })
+
       return;
     }
 
@@ -101,142 +100,121 @@ const Signin = ({
       checkInputsContent({
         header:"Attention",
         message:"Les 2 mots de passe doivent être identique."
-      });
+      })
+
       return;
     }
    
     //si les controles sont ok PARFAIT on valide
     handleSignin(evt.target);
-    evt.target.reset();
+     evt.target.reset();
   };
 
   return (
-  <div className="signin">
 
-       <div className="signin-form">
-      {isSignedIn && (
+    <div className="signin">
+      <Header />
+        <ModalInfo open={open} header={header} message={message}/>
+          <div className="signin-form">
+            {isSignedIn && (
+              <div className="signin-form-signed">
+                <Redirect from="/inscription" to="/connexion" />
+                <p className="signin-message">
+                   {signedMessage}
+                </p>
+              </div>
+            )}
+            {!isSignedIn && (
 
-        <div className="signin-form-signed">
-        <Redirect from="/inscription" to="/connexion" />
-        <p className="signin-message">
+              <form autoComplete="off" className="signin-form-element" onSubmit={handleSubmit} enctype="application/x-www-form-urlencoded">
+                <h1 className="signin-form-title">
+                  Inscription
+                </h1> 
+                  <Field 
+                    className="signin-form-input"
+                    type="text" 
+                    name="last_name"
+                    placeholder="Nom"
+                    onChange={changeField}
+                    value={last_name}
+                  />
+                  <Field
+                    className="signin-form-input"
+                    type="text"
+                    name="first_name"
+                    placeholder="Prénom"
+                    onChange={changeField}
+                    value={first_name}
+                  />
+                  <Field
+                    className="signin-form-input"
+                    type="text"
+                    name="pseudo"
+                    placeholder="Pseudo"
+                    onChange={changeField}
+                    value={pseudo}
+                  />           
+                  <Field
+                    className="signin-form-input"
+                    type="date"
+                    name="birthdate"
+                    placeholder="Date de naissance"
+                    autocorrect="off"
+                    data-date-split-input="true"
+                    onChange={changeField} 
+                    value={birthdate} 
+                  />
+                  <Field
+                    className="signin-form-input"
+                    type="email"
+                    name="email"
+                    placeholder="Adresse Email"
+                    onChange={changeField}
+                    value={email}
+                  />
+                  <Field
+                    className="signin-form-input"
+                    type="password"
+                    name="password"
+                    placeholder="Mot de passe"
+                    onChange={changeField}
+                    value={password}
+                  />
+                  <Field
+                      className="signin-form-input"
+                      id="verifyPassword"
+                      type="password"
+                      name="verifyPassword"
+                      placeholder="Confirmez votre mot de passe"
+                      onChange={changeField}
+                      value={verifyPassword}
+                    />
+                    <div className="signin-button">
+                      <button
+                        type="submit"
+                        className="signin-form-submit"
+                      >
+                        Valider
+                      </button>
+                    </div>                                     
+              </form>
 
-  {signedMessage}
-
-</p>
-</div>
-
-  )}
-  {!isSignedIn && (
-
-    <form
-      autoComplete="off"
-      className="signin-form-element"
-      onSubmit={handleSubmit}
-      enctype="application/x-www-form-urlencoded"
-    >
-      <h1 className="signin-form-title">
-       Inscription
-      </h1> 
-    
-        <Field 
-          className="signin-form-input"
-          type="text" //name?
-          name="last_name"
-          placeholder="Nom"
-          onChange={changeField}
-          value={last_name}
-          
-        />
-        <Field
-          className="signin-form-input"
-          type="text"
-          name="first_name"
-          placeholder="Prénom"
-          onChange={changeField}
-          value={first_name}
-        />
-
-        <Field
-          className="signin-form-input"
-          type="text"
-          name="pseudo"
-          placeholder="Pseudo"
-          onChange={changeField}
-          value={pseudo}
-        />
-  
-      <Field
-        className="signin-form-input"
-        type="date"
-        name="birthdate"
-        placeholder="Date de naissance"
-        autocorrect="off"
-        data-date-split-input="true"
-        onChange={changeField} 
-        value={birthdate} 
-      />
-
-      <Field
-        className="signin-form-input"
-        type="email"
-        name="email"
-        placeholder="Adresse Email"
-        onChange={changeField}
-        value={email}
-      />
-
-      <Field
-        className="signin-form-input"
-        type="password"
-        name="password"
-        placeholder="Mot de passe"
-        onChange={changeField}
-        value={password}
-      />
-
-    <Field
-        className="signin-form-input"
-        id="verifyPassword"
-        type="password"
-        name="verifyPassword"
-        placeholder="Confirmez votre mot de passe"
-        onChange={changeField}
-        //onChange={(evt) => setPassword(evt.target.value)}
-        value={verifyPassword}
-      />
-
-   <div className="signin-button">
-         <button
-          type="submit"
-          className="signin-form-submit"
-          >
-            Valider
-          </button>
-   </div>
-            
-                
-        </form>
             )}  
               <div className="login-redirection">
-              <p className="login-redirection-text">
-                Déjà membre ?            
-              <Link
-                className="login-redirection-link"
-                to="/connexion"
-              >
-              Connectez-vous
-              </Link>
-          </p>
-        </div>
-        
-       </div>
+                 <p className="login-redirection-text">
+                   Déjà membre ?            
+                  <Link className="login-redirection-link" to="/connexion">
+                    Connectez-vous
+                   </Link>
+                  </p>
+              </div> 
+          </div>
     </div>
-          
+                    
   );
 };
 
-
-  Signin.propTypes = {
+Signin.propTypes = {
   last_name: PropTypes.string.isRequired,
   first_name: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
@@ -246,7 +224,12 @@ const Signin = ({
   password: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   handleSignin: PropTypes.func.isRequired,
+  //open: PropTypes.string,
+  header: PropTypes.string,
+  message: PropTypes.string,
   isSignedIn: PropTypes.bool,
+  signedMessage: PropTypes.string,
+  //checkInputsContent: PropTypes.string,
 };
 
 // Valeurs par défaut pour les props
@@ -255,8 +238,7 @@ Signin.defaultProps = {
   signedMessage: 'Signin Done',
 };
 
-
-
+// == Export
 export default Signin;
 
 

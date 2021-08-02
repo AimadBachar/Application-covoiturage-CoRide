@@ -1,11 +1,12 @@
+// == Import : npm
 import React from 'react';
-// import PropTypes from 'prop-types';
 
+// == IMport : local
 import Itinerary from '../Itinerary';
 import dataCards from '/src/data/data_sport.js';
-
 import './styles.scss';
 
+// == Composant
 const Main = () => (
   <div className="content">
     <div className="main">
@@ -28,7 +29,5 @@ const Main = () => (
   </div>
 );
 
-// Main.proptypes = {
-
-// };
+// == Export
 export default Main;
