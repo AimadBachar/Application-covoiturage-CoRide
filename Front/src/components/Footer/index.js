@@ -1,6 +1,6 @@
 // == Import : npm
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 // == Import : local
 import instagram from '/src/assets/images/instagram white.png';
 import facebook from '/src/assets/images/facebook white.png';
@@ -22,8 +22,8 @@ const Footer = (props) => (
       </a>
     </div>
     <div className="footer-links">
-      <a href="#" onClick={props.onButtonClickMentions}>Mentions légales</a>
-      <a href="/contact" onClick={props.onButtonClickContact}>Contact</a>
+      <Link to="/mentions">Mentions légales</Link>
+      <Link to="/contact">Contact</Link>
     </div>
   </div>
 );

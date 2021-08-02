@@ -111,17 +111,16 @@ const ComboBoxCities = ({
 };
 
 ComboBoxCities.propTypes = {
-  name: PropTypes.string,
-/*  placeholder: PropTypes.string,
-  coords: PropTypes.string,
-  resultsFetch: PropTypes.string,
-  onInputCityChange: PropTypes.string,
-  onInputsCoords: PropTypes.string,
-  long: PropTypes.string,
-  lat: PropTypes.string,
-  //open: PropTypes.string,
-  header: PropTypes.string,
-  message: PropTypes.string,*/
+  name: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  resultsFetch: PropTypes.array.isRequired,
+  onInputCityChange: PropTypes.func.isRequired,
+  onInputsCoords: PropTypes.func.isRequired,
+  long: PropTypes.string.isRequired,
+  lat: PropTypes.string.isRequired,
+  open: PropTypes.bool.isRequired,
+  header: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
 };
 
 // == Export

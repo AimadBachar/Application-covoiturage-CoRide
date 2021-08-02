@@ -3,9 +3,9 @@ import React  from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect, BrowserRouter as Route } from 'react-router-dom';
 
-
+// == Import : local
+import ModalInfo from 'src/containers/ModalInfo';
 import Field from 'src/components/Login/Field';
-
 import 'src/components/Login/styles.scss';
 
 // == Composant
@@ -16,13 +16,17 @@ const Login = ({
   handleLogin,
   handleLogout,
   isLogged,
-  loggedMessage
+  loggedMessage,
+  open,
+  header,
+  message,
 
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleLogin();
   };
+
 
   return (
    
@@ -50,7 +54,6 @@ const Login = ({
 
       )}
 
-     
           {!isLogged && (
             
             <form autoComplete="off" className="login-form-element" onSubmit={handleSubmit}>
@@ -115,4 +118,3 @@ Login.defaultProps = {
 
 // == Export
 export default Login;
-

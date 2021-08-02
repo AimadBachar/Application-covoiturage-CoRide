@@ -1,14 +1,16 @@
+// == Import : npm
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect, useLocation } from 'react-router-dom'
 
+// == Import : local
 import driver from '/src/assets/images/driver-orange0.png';
 import pin from '/src/assets/images/pin.png';
 import sit from '/src/assets/images/sit-orange0.png';
-
-
+import ModalInfo from 'src/containers/ModalInfo';
 import './styles.scss';
 
+// == Composant
 const DetailsCard = ({
   updateCard,
   logged,
@@ -117,6 +119,9 @@ const DetailsCard = ({
 DetailsCard.propTypes = {
   onButtonClickProfilUser: PropTypes.func.isRequired,
   onButtonClickValidation: PropTypes.func.isRequired,
+  logged: PropTypes.bool.isRequired,
+  message: PropTypes.string.isRequired,
+  open: PropTypes.bool.isRequired,
   card: PropTypes.shape({
     driver: PropTypes.string.isRequired,
     departure_timestamp: PropTypes.string.isRequired,
@@ -124,8 +129,11 @@ DetailsCard.propTypes = {
     destination_city: PropTypes.string.isRequired, 
     description: PropTypes.string.isRequired, 
     activity: PropTypes.string.isRequired,
-    places_available: PropTypes.string.isRequired,
+    remaining_places: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
   })
 };
 
+
+// == Export
 export default DetailsCard;

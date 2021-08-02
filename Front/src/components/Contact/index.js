@@ -53,10 +53,12 @@ const Contact = ({
 };
 
 Contact.propTypes = {
-    submitEmail: PropTypes.string,
+    submitEmail: PropTypes.func.isRequired,
     header: PropTypes.string,
-    logged: PropTypes.bool,
-    message: PropTypes.string,
+    logged: PropTypes.bool.isRequired,
+    message: PropTypes.string.isRequired,
+    pseudo: PropTypes.string.isRequired,
+    open: PropTypes.bool.isRequired,
   };
   
   // Valeurs par défaut pour les props
