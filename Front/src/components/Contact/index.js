@@ -1,19 +1,18 @@
+// == Import : npm
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-// import iconLike from '/src/assets/images/pouce-en-l_air.png';
+// == Import : local
+import ModalInfo from '../../containers/ModalInfo';
 import './styles.scss';
 
-import ModalInfo from '../../containers/ModalInfo';
-
+// == Composant
 const Contact = ({
     submitEmail,
     logged,
-    email,
-    pseudo,
     open,
     header,
-    message
+    message,
 }) => {
     const handleSubmitMessageForm = (event)=>{
         event.preventDefault();
@@ -26,7 +25,7 @@ const Contact = ({
             <div className="contact" >
                 <h1 className="contact-title">Nous contacter</h1>
                 <p className="contact-info">Une demande, un renseignement, veuillez nous écire à cet email:</p>
-                <a className="contact-title" href="mailto:application.coride@gmail.com">application.coride@gamil.com</a>
+                <a className="contact-title" href="mailto:application.coride@gmail.com">application.coride@gmail.com</a>
             </div>
             )
     }  else {
@@ -53,11 +52,20 @@ const Contact = ({
       
       )
 
-    } 
-
+    }; 
 };
 
-// Card.proptypes = {
-
-// };
+Contact.propTypes = {
+    submitEmail: PropTypes.string,
+    header: PropTypes.string,
+    logged: PropTypes.bool,
+    message: PropTypes.string,
+  };
+  
+  // Valeurs par défaut pour les props
+  Contact.defaultProps = {
+    logged: false,
+  };
+  
+  // == Export
 export default Contact;
