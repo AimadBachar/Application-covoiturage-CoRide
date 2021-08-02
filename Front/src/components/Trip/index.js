@@ -110,8 +110,6 @@ const Trip = ({
   
   return (
     <div className="trip">
-
-      <Header />
       <ModalInfo open={open} header={header} message={message}/>
 
       <form

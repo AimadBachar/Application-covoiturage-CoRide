@@ -47,7 +47,6 @@ const HeaderInfo = ({
 };
 
 HeaderInfo.propTypes = {
-  onButtonClickLogout: PropTypes.string.isRequired,
   logged: PropTypes.bool,
 };
 
