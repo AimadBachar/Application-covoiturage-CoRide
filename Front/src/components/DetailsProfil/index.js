@@ -1,20 +1,15 @@
 // == Import : npm
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { string } from 'prop-types';
 import { Link, useLocation } from 'react-router-dom'
 
-<<<<<<< HEAD
 // == Import : local
 import ModalInfo from '../../containers/ModalInfo';
 import profilVide from "src/assets/images/profil_vide.jpg"
 import 'src/components/DetailsProfil/styles.scss';
 
+
 // == Composant
-=======
-import 'src/components/DetailsProfil/styles.scss';
-
-
->>>>>>> ff7f23e80b78a394d22e81b8ea341cace627aa7e
 const DetailsProfil = ({
   getAllUsers,
   usersProfils,
@@ -39,7 +34,7 @@ return (
       usersProfils.map((userprofil)=>(
 
 
-<div className="profil" >
+<div className="profil" key={userprofil.pseudo} >
 
   <img className="profil-picture"src={userprofil.picture_link || profilVide}/>
  
@@ -50,7 +45,7 @@ return (
       
         <div className="profil-activities">
         {userprofil.activities.map((activity)=>(
-        <span className="profil-tag" style={{background: activity.color }}>{activity.label}</span>
+        <span className="profil-tag" key={activity.label} style={{background: activity.color }}>{activity.label}</span>
         ))}
         </div>
         <div className="profil-bottom">
@@ -70,8 +65,7 @@ return (
 </div>
       ))
  
-)}
-
+)};
 
 
 DetailsProfil.propTypes = {
@@ -80,13 +74,13 @@ DetailsProfil.propTypes = {
   usersProfils: PropTypes.shape({
     email: PropTypes.string.isRequired,
     pseudo: PropTypes.string.isRequired,
-    bio: PropTypes.string.isRequired, 
-    activity: PropTypes.string.isRequired,
-    brand: PropTypes.string.isRequired,
-    model: PropTypes.string.isRequired,
+    activity: PropTypes.shape({
+      color: PropTypes.string,
+      label: PropTypes.string,
+    })
   }),
   message: PropTypes.string.isRequired,
-  pseudo: PropTypes.string.isRequired,
+  header: PropTypes.string.isRequired,
   open: PropTypes.bool.isRequired,
 };
 

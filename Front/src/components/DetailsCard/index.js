@@ -7,12 +7,7 @@ import { Link, Redirect, useLocation } from 'react-router-dom'
 import driver from '/src/assets/images/driver-orange0.png';
 import pin from '/src/assets/images/pin.png';
 import sit from '/src/assets/images/sit-orange0.png';
-<<<<<<< HEAD
 import ModalInfo from 'src/containers/ModalInfo';
-=======
-
-
->>>>>>> ff7f23e80b78a394d22e81b8ea341cace627aa7e
 import './styles.scss';
 
 // == Composant
