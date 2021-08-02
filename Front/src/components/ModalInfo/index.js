@@ -1,10 +1,12 @@
 import React from 'react';
 import {
     Button,
-    Modal
+    Modal,
+    Icon
+    
 } from 'semantic-ui-react';
 
-import 'semantic-ui-css/semantic.min.css'
+import 'semantic-ui-css/semantic.min.css';
 
 const ModalInfo = ({
     open,
@@ -19,12 +21,16 @@ const ModalInfo = ({
     }
 
     return (
-    <Modal size="mini" open={open}>
+    <Modal basic size="mini" open={open}>
+        
         <Modal.Header>{header}</Modal.Header>
         <Modal.Content><p>{message}</p></Modal.Content>
         <Modal.Actions>
-            <Button onClick={handleClick}>OK</Button>
+            
+            <Button color="yellow" onClick={handleClick}><Icon name='checkmark' />OK</Button>
+            
         </Modal.Actions>
+        
     </Modal>
     )
 };
