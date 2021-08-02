@@ -8,7 +8,8 @@ const mapStateToProps = (state) => ({
   cards: state.trajets.cards,
   open: state.modalInfo.open,
   header: state.modalInfo.header,
-  message: state.modalInfo.message
+  message: state.modalInfo.message,
+  logged: state.user.logged,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,7 +1,7 @@
 // Import npm
 import React from 'react';
 import { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 // == Import
 import Loading from './Loading';
 import Header from 'src/containers/Header';
@@ -28,11 +28,12 @@ import HeaderDetailsCard from 'src/containers/HeaderDetailsCard';
 import ModalInfo from 'src/containers/ModalInfo';
 
 
+
 import './styles.scss';
 
 
 
-const App = ({loading, fetchTravels, isLogged,open,header,message}) => {
+const App = ({loading, fetchTravels, isLogged, open, header, message, logged}) => {
   // J'exécute la fonction reçue en props
   // dès que je suis prêt, et une seule fois
   useEffect(fetchTravels, [])
@@ -45,11 +46,7 @@ const App = ({loading, fetchTravels, isLogged,open,header,message}) => {
 
   }, [])
 
-  /* if (localStorage.getItem('tokens')) {
-    useEffect(isLogged, [])
-    
-  } */
-
+ if (logged) {
   if (loading) {
     return <Loading />;
   }
@@ -63,7 +60,6 @@ const App = ({loading, fetchTravels, isLogged,open,header,message}) => {
           <Header />
           <Search />
           <Card />
-         {/*  <Main /> */}
           <Footer />
         </Route>
 
@@ -122,6 +118,157 @@ const App = ({loading, fetchTravels, isLogged,open,header,message}) => {
       </div>
     </Router>
   );
+ } else {
+  if (loading) {
+    return <Loading />;
+  }
+  return (
+    <Router>
+      <div className="app">
+      <ModalInfo open={open} header={header} message={message}/>  
+      <Switch>
+
+      <Route exact path="/">
+          <Header />
+          <Search />
+          <Card />
+          <Footer />
+        </Route>
+
+        <Route exact path="/info">
+          <HeaderInfo />
+          <Info />
+          <Footer />
+        </Route>
+
+        <Route exact path="/trip">
+          <Redirect from="/trip" to="/connexion" />
+          <HeaderTrip />
+          <Trip />
+          <Footer />
+        </Route>
+
+        <Route exact path="/connexion">
+          <HeaderLogin />
+          <Login />
+          <Footer />
+        </Route>
+
+        <Route exact path="/inscription">
+          <Signin />
+          <Footer />
+        </Route>
+
+        <Route exact path="/profil">
+          <Redirect from="/profil" to="/connexion" />
+          <HeaderProfilUser />
+          <ProfilUser />
+          <Footer />
+        </Route>
+
+        <Route exact path="/profilpage">
+          <Redirect from="/profilpage" to="/connexion" />
+          <HeaderDetailsProfil />
+          <DetailsProfil />
+          <Footer />
+        </Route>
+
+        <Route exact path="/travel">
+          <HeaderDetailsCard />
+          <DetailsCard />
+          <Footer />
+        </Route>
+
+        <Route exact path="/contact">
+          <HeaderContact />
+          <Contact />
+          <Footer />
+        </Route>
+
+        <Route path="*">
+          <NotFoundPage />
+        </Route>
+
+      </Switch>
+      </div>
+    </Router>
+  );
+
+
+
+ }
+
+  /* if (loading) {
+    return <Loading />;
+  }
+  return (
+    <Router>
+      <div className="app">
+      <ModalInfo open={open} header={header} message={message}/>  
+      <Switch>
+
+      <Route exact path="/">
+          <Header />
+          <Search />
+          <Card />
+          <Footer />
+        </Route>
+
+        <Route exact path="/info">
+          <HeaderInfo />
+          <Info />
+          <Footer />
+        </Route>
+
+        <Route exact path="/trip">
+          <HeaderTrip />
+          <Trip />
+          <Footer />
+        </Route>
+
+        <Route exact path="/connexion">
+          <HeaderLogin />
+          <Login />
+          <Footer />
+        </Route>
+
+        <Route exact path="/inscription">
+          <Signin />
+          <Footer />
+        </Route>
+
+        <Route exact path="/profil">
+          <HeaderProfilUser />
+          <ProfilUser />
+          <Footer />
+        </Route>
+
+        <Route exact path="/profilpage">
+          <HeaderDetailsProfil />
+          <DetailsProfil />
+          <Footer />
+        </Route>
+
+        <Route exact path="/travel">
+          <HeaderDetailsCard />
+          <DetailsCard />
+          <Footer />
+        </Route>
+
+        <Route exact path="/contact">
+          <HeaderContact />
+          <Contact />
+          <Footer />
+        </Route>
+
+        <Route path="*">
+          <NotFoundPage />
+        </Route>
+
+      </Switch>
+      </div>
+    </Router>
+  ); */
 };
 
 

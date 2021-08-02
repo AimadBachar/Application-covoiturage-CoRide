@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
 import loginBanner from 'src/assets/images/snowbaord2.jpg';
@@ -17,6 +17,9 @@ const HeaderLogin = ({
   logged,
   onButtonClickLogout
 }) => {
+
+
+
   // let user;
   const logOut = () => {
     localStorage.clear();
