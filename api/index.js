@@ -44,6 +44,8 @@ app.use(cors());
 app.use(urlencoded({extended:true}));
 app.use(express.json());
 
+app.use(express.static(__dirname+"/../Front/dist"));
+
 app.post("/login",adminController);
 
 app.use("/api/v1",router);
