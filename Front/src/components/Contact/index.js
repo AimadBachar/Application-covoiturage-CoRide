@@ -17,7 +17,7 @@ const Contact = ({
         submitEmail(mail);
       }
 
-     if (!logged) {
+    if (!logged) {
         return (
             <div className="contact" >
                 <h1 className="contact-title">Nous contacter</h1>
@@ -27,6 +27,7 @@ const Contact = ({
             )
     }  else {
         return (
+
     <div className="contact" >
         <h1 className="contact-title">Nous contacter</h1>
             <p className="contact-info">Une demande, un renseignement, veuillez remplir ce formulaire:</p>

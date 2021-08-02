@@ -26,26 +26,34 @@ const Login = ({
     evt.preventDefault();
     handleLogin();
   };
- 
-  return ( 
-    <div className="login">
-      <ModalInfo open={open} header={header} message={message}/>
-        <div className="login-form">
-          {isLogged && (
-            <div className="login-form-logged">
-              <Redirect from="/connexion" to="/" />
-              <p className="login-message">
-                {loggedMessage}
-              </p>
-              <button
-                type="button"
-                className="login-form-button"
-                onClick={handleLogout}
-              >
-                Déconnexion
-              </button>
-            </div>
-          )}
+
+
+  return (
+   
+<div className="login">
+
+
+    <div className="login-form">
+      {isLogged && (
+      // useEffect(),
+      <div className="login-form-logged">
+        <Redirect from="/connexion" to="/" />
+        <p className="login-message">
+
+          {loggedMessage}
+
+        </p>
+        <button
+          type="button"
+          className="login-form-button"
+          onClick={handleLogout}
+        >
+          Déconnexion
+        </button>
+      </div>
+
+      )}
+
           {!isLogged && (
             
             <form autoComplete="off" className="login-form-element" onSubmit={handleSubmit}>

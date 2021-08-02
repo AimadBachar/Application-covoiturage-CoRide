@@ -43,7 +43,6 @@ const App = ({loading, fetchTravels, isLogged, open, header, message, logged}) =
       isLogged();
     
     }
-
   }, [])
 
  if (logged) {
@@ -93,7 +92,7 @@ const App = ({loading, fetchTravels, isLogged, open, header, message, logged}) =
         </Route>
 
         <Route exact path="/profilpage">
-          <HeaderDetailsProfil />
+          <HeaderProfilUser />
           <DetailsProfil />
           <Footer />
         </Route>
@@ -111,6 +110,73 @@ const App = ({loading, fetchTravels, isLogged, open, header, message, logged}) =
         </Route>
 
         <Route exact path="/mentions">
+
+        <Route path="*">
+          <NotFoundPage />
+        </Route>
+
+      </Switch>
+      </div>
+    </Router>
+  );
+ } else {
+  if (loading) {
+    return <Loading />;
+  }
+  return (
+    <Router>
+      <div className="app">
+
+        <ModalInfo header={header} message={message}/>
+      <Switch>
+
+      <Route exact path="/">
+          <Header />
+          <Search />
+          <Card />
+          <Footer />
+        </Route>
+
+        <Route exact path="/info">
+          <HeaderInfo/>
+          <Info />
+          <Footer/>
+        </Route>
+
+        <Route exact path="/trip">
+          <Redirect from="/trip" to="/connexion" />
+          <HeaderTrip />
+          <Trip />
+          <Footer/>
+        </Route>
+
+        <Route exact path="/connexion">
+          <HeaderLogin/>
+       <Login/>
+       <Footer/>
+        </Route>
+
+        <Route exact path="/inscription">
+          <Header/>
+          <Signin />
+          <Footer/>
+        </Route>
+
+        <Route exact path="/profil">
+          <Redirect from="/profil" to="/connexion" />
+          <HeaderProfilUser />
+          <ProfilUser />
+          <Footer/>
+        </Route>
+
+        <Route exact path="/profilpage">
+          <Redirect from="/profilpage" to="/connexion" />
+          <HeaderProfilUser/>
+          <DetailsProfil />
+          <Footer />
+        </Route>
+
+        <Route exact path="/travel">
           <Header />
           <Mentions />
           <Footer />
@@ -202,12 +268,14 @@ const App = ({loading, fetchTravels, isLogged, open, header, message, logged}) =
         </Route>
 
       </Switch>
+
       </div>
     </Router>
   );
 
  }
 };
+
 
 App.propTypes = {
   loading: PropTypes.bool.isRequired,
@@ -223,5 +291,6 @@ App.propTypes = {
 App.defaultProps = {
   logged: false,
 };
+
 // == Export
 export default App;
