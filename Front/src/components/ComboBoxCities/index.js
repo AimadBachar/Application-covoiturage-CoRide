@@ -117,7 +117,7 @@ const ComboBoxCities = ({
 
 ComboBoxCities.propTypes = {
   name: PropTypes.string,
-  placeholder: PropTypes.string,
+/*  placeholder: PropTypes.string,
   coords: PropTypes.string,
   resultsFetch: PropTypes.string,
   onInputCityChange: PropTypes.string,
@@ -126,7 +126,7 @@ ComboBoxCities.propTypes = {
   lat: PropTypes.string,
   //open: PropTypes.string,
   header: PropTypes.string,
-  message: PropTypes.string,
+  message: PropTypes.string,*/
 };
 
 // == Export

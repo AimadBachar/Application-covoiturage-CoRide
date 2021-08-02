@@ -1,10 +1,11 @@
+// == Import : npm
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import PropTypes from 'prop-types';
 
-
+// == Import : local
 import './styles.scss';
 
+// == Composant
 const Nav = (props) => {
   if (!props.logged) {
     return (
@@ -72,6 +73,5 @@ const Nav = (props) => {
   }
 }
 
-// Header.proptypes = {
-
+// == Export
 export default Nav;

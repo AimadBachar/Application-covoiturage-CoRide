@@ -1,13 +1,10 @@
+// == Import : npm
 import React from 'react';
-import {
-    Button,
-    Modal,
-    Icon
-    
-} from 'semantic-ui-react';
-
+//import PropTypes from 'prop-types';
+import { Button, Modal, Icon } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 
+// == Composant
 const ModalInfo = ({
     open,
     header,
@@ -34,5 +31,13 @@ const ModalInfo = ({
     </Modal>
     )
 };
+/*
+ModalInfo.propTypes = {
+    open: propTypes,
+    header:  propTypes,
+    message:  propTypes.string,
+    onClickModal:  propTypes,
+}*/
 
+// == Export
 export default ModalInfo;

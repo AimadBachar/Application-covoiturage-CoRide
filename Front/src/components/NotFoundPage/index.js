@@ -1,12 +1,13 @@
+// == Import : npm
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import PropTypes from 'prop-types';
 
+// == import : local
 import Header from '../Header';
 import Footer from '../Footer';
-
 import './styles.scss';
 
+// == Composant
 const NotFoundPage = () => (
   <div>
     <Header />
@@ -23,8 +24,5 @@ const NotFoundPage = () => (
   </div>
 );
 
-// Footer.proptypes = {
-
-// };
-
+// == Export
 export default NotFoundPage;
