@@ -83,6 +83,7 @@ const Login = ({
          > 
          Valider
           </button>
+          
         </div>
          <div className="signin-redirection">
             <p className="signin-redirection-text">
@@ -95,6 +96,7 @@ const Login = ({
             S'inscrire
             </Link>
             </div>
+            </form>
           )}
           {!isLogged && (
             

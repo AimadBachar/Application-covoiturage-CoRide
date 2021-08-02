@@ -2,8 +2,6 @@
 import React from 'react';
 import { useEffect } from 'react';
 
-import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
-
 // == Import
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from 'src/containers/Header';
