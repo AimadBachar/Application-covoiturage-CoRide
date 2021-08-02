@@ -35,6 +35,7 @@ SELECT
     picture_link,
     pseudo,
     email,
+    biography,
     birthdate,
     created_at,
     ARRAY(
