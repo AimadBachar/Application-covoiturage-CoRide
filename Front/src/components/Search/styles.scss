@@ -4,7 +4,6 @@
   margin-top: 2rem;
   position: relative;
   top: -160px;
-  
 
   &-form {
     display: flex;
@@ -15,7 +14,6 @@
     box-shadow: vars.$box-shadow;
     border-radius: vars.$border-radius-bottom;
     background-color: vars.$color-light;
-   
       
     &_input, &_select, &_date {    
       font-size: 1em;
@@ -23,17 +21,15 @@
       padding: 1.3rem;    
       font-family: vars.$font;
       opacity: 80%;
-    };
+    }
 
     &_sport__date {
       display: flex;
-    };
+    }
 
     &_select {
       background-color: vars.$color-light;
       padding-left: 1rem;
-      
-      
     }
 
     &_submit {
@@ -45,16 +41,15 @@
 
     &_select, &_date {
       width: 50%;
-    };
+    }
 
     &_date {
       background-color: vars.$color-light;
       opacity: 70%;
       border-left: vars.$color-grey 0.5px solid;
       padding-right: 0.5rem;
-      
     }
-  };
+  }
 
   &-trip {
     border: vars.$color, 2px solid;
@@ -76,9 +71,7 @@
       color: vars.$color-grey_more;
     }
   }
-};
-
-
+}
 
 .depart {
   border-radius: 10px 10px 0 0;

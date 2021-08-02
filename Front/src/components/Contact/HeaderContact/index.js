@@ -8,9 +8,7 @@ import login from '/src/assets/images/icon user white.png';
 import logout from '/src/assets/images/logout-white.png';
 import Nav from 'src/components/Nav';
 
-
 import 'src/components/Contact/HeaderContact/styles.scss';
-
 
 const HeaderContact = ({
   logged,
@@ -28,12 +26,9 @@ const HeaderContact = ({
         <img className="header-photo" src={headerContactBanner} alt="headerContactBanner" />
         <img src={logo} className="header-logo" alt="Logo CoRide" />
         <Nav logged={logged}/>
-
-        <a
-            onClick={logOut}
-          >
-            <img className="header-logout" src={logout} alt="logout" />
-          </a>
+        <a onClick={logOut}>
+          <img className="header-logout" src={logout} alt="logout" />
+        </a>
       </div>
     )
   } else {
@@ -50,9 +45,8 @@ const HeaderContact = ({
           <img className="header-login" src={login} alt="login" />
         </Link>
       </div>
-  )
+    )
   }
-      
 };
 
 // Header.proptypes = {

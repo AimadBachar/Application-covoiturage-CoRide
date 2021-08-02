@@ -3,11 +3,9 @@ import PropTypes from 'prop-types';
 import loupe from '/src/assets/images/loupe white 2.png';
 import ComboBoxCities from '../../containers/ComboBoxCities';
 
-
 import './styles.scss';
 import "react-widgets/scss/styles.scss";
 import { Redirect, Link } from 'react-router-dom';
-
 
 const Search = ({
   tags,
@@ -33,70 +31,66 @@ const Search = ({
 
   return (
     <div>
-    <div className="search">
-      
-      <form
-        className="search-form"
-        onSubmit={handleSubmit}
-      >
-
-        <ComboBoxCities  placeholder="Départ" name="departure_city" />
-        <ComboBoxCities placeholder="Arrivé" name="destination_city" />
-
-
-        <div className="search-form_sport__date">
-          <select
-            className="search-form_select"
-            name="activity_id"
-            value={activity}
-            onChange={fieldChange}
-          >
-            <option
-              className="search-form_select_title"
-              value=""
-            > Sport
-            </option>
-            {tags?.map((tag) => (
-              <option
-                key={tag.id}
-                value={tag.id}
-              >
-                {tag.label}
-              </option>
-            ))}
-          </select>
-          <input
-            className="search-form_date"
-            type="date"
-            name="departure_timestamp"
-            value={departure_timestamp}
-            placeholder="Aujourd'hui"
-            onChange={fieldChange}
-          />
-        </div> 
-        <button
-          type="submit"
-          className="search-form_submit"
+      <div className="search">
+        <form
+          className="search-form"
+          onSubmit={handleSubmit}
         >
-
+          <ComboBoxCities  placeholder="Départ" name="departure_city" className="depart" />
+          <ComboBoxCities placeholder="Arrivé" name="destination_city" />
       
-          <img className="loupe" src={loupe} alt="loupe" />
-        </button>
-      </form>
-    </div>
+          <div className="search-form_sport__date">
+            <select
+              className="search-form_select"
+              name="activity_id"
+              value={activity}
+              onChange={fieldChange}
+            >
+              <option
+                className="search-form_select_title"
+                value=""
+              > 
+                Sport
+              </option>
 
-    <Link
-      to="/trip"
-      className="search-trip"
-    >
-      <p className="search-trip_text">
-        Ajouter un trajet
-      </p>
-    </Link>
-  </div>
+              {tags?.map((tag) => (
+                <option
+                  key={tag.id}
+                  value={tag.id}
+                >
+                  {tag.label}
+                </option>
+              ))}
+            </select>
+            <input
+              className="search-form_date"
+              type="date"
+              name="departure_timestamp"
+              value={departure_timestamp}
+              placeholder="Aujourd'hui"
+              onChange={fieldChange}
+            />
+          </div> 
+          <button
+            type="submit"
+            className="search-form_submit"
+          >
+            <img className="loupe" src={loupe} alt="loupe" />
+          </button>
+        </form>
+      </div>
+
+      <Link
+        to="/trip"
+        className="search-trip"
+      >
+        <p className="search-trip_text">
+          Ajouter un trajet
+        </p>
+      </Link>
+    </div>
   );
 };
-
 
 Search.propTypes = {
   onSelectChange: PropTypes.func.isRequired,

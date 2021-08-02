@@ -27,10 +27,7 @@ import DetailsCard from 'src/containers/DetailsCard';
 import HeaderDetailsCard from 'src/containers/HeaderDetailsCard';
 import ModalInfo from 'src/containers/ModalInfo';
 
-
 import './styles.scss';
-
-
 
 const App = ({loading, fetchTravels, isLogged,open,header,message}) => {
   // J'exécute la fonction reçue en props
@@ -40,9 +37,7 @@ const App = ({loading, fetchTravels, isLogged,open,header,message}) => {
   useEffect(()=>{
     if (localStorage.getItem('tokens')) {
       isLogged();
-    
     }
-
   }, [])
 
   /* if (localStorage.getItem('tokens')) {
@@ -56,74 +51,72 @@ const App = ({loading, fetchTravels, isLogged,open,header,message}) => {
   return (
     <Router>
       <div className="app">
-      <ModalInfo open={open} header={header} message={message}/>  
-      <Switch>
+        <ModalInfo open={open} header={header} message={message}/>  
+        <Switch>
+          <Route exact path="/">
+            <Header />
+            <Search />
+            <Card />
+            {/*  <Main /> */}
+            <Footer />
+          </Route>
 
-      <Route exact path="/">
-          <Header />
-          <Search />
-          <Card />
-         {/*  <Main /> */}
-          <Footer />
-        </Route>
+          <Route exact path="/info">
+            <HeaderInfo />
+            <Info />
+            <Footer />
+          </Route>
 
-        <Route exact path="/info">
-          <HeaderInfo />
-          <Info />
-          <Footer />
-        </Route>
+          <Route exact path="/trip">
+            <HeaderTrip />
+            <Trip />
+            <Footer />
+          </Route>
 
-        <Route exact path="/trip">
-          <HeaderTrip />
-          <Trip />
-          <Footer />
-        </Route>
+          <Route exact path="/connexion">
+            <HeaderLogin />
+            <Login />
+            <Footer />
+          </Route>
 
-        <Route exact path="/connexion">
-          <HeaderLogin />
-          <Login />
-          <Footer />
-        </Route>
+          <Route exact path="/inscription">
+            <Signin />
+            <Footer />
+          </Route>
 
-        <Route exact path="/inscription">
-          <Signin />
-          <Footer />
-        </Route>
+          <Route exact path="/profil">
+            <HeaderProfilUser />
+            <ProfilUser />
+            <Footer />
+          </Route>
 
-        <Route exact path="/profil">
-          <HeaderProfilUser />
-          <ProfilUser />
-          <Footer />
-        </Route>
+          <Route exact path="/profilpage">
+            <HeaderDetailsProfil />
+            <DetailsProfil />
+            <Footer />
+          </Route>
 
-        <Route exact path="/profilpage">
-          <HeaderDetailsProfil />
-          <DetailsProfil />
-          <Footer />
-        </Route>
+          <Route exact path="/travel">
+            <HeaderDetailsCard />
+            <DetailsCard />
+            <Footer />
+          </Route>
 
-        <Route exact path="/travel">
-          <HeaderDetailsCard />
-          <DetailsCard />
-          <Footer />
-        </Route>
+          <Route exact path="/contact">
+            <HeaderContact />
+            <Contact />
+            <Footer />
+          </Route>
 
-        <Route exact path="/contact">
-          <HeaderContact />
-          <Contact />
-          <Footer />
-        </Route>
+          <Route path="*">
+            <NotFoundPage />
+          </Route>
 
-        <Route path="*">
-          <NotFoundPage />
-        </Route>
-
-      </Switch>
+        </Switch>
       </div>
     </Router>
   );
 };
-
 
 // == Export
 export default App;

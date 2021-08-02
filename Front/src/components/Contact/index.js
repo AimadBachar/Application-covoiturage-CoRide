@@ -21,7 +21,7 @@ const Contact = ({
         submitEmail(mail);
       }
 
-     if (!logged) {
+    if (!logged) {
         return (
             <div className="contact" >
                 <h1 className="contact-title">Nous contacter</h1>
@@ -31,30 +31,27 @@ const Contact = ({
             )
     }  else {
         return (
-    <div className="contact" >
-        <ModalInfo open={open} header={header} message={message}/>
-        <h1 className="contact-title">Nous contacter</h1>
-            <p className="contact-info">Une demande, un renseignement, veuillez remplir ce formulaire:</p>
-        <div className="profil-bottom">
-            <div className="profil-contact">
-                <form className="profil-form" method="post" action="" onSubmit={handleSubmitMessageForm}>
-                        <div>
-                        <input type="hidden" name="recipient" value="Admin"/>
-                        <input type="hidden" name="email" value="application.coride@gmail.com"/>
-                        <textarea className="profil-commentaire" rows="5" cols="28" wrap="physique" name="message" placeholder="Posez votre question ici..."></textarea>
-                        </div>
-                        <div>
-                        <input className="profil-submit" type="submit" value="Envoyer" />
-                        </div> 
-                </form>
-        </div>
-      </div>
-    </div>
-      
-      )
-
+            <div className="contact" >
+                <ModalInfo open={open} header={header} message={message}/>
+                <h1 className="contact-title">Nous contacter</h1>
+                <p className="contact-info">Une demande, un renseignement, veuillez remplir ce formulaire:</p>
+                <div className="profil-bottom">
+                    <div className="profil-contact">
+                        <form className="profil-form" method="post" action="" onSubmit={handleSubmitMessageForm}>
+                            <div>
+                                <input type="hidden" name="recipient" value="Admin"/>
+                                <input type="hidden" name="email" value="application.coride@gmail.com"/>
+                                <textarea className="profil-commentaire" rows="5" cols="28" wrap="physique" name="message" placeholder="Posez votre question ici..."></textarea>
+                            </div>
+                            <div>
+                                <input className="profil-submit" type="submit" value="Envoyer" />
+                            </div> 
+                        </form>
+                    </div>
+                </div>
+            </div>
+        )
     } 
-
 };
 
 // Card.proptypes = {

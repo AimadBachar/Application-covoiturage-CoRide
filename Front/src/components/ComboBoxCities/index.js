@@ -2,7 +2,6 @@ import React from 'react';
 import Combobox from "react-widgets/Combobox";
 import ModalInfo from '../../containers/ModalInfo';
 
-
 import "react-widgets/scss/styles.scss";
 
 const ComboBoxCities = ({
@@ -18,20 +17,19 @@ const ComboBoxCities = ({
   header,
   message
 }) => {
-
   const cityFetch = (evt)=>{
     evt.preventDefault();
-   
+
     const name = evt.target.name;
     const value = evt.target.value;
     console.log(value)
+
     if(value.length>4){
       onInputCityChange(name,value);
     }
   }
 
   const citySelected = (evt)=>{  
-    
     console.log("city selected",evt);
     onInputsCoords(evt);
   }
@@ -82,33 +80,30 @@ const ComboBoxCities = ({
   }
 
   return (
-    
     <div>
       <ModalInfo open={open} header={header} message={message}/>
-        <Combobox 
-          containerClassName="search-form_input departure"
-          name={name}
-          placeholder={placeholder}
-          data={resultsFetch}
-          dataKey="city"
-          textField="city"
-          filter={filterCities}
-          focusFirstItem="true"
-          renderListItem={
-            ({item})=>(
-              <span>
-               {`${item.city}${item.postcode?"-"+item.postcode:""}`}
-              </span>
-            )
-          }
-          onInput={cityFetch}
-          onSelect={citySelected}
-         
-        /> 
+      <Combobox 
+        containerClassName="search-form_input departure"
+        name={name}
+        placeholder={placeholder}
+        data={resultsFetch}
+        dataKey="city"
+        textField="city"
+        filter={filterCities}
+        focusFirstItem="true"
+        renderListItem={
+          ({item})=>(
+          <span>
+            {`${item.city}${item.postcode?"-"+item.postcode:""}`}
+          </span>
+          )
+        }
+        onInput={cityFetch}
+        onSelect={citySelected}
+      /> 
 
-        {insertCoords()}
-        
-        </div>
+      {insertCoords()}
+    </div>
   );
 };
 

@@ -10,7 +10,6 @@ import ModalInfo from 'src/containers/ModalInfo';
 
 import './styles.scss';
 
-
 const DetailsCard = ({
   updateCard,
   logged,
@@ -20,27 +19,26 @@ const DetailsCard = ({
   message,
   header
 }) => {
-    const location = useLocation();
-    const stateLink = location.state;
-    const card = stateLink.card;
-    console.log("stateLink", card);
+  const location = useLocation();
+  const stateLink = location.state;
+  const card = stateLink.card;
+  console.log("stateLink", card);
 
-    const Onecard = localStorage.setItem("card", JSON.stringify(card))
+  const Onecard = localStorage.setItem("card", JSON.stringify(card))
 
-    console.log(localStorage.getItem("card"));
-    const handleSubmit = (evt) => {
-      evt.preventDefault();
-      console.log("participe form details-card-connected", evt.target.value);
-      onButtonClickValidation(card);
-    };
+  console.log(localStorage.getItem("card"));
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    console.log("participe form details-card-connected", evt.target.value);
+    onButtonClickValidation(card);
+  };
 
-
-    if (!logged) {
-      return (
+  if (!logged) {
+    return (
       <div className="card" >
         <div className="card-top">
           <div className="card-top_left">
-          <img src={driver} className="card-destination-driver" alt="driver" />
+            <img src={driver} className="card-destination-driver" alt="driver" />
             <Link className="card-profil" to="/connexion">
               <p>{card.driver}</p>
             </Link>
@@ -52,14 +50,14 @@ const DetailsCard = ({
         </div> 
 
         <div className="card-destination">
-        <div className="card-destination-departure">
-        <img src={pin} className="card-destination-pin" alt="pin" />  
-        <p className="card-destination-departure_text">{card.departure_city}</p> 
-        </div>   
-        <div className="card-destination-arrival">
-        <img src={pin} className="card-destination-pin" alt="pin" />  
-        <p className="card-destination-arrival_text">{card.destination_city}</p>
-        </div>
+          <div className="card-destination-departure">
+            <img src={pin} className="card-destination-pin" alt="pin" />  
+            <p className="card-destination-departure_text">{card.departure_city}</p> 
+          </div>   
+          <div className="card-destination-arrival">
+            <img src={pin} className="card-destination-pin" alt="pin" />  
+              <p className="card-destination-arrival_text">{card.destination_city}</p>
+          </div>
         </div>
 
         <p className="card-description">Description du trajet <br/> Place restante pour le matériel<br/>
@@ -68,7 +66,7 @@ const DetailsCard = ({
         <div className="card-bottom">
           <span className="card-bottom-tag">#{card.activity}</span>
           <span className="card-bottom-place">{card.remaining_places} 
-          <img src={sit} className="card-bottom-place_sit" alt="sit" />
+            <img src={sit} className="card-bottom-place_sit" alt="sit" />
           </span>
 
           <Link to="/connexion">
@@ -76,14 +74,14 @@ const DetailsCard = ({
           </Link>
         </div>
       </div>
-  )} else {
-
+    )
+  } else {
     return (
       <div className="card" >
         <ModalInfo open={open} header={header} message={message}/>
         <div className="card-top">
           <div className="card-top_left">
-          <img src={driver} className="card-destination-driver" alt="driver" />
+            <img src={driver} className="card-destination-driver" alt="driver" />
             <a href="#" className="card-profil" onClick={onButtonClickProfilUser}>{card.driver}</a>
           </div>
           <div className="card-top_right">
@@ -91,16 +89,16 @@ const DetailsCard = ({
             <p className="card-hour">{new Intl.DateTimeFormat('fr-FR', { timeStyle: 'short' }).format(new Date(card.departure_timestamp))}</p>
           </div>
         </div>
-        
+
         <div className="card-destination">
-        <div className="card-destination-departure">
-        <img src={pin} className="card-destination-pin" alt="pin" />
-        <p className="card-destination-departure_text">{card.departure_city}</p>
-        </div>
-        <div className="card-destination-arrival">
-        <img src={pin} className="card-destination-pin" alt="pin" />
-        <p className="card-destination-arrival_text">{card.destination_city}</p>
-        </div>
+          <div className="card-destination-departure">
+            <img src={pin} className="card-destination-pin" alt="pin" />
+            <p className="card-destination-departure_text">{card.departure_city}</p>
+          </div>
+          <div className="card-destination-arrival">
+            <img src={pin} className="card-destination-pin" alt="pin" />
+            <p className="card-destination-arrival_text">{card.destination_city}</p>
+          </div>
         </div>
 
         <p className="card-description">Description du trajet <br/> Place restante pour le matériel<br/>
@@ -109,22 +107,17 @@ const DetailsCard = ({
         <div className="card-bottom">
           <span className="card-bottom-tag">#{card.activity}</span>
           <span className="card-bottom-place">{card.remaining_places}
-          <img src={sit} className="card-bottom-place_sit" alt="sit" />
+            <img src={sit} className="card-bottom-place_sit" alt="sit" />
           </span>
           <form onSubmit={handleSubmit}>
             <input type="hidden" value={card.id}></input>
             <button className="card-button">GO !</button> 
           </form>
-
         </div>
       </div>
-
-
     )
   }
-      
 }
-
 
 DetailsCard.propTypes = {
   onButtonClickProfilUser: PropTypes.func.isRequired,
@@ -139,4 +132,5 @@ DetailsCard.propTypes = {
     places_available: PropTypes.string.isRequired,
   })
 };
+
 export default DetailsCard;
