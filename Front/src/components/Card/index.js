@@ -1,7 +1,7 @@
 // == Import : npm
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 // == Import : local
 import './styles.scss';
@@ -71,4 +71,5 @@ Card.propTypes = {
   }))
 }
 
+// == Export
 export default Card;

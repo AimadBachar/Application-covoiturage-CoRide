@@ -28,12 +28,19 @@ import Card from 'src/containers/Card';
 import DetailsCard from 'src/containers/DetailsCard';
 import HeaderDetailsCard from 'src/containers/HeaderDetailsCard';
 import ModalInfo from 'src/containers/ModalInfo';
-
 import './styles.scss';
 
 
-
-const App = ({loading, fetchTravels, isLogged, open, header, message, logged}) => {
+// == Composant
+const App = ({
+  loading, 
+  fetchTravels, 
+  isLogged, 
+  open, 
+  header,
+  message, 
+  logged
+}) => {
   // J'exécute la fonction reçue en props
   // dès que je suis prêt, et une seule fois
   useEffect(fetchTravels, [])
@@ -92,7 +99,7 @@ const App = ({loading, fetchTravels, isLogged, open, header, message, logged}) =
         </Route>
 
         <Route exact path="/profilpage">
-          <HeaderProfilUser />
+          <HeaderDetailsProfil />
           <DetailsProfil />
           <Footer />
         </Route>
@@ -156,8 +163,8 @@ const App = ({loading, fetchTravels, isLogged, open, header, message, logged}) =
 
         <Route exact path="/connexion">
           <HeaderLogin/>
-       <Login/>
-       <Footer/>
+          <Login/>
+          <Footer/>
         </Route>
 
         <Route exact path="/inscription">
@@ -193,8 +200,7 @@ const App = ({loading, fetchTravels, isLogged, open, header, message, logged}) =
       </Switch>
       </div>
     </Router>
-  );
- 
+  ); 
  }
 };
 

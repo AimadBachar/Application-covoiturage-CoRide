@@ -2,7 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Combobox from "react-widgets/Combobox";
-
 import "react-widgets/scss/styles.scss";
 
 // == Import : local
