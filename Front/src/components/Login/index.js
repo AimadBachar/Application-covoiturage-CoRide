@@ -5,11 +5,6 @@ import Field from 'src/components/Login/Field';
 import { Link, Redirect, BrowserRouter as Route } from 'react-router-dom';
 
 import 'src/components/Login/styles.scss';
-//import Header from 'src/components/Login/Header';
-//import photoKite from 'src/assets/images/kite.jpg';
-//<img className="login-photo" src={photoKite} alt="photo kite" />
-
-import ModalInfo from 'src/containers/ModalInfo';
 
 const Login = ({
 
@@ -19,22 +14,18 @@ const Login = ({
   handleLogin,
   handleLogout,
   isLogged,
-  loggedMessage,
-  open,
-  header,
-  message
-
+  loggedMessage
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleLogin();
   };
- 
+
   return (
    
 <div className="login">
 
-<ModalInfo open={open} header={header} message={message}/>
+
     <div className="login-form">
       {isLogged && (
       // useEffect(),

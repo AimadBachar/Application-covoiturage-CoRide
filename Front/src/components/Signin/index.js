@@ -9,10 +9,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import Field from 'src/components/Signin/Field';
 import 'src/components/Signin/styles.scss';
 import Header from 'src/components/Signin/HeaderSignin';
-//import photoKite from 'src/assets/images/kitewindsurf.jpg';
-//   <img className="login-photo" src={photoKite} alt="photo kite" />
-
-import ModalInfo from '../../containers/ModalInfo';
 
 
 
@@ -30,9 +26,6 @@ const Signin = ({
     birthdate,
     changeField,
     handleSignin,
-    open,
-    header,
-    message,
     checkInputsContent
 
 }) => {
@@ -117,12 +110,9 @@ const Signin = ({
     evt.target.reset();
   };
 
-
   return (
   <div className="signin">
     <Header />
-    <ModalInfo open={open} header={header} message={message}/>
-    <img className="login-photo" src={photoKite} alt="photo kite" />
 
        <div className="signin-form">
       {isSignedIn && (

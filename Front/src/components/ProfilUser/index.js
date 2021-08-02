@@ -29,9 +29,6 @@ usersprofil,
 travels_passenger,
 travels_driver,
 biography,
-open,
-header,
-message,
 checkInputsContent
 
 }) => {
@@ -66,12 +63,6 @@ checkInputsContent
     onInputChange(evt.target.name, value )
   };
 
- /* //on permet le téléchargement d'une photo
-  const handleUpload = (evt) => {
-    console.log(evt.target.files[0]);
-    this.setState({ picture: evt.target.files[0] });
-  };*/
-
   const ifPictureLink = ()=>{
     if(picture_link){
       return (
@@ -87,15 +78,15 @@ checkInputsContent
     event.target.reset();
   }
 
-
 return (
 
   <div className="profil-form"> 
-  <ModalInfo open={open} header={header} message={message}/>
-  <form // FORM 1 IDENTITY
+  
+  <form // FORM 1 IDENTITY 
         className="profil-form-element"       
         onSubmit={handleSubmit}
         enctype="application/x-www-form-urlencoded">
+     
   <h1 className="profil-form-title">
   Modifier le profil
   </h1> 
@@ -127,6 +118,13 @@ return (
                   className="profil-form-input" type="date" name="birthdate"
                   placeholder="Date de naissance" defaultValue={birthdate} />
 
+                <div className="profil-form-bio">
+                  <textarea className="profil-form-textarea" cols="20" rows="5" wrap="hard" 
+                    placeholder="plus d'informations sur vous, vos spots préférés" name="biography">
+                      {biography}
+                  </textarea>  
+                </div>
+
                   <input
                       className="profil-form-input" type="email" name="email"
                       placeholder="E-mail" defaultValue={email}/>
@@ -142,23 +140,6 @@ return (
             </div>
         </form>
 
-
-        <form // FORM 2 BIO
-            className="profil-form-element"       
-            onSubmit={handleSubmit}
-            enctype="application/x-www-form-urlencoded">
-          <div className="profil-form-bio">
-                <textarea className="profil-form-textarea" cols="20" rows="5" wrap="hard" 
-                  placeholder="plus d'informations sur vous, vos spots préférés">
-                </textarea>  
-          </div>
-          
-             <div className="profil-form-button">
-                  <button type="submit" className="profil-form-submit">
-                        Sauvegarder
-                  </button>
-            </div>
-          </form>
        
           
   <form // FORM 2  CHOIX DES SPORTS + BOUTON

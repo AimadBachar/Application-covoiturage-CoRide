@@ -4,16 +4,12 @@ import React from 'react';
 // import iconLike from '/src/assets/images/pouce-en-l_air.png';
 import './styles.scss';
 
-import ModalInfo from '../../containers/ModalInfo';
 
 const Contact = ({
     submitEmail,
     logged,
     email,
-    pseudo,
-    open,
-    header,
-    message
+    pseudo
 }) => {
     const handleSubmitMessageForm = (event)=>{
         event.preventDefault();
@@ -32,7 +28,6 @@ const Contact = ({
     }  else {
         return (
     <div className="contact" >
-        <ModalInfo open={open} header={header} message={message}/>
         <h1 className="contact-title">Nous contacter</h1>
             <p className="contact-info">Une demande, un renseignement, veuillez remplir ce formulaire:</p>
         <div className="profil-bottom">

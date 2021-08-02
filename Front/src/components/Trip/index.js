@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ComboBoxCities from '../../containers/ComboBoxCities';
-import ModalInfo from '../../containers/ModalInfo';
+
 
 
 import './styles.scss';
@@ -21,9 +21,6 @@ const Trip = ({
   onInputChange,
   onSubmitTrip,
   handleFetchActivities,
-  open,
-  header,
-  message,
   checkInputsContent
 }) => {
 
@@ -112,7 +109,6 @@ const Trip = ({
     <div className="trip">
 
       <Header />
-      <ModalInfo open={open} header={header} message={message}/>
 
       <form
  

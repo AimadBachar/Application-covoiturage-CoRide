@@ -1,6 +1,5 @@
 import React from 'react';
 import Combobox from "react-widgets/Combobox";
-import ModalInfo from '../../containers/ModalInfo';
 
 
 import "react-widgets/scss/styles.scss";
@@ -13,10 +12,7 @@ const ComboBoxCities = ({
   onInputCityChange,
   onInputsCoords,
   long,
-  lat,
-  open,
-  header,
-  message
+  lat
 }) => {
 
   const cityFetch = (evt)=>{
@@ -84,7 +80,6 @@ const ComboBoxCities = ({
   return (
     
     <div>
-      <ModalInfo open={open} header={header} message={message}/>
         <Combobox 
           containerClassName="search-form_input departure"
           name={name}
