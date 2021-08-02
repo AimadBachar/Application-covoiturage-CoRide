@@ -1,12 +1,14 @@
+// == Import : npm
 import React  from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect, BrowserRouter as Route } from 'react-router-dom';
 
+// == Import : local
 import ModalInfo from 'src/containers/ModalInfo';
 import Field from 'src/components/Login/Field';
 import 'src/components/Login/styles.scss';
 
-
+// == Composant
 const Login = ({
   user,
   password,
