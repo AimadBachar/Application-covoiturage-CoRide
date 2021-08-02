@@ -6,8 +6,9 @@ import { Link, BrowserRouter as Route, Redirect } from 'react-router-dom';
 // == Import : local
 import Field from 'src/components/Signin/Field';
 import Header from 'src/components/Signin/HeaderSignin';
-import ModalInfo from '../../containers/ModalInfo';
+
 import 'src/components/Signin/styles.scss';
+
 
 // == Composant
 const Signin = ({
@@ -22,11 +23,7 @@ const Signin = ({
     birthdate,
     changeField,
     handleSignin,
-    open,
-    header,
-    message,
-    checkInputsContent,
-
+    checkInputsContent
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -114,6 +111,7 @@ const Signin = ({
   };
 
   return (
+
     <div className="signin">
       <Header />
         <ModalInfo open={open} header={header} message={message}/>
@@ -200,6 +198,7 @@ const Signin = ({
                       </button>
                     </div>                                     
               </form>
+
             )}  
               <div className="login-redirection">
                  <p className="login-redirection-text">

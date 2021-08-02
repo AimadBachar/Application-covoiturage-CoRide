@@ -6,7 +6,6 @@ import driver from '/src/assets/images/driver-orange0.png';
 import pin from '/src/assets/images/pin.png';
 import sit from '/src/assets/images/sit-orange0.png';
 
-import ModalInfo from 'src/containers/ModalInfo';
 
 import './styles.scss';
 
@@ -15,10 +14,7 @@ const DetailsCard = ({
   updateCard,
   logged,
   onButtonClickProfilUser,
-  onButtonClickValidation,
-  open,
-  message,
-  header
+  onButtonClickValidation
 }) => {
     const location = useLocation();
     const stateLink = location.state;
@@ -80,7 +76,6 @@ const DetailsCard = ({
 
     return (
       <div className="card" >
-        <ModalInfo open={open} header={header} message={message}/>
         <div className="card-top">
           <div className="card-top_left">
           <img src={driver} className="card-destination-driver" alt="driver" />

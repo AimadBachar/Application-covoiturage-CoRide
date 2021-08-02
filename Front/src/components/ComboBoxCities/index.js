@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Combobox from "react-widgets/Combobox";
+
 import "react-widgets/scss/styles.scss";
 
 // == Import : local
@@ -16,10 +17,7 @@ const ComboBoxCities = ({
   onInputCityChange,
   onInputsCoords,
   long,
-  lat,
-  open,
-  header,
-  message
+  lat
 }) => {
 
   const cityFetch = (evt)=>{
@@ -87,7 +85,6 @@ const ComboBoxCities = ({
   return (
     
     <div>
-      <ModalInfo open={open} header={header} message={message}/>
         <Combobox 
           containerClassName="search-form_input departure"
           name={name}

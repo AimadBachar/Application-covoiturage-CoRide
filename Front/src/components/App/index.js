@@ -1,31 +1,34 @@
 // Import npm
 import React from 'react';
 import { useEffect } from 'react';
+
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
+
 // == Import
-import Loading from './Loading';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from 'src/containers/Header';
+import HeaderContact from 'src/containers/HeaderContact';
+import HeaderDetailsCard from 'src/containers/HeaderDetailsCard';
+import HeaderInfo from 'src/containers/HeaderInfo';
+import HeaderLogin from 'src/containers/HeaderLogin';
+import HeaderProfilUser from 'src/containers/HeaderProfilUser';
+import HeaderTrip from 'src/containers/HeaderTrip';
 import Search from 'src/containers/Search';
 import Footer from 'src/containers/Footer';
-import NotFoundPage from '../NotFoundPage';
 import Main from '../Main';
 import Info from '../Info';
-import HeaderContact from 'src/containers/HeaderContact';
-import HeaderInfo from 'src/containers/HeaderInfo';
-import Contact from 'src/containers/Contact';
-import Login from 'src/containers/Login';
-import HeaderLogin from 'src/containers/HeaderLogin';
 import Signin from 'src/containers/Signin';
 import ProfilUser from 'src/containers/ProfilUser';
-import HeaderProfilUser from 'src/containers/HeaderProfilUser';
 import DetailsProfil from 'src/containers/DetailsProfil';
-import HeaderDetailsProfil from 'src/containers/HeaderDetailsProfil';
 import Trip from 'src/containers/Trip'
-import HeaderTrip from 'src/containers/HeaderTrip';
 import Card from 'src/containers/Card';
 import DetailsCard from 'src/containers/DetailsCard';
-import HeaderDetailsCard from 'src/containers/HeaderDetailsCard';
+import NotFoundPage from '../NotFoundPage';
+import Contact from 'src/containers/Contact';
+import Loading from './Loading';
+import Login from 'src/containers/Login';
 import ModalInfo from 'src/containers/ModalInfo';
+
 
 
 
@@ -33,15 +36,15 @@ import './styles.scss';
 
 
 
-const App = ({loading, fetchTravels, isLogged, open, header, message, logged}) => {
+const App = ({loading, fetchTravels, isLogged, header, message, logged}) => {
+
   // J'exécute la fonction reçue en props
-  // dès que je suis prêt, et une seule fois
+  // dés que je suis prêt, et une seule fois
   useEffect(fetchTravels, [])
 
   useEffect(()=>{
     if (localStorage.getItem('tokens')) {
       isLogged();
-    
     }
 
   }, [])
@@ -125,7 +128,7 @@ const App = ({loading, fetchTravels, isLogged, open, header, message, logged}) =
   return (
     <Router>
       <div className="app">
-      <ModalInfo open={open} header={header} message={message}/>  
+        <ModalInfo header={header} message={message}/>
       <Switch>
 
       <Route exact path="/">
@@ -136,34 +139,35 @@ const App = ({loading, fetchTravels, isLogged, open, header, message, logged}) =
         </Route>
 
         <Route exact path="/info">
-          <HeaderInfo />
+          <HeaderInfo/>
           <Info />
-          <Footer />
+          <Footer/>
         </Route>
 
         <Route exact path="/trip">
           <Redirect from="/trip" to="/connexion" />
           <HeaderTrip />
           <Trip />
-          <Footer />
+          <Footer/>
         </Route>
 
         <Route exact path="/connexion">
-          <HeaderLogin />
-          <Login />
-          <Footer />
+          <HeaderLogin/>
+       <Login/>
+       <Footer/>
         </Route>
 
         <Route exact path="/inscription">
+          <Header/>
           <Signin />
-          <Footer />
+          <Footer/>
         </Route>
 
         <Route exact path="/profil">
           <Redirect from="/profil" to="/connexion" />
           <HeaderProfilUser />
           <ProfilUser />
-          <Footer />
+          <Footer/>
         </Route>
 
         <Route exact path="/profilpage">
@@ -174,19 +178,21 @@ const App = ({loading, fetchTravels, isLogged, open, header, message, logged}) =
         </Route>
 
         <Route exact path="/travel">
-          <HeaderDetailsCard />
+          <Header />
           <DetailsCard />
           <Footer />
         </Route>
 
         <Route exact path="/contact">
-          <HeaderContact />
+          <Header />
           <Contact />
           <Footer />
         </Route>
 
         <Route path="*">
+          <Header/>
           <NotFoundPage />
+          <Footer/>
         </Route>
 
       </Switch>

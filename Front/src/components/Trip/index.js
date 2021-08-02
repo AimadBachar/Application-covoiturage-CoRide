@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 // == Import : local
 import ComboBoxCities from '../../containers/ComboBoxCities';
-import ModalInfo from '../../containers/ModalInfo';
+
 import './styles.scss';
 
 
@@ -20,9 +20,6 @@ const Trip = ({
   activity_id,
   departure_timestamp,
   handleFetchActivities,
-  open,
-  header,
-  message,
   checkInputsContent
 }) => {
 
@@ -109,7 +106,6 @@ const Trip = ({
   
   return (
     <div className="trip">
-      <ModalInfo open={open} header={header} message={message}/>
 
       <form
  

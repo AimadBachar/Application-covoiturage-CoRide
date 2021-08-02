@@ -4,6 +4,7 @@ import Login from 'src/components/Login';
 // import des actions
 import { userInputChange, userLogin, userLogout } from 'src/actions/user';
 
+
 const mapStateToProps = (state) => ({
   user: state.user.inputs.user,
   password: state.user.inputs.password,
@@ -33,8 +34,8 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleLogout: () => {
     /* console.log('logout'); */
-    const action = userLogout();
-    dispatch(action);
+    const action = userLogout();    
+    dispatch(action);   
   },
 });
 

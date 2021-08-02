@@ -124,7 +124,7 @@ export default (store) => (next) => (action) => {
 
       const objData = { id : travelId};
 
-      const token = JSON.parse(localStorage.getItem('tokens'));
+      let token = JSON.parse(localStorage.getItem('tokens'));
       /* console.log("token",token); */
       const {id : userId, pseudo} = token;
       console.log("userID",userId);
