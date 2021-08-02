@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Link, BrowserRouter as Route, Redirect } from 'react-router-dom';
 
 // == Import : local
+import ModalInfo from '../../containers/ModalInfo';
 import Field from 'src/components/Signin/Field';
 import Header from 'src/components/Signin/HeaderSignin';
 
@@ -24,7 +25,11 @@ const Signin = ({
     birthdate,
     changeField,
     handleSignin,
-    checkInputsContent
+    checkInputsContent,
+    message,
+    open,
+    header,
+
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();

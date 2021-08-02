@@ -117,9 +117,9 @@ const App = ({
         </Route>
 
         <Route exact path="/mentions">
-          <Header/>
-          <Mentions/>
-          <Footer/>
+          <Header />
+          <Mentions />
+          <Footer />
         </Route>
 
         <Route path="*">
@@ -137,8 +137,7 @@ const App = ({
   return (
     <Router>
       <div className="app">
-
-        <ModalInfo header={header} message={message}/>
+      <ModalInfo open={open} header={header} message={message}/>  
       <Switch>
 
       <Route exact path="/">
@@ -149,45 +148,56 @@ const App = ({
         </Route>
 
         <Route exact path="/info">
-          <HeaderInfo/>
+          <HeaderInfo />
           <Info />
-          <Footer/>
+          <Footer />
         </Route>
 
         <Route exact path="/trip">
           <Redirect from="/trip" to="/connexion" />
           <HeaderTrip />
           <Trip />
-          <Footer/>
+          <Footer />
         </Route>
 
         <Route exact path="/connexion">
-          <HeaderLogin/>
-          <Login/>
-          <Footer/>
+          <HeaderLogin />
+          <Login />
+          <Footer />
         </Route>
 
         <Route exact path="/inscription">
-          <Header/>
           <Signin />
-          <Footer/>
+          <Footer />
         </Route>
 
         <Route exact path="/profil">
           <Redirect from="/profil" to="/connexion" />
           <HeaderProfilUser />
           <ProfilUser />
-          <Footer/>
+          <Footer />
         </Route>
 
         <Route exact path="/profilpage">
           <Redirect from="/profilpage" to="/connexion" />
-          <HeaderProfilUser/>
+          <HeaderDetailsProfil />
           <DetailsProfil />
           <Footer />
         </Route>
 
         <Route exact path="/travel">
+          <HeaderDetailsCard />
+          <DetailsCard />
+          <Footer />
+        </Route>
+
+        <Route exact path="/contact">
+          <HeaderContact />
+          <Contact />
+          <Footer />
+        </Route>
+
+        <Route exact path="/mentions">
           <Header />
           <Mentions />
           <Footer />
@@ -200,7 +210,8 @@ const App = ({
       </Switch>
       </div>
     </Router>
-  ); 
+  );
+
  }
 };
 
