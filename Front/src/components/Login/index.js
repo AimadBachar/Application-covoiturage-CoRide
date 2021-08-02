@@ -27,66 +27,64 @@ const Login = ({
     handleLogin();
   };
  
-  return (
-   
-<div className="login">
-
-<ModalInfo open={open} header={header} message={message}/>
-    <div className="login-form">
-      {isLogged && (
-         <div className="login-form-logged">
-          <Redirect from="/connexion" to="/" />
-          <p className="login-message">
-             {loggedMessage}
-          </p>
-           <button
-            type="button"
-            className="login-form-button"
-            onClick={handleLogout}
-          >
-            Déconnexion
-          </button>
-        </div>
-      )}
-      {!isLogged && (
-        
-        <form autoComplete="off" className="login-form-element" onSubmit={handleSubmit}>
-          <h1 className="login-form-title">
-            Connexion
-          </h1>
-            <Field
-              className="login-form-input"
-              name="user"
-              placeholder="Adresse Email"
-              onChange={changeField}
-              value={user}
-            />
-            <Field
-              className="login-form-input"
-              type="password"
-              name="password"
-              placeholder="mot de passe"
-              onChange={changeField}
-              value={password}
-            />         
-            <div className="button">
+  return ( 
+    <div className="login">
+      <ModalInfo open={open} header={header} message={message}/>
+        <div className="login-form">
+          {isLogged && (
+            <div className="login-form-logged">
+              <Redirect from="/connexion" to="/" />
+              <p className="login-message">
+                {loggedMessage}
+              </p>
               <button
-                type="submit"
-                className="login-form-submit"
-              > 
-                 Valider
+                type="button"
+                className="login-form-button"
+                onClick={handleLogout}
+              >
+                Déconnexion
               </button>
             </div>
-              <div className="signin-redirection">
-                <p className="signin-redirection-text">
-                  Nouveau sur Co'Ride ?
-                </p>
-              <Link className="signin-redirection-link" to="/inscription">
-                  S'inscrire
-              </Link>
-            </div>         
-        </form>
-      )}
+          )}
+          {!isLogged && (
+            
+            <form autoComplete="off" className="login-form-element" onSubmit={handleSubmit}>
+              <h1 className="login-form-title">
+                Connexion
+              </h1>
+                <Field
+                  className="login-form-input"
+                  name="user"
+                  placeholder="Adresse Email"
+                  onChange={changeField}
+                  value={user}
+                />
+                <Field
+                  className="login-form-input"
+                  type="password"
+                  name="password"
+                  placeholder="mot de passe"
+                  onChange={changeField}
+                  value={password}
+                />         
+                <div className="button">
+                  <button
+                    type="submit"
+                    className="login-form-submit"
+                  > 
+                    Valider
+                  </button>
+                </div>
+                  <div className="signin-redirection">
+                    <p className="signin-redirection-text">
+                      Nouveau sur Co'Ride ?
+                    </p>
+                  <Link className="signin-redirection-link" to="/inscription">
+                      S'inscrire
+                  </Link>
+                </div>         
+            </form>
+          )}
         </div>
     </div>       
   );
@@ -104,11 +102,13 @@ Login.propTypes = {
   header: PropTypes.string,
   message: PropTypes.string,
 };
+
 // Valeurs par défaut pour les props
 Login.defaultProps = {
   isLogged: false,
   loggedMessage: 'Connecté',
 };
+
 // == Export
 export default Login;
 
