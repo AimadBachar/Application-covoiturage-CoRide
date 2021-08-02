@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
+import PropTypes, { func } from 'prop-types';
 import { Link, BrowserRouter as Router, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 //import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import PropTypes, { func } from 'prop-types';
 
 import Field from 'src/components/Signin/Field';
 import 'src/components/Signin/styles.scss';
-import photoKite from 'src/assets/images/kitewindsurf.jpg';
+import Header from 'src/components/Signin/HeaderSignin';
+//import photoKite from 'src/assets/images/kitewindsurf.jpg';
+//   <img className="login-photo" src={photoKite} alt="photo kite" />
 
 
 const Signin = ({
@@ -74,10 +76,11 @@ const Signin = ({
     this.setState({ picture: evt.target.files[0] });
   };*/
 
-
+  
   return (
-  <div className="signin">
-    <img className="login-photo" src={photoKite} alt="photo kite" />
+    
+  <div className="signin"> 
+    <Header />
        <div className="signin-form">
       {isSignedIn && (
 
@@ -196,7 +199,7 @@ const Signin = ({
         
        </div>
     </div>
-              
+          
   );
 };
 

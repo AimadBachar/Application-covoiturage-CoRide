@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Header from '../Header';
-import Footer from '../Footer';
 import ComboBoxCities from '../../containers/ComboBoxCities';
 
 
@@ -52,7 +50,7 @@ const Trip = ({
   
   return (
     <div className="trip">
-      <Header />
+      
 
       <form
  
@@ -142,7 +140,6 @@ const Trip = ({
           Valider le trajet ?
         </button>
       </form>
-      <Footer />
     </div>
   );
 };
