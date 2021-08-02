@@ -1,25 +1,24 @@
+// == Import : npm
 import React from 'react';
 import PropTypes from 'prop-types';
+
+// == Import : local
 import ComboBoxCities from '../../containers/ComboBoxCities';
 import ModalInfo from '../../containers/ModalInfo';
-
-
 import './styles.scss';
-import { Redirect } from 'react-router-dom';
 
 
+// == Composant
 const Trip = ({
-  tags,
-  departure_city,
-  longitude_departure,
-  latitude_departure,
-  destination_city,
-  activity_id,
-  departure_timestamp,
   places_available,
   description,
   onInputChange,
   onSubmitTrip,
+  tags,
+  longitude_departure,
+  latitude_departure,
+  activity_id,
+  departure_timestamp,
   handleFetchActivities,
   open,
   header,
@@ -135,15 +134,6 @@ const Trip = ({
           value={longitude_departure}
           onChange={fieldChange}
         />
-
-        {/*<input
-          className="trip-form_input destination"
-          type="text"
-          name="destination_city"
-          placeholder="Destination"
-          value={destination_city}
-          onChange={fieldChange}
-        />*/}
         <div className="trip-form_sport__date">
           <select
             className="trip-form_select"
@@ -211,6 +201,19 @@ const Trip = ({
   onSubmitSearch: PropTypes.func.isRequired,
   description: PropTypes.string,
   places_available: PropTypes.number.isRequired
+  /*
+  tags,
+  longitude_departure,
+  latitude_departure,
+  activity_id,
+  departure_timestamp,
+  handleFetchActivities,
+  open,
+  header,
+  message,
+  checkInputsContent
+  */
 };
 
+// == Export
 export default Trip;
