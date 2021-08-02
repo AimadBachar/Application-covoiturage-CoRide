@@ -10,6 +10,7 @@ import Footer from 'src/containers/Footer';
 import NotFoundPage from '../NotFoundPage';
 import Main from '../Main';
 import Info from '../Info';
+import Mentions from '../Mentions';
 import HeaderContact from 'src/containers/HeaderContact';
 import HeaderInfo from 'src/containers/HeaderInfo';
 import Contact from 'src/containers/Contact';
@@ -110,6 +111,12 @@ const App = ({loading, fetchTravels, isLogged, open, header, message, logged}) =
           <Footer />
         </Route>
 
+        <Route exact path="/mentions">
+          <Header />
+          <Mentions />
+          <Footer />
+        </Route>
+
         <Route path="*">
           <NotFoundPage />
         </Route>
@@ -182,6 +189,12 @@ const App = ({loading, fetchTravels, isLogged, open, header, message, logged}) =
         <Route exact path="/contact">
           <HeaderContact />
           <Contact />
+          <Footer />
+        </Route>
+
+        <Route exact path="/mentions">
+          <Header />
+          <Mentions />
           <Footer />
         </Route>
 

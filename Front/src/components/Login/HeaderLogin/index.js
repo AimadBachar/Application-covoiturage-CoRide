@@ -1,12 +1,7 @@
 // Import : npm
 import React from 'react';
-<<<<<<< HEAD:Front/src/components/HeaderLogin/index.js
-import { Link, Redirect } from 'react-router-dom';
-// import PropTypes from 'prop-types';
-=======
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
->>>>>>> 5680f6b048835caee80403337efb407758b8091d:Front/src/components/Login/HeaderLogin/index.js
 
 // == Import : local
 import loginBanner from 'src/assets/images/snowbaord2.jpg';
@@ -22,13 +17,6 @@ const HeaderLogin = ({
   onButtonClickLogout
 
 }) => {
-<<<<<<< HEAD:Front/src/components/HeaderLogin/index.js
-
-
-
-  // let user;
-=======
->>>>>>> 5680f6b048835caee80403337efb407758b8091d:Front/src/components/Login/HeaderLogin/index.js
   const logOut = () => {
     localStorage.clear();
     onButtonClickLogout();
