@@ -244,18 +244,9 @@ const ProfilUser = ({
           </Link>
         </p>
       </div>  
-          <div className="home-redirection">
-            <p className="home-redirection-text">
-               Retour sur la        
-              <Link
-                className="home-redirection-link" to="/">
-               page d'accueil
-              </Link>
-            </p>
-         </div>  
-        </div>
+    </div>
       );
-    };
+};
                
 ProfilUser.propTypes = {
   last_name: PropTypes.string.isRequired,

@@ -1,10 +1,8 @@
 // == Import : npm
 import React from 'react';
 
-/* 
-/*
-Import : local
-import '/src/components/Info/styles.scss'; */
+
+import '/src/components/Mentions/styles.scss'; 
 
 const Mentions = () => (
     <div className="mentions">      
