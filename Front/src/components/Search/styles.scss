@@ -4,11 +4,11 @@
 body {
   .app {
   @media screen and (max-width: 941px) {  
-      .search{
-        margin-top: 2rem;
-        position: relative;
-        top: -130px;
-
+    .search{
+      margin-top: 2rem;
+      position: relative;
+      top: -130px;
+    
       &-form {
         display: flex;
         flex-direction: column;
@@ -16,9 +16,9 @@ body {
         max-width: 85%;
         margin: 0 auto;
         box-shadow: vars.$box-shadow;
-        border-radius: vars.$border-radius-bottom;
+        border-radius: vars.$border-radius-global;
         background-color: vars.$color-light;
-
+    
         &_title {
           font-size: 1.5em;
           font-weight: bold;
@@ -36,27 +36,27 @@ body {
           font-family: vars.$font;
           opacity: 80%;
         }
-
+    
         &_sport__date {
           display: flex;
         }
-
+    
         &_select {
           background-color: vars.$color-light;
           padding-left: 1rem;
         }
-
+    
         &_submit {
           background-color: vars.$color;
           border-radius: vars.$border-radius-bottom;
           border: none;
           padding: 0.5rem;
         }
-
+    
         &_select, &_date {
           width: 50%;
         }
-
+    
         &_date {
           background-color: vars.$color-light;
           opacity: 70%;
@@ -64,7 +64,9 @@ body {
           padding-right: 0.5rem;
         }
       }
-
+    
+     
+    
       &-trip {
         max-width: 85%;
         margin: 0 auto;
@@ -76,40 +78,39 @@ body {
         margin-top: 2rem;
         position: relative;
         top: -70px;
-
-        &_title{
-    background: vars.$color;
-    height: 3rem;
-    width: 100%;
-    border-radius: 13px 13px 0 0;
-    padding:.25rem;
+    
+         &_title{
+        background: vars.$color;
+        height: 3rem;
+        width: 100%;
+        border-radius: 13px 13px 0 0;
+        padding:.25rem;
+        }
+    
+        &_text {
+          font-size: 8px;
+          font-weight: 400;
+          font-size: 1rem;
+          padding: 0 .5rem .5rem .5rem;
+          color: vars.$color-grey_more;
+        }
+      }
     }
-
-    &_text {
-      font-size: 8px;
-      font-weight: 400;
-      font-size: 1rem;
-      padding: 0 .5rem .5rem .5rem;
-      color: vars.$color-grey_more;
-    }
-  }
-}
-
-
+    
     .depart {
       border-radius: 10px 10px 0 0;
       border-bottom: vars.$color-grey 0.5px solid;
     }
-
+    
     .destination {
       border-bottom: vars.$color-grey 0.5px solid;
     }
-
+    
     .loupe {
       width: 30px;
     }
-    }
   }
+}
 }
 
 
@@ -132,7 +133,16 @@ body {
         border-radius: vars.$border-radius-global;
         background-color: vars.$color-light;
       
-          
+        &_title {
+          font-size: 1.5em;
+          font-weight: bold;
+          background-color: vars.$color;
+          color: vars.$color_light;
+          text-align: center;
+          padding: 1rem;
+          border-radius: vars.$border-radius-top;
+        }
+
         &_input, &_select, &_date {    
           font-size: 1.1em;
           border: none;
@@ -160,10 +170,6 @@ body {
           width: 14%;
         }
 
-        &_select, &_date {
-          width: 80%;
-        }
-
         &_date {
           background-color: vars.$color-light;
           opacity: 70%;
@@ -189,6 +195,10 @@ body {
           margin-top: 2rem;
           margin-bottom: 2rem;
           font-size: 1.5rem;
+          font-size: 8px;
+          font-weight: 400;
+          font-size: 1rem;
+          padding: 0 .5rem .5rem .5rem;
           color: vars.$color-grey_more;
         }
       }
@@ -207,8 +217,8 @@ body {
       width: 20px;
     }
     }
-  }}
-
+  }
+}
 
 
 //version desktop XXL
@@ -295,7 +305,7 @@ body {
         }
       }
     }
-
+  
     .depart {
       border-radius: 10px 10px 0 0;
       border-bottom: vars.$color-grey 0.5px solid;
@@ -308,7 +318,6 @@ body {
     .loupe {
       width: 20px;
     }
-    }
-
-}
+  }
+  }
 }
