@@ -3,7 +3,7 @@
 .search{
   margin-top: 2rem;
   position: relative;
-  top: -85px;
+  top: -105px;
 
   &-form {
     display: flex;
@@ -21,7 +21,7 @@
       background-color: vars.$color;
       color: vars.$color_light;
       text-align: center;
-      padding: .5rem;
+      padding: 1rem;
       border-radius: vars.$border-radius-top;
     }
       
@@ -61,17 +61,33 @@
     }
   }
 
-  &-trip {
+ 
 
+  &-trip {
     max-width: 85%;
     margin: 0 auto;
-
+    display: flex;
+    flex-direction: column;
     text-align: center;
- 
+    box-shadow: vars.$box-shadow;
+    border-radius: vars.$border-radius-global;
+    margin-top: 2rem;
     position: relative;
+    top: -70px;
+
+     &_title{
+    background: vars.$color;
+    height: 3rem;
+    width: 100%;
+    border-radius: 13px 13px 0 0;
+    padding:.25rem;
+    }
 
     &_text {
-      font-size: 1.5rem;
+      font-size: 8px;
+      font-weight: 400;
+      font-size: 1rem;
+      padding: 0 .5rem .5rem .5rem;
       color: vars.$color-grey_more;
     }
   }
@@ -87,5 +103,5 @@
 }
 
 .loupe {
-  width: 20px;
+  width: 30px;
 }

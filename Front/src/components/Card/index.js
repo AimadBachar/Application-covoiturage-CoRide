@@ -36,8 +36,8 @@ const Card = ({
                 
               <div className="cardInfos-travel_top__box__destination">
                 
-                  <p className="cardInfos-travel_top__box__destination__city"><img src={pin}/>{card.departure_city}</p>
-                  <p className="cardInfos-travel_top__box__destination__city">{card.destination_city}<img src={pin}/></p>
+                  <p className="cardInfos-travel_top__box__destination__city_d"><img src={pin}/>{card.departure_city}</p>
+                  <p className="cardInfos-travel_top__box__destination__city_a">{card.destination_city}<img src={pin}/></p>
                 </div>
                 <img className="cardInfos-travel_top__logo" src={driver}/>
                 <p className="cardInfos-travel_top__profil" >{card.driver}</p>
