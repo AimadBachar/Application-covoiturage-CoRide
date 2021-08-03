@@ -5,11 +5,12 @@ BEGIN;
 --fonction pour insert en bdd un user
 CREATE FUNCTION insert_user(json) RETURNS int AS $$
 
-    INSERT INTO "user"(first_name,last_name,email,birthdate,picture_link,pseudo,password)
+    INSERT INTO "user"(first_name,last_name,biography,email,birthdate,picture_link,pseudo,password)
     VALUES(
         $1->>'first_name',
         $1->>'last_name',
         $1->>'email',
+        $1->>'biography',
         ($1->>'birthdate')::date,
         $1->>'picture_link',
         $1->>'pseudo',
@@ -26,6 +27,7 @@ CREATE FUNCTION update_user(json) RETURNS int AS $$
         first_name = $1->>'first_name',
         last_name = $1->>'last_name',
         email = $1->>'email',
+        biography = $1->>'biography',
         birthdate = ($1->>'birthdate')::date,
         picture_link = $1->>'picture_link',
         pseudo = $1->>'pseudo',
