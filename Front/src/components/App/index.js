@@ -123,7 +123,9 @@ const App = ({
         </Route>
 
         <Route path="*">
+          <Header/>
           <NotFoundPage />
+          <Footer/>
         </Route>
 
       </Switch>
