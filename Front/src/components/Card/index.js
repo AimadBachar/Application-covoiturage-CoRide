@@ -22,7 +22,7 @@ const Card = ({
 
   if (valideCards.length > 0) {
     return (
-      <div>  
+      <div className="cards">  
         {valideCards.sort((firstCard,secondCard)=>new Date(firstCard.departure_timestamp)-new Date(secondCard.departure_timestamp)).map((card) => (
           <Link onClick={handleClick} to={{
             pathname: `/travel`,
