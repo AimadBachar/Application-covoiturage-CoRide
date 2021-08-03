@@ -32,13 +32,24 @@ const Search = ({
 
   return (
     <div>
+
+     
+
       <div className="search">
         <form
           className="search-form"
           onSubmit={handleSubmit}
         >
           <h1 className="search-form_title">
-            Rechercher un trajet
+             <Link
+        to="/trip"
+        className="search-trip"
+      >
+        <p className="search-trip_text">
+          Propose un covoit'
+        </p>
+      </Link>
+            Recherche un covoit'!
           </h1>
           <ComboBoxCities  placeholder="Départ" name="departure_city" className="depart" />
           <ComboBoxCities placeholder="Arrivé" name="destination_city" />
@@ -84,14 +95,7 @@ const Search = ({
         </form>
       </div>
 
-      <Link
-        to="/trip"
-        className="search-trip"
-      >
-        <p className="search-trip_text">
-          Ajouter un trajet
-        </p>
-      </Link>
+     
     </div>
   );
 };
