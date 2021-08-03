@@ -14,8 +14,21 @@ $color-grey_more: rgb(99, 98, 98);
 
 $border-radius-top: 15px 15px 0px 0px;
 
+$border-radius-right: 0px 15px 15px 0px;
+
+$border-radius-left: 15px 0px 0px 15px;
+
 $border-radius-bottom: 0px 0px 15px 15px;
+
+$border-radius-bottom-right: 0px 0px 15px 0px;
 
 $border-radius-global: 15px 15px 15px 15px;
 
 $box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+
+$menuWidth: 250px;
+$smallMenuWidth: 150px;
+$small: 700px;
+$gutter: 1.5rem;
+

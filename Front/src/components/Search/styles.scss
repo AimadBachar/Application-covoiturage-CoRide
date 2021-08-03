@@ -1,87 +1,294 @@
 @use 'src/styles/vars';
 
-.search{
-  margin-top: 2rem;
-  position: relative;
-  top: -160px;
+body {
+  .app {
+  @media screen and (max-width: 941px) {  
+      .search{
+        margin-top: 2rem;
+        position: relative;
+        top: -160px;
 
-  &-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 85%;
-    margin: 0 auto;
-    box-shadow: vars.$box-shadow;
-    border-radius: vars.$border-radius-bottom;
-    background-color: vars.$color-light;
+      &-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 85%;
+        margin: 0 auto;
+        box-shadow: vars.$box-shadow;
+        border-radius: vars.$border-radius-bottom;
+        background-color: vars.$color-light;
+          
+        &_input, &_select, &_date {    
+          font-size: 1em;
+          border: none;
+          padding: 1.3rem;    
+          font-family: vars.$font;
+          opacity: 80%;
+        }
+
+        &_sport__date {
+          display: flex;
+        }
+
+        &_select {
+          background-color: vars.$color-light;
+          padding-left: 1rem;
+        }
+
+        &_submit {
+          background-color: vars.$color;
+          border-radius: vars.$border-radius-bottom;
+          border: none;
+          padding: 0.5rem;
+        }
+
+        &_select, &_date {
+          width: 50%;
+        }
+
+        &_date {
+          background-color: vars.$color-light;
+          opacity: 70%;
+          border-left: vars.$color-grey 0.5px solid;
+          padding-right: 0.5rem;
+        }
+      }
+
+      &-trip {
+        border: vars.$color, 2px solid;
+        max-width: 85%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        box-shadow: vars.$box-shadow;
+        border-radius: vars.$border-radius-global;
+        margin-top: 2rem;
+        position: relative;
+        top: -120px;
+
+        &_text {
+          margin-top: 2rem;
+          margin-bottom: 2rem;
+          font-size: 1.5rem;
+          color: vars.$color-grey_more;
+        }
+      }
+    }
+
+    .depart {
+      border-radius: 10px 10px 0 0;
+      border-bottom: vars.$color-grey 0.5px solid;
+    }
+
+    .destination {
+      border-bottom: vars.$color-grey 0.5px solid;
+    }
+
+    .loupe {
+      width: 30px;
+    }
+    }
+  }
+}
+
+
+//version tablette laptop
+body {
+  .app {
+@media screen and (min-width: 942px) and (max-width: 1149px) {
+      .search{
+        position: relative;
+        top: -600px;
+        margin-left: 3rem;
+        margin-right: 3rem;
+
+      &-form {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 0 1.5rem;
+        box-shadow: vars.$box-shadow;
+        border-radius: vars.$border-radius-global;
+        background-color: vars.$color-light;
       
-    &_input, &_select, &_date {    
-      font-size: 1em;
-      border: none;
-      padding: 1.3rem;    
-      font-family: vars.$font;
-      opacity: 80%;
+          
+        &_input, &_select, &_date {    
+          font-size: 1.1em;
+          border: none;
+          outline: none;
+          padding: 1.2rem; 
+          padding-top: 2rem;   
+          font-family: vars.$font;
+          //opacity: 80%;
+        }
+
+        &_sport__date {
+          display: flex;
+        }
+
+        &_select {
+          background-color: vars.$color-light;
+          padding-left: 1rem;
+        }
+
+        &_submit {
+          background-color: vars.$color;
+          border-radius: vars.$border-radius-right;
+          border: none;
+          justify-content: right;
+          width: 14%;
+        }
+
+        &_select, &_date {
+          width: 80%;
+        }
+
+        &_date {
+          background-color: vars.$color-light;
+          opacity: 70%;
+          border-left: vars.$color-grey 0.5px solid;
+          padding-right: 0.5rem;
+        }
+      }
+
+      &-trip {
+        border: vars.$color, 1px solid;
+        max-width: 50%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        box-shadow: vars.$box-shadow;
+        border-radius: vars.$border-radius-global;
+        margin-top: 2rem;
+        position: relative;
+        top: -10px;
+
+        &_text {
+          margin-top: 2rem;
+          margin-bottom: 2rem;
+          font-size: 1.5rem;
+          color: vars.$color-grey_more;
+        }
+      }
     }
 
-    &_sport__date {
-      display: flex;
+    .depart {
+      //border-radius: 10px 10px 0 0;
+      border-bottom: vars.$color-grey 0.5px solid;
     }
 
-    &_select {
-      background-color: vars.$color-light;
-      padding-left: 1rem;
+    .destination {
+      border-bottom: vars.$color-grey 0.5px solid;
     }
 
-    &_submit {
-      background-color: vars.$color;
-      border-radius: vars.$border-radius-bottom;
-      border: none;
-      padding: 0.5rem;
+    .loupe {
+      width: 20px;
+    }
+    }
+  }}
+
+
+
+//version desktop XXL
+body {
+  .app {
+@media screen and (min-width: 1150px) {
+      .search{
+        //margin-top: 1rem;
+        position: relative;
+        top: -680px;
+
+      &-form {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        //max-width: 85%;
+        margin: 0 2rem 0 2rem;
+        padding-left: 1rem;
+        box-shadow: vars.$box-shadow;
+        border-radius: vars.$border-radius-global;
+        background-color: vars.$color-light;
+      
+          
+        &_input, &_select, &_date {    
+          font-size: 1.1em;
+          border: none;
+          outline: none;
+          padding: 1.2rem;    
+          font-family: vars.$font;
+          opacity: 80%;
+        }
+
+        &_sport__date {
+          display: flex;
+        }
+
+        &_select {
+          background-color: vars.$color-light;
+          padding-left: 1rem;
+        }
+
+        &_submit {
+          background-color: vars.$color;
+          border-radius: vars.$border-radius-right;
+          border: none;
+          //padding-right: 1rem;
+          //padding-left: 1.2rem;
+          justify-content: right;
+          width: 25%;
+        }
+
+        &_select, &_date {
+          width: 50%;
+        }
+
+        &_date {
+          background-color: vars.$color-light;
+          opacity: 70%;
+          border-left: vars.$color-grey 0.5px solid;
+          padding-right: 0.5rem;
+          width: 50%;
+        }
+      }
+
+      &-trip {
+        border: vars.$color, 2px solid;
+        max-width: 85%;
+        //width: 50%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        box-shadow: vars.$box-shadow;
+        border-radius: vars.$border-radius-global;
+        margin-top: 2rem;
+        position: relative;
+        //top: -120px;
+
+        &_text {
+          margin-top: 2rem;
+          margin-bottom: 2rem;
+          font-size: 1.5rem;
+          color: vars.$color-grey_more;
+        }
+      }
     }
 
-    &_select, &_date {
-      width: 50%;
+    .depart {
+      border-radius: 10px 10px 0 0;
+      border-bottom: vars.$color-grey 0.5px solid;
     }
 
-    &_date {
-      background-color: vars.$color-light;
-      opacity: 70%;
-      border-left: vars.$color-grey 0.5px solid;
-      padding-right: 0.5rem;
+    .destination {
+      border-bottom: vars.$color-grey 0.5px solid;
     }
-  }
 
-  &-trip {
-    border: vars.$color, 2px solid;
-    max-width: 85%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    box-shadow: vars.$box-shadow;
-    border-radius: vars.$border-radius-global;
-    margin-top: 2rem;
-    position: relative;
-    top: -120px;
-
-    &_text {
-      margin-top: 2rem;
-      margin-bottom: 2rem;
-      font-size: 1.5rem;
-      color: vars.$color-grey_more;
+    .loupe {
+      width: 20px;
     }
-  }
+    }
+
 }
-
-.depart {
-  border-radius: 10px 10px 0 0;
-  border-bottom: vars.$color-grey 0.5px solid;
-}
-
-.destination {
-  border-bottom: vars.$color-grey 0.5px solid;
-}
-
-.loupe {
-  width: 30px;
 }
