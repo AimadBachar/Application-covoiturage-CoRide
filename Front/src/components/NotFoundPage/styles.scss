@@ -12,6 +12,9 @@
   border-radius: vars.$border-radius-global;
   margin-top: 2rem;
   margin-bottom: 2rem;
+  position: relative;
+  background: vars.$color-light;
+  top:-130px;
 
   &_text {
     margin-top: 2rem;
