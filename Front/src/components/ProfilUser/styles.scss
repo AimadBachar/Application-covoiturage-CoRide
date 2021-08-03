@@ -60,6 +60,10 @@
     display: none;
   }
 
+  input[type="date"]{
+    width: 100%;
+  }
+
   &-input {
     border: none;
     text-align:center;
@@ -76,22 +80,6 @@
        margin:0 .25rem;
      }
      font-size:.75rem;
-     & table{
-       border-collapse: collapse;      
-       width: 100%;
-       margin:0 auto;
-       box-sizing: border-box;
-       & tr{       
-        width: 100%;
-        margin: .5rem 0;
-        border-radius: .5rem;
-        border: 1px solid vars.$color;
-        padding: 1rem;
-       }
-       & tr:hover{
-         background: vars.$color;
-       }
-       }     
    }
 
   // espace bio
