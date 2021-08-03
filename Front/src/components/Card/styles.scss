@@ -5,51 +5,78 @@ body {
   .app {
   @media screen and (max-width: 941px) {  
       .cardInfos {
-        max-width: 80%;
+        max-width: 85%;
         margin: 0 auto;
         box-shadow: vars.$box-shadow;
         border-radius: vars.$border-radius-global;
         margin-bottom: 1.5rem;
         font-family: vars.$font;
-        border: vars.$color, 2px solid;
-
         &-travel {
           display: flex;
+          flex-direction:column-reverse;
           text-align: center;
-          margin: 1rem;
-
-          &_left {
+      
+          &_top {
             min-width: 50%;
-            border-right: 1px solid vars.$color-grey;
-
+            margin-bottom: 1rem;
+            &__logo{
+              width: 30px;
+              margin-top: 2rem;
+            }
+      
             &__profil {
               color: vars.$color;
+              font-size:1rem;       
             }
-
-            &__destination {
+      
+            &__box__destination{
+              display:flex;
+              justify-content: space-between;
+              align-items: baseline;
+              margin: 2rem 1rem 0 1rem;
+              border-bottom: dotted .15rem vars.$color;
+              border-radius: 250%; 
+              &__city {
               font-size: 1.5rem;
-              margin-top: 1rem;
-              color: vars.$color-grey_more;
+              
+              
+              &_d{
+                text-align: left;
+                color: vars.$color-grey_more;
+                & img{
+                width: 15px;
+              }
+              }
+              &_a{
+                text-align: right;
+                color: vars.$color-grey_more;
+                & img{
+                  width: 15px;
+                }
+              }
             }
+            }      
           }
-
-          &_right {
+      
+          &_bottom {
             min-width: 50%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-            font-size: 1.5rem;
-
-            &__date, &__hour {
+            &__date {
               color: vars.$color-grey_more;
+              font-size: 1rem;
+              margin: .5rem;
             }
-
+      
             &__tag {
-              color: vars.$color;
+              display:block;
+              width: 100%;
+              height: 3rem;
+              background: vars.$color;
+              border-radius: 14px 14px 0 0;
+              padding: .75rem;
             }
           }
         }
-      }  
+      } 
    }
   }
 }
