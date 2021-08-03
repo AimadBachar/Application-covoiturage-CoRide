@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 // == Import : local
 import ComboBoxCities from '../../containers/ComboBoxCities';
 
+// == Style
 import './styles.scss';
 
 
@@ -22,12 +23,9 @@ const Trip = ({
   handleFetchActivities,
   checkInputsContent
 }) => {
-
-
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log('submit');
-
 
     if(evt.target.querySelector('input[name="departure_city"]').value ===""){
       return checkInputsContent({
@@ -50,7 +48,6 @@ const Trip = ({
       })
   };
 
-  
   if(evt.target.querySelector('input[name="departure_timestamp"]').value ===""){
     return checkInputsContent({
       header:"Attention",
@@ -79,7 +76,6 @@ const Trip = ({
     })
   };
 
-
     onSubmitTrip();
     evt.target.reset();
   };
@@ -101,96 +97,87 @@ const Trip = ({
   if(tags.length<1){
     handleFetchActivities();
   }
-}
+};
 
-  
   return (
     <div className="trip">
-
-      <form
- 
-        className="trip-form"
-        onSubmit={handleSubmit}
-      >
+      <form className="trip-form" onSubmit={handleSubmit}>
         <h1 className="trip-form_title">Proposer votre trajet </h1>
-        <ComboBoxCities  placeholder="Départ" name="departure_city" />
-        <ComboBoxCities placeholder="Destination" name="destination_city" />
-        <input
-          className="trip-form_input depart"
-          type="hidden"
-          name="latitute_departure"
-          value={latitude_departure}
-          onChange={fieldChange}
-        />
-
-        <input
-          className="trip-form_input depart"
-          type="hidden"
-          name="longitude_departure"
-          value={longitude_departure}
-          onChange={fieldChange}
-        />
-        <div className="trip-form_sport__date">
-          <select
-            className="trip-form_select"
-            name="activity_id"
-            value={activity_id}
+         <ComboBoxCities  placeholder="Départ" name="departure_city" />
+         <ComboBoxCities placeholder="Destination" name="destination_city" />
+           <input
+            className="trip-form_input depart"
+            type="hidden"
+            name="latitute_departure"
+            value={latitude_departure}
             onChange={fieldChange}
-          >
-            <option
-              className="trip-form_select_title"
-              value=""
-            >Quel sport ?
-            </option>
-            {tags.map((tag) => (
+           />
+           <input
+            className="trip-form_input depart"
+            type="hidden"
+            name="longitude_departure"
+            value={longitude_departure}
+            onChange={fieldChange}
+           />
+          <div className="trip-form_sport__date">
+            <select
+              className="trip-form_select"
+              name="activity_id"
+              value={activity_id}
+              onChange={fieldChange}
+            >
               <option
-                name="tag"
-                key={tag.id}
-                value={tag.id}
-              >
-                {tag.label}
+                className="trip-form_select_title"
+                value=""
+              >Quel sport ?
               </option>
-            ))}
-          </select>
-          <input
-            className="trip-form_date"
-            type="datetime-local"
-            name="departure_timestamp"
-            value={departure_timestamp}
-            placeholder="aujourd'hui"
-            onChange={fieldChange}
-          />
-        </div>
+              {tags.map((tag) => (
+                <option
+                  name="tag"
+                  key={tag.id}
+                  value={tag.id}
+                >
+                  {tag.label}
+                </option>
+              ))}
+            </select>
+            <input
+              className="trip-form_date"
+              type="datetime-local"
+              name="departure_timestamp"
+              value={departure_timestamp}
+              placeholder="aujourd'hui"
+              onChange={fieldChange}
+            />
+          </div>
 
-        <input
-            className="trip-form_input"
-            type="number"
-            name="places_available"
-            value={places_available}
-            placeholder="Nombre de place"
-            onChange={fieldChange}
-          />
+            <input
+                className="trip-form_input"
+                type="number"
+                name="places_available"
+                value={places_available}
+                placeholder="Nombre de place"
+                onChange={fieldChange}
+              />
 
-          <input
-            className="trip-form_input"
-            type="textarea"
-            name="description"
-            value={description}
-            placeholder="Spécificité du véhicule, informations sur le trajet"
-            onChange={fieldChange}
-          />
-
-        <button
-          type="submit"
-          className="trip-form_submit"
-        >
-          Valider le trajet ?
-        </button>
+              <input
+                className="trip-form_input"
+                type="textarea"
+                name="description"
+                value={description}
+                placeholder="Spécificité du véhicule, informations sur le trajet"
+                onChange={fieldChange}
+              />
+              <button
+                type="submit"
+                className="trip-form_submit"
+              >
+                Valider le trajet ?
+              </button>
       </form>
     </div>
   );
 };
-
 
  Trip.propTypes = {
   onInputChange: PropTypes.func.isRequired,

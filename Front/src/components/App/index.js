@@ -28,12 +28,19 @@ import Card from 'src/containers/Card';
 import DetailsCard from 'src/containers/DetailsCard';
 import HeaderDetailsCard from 'src/containers/HeaderDetailsCard';
 import ModalInfo from 'src/containers/ModalInfo';
-
 import './styles.scss';
 
 
-
-const App = ({loading, fetchTravels, isLogged, open, header, message, logged}) => {
+// == Composant
+const App = ({
+  loading, 
+  fetchTravels, 
+  isLogged, 
+  open, 
+  header,
+  message, 
+  logged
+}) => {
   // J'exécute la fonction reçue en props
   // dès que je suis prêt, et une seule fois
   useEffect(fetchTravels, [])
@@ -92,7 +99,7 @@ const App = ({loading, fetchTravels, isLogged, open, header, message, logged}) =
         </Route>
 
         <Route exact path="/profilpage">
-          <HeaderProfilUser />
+          <HeaderDetailsProfil />
           <DetailsProfil />
           <Footer />
         </Route>
@@ -110,9 +117,9 @@ const App = ({loading, fetchTravels, isLogged, open, header, message, logged}) =
         </Route>
 
         <Route exact path="/mentions">
-          <Header/>
-          <Mentions/>
-          <Footer/>
+          <Header />
+          <Mentions />
+          <Footer />
         </Route>
 
         <Route path="*">
@@ -130,8 +137,7 @@ const App = ({loading, fetchTravels, isLogged, open, header, message, logged}) =
   return (
     <Router>
       <div className="app">
-
-        <ModalInfo header={header} message={message}/>
+      <ModalInfo open={open} header={header} message={message}/>  
       <Switch>
 
       <Route exact path="/">
@@ -142,45 +148,56 @@ const App = ({loading, fetchTravels, isLogged, open, header, message, logged}) =
         </Route>
 
         <Route exact path="/info">
-          <HeaderInfo/>
+          <HeaderInfo />
           <Info />
-          <Footer/>
+          <Footer />
         </Route>
 
         <Route exact path="/trip">
           <Redirect from="/trip" to="/connexion" />
           <HeaderTrip />
           <Trip />
-          <Footer/>
+          <Footer />
         </Route>
 
         <Route exact path="/connexion">
-          <HeaderLogin/>
-       <Login/>
-       <Footer/>
+          <HeaderLogin />
+          <Login />
+          <Footer />
         </Route>
 
         <Route exact path="/inscription">
-          <Header/>
           <Signin />
-          <Footer/>
+          <Footer />
         </Route>
 
         <Route exact path="/profil">
           <Redirect from="/profil" to="/connexion" />
           <HeaderProfilUser />
           <ProfilUser />
-          <Footer/>
+          <Footer />
         </Route>
 
         <Route exact path="/profilpage">
           <Redirect from="/profilpage" to="/connexion" />
-          <HeaderProfilUser/>
+          <HeaderDetailsProfil />
           <DetailsProfil />
           <Footer />
         </Route>
 
         <Route exact path="/travel">
+          <HeaderDetailsCard />
+          <DetailsCard />
+          <Footer />
+        </Route>
+
+        <Route exact path="/contact">
+          <HeaderContact />
+          <Contact />
+          <Footer />
+        </Route>
+
+        <Route exact path="/mentions">
           <Header />
           <Mentions />
           <Footer />
@@ -194,7 +211,7 @@ const App = ({loading, fetchTravels, isLogged, open, header, message, logged}) =
       </div>
     </Router>
   );
- 
+
  }
 };
 

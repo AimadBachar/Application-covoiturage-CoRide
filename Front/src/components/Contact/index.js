@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// == Import : local
 import './styles.scss';
 
 // == Composant
@@ -61,10 +62,10 @@ Contact.propTypes = {
     open: PropTypes.bool.isRequired,
   };
   
-  // Valeurs par défaut pour les props
-  Contact.defaultProps = {
-    logged: false,
+// Valeurs par défaut pour les props
+Contact.defaultProps = {
+   logged: false,
   };
   
-  // == Export
+// == Export
 export default Contact;

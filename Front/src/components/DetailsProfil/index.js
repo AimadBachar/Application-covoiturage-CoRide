@@ -1,11 +1,12 @@
 // == Import : npm
 import React from 'react';
-import PropTypes, { string } from 'prop-types';
-import { Link, useLocation } from 'react-router-dom'
+import PropTypes from 'prop-types';
 
 // == Import : local
 import ModalInfo from '../../containers/ModalInfo';
 import profilVide from "src/assets/images/profil_vide.jpg"
+
+// Style
 import 'src/components/DetailsProfil/styles.scss';
 
 
@@ -18,33 +19,25 @@ const DetailsProfil = ({
   if(usersProfils.length ===0){
     getAllUsers();
   }
-
   const handleSubmitMessageForm = (event)=>{
     event.preventDefault();
     const mail = new FormData(event.target);
     submitEmail(mail);
   }
-
-
-return (
-
-    
-
-      usersProfils.map((userprofil)=>(
-
-
-<div className="profil" key={userprofil.pseudo} >
-
-  <img className="profil-picture"src={userprofil.picture_link || profilVide}/>
- 
-
-      <div className="profil-top">
-          <p>{userprofil.pseudo}</p>                          
+  return (
+    usersProfils.map((userprofil)=>(
+      <div className="profil" key={userprofil.pseudo} >
+        <img className="profil-picture"src={userprofil.picture_link || profilVide}/>
+         <div className="profil-top">
+           <p>{userprofil.pseudo}</p>                          
       </div>
         <div className="profil-activities">
-        {userprofil.activities.map((activity)=>(
-        <span className="profil-tag" key={activity.label} style={{background: activity.color }}>{activity.label}</span>
-        ))}
+          {userprofil.activities.map((activity)=>(
+          <span className="profil-tag" 
+                key={activity.label} 
+                style={{background: activity.color }}>{activity.label}
+          </span>
+          ))}
         </div>
         <div className="profil-bottom">
           <div className="profil-contact">
@@ -61,25 +54,14 @@ return (
           </div>
         </div>
       </div>    
-      )) 
-)};
-
-
+    )) 
+  )
+};
 
 DetailsProfil.propTypes = {
   submitEmail: PropTypes.func.isRequired,
   getAllUsers: PropTypes.func.isRequired,
-  usersProfils: PropTypes.shape({
-    email: PropTypes.string.isRequired,
-    pseudo: PropTypes.string.isRequired,
-    activity: PropTypes.shape({
-      color: PropTypes.string,
-      label: PropTypes.string,
-    })
-  }),
-  message: PropTypes.string.isRequired,
-  header: PropTypes.string.isRequired,
-  open: PropTypes.bool.isRequired,
+  usersProfils: PropTypes.array.isRequired,
 };
 
 // == Export
