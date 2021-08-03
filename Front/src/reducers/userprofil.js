@@ -28,6 +28,7 @@ export const initialState = {
     biography: user?.biography,
     pseudo: user?.pseudo,
     email: user?.email,
+    picture: null,
     password: user?.password,
     birthdate: user?.birthdate ? new Date(user.birthdate).toISOString().split('T')[0] : "",
     activity_id: "",  

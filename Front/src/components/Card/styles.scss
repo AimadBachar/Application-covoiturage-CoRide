@@ -1,5 +1,6 @@
 @use 'src/styles/vars';
 
+
 body {
   .app {
   @media screen and (max-width: 941px) {  
@@ -107,4 +108,5 @@ body {
         }  
     }
   }
+
 }

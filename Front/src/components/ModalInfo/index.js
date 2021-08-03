@@ -21,7 +21,7 @@ const ModalInfo = ({
         <Modal.Header>{header}</Modal.Header>
         <Modal.Content><p>{message}</p></Modal.Content>
         <Modal.Actions>
-          <Button color="yellow" onClick={handleClick}>
+          <Button color="orange" onClick={handleClick}>
             <Icon name='checkmark' />OK
           </Button>          
         </Modal.Actions>       

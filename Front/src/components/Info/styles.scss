@@ -1,8 +1,10 @@
 @use 'src/styles/vars';
 
 .info {
-    max-width: 80%;
+    max-width: 90%;
     margin: 0 auto;
+    position:relative;
+    top:-40px;
    
     
     &-text {
@@ -20,7 +22,7 @@
         position: relative;
         margin-bottom: 1rem;
         padding: 1.5rem 1rem; 
-        top: -120px;
+        top: -70px;
        
     }
 
@@ -29,6 +31,7 @@
         // margin: 0 auto;
         display: flex;
         flex-direction: column;
+        text-align:center;
         align-items: center;
         border-bottom: 1px solid vars.$color-grey;
         margin: 2rem 0;

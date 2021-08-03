@@ -26,7 +26,7 @@ const HeaderContact = ({
       <div className="header">
         <img className="header-photo" src={headerContactBanner} alt="headerContactBanner" />
         <img src={logo} className="header-logo" alt="Logo CoRide" />
-
+        <p className="slogan">Le covoiturage des passionnés!</p>
           <Nav logged={logged}/>
             <a onClick={logOut}>
               <img className="header-logout" src={logout} alt="logout" />
@@ -38,6 +38,7 @@ const HeaderContact = ({
       <div className="header">
         <img className="header-photo" src={headerContactBanner} alt="headerContactBanner" />
         <img src={logo} className="header-logo" alt="Logo CoRide" />
+        <p className="slogan">Le covoiturage des passionnés!</p>
           <Nav logged={logged}/>
            <Link to="/connexion" exact>
             <img className="header-login" src={login} alt="login" />

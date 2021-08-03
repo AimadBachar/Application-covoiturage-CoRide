@@ -37,6 +37,9 @@ const Search = ({
           className="search-form"
           onSubmit={handleSubmit}
         >
+          <h1 className="search-form_title">
+            Recherches un covoit'
+          </h1>
           <ComboBoxCities  placeholder="Départ" name="departure_city" className="depart" />
           <ComboBoxCities placeholder="Arrivé" name="destination_city" />
       
@@ -85,8 +88,9 @@ const Search = ({
         to="/trip"
         className="search-trip"
       >
+        <h2 className="search-trip_title">Publier un trajet</h2>
         <p className="search-trip_text">
-          Ajouter un trajet
+          Partage ta passion pour une activité en proposant les places libres dans ton véhicule à la communauté Co'Ride!
         </p>
       </Link>
     </div>
