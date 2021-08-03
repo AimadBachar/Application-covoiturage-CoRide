@@ -3,7 +3,7 @@
 .search{
   margin-top: 2rem;
   position: relative;
-  top: -160px;
+  top: -105px;
 
   &-form {
     display: flex;
@@ -21,7 +21,7 @@
       background-color: vars.$color;
       color: vars.$color_light;
       text-align: center;
-      padding: 1.8rem;
+      padding: 1rem;
       border-radius: vars.$border-radius-top;
     }
       
@@ -61,8 +61,9 @@
     }
   }
 
+ 
+
   &-trip {
-    border: vars.$color, 2px solid;
     max-width: 85%;
     margin: 0 auto;
     display: flex;
@@ -72,12 +73,21 @@
     border-radius: vars.$border-radius-global;
     margin-top: 2rem;
     position: relative;
-    top: -120px;
+    top: -70px;
+
+     &_title{
+    background: vars.$color;
+    height: 3rem;
+    width: 100%;
+    border-radius: 13px 13px 0 0;
+    padding:.25rem;
+    }
 
     &_text {
-      margin-top: 2rem;
-      margin-bottom: 2rem;
-      font-size: 1.5rem;
+      font-size: 8px;
+      font-weight: 400;
+      font-size: 1rem;
+      padding: 0 .5rem .5rem .5rem;
       color: vars.$color-grey_more;
     }
   }

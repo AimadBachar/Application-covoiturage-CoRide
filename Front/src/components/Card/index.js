@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 
 // == Import : local
 import './styles.scss';
+import driver from '/src/assets/images/driver-orange0.png';
+import pin from '/src/assets/images/pin.png';
 
 
 // == Composant
@@ -30,17 +32,20 @@ const Card = ({
           >
           <div className="cardInfos"  >
             <div className="cardInfos-travel">
-              <div className="cardInfos-travel_left">
-  
-                <p href="#" className="cardInfos-travel_left__profil" >{card.driver}</p>
-                <p className="cardInfos-travel_left__destination">{card.departure_city}</p>
-                <p className="cardInfos-travel_left__destination">{card.destination_city}</p>
+              <div className="cardInfos-travel_top">
+                
+              <div className="cardInfos-travel_top__box__destination">
+                
+                  <p className="cardInfos-travel_top__box__destination__city_d"><img src={pin}/>{card.departure_city}</p>
+                  <p className="cardInfos-travel_top__box__destination__city_a">{card.destination_city}<img src={pin}/></p>
+                </div>
+                <img className="cardInfos-travel_top__logo" src={driver}/>
+                <p className="cardInfos-travel_top__profil" >{card.driver}</p>
+                
               </div>
-              <div className="cardInfos-travel_right">
-                <p className="cardInfos-travel_right__date">{new Date(card.departure_timestamp).toLocaleDateString("fr-FR")}</p> 
-                <p className="cardInfos-travel_right__hour">{new Intl.DateTimeFormat('fr-FR', { timeStyle: 'short' }).format(new Date(card.departure_timestamp))}</p>
-                <span className="cardInfos-travel_right__tag">{card.activity}</span>
-
+              <div className="cardInfos-travel_botton">
+                <span className="cardInfos-travel_bottom__tag">#{card.activity}</span>
+                <p className="cardInfos-travel_bottom__date">Départ le {new Date(card.departure_timestamp).toLocaleDateString("fr-FR")} à {new Intl.DateTimeFormat('fr-FR', { timeStyle: 'short' }).format(new Date(card.departure_timestamp))}</p> 
               </div>
             </div>
             </div>
