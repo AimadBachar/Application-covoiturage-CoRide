@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 // == Import : local
-import ModalInfo from "src/containers/ModalInfo";
+import line from "src/assets/images/line1.png";
 import profilVide from "src/assets/images/profil_vide.jpg"
 import 'src/components/ProfilUser/styles.scss';
 
@@ -28,6 +28,7 @@ const ProfilUser = ({
   travels_passenger,
   travels_driver,
   biography,
+  picture,
   checkInputsContent
 }) => {
   if(tags?.length<1){
@@ -70,51 +71,67 @@ const ProfilUser = ({
     event.target.reset();
   };
 
+  const handleChangeFile = (event)=>{
+    const avatar = URL.createObjectURL(event.target.files[0]);
+    onInputChange(event.target.name,avatar);
+  }
+
   return (
     <div className="profil-form"> 
       <form className="profil-form-element" onSubmit={handleSubmit} enctype="application/x-www-form-urlencoded">   
        <h1 className="profil-form-title">Modifier le profil</h1> 
         <div className="profil-form-identity">
-          <img className="profil-form-identity_picture" src={picture_link || profilVide}/>      
+              
+          
+            <label id="picture-label" for="upload-file"> <img className="profil-form-identity_picture" src={picture || picture_link || profilVide}/></label>
             <input 
               className="profil-form-upload" 
+              onChange={handleChangeFile}
               type="file"
+              id="upload-file"
               name="picture" placeholder="Picture"
               accept="image/png, image/jpeg" /> 
                 {ifPictureLink()}       
                 <input type="hidden" name="id" value={id}/>
 
+            <label for="first_name">Prénom:</label>
             <input
-              className="profil-form-input" type="text" name="first_name"
+              className="profil-form-input" id="first_name" type="text" name="first_name"
               placeholder="Prénom" defaultValue={first_name}
               onChange={changeField} />
-                   
+            
+            <label for="last_name">Nom:</label>       
             <input
-              className="profil-form-input" type="text" name="last_name"
+              className="profil-form-input" type="text" name="last_name" id="last_name"
               placeholder="Nom" defaultValue={last_name}
               onChange={changeField} />               
             
+            <label for="pseudo">Pseudo:</label> 
             <input
-              className="profil-form-input" type="text" name="pseudo"
+              className="profil-form-input" type="text" name="pseudo" id="pseudo"
               placeholder="Pseudo" defaultValue={pseudo} />     
-                          
+
+            <label for="birthdate">Date de naissance:</label>              
             <input
-              className="profil-form-input" type="date" name="birthdate"
+              className="profil-form-input" type="date" name="birthdate" id="birthdate"
               placeholder="Date de naissance" defaultValue={birthdate} />
 
+              <label for="biography">Présentation:</label> 
               <div className="profil-form-bio">
-                  <textarea className="profil-form-textarea" cols="20" rows="5" wrap="hard" 
+                  <textarea className="profil-form-textarea" cols="20" rows="5" wrap="hard" id="biography"
                     placeholder="plus d'informations sur vous, vos spots préférés" name="biography">
                     {biography}
                   </textarea>  
               </div>
 
+              <label for="last_name">E-mail:</label> 
                   <input
-                    className="profil-form-input" type="email" name="email"
+                    className="profil-form-input" type="email" name="email" id="email"
                     placeholder="E-mail" defaultValue={email}/>
                
+               <label for="password">Votre mot de passe avant de valider:</label> 
                   <input
-                    className="profil-form-input" type="password"
+                    className="profil-form-input" type="password" id="password"
                     name="password" placeholder="Mot de passe"/>
                </div>
               <div className="profil-form-button">
@@ -134,7 +151,7 @@ const ProfilUser = ({
                     onChange={changeField}>
                <option
                   className="profil-form-sport_title" value="">
-                  Choisissez votre sport passion n°1
+                  Choisissez votre sport passion
                </option>
                   {tags?.map((tag) => (
                 <option name="tag" key={tag.id} value={tag.id}>
@@ -161,72 +178,73 @@ const ProfilUser = ({
 
 
  <div className="profil-form-element">
- <div className="profil-form-mytravelspassenger">   
-         <table>
-           <thead>
-        <tr>
-              <th>Ville de départ</th>           
-              <th>Ville d'arrivée</th>           
-              <th>date et heure de départ</th>
-        </tr>
-        </thead>
-             <tbody>
-               {travels_passenger?.map(travel=>(
-           
-              <tr>
-                <td>{travel.departure_city}</td>                  
-                <td>{travel.destination_city}</td>
-                <td>{new Date(travel.departure_timestamp).toLocaleString('fr-FR')}</td>
-              </tr> 
-                                          
-         ))}
-            </tbody>
-         </table>
-       </div>    
 
-       <div className="profil-form-mytravelsdriver">   
-         <table>
-           <thead>
-            <tr>
-                <th>Ville de départ</th>                        
-                <th>Ville d'arrivée</th>                        
-                <th>date et heure de départ</th>
-              </tr>
-            </thead>
-
-            <tbody>
+       <div className="profil-form-mytravelsdriver">  
+        <h3>Les co'rides passager:</h3>
+         
+                <ul>
+            
               {travels_passenger?.map(travel=>(
-                <tr>
-                  <td>{travel.departure_city}</td>                  
-                  <td>{travel.destination_city}</td>
-                  <td>{new Date(travel.departure_timestamp).toLocaleString('fr-FR')}</td>
-                </tr>
+                <li>
+                  <div className="travel">
+                    <form className="button-action">
+                      <input type="hidden" name="travel_id" value={travel.id}/>
+                      <button className="button-first"><img className="icone-delete" src="https://img.icons8.com/ios/48/000000/trash--v1.png"/></button>
+                    </form>
+                    <div class="travel-datetime">
+                      <span className="travel-date">
+                        {new Date(travel.departure_timestamp).toLocaleDateString('fr-FR')}
+                      </span>
+                      <span className="travel-time">
+                      {new Intl.DateTimeFormat('fr-FR', { timeStyle: 'short' }).format(new Date(travel.departure_timestamp))}
+                      </span>
+                    </div>
+                    <div className="travels-city">
+                      <img className="line-img" src={line}/>
+                      <div className="cities">
+                        <span>{travel.departure_city}</span>                      
+                        <span>{travel.destination_city}</span>
+                      </div>   
+                    </div>
+                  </div>
+                </li>
               ))}
-            </tbody>
-          </table>
-        </div>    
+              </ul>
+          </div> 
 
-        <div className="profil-form-mytravelsdriver">   
-          <table>
-            <thead>
-              <tr>
-                <th>Départ</th>                        
-                <th>Arrivée</th>                        
-                <th>date et heure</th>
-              </tr>
-            </thead>
-
-            <tbody>
+          <div className="profil-form-mytravelsdriver">  
+        <h3>Les co'rides conducteur:</h3>
+         
+                <ul>
+            
               {travels_driver?.map(travel=>(
-                <tr>
-                  <td>{travel.departure_city}</td>                 
-                  <td>{travel.destination_city}</td>                  
-                  <td>{new Date(travel.departure_timestamp).toLocaleString('fr-FR')}</td>
-                </tr>                          
+                <li>
+                  <div className="travel">
+                    <form className="button-action">
+                      <input type="hidden" name="travel_id" value={travel.id}/>
+                      <button className="button-second"><img className="icone-delete" src="https://img.icons8.com/ios/48/000000/edit--v1.png"/></button>
+                      <button className="button-third"><img className="icone-delete" src="https://img.icons8.com/ios/48/000000/trash--v1.png"/></button>
+                    </form>
+                    <div class="travel-datetime">
+                      <span className="travel-date">
+                        {new Date(travel.departure_timestamp).toLocaleDateString('fr-FR')}
+                      </span>
+                      <span className="travel-time">
+                      {new Intl.DateTimeFormat('fr-FR', { timeStyle: 'short' }).format(new Date(travel.departure_timestamp))}
+                      </span>
+                    </div>
+                    <div className="travels-city">
+                      <img className="line-img" src={line}/>
+                      <div className="cities">
+                        <span>{travel.departure_city}</span>                      
+                        <span>{travel.destination_city}</span>
+                      </div>   
+                    </div>
+                  </div>
+                </li>
               ))}
-            </tbody>
-          </table>
-        </div>                    
+              </ul>
+          </div> 
       </div>
 
       <div className="profil-form-button">
