@@ -85,6 +85,8 @@ const ComboBoxCities = ({
     <div>
 
         <Combobox 
+          hideCaret
+          hideEmptyPopup
           containerClassName="search-form_input departure"
           name={name}
           placeholder={placeholder}
