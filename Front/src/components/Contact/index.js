@@ -44,8 +44,8 @@ const Contact = ({
                         <input className="contact-submit" type="submit" value="Envoyer" />
                         </div> 
                 </form>
+            </div>
         </div>
-      </div>
     </div>
       
       )
