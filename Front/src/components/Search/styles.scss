@@ -76,8 +76,8 @@ body {
         box-shadow: vars.$box-shadow;
         border-radius: vars.$border-radius-global;
         margin-top: 2rem;
-        position: relative;
-        top: -70px;
+        position: absolute;
+        top: -400px;
     
          &_title{
         background: vars.$color;
