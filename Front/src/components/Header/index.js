@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import appBanner from '/src/assets/images/skate2.jpg';
 import logo from '/src/assets/logo/coride-b.svg';
 import login from '/src/assets/images/icon user white.png';
-import logout from '/src/assets/images/logout-white.png';
+import logout from '/src/assets/images/logout-white1.png';
 import Nav from '../Nav';
 import './styles.scss';
 
@@ -25,11 +25,13 @@ const Header = ({
     return (
       <div className="header">
         <div className="menu-desktop">
+        <ul className="menu-desktop-title"></ul>
           <ul>
             <li>Accueil</li>
             <li>Info</li>
-            <li>S'inscrire</li>
+            <li>Contact</li>
             <li>Publier un trajet</li>
+            <li>S'inscrire</li>
           </ul>
         </div>
         <img className="header-photo" src={appBanner} alt="appBanner" />

@@ -27,7 +27,7 @@
     // == Version tablette, laptop-desktop
     @media screen and (min-width: 942px) and (max-width: 1149px) {
         margin: 0;
-        background-color: vars.$color_light;
+       // background-color: vars.$color_light;
 
       .slogan {
         color: vars.$color-light;
@@ -46,8 +46,8 @@
         color: vars.$color_light;
         cursor: pointer;
       }
-      .menu-desktop-title {
-      
+
+      .menu-desktop-title {     
         display: flex;
         justify-content: space-evenly;
         text-align: center;
@@ -55,6 +55,7 @@
         padding-top: 2.8rem;
         font-size:1.5em
       }
+
       .menu-desktop-title:hover {
         color: vars.$color;
       }
@@ -72,6 +73,7 @@
 
       .header-logout {
         width: 50px;
+        top: 3px;
       }
 
       .header-logo {
