@@ -28,28 +28,23 @@ const Contact = ({
             )
     }  else {
         return (
-
-    <div className="contact" >
-        <h1 className="contact-title">Nous contacter</h1>
-        <p className="contact-info">Une demande, un renseignement, veuillez remplir ce formulaire:</p>
-        <div className="profil-bottom">
-            <div className="form-contact">
-                <form className="form-contact-form" method="post" action="" onSubmit={handleSubmitMessageForm}>
-                        <div>
-                        <input type="hidden" name="recipient" value="Admin"/>
-                        <input type="hidden" name="email" value="application.coride@gmail.com"/>
-                        <textarea className="contact-commentaire" rows="5" cols="28" wrap="physique" name="message" placeholder="Posez votre question ici..."></textarea>
-                        </div>
-                        <div>
-                        <input className="contact-submit" type="submit" value="Envoyer" />
-                        </div> 
-                </form>
-            </div>
+        <div className="contact" >
+          <h1 className="contact-title">Nous contacter</h1>
+          <p className="contact-info">Une demande, un renseignement, veuillez remplir ce formulaire:</p>
+          <div className="contact-bottom">
+            <form className="contact-bottom_form" method="post" action="" onSubmit={handleSubmitMessageForm}>
+              <div>
+                <input type="hidden" name="recipient" value="Admin"/>
+                <input type="hidden" name="email" value="application.coride@gmail.com"/>
+                <textarea className="contact-bottom_form__commentaire" rows="5" cols="28" wrap="physique" name="message" placeholder="Posez votre question ici..."></textarea>
+              </div>
+              <div>
+                <input className="contact-bottom_form__submit" type="submit" value="Envoyer" />
+              </div> 
+            </form>
+          </div>
         </div>
-    </div>
-      
       )
-
     }; 
 };
 
