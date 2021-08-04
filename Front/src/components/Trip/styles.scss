@@ -2,8 +2,11 @@
 
 body {
   .app {
-  @media screen and (max-width: 941px) {  
+    @media screen and (max-width: 941px) {  
       .trip {
+        position: relative;
+        top: -134px;
+
         &-form {
           display: flex;
           flex-direction: column;
@@ -12,6 +15,7 @@ body {
           margin: 2rem auto;
           box-shadow: vars.$box-shadow;
           border-radius: vars.$border-radius-global;
+          
 
           &_title {
             // max-width: 80%;
@@ -66,8 +70,8 @@ body {
       .depart, .destanation {
         border-bottom: vars.$color-grey 0.5px solid;
       }
+    }
   }
- }
 }
   body {
     .app {

@@ -7,7 +7,7 @@ body {
     .search{
       margin-top: 2rem;
       position: relative;
-      top: -500px;
+      top: -134px;
     
       &-form {
         display: flex;
@@ -77,14 +77,14 @@ body {
         border-radius: vars.$border-radius-global;
         margin-top: 2rem;
         position: relative;
-        top: -200px;
+        top: -100px;
     
          &_title{
-        background: vars.$color;
-        height: 3rem;
-        width: 100%;
-        border-radius: 13px 13px 0 0;
-        padding:.25rem;
+          background: vars.$color;
+          height: 3rem;
+          width: 100%;
+          border-radius: 13px 13px 0 0;
+          padding:.25rem;
         }
     
         &_text {
