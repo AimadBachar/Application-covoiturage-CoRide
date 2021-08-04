@@ -22,7 +22,7 @@ VALUES
     ('paddle','#fff');
 
 INSERT INTO travel(departure_city,destination_city,latitude_departure,longitude_departure,places_available,description,departure_timestamp,activity_id,user_id) 
-VALUES  ('bordeaux','biarritz',44.837789,-0.57918,4,'un voyage de test','2021-07-26 14:00:00',1,1);
+VALUES  ('bordeaux','biarritz',44.837789,-0.57918,4,'un voyage de test','2021-09-26 14:00:00',1,1);
 
 INSERT INTO user_travel(user_id,travel_id)
 VALUES
