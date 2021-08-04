@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import onClickOutside from "react-onclickoutside";
 
 // == Import : local
-import './styles.scss';
+import './info.scss';
 
 // == Composant
 const Nav = (props) => {
@@ -16,7 +16,7 @@ const Nav = (props) => {
   if (!props.logged) {
     return (
       <div className={isOpen ? "nav -active"  : "nav"} onClick={toggle}>
-        <nav role="navigation">
+        <nav role="navigation" className="nav-mobile">
           <div id="menuToggle" >
             {/* je fais en sorte que le checkbox et la même valeur que le state isOpen, ce qui va modifier le CSS par la suite */}
             <input type="checkbox" checked={isOpen}/>
@@ -42,6 +42,25 @@ const Nav = (props) => {
             </ul>
           </div>
         </nav>
+        <nav className="nav-desktop">
+            <ul className="desktop-menu">
+                <Link className="items-menu" to="/" exact>
+                  <li>Accueil</li>
+                </Link>
+                <Link className="items-menu" to="/contact" exact>
+                  <li>Contact</li>
+                </Link>
+                <Link className="items-menu" to="/info" exact>
+                  <li>Info</li>
+                </Link>
+                <Link className="items-menu" to="/connexion" exact>
+                  <li>Connexion</li>
+                </Link>
+                <Link className="items-menu" to="/inscription" exact>
+                  <li>S'inscrire</li>
+                </Link>
+            </ul>
+          </nav>
       </div>
     );
   } else {
