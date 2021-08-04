@@ -76,8 +76,8 @@ body {
         box-shadow: vars.$box-shadow;
         border-radius: vars.$border-radius-global;
         margin-top: 2rem;
-        position: relative;
-        top: -70px;
+        position: absolute;
+        top: -400px;
     
          &_title{
         background: vars.$color;
@@ -120,7 +120,7 @@ body {
 @media screen and (min-width: 942px) and (max-width: 1149px) {
       .search{
         position: relative;
-        top: -600px;
+        top: -775px;
         margin-left: 3rem;
         margin-right: 3rem;
         
@@ -209,6 +209,7 @@ body {
         padding-top: 1rem;
         padding-bottom: 1rem;
         background: vars.$color;
+        color: vars.$color_light;
         height: 4rem;
         width: 100%;
         border-radius: 13px 13px 0 0;
