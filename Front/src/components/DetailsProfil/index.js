@@ -26,33 +26,31 @@ const DetailsProfil = ({
   }
   return (
     usersProfils.map((userprofil)=>(
-      <div className="detailsProfil">
-        <div className="profil" key={userprofil.pseudo} >
-        <p className="profil-pseudo">{userprofil.pseudo}</p>
+      <div className="detailsProfils">
+        <div className="detailsProfil" key={userprofil.pseudo} >
+        <p className="detailsProfil-pseudo">{userprofil.pseudo}</p>
           {/* <div className="profil-top"> */}
-            <img className="profil-picture"src={userprofil.picture_link || profilVide}/>                         
+            <img className="detailsProfil-picture"src={userprofil.picture_link || profilVide}/>                         
           {/* </div> */}
-          <div className="profil-activities">
+          <div className="detailsProfil-activities">
             {userprofil.activities.map((activity)=>(
-              <span className="profil-tag" 
+              <span className="detailsProfil-tag" 
                 key={activity.label} 
-                style={{background: activity.color }}>{activity.label}
+                >#{activity.label}
               </span>
             ))}
           </div>
-          <div className="profil-bottom">
-            <div className="profil-contact">
-              <form className="profil-form" method="post" action="" onSubmit={handleSubmitMessageForm}>
-                <div>
-                  <input type="hidden" name="recipient" value={userprofil.pseudo}/>
-                  <input type="hidden" name="email" value={userprofil.email}/>
-                  <textarea className="profil-commentaire" rows="5" cols="28" wrap="physique" name="message">Ecrivez moi...</textarea>
-                </div>
-                <div>
-                  <input className="profil-submit" type="submit" value="M'envoyer un message" />
-                </div> 
-              </form>
-            </div>
+          <div className="detailsProfil-bottom">
+            <form className="detailsProfil-form" method="post" action="" onSubmit={handleSubmitMessageForm}>
+              <div>
+                <input type="hidden" name="recipient" value={userprofil.pseudo}/>
+                <input type="hidden" name="email" value={userprofil.email}/>
+                <textarea className="detailsProfil-commentaire" placeholder="Ecrivez-moi..." rows="5" cols="28" wrap="physique" name="message"></textarea>
+              </div>
+              <div>
+                <input className="detailsProfil-submit" type="submit" value="M'envoyer un message" />
+              </div> 
+            </form>
           </div>
         </div>  
       </div>  
