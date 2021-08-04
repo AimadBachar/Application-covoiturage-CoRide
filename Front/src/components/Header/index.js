@@ -39,6 +39,7 @@ const Header = ({
         <img className="header-photo" src={appBanner} alt="appBanner" />
         <img src={logo} className="header-logo" alt="Logo CoRide" />
         <p className="slogan">Le covoiturage pour les passionnés!</p>
+        <p className="concept"></p>
          <Nav logged={logged}/>
           <Link to="/connexion" exact>
             <img className="header-login" src={login} alt="login" />

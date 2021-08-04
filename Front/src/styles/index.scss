@@ -13,12 +13,13 @@
     .app {
     font-family: 'Poppins', sans-serif;
     //object-fit: cover;
-
+      max-width: 1024px;
+      justify-content: center;
     // == Version mobile et tablette XS
     @media screen and (max-width: 799px) {  
       margin: 0; 
     }
-
+    
     // == Version tablette, laptop-desktop
     @media screen and (min-width: 942px) and (max-width: 1149px) {
         margin: 0;
