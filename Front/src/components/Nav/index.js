@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import onClickOutside from "react-onclickoutside";
 
 // == Import : local
+// changer le nom
 import './info.scss';
 
 // == Composant
