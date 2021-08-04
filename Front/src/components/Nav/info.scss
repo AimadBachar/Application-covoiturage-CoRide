@@ -172,8 +172,11 @@ body {
 
 // tentative Menu SCSS Grand écran
 @media screen and (min-width: 942px) and (max-width: 2000px) {
-    .nav-mobile {
+    nav-mobile {
         display: none;
+    }
+    #menuToggle {
+      display: none;
     }
 
     .desktop-menu {
