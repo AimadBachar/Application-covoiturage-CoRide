@@ -1,6 +1,8 @@
 // création des actions 
 // Vers Search/Card
 
+import { FETCH_DELETE_TRAVEL_DRIVER } from "./userprofil";
+
 // ne pas oublier l'importation dans le reducer user.js
 
 export const SEARCH_INPUT_CHANGE = 'SEARCH_INPUT_CHANGE';
@@ -14,6 +16,8 @@ export const FETCH_ONE_TRAVEL = 'FETCH_ONE_TRAVEL';
 export const PARTICIPE_TRAVEL = 'PARTICIPE_TRAVEL';
 export const PARTICIPE_TRAVEL_SUCCES = 'PARTICIPE_TRAVEL_SUCCES';
 export const FETCH_PROFIL_DRIVER = 'FETCH_PROFIL_DRIVER';
+export const UPDATE_TRAVELS = 'UPDATE_TRAVELS';
+export const DELETE_TRAVEL = 'DELETE_TRAVEL';
 
 
 export const SEARCH_FORM_DISPLAY = 'SEARCH_FORM_DISPLAY';
@@ -65,6 +69,16 @@ export const fetchProfilDriver = (payload) => ({
 
 export const searchFormDisplay = (payload)=>({
   type: SEARCH_FORM_DISPLAY,
+  payload
+})
+
+export const updateTravels = (payload)=>({
+  type: UPDATE_TRAVELS,
+  payload
+})
+
+export const deleteTravel = (payload)=>({
+  type: DELETE_TRAVEL,
   payload
 })
 

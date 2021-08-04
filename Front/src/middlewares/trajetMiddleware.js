@@ -14,6 +14,7 @@ import {
 } from '../actions/trajets';
 
 import { activeModal } from "src/actions/modalInfo";
+import { updateUser } from '../actions/user';
 
 
 
@@ -159,6 +160,7 @@ export default (store) => (next) => (action) => {
             message:`Votre participation au covoiturage de ${pseudo} est validé!`
           })
           store.dispatch(action);
+          store.dispatch(updateUser(updateTravels.data));
           store.dispatch(success);
         })
         .catch((err) => {

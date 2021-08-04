@@ -9,7 +9,9 @@ import {
   PARTICIPE_TRAVEL_SUCCES,
   PARTICIPE_TRAVEL,
   FETCH_PROFIL_DRIVER,
-  SEARCH_FORM_DISPLAY
+  SEARCH_FORM_DISPLAY,
+  UPDATE_TRAVELS,
+  DELETE_TRAVEL
 
 } from 'src/actions/trajets';
 
@@ -89,7 +91,20 @@ import {
         return{
           ...state,
           tags: action.payload
-        }
+        };
+      
+      case UPDATE_TRAVELS:
+         state.cards.push(action.payload);
+        return{
+          ...state,
+        };
+      
+      case DELETE_TRAVEL:
+      const newsTravels = state.cards.filter(card=>card.id != action.payload);
+      return{
+        ...state,
+        cards: newsTravels
+      }
  
       default:
         return state;

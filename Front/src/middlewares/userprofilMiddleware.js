@@ -16,7 +16,7 @@ import {
 } from 'src/actions/userprofil';
 
 import {updateUser} from 'src/actions/user';
-
+import { deleteTravel } from '../actions/trajets';
 import { activeModal } from 'src/actions/modalInfo';
 import { userLogout } from '../actions/user';
 
@@ -219,6 +219,7 @@ case  FETCH_ACTIVITIES:
                     localStorage.removeItem("tokens");
                     localStorage.setItem("tokens",JSON.stringify(user));
 
+                    store.dispatch(deleteTravel(deleteTravelDriver.id));
                     store.dispatch(updateUser(user));
                     store.dispatch(success);
               
