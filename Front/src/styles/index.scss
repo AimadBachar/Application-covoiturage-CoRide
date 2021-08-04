@@ -12,10 +12,11 @@
   body {
     .app {
     font-family: 'Poppins', sans-serif;
-    //object-fit: cover;
-      min-width: 320px;
-      max-width: 1024px;
+     object-fit: cover;
+      //min-width: 320px;
+      //max-width: 1180px;
       justify-content: center;
+      margin: 0;
     // == Version mobile et tablette XS
     @media screen and (max-width: 941px) {  
       margin: 0; 
@@ -118,6 +119,7 @@
       }
       .search-trip {
         border-radius: vars.$border-radius-global; 
+        
       }
 
       .nav {
@@ -147,7 +149,6 @@
     
      // == Version laptop-desktop XXL
      @media screen and (min-width: 1150px) {
-      margin: 0 4rem;
       background-color: vars.$color_light;
 
       
