@@ -17,7 +17,7 @@ const ModalInfo = ({
   };
 
   return (
-    <Modal basic size="mini" open={open}>     
+    <Modal  open={open}>     
         <Modal.Header>{header}</Modal.Header>
         <Modal.Content><p>{message}</p></Modal.Content>
         <Modal.Actions>
