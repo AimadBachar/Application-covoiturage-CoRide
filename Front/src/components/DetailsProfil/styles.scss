@@ -1,31 +1,32 @@
 @use 'src/styles/vars';
 
-.profilUser {
+.detailsProfil {
   max-width: 80%;
   margin: 0 auto;
+  position: relative;
+  top: -130px;
+  margin-top: 2rem;
 }
 
 .profil {
-  margin: 1.5rem auto;
+  margin-bottom: 1.5rem;
   box-shadow: vars.$box-shadow;
   border-radius: vars.$border-radius-global;
   font-family: vars.$font;
-  border: vars.$color, 2px solid;
-  padding: 1rem;
   box-sizing: content-box;
-
-  &-top {
-    // width: 100%;
-    // margin: .75rem auto;
-  }
+  display: flex;
+  flex-direction: column;
 
   &-pseudo {
-    width: 100%;
     text-align: center;
     color: vars.$color;
     text-transform:uppercase;
     font-size: 1.5rem;
     font-weight: bold;
+    background-color: vars.$color;
+    color: vars.$color-light;
+    border-radius: vars.$border-radius-top;
+    padding: 1rem
   }
 
   &-contact{
@@ -105,7 +106,7 @@
   &-commentaire{
     width: 100%;
     border: none;
-    margin: .25rem auto;
+    // margin: .25rem auto;
     padding: .75rem;
     border-radius: .5rem;
     background-color: white;

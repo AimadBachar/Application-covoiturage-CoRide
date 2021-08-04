@@ -26,12 +26,12 @@ const DetailsProfil = ({
   }
   return (
     usersProfils.map((userprofil)=>(
-      <div className="profilUser">
+      <div className="detailsProfil">
         <div className="profil" key={userprofil.pseudo} >
-          <img className="profil-picture"src={userprofil.picture_link || profilVide}/>
-          <div className="profil-top">
-            <p className="profil-pseudo">{userprofil.pseudo}</p>                          
-          </div>
+        <p className="profil-pseudo">{userprofil.pseudo}</p>
+          {/* <div className="profil-top"> */}
+            <img className="profil-picture"src={userprofil.picture_link || profilVide}/>                         
+          {/* </div> */}
           <div className="profil-activities">
             {userprofil.activities.map((activity)=>(
               <span className="profil-tag" 
