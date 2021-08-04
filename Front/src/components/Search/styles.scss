@@ -120,7 +120,7 @@ body {
 @media screen and (min-width: 942px) and (max-width: 1149px) {
       .search{
         position: relative;
-        top: -600px;
+        top: -775px;
         margin-left: 3rem;
         margin-right: 3rem;
         
@@ -209,6 +209,7 @@ body {
         padding-top: 1rem;
         padding-bottom: 1rem;
         background: vars.$color;
+        color: vars.$color_light;
         height: 4rem;
         width: 100%;
         border-radius: 13px 13px 0 0;

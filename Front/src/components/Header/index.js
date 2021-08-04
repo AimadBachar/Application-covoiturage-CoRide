@@ -58,6 +58,14 @@ const Header = ({
         <img className="header-photo" src={appBanner} alt="appBanner" />
         <img src={logo} className="header-logo" alt="Logo CoRide" />
         <p className="slogan">Le covoiturage pour les passionnés!</p>
+         <div className="concept">
+           <p>Cette application s’adresse à toute personne ayant pour passion un sport de glisse et souhaitant se rendre sur les lieux de pratique en covoiturage avec d’autres passionnés.
+            <br/>
+            <br/>
+            Proposer à l’utilisateur une recherche par centre d’intérêt quel qu’il soit dans un domaine précis  (art, culture, sport, danse, théâtre, musique, etc.) en filtrant davantage par thématique (salsa, bossa nova, danse classique,  moto, escalade, etc.), donc quelque soit l’appétence de l’utilisateur  et il pourra trouver un covoiturage avec une personne ayant la même passion.
+            C’est cette spécificité communautaire qui est la particularité de notre application. Cela n’est plus un simple covoiturage, le trajet est  un moment enrichissant, de partage d’expériences, de conseils.
+        </p>
+         </div>
          <Nav logged={logged}/>
           <Link to="/connexion" exact>
             <img className="header-login" src={login} alt="login" />
