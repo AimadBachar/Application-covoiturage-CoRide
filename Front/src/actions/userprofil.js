@@ -10,6 +10,7 @@ export const ADD_ACTIVITY_USER_SUCCESS ='ADD_ACTIVITY_USER_SUCCESS';
 export const FETCH_DELETE_TRAVEL_PASSENGER = 'FETCH_DELETE_TRAVEL_PASSENGER';
 export const FETCH_DELETE_TRAVEL_DRIVER = 'FETCH_DELETE_TRAVEL_DRIVER';
 export const FETCH_DELETE_USER_ACTIVITY = 'FETCH_DELETE_USER_ACTIVITY';
+export const FETCH_DELETE_USER = 'FETCH_DELETE_USER';
 
 // valider la création ou la modification du profil
 export const userProfilSubmit = (payload) => ({
@@ -61,6 +62,11 @@ export const fetchDeleteTravelDriver = (payload)=>({
 
 export const fetchDeleteUserActivity = (payload)=>({
   type:FETCH_DELETE_USER_ACTIVITY,
+  payload
+})
+
+export const fetchDeleteUser = (payload)=>({
+  type: FETCH_DELETE_USER,
   payload
 })
 

@@ -11,21 +11,25 @@ import {
   addActivityUserSuccess,
   FETCH_DELETE_TRAVEL_PASSENGER,
   FETCH_DELETE_TRAVEL_DRIVER,
-  FETCH_DELETE_USER_ACTIVITY
+  FETCH_DELETE_USER_ACTIVITY,
+  FETCH_DELETE_USER
 } from 'src/actions/userprofil';
 
 import {updateUser} from 'src/actions/user';
 
 import { activeModal } from 'src/actions/modalInfo';
+import { userLogout } from '../actions/user';
 
-let user = JSON.parse(localStorage.getItem("tokens"));
+
 
 const middleware = (store) => (next) => (action) => {
+
+  let user = JSON.parse(localStorage.getItem("tokens"));
+
   switch (action.type) {
 // choisir les sports pratiqués
 case  FETCH_ACTIVITIES:
   const id = store.getState().id;
-  console.log(id);
   // Je lance la requête
   axios({
     method: 'get',
@@ -72,12 +76,13 @@ case  FETCH_ACTIVITIES:
           localStorage.removeItem('tokens');
           localStorage.setItem('tokens', JSON.stringify(user));  
           
-          const action = userProfilSuccess(res.data);
+          const action = userProfilSuccess(user);
           const success = activeModal({
             header:"Félicitation!",
             message:"Votre profil a bien été mis à jour"
           });
           store.dispatch(action);
+          store.dispatch(updateUser(user));
           store.dispatch(success);
         })
         .catch((err) => {
@@ -271,6 +276,44 @@ case  FETCH_ACTIVITIES:
                     });
                     store.dispatch(error);
                   });
+
+            break;
+
+            case FETCH_DELETE_USER:
+
+              const deleteUser = {id:action.payload};
+
+              axios({
+                method: 'DELETE',
+                headers:{
+                  'Content-Type':'application/json',
+                  'Authorization' : `Baerer ${user.token}`
+                },
+                url: `http://18.235.248.88:3000/api/v1/users`,
+                data:JSON.stringify(deleteUser)
+                  })
+            
+                .then((res) => {
+                  console.log('res.data', res.data);
+  
+                  const success = activeModal({
+                    header:"Information",
+                    message:"Votre compte est supprimé!"
+                  });
+  
+                  store.dispatch(success);
+                  store.dispatch(userLogout());
+            
+                })
+                .catch((err) => {
+                  console.error(err);
+                  const error = activeModal({
+                    header:"Attention",
+                    message:"Nous n'avons pas réussi à supprimer votre compte..."
+                  });
+                  store.dispatch(error);
+                });
+
 
             break;
   }

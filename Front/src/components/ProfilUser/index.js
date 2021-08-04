@@ -33,7 +33,8 @@ const ProfilUser = ({
   checkInputsContent,
   onSubmitDeleteTravelPassenger,
   onSubmitDeleteTravelDriver,
-  onDeleteUserActivity
+  onDeleteUserActivity,
+  onDeleteUser
 }) => {
   if(tags?.length<1){
     handleFetchActivities();
@@ -100,6 +101,12 @@ const ProfilUser = ({
       console.log(event.target.getAttribute("activity-id"));
       const activityId = event.target.getAttribute("activity-id");
       onDeleteUserActivity(activityId);
+  };
+
+  const handleDeleteUser = (event)=>{
+    event.preventDefault();
+    const userId = event.target.getAttribute("user");
+    onDeleteUser(userId);
   }
 
   return (
@@ -274,7 +281,7 @@ const ProfilUser = ({
       </div>
 
       <div className="profil-form-button">
-        <button type="submit" className="profil-form-submit">
+        <button type="submit" className="profil-form-submit" user={id} onClick={handleDeleteUser}>
           Supprimer le profil
         </button>
       </div>

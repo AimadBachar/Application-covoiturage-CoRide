@@ -9,7 +9,6 @@ import {
 import { USER_SIGNIN } from 'src/actions/usersignin';
 
 const user = localStorage.getItem("tokens");
-console.log(user);
 
   // puis je modifie le state du container signin avec ces fausses datas
   export const initialState = {
@@ -28,12 +27,10 @@ console.log(user);
   };
   
   const reducer = (state = initialState, action = {}) => {
-    console.log(action)
     switch (action.type) {
 
 
      case USER_SIGNIN_INPUT_CHANGE:
-       console.log(action.payload);
         return {
           ...state,
            inputs: {
@@ -50,7 +47,6 @@ console.log(user);
         };
 
         case USER_SIGNIN_SUCCESS:
-          console.log(action.payload);
           return {
             ...state,
             signedMessage: `Welcome in our community ${action.payload.first_name}!`,

@@ -9,7 +9,8 @@ import {
   fetchAddActivities,
   fetchDeleteTravelPassenger,
   fetchDeleteTravelDriver,
-  fetchDeleteUserActivity 
+  fetchDeleteUserActivity,
+  fetchDeleteUser 
  } from 'src/actions/userprofil';
 
  import { activeModal } from 'src/actions/modalInfo';
@@ -17,21 +18,21 @@ import {
 
 const mapStateToProps = (state) => ({ 
   isCompleted: state.userprofil.completed,
-  id: state.user.inputs.id || state.userprofil.inputs.id,
-  last_name: state.user.inputs.last_name || state.userprofil.inputs.last_name,
-  first_name: state.user.inputs.first_name || state.userprofil.inputs.first_name,
-  pseudo: state.user.inputs.pseudo || state.userprofil.inputs.pseudo,
-  email: state.user.inputs.email || state.userprofil.inputs.email,
+  id: state.user.inputs.id,
+  last_name: state.user.inputs.last_name,
+  first_name: state.user.inputs.first_name,
+  pseudo: state.user.inputs.pseudo,
+  email: state.user.inputs.email,
   password: state.user.inputs.password,
-  birthdate: state.user.inputs.birthdate || state.userprofil.inputs.birthdate,
-  activity_id: state.user.inputs.activity_id || state.userprofil.inputs.activty_id,
-  activities: state.user.inputs.activities || state.userprofil.activities,
-  tags: state.user.inputs.tags || state.userprofil.tags,
-  picture_link: state.user.inputs.picture_link || state.userprofil.inputs.picture_link,
+  birthdate: state.user.inputs.birthdate,
+  activity_id: state.user.inputs.activity_id,
+  activities: state.user.inputs.activities,
+  tags: state.userprofil.tags,
+  picture_link: state.user.inputs.picture_link,
   picture: state.userprofil.inputs.picture,
-  travels_passenger: state.user.inputs.travels_passenger || state.userprofil.travels_passenger,
-  travels_driver: state.user.inputs.travels_driver || state.userprofil.travels_driver,
-  biography: state.user.inputs.biography || state.userprofil.inputs.biography,
+  travels_passenger: state.user.inputs.travels_passenger,
+  travels_driver: state.user.inputs.travels_driver,
+  biography: state.user.inputs.biography,
   open: state.modalInfo.open,
   header: state.modalInfo.header,
   message: state.modalInfo.message
@@ -100,6 +101,11 @@ const mapDispatchToProps = (dispatch) => ({
 
   onDeleteUserActivity: (activityId)=>{
     const action = fetchDeleteUserActivity(activityId);
+    dispatch(action);
+  },
+
+  onDeleteUser: (userId)=>{
+    const action = fetchDeleteUser(userId);
     dispatch(action);
   }
 

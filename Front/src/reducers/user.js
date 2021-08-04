@@ -7,38 +7,16 @@ import {
 } from 'src/actions/user';
 import { USER_LOGIN } from 'src/actions/user';
 
-
-//const user = JSON.parse(localStorage.getItem('tokens'));
-// 1. après la création du container Login
-// j'ajoute un reducer-user.js avec de fausses datas
-// puis je modifie le state du container login avec ces fausses datas
-/*export const initialState = {
-  logged: false,
-  loggedMessage: 'Welcome !',
-  inputs: {
-    id: user?.id || "",
-    last_name: user?.last_name || "",
-    first_name: user?.first_name || "",
-    pseudo: user?.pseudo || "",
-    email: user?.email || "",
-    password: user?.password || "",
-    birthdate: user?.birthdate ? new Date(user.birthdate).toISOString().split('T')[0] : new Date(""),
-    activity_id: user?.Activity_id || "",
-    activities: user?.Activities || [],
-    tags: user?.tags || [],
-    picture_link: user?.picture_link || "",
-    travels_passenger: user?.travels_passenger || [],
-    travels_driver: user?.travels_driver || [],
-    biography: user?.biography || ""
-  },
-
-};*/
+let user = JSON.parse(localStorage.getItem('tokens'));
+if(user?.birthdate){
+  user.birthdate = new Date(user.birthdate).toISOString().split('T')[0];
+  }
 
 export const initialState = {
   logged: false,
   loggedMessage: 'Welcome !',
   inputs: {
-    ...JSON.parse(localStorage.getItem('tokens'))
+    ...user
   },
 
 };
@@ -52,13 +30,14 @@ const reducer = (state = initialState, action = {}) => {
       action.payload.birthdate = new Date(action.payload.birthdate).toISOString().split('T')[0];
       }
 
+      console.log("login success payload",action.payload)
+
       return {
         ...state,
         /* loggedMessage: `Welcome ${action.payload.first_name}!`,
         loggedName: action.payload.first_name, */
         logged: true,
-        ...action.payload,
-        inputs: {...action.payload}
+        inputs: {...action.payload,...user}
         // ci dessus la version courte de:
         /* logged: action.payload.logged,
            user: action.payload.firstname,
@@ -67,6 +46,8 @@ const reducer = (state = initialState, action = {}) => {
     case USER_LOGOUT:
 
     localStorage.removeItem("tokens");
+
+    user = {};
 
       return {
         ...state,
