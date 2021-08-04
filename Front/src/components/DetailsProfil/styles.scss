@@ -1,7 +1,11 @@
 @use 'src/styles/vars';
 
+.profilUser {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
 .profil {
-  min-width: 80%;
   margin: 1.5rem auto;
   box-shadow: vars.$box-shadow;
   border-radius: vars.$border-radius-global;
@@ -11,34 +15,21 @@
   box-sizing: content-box;
 
   &-top {
-    width: 100%;
-    margin: .75rem auto;
+    // width: 100%;
+    // margin: .75rem auto;
   }
 
   &-pseudo {
-    display:block;
     width: 100%;
     text-align: center;
-    color: darkgray;
-    text-transform:uppercase;
-  }
-
-  &-bottom {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  &-profil {
-    position: relative;
-    font-size: 1em;
-    font-weight: bold;
-    left: 5px;
     color: vars.$color;
+    text-transform:uppercase;
+    font-size: 1.5rem;
+    font-weight: bold;
   }
 
   &-contact{
-    width:100%;
+    margin-bottom: -7rem;
   }
 
   &-localisation {
@@ -98,7 +89,7 @@
 
   &-activities{
     box-sizing: content-box;
-    margin: 1rem 0;
+    margin: 1rem 0 0 2rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -106,8 +97,9 @@
 
   &-form{
     width: 100%;
-    display:block;
+    display: block;
     box-sizing: border-box;
+    margin-top: 10rem;
   }
 
   &-commentaire{
@@ -126,6 +118,6 @@
     padding: .25rem;
     color: white;
     font-weight: 700;
-    border-radius: .5rem;
+    border-radius: 1rem;
   }
 }
