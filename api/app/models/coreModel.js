@@ -132,8 +132,9 @@ class coreModel {
 
             const {rows} = await pool.query(sqlQuery);
 
+
             if(!this.id && rows){
-                this.id = rows[0].insert_user;    
+                this.id = rows[0].id || rows[0].insert_user;    
             }
 
             return rows ? this : new Error("internal error...");

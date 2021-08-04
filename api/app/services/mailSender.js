@@ -1,7 +1,11 @@
 const mailjet = require('node-mailjet')
     .connect(process.env.MAIL_JET1, process.env.MAIL_JET2);
 
-
+/**
+ * this function send a email
+ * @param {object} mail an object contains sender,recipient and message
+ * @returns {Boolean}
+ */
 const mailSender = (mail = {}) => {
 
     let status = false;

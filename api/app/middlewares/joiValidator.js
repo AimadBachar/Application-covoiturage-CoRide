@@ -1,4 +1,8 @@
-
+/**
+ * this function return an express middleware for check datas with JOI
+ * @param {object} schema an Joi object schemma
+ * @returns 
+ */
 function joiValidator(schema){
 
     return (req,res,next)=>{
