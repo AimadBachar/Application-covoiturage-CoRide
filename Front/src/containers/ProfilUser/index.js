@@ -6,7 +6,10 @@ import {
   userProfilInputChange,
   fetchActivities,
   userProfilSubmit,
-  fetchAddActivities 
+  fetchAddActivities,
+  fetchDeleteTravelPassenger,
+  fetchDeleteTravelDriver,
+  fetchDeleteUserActivity 
  } from 'src/actions/userprofil';
 
  import { activeModal } from 'src/actions/modalInfo';
@@ -71,15 +74,32 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(action);
   },
 
-  onSubmitActivities: ()=>{
+  onSubmitActivities: (objActivity)=>{
     console.log("containers add activities");
-    const action = fetchAddActivities();
+    const action = fetchAddActivities(objActivity);
     dispatch(action);
   },
 
   checkInputsContent: (content)=>{
     console.log("containers profiluser");
     const action = activeModal(content);
+    dispatch(action);
+  },
+
+  onSubmitDeleteTravelPassenger: (travelId)=>{
+    console.log("container profiluser",travelId);
+    const action = fetchDeleteTravelPassenger(travelId);
+    dispatch(action);
+  },
+
+  onSubmitDeleteTravelDriver: (travelId)=>{
+    console.log("container profiluser",travelId);
+    const action = fetchDeleteTravelDriver(travelId);
+    dispatch(action);
+  },
+
+  onDeleteUserActivity: (activityId)=>{
+    const action = fetchDeleteUserActivity(activityId);
     dispatch(action);
   }
 

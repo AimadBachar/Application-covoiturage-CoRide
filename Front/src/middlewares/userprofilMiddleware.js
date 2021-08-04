@@ -8,12 +8,17 @@ import {
   FETCH_ACTIVITIES,
   USER_PROFIL_SUBMIT, 
   FETCH_ADD_ACTIVITIES,
-  addActivityUserSuccess
+  addActivityUserSuccess,
+  FETCH_DELETE_TRAVEL_PASSENGER,
+  FETCH_DELETE_TRAVEL_DRIVER,
+  FETCH_DELETE_USER_ACTIVITY
 } from 'src/actions/userprofil';
+
+import {updateUser} from 'src/actions/user';
 
 import { activeModal } from 'src/actions/modalInfo';
 
-
+let user = JSON.parse(localStorage.getItem("tokens"));
 
 const middleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -45,10 +50,7 @@ case  FETCH_ACTIVITIES:
      console.log(action);
    
      const datas = action.payload;
-
-     let user = JSON.parse(localStorage.getItem("tokens"));
-
-     
+    
      /*const axiosConfigured = axios.create({
       headers: {'Authorization': `Bearer ${action.payload.token}`}
     }); */
@@ -90,30 +92,36 @@ case  FETCH_ACTIVITIES:
 
         case FETCH_ADD_ACTIVITIES:
 
-        const {token, id:userId} = JSON.parse(localStorage.getItem("tokens"));
-        const activityId = store.getState().userprofil.inputs.activity_id;
+        const objActivity = JSON.parse(action.payload);
 
         const activity = {
-          id: activityId
+          id: objActivity.id
         };
-        console.log("activity",activity)
+        console.log("activity",objActivity)
           axios({
             method: 'POST',
             headers:{
               'Content-Type':'application/json',
-              'Authorization' : `Baerer ${token}`
+              'Authorization' : `Baerer ${user.token}`
             },
-            url: `http://18.235.248.88:3000/api/v1/user/${userId}/activities`,
+            url: `http://18.235.248.88:3000/api/v1/user/${user.id}/activities`,
             data:JSON.stringify(activity)
               })
         
             .then((res) => {
               console.log('res.data', res.data);
               const action = addActivityUserSuccess(res.data);
+
+              user.activities.push(objActivity);
+              localStorage.removeItem("tokens");
+              localStorage.setItem("tokens",JSON.stringify(user));
+
               const success = activeModal({
                 header:"Félicitation",
                 message:"L'activitée a bien été ajoutée!"
               })
+
+              store.dispatch(updateUser(user));
               store.dispatch(action);
               store.dispatch(success);
         
@@ -126,6 +134,143 @@ case  FETCH_ACTIVITIES:
               });
               store.dispatch(error);
             });
+
+            break;
+
+            case FETCH_DELETE_TRAVEL_PASSENGER:
+
+              const deleteTravelPassenger = {id:action.payload};
+               
+              console.log("activity",activity)
+                axios({
+                  method: 'DELETE',
+                  headers:{
+                    'Content-Type':'application/json',
+                    'Authorization' : `Baerer ${user.token}`
+                  },
+                  url: `http://18.235.248.88:3000/api/v1/user/${user.id}/travels`,
+                  data:JSON.stringify(deleteTravelPassenger)
+                    })
+              
+                  .then((res) => {
+                    console.log('res.data', res.data);
+    
+                    const success = activeModal({
+                      header:"Information",
+                      message:"Votre participation est annulée"
+                    })
+
+                    //on supprime le trajet en local...
+                    const travels_passenger = user.travels_passenger.filter(travel=>travel.id!=deleteTravelPassenger.id);
+
+                    user.travels_passenger = [...travels_passenger];
+
+                    localStorage.removeItem("tokens");
+                    localStorage.setItem("tokens",JSON.stringify(user));
+
+                    store.dispatch(success);
+                    store.dispatch(updateUser(user));
+              
+                  })
+                  .catch((err) => {
+                    console.error(err);
+                    const error = activeModal({
+                      header:"Attention",
+                      message:"Nous n'avons pas réussi à supprimer votre inscription"
+                    });
+                    store.dispatch(error);
+                  });
+
+            break;
+
+            case FETCH_DELETE_TRAVEL_DRIVER:
+
+              const deleteTravelDriver = {id:action.payload};
+               
+              console.log("activity",activity)
+                axios({
+                  method: 'DELETE',
+                  headers:{
+                    'Content-Type':'application/json',
+                    'Authorization' : `Baerer ${user.token}`
+                  },
+                  url: `http://18.235.248.88:3000/api/v1/travels/user/${user.id}`,
+                  data:JSON.stringify(deleteTravelDriver)
+                    })
+              
+                  .then((res) => {
+                    console.log('res.data', res.data);
+    
+                    const success = activeModal({
+                      header:"Information",
+                      message:"Votre trajet est annulée"
+                    });
+
+                    //on supprime le trajet en local...
+                    const travels_driver = user.travels_driver.filter(travel=>travel.id!=deleteTravelDriver.id);
+
+                    user.travels_driver = [...travels_driver];
+
+                    localStorage.removeItem("tokens");
+                    localStorage.setItem("tokens",JSON.stringify(user));
+
+                    store.dispatch(updateUser(user));
+                    store.dispatch(success);
+              
+                  })
+                  .catch((err) => {
+                    console.error(err);
+                    const error = activeModal({
+                      header:"Attention",
+                      message:"Nous n'avons pas réussi à supprimer votre trajet"
+                    });
+                    store.dispatch(error);
+                  });
+
+            break;
+
+            case FETCH_DELETE_USER_ACTIVITY:
+
+              const deleteActivity = {id:action.payload};
+
+                axios({
+                  method: 'DELETE',
+                  headers:{
+                    'Content-Type':'application/json',
+                    'Authorization' : `Baerer ${user.token}`
+                  },
+                  url: `http://18.235.248.88:3000/api/v1/user/${user.id}/activities`,
+                  data:JSON.stringify(deleteActivity)
+                    })
+              
+                  .then((res) => {
+                    console.log('res.data', res.data);
+    
+                    const success = activeModal({
+                      header:"Information",
+                      message:"L'activité à été supprimée."
+                    });
+
+                    //on supprime le trajet en local...
+                    const activities = user.activities.filter(activity=>activity.id!=deleteActivity.id);
+
+                    user.activities = [...activities];
+
+                    localStorage.removeItem("tokens");
+                    localStorage.setItem("tokens",JSON.stringify(user));
+
+                    store.dispatch(updateUser(user));
+                    store.dispatch(success);
+              
+                  })
+                  .catch((err) => {
+                    console.error(err);
+                    const error = activeModal({
+                      header:"Attention",
+                      message:"Nous n'avons pas réussi à supprimer votre trajet"
+                    });
+                    store.dispatch(error);
+                  });
 
             break;
   }

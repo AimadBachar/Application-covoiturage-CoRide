@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import line from "src/assets/images/line1.png";
 import profilVide from "src/assets/images/profil_vide.jpg"
 import 'src/components/ProfilUser/styles.scss';
+import { Icon } from 'semantic-ui-react';
 
 
 
@@ -29,7 +30,10 @@ const ProfilUser = ({
   travels_driver,
   biography,
   picture,
-  checkInputsContent
+  checkInputsContent,
+  onSubmitDeleteTravelPassenger,
+  onSubmitDeleteTravelDriver,
+  onDeleteUserActivity
 }) => {
   if(tags?.length<1){
     handleFetchActivities();
@@ -67,13 +71,35 @@ const ProfilUser = ({
   const handleSubmitActivities =(event)=>{
     event.preventDefault();
     console.log("handle submit activities");
-    onSubmitActivities();
+
+    const select = event.target.querySelector("select");
+
+    onSubmitActivities(select.value);
     event.target.reset();
   };
 
   const handleChangeFile = (event)=>{
     const avatar = URL.createObjectURL(event.target.files[0]);
     onInputChange(event.target.name,avatar);
+  };
+
+  const handleSubmitDeleteTravel = (event)=>{
+    event.preventDefault();
+    const travelId = event.target.querySelector('input[name="travel_id"]').value;
+    onSubmitDeleteTravelPassenger(travelId);
+  };
+
+  const handleSubmitDeleteTravelDriver = (event)=>{
+    event.preventDefault();
+    const travelId = event.target.querySelector('input[name="travel_id"]').value;
+    onSubmitDeleteTravelDriver(travelId);
+  };
+
+  const handleDeleteUserActivity = (event)=>{
+      event.preventDefault();
+      console.log(event.target.getAttribute("activity-id"));
+      const activityId = event.target.getAttribute("activity-id");
+      onDeleteUserActivity(activityId);
   }
 
   return (
@@ -154,7 +180,7 @@ const ProfilUser = ({
                   Choisissez votre sport passion
                </option>
                   {tags?.map((tag) => (
-                <option name="tag" key={tag.id} value={tag.id}>
+                <option name="tag" key={tag.id} value={JSON.stringify(tag)}>
                   {tag.label}
                 </option>
                   ))}
@@ -164,7 +190,7 @@ const ProfilUser = ({
 
       <div className="profil-form-sport_others">          
               {activities?.map(activity=>(
-            <span className="profil-form-sport_input">{activity.label}</span>   
+            <span className="profil-form-sport_input"><Icon name="delete" activity-id={activity.id} onClick={handleDeleteUserActivity}/> {activity.label}</span>
            
              ))}
      </div>                
@@ -187,7 +213,7 @@ const ProfilUser = ({
               {travels_passenger?.map(travel=>(
                 <li>
                   <div className="travel">
-                    <form className="button-action">
+                    <form className="button-action" onSubmit={handleSubmitDeleteTravel}>
                       <input type="hidden" name="travel_id" value={travel.id}/>
                       <button className="button-first"><img className="icone-delete" src="https://img.icons8.com/ios/48/000000/trash--v1.png"/></button>
                     </form>
@@ -220,7 +246,7 @@ const ProfilUser = ({
               {travels_driver?.map(travel=>(
                 <li>
                   <div className="travel">
-                    <form className="button-action">
+                    <form className="button-action" onSubmit={handleSubmitDeleteTravelDriver}>
                       <input type="hidden" name="travel_id" value={travel.id}/>
                       <button className="button-second"><img className="icone-delete" src="https://img.icons8.com/ios/48/000000/edit--v1.png"/></button>
                       <button className="button-third"><img className="icone-delete" src="https://img.icons8.com/ios/48/000000/trash--v1.png"/></button>

@@ -3,15 +3,16 @@ import {
   USER_LOGOUT,
   USER_INPUT_CHANGE,
   USER_LOGIN_SUCCESS,
+  UPDATE_USER
 } from 'src/actions/user';
 import { USER_LOGIN } from 'src/actions/user';
 
 
-const user = JSON.parse(localStorage.getItem('tokens'));
+//const user = JSON.parse(localStorage.getItem('tokens'));
 // 1. après la création du container Login
 // j'ajoute un reducer-user.js avec de fausses datas
 // puis je modifie le state du container login avec ces fausses datas
-export const initialState = {
+/*export const initialState = {
   logged: false,
   loggedMessage: 'Welcome !',
   inputs: {
@@ -29,6 +30,15 @@ export const initialState = {
     travels_passenger: user?.travels_passenger || [],
     travels_driver: user?.travels_driver || [],
     biography: user?.biography || ""
+  },
+
+};*/
+
+export const initialState = {
+  logged: false,
+  loggedMessage: 'Welcome !',
+  inputs: {
+    ...JSON.parse(localStorage.getItem('tokens'))
   },
 
 };
@@ -71,6 +81,15 @@ const reducer = (state = initialState, action = {}) => {
           ...action.payload,
         },
       };
+
+      case UPDATE_USER:
+        console.log(action.payload)
+        return{
+          ...state,
+          inputs:{
+            ...action.payload
+          }
+        }
     default:
       return state;
   }
