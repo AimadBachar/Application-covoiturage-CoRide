@@ -27,8 +27,23 @@ const DetailsCard = ({
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log("participe form details-card-connected", evt.target.value);
+    card.remaining_places -= 1;
     onButtonClickValidation(card);
   };
+
+  const checkPlaces = (placeremaining)=>{
+
+    if(parseInt(placeremaining,10) > 0){
+    return (
+      <form onSubmit={handleSubmit}>
+            <input type="hidden" value={card.id}></input>
+            <button className="card-button">GO !</button> 
+          </form>
+    )
+    }else{
+      return;
+    }
+  }
 
   if (!logged) {
     return (
@@ -104,10 +119,7 @@ const DetailsCard = ({
           <span className="card-bottom-place">{card.remaining_places}
             <img src={sit} className="card-bottom-place_sit" alt="sit" />
           </span>
-          <form onSubmit={handleSubmit}>
-            <input type="hidden" value={card.id}></input>
-            <button className="card-button">GO !</button> 
-          </form>
+          {checkPlaces(card.remaining_places)}
         </div>
       </div>
     )
