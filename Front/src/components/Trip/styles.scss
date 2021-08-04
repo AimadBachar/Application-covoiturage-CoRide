@@ -78,7 +78,6 @@ body {
             flex-direction: column;
             justify-content: center;
             max-width: 50%;
-            margin: 2rem auto;
             box-shadow: vars.$box-shadow;
             border-radius: vars.$border-radius-global;
   
@@ -129,7 +128,7 @@ body {
           }; 
         };
   
-        .depart, .destanation {
+        .depart, .destination {
           border-bottom: vars.$color-grey 0.5px solid;
         }
       }
