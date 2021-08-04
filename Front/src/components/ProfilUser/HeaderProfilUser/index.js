@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import profilUserBanner from '/src/assets/images/wake1.jpg';
 import logo from '/src/assets/logo/coride-b.svg';
 import login from '/src/assets/images/icon user white.png';
-import logout from '/src/assets/images/logout-white.png';
+import logout from '/src/assets/images/logout-white1.png';
 import Nav from 'src/components/Nav';
 import 'src/components/ProfilUser/HeaderProfilUser/styles.scss';
 
