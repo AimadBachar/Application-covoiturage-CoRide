@@ -38,7 +38,7 @@ const Search = ({
           onSubmit={handleSubmit}
         >
           <h1 className="search-form_title">
-            Recherches un covoit'
+            Trouver un trajet
           </h1>
           <ComboBoxCities  placeholder="Départ" name="departure_city" className="depart" />
           <ComboBoxCities placeholder="Arrivé" name="destination_city" />
