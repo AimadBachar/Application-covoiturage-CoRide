@@ -7,11 +7,7 @@ import {
   ADD_ACTIVITY_USER_SUCCESS
 } from 'src/actions/userprofil';
 
-
-
 const user = JSON.parse(localStorage.getItem('tokens'));
-//const user = localStorage.getItem("tokens");
-console.log(user);
 
 export const initialState = {
   completed: false,
@@ -21,35 +17,18 @@ export const initialState = {
   travels_passenger: user?.travels_passenger,
   travels_driver: user?.travels_driver,
   inputs: {
-    picture_link: user?.picture_link,
-    id: user?.id,
-    last_name: user?.last_name,
-    first_name: user?.first_name,
-    biography: user?.biography,
-    pseudo: user?.pseudo,
-    email: user?.email,
-    picture: null,
-    password: user?.password,
-    birthdate: user?.birthdate ? new Date(user.birthdate).toISOString().split('T')[0] : "",
-    activity_id: "",  
-   /* coords: '',
-    city: '',
-    postcode: '',
-    country: '',
-    brand: '',
-    model: '',*/
+    ...user
   },
 };
 
 const reducer = (state = initialState, action = {}) => {
-  /* console.log(action.payload); */
+
   switch (action.type) {
 
 
     //les inputs sont modifiés lorque l'utilisateur
     // saisi du texte ou selectionne un sport
     case USER_PROFIL_INPUT_CHANGE:
-      console.log(action.payload);
       return {
         ...state,
         inputs: {   
@@ -59,7 +38,6 @@ const reducer = (state = initialState, action = {}) => {
 
   // affiche la liste des activités
    case USER_PROFIL_ACTIVITIES:
-      console.log('reducers', action.payload);
       return {
         ...state,
         tags: action.payload,
@@ -74,19 +52,22 @@ const reducer = (state = initialState, action = {}) => {
 
   // si il n'y a pas d'erreurs = success !      
       case USER_PROFIL_SUCCESS:
-          console.log('success', action.payload);
+
+          if(action.payload?.birthdate){
+            action.payload.birthdate = new Date(action.payload.birthdate).toISOString().split('T')[0];
+            }
+
           return {
             ...state,
             completed: true,
-            inputs:{...state.inputs,...action.payload},
+            inputs:{...action.payload},
           };
 
       case ADD_ACTIVITY_USER_SUCCESS:
-          console.log('success',action.payload);
           return{
             ...state,
             ...action.payload
-          }
+          };
 
     default:
       return state;
