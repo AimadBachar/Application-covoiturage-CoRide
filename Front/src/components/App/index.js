@@ -70,13 +70,13 @@ const App = ({
         </Route>
 
         <Route exact path="/info">
-          <HeaderInfo />
+          <Header />
           <Info />
           <Footer />
         </Route>
 
         <Route exact path="/trip">
-          <HeaderTrip />
+          <Header />
           <Trip />
           <Footer />
         </Route>
@@ -93,25 +93,25 @@ const App = ({
         </Route>
 
         <Route exact path="/profil">
-          <HeaderProfilUser />
+          <Header />
           <ProfilUser />
           <Footer />
         </Route>
 
         <Route exact path="/profilpage">
-          <HeaderDetailsProfil />
+          <Header />
           <DetailsProfil />
           <Footer />
         </Route>
 
         <Route exact path="/travel">
-          <HeaderDetailsCard />
+          <Header />
           <DetailsCard />
           <Footer />
         </Route>
 
         <Route exact path="/contact">
-          <HeaderContact />
+          <Header />
           <Contact />
           <Footer />
         </Route>
@@ -150,20 +150,20 @@ const App = ({
         </Route>
 
         <Route exact path="/info">
-          <HeaderInfo />
+          <Header />
           <Info />
           <Footer />
         </Route>
 
         <Route exact path="/trip">
           <Redirect from="/trip" to="/connexion" />
-          <HeaderTrip />
+          <Header />
           <Trip />
           <Footer />
         </Route>
 
         <Route exact path="/connexion">
-          <HeaderLogin />
+          <Header />
           <Login />
           <Footer />
         </Route>
@@ -175,26 +175,26 @@ const App = ({
 
         <Route exact path="/profil">
           <Redirect from="/profil" to="/connexion" />
-          <HeaderProfilUser />
+          <Header />
           <ProfilUser />
           <Footer />
         </Route>
 
         <Route exact path="/profilpage">
           <Redirect from="/profilpage" to="/connexion" />
-          <HeaderDetailsProfil />
+          <Header />
           <DetailsProfil />
           <Footer />
         </Route>
 
         <Route exact path="/travel">
-          <HeaderDetailsCard />
+          <Header />
           <DetailsCard />
           <Footer />
         </Route>
 
         <Route exact path="/contact">
-          <HeaderContact />
+          <Header />
           <Contact />
           <Footer />
         </Route>
@@ -206,7 +206,9 @@ const App = ({
         </Route>
 
         <Route path="*">
+          <Header/>
           <NotFoundPage />
+          <Footer/>
         </Route>
 
       </Switch>
