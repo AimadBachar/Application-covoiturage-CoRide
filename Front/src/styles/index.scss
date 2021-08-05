@@ -3,7 +3,12 @@
 
 @font-face {
   font-family: 'Poppins';
-  src: url('../assets/fonts/Poppins-Regular.ttf');
+  src: url('src/assets/fonts/Poppins-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Caveat';
+  src: url('src/assets/fonts/Caveat-Bold.ttf');
 }
 
 //@media queries : points d'arrêt mobile et deskop, en cascade
@@ -36,7 +41,7 @@
       .slogan {
         color: vars.$color-light;
         position:relative;
-        top: -600px;
+        top: -400px;
         text-align:center;
         font-weight: 700;
         font-family: 'Caveat', cursive;

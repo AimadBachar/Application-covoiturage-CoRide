@@ -82,7 +82,7 @@ const App = ({
         </Route>
 
         <Route exact path="/connexion">
-          <HeaderLogin />
+          <Header />
           <Login />
           <Footer />
         </Route>
