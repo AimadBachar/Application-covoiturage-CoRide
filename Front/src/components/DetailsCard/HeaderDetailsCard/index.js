@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import detailsCardBanner from '/src/assets/images/canoe.jpg';
 import logo from '/src/assets/logo/coride-b.svg';
 import login from '/src/assets/images/icon user white.png';
-import logout from '/src/assets/images/logout-white1.png';
+import logout from '/src/assets/images/exit.png';
 import Nav from 'src/components/Nav';
 
 import 'src/components/DetailsCard/HeaderDetailsCard/styles.scss';

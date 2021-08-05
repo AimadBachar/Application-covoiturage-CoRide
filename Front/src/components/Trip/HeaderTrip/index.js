@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import headerTripBanner from '/src/assets/images/skate2.jpg';
 import logo from '/src/assets/logo/coride-b.svg';
 import login from '/src/assets/images/icon user white.png';
-import logout from '/src/assets/images/logout-white1.png';
+import logout from '/src/assets/images/exit.png';
 import Nav from 'src/components/Nav';
 import 'src/components/Trip/HeaderTrip/styles.scss';
 
