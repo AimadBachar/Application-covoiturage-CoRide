@@ -4,6 +4,7 @@ body {
   .app {
     @media screen and (max-width: 941px) {  
       .trip {
+        margin-top: 2rem;
         position: relative;
         top: -150px;
 
@@ -13,7 +14,7 @@ body {
           justify-content: center;
           background: vars.$color-light;
           max-width: 80%;
-          margin: 2rem auto;
+          margin: 0 auto;
           box-shadow: vars.$box-shadow;
           border-radius: vars.$border-radius-global;
           
