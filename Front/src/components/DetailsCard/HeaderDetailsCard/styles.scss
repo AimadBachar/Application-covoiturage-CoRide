@@ -1,0 +1,76 @@
+@use 'src/styles/vars';
+
+body {
+  .header {
+  /* max-width: 100%;
+    position: relative;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+
+    &-photo {
+      /* On met en place le fond d'écran */
+      //min-height: 100%;
+      // max-width: 640px;
+      /* On indique un redimensionnement proportionnel */
+      background-image: none;
+      background-color: transparent;
+      filter: blur(0.6px);
+      height: auto;
+      width: 100%;
+      //object-fit: cover
+      /* L'image est positionnée en haut à gauche */
+      // position: relative;
+      // top: 0;
+      // left: 0;
+    }
+
+    &-logo {
+      margin: auto;
+      display: flex;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      //responsive image
+      //height: auto;
+      width: 240px;
+      object-fit: cover;
+    };
+
+    &-login {
+      width: 70px;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    };
+
+    &-logout {
+      width: 50px;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      margin: 1rem 0.5rem 0 0;
+    }
+  }
+}
+
+@media  screen and (max-width: 360px){
+}
+
+body {
+  .header {
+    &-logo {
+     //responsive logo
+      margin: auto;
+      display: flex;
+      position: absolute;
+      top: 42%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 180px;
+      object-fit: cover
+    }
+  }
+}

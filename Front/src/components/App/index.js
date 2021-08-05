@@ -1,95 +1,207 @@
 // Import npm
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useEffect } from 'react';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 
-// == Import
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+// == Import : local
+import Loading from './Loading';
 import Header from 'src/containers/Header';
 import Search from 'src/containers/Search';
 import Footer from 'src/containers/Footer';
-import Main from '../Main';
-import ConnexionRegistration from '../ConnexionRegistration';
+import NotFoundPage from '../NotFoundPage';
 import Info from '../Info';
+import Mentions from '../Mentions';
+import HeaderContact from 'src/containers/HeaderContact';
+import HeaderInfo from 'src/containers/HeaderInfo';
+import Contact from 'src/containers/Contact';
+import Login from 'src/containers/Login';
+import HeaderLogin from 'src/containers/HeaderLogin';
 import Signin from 'src/containers/Signin';
 import ProfilUser from 'src/containers/ProfilUser';
+import HeaderProfilUser from 'src/containers/HeaderProfilUser';
 import DetailsProfil from 'src/containers/DetailsProfil';
+import HeaderDetailsProfil from 'src/containers/HeaderDetailsProfil';
 import Trip from 'src/containers/Trip'
+import HeaderTrip from 'src/containers/HeaderTrip';
 import Card from 'src/containers/Card';
 import DetailsCard from 'src/containers/DetailsCard';
-import NotFoundPage from '../NotFoundPage';
-import Contact from 'src/containers/Contact';
-import Loading from './Loading';
-
+import HeaderDetailsCard from 'src/containers/HeaderDetailsCard';
+import ModalInfo from 'src/containers/ModalInfo';
 import './styles.scss';
 
-const App = ({loading, fetchTravels, isLogged}) => {
+
+// == Composant
+const App = ({
+  loading, 
+  fetchTravels, 
+  isLogged, 
+  open, 
+  header,
+  message, 
+  logged
+}) => {
   // J'exécute la fonction reçue en props
-  // dés que je suis prêt, et une seule fois
+  // dès que je suis prêt, et une seule fois
   useEffect(fetchTravels, [])
 
   useEffect(()=>{
     if (localStorage.getItem('tokens')) {
       isLogged();
+    
     }
-
   }, [])
 
-  /* if (localStorage.getItem('tokens')) {
-    useEffect(isLogged, [])
-    
-  } */
-
+ if (logged) {
   if (loading) {
     return <Loading />;
   }
   return (
     <Router>
       <div className="app">
+      <ModalInfo open={open} header={header} message={message}/>  
       <Switch>
 
       <Route exact path="/">
           <Header />
           <Search />
           <Card />
-         {/*  <Main /> */}
           <Footer />
         </Route>
 
         <Route exact path="/info">
+          <HeaderInfo />
           <Info />
+          <Footer />
         </Route>
 
         <Route exact path="/trip">
+          <HeaderTrip />
           <Trip />
+          <Footer />
         </Route>
 
         <Route exact path="/connexion">
-          <ConnexionRegistration />
+          <HeaderLogin />
+          <Login />
+          <Footer />
         </Route>
 
         <Route exact path="/inscription">
           <Signin />
+          <Footer />
         </Route>
 
         <Route exact path="/profil">
+          <HeaderProfilUser />
           <ProfilUser />
+          <Footer />
         </Route>
 
         <Route exact path="/profilpage">
-          <Header />
+          <HeaderDetailsProfil />
           <DetailsProfil />
           <Footer />
         </Route>
 
         <Route exact path="/travel">
-          <Header />
+          <HeaderDetailsCard />
           <DetailsCard />
           <Footer />
         </Route>
 
         <Route exact path="/contact">
-          <Header />
+          <HeaderContact />
           <Contact />
+          <Footer />
+        </Route>
+
+        <Route exact path="/mentions">
+          <Header />
+          <Mentions />
+          <Footer />
+        </Route>
+
+        <Route path="*">
+          <Header/>
+          <NotFoundPage />
+          <Footer/>
+        </Route>
+
+      </Switch>
+      </div>
+    </Router>
+  );
+ } else {
+  if (loading) {
+    return <Loading />;
+  }
+  return (
+    <Router>
+      <div className="app">
+      <ModalInfo open={open} header={header} message={message}/>  
+      <Switch>
+
+      <Route exact path="/">
+          <Header />
+          <Search />
+          <Card />
+          <Footer />
+        </Route>
+
+        <Route exact path="/info">
+          <HeaderInfo />
+          <Info />
+          <Footer />
+        </Route>
+
+        <Route exact path="/trip">
+          <Redirect from="/trip" to="/connexion" />
+          <HeaderTrip />
+          <Trip />
+          <Footer />
+        </Route>
+
+        <Route exact path="/connexion">
+          <HeaderLogin />
+          <Login />
+          <Footer />
+        </Route>
+
+        <Route exact path="/inscription">
+          <Signin />
+          <Footer />
+        </Route>
+
+        <Route exact path="/profil">
+          <Redirect from="/profil" to="/connexion" />
+          <HeaderProfilUser />
+          <ProfilUser />
+          <Footer />
+        </Route>
+
+        <Route exact path="/profilpage">
+          <Redirect from="/profilpage" to="/connexion" />
+          <HeaderDetailsProfil />
+          <DetailsProfil />
+          <Footer />
+        </Route>
+
+        <Route exact path="/travel">
+          <HeaderDetailsCard />
+          <DetailsCard />
+          <Footer />
+        </Route>
+
+        <Route exact path="/contact">
+          <HeaderContact />
+          <Contact />
+          <Footer />
+        </Route>
+
+        <Route exact path="/mentions">
+          <Header />
+          <Mentions />
           <Footer />
         </Route>
 
@@ -101,8 +213,25 @@ const App = ({loading, fetchTravels, isLogged}) => {
       </div>
     </Router>
   );
+
+ }
 };
 
+
+App.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  logged: PropTypes.bool.isRequired,
+  fetchTravels: PropTypes.func.isRequired,
+  isLogged: PropTypes.func.isRequired,
+  header: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+  open: PropTypes.bool.isRequired, 
+};
+
+// Valeurs par défaut pour les props
+App.defaultProps = {
+  logged: false,
+};
 
 // == Export
 export default App;

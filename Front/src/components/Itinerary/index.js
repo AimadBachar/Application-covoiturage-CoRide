@@ -1,9 +1,11 @@
+// == Import : npm
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-// import iconLike from '/src/assets/images/pouce-en-l_air.png';
+// == Import : local
 import './styles.scss';
 
+// == Composant
 const Card = ({
   cards,
 }) => (
@@ -18,7 +20,9 @@ const Card = ({
   </div>
 );
 
-// Card.proptypes = {
+Card.proptypes = {
+  cards: PropTypes.string,
+};
 
-// };
+// == Export
 export default Card;

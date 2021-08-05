@@ -10,7 +10,14 @@ import {
   ON_SUBMIT_TRIP,
 } from 'src/actions/trip.js';
 
+import { updateUser } from 'src/actions/user';
+import {updateTravels} from 'src/actions/trajets';
+
+import { activeModal } from "src/actions/modalInfo";
+
 const middleware = (store) => (next) => (action) => {
+
+  let user = JSON.parse(localStorage.getItem('tokens'));
   // J'examine le type d'action, pour les CAS qui m'intéressent
   switch (action.type) {
     case FETCH_ACTIVITIES:
@@ -31,8 +38,6 @@ const middleware = (store) => (next) => (action) => {
       break;
 
     case ON_SUBMIT_TRIP:
-
-      const user = JSON.parse(localStorage.getItem('tokens'));
       
       const { inputs } = store.getState().trip;
       inputs.user_id = user.id;
@@ -50,8 +55,11 @@ const middleware = (store) => (next) => (action) => {
       axios({
         method: 'post',
         url: fetchUrl + user.id,
-        data: inputs,
-        headers: { Authorization: `Bearer ${user.token}` },
+        data: JSON.stringify(inputs),
+        headers: { 
+          'Content-Type':'application/json',
+          Authorization: `Bearer ${user.token}` 
+        },
       })
 
         .then((res) => {
@@ -63,11 +71,28 @@ const middleware = (store) => (next) => (action) => {
           // Je vais donc mettre les données de ma réponse
           // dans l'objet d'action
           const actionToSend = tripSucces(res.data);
+
+          user.travels_driver.push(res.data);
+          localStorage.removeItem('tokens');
+          localStorage.setItem('tokens',JSON.stringify(user));
+
+          const success = activeModal({
+            header:"Félicitation!",
+            message:"Votre offre de covoiturage est en ligne!"
+          })
           // Et je n'oublie pas de la dispatcher
           store.dispatch(actionToSend);
+          store.dispatch(updateUser(user));
+          store.dispatch(updateTravels(res.data));
+          store.dispatch(success);
         })
         .catch((err) => {
           console.error('erreur:', err);
+          const error = activeModal({
+            header:"Attention",
+            message:"Nous n'avons pas pu valider votre offre de covoiturage, une erreur s'est produite."
+          });
+          store.dispatch(error);
           // J'ai besoin d'avoir une action pour informer le reducer que la requête s'est mal passée.
           /*const actionToSend = userLoginError();
           store.dispatch(actionToSend) */

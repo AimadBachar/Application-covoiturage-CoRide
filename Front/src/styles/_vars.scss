@@ -3,6 +3,7 @@ $color: #FC982C;
 // $color-alt: #f1c5b6;
 $color-opacity: #fc972c6b;
 
+$color-opacity_more: #fc972c7e;
 //couleur secondaire
 $color-light: #fff;
 // $gutter: 0.8rem;
@@ -10,12 +11,31 @@ $font: 'Roboto Mono', monospace;
 // $transition-fast: 0.2s;
 $color-grey: #ccc;
 
-$color-grey_more: rgb(99, 98, 98); 
+$color-grey_more: rgb(99, 98, 98);
+
+$color-green:#052320e3;
+
+$color-green-opacity:#05232025 ;
+
+$color-green-opacity_more: #0523209a ;
 
 $border-radius-top: 15px 15px 0px 0px;
 
+$border-radius-right: 0px 15px 15px 0px;
+
+$border-radius-left: 15px 0px 0px 15px;
+
 $border-radius-bottom: 0px 0px 15px 15px;
+
+$border-radius-bottom-right: 0px 0px 15px 0px;
 
 $border-radius-global: 15px 15px 15px 15px;
 
 $box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+
+$menuWidth: 250px;
+$smallMenuWidth: 150px;
+$small: 700px;
+$gutter: 1.5rem;
+

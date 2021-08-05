@@ -9,7 +9,10 @@ const mapStateToProps = (state) => ({
     departure_city: state.comboBoxCities.departure_city,
     destination_city: state.comboBoxCities.destination_city,
     long: state.comboBoxCities.long,
-    lat: state.comboBoxCities.lat
+    lat: state.comboBoxCities.lat,
+    open: state.modalInfo.open,
+    header: state.modalInfo.header,
+    message: state.modalInfo.message
 });
 
 const mapDispatchToProps = (dispatch) => ({  

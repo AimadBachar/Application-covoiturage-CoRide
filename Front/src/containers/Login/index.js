@@ -1,14 +1,18 @@
 import { connect } from 'react-redux';
-import Login from 'src/components/ConnexionRegistration/Login';
+import Login from 'src/components/Login';
 
 // import des actions
 import { userInputChange, userLogin, userLogout } from 'src/actions/user';
+
 
 const mapStateToProps = (state) => ({
   user: state.user.inputs.user,
   password: state.user.inputs.password,
   isLogged: state.user.logged,
   loggedMessage: state.user.loggedMessage,
+  open: state.modalInfo.open,
+  header: state.modalInfo.header,
+  message: state.modalInfo.message
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -30,8 +34,8 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleLogout: () => {
     /* console.log('logout'); */
-    const action = userLogout();
-    dispatch(action);
+    const action = userLogout();    
+    dispatch(action);   
   },
 });
 

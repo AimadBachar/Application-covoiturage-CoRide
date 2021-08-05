@@ -1,36 +1,29 @@
 @use 'src/styles/vars';
 
-@media only screen and (min-width: 600px){
+/*@media only screen and (min-width: 600px){
 }
 
-body {
+body {*/
 // Formulaire d'inscription
 
 .signin {
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    min-width: 320px;
-    text-align: center;
-
-  &-photo {
-     background-image: none;
-      opacity: 70%;
-      background-color: transparent;
-      filter: blur(0.6px);
-      height: auto;
-      width: 100%;
-   //object-fit: cover
- }
+  margin: 0 auto;
+  max-width: 100%;
 }
 
- .signin-form {
+.signin-form {
   box-shadow: vars.$box-shadow;
   border-radius: vars.$border-radius-global;
   font-family: vars.$font;
-  display: block;
-  justify-content: center;
-  position: absolute;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 2rem;
+  margin-left: 2.5rem;
+  margin-right: 1rem;
+  max-width: 85%;
+  top: -110px;
+ 
 
   &-title {
     font-size: 1.5em;
@@ -40,46 +33,33 @@ body {
     text-align: center;
     padding: 1.5rem;
     border-radius: vars.$border-radius-top;
-  };
+  }
 
   &-element {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+   width: 100%;
     border-radius: 10px;
-    };
-/*
-  &-name {
-       border-bottom: vars.$color-grey solid 0.5px solid;
-        //width: 100%;
-        font-size: 1em;
-        border: none;
-        padding: 1.2rem;
-        font-family: vars.$font;
-        max-width: 50%;
-    };*/
+  }
     
     &-submit {
-      background-color: vars.$color;
+      background-color: vars.$color_light;
       display: flex;
       justify-content: center;
       border: vars.$color-grey_more;
-      padding-top: 2.5rem;
-      padding-bottom: 2rem;
-      color: vars.$color_light;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+      color: vars.$color;
       text-shadow: 0.1em 0.1em 0.1em vars.$color-grey;
       font-size: 1.3em;
       font-weight: bold;
       display: inline-block;
-      text-align: start;
-     
-      width: 100vh;
-    };
-  };
+      text-align: center;
+      width: 100%;
+    }
+} 
 
   .login-redirection {
     background-color: vars.$color;
-    padding: 0.2rem;
+    padding: 1rem;
     font-family: vars.$font;
     color: vars.$color_light;
     border-radius: vars.$border-radius-bottom;
@@ -88,7 +68,7 @@ body {
     
   &-text {
     font-size: 1.1em;
-  };
+  }
   
   &-link {
       text-shadow: 0.1em 0.1em 0.2em vars.$color-grey_more;
@@ -105,23 +85,17 @@ body {
     
 }
 
-};
-
+//}
+/*
 
   @media only screen and (max-width: 360px){
   }
   
-  body {
-    .signin {
-     
-    &-photo {
-       width: 100%;
-       height: 100vh;
-      object-fit: cover
-    }
+  body {*/
   
+ /* 
     .signin-form {
-      margin: 2rem;
+     // margin: 2rem;
 
       // s'identifier
       &-title {
@@ -164,6 +138,6 @@ body {
       }
 
     }
-
-  }
+*/
+  
 

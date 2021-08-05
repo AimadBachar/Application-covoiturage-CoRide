@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import Trip from 'src/components/Trip';
 import { onSubmitTrip, tripSucces, onInputChange,fetchActivities } from 'src/actions/trip';
+import { activeModal } from 'src/actions/modalInfo';
 
 const mapStateToProps = (state) => ({
   tags: state.trip.tags,
@@ -12,6 +13,9 @@ const mapStateToProps = (state) => ({
   departure_timestamp: state.trip.inputs.departure_timestamp,
   description: state.trip.inputs.description,
   places_available: state.trip.inputs.places_available,
+  open: state.modalInfo.open,
+  header: state.modalInfo.header,
+  message: state.modalInfo.message
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -37,6 +41,12 @@ const mapDispatchToProps = (dispatch) => ({
 
   onSubmitTrip:() => {
     const action = onSubmitTrip();
+    dispatch(action);
+  },
+
+  checkInputsContent:(content)=>{
+    console.log("check",content)
+    const action = activeModal(content);
     dispatch(action);
   }
 

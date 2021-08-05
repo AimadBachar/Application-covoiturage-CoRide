@@ -1,74 +1,140 @@
 @use 'src/styles/vars';
 
-.trip {
+body {
+  .app {
+    @media screen and (max-width: 941px) {  
+      .trip {
+        position: relative;
+        top: -134px;
 
-  &-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 80%;
-    margin: 2rem auto;
-    box-shadow: vars.$box-shadow;
-    border-radius: vars.$border-radius-global;
+        &-form {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          max-width: 80%;
+          margin: 2rem auto;
+          box-shadow: vars.$box-shadow;
+          border-radius: vars.$border-radius-global;
+          
 
-    &_title {
-      // max-width: 80%;
-      // margin: 0 auto;
-      text-align: center;
-      background-color: vars.$color;
-      border-radius: vars.$border-radius-top;
-      border: none;
-      padding: 0.5rem;
-      font-size: 1.5rem;
-      color: vars.$color-light;
-      font-weight: bold;
-      //border-radius: 10px 10px 0 0;
+          &_title {
+            // max-width: 80%;
+            // margin: 0 auto;
+            text-align: center;
+            background-color: vars.$color;
+            border-radius: vars.$border-radius-top;
+            border: none;
+            padding: 0.5rem;
+            font-size: 1.5rem;
+            color: vars.$color-light;
+            font-weight: bold;
+            //border-radius: 10px 10px 0 0;
+          }
+            
+          &_input, &_select, &_date {
+            font-size: 1rem;
+            border: none;
+            padding: 1.2rem;
+            font-family: vars.$font;
+          };
+
+          &_sport__date {
+            display: flex;
+          };
+
+          &_select {
+            background-color: vars.$color-light;
+          }
+
+          &_submit {
+            background-color: vars.$color;
+            border-radius: vars.$border-radius-bottom;
+            border: none;
+            padding: 0.5rem;
+            font-size: 1.5rem;
+            color: vars.$color-light;
+            font-weight: bold;
+          }
+
+          &_select, &_date {
+            width: 50%;
+          };
+
+          &_date {
+            background-color: vars.$color-light;
+            border-left: vars.$color-grey 0.5px solid;
+          }
+        }; 
+      };
+
+      .depart, .destanation {
+        border-bottom: vars.$color-grey 0.5px solid;
+      }
     }
-      
-    &_input, &_select, &_date {
-      font-size: 1rem;
-      border: none;
-      padding: 1.2rem;
-      font-family: vars.$font;
-    };
-
-    &_sport__date {
-      display: flex;
-    };
-
-    &_select {
-      background-color: vars.$color-light;
-    }
-
-    &_submit {
-      background-color: vars.$color;
-      border-radius: vars.$border-radius-bottom;
-      border: none;
-      padding: 0.5rem;
-      font-size: 1.5rem;
-      color: vars.$color-light;
-      font-weight: bold;
-    }
-
-    &_select, &_date {
-      width: 50%;
-    };
-
-    &_date {
-      background-color: vars.$color-light;
-      border-left: vars.$color-grey 0.5px solid;
-    }
-  };
-
-    // &_text {
-    //   margin-top: 2rem;
-    //   margin-bottom: 2rem;
-    //   font-size: 1.5rem;
-    //   color: vars.$color-grey_more;
-    // }
-  
-};
-
-.depart, .destanation {
-  border-bottom: vars.$color-grey 0.5px solid;
+  }
 }
+  body {
+    .app {
+      @media screen and (min-width: 942px) and (max-width: 1149px) {
+        .trip {
+          &-form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 50%;
+            box-shadow: vars.$box-shadow;
+            border-radius: vars.$border-radius-global;
+  
+            &_title {
+              text-align: center;
+              background-color: vars.$color;
+              border-radius: vars.$border-radius-top;
+              border: none;
+              padding: 0.5rem;
+              font-size: 1.5rem;
+              color: vars.$color-light;
+              font-weight: bold;
+            }
+              
+            &_input, &_select, &_date {
+              font-size: 1rem;
+              border: none;
+              padding: 1.2rem;
+              font-family: vars.$font;
+            };
+  
+            &_sport__date {
+              display: flex;
+            };
+  
+            &_select {
+              background-color: vars.$color-light;
+            }
+  
+            &_submit {
+              background-color: vars.$color;
+              border-radius: vars.$border-radius-bottom;
+              border: none;
+              padding: 0.5rem;
+              font-size: 1.5rem;
+              color: vars.$color-light;
+              font-weight: bold;
+            }
+  
+            &_select, &_date {
+              width: 50%;
+            };
+  
+            &_date {
+              background-color: vars.$color-light;
+              border-left: vars.$color-grey 0.5px solid;
+            }
+          }; 
+        };
+  
+        .depart, .destination {
+          border-bottom: vars.$color-grey 0.5px solid;
+        }
+      }
+    }
+  }

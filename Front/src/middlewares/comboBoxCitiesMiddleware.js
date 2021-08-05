@@ -8,6 +8,8 @@
   FETCH_SEARCH_CITY,
   fetchCitiesSuccess
  } from '../actions/comboBoxCities';
+
+ import { activeModal } from 'src/actions/modalInfo'
  
  
  
@@ -31,6 +33,11 @@
          })
          .catch((err) => {
            console.error(err);
+           const error = activeModal({
+             header:'Erreur',
+             message:"Erreur interne..."
+           });
+           store.dispatch(error);
          })
  
        

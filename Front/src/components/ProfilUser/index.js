@@ -1,52 +1,58 @@
+// == Import : npm
 import React from 'react';
-import { Link, BrowserRouter, Route, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
+// == Import : local
+import line from "src/assets/images/line1.png";
 import profilVide from "src/assets/images/profil_vide.jpg"
 import 'src/components/ProfilUser/styles.scss';
+import { Icon } from 'semantic-ui-react';
 
 
+
+// == Composant
 const ProfilUser = ({
-activity,
-last_name,
-first_name,
-pseudo,
-email,
-password,
-birthdate,
-tags,
-id,
-onInputChange,
-onSubmitProfil,
-handleFetchActivities,
-picture_link,
-activities,
-onSubmitActivities,
-usersprofil,
-
-
+  last_name,
+  first_name,
+  pseudo,
+  email,
+  birthdate,
+  tags,
+  id,
+  onInputChange,
+  onSubmitProfil,
+  handleFetchActivities,
+  picture_link,
+  activities,
+  onSubmitActivities,
+  travels_passenger,
+  travels_driver,
+  biography,
+  picture,
+  checkInputsContent,
+  onSubmitDeleteTravelPassenger,
+  onSubmitDeleteTravelDriver,
+  onDeleteUserActivity,
+  onDeleteUser
 }) => {
-
-  if(tags.length<1){
+  if(tags?.length<1){
     handleFetchActivities();
   }
-    const handleSubmit = (evt) => {   
+  const handleSubmit = (evt) => {   
     evt.preventDefault();
+    const inputs = evt.target.querySelectorAll("input");
+    const checkInputs = Array.from(inputs).find(input=>input.value === "" && input.type != "file");
+    if(checkInputs) return checkInputsContent({
+      header:"Attention",
+      message:"Tous les champs doivent être saisis"
+    })
 
-    
-    //on récupere le password, on construit notre regexp et on check
-    const password = evt.target.querySelector('input[name="password"]').value;
-    const regexp = new RegExp("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[-+!*#$@%_])([-+!*#$@%_\\w]{8,})$");
-    const checkPassword = regexp.test(password); 
-     //si password non conform return
-     if(!checkPassword) {
-     console.log("ton mot de passe n'est pas conforme au format attendu")
-      return;
-    }
     console.log('submit');
 
     const updateUser = new FormData(evt.target)
-
     onSubmitProfil(updateUser);
+    evt.target.reset();
   };
 
   const changeField = (evt) => {
@@ -54,12 +60,6 @@ usersprofil,
     const value = evt.target.value;
     onInputChange(evt.target.name, value )
   };
-
- /* //on permet le téléchargement d'une photo
-  const handleUpload = (evt) => {
-    console.log(evt.target.files[0]);
-    this.setState({ picture: evt.target.files[0] });
-  };*/
 
   const ifPictureLink = ()=>{
     if(picture_link){
@@ -72,144 +72,233 @@ usersprofil,
   const handleSubmitActivities =(event)=>{
     event.preventDefault();
     console.log("handle submit activities");
-    onSubmitActivities();
+
+    const select = event.target.querySelector("select");
+
+    onSubmitActivities(select.value);
+    event.target.reset();
+  };
+
+  const handleChangeFile = (event)=>{
+    const avatar = URL.createObjectURL(event.target.files[0]);
+    onInputChange(event.target.name,avatar);
+  };
+
+  const handleSubmitDeleteTravel = (event)=>{
+    event.preventDefault();
+    const travelId = event.target.querySelector('input[name="travel_id"]').value;
+    onSubmitDeleteTravelPassenger(travelId);
+  };
+
+  const handleSubmitDeleteTravelDriver = (event)=>{
+    event.preventDefault();
+    const travelId = event.target.querySelector('input[name="travel_id"]').value;
+    onSubmitDeleteTravelDriver(travelId);
+  };
+
+  const handleDeleteUserActivity = (event)=>{
+      event.preventDefault();
+      console.log(event.target.getAttribute("activity-id"));
+      const activityId = event.target.getAttribute("activity-id");
+      onDeleteUserActivity(activityId);
+  };
+
+  const handleDeleteUser = (event)=>{
+    event.preventDefault();
+    const userId = event.target.getAttribute("user");
+    onDeleteUser(userId);
   }
 
-
-return (
-
-  
-    <div className="profil-form">
-      <h1 className="profil-form-title">Modifier le profil</h1>
-            
-      <form // FORM 1 HEADER
-            className="profil-form-element"       
-            onSubmit={handleSubmit}
-            enctype="application/x-www-form-urlencoded">
+  return (
+    <div className="profil-form"> 
+      <form className="profil-form-element" onSubmit={handleSubmit} enctype="application/x-www-form-urlencoded">   
+       <h1 className="profil-form-title">Modifier le profil</h1> 
+        <div className="profil-form-identity">
+              
           
-       <div className="profil-form-header">
-          <div className="profil-form-upper">
-              <img className="profil-form-upper_picture" src={picture_link || profilVide}/>
+            <label id="picture-label" for="upload-file"> <img className="profil-form-identity_picture" src={picture || picture_link || profilVide}/></label>
+            <input 
+              className="profil-form-upload" 
+              onChange={handleChangeFile}
+              type="file"
+              id="upload-file"
+              name="picture" placeholder="Picture"
+              accept="image/png, image/jpeg" /> 
+                {ifPictureLink()}       
+                <input type="hidden" name="id" value={id}/>
+
+            <label for="first_name">Prénom:</label>
+            <input
+              className="profil-form-input" id="first_name" type="text" name="first_name"
+              placeholder="Prénom" defaultValue={first_name}
+              onChange={changeField} />
             
-                <br/><br/>
-                <input
-                  className="profil-form-upload" type="file"
-                  name="picture" placeholder="Picture"
-                  accept="image/png, image/jpeg"/> 
+            <label for="last_name">Nom:</label>       
+            <input
+              className="profil-form-input" type="text" name="last_name" id="last_name"
+              placeholder="Nom" defaultValue={last_name}
+              onChange={changeField} />               
+            
+            <label for="pseudo">Pseudo:</label> 
+            <input
+              className="profil-form-input" type="text" name="pseudo" id="pseudo"
+              placeholder="Pseudo" defaultValue={pseudo} />     
 
-                     {ifPictureLink()}
-                     
-                     </div>
+            <label for="birthdate">Date de naissance:</label>              
+            <input
+              className="profil-form-input" type="date" name="birthdate" id="birthdate"
+              placeholder="Date de naissance" defaultValue={birthdate} />
 
-            <div className="profil-form-identity">
-                <div className="profil-form-identity_firstname">
-                    <input type="hidden" name="id" value={id}/>
-                    <input
-                      className="profil-form-identity_input" type="text" name="first_name"
-                      placeholder="Prénom" defaultValue={first_name}
-                      onChange={changeField} />
-                </div>
-
-                <div className="profil-form-identity_lastname">
-                    <input
-                      className="profil-form-identity_input" type="text" name="last_name"
-                      placeholder="Nom" defaultValue={last_name}
-                      onChange={changeField} />               
-                </div>
-            </div>
-        </div>
-
-
-              <div className="profil-form-pseudobirthdate">
-                <input
-                  className="profil-form-pseudo" type="text" name="pseudo"
-                  placeholder="Pseudo" defaultValue={pseudo} />             
-                <input
-                  className="profil-form-date" type="date" name="birthdate"
-                  placeholder="Date de naissance" defaultValue={birthdate} />
-              </div>
-
-              <div // ESPACE BIO
-                  className="profil-form-bio">
-                  <textarea className="profil-form-textarea" cols="20" rows="5" wrap="hard" 
-                    placeholder="plus d'informations sur vous, vos spots préférés">
+              <label for="biography">Présentation:</label> 
+              <div className="profil-form-bio">
+                  <textarea className="profil-form-textarea" cols="20" rows="5" wrap="hard" id="biography"
+                    placeholder="plus d'informations sur vous, vos spots préférés" name="biography">
+                    {biography}
                   </textarea>  
               </div>
 
-            <div className="profil-form-emailpassword">
-              <div className="profil-form-emailpassword_email">
-                <input
-                    className="profil-form-emailpassword_input" type="email" name="email"
+              <label for="last_name">E-mail:</label> 
+                  <input
+                    className="profil-form-input" type="email" name="email" id="email"
                     placeholder="E-mail" defaultValue={email}/>
-                    </div>
-              <div className="profil-form-emailpassword_password">
-                <input
-                  className="profil-form-emailpasssword_input" type="password"
-                  name="password" placeholder="Mot de passe"/>
-                </div>
-              </div>
-            <div className="profil-form-button">
-                <button type="submit" className="profil-form-submit">
-                       Sauvegarder
-                </button>
-           </div>
-      </form>
-              
-
-
-      <form // FORM 2  CHOIX DES SPORTS + BOUTON
-        className="profil-form-element"       
-            onSubmit={handleSubmitActivities}
-            enctype="application/x-www-form-urlencoded">
-           
-           <div className="profil-form-sport">     
-                <select className="profil-form-sport_select" type="select" name="activity_id" 
-                        onChange={changeField}>
-                   <option
-                      className="profil-form-sport_title" value="">
-                      Choisissez votre sport passion n°1
-                   </option>
-                      {tags.map((tag) => (
-                    <option name="tag" key={tag.id} value={tag.id}>
-                      {tag.label}
-                    </option>
-                      ))}
-                </select>
-           </div>
-
-
-          
-          <div // RECUPERER LES TAGS DES SPORTS
-              className="profil-form-sport_others">   
-             
-             {activities?.map(activity=>(
-                <span className="profil-form-sport_input">{activity.label}</span>   
                
-             ))}
-               </div>                
-                           
-          <div className="profil-form-button">
+               <label for="password">Votre mot de passe avant de valider:</label> 
+                  <input
+                    className="profil-form-input" type="password" id="password"
+                    name="password" placeholder="Mot de passe"/>
+               </div>
+              <div className="profil-form-button">
                 <button type="submit" className="profil-form-submit">
-                        Sauvegarder
+                   Sauvegarder
                 </button>
-          </div>               
-     </form>
+          </div>
+      </form>
+       
+          
+  <form className="profil-form-element"       
+        onSubmit={handleSubmitActivities}
+        enctype="application/x-www-form-urlencoded">
+       
+       <div className="profil-form-sport">     
+            <select className="profil-form-sport_select" type="select" name="activity_id" 
+                    onChange={changeField}>
+               <option
+                  className="profil-form-sport_title" value="">
+                  Choisissez votre sport passion
+               </option>
+                  {tags?.map((tag) => (
+                <option name="tag" key={tag.id} value={JSON.stringify(tag)}>
+                  {tag.label}
+                </option>
+                  ))}
+            </select>
+       </div>
 
 
-              <div // REDIRECTION VERS LA PAGE D'ACCUEIL
-               className="home-redirection">
-                <p className="home-redirection-text">
-                   Retour sur la        
-                  <Link
-                    className="home-redirection-link" to="/">
-                   page d'accueil
-                  </Link>
-                </p>
-             </div>         
-       </div>    
-    );
+      <div className="profil-form-sport_others">          
+              {activities?.map(activity=>(
+            <span className="profil-form-sport_input"><Icon name="delete" activity-id={activity.id} onClick={handleDeleteUserActivity}/> {activity.label}</span>
+           
+             ))}
+     </div>                
+                       
+      <div className="profil-form-button">
+            <button type="submit" className="profil-form-submit">
+              Sauvegarder
+            </button>
+      </div>               
+ </form>
+
+
+ <div className="profil-form-element">
+
+       <div className="profil-form-mytravelsdriver">  
+        <h3>Les co'rides passager:</h3>
+         
+                <ul>
+            
+              {travels_passenger?.map(travel=>(
+                <li>
+                  <div className="travel">
+                    <form className="button-action" onSubmit={handleSubmitDeleteTravel}>
+                      <input type="hidden" name="travel_id" value={travel.id}/>
+                      <button className="button-first"><img className="icone-delete" src="https://img.icons8.com/ios/48/000000/trash--v1.png"/></button>
+                    </form>
+                    <div class="travel-datetime">
+                      <span className="travel-date">
+                        {new Date(travel.departure_timestamp).toLocaleDateString('fr-FR')}
+                      </span>
+                      <span className="travel-time">
+                      {new Intl.DateTimeFormat('fr-FR', { timeStyle: 'short' }).format(new Date(travel.departure_timestamp))}
+                      </span>
+                    </div>
+                    <div className="travels-city">
+                      <img className="line-img" src={line}/>
+                      <div className="cities">
+                        <span>{travel.departure_city}</span>                      
+                        <span>{travel.destination_city}</span>
+                      </div>   
+                    </div>
+                  </div>
+                </li>
+              ))}
+              </ul>
+          </div> 
+
+          <div className="profil-form-mytravelsdriver">  
+        <h3>Les co'rides conducteur:</h3>
+         
+                <ul>
+            
+              {travels_driver?.map(travel=>(
+                <li>
+                  <div className="travel">
+                    <form className="button-action" onSubmit={handleSubmitDeleteTravelDriver}>
+                      <input type="hidden" name="travel_id" value={travel.id}/>
+                      <button className="button-second"><img className="icone-delete" src="https://img.icons8.com/ios/48/000000/edit--v1.png"/></button>
+                      <button className="button-third"><img className="icone-delete" src="https://img.icons8.com/ios/48/000000/trash--v1.png"/></button>
+                    </form>
+                    <div class="travel-datetime">
+                      <span className="travel-date">
+                        {new Date(travel.departure_timestamp).toLocaleDateString('fr-FR')}
+                      </span>
+                      <span className="travel-time">
+                      {new Intl.DateTimeFormat('fr-FR', { timeStyle: 'short' }).format(new Date(travel.departure_timestamp))}
+                      </span>
+                    </div>
+                    <div className="travels-city">
+                      <img className="line-img" src={line}/>
+                      <div className="cities">
+                        <span>{travel.departure_city}</span>                      
+                        <span>{travel.destination_city}</span>
+                      </div>   
+                    </div>
+                  </div>
+                </li>
+              ))}
+              </ul>
+          </div> 
+      </div>
+
+      <div className="profil-form-button">
+        <button type="submit" className="profil-form-submit" user={id} onClick={handleDeleteUser}>
+          Supprimer le profil
+        </button>
+      </div>
+
+      <div className="home-redirection">
+        <p className="home-redirection-text">
+          Retour sur la        
+          <Link
+            className="home-redirection-link" to="/">
+          page d'accueil
+          </Link>
+        </p>
+      </div>  
+    </div>
+  );
 };
-
+               
 ProfilUser.propTypes = {
   last_name: PropTypes.string.isRequired,
   first_name: PropTypes.string.isRequired,
@@ -218,85 +307,11 @@ ProfilUser.propTypes = {
   password: PropTypes.string.isRequired,
   activity: PropTypes.string.isRequired,
   onSubmitProfil: PropTypes.func.isRequired,
-  //onChange: PropTypes.func.isRequired,
   tags: PropTypes.shape({
     sport: PropTypes.string.isRequired,
    }) 
 };
 
+// == Export
 export default ProfilUser;
 
-
-
-// autres champs  pour le profil de l'utilisateur
-/*}
-                <Field
-                  className="profil-form-input"
-                  type="text"
-                  name="adresse"
-                  placeholder="Adresse postale"
-                  onChange={changeField}
-                  value={coords}
-                />
-
-                <Field
-                  className="profil-form-input"
-                  type="text"
-                  name="ville"
-                  placeholder="Ville"
-                  onChange={changeField}
-                  value={city}
-                />
-
-                <Field
-                  className="profil-form-input"
-                  type="number"
-                  name="code postal"
-                  placeholder="Code postal"
-                  onChange={changeField}
-                  value={postcode}
-                />
-                <Field
-                  className="profil-form-input"
-                  type="text"
-                  name="pays"
-                  placeholder="Pays"
-                  onChange={changeField}
-                  value={country}
-                />
-                  <p className="profil-form-text">Ajout d'un véhicule</p>
-
-                <Field
-                  className="profil-form-input"
-                  type="text"
-                  name="voiture"
-                  placeholder="Marque"
-                  onChange={changeField}
-                  value={brand}
-                />
-
-                <Field
-                  className="profil-form-input"
-                  type="text"
-                  name="model"
-                  placeholder="Modèle"
-                  onChange={changeField}
-                  value={model}
-                />       
-              */
-
-                /*
-                 <p className="profil-form-text">Bio</p>
-                 */
-
-
-                 /*
-
-
-                <p className="profil-form-text">Quel(s) sport(s) de glisse pratiquez vous ?</p>
-          */
-
-
-                /*
-                  
-                */

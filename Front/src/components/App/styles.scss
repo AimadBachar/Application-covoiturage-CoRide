@@ -1,10 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+@use 'src/styles/vars';
 
-// @use 'src/styles/vars';
-
+/*
+@keyframes pop {
+  0% {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}*/
+ 
 .app {
-  display: flex;
-  flex-direction: column;
-  font-family: 'Roboto Mono', monospace;
-  margin: 0;
+  //display: block;
+ // animation: pop .5s;
+  //padding-left: vars.$menuWidth;
+margin: 0;
 }
+
+/*
+
+  .search {
+      top: -850px;
+    }
+    .search-form {
+      height: 150rem;
+      font-size: 10em;
+    }
+    .search-form_sport_date {
+      font-size: 20rem;
+    }
+    .search-form_select {
+      height: 30rem;
+    
+    }
+    .search-form_date {
+      height: 30rem;
+    }
+    .search-form_submit {
+      height: 30rem;
+    }
+    .loupe {
+      width: 200px;
+    }
+    }
+}*/

@@ -1,25 +1,29 @@
+// == Import : npm
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-//import iconLike from '/src/assets/images/pouce-en-l_air.png';
+// == Import : local
 import './styles.scss';
+import driver from '/src/assets/images/driver-orange0.png';
+import pin from '/src/assets/images/pin.png';
 
+
+// == Composant
 const Card = ({
-  logged,
   cards,
-  onButtonClickProfilUser,
   onClickCardDetails,
 }) => {
   const handleClick = () => {
     onClickCardDetails();
   };
 
-  if (cards.length > 0) {
+  const valideCards = cards?.filter(card=>new Date(card.departure_timestamp)>=Date.now());
+
+  if (valideCards.length > 0) {
     return (
-      <div>  
-        {cards.map((card) => (
-           
+      <div className="cards">  
+        {valideCards.sort((firstCard,secondCard)=>new Date(firstCard.departure_timestamp)-new Date(secondCard.departure_timestamp)).map((card) => (
           <Link onClick={handleClick} to={{
             pathname: `/travel`,
             search: `?id=${card.id}`,
@@ -28,25 +32,30 @@ const Card = ({
           >
           <div className="cardInfos"  >
             <div className="cardInfos-travel">
-              <div className="cardInfos-travel_left">
-  
-                <a href="#" className="cardInfos-travel_left__profil" onClick={onButtonClickProfilUser}>{card.driver}</a>
-                <p className="cardInfos-travel_left__destination">{card.departure_city}</p>
-                <p className="cardInfos-travel_left__destination">{card.destination_city}</p>
+              <div className="cardInfos-travel_top">
+                
+              <div className="cardInfos-travel_top__box__destination">
+                
+                  <p className="cardInfos-travel_top__box__destination__city_d"><img src={pin}/>{card.departure_city}</p>
+                  <p className="cardInfos-travel_top__box__destination__city_a">{card.destination_city}<img src={pin}/></p>
+                </div>
+                <img className="cardInfos-travel_top__logo" src={driver}/>
+                <p className="cardInfos-travel_top__profil" >{card.driver}</p>
+                
               </div>
-              <div className="cardInfos-travel_right">
-                <p className="cardInfos-travel_right__date">{new Date(card.departure_timestamp).toLocaleDateString("fr-FR")}</p> 
-                <p className="cardInfos-travel_right__hour">{new Intl.DateTimeFormat('fr-FR', { timeStyle: 'short' }).format(new Date(card.departure_timestamp))}</p>
-                <span className="cardInfos-travel_right__tag">{card.activity}</span>
+              <div className="cardInfos-travel_botton">
+                <span className="cardInfos-travel_bottom__tag">#{card.activity}</span>
+                <p className="cardInfos-travel_bottom__date">Départ le {new Date(card.departure_timestamp).toLocaleDateString("fr-FR")} à {new Intl.DateTimeFormat('fr-FR', { timeStyle: 'short' }).format(new Date(card.departure_timestamp))}</p> 
               </div>
             </div>
-          </div>
+            </div>
           </Link>
         ))}
         </div>
-    )
+    )}
+      
     
-  } else {
+   else {
     return(
       <div className="cardInfos">
         <p className="cardInfos-no_card_message">Aucun trajet pour votre recherche, veuillez recommencer</p>
@@ -56,17 +65,16 @@ const Card = ({
 };
 
 Card.propTypes = {
-/*   onButtonClickProfilUser: PropTypes.func.isRequired,
-  onButtonClickValidation: PropTypes.func.isRequired, */
-  cards: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    pseudo: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
-    hour: PropTypes.string.isRequired,
-    trajet: PropTypes.string.isRequired,
-    //departure: PropTypes.string.isRequired, 
-    //arrival: PropTypes.string.isRequired, 
-    tag: PropTypes.string.isRequired,
-  })
+  onClickCardDetails: PropTypes.func.isRequired,
+  cards: PropTypes.arrayOf(
+    PropTypes.shape({
+      driver: PropTypes.string.isRequired,
+      departure_timestamp: PropTypes.string.isRequired,
+      departure_city: PropTypes.string.isRequired,
+      destination_city: PropTypes.string.isRequired,
+      activity: PropTypes.string.isRequired,
+  }))
 }
+
+// == Export
 export default Card;

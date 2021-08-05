@@ -1,17 +1,26 @@
-import React from 'react';
+// == Import : npm
+import React,  {useState } from 'react';
 import { Link } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import onClickOutside from "react-onclickoutside";
 
+// == Import : local
+// changer le nom
+import './info.scss';
 
-import './styles.scss';
-
+// == Composant
 const Nav = (props) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => setIsOpen(!isOpen);
+  Nav.handleClickOutside = () => setIsOpen(false);
+  
+
   if (!props.logged) {
     return (
-      <div className="nav" onClick={props.onButtonClickMenu}>
-        <nav role="navigation">
-          <div id="menuToggle">
-            <input type="checkbox" />
+      <div className={isOpen ? "nav -active"  : "nav"} onClick={toggle}>
+        <nav role="navigation" className="nav-mobile">
+          <div id="menuToggle" >
+            {/* je fais en sorte que le checkbox et la même valeur que le state isOpen, ce qui va modifier le CSS par la suite */}
+            <input className="nav-checkbox" type="checkbox" checked={isOpen}/>
             <span />
             <span />
             <span />
@@ -19,27 +28,48 @@ const Nav = (props) => {
               <Link to="/" exact>
                 <li>Accueil</li>
               </Link>
-              <li><a href="#">Info</a></li>
               <Link to="/contact" exact>
                 <li>Contact</li>
               </Link>
               <Link to="/info" exact>
                 <li>Info</li>
               </Link>
-              <li><a href="#">Contact</a></li>
-              <li><a href="/connexion">Connexion</a></li>
-              <li><a href="/inscription">S'inscrire</a></li>
+              <Link to="/connexion" exact>
+              <li>Connexion</li>
+              </Link>
+              <Link to="/inscription" exact>
+              <li>S'inscrire</li>
+              </Link>
             </ul>
           </div>
         </nav>
+        <nav>
+            <ul className="desktop-menu">
+                <Link className="items-menu" to="/" exact>
+                  <li>Accueil</li>
+                </Link>
+                <Link className="items-menu" to="/contact" exact>
+                  <li>Contact</li>
+                </Link>
+                <Link className="items-menu" to="/info" exact>
+                  <li>Info</li>
+                </Link>
+                <Link className="items-menu" to="/connexion" exact>
+                  <li>Connexion</li>
+                </Link>
+                <Link className="items-menu" to="/inscription" exact>
+                  <li>S'inscrire</li>
+                </Link>
+            </ul>
+          </nav>
       </div>
     );
   } else {
     return (
-      <div className="nav" onClick={props.onButtonClickMenu}>
-        <nav role="navigation">
+      <div className={isOpen ? "nav -active"  : "nav"} onClick={toggle}>
+        <nav  role="navigation">
           <div id="menuToggle">
-            <input type="checkbox" />
+            <input nav-checkbox type="checkbox" checked={isOpen}/>
             <span />
             <span />
             <span />
@@ -59,18 +89,39 @@ const Nav = (props) => {
                 <li>Co'Riders</li>
               </Link>
 
-              <li><a href="#">Info</a></li>
               <Link to="/contact" exact>
                 <li>Contact</li>
               </Link>
             </ul>
           </div>
         </nav>
+        <nav>
+            <ul className="desktop-menu">
+                <Link className="items-menu" to="/" exact>
+                  <li>Accueil</li>
+                </Link>
+                <Link className="items-menu" to="/contact" exact>
+                  <li>Contact</li>
+                </Link>
+                <Link className="items-menu" to="/info" exact>
+                  <li>Info</li>
+                </Link>
+                <Link className="items-menu" to="/connexion" exact>
+                  <li>Connexion</li>
+                </Link>
+                <Link className="items-menu" to="/inscription" exact>
+                  <li>S'inscrire</li>
+                </Link>
+            </ul>
+          </nav>
       </div>
     ); 
   }
 }
 
-// Header.proptypes = {
+const clickOutsideConfig = {
+  handleClickOutside: () => Nav.handleClickOutside
+};
 
-export default Nav;
+// == Export
+export default onClickOutside(Nav, clickOutsideConfig);

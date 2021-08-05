@@ -8,7 +8,10 @@ import { fetchEmail } from "src/actions/contact";
 const mapStateToProps = (state) => ({
   logged: state.user.logged,
   email: state.userprofil.inputs.email,
-  pseudo: state.userprofil.inputs.pseudo
+  pseudo: state.userprofil.inputs.pseudo,
+  open: state.modalInfo.open,
+  header: state.modalInfo.header,
+  message: state.modalInfo.message
 });
 
 const mapDispatchToProps = (dispatch) => ({

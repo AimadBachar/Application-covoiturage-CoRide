@@ -13,6 +13,9 @@ import {
   FETCH_PROFIL_DRIVER,
 } from '../actions/trajets';
 
+import { activeModal } from "src/actions/modalInfo";
+import { updateUser } from '../actions/user';
+
 
 
 export default (store) => (next) => (action) => {
@@ -122,9 +125,9 @@ export default (store) => (next) => (action) => {
 
       const objData = { id : travelId};
 
-      const token = JSON.parse(localStorage.getItem('tokens'));
+      let token = JSON.parse(localStorage.getItem('tokens'));
       /* console.log("token",token); */
-      const {id : userId} = token;
+      const {id : userId, pseudo} = token;
       console.log("userID",userId);
       const participeUrl = "http://18.235.248.88:3000/api/v1/user/";
       
@@ -138,13 +141,36 @@ export default (store) => (next) => (action) => {
           Authorization: `Bearer ${token.token}`
          }
       })
-      .then((res) => {
+      .then( async (res) => {
           console.log("participe travel succes", res.data);
           const action = particpeTravelSucces(res.data);
+          const updateTravels = await axios({
+            method:"GET",
+            url:`http://18.235.248.88:3000/api/v1/user/${userId}`,
+            headers:{
+              "Authorization":`Barer ${token.token}`
+            }
+          });
+
+          localStorage.removeItem("tokens");
+          updateTravels.data.token = token.token;
+          localStorage.setItem("tokens",JSON.stringify(updateTravels.data));
+
+          const success = activeModal({
+            header:"Félicitation!",
+            message:`Votre participation au covoiturage de ${pseudo} est validé!`
+          })
           store.dispatch(action);
+          store.dispatch(updateUser(updateTravels.data));
+          store.dispatch(success);
         })
         .catch((err) => {
           console.error(err);
+          const error = activeModal({
+            header:"Attention",
+            message:`Nous n'avons pas pu valider votre particpation car vous êtes surement déjà inscrit`
+          });
+          store.dispatch(error);
         })
     break; 
 }

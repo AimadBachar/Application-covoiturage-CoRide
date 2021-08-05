@@ -6,6 +6,10 @@ import { userLoginSuccess } from 'src/actions/user';
 const mapStateToProps = (state) => ({
   loading: state.trajets.loading,
   cards: state.trajets.cards,
+  open: state.modalInfo.open,
+  header: state.modalInfo.header,
+  message: state.modalInfo.message,
+  logged: state.user.logged,
 });
 
 const mapDispatchToProps = (dispatch) => ({

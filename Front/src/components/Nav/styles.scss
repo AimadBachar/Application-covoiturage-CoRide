@@ -14,6 +14,10 @@ body {
   //min-width: 320px;
 }
 
+.nav.-active .menu{
+  transform: scale(1);
+}
+
 a {
   text-decoration: none;
   color: white;
@@ -21,10 +25,6 @@ a {
   font-size: 1.1em;
   font-weight: 400;
   transition: 200ms;
-}
-a:hover {
-  // opacity:0.5;
-  color: vars.$color;
 }
 
 ul {

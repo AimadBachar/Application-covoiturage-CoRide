@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import { Link, BrowserRouter as Router, Redirect } from 'react-router-dom';
-import axios from 'axios';
+// == Import : npm
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link, BrowserRouter as Route, Redirect } from 'react-router-dom';
 
-//import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import PropTypes, { func } from 'prop-types';
-
+// == Import : local
+import ModalInfo from '../../containers/ModalInfo';
 import Field from 'src/components/Signin/Field';
+import Header from 'src/components/Signin/HeaderSignin';
+
+// == Style
 import 'src/components/Signin/styles.scss';
-import photoKite from 'src/assets/images/kitewindsurf.jpg';
 
 
+// == Composant
 const Signin = ({
-
     isSignedIn,
     signedMessage,
-    //picture,
     first_name,
     last_name,
     pseudo,
@@ -25,10 +25,28 @@ const Signin = ({
     birthdate,
     changeField,
     handleSignin,
+    checkInputsContent,
+    message,
+    open,
+    header,
 
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
+
+    //on vérifie que tous les input sont remplis...
+    const inputs = evt.target.querySelectorAll("input");
+    const checkInputs = Array.from(inputs).find(input=>input.value ==="");
+
+    if(checkInputs){
+      console.log("tous les champs doivent être remplis");
+      checkInputsContent({
+        header:"Attention",
+        message:"Tous les champs doivent être remplis."
+      })
+
+      return;
+    }
 
     //on récupere la date de naissance et la date actuelle puis on calcule le nombre d'année en décimale
     const yearOfBirth = new Date(evt.target.querySelector('input[name="birthdate"]').value);  
@@ -45,163 +63,164 @@ const Signin = ({
     //on check le verifyPassword avec le password
     const verifyPassword = evt.target.querySelector('input[name="verifyPassword"]').value;
 
-    //si mineur return
+    //on check l'email
+    const regexpMail = new RegExp("^[a-zA-Z0-9.!#$%&*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$");
+    const email = evt.target.querySelector('input[name="email"]').value;
+
+    const checkEmail = regexpMail.test(email);
+
+    //si l'utilisateur est mineur : return
     if(isMajor < 18) {
-      console.log("tu es mineur...")
+      console.log("tu es mineur...");
+      checkInputsContent({
+        header:"Attention",
+        message:"Tu dois avoir plus de 18 ans pour t'inscrire."
+      })
+
       return;
     }
 
-    //si password non conform return
+    if(!checkEmail){
+      console.log("email non valide");
+      checkInputsContent({
+        header:"Attention",
+        message:"Le format de l'email n'est pas valide."
+      })
+
+      return;
+    }
+
+    //si le password est non conforme : return
     if(!checkPassword) {
-      console.log("ton mot de passe n'est pas conforme au format attendu")
+      console.log("ton mot de passe n'est pas conforme au format attendu");
+      checkInputsContent({
+        header:"Attention",
+        message:"Le mot de passe doit contenir au minimum 8 caractères dont un symbole (#&@$), 1 lettre en majuscule, 1 lettre en minuscule et 1 chiffre."
+      })
+
       return;
     }
 
     if(checkPassword && (verifyPassword !== password)){
-      console.log("attention les 2 mots de passe ne sont pas identique...")
+      console.log("attention les 2 mots de passe ne sont pas identique...");
+      checkInputsContent({
+        header:"Attention",
+        message:"Les 2 mots de passe doivent être identique."
+      })
+
       return;
     }
    
     //si les controles sont ok PARFAIT on valide
-    console.log("tu es majeur et le mot de passe est conforme au format attendu, pas d'erreur entre les 2 champs password");
     handleSignin(evt.target);
-    
+     evt.target.reset();
   };
 
-  /*
-  const handleUpload = (evt) => {
-    console.log(evt.target.files[0]);
-    this.setState({ picture: evt.target.files[0] });
-  };*/
-
-
   return (
-  <div className="signin">
-    <img className="login-photo" src={photoKite} alt="photo kite" />
-       <div className="signin-form">
-      {isSignedIn && (
 
-        <div className="signin-form-signed">
-        <Redirect from="/inscription" to="/connexion" />
-        <p className="signin-message">
+    <div className="signin">
+      <Header />
+        <ModalInfo open={open} header={header} message={message}/>
+          <div className="signin-form">
+            {isSignedIn && (
+              <div className="signin-form-signed">
+                <Redirect from="/inscription" to="/connexion" />
+                <p className="signin-message">
+                   {signedMessage}
+                </p>
+              </div>
+            )}
+            {!isSignedIn && (
 
-  {signedMessage}
+              <form autoComplete="off" className="signin-form-element" onSubmit={handleSubmit} enctype="application/x-www-form-urlencoded">
+                <h1 className="signin-form-title">
+                  Inscription
+                </h1> 
+                  <Field 
+                    className="signin-form-input"
+                    type="text" 
+                    name="last_name"
+                    placeholder="Nom"
+                    onChange={changeField}
+                    value={last_name}
+                  />
+                  <Field
+                    className="signin-form-input"
+                    type="text"
+                    name="first_name"
+                    placeholder="Prénom"
+                    onChange={changeField}
+                    value={first_name}
+                  />
+                  <Field
+                    className="signin-form-input"
+                    type="text"
+                    name="pseudo"
+                    placeholder="Pseudo"
+                    onChange={changeField}
+                    value={pseudo}
+                  />           
+                  <Field
+                    className="signin-form-input"
+                    type="date"
+                    name="birthdate"
+                    placeholder="Date de naissance"
+                    autocorrect="off"
+                    data-date-split-input="true"
+                    onChange={changeField} 
+                    value={birthdate} 
+                  />
+                  <Field
+                    className="signin-form-input"
+                    type="email"
+                    name="email"
+                    placeholder="Adresse Email"
+                    onChange={changeField}
+                    value={email}
+                  />
+                  <Field
+                    className="signin-form-input"
+                    type="password"
+                    name="password"
+                    placeholder="Mot de passe"
+                    onChange={changeField}
+                    value={password}
+                  />
+                  <Field
+                      className="signin-form-input"
+                      id="verifyPassword"
+                      type="password"
+                      name="verifyPassword"
+                      placeholder="Confirmez votre mot de passe"
+                      onChange={changeField}
+                      value={verifyPassword}
+                    />
+                    <div className="signin-button">
+                      <button
+                        type="submit"
+                        className="signin-form-submit"
+                      >
+                        Valider
+                      </button>
+                    </div>                                     
+              </form>
 
-</p>
-</div>
-
-  )}
-  {!isSignedIn && (
-
-    <form
-      autoComplete="off"
-      className="signin-form-element"
-      onSubmit={handleSubmit}
-      enctype="application/x-www-form-urlencoded"
-    >
-      <h1 className="signin-form-title">
-       Inscription
-      </h1> 
-    
-        <Field 
-          className="signin-form-input"
-          type="text" //name?
-          name="last_name"
-          placeholder="Nom"
-          onChange={changeField}
-          value={last_name}
-          
-        />
-        <Field
-          className="signin-form-input"
-          type="text"
-          name="first_name"
-          placeholder="Prénom"
-          onChange={changeField}
-          value={first_name}
-        />
-
-        <Field
-          className="signin-form-input"
-          type="text"
-          name="pseudo"
-          placeholder="Pseudo"
-          onChange={changeField}
-          value={pseudo}
-        />
-  
-      <Field
-        className="signin-form-input"
-        type="date"
-        name="birthdate"
-        placeholder="Date de naissance"
-        autocorrect="off"
-        data-date-split-input="true"
-        onChange={changeField} 
-        value={birthdate} 
-      />
-
-      <Field
-        className="signin-form-input"
-        type="email"
-        name="email"
-        placeholder="Adresse Email"
-        onChange={changeField}
-        value={email}
-      />
-
-      <Field
-        className="signin-form-input"
-        type="password"
-        name="password"
-        placeholder="Mot de passe"
-        onChange={changeField}
-        value={password}
-      />
-
-    <Field
-        className="signin-form-input"
-        id="verifyPassword"
-        type="password"
-        name="verifyPassword"
-        placeholder="Confirmez votre mot de passe"
-        onChange={changeField}
-        //onChange={(evt) => setPassword(evt.target.value)}
-        value={verifyPassword}
-      />
-
-   <div className="signin-button">
-         <button
-          type="submit"
-          className="signin-form-submit"
-          >
-            Valider
-          </button>
-   </div>
-            
-                
-        </form>
             )}  
               <div className="login-redirection">
-              <p className="login-redirection-text">
-                Déjà membre ?            
-              <Link
-                className="login-redirection-link"
-                to="/connexion"
-              >
-              Connectez-vous
-              </Link>
-          </p>
-        </div>
-        
-       </div>
+                 <p className="login-redirection-text">
+                   Déjà membre ?            
+                  <Link className="login-redirection-link" to="/connexion">
+                    Connectez-vous
+                   </Link>
+                  </p>
+              </div> 
+          </div>
     </div>
-              
+                    
   );
 };
 
-
-  Signin.propTypes = {
+Signin.propTypes = {
   last_name: PropTypes.string.isRequired,
   first_name: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
@@ -211,7 +230,10 @@ const Signin = ({
   password: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   handleSignin: PropTypes.func.isRequired,
+  header: PropTypes.string,
+  message: PropTypes.string,
   isSignedIn: PropTypes.bool,
+  signedMessage: PropTypes.string,
 };
 
 // Valeurs par défaut pour les props
@@ -220,8 +242,7 @@ Signin.defaultProps = {
   signedMessage: 'Signin Done',
 };
 
-
-
+// == Export
 export default Signin;
 
 

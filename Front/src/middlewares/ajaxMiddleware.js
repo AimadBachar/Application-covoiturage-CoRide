@@ -7,6 +7,8 @@ import {
   userLoginSuccess,
 } from 'src/actions/user';
 
+import { activeModal } from "src/actions/modalInfo";
+
 // export default (store) => (next) => (action) => {
 const middleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -55,7 +57,12 @@ const middleware = (store) => (next) => (action) => {
           localStorage.setItem('tokens', JSON.stringify(res.data));
 
           const actionToSend = userLoginSuccess(res.data);
+          const success = activeModal({
+            header:"Bienvenue",
+            message:`Salut ${res.data.pseudo}!!`
+          })
           store.dispatch(actionToSend);
+          store.dispatch(success);
 
           // },
           /*
@@ -79,6 +86,11 @@ const middleware = (store) => (next) => (action) => {
 
         .catch((err) => {
           console.error(err);
+          const error = activeModal({
+            header:"Erreur",
+            message:`Mot de passe ou email erroné`
+          })
+          store.dispatch(error);
         });
       break;
   }

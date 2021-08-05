@@ -11,7 +11,7 @@
   fetchEmailSuccess
  } from '../actions/detailsProfil';
  
- 
+ import { activeModal } from 'src/actions/modalInfo';
  
  export default (store) => (next) => (action) => {
    switch(action.type) {     
@@ -39,6 +39,12 @@
          })
          .catch((err) => {
            console.error(err);
+           const error = activeModal({
+             header:"Attention",
+             message:"Erreur interne..."
+           });
+
+           store.dispatch(error);
          })
  
        
@@ -70,11 +76,21 @@
           console.log("res.data", res.data);
         
           const actionToSend = fetchEmailSuccess(res.data);
+          const success = activeModal({
+            header:"Information",
+            message:"Votre message a bien été envoyé!"
+          })
           store.dispatch(actionToSend);
+          store.dispatch(success);
               
         })
         .catch((err) => {
           console.error(err);
+          const error = activeModal({
+            header:"Attention",
+            message:"Nous n'avons pas réussi à envoyer votre message"
+          });
+          store.dispatch(error);
         })
      
  }
