@@ -83,6 +83,7 @@ body {
           background: vars.$color;
           height: 3rem;
           width: 100%;
+          font-weight:700;
           border-radius: 13px 13px 0 0;
           padding:.25rem;
         }
@@ -91,7 +92,7 @@ body {
           font-size: 8px;
           font-weight: 400;
           font-size: 1rem;
-          padding: 0 .5rem .5rem .5rem;
+          padding: .5rem;
           color: vars.$color-grey_more;
         }
       }
