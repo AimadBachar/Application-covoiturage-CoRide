@@ -72,8 +72,7 @@ const DetailsCard = ({
           </div>
         </div>
 
-        <p className="card-description">Description du trajet <br/> Place restante pour le matériel<br/>
-        Point de rendez-vous<br/>  Équipement voiture: {card.description}</p>
+        <p className="card-description">Description:<br/> {card.description}</p>
 
         <div className="card-bottom">
           <span className="card-bottom-tag">#{card.activity}</span>

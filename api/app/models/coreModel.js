@@ -132,11 +132,19 @@ class coreModel {
 
             const {rows} = await pool.query(sqlQuery);
 
+            console.log(rows);
 
             if(!this.id && rows){
                 this.id = rows[0].id || rows[0].insert_user;    
             }
 
+            //on check les propriétés manquantes dans this et on les insères
+            for(const row in rows[0]) {
+                if(!this[row]){
+                    this[row] = rows[0][row];
+                }
+            }
+            
             return rows ? this : new Error("internal error...");
 
         }catch(err){
