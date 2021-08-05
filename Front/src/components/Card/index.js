@@ -18,8 +18,12 @@ const Card = ({
     onClickCardDetails();
   };
 
-  const valideCards = cards?.filter(card=>new Date(card.departure_timestamp)>=Date.now());
-
+  let valideCards;
+  if(cards.length>0){
+      valideCards = cards?.filter(card=>new Date(card.departure_timestamp)>=Date.now());
+  }else{
+    valideCards = [];
+  }
   if (valideCards.length > 0) {
     return (
       <div className="cards">  

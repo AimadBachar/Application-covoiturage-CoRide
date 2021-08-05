@@ -57,14 +57,14 @@ const Search = ({
                 Sport
               </option>
 
-              {tags?.map((tag) => (
+              {tags.length>0 ? tags.map((tag) => (
                 <option
                   key={tag.id}
                   value={tag.id}
                 >
                   {tag.label}
                 </option>
-              ))}
+              )) : null}
             </select>
             <input
               className="search-form_date"
