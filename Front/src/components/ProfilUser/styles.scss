@@ -179,14 +179,11 @@
     color: vars.$color_light;
     border-radius: vars.$border-radius-bottom;
     text-overflow: clip;
-    display: flex;
-    justify-content: center;
-    position: relative;
-    margin-top: 1.5rem;
+    width: 100%;
+    text-align: center;
       
     &-text {   
       font-size: 1.3em;
-      text-align: right;
     }
     
     &-link {

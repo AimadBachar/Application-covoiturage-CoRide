@@ -296,7 +296,7 @@ const ProfilUser = ({
         </p>
       </div>  
     </div>
-      );
+  );
 };
                
 ProfilUser.propTypes = {

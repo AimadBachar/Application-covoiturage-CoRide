@@ -20,7 +20,7 @@
         height: 3rem;
         background: vars.$color;
         color: vars.$color_light;
-        border-radius: 14px 14px 0 0;
+        border-radius: vars.$border-radius-top;
         margin: 0 auto;
     } 
 
@@ -29,37 +29,39 @@
         text-align: center;
     }
 
-    .profil-bottom{
+    &-bottom{
         width: 100%;
         display: flex;
         flex-direction: column;
-    }
 
-    .form-contact-form{
-        width: 100%;
-        margin: auto;
-        & .contact-commentaire{
+        &_form {
             width: 100%;
-            height: 10rem;
-            border:none;
-            padding: .5rem;
-            margin: 0 0 2rem 0;
-            resize: none;
-            overflow: auto;
-        }
-        & .contact-commentaire:active:focus{
-            border: none;
-        }
-        & .contact-submit{
-            width: 100%;
-            height: 3rem;
-            background-color: vars.$color;
-            all: unset;
-            border-radius: 0 0 14px 14px;
-            text-align: center;
-            color: vars.$color_light;
-            font-weight: 700;
-            font-size: 1.5rem;
+
+            &__commentaire {
+                width: 100%;
+                height: 10rem;
+                border:none;
+                padding: .5rem;
+                margin: 0 0 2rem 0;
+                resize: none;
+                overflow: auto;
+
+                &__commentaire:active:focus {
+                    border: none;
+                }
+            }
+            
+            &__submit {
+                width: 100%;
+                height: 3rem;
+                background-color: vars.$color;
+                all: unset;
+                border-radius: vars.$border-radius-bottom;
+                text-align: center;
+                color: vars.$color_light;
+                font-weight: 700;
+                font-size: 1.5rem;
+            }
         }
     }
 

@@ -7,22 +7,22 @@ body {*/
 // Formulaire d'inscription
 
 .signin {
-    margin: 0 auto;
-    max-width: 100%;
+  margin: 0 auto;
+  max-width: 100%;
 }
 
- .signin-form {
+.signin-form {
   box-shadow: vars.$box-shadow;
   border-radius: vars.$border-radius-global;
   font-family: vars.$font;
   display: flex;
   flex-direction: column;
   position: relative;
-  margin-top: -4.5rem;
   margin-bottom: 2rem;
   margin-left: 2.5rem;
   margin-right: 1rem;
   max-width: 85%;
+  top: -110px;
  
 
   &-title {
@@ -55,7 +55,7 @@ body {*/
       text-align: center;
       width: 100%;
     }
-  }
+} 
 
   .login-redirection {
     background-color: vars.$color;
