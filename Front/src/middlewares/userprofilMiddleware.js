@@ -146,7 +146,7 @@ case  FETCH_ACTIVITIES:
 
               const deleteTravelPassenger = {id:action.payload};
                
-              console.log("activity",activity)
+              console.log("token",user.token)
                 axios({
                   method: 'DELETE',
                   headers:{

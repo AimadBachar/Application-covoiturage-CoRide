@@ -153,6 +153,7 @@ export default (store) => (next) => (action) => {
           });
 
           localStorage.removeItem("tokens");
+          updateTravels.data.token = token.token;
           localStorage.setItem("tokens",JSON.stringify(updateTravels.data));
 
           const success = activeModal({
