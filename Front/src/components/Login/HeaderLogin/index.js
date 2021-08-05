@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 // == Import : local
-import loginBanner from 'src/assets/images/skate2.jpg';
+import loginBanner from 'src/assets/images/snowbaord2.jpg';
 import logo from '/src/assets/logo/coride-b.svg';
 import login from '/src/assets/images/icon user white.png';
 import logout from '/src/assets/images/logout-white1.png';

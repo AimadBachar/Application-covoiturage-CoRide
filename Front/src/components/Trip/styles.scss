@@ -5,13 +5,13 @@ body {
     @media screen and (max-width: 941px) {  
       .trip {
         position: relative;
-        background: vars.$color-light;
         top: -150px;
 
         &-form {
           display: flex;
           flex-direction: column;
           justify-content: center;
+          background: vars.$color-light;
           max-width: 80%;
           margin: 2rem auto;
           box-shadow: vars.$box-shadow;

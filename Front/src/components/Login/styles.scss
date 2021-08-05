@@ -54,13 +54,13 @@ body {*/
     }
 
     &-submit {
-      background-color: vars.$color;
+      background-color: vars.$color-light;
       display: flex;
        justify-content: center;
       border: vars.$color-grey_more;
       padding-top: 1rem;
       padding-bottom: 1rem;
-      color: vars.$color_light;
+      color: vars.$color;
       text-shadow: 0.1em 0.1em 0.1em vars.$color-grey;
       font-size: 1.3em;
       font-weight: bold;
@@ -73,7 +73,7 @@ body {*/
   }
     .signin-redirection {
       background-color: vars.$color;
-      padding-bottom: 1.5rem;
+      padding-bottom: 1rem;
       font-family: vars.$font;
       color: vars.$color_light;
       border-radius: vars.$border-radius-bottom;
@@ -82,13 +82,15 @@ body {*/
       
 
     &-text {
-      padding: 1rem;
+      padding: .25rem;
       font-size: 1.1em;
+      margin: 0;
     }
     
     &-link {
         text-shadow: 0.1em 0.1em 0.2em vars.$color-grey_more;
         text-overflow: clip;
+        margin: .25rem;
         color: vars.$color_light;              
         font-size: 1.2em;
         font-family: vars.$font;
@@ -98,6 +100,6 @@ body {*/
     }
 
     .button {
-      background-color: vars.$color;
+      background-color: vars.$color-light;
     }
   }
