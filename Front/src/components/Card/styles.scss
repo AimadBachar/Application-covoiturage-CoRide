@@ -15,7 +15,6 @@ body {
         box-shadow: vars.$box-shadow;
         border-radius: vars.$border-radius-global;
         margin-bottom: 1.5rem;
-        padding: .5rem;
         text-align: center;
         font-family: vars.$font;
 
@@ -42,6 +41,7 @@ body {
               display:flex;
               justify-content: space-between;
               align-items: baseline;
+              padding:.5rem;
               margin: 2rem 1rem 0 1rem;
               border-bottom: dotted .15rem vars.$color;
               border-radius: 250%; 

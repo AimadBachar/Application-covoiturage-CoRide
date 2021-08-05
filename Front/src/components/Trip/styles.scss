@@ -5,6 +5,7 @@ body {
     @media screen and (max-width: 941px) {  
       .trip {
         position: relative;
+        background: vars.$color-light;
         top: -134px;
 
         &-form {
