@@ -3,7 +3,12 @@
 
 body {
   .app {
-  @media screen and (max-width: 941px) {  
+  @media screen and (max-width: 941px) { 
+    
+    a:hover{
+      color: vars.$color-light;
+    }
+    
       .cardInfos {
         max-width: 85%;
         margin: 0 auto;
