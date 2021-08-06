@@ -10,42 +10,45 @@
   align-items: center;
   box-shadow: vars.$box-shadow;
   border-radius: vars.$border-radius-global;
-  margin-top: 2rem;
+  //margin-top: 2rem;
   position: relative;
   background: vars.$color-light;
-  top:-130px;
+  top:-115px;
 
   &_oups {
     color: vars.$color;
     font-size:1.6em;
     font-weight: bold;
-    padding-top: 1rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0;
   }
   &_texterror {
     color: vars.$color;
-    font-size: 1.2em;
-    padding-top: .5rem;
-    padding-left: 1rem;
+    font-size: 1.1em;
+    padding-top: 0rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
   &_surf {
-    padding-top: 1.5rem;
+    padding-top: 0.8rem;
     position: relative;
     width: 80%;
   }
 
   &_404 {
-    padding-top: 0.7rem;
-    font-size: 1em;
+    padding-top: 0.5rem;
+    font-size: 0.9em;
     color: vars.$color;
   }
   
   &_link {
-    margin-top: 1.8rem;
+    margin-top: 1.6rem;
     margin-bottom: 1.5rem;
     font-weight: bold;
     color: vars.$color;
     text-shadow: 0.1em 0.1em 0.2em vars.$color-grey;
     text-overflow: clip;
+    padding-bottom: 0rem;
   }
 }
