@@ -1,5 +1,5 @@
 // == Import : npm
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 
 // == Import : local
@@ -16,7 +16,11 @@ const Contact = ({
         event.preventDefault();
         const mail = new FormData(event.target);
         submitEmail(mail);
-      }
+      };
+
+      useEffect(()=>{
+        window.scrollTo(0, 0);
+      });
 
     if (!logged) {
         return (

@@ -21,6 +21,7 @@ const HeaderContact = ({
     onButtonClickLogout();
   };
 
+
   if (logged) {
     return (
       <div className="header">

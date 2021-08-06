@@ -49,8 +49,9 @@ const App = ({
     if (localStorage.getItem('tokens')) {
       isLogged();
     
-    }
-  }, [])
+    }   
+    window.scrollTo(0, 0);
+  });
 
  if (logged) {
   if (loading) {

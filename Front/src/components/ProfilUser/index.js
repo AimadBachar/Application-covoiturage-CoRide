@@ -287,10 +287,9 @@ const ProfilUser = ({
       </div>
 
       <div className="home-redirection">
-        <p className="home-redirection-text">
-          Retour sur la        
+        <p className="home-redirection-text">      
           <Link
-            className="home-redirection-link" to="/">
+            className="home-redirection-link" to="/#">
           page d'accueil
           </Link>
         </p>

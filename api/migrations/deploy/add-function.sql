@@ -21,6 +21,10 @@ WHERE(
         NOT IN (
             SELECT user_id FROM user_travel WHERE user_id = id_user AND travel_id = id_travel
         )
+        AND id_user
+        NOT IN (
+            SELECT user_id FROM travel WHERE id = id_travel
+        )
         THEN --Si true on insert 
             true
         ELSE
