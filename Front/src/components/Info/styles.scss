@@ -4,7 +4,7 @@
     box-shadow: vars.$box-shadow;
     border-radius: vars.$border-radius-global;
     background-color: vars.$color_light;
-    border: vars.$color, 2px solid;
+    //border: vars.$color, 2px solid;
     display: flex;
     flex-direction: column;
     align-content: space-around;
@@ -15,7 +15,7 @@
    
     &-concept {
         font-size: 1.5em;
-        padding: 1rem;
+        padding: 1.4rem;
         text-align: center;
         background-color: vars.$color;
         color: vars.$color_light;
@@ -33,7 +33,7 @@
     &-contactus {
         font-size: 1.2em;
         margin: 0 auto;
-        padding: 1rem;
+        padding: 0.5rem;
         text-align: center;
         background-color: vars.$color;
         color: vars.$color_light;

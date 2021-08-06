@@ -14,7 +14,7 @@ import '/src/components/Info/styles.scss';
 const Info = () => (
     <div className="info-appli">
     <div className="info">
-        <h1 className="info-concept">Concept</h1>
+        <h1 className="info-concept">Concept Co'Ride</h1>
         <p className="info-text">
             Co'Ride est une application qui s’adresse à toute personne ayant pour passion un sport de glisse et souhaitant se rendre sur les lieux de pratique en covoiturage avec d’autres passionnés.
             <br/>

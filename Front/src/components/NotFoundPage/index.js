@@ -14,7 +14,7 @@ const NotFoundPage = () => (
         Oups ! 
         </p>
         <p className="not-found-page_texterror">
-        la page que vous recherchez semble introuvable.
+        La page que vous recherchez semble introuvable.
       </p>
       <img className="not-found-page_surf" src={brokensurf} alt="broken-surf" />      
       <p className="not-found-page_404">Code d'erreur : 404</p>

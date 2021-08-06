@@ -82,6 +82,7 @@ const App = ({
         </Route>
 
         <Route exact path="/inscription">
+           <Header />
           <Signin />
           <Footer />
         </Route>
@@ -163,6 +164,7 @@ const App = ({
         </Route>
 
         <Route exact path="/inscription">
+          <Header />
           <Signin />
           <Footer />
         </Route>

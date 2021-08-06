@@ -112,7 +112,7 @@ const ProfilUser = ({
   return (
     <div className="profil-form"> 
       <form className="profil-form-element" onSubmit={handleSubmit} enctype="application/x-www-form-urlencoded">   
-       <h1 className="profil-form-title">Modifier le profil</h1> 
+       <h1 className="profil-form-title">Modifier mon profil</h1> 
         <div className="profil-form-identity">
               
           
@@ -290,7 +290,7 @@ const ProfilUser = ({
         <p className="home-redirection-text">      
           <Link
             className="home-redirection-link" to="/#">
-          page d'accueil
+          Retour page d'accueil
           </Link>
         </p>
       </div>  

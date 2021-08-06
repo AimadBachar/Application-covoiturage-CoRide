@@ -25,7 +25,7 @@ body {
           background-color: vars.$color;
           color: vars.$color_light;
           text-align: center;
-          padding: 1rem;
+          padding: 1.4rem;
           border-radius: vars.$border-radius-top;
         }
           
@@ -34,7 +34,7 @@ body {
           border: none;
           padding: 1.3rem;    
           font-family: vars.$font;
-          opacity: 80%;
+          opacity: 70%;
         }
     
         &_sport__date {
@@ -50,7 +50,7 @@ body {
           background-color: vars.$color;
           border-radius: vars.$border-radius-bottom;
           border: none;
-          padding: 0.5rem;
+          padding: 0.8rem;
         }
     
         &_select, &_date {
@@ -81,18 +81,18 @@ body {
     
          &_title{
           background: vars.$color;
-          height: 3rem;
-          width: 100%;
-          font-weight:700;
+          padding: 1.2rem;
+          font-size: 1.3em;
           border-radius: 13px 13px 0 0;
-          padding:.25rem;
+          text-shadow: 0.1em 0.1em 0.2em vars.$color-grey_more;
+          text-overflow: clip;
         }
     
         &_text {
           font-size: 8px;
           font-weight: 400;
-          font-size: 1rem;
-          padding: .5rem;
+          font-size: 1em;
+          padding: 1.4rem;
           color: vars.$color-grey_more;
         }
       }
