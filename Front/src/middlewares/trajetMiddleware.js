@@ -168,7 +168,7 @@ export default (store) => (next) => (action) => {
           console.error(err);
           const error = activeModal({
             header:"Attention",
-            message:`Nous n'avons pas pu valider votre particpation car vous êtes surement déjà inscrit`
+            message:`Nous n'avons pas pu valider votre particpation car vous êtes déjà inscrit ou vous avez créer le trajet.`
           });
           store.dispatch(error);
         })
