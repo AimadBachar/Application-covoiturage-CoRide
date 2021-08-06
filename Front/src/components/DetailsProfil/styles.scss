@@ -32,23 +32,12 @@
   }
 
   &-activities {
-    padding: 0.5rem;
+    margin: .5rem 0;
     display: flex;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
-  &-tag {
-    // position: relative;
-    color: vars.$color;
-    border: 1px solid vars.$color;
-    padding: 0.30rem;
-    font-size: 1rem;
-    margin: 0.25rem;
-    border-radius: vars.$border-radius-global;
-    border: none;
-    font-weight: 700;
-    text-transform: uppercase;
-  }
 
   &-picture{
     width: 100px;

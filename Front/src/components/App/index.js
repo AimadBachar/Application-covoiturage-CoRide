@@ -40,11 +40,9 @@ const App = ({
 
   useEffect(()=>{
     if (localStorage.getItem('tokens')) {
-      isLogged();
-    
+      isLogged();   
     }   
-    window.scrollTo(0, 0);
-  });
+  },[]);
 
  if (logged) {
   if (loading) {

@@ -1,5 +1,6 @@
 // == Import : npm
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // == Import : local
 import Laurent from '../../assets/images/laurent.png';
@@ -24,7 +25,7 @@ const Info = () => (
             <br/>
             C’est cette spécificité communautaire qui est la particularité de notre application. Cela n’est plus un simple covoiturage, le trajet est  un moment enrichissant, de partage d’expériences, de conseils.
         </p>
-        <h1 className="info-contactus">N'hésitez pas à nous contacter pour en savoir plus</h1>
+        <Link className="info-contactus" to="/contact">N'hésitez pas à nous contacter pour en savoir plus</Link>
         </div>
         <div className="info-team">
             <div className="info-detail">

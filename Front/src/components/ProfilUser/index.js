@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import line from "src/assets/images/line1.png";
 import profilVide from "src/assets/images/profil_vide.jpg"
 import 'src/components/ProfilUser/styles.scss';
-import { Icon } from 'semantic-ui-react';
+import { Icon, Label, Search, Grid, Header, Segment } from 'semantic-ui-react';
 
 
 
@@ -70,12 +70,12 @@ const ProfilUser = ({
   };
 
   const handleSubmitActivities =(event)=>{
-    event.preventDefault();
+    //event.preventDefault();
     console.log("handle submit activities");
+    console.log("select",event.target.value)
+    const value = event.target.value;
 
-    const select = event.target.querySelector("select");
-
-    onSubmitActivities(select.value);
+    onSubmitActivities(value);
     event.target.reset();
   };
 
@@ -175,39 +175,33 @@ const ProfilUser = ({
       </form>
        
           
-  <form className="profil-form-element"       
-        onSubmit={handleSubmitActivities}
-        enctype="application/x-www-form-urlencoded">
+
        
        <div className="profil-form-sport">     
             <select className="profil-form-sport_select" type="select" name="activity_id" 
-                    onChange={changeField}>
+                    onChange={handleSubmitActivities}>
                <option
                   className="profil-form-sport_title" value="">
-                  Choisissez votre sport passion
+                    Ajoutez un sport   
                </option>
                   {tags?.map((tag) => (
                 <option name="tag" key={tag.id} value={JSON.stringify(tag)}>
                   {tag.label}
                 </option>
                   ))}
-            </select>
+                  </select>
        </div>
 
 
       <div className="profil-form-sport_others">          
               {activities?.map(activity=>(
-            <span className="profil-form-sport_input"><Icon name="delete" activity-id={activity.id} onClick={handleDeleteUserActivity}/> {activity.label}</span>
+            <Label className="profil-form-sport_others tagPerso" as="a" > {activity.label}
+              <Icon name="delete" activity-id={activity.id} onClick={handleDeleteUserActivity}/>
+            </Label>
            
              ))}
-     </div>                
-                       
-      <div className="profil-form-button">
-            <button type="submit" className="profil-form-submit">
-              Sauvegarder
-            </button>
-      </div>               
- </form>
+     </div>                            
+
 
 
  <div className="profil-form-element">

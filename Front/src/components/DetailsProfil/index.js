@@ -3,8 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // == Import : local
-import ModalInfo from '../../containers/ModalInfo';
-import profilVide from "src/assets/images/profil_vide.jpg"
+import profilVide from "src/assets/images/profil_vide.jpg";
+import {Label} from 'semantic-ui-react';
 
 // Style
 import 'src/components/DetailsProfil/styles.scss';
@@ -34,10 +34,7 @@ const DetailsProfil = ({
           {/* </div> */}
           <div className="detailsProfil-activities">
             {userprofil.activities.map((activity)=>(
-              <span className="detailsProfil-tag" 
-                key={activity.label} 
-                >#{activity.label}
-              </span>
+              <Label className="tagPerso" key={activity.id} >#{activity.label}</Label>
             ))}
           </div>
           <div className="detailsProfil-bottom">
