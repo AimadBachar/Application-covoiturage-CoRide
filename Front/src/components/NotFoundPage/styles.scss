@@ -11,15 +11,31 @@
   box-shadow: vars.$box-shadow;
   border-radius: vars.$border-radius-global;
   margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   position: relative;
   background: vars.$color-light;
   top:-130px;
 
-  &_text {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    font-size: 1.5rem;
+  &_oups {
+    color: vars.$color;
+    font-size:1.6em;
+    font-weight: bold;
+    padding-top: 1rem;
+  }
+  &_texterror {
+    color: vars.$color;
+    font-size: 1.2em;
+    padding-top: .5rem;
+  }
+
+  &_surf {
+    position: relative;
+    width: 80%;
+  }
+
+  &_404 {
+    padding-top: 1rem;
+    font-size: 1em;
   }
   
   &_link {
