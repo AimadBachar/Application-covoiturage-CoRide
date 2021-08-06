@@ -121,32 +121,35 @@ body {
 @media screen and (min-width: 942px) and (max-width: 1149px) {
       .search{
         position: relative;
-        top: -600px;
-        margin-left: 3rem;
-        margin-right: 3rem;
+        justify-content: center;
+        top: -550px;
+        //margin-left: 2.5rem;
+        //margin-right: 2.5rem;
+        //background-color: vars.$color-light;
+        //width: 85%;
         
 
       &-form {
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
-        
-        margin: 0rem;
+        width: 88%;
+        margin: 0 auto;
+        //margin: 2.5rem;
         box-shadow: vars.$box-shadow;
         border-radius: vars.$border-radius-global;
-        background-color: vars.$color-light;
+       background-color: vars.$color-light;
       
         &_title {
           display: flex;
           flex-direction: column;
-          font-size: 1.5em;
-          font-weight: bold;
+          font-size: 1.2em;
           background-color: vars.$color;
           color: vars.$color_light;
           text-align: center;
           justify-content: center;
-          padding: 1rem;
-          margin-bottom: 0;
+          padding: 0.5rem;
+          margin-bottom: 0;       
           border-radius: vars.$border-radius-left;
         }
 
@@ -156,7 +159,7 @@ body {
           outline: none;
           padding-top: 1.5rem;   
           font-family: vars.$font;
-          width: 65%;
+         // width: 65%;
           //color: vars.$color-grey_more;
           opacity: 80%;
         }
@@ -188,7 +191,7 @@ body {
           background-color: vars.$color-light;
           opacity: 70%;
           border-left: vars.$color-grey 0.5px solid;
-          padding-right: 0.5rem;
+         padding-right: 1.5rem;
         }
       }
 
