@@ -1,17 +1,16 @@
-// Import == npm
+// == Import == npm
 import React, {useState,useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-// Import : local
-
+// == Import : local
 import logo from '/src/assets/logo/coride-b.svg';
 import login from '/src/assets/images/icon user white.png';
 import logout from '/src/assets/images/exit.png';
 import Nav from '../Nav';
 import './styles.scss';
 
-//Import photos
+// == Import : photos
 import photo1 from '/src/assets/images/skate2.jpg';
 import photo2 from '/src/assets/images/surfers.jpg';
 import photo3 from '/src/assets/images/canoe.jpg';
