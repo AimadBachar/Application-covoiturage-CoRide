@@ -12,21 +12,14 @@ import Footer from 'src/containers/Footer';
 import NotFoundPage from '../NotFoundPage';
 import Info from '../Info';
 import Mentions from '../Mentions';
-import HeaderContact from 'src/containers/HeaderContact';
-import HeaderInfo from 'src/containers/HeaderInfo';
 import Contact from 'src/containers/Contact';
 import Login from 'src/containers/Login';
-import HeaderLogin from 'src/containers/HeaderLogin';
 import Signin from 'src/containers/Signin';
 import ProfilUser from 'src/containers/ProfilUser';
-import HeaderProfilUser from 'src/containers/HeaderProfilUser';
 import DetailsProfil from 'src/containers/DetailsProfil';
-import HeaderDetailsProfil from 'src/containers/HeaderDetailsProfil';
 import Trip from 'src/containers/Trip'
-import HeaderTrip from 'src/containers/HeaderTrip';
 import Card from 'src/containers/Card';
 import DetailsCard from 'src/containers/DetailsCard';
-import HeaderDetailsCard from 'src/containers/HeaderDetailsCard';
 import ModalInfo from 'src/containers/ModalInfo';
 import './styles.scss';
 
