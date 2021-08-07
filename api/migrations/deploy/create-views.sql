@@ -37,18 +37,18 @@ SELECT
     email,
     biography,
     birthdate,
-    created_at,
+    u.created_at,
     ARRAY(
         SELECT ('{"id": '||a.id||',"label": "'||label||'","color": "'||a.color||'"}')::json FROM activity AS a
         INNER JOIN user_activity AS ua ON ua.activity_id = a.id AND ua.user_id = u.id
     ) AS activities,
     ARRAY(
         SELECT ('{"id": '||t.id||',"departure_city": "'||t.departure_city||'","destination_city": "'||t.destination_city||'","departure_timestamp": "'||t.departure_timestamp||'"}')::json FROM travel AS t
-        INNER JOIN user_travel AS ut ON ut.travel_id = t.id AND ut.user_id = u.id
+        INNER JOIN user_travel AS ut ON ut.travel_id = t.id AND ut.user_id = u.id WHERE t.departure_timestamp >= NOW() ORDER BY t.departure_timestamp
     ) AS travels_passenger,
     ARRAY(
         SELECT ('{"id": '||t.id||',"departure_city": "'||t.departure_city||'","destination_city": "'||t.destination_city||'","departure_timestamp": "'||t.departure_timestamp||'"}')::json FROM travel AS t
-        WHERE u.id = t.user_id
+        WHERE u.id = t.user_id AND t.departure_timestamp >= NOW() ORDER BY t.departure_timestamp
      ) AS travels_driver,
      ARRAY(
          SELECT ('{"id": '||v.id||',"brand": "'||v.brand||'","model": "'||v.model||'"}')::json FROM vehicle AS v
