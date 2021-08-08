@@ -10,7 +10,7 @@ import {
   fetchDeleteTravelPassenger,
   fetchDeleteTravelDriver,
   fetchDeleteUserActivity,
-  fetchDeleteUser 
+  fetchDeleteUser
  } from 'src/actions/userprofil';
 
  import { activeModal } from 'src/actions/modalInfo';
@@ -106,6 +106,11 @@ const mapDispatchToProps = (dispatch) => ({
 
   onDeleteUser: (userId)=>{
     const action = fetchDeleteUser(userId);
+    dispatch(action);
+  },
+
+  onDetailsPassengers: (content)=>{
+    const action = activeModal(content);
     dispatch(action);
   }
 

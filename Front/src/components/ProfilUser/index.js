@@ -34,7 +34,8 @@ const ProfilUser = ({
   onSubmitDeleteTravelPassenger,
   onSubmitDeleteTravelDriver,
   onDeleteUserActivity,
-  onDeleteUser
+  onDeleteUser,
+  onDetailsPassengers
 }) => {
   if(tags?.length<1){
     handleFetchActivities();
@@ -107,6 +108,23 @@ const ProfilUser = ({
     event.preventDefault();
     const userId = event.target.getAttribute("user");
     onDeleteUser(userId);
+  };
+
+  const handleDetailPassengers = (event,passengers)=>{
+    event.preventDefault();
+
+    if(passengers.length){
+    onDetailsPassengers({
+      header:"Vos passagers:",
+      message: (passengers.map(passenger=>(<li key={passenger.id}>{passenger.first_name} {passenger.last_name} {passenger.email}</li>)))
+    });
+    }else{
+      onDetailsPassengers({
+        header:"Aucun passagers pour le moment",
+        message: ""
+      });
+    }
+
   }
 
   return (
@@ -245,7 +263,7 @@ const ProfilUser = ({
                 <ul>
             
               {travels_driver?.map(travel=>(
-                <li>
+                <li onClick={(e)=>handleDetailPassengers(e,travel.passengers)}>
                   <div className="travel">
                     <form className="button-action" onSubmit={handleSubmitDeleteTravelDriver}>
                       <input type="hidden" name="travel_id" value={travel.id}/>
