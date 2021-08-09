@@ -60,7 +60,7 @@ useEffect(()=>{
 
         <img className="header-photo" src={picture} alt="detailsProfilBanner" />
         <img src={logo} className="header-logo" alt="Logo CoRide" />
-        <p className="slogan">Le covoiturage des passionnés!</p>
+        <p className="slogan">Le covoiturage des passionnés !</p>
          <Nav logged={logged}/>
           <a onClick={logOut}>
             <img className="header-logout2" src={logout} alt="logout" />
