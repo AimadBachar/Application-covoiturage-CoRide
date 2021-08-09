@@ -12,6 +12,9 @@
     & p{
         font-size: 1.5em;
         margin: 2em 0;
+        & a{
+            color:vars.$color;
+        }
     }
     & .ui.buttonModal.button{
         width: 33%;

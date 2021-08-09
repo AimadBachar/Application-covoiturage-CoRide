@@ -7,6 +7,36 @@
   top: -130px;
   margin-top: 2rem;
   font-family: vars.$font;
+
+  &__search{
+
+    width: 100%;
+    margin-bottom: 1.5rem;
+    box-shadow: vars.$box-shadow;
+    background: vars.$color-light;
+    border-radius: vars.$border-radius-global;
+    font-family: vars.$font;
+    box-sizing: content-box;
+
+    & h2{
+      text-align: center;
+      background-color: vars.$color;
+      padding:.5em;
+      font-size:1.5em;
+      color: vars.$color-light;
+      border-radius: vars.$border-radius-top;
+    }
+
+    & .ui.inputSearch.input{
+        width: 100%;
+        margin:0 0 2em 0;
+        border-radius: 1em;
+        background-color: vars.$color-light;
+        & input{
+          border: none;
+        }
+      }
+  }
 }
 
 .detailsProfil {
@@ -17,7 +47,7 @@
   font-family: vars.$font;
   box-sizing: content-box;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
 
   &-pseudo {
     text-align: center;

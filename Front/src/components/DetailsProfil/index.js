@@ -1,10 +1,10 @@
 // == Import : npm
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 // == Import : local
 import profilVide from "src/assets/images/profil_vide.jpg";
-import {Label} from 'semantic-ui-react';
+import {Label,Input} from 'semantic-ui-react';
 
 // Style
 import 'src/components/DetailsProfil/styles.scss';
@@ -16,17 +16,41 @@ const DetailsProfil = ({
   usersProfils,
   submitEmail
 }) => {
+
+  
+
   if(usersProfils.length ===0){
     getAllUsers();
   }
+
+  //TODO faire la recherche dans la liste des users....
+    const [searchUsers,updateUsers] = useState([]);
+
   const handleSubmitMessageForm = (event)=>{
     event.preventDefault();
     const mail = new FormData(event.target);
     submitEmail(mail);
-  }
+  };
+
+  
+
+  const handleSearchChange = (event,data)=>{
+    console.log(data.value);
+    const search = data.value;
+    const result = usersProfils.filter(user=>user.pseudo.toLowerCase().includes(search.toLowerCase()));
+    updateUsers(result);
+
+  };
+
   return (
-    usersProfils.map((userprofil)=>(
-      <div className="detailsProfils">
+    <div className="detailsProfils">
+      <div className="detailsProfils__search">
+        <h2>Recherche un utilisateur</h2>
+      <Input className="inputSearch" icon="search" placeholder="Son pseudo..." onChange={handleSearchChange}/>
+      </div>
+    {(searchUsers.length ? searchUsers : usersProfils).map((userprofil)=>(
+      
+        
         <div className="detailsProfil" key={userprofil.pseudo} >
         <p className="detailsProfil-pseudo">{userprofil.pseudo}</p>
           {/* <div className="profil-top"> */}
@@ -49,9 +73,9 @@ const DetailsProfil = ({
               </div> 
             </form>
           </div>
-        </div>  
-      </div>  
-    )) 
+        </div> 
+    ))} 
+    </div>      
   )
 };
 

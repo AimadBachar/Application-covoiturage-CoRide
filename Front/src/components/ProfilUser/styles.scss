@@ -103,24 +103,19 @@
 
 // sports
   &-sport {
-    display: flex;
-    flex-direction: column;
     background-color: vars.$color-light;
-    padding: 1rem;
+    padding: 2rem;
     width:100%;
-    justify-content: space-between;
-
-    &_select {
-      background-color: vars.$color-light;      
+    height:5em;
+    margin-bottom:3em;
+    & .ui.monDrop.dropdown{
+      margin-top: 10em;     
       border-color: vars.$color;
-      border-radius: 8px;
-      height: 3rem;
-      width: 95%;
-      margin: auto;
-      color: vars.$color;
-      font-size: 1em;
-      font-family: vars.$font;
-    }
+      border-radius:10px;
+ 
+  }
+    
+
 
     &_others {
       display: flex;

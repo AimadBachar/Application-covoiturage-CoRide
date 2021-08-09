@@ -1,5 +1,5 @@
 // == Import : npm
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import line from "src/assets/images/line1.png";
 import profilVide from "src/assets/images/profil_vide.jpg"
 import 'src/components/ProfilUser/styles.scss';
-import { Icon, Label, Search, Grid, Header, Segment } from 'semantic-ui-react';
+import { Icon, Label, Dropdown } from 'semantic-ui-react';
 
 
 
@@ -37,9 +37,11 @@ const ProfilUser = ({
   onDeleteUser,
   onDetailsPassengers
 }) => {
+
   if(tags?.length<1){
     handleFetchActivities();
-  }
+  };
+
   const handleSubmit = (evt) => {   
     evt.preventDefault();
     const inputs = evt.target.querySelectorAll("input");
@@ -48,8 +50,6 @@ const ProfilUser = ({
       header:"Attention",
       message:"Tous les champs doivent être saisis"
     })
-
-    console.log('submit');
 
     const updateUser = new FormData(evt.target)
     onSubmitProfil(updateUser);
@@ -70,14 +70,9 @@ const ProfilUser = ({
     }
   };
 
-  const handleSubmitActivities =(event)=>{
-    //event.preventDefault();
-    console.log("handle submit activities");
-    console.log("select",event.target.value)
-    const value = event.target.value;
-
+  const handleSubmitActivities =(event,data)=>{
+    const value = data.value;
     onSubmitActivities(value);
-    event.target.reset();
   };
 
   const handleChangeFile = (event)=>{
@@ -91,9 +86,9 @@ const ProfilUser = ({
     onSubmitDeleteTravelPassenger(travelId);
   };
 
-  const handleSubmitDeleteTravelDriver = (event)=>{
+  const handleDeleteTravelDriver = (event,id)=>{
     event.preventDefault();
-    const travelId = event.target.querySelector('input[name="travel_id"]').value;
+    const travelId = id;
     onSubmitDeleteTravelDriver(travelId);
   };
 
@@ -116,7 +111,7 @@ const ProfilUser = ({
     if(passengers.length){
     onDetailsPassengers({
       header:"Vos passagers:",
-      message: (passengers.map(passenger=>(<li key={passenger.id}>{passenger.first_name} {passenger.last_name} {passenger.email}</li>)))
+      message: (passengers.map(passenger=>(<li key={passenger.id}>{passenger.first_name} {passenger.last_name} | <a href={`mailto:${passenger.email}`}>message</a></li>)))
     });
     }else{
       onDetailsPassengers({
@@ -124,8 +119,10 @@ const ProfilUser = ({
         message: ""
       });
     }
+  };
 
-  }
+
+  
 
   return (
     <div className="profil-form"> 
@@ -196,18 +193,23 @@ const ProfilUser = ({
 
        
        <div className="profil-form-sport">     
-            <select className="profil-form-sport_select" type="select" name="activity_id" 
-                    onChange={handleSubmitActivities}>
-               <option
-                  className="profil-form-sport_title" value="">
-                    Ajoutez un sport   
-               </option>
-                  {tags?.map((tag) => (
-                <option name="tag" key={tag.id} value={JSON.stringify(tag)}>
-                  {tag.label}
-                </option>
-                  ))}
-                  </select>
+            <Dropdown 
+            className="profil-form-sport monDrop"
+            name="activity_id" 
+            placeholder="Ajouter un sport"
+            search
+            noResultsMessage="aucun résultat"           
+            selection
+            options={tags.map(tag=>{
+              return{
+                key:tag.id,
+                text:tag.label,
+                value: JSON.stringify(tag)
+              }
+            })}
+            onChange={handleSubmitActivities}
+            />
+                  
        </div>
 
 
@@ -263,12 +265,12 @@ const ProfilUser = ({
                 <ul>
             
               {travels_driver?.map(travel=>(
-                <li onClick={(e)=>handleDetailPassengers(e,travel.passengers)}>
+                <li>
                   <div className="travel">
-                    <form className="button-action" onSubmit={handleSubmitDeleteTravelDriver}>
+                    <form className="button-action">
                       <input type="hidden" name="travel_id" value={travel.id}/>
-                      <button className="button-second"><img className="icone-delete" src="https://img.icons8.com/ios/48/000000/edit--v1.png"/></button>
-                      <button className="button-third"><img className="icone-delete" src="https://img.icons8.com/ios/48/000000/trash--v1.png"/></button>
+                      <button className="button-second" onClick={(e)=>handleDetailPassengers(e,travel.passengers)}><img className="icone-delete" src="https://img.icons8.com/ios/48/000000/edit--v1.png"/></button>
+                      <button className="button-third" onClick={(e)=>handleDeleteTravelDriver(e,travel.id)}><img className="icone-delete" src="https://img.icons8.com/ios/48/000000/trash--v1.png"/></button>
                     </form>
                     <div class="travel-datetime">
                       <span className="travel-date">
