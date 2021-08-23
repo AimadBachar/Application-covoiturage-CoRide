@@ -96,7 +96,7 @@ class coreModel {
             }
 
             if(this.tableName === "user" && obj?.view){
-                sqlQuery.text = "SELECT * FROM users_view WHERE id = $1;"
+                sqlQuery.text = "SELECT json_user FROM users_view WHERE (json_user->>'id')::int = $1;"
             }
 
             const {rows} = await pool.query(sqlQuery);

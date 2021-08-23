@@ -67,10 +67,10 @@ const userController = {
                 const theUserConnected = await User.findOne(userConnected.id,{view:true});
 
                 //on ajoute le token au User
-                theUserConnected.token = token;
+                theUserConnected.json_user.token = token;
                 
                 //on répond en envoyant le User
-                res.json(theUserConnected);
+                res.json(theUserConnected.json_user);
 
             } else {
                 //sinon error 401
@@ -95,8 +95,10 @@ const userController = {
 
         try {
             const results = await User.findAll({view: true});
+
+	    const formatResults = results.map(result=>result.json_user);
             
-            return res.json(results);
+            return res.json(formatResults);
         } catch (err) {
             next(err);
         }
@@ -117,7 +119,7 @@ const userController = {
                 id
             } = req.params;
             const result = await User.findOne(id,{view:true});
-            return res.json(result);
+            return res.json(result.json_user);
 
         } catch (err) {
             next(err);
@@ -208,11 +210,14 @@ const userController = {
 
             if (user) {
 
-                const delPicture = await deletePicture(user.picture_link);
+		if(user.picture_link){
 
-                if(!delPicture){
-                    return next();
-                }
+               		 const delPicture = await deletePicture(user.picture_link);
+
+               		 if(!delPicture){
+                   		 return next();
+               		 }
+		}
 
                 await user.delete();
                 res.status(204).end();
