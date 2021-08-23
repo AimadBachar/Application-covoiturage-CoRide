@@ -35,7 +35,7 @@ const travelController = {
                 id: parseInt(id, 10)
             };
 
-            const check = await methodFetch("DELETE", `/api/v1/admin/${req.session.user.id}/travels`, {
+            await methodFetch("DELETE", `/api/v1/admin/${req.session.user.id}/travels`, {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${req.session.user.token}`
                 },
