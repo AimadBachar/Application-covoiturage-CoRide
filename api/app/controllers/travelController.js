@@ -168,15 +168,19 @@ const travelController = {
      * @returns {null}
      */
     async delete(req, res, next) {
+
+        console.log("controller")
+
         try {
             const {
                 id
             } = req.body;
             const {
-                id: userId
+                id:userId
             } = req.params;
             const travel = await Travel.findOne(id);
-            if (travel && userId == travel.driver_id) {
+
+            if (travel && (userId == travel.driver_id || req.user.admin)) {
 
                 await travel.delete();
 
