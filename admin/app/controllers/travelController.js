@@ -42,8 +42,6 @@ const travelController = {
                 body
             );
 
-            console.log(check)
-
             res.redirect("/coride/admin/travels");
         } catch (err) {
             next(err);
