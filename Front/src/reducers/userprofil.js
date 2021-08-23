@@ -4,7 +4,8 @@ import {
   USER_PROFIL_ACTIVITIES,
   USER_PROFIL_SUBMIT,
   USER_PROFIL_SUCCESS,
-  ADD_ACTIVITY_USER_SUCCESS
+  ADD_ACTIVITY_USER_SUCCESS,
+  DISPLAY_PASSENGERS
 } from 'src/actions/userprofil';
 
 const user = JSON.parse(localStorage.getItem('tokens'));
@@ -68,6 +69,8 @@ const reducer = (state = initialState, action = {}) => {
             ...state,
             ...action.payload
           };
+
+      break;
 
     default:
       return state;

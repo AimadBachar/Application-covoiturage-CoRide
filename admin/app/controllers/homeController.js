@@ -1,4 +1,4 @@
-const fetch = require("node-fetch");
+const methodFetch = require("../services/fetch");
 
 const homeController = {
 
@@ -38,18 +38,12 @@ const homeController = {
                 password: password
             };
 
-            const result = await fetch("http://18.235.248.88:3000/login",{
-                method:"POST",
-                headers:{"Content-Type":"application/json"},
-                body: JSON.stringify(login)
-            });
+            const userLogged = await methodFetch("POST","/login",{"Content-Type":"application/json"},login);
 
-            const token = await result.json();
-
-            if(token.token){
+            if(userLogged.token){
                 req.session.user = {
-                    user: user,
-                    token: token.token
+                    id: userLogged.id,
+                    token: userLogged.token
                 }
                 res.render("index");
             }else{

@@ -90,10 +90,12 @@ export default (store) => (next) => (action) => {
 
       const id = store.getState().id;
       console.log(id);
+      const coords = action.payload;
+      console.log("coords",coords)
       // Je lance la requête
       axios({
         method: 'get',
-        url: 'http://18.235.248.88:3000/api/v1/travels'
+        url: `http://18.235.248.88:3000/api/v1/travels/search?long=${coords.latitude}&lat=${coords.longitude}`
       })
         .then((res) => {
           /* console.log("fetch_succes", res.data); */

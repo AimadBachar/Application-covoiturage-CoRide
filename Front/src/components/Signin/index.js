@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { Link, BrowserRouter as Route, Redirect } from 'react-router-dom';
 
 // == Import : local
-import ModalInfo from '../../containers/ModalInfo';
 import Field from 'src/components/Signin/Field';
 //import Header from 'src/components/Signin/HeaderSignin';
 
@@ -119,7 +118,6 @@ const Signin = ({
   return (
 
     <div className="signin">
-        <ModalInfo open={open} header={header} message={message}/>
           <div className="signin-form">
             {isSignedIn && (
               <div className="signin-form-signed">

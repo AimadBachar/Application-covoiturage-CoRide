@@ -78,6 +78,7 @@ body {
         margin-top: 2rem;
         position: relative;
         top: -100px;
+        
     
          &_title{
           background: vars.$color;
@@ -87,6 +88,8 @@ body {
           text-shadow: 0.1em 0.1em 0.2em vars.$color-grey_more;
           text-overflow: clip;
         }
+
+       
     
         &_text {
           font-size: 8px;

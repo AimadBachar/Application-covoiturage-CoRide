@@ -34,10 +34,11 @@ const Header = ({
 //on genère une aleatoire
 
 const [picture,randomPicture] = useState();
+const [visible, changeVisible] = useState(true);
 
 const pictures = [photo1,photo2,photo3,photo4,photo5,photo6,photo7,photo8];
 
-useEffect(()=>{
+useEffect(()=>{ 
   const index = Math.floor(Math.random()*pictures.length);  
   randomPicture(pictures[index]);
   });
@@ -56,9 +57,10 @@ useEffect(()=>{
             <li>S'inscrire</li>
           </ul>
         </div>
+
         <img className="header-photo" src={picture} alt="detailsProfilBanner" />
         <img src={logo} className="header-logo" alt="Logo CoRide" />
-        <p className="slogan">Le covoiturage des passionnés!</p>
+        <p className="slogan">Le covoiturage des passionnés !</p>
          <Nav logged={logged}/>
           <a onClick={logOut}>
             <img className="header-logout2" src={logout} alt="logout" />

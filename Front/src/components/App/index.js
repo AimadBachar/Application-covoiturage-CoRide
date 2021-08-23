@@ -24,6 +24,8 @@ import ModalInfo from 'src/containers/ModalInfo';
 import './styles.scss';
 
 
+
+
 // == Composant
 const App = ({
   loading, 
@@ -34,17 +36,22 @@ const App = ({
   message, 
   logged
 }) => {
+  
   // J'exécute la fonction reçue en props
   // dès que je suis prêt, et une seule fois
-  useEffect(fetchTravels, [])
+
 
   useEffect(()=>{
-    if (localStorage.getItem('tokens')) {
-      isLogged();
+
+    navigator.geolocation.getCurrentPosition((pos)=>{
+      fetchTravels(pos.coords)
+    })
     
+
+    if (localStorage.getItem('tokens')) {
+      isLogged();   
     }   
-    window.scrollTo(0, 0);
-  });
+  },[]);
 
  if (logged) {
   if (loading) {

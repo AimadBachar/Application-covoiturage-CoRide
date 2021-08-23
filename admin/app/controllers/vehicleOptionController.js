@@ -1,5 +1,5 @@
 const fetch = require("node-fetch");
-const { add } = require("./activityController");
+const methodFetch = require("../services/fetch");
 
 const vehicleOptionController = {
 
@@ -11,17 +11,14 @@ const vehicleOptionController = {
      */
     async getAll(req, res, next) {
 
-        const results = await fetch("http://18.235.248.88:3000/api/v1/vehicle-options", {
-            method: "GET",
-            headers: {
+        const vehicleOptions = await methodFetch("GET","/api/v1/vehicle-options",
+            {
                 Authorization: `Bearer ${req.session.user.token}`
             }
-        });
-
-        const vehicleOptions = await results.json();
+        );
 
         res.render("vehicleOptions", {
-            vehicleOptions
+            vehicleOptions: Object.keys(vehicleOptions).length ? vehicleOptions : []
         });
     },
 
@@ -42,16 +39,13 @@ const vehicleOptionController = {
                 id: parseInt(id,10)
             };
 
-            console.log(body)
-
-            await fetch(`http://18.235.248.88:3000/api/v1/admin/${process.env.ADMIN_ID}/vehicle-options`, {
-                method: "DELETE",
-                headers: {
+            await methodFetch("DELETE",`/api/v1/admin/${req.session.user.id}/vehicle-options`,               
+                {
                     "Content-Type":"application/json",
                     "Authorization": `Bearer ${req.session.user.token}`
                 },
-                body: JSON.stringify(body)
-            });
+                body
+            );
 
             res.redirect("/coride/admin/vehicle-options");
         } catch (err) {
@@ -71,14 +65,13 @@ const vehicleOptionController = {
                 label
             };
 
-            await fetch(`http://18.235.248.88:3000/api/v1/admin/${process.env.ADMIN_ID}/vehicle-options`, {
-                method: "POST",
-                headers: {
+            await methodFetch("POST",`/api/v1/admin/${req.session.user.id}/vehicle-options`,
+                {
                     "Content-Type":"application/json",
                     "Authorization": `Bearer ${req.session.user.token}`
                 },
-                body: JSON.stringify(body)
-            });
+                body
+            );
 
             res.redirect("/coride/admin/vehicle-options");
         } catch (err) {

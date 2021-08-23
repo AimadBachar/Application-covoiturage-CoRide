@@ -77,6 +77,9 @@ const Nav = (props) => {
               <Link to="/" exact>
                 <li>Accueil</li>
               </Link>
+              <Link to="/trip" exact>
+                <li>New trajet</li>
+              </Link>
               <Link to="/profil" exact>
                 <li>Mon profil</li>
               </Link>

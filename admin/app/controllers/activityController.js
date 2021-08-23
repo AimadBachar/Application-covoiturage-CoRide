@@ -1,4 +1,4 @@
-const fetch = require("node-fetch");
+const methodFetch = require("../services/fetch");
 
 const activityController = {
 
@@ -8,22 +8,19 @@ const activityController = {
      * @param {response} res 
      * @param {function} next 
      */
-    async getAll(req,res,next){
+    async getAll(req, res, next) {
 
-        try{
-        const results = await fetch("http://18.235.248.88:3000/api/v1/activities",{
-            method: "GET",
-            headers: {
+        try {
+            const activities = await methodFetch("GET", "/api/v1/activities", {
                 Authorization: `Bearer ${req.session.user.token}`
-            }
-        });
+            });
 
-        const activities = await results.json();
-
-        res.render("activities",{activities});
-    }catch(err){
-        next(err);
-    }
+            res.render("activities", {
+                activities: Object.keys(activities).length ? activities : []
+            });
+        } catch (err) {
+            next(err);
+        }
     },
 
     /**
@@ -32,24 +29,22 @@ const activityController = {
      * @param {response} res 
      * @param {function} next 
      */
-     async delete(req, res, next) {
+    async delete(req, res, next) {
 
         try {
             const {
                 id
             } = req.query;
             const body = {
-                id: parseInt(id,10)
+                id: parseInt(id, 10)
             };
 
-            await fetch(`http://18.235.248.88:3000/api/v1/admin/${process.env.ADMIN_ID}/activities`, {
-                method: "DELETE",
-                headers: {
-                    "Content-Type":"application/json",
+            await methodFetch("DELETE", `/api/v1/admin/${req.session.user.id}/activities`, {
+                    "Content-Type": "application/json",
                     "Authorization": `Bearer ${req.session.user.token}`
                 },
-                body: JSON.stringify(body)
-            });
+                body
+            );
 
             res.redirect("/coride/admin/activities");
         } catch (err) {
@@ -57,29 +52,37 @@ const activityController = {
         }
     },
 
-    async add(req,res,next){
+    async add(req, res, next) {
         try {
 
-            if(Object.keys(req.body).length < 1){
+            if (Object.keys(req.body).length < 1) {
                 return res.render("addActivity");
             }
 
-            const {label,color} = req.body;
+            const {
+                label,
+                color
+            } = req.body;
+
             const body = {
                 label,
                 color
             };
 
-            await fetch(`http://18.235.248.88:3000/api/v1/admin/${process.env.ADMIN_ID}/activities`, {
-                method: "POST",
-                headers: {
-                    "Content-Type":"application/json",
+            const result = await methodFetch("POST", `/api/v1/admin/${req.session.user.id}/activities`, {
+                    "Content-Type": "application/json",
                     "Authorization": `Bearer ${req.session.user.token}`
                 },
-                body: JSON.stringify(body)
-            });
+                body
+            );
 
-            res.redirect("/coride/admin/activities");
+            if (result) {
+                res.redirect("/coride/admin/activities");
+            } else {
+                next(result)
+            }
+
+
         } catch (err) {
             next(err);
         }
