@@ -132,8 +132,6 @@ class coreModel {
 
             const {rows} = await pool.query(sqlQuery);
 
-            console.log(rows);
-
             if(!this.id && rows){
                 this.id = rows[0].id || rows[0].insert_user;    
             }

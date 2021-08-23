@@ -23,6 +23,9 @@ module.exports = (req, res, next) => {
         //on extrait l'id du user du token
         const userIdinToken = decodedToken.id;
 
+        //on vérifie si l'utilisateur est admin
+        const userAdmin = decodedToken.admin;
+
         //on récupere l'id du user dans la requete
         let userId;
         if(req.params.userId){
@@ -31,6 +34,10 @@ module.exports = (req, res, next) => {
             userId = req.params.id || req.body.id;
         }
 
+        if(userAdmin){
+                req.user = {admin: userAdmin};
+            }
+   
         //on compare les 2, si different erreur 401 sinon next
         if (userId && userId != userIdinToken) {
             res.status(401).json("invalid user id...");

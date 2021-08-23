@@ -1,4 +1,4 @@
-const fetch = require("node-fetch");
+const methodFetch = require("../services/fetch");
 
 const userController = {
 
@@ -10,16 +10,15 @@ const userController = {
      */
     async getAll(req,res,next){
 
-        const results = await fetch("http://18.235.248.88:3000/api/v1/users",{
-            method: "GET",
-            headers: {
+        const users = await methodFetch("GET","/api/v1/users",         
+            {
                 Authorization: `Bearer ${req.session.user.token}`
             }
+        );
+
+        res.render("users",{
+            users: Object.keys(users).length ? users : []
         });
-
-        const users = await results.json();
-
-        res.render("users",{users});
     },
 
     /**
@@ -38,14 +37,13 @@ const userController = {
                 id: parseInt(id,10)
             };
 
-            await fetch("http://18.235.248.88:3000/api/v1/users", {
-                method: "DELETE",
-                headers: {
+            await methodFetch("DELETE",`/api/v1/admin/${req.session.user.id}/users`,           
+                {
                     "Content-Type":"application/json",
                     "Authorization": `Bearer ${req.session.user.token}`
                 },
-                body: JSON.stringify(body)
-            });
+                body
+            );
 
             res.redirect("/coride/admin/users");
         } catch (err) {

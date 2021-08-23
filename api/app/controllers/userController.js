@@ -210,12 +210,14 @@ const userController = {
 
             if (user) {
 
-                const delPicture = await deletePicture(user.picture_link);
+                if(user.picture_link){
+                   const delPicture = await deletePicture(user.picture_link); 
 
-                if(!delPicture){
+                   if(!delPicture){
                     return next();
+                   }
                 }
-
+                
                 await user.delete();
                 res.status(204).end();
             } else {
