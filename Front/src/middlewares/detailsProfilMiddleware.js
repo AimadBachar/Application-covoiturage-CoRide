@@ -19,20 +19,17 @@
  
        const fetchUrl = `http://18.235.248.88:3000/api/v1/users`;
 
-       const token = JSON.parse(localStorage.getItem("tokens"));
- 
-       console.log(token)
+       const {token} = JSON.parse(localStorage.getItem("tokens"));
+
 
        axios({
          method: 'GET',
          headers:{
-           "Authorization":`Baerer ${token.token}`
+           "Authorization":`Baerer ${token}`
          },
          url: fetchUrl
        })
          .then((res) => {
-           console.log("res.data", res.data);
-           //console.log(departure);
            const actionToSend = fetchUsersSuccess(res.data);
            store.dispatch(actionToSend);
                

@@ -13,10 +13,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    fetchTravels: () => {
+    fetchTravels: (coords) => {
         /* console.log('chercher des trajets'); */
 
-        const action = fetchTravels();
+        const action = fetchTravels(coords);
         dispatch(action);
     },
     isLogged: () => {

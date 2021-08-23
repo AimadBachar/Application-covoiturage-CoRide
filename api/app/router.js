@@ -102,6 +102,18 @@ router.route("/users")
     .delete(verifyToken,redis.flush,userController.delete);
 
 /**
+ * @route DELETE /admin/{id}/users
+ * @group Users - Operations about user
+ * @security JWT
+ * @param {number} id.path.required the admin id
+ * @param {number} id.body.required the user id
+ * @returns {void} 204 - success, no content
+ * @returns {Error} 400 - bad request
+ * @returns {Error} default - Unexpected error
+ */
+router.delete("/admin/:id/users",verifyToken,redis.flush,userController.delete);
+
+/**
  * @route GET /user/{id}
  * @group Users - Operations about user
  * @security JWT
@@ -218,7 +230,19 @@ router.route("/travel/:id(\\d+)")
  * @returns {Array<Travel>} 200 - travels details
  * @returns {Error} default - Unexpected error
  */
-router.get("/travels/search",travelController.getAllByFilters);
+router.get("/travels/search",redis.cache,travelController.getAllByFilters);
+
+/**
+ * @route DELETE /admin/{id}/travels
+ * @group Travels - Operations about travel
+ * @security JWT
+ * @param {number} id.path.required the admin id
+ * @param {number} id.body.required the travel id
+ * @returns {void} 204 - success, no content
+ * @returns {Error} 400 - bad request
+ * @returns {Error} default - Unexpected error
+ */
+router.delete("/admin/:id/travels",verifyToken,redis.flush,travelController.delete);
 
 /////////Model Vehicle Option////////////////////////////////
 /**

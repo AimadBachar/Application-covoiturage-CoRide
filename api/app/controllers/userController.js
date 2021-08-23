@@ -96,9 +96,9 @@ const userController = {
         try {
             const results = await User.findAll({view: true});
 
-	    const formatResults = results.map(result=>result.json_user);
-            
-            return res.json(formatResults);
+            const formatResults = results.map(result=>result.json_user);
+
+         return res.json(formatResults);
         } catch (err) {
             next(err);
         }

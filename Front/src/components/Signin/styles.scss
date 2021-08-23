@@ -29,7 +29,7 @@ body {*/
     background-color: vars.$color;
     color: vars.$color_light;
     text-align: center;
-    padding: 1.5rem;
+    padding: 1.4rem;
     border-radius: vars.$border-radius-top;
   }
 
@@ -57,7 +57,7 @@ body {*/
 
   .login-redirection {
     background-color: vars.$color;
-    padding: 1rem;
+    padding: 0.5rem;
     font-family: vars.$font;
     color: vars.$color_light;
     border-radius: vars.$border-radius-bottom;
@@ -65,13 +65,18 @@ body {*/
     text-overflow: clip;
     
   &-text {
+    display: flex;
+    flex-direction: column;
     font-size: 1.1em;
+    margin: 0;
   }
   
   &-link {
       text-shadow: 0.1em 0.1em 0.2em vars.$color-grey_more;
       text-overflow: clip;
-      color: vars.$color_light;              
+      margin: .25rem;
+      color: vars.$color_light;  
+      font-family: vars.$font;            
       font-size: 1.2em;
        //float: center;
   
@@ -82,60 +87,3 @@ body {*/
     background-color: vars.$color_light;
     
 }
-
-//}
-/*
-
-  @media only screen and (max-width: 360px){
-  }
-  
-  body {*/
-  
- /* 
-    .signin-form {
-     // margin: 2rem;
-
-      // s'identifier
-      &-title {
-        font-size: 1.5em;
-        padding: 1rem;
-      };
-    
-          &-submit {
-           background-color: rgba($color: #ffffff00, $alpha: 1.0);   
-            text-shadow: 0.1em 0.1em 0.1em vars.$color-grey; 
-            color: vars.$color;  
-            padding-top: 1rem;
-            padding-bottom: 1rem;        
-            font-size: 1.3em;
-           width: 50vmax; 
-
-          };
-        };
-
-
-        .login-redirection {
-         background-color: vars.$color;
-         background-color: rgba($color: #FC982C, $alpha: 1.0);
-    
-        &-text {
-          padding-top: 0.5rem;
-          padding-bottom: 0.7rem;
-          font-size: 1em;
-          font-weight: bold;
-        };
-        
-        &-link {
-            text-shadow: 0.1em 0.1em 0.2em vars.$color-grey_more;             
-            font-size: 1em;
-            padding-left: 1rem;
-            
-        
-          }
-    
-      }
-
-    }
-*/
-  
-

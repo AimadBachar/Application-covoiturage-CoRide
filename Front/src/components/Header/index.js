@@ -1,15 +1,24 @@
-// Import == npm
-import React from 'react';
+// == Import == npm
+import React, {useState,useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-// Import : local
-import appBanner from '/src/assets/images/skate2.jpg';
+// == Import : local
 import logo from '/src/assets/logo/coride-b.svg';
 import login from '/src/assets/images/icon user white.png';
-import logout from '/src/assets/images/logout-white1.png';
+import logout from '/src/assets/images/exit.png';
 import Nav from '../Nav';
 import './styles.scss';
+
+// == Import : photos
+import photo1 from '/src/assets/images/skate2.jpg';
+import photo2 from '/src/assets/images/surfers.jpg';
+import photo3 from '/src/assets/images/canoe.jpg';
+import photo4 from '/src/assets/images/bmx.jpg';
+import photo5 from '/src/assets/images/sup.jpg';
+import photo6 from '/src/assets/images/wake1.jpg';
+import photo7 from '/src/assets/images/kitesurf.jpg';
+import photo8 from '/src/assets/images/surfgirl.jpg';
 
 // == Composant
 const Header = ({
@@ -20,6 +29,20 @@ const Header = ({
     localStorage.clear();
     onButtonClickLogout();
   };
+
+
+//on genère une aleatoire
+
+const [picture,randomPicture] = useState();
+const [visible, changeVisible] = useState(true);
+
+const pictures = [photo1,photo2,photo3,photo4,photo5,photo6,photo7,photo8];
+
+useEffect(()=>{ 
+  const index = Math.floor(Math.random()*pictures.length);  
+  randomPicture(pictures[index]);
+  });
+
 
   if (logged) {
     return (
@@ -34,12 +57,13 @@ const Header = ({
             <li>S'inscrire</li>
           </ul>
         </div>
-        <img className="header-photo" src={appBanner} alt="appBanner" />
+
+        <img className="header-photo" src={picture} alt="detailsProfilBanner" />
         <img src={logo} className="header-logo" alt="Logo CoRide" />
-        <p className="slogan">Le covoiturage des passionnés!</p>
+        <p className="slogan">Le covoiturage des passionnés !</p>
          <Nav logged={logged}/>
           <a onClick={logOut}>
-            <img className="header-logout" src={logout} alt="logout" />
+            <img className="header-logout2" src={logout} alt="logout" />
           </a>
       </div>
     )
@@ -55,7 +79,7 @@ const Header = ({
             <li>S'inscrire</li>
           </ul>
         </div>
-        <img className="header-photo" src={appBanner} alt="appBanner" />
+        <img className="header-photo" src={picture} alt="detailsProfilBanner" />
         <img src={logo} className="header-logo" alt="Logo CoRide" />
         <p className="slogan">Le covoiturage pour les passionnés!</p>
          <div className="concept">

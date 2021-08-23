@@ -1,5 +1,5 @@
 // == Import : npm
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect, useLocation } from 'react-router-dom'
 
@@ -16,14 +16,17 @@ const DetailsCard = ({
   onButtonClickProfilUser,
   onButtonClickValidation
 }) => {
+
+  useEffect(()=>{
+    window.scrollTo(0, 0);
+  });
+
+
   const location = useLocation();
   const stateLink = location.state;
   const card = stateLink.card;
   console.log("stateLink", card);
 
-  const Onecard = localStorage.setItem("card", JSON.stringify(card))
-
-  console.log(localStorage.getItem("card"));
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log("participe form details-card-connected", evt.target.value);
@@ -33,7 +36,9 @@ const DetailsCard = ({
 
   const checkPlaces = (placeremaining)=>{
 
-    if(parseInt(placeremaining,10) > 0){
+    const {id} = JSON.parse(localStorage.getItem("tokens"));
+
+    if(parseInt(placeremaining,10) > 0 && card.driver_id != id){
     return (
       <form onSubmit={handleSubmit}>
             <input type="hidden" value={card.id}></input>
@@ -71,9 +76,9 @@ const DetailsCard = ({
               <p className="card-destination-arrival_text">{card.destination_city}</p>
           </div>
         </div>
-
-        <p className="card-description">Description:<br/> {card.description}</p>
-
+        <div className="card-description">
+        <p >Description:<br/>{card.description}</p>
+        </div>
         <div className="card-bottom">
           <span className="card-bottom-tag">#{card.activity}</span>
           <span className="card-bottom-place">{card.remaining_places} 

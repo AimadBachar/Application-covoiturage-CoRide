@@ -42,8 +42,9 @@ export const searchSubmitSucces = (payload) => ({
   payload
 });
 
-export const fetchTravels = () => ({ 
-  type: FETCH_TRAVELS 
+export const fetchTravels = (payload) => ({ 
+  type: FETCH_TRAVELS,
+  payload 
 });
 
 export const fetchTravel = (payload) => ({ 

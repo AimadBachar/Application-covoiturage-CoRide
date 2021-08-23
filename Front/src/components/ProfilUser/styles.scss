@@ -16,12 +16,12 @@
   top: -110px;
 
   &-title {
-    font-size: 1.2em;
+    font-size: 1.5em;
     font-weight: bold;
     background-color: vars.$color;
     color: vars.$color_light;
     text-align: center;
-    padding: 1.5rem;
+    padding: 1.4rem;
     border-radius: vars.$border-radius-top;
   }
 
@@ -103,30 +103,25 @@
 
 // sports
   &-sport {
-    display: flex;
-    flex-direction: column;
     background-color: vars.$color-light;
-    padding: 1rem;
-    justify-content: space-between;
-    height: 5rem;
-
-    &_select {
-      background-color: vars.$color-light;      
+    padding: 2rem;
+    width:100%;
+    height:5em;
+    margin-bottom:3em;
+    & .ui.monDrop.dropdown{
+      margin-top: 10em;     
       border-color: vars.$color;
-      border-radius: 8px;
-      height: 3rem;
-      color: vars.$color;
-      font-size: 1em;
-      font-family: vars.$font;
-      width: 100%;
-      padding-bottom: 1rem;
-    }
+      border-radius:10px;
+ 
+  }
+    
+
 
     &_others {
       display: flex;
-      flex-direction: column;
-      padding-top: 0rem;
-      padding-left: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin:1em auto;   
     }
 
     &_title{
@@ -162,13 +157,19 @@
     border: vars.$color solid 0.1px;
     color: vars.$color;
     text-shadow: 0.1em 0.1em 0.1em vars.$color-grey;
-    font-size: 1em;
+    font-size: 1.1em;
     font-weight: bold;
     padding: 0.5rem;
     margin: auto;
     border-radius:25px;
     text-align: center;
     outline: none;
+    zoom: normal;
+    transition: transform .25s;
+  }
+
+  &-submit:hover{
+    transform: scale(1.25);
   }
 
     // bas de page avec link etour vers la page d'accueil
@@ -190,7 +191,7 @@
       text-shadow: 0.1em 0.1em 0.2em vars.$color-grey_more;
       color: vars.$color_light; 
       text-overflow: clip;            
-      font-size: 0.8em;
+      font-size: .9em;
       padding-left: 1rem;
       text-align: right;   
     }
@@ -207,11 +208,16 @@
 .travel{
   display:flex;
   width: 100%;
-  height: 4rem;
+  height: 6rem;
   flex-direction: row-reverse;
   border: 1px solid vars.$color;
   margin: .5rem 0;
   border-radius: .75rem;
+  transition: transform .5s;
+}
+
+.travel:hover{
+  transform: scale(1.1);
 }
 
 .travel-date{
@@ -225,7 +231,7 @@
 
 .travel-datetime{
   width: 25%;
-  font-size:1em;
+  font-size:1.25em;
   text-align: center;
   display:flex;
   flex-direction: column;
@@ -235,6 +241,7 @@
 
 .cities{
   display:flex;
+  font-size: 1.25em;
   flex-direction: column;
   justify-content: space-between;
   & span{
@@ -259,7 +266,8 @@
   & button{
     all:unset;
     width: 100%;
-    background: vars.$color;
+    background-color: vars.$color;
+    transition: background-color 0.25s;
   }
   & .button-first{
     border-radius: 0 .7rem .7rem 0;
@@ -273,8 +281,8 @@
     border-radius: 0 0 .7rem 0;
     height:50%;
   }
-  & button:hover:active{
-    background:red;
+  & button:hover{
+    background-color:lightgrey;
   }
 }
 
@@ -282,4 +290,16 @@
   display:block;
   width: 40%;
   margin: auto;
+}
+
+.ui.tagPerso.label{
+  background-color: vars.$color;
+  color: vars.$color-light;
+  margin: .25rem .5rem;
+  font-size:1rem;
+  transition: transform .35s;
+}
+
+.ui.tagPerso.label:hover{
+  transform: scale(1.25);
 }

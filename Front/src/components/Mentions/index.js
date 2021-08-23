@@ -1,12 +1,18 @@
 // == Import : npm
-import React from 'react';
+import React, {useEffect} from 'react';
 
 
 import '/src/components/Mentions/styles.scss'; 
 
-const Mentions = () => (
+const Mentions = () => {
+
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+    })
+
+    return (
     <div className="mentions">      
-        <h1>MENTIONS LEGALES :</h1>
+        <h1>MENTIONS LEGALES</h1>
         
         <p><strong> </strong><br />
         Conformément aux dispositions des articles 6-III et 19 de la Loi n° 2004-575 du 21 juin 2004 pour la Confiance dans l'économie numérique, dite L.C.E.N., nous portons à la connaissance des utilisateurs et visiteurs du site : coride.com les informations suivantes : </p>
@@ -61,7 +67,7 @@ const Mentions = () => (
         
         <p>Les bases de données sont protégées par les dispositions de la loi du 1er juillet 1998 transposant la directive 96/9 du 11 mars 1996 relative à la protection juridique des bases de données.</p>
     </div>    
-);
+    )};
 
 // == Export
 export default Mentions;

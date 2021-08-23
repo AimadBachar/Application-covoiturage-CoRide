@@ -1,5 +1,5 @@
 // == Import : npm
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import "react-widgets/scss/styles.scss";
@@ -17,6 +17,11 @@ const Search = ({
   onInputChange,
   onSubmitSearch
 }) => {
+
+  useEffect(()=>{
+    window.scrollTo(0, 0);
+  });
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log('submit',evt.target);

@@ -2,7 +2,7 @@
 
 .not-found-page {
   border: vars.$color, 2px solid;
-  max-width: 80%;
+  max-width: 85%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -10,21 +10,45 @@
   align-items: center;
   box-shadow: vars.$box-shadow;
   border-radius: vars.$border-radius-global;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  //margin-top: 2rem;
   position: relative;
   background: vars.$color-light;
-  top:-130px;
+  top:-115px;
 
-  &_text {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    font-size: 1.5rem;
+  &_oups {
+    color: vars.$color;
+    font-size:1.6em;
+    font-weight: bold;
+    padding-top: 0.8rem;
+    padding-bottom: 0;
+  }
+  &_texterror {
+    color: vars.$color;
+    font-size: 1.1em;
+    padding-top: 0rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  &_surf {
+    padding-top: 0.8rem;
+    position: relative;
+    width: 80%;
+  }
+
+  &_404 {
+    padding-top: 0.5rem;
+    font-size: 0.9em;
+    color: vars.$color;
   }
   
   &_link {
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-    color: vars.$color-grey_more;
+    margin-top: 1.6rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    color: vars.$color;
+    text-shadow: 0.1em 0.1em 0.2em vars.$color-grey;
+    text-overflow: clip;
+    padding-bottom: 0rem;
   }
 }

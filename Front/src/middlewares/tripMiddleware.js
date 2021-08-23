@@ -46,6 +46,7 @@ const middleware = (store) => (next) => (action) => {
       inputs.latitude_departure = store.getState().comboBoxCities.lat;
       inputs.departure_city = store.getState().comboBoxCities.departure_city;
       inputs.destination_city = store.getState().comboBoxCities.destination_city;
+      inputs.departure_timestamp = new Date(inputs.departure_timestamp);
       
       console.log(inputs);
 

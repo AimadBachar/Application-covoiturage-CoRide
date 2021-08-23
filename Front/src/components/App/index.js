@@ -12,23 +12,18 @@ import Footer from 'src/containers/Footer';
 import NotFoundPage from '../NotFoundPage';
 import Info from '../Info';
 import Mentions from '../Mentions';
-import HeaderContact from 'src/containers/HeaderContact';
-import HeaderInfo from 'src/containers/HeaderInfo';
 import Contact from 'src/containers/Contact';
 import Login from 'src/containers/Login';
-import HeaderLogin from 'src/containers/HeaderLogin';
 import Signin from 'src/containers/Signin';
 import ProfilUser from 'src/containers/ProfilUser';
-import HeaderProfilUser from 'src/containers/HeaderProfilUser';
 import DetailsProfil from 'src/containers/DetailsProfil';
-import HeaderDetailsProfil from 'src/containers/HeaderDetailsProfil';
 import Trip from 'src/containers/Trip'
-import HeaderTrip from 'src/containers/HeaderTrip';
 import Card from 'src/containers/Card';
 import DetailsCard from 'src/containers/DetailsCard';
-import HeaderDetailsCard from 'src/containers/HeaderDetailsCard';
 import ModalInfo from 'src/containers/ModalInfo';
 import './styles.scss';
+
+
 
 
 // == Composant
@@ -41,16 +36,22 @@ const App = ({
   message, 
   logged
 }) => {
+  
   // J'exécute la fonction reçue en props
   // dès que je suis prêt, et une seule fois
-  useEffect(fetchTravels, [])
+
 
   useEffect(()=>{
-    if (localStorage.getItem('tokens')) {
-      isLogged();
+
+    navigator.geolocation.getCurrentPosition((pos)=>{
+      fetchTravels(pos.coords)
+    })
     
-    }
-  }, [])
+
+    if (localStorage.getItem('tokens')) {
+      isLogged();   
+    }   
+  },[]);
 
  if (logged) {
   if (loading) {
@@ -70,13 +71,13 @@ const App = ({
         </Route>
 
         <Route exact path="/info">
-          <HeaderInfo />
+          <Header />
           <Info />
           <Footer />
         </Route>
 
         <Route exact path="/trip">
-          <HeaderTrip />
+          <Header />
           <Trip />
           <Footer />
         </Route>
@@ -88,30 +89,31 @@ const App = ({
         </Route>
 
         <Route exact path="/inscription">
+           <Header />
           <Signin />
           <Footer />
         </Route>
 
         <Route exact path="/profil">
-          <HeaderProfilUser />
+          <Header />
           <ProfilUser />
           <Footer />
         </Route>
 
         <Route exact path="/profilpage">
-          <HeaderDetailsProfil />
+          <Header />
           <DetailsProfil />
           <Footer />
         </Route>
 
         <Route exact path="/travel">
-          <HeaderDetailsCard />
+          <Header />
           <DetailsCard />
           <Footer />
         </Route>
 
         <Route exact path="/contact">
-          <HeaderContact />
+          <Header />
           <Contact />
           <Footer />
         </Route>
@@ -150,51 +152,52 @@ const App = ({
         </Route>
 
         <Route exact path="/info">
-          <HeaderInfo />
+          <Header />
           <Info />
           <Footer />
         </Route>
 
         <Route exact path="/trip">
           <Redirect from="/trip" to="/connexion" />
-          <HeaderTrip />
+          <Header />
           <Trip />
           <Footer />
         </Route>
 
         <Route exact path="/connexion">
-          <HeaderLogin />
+          <Header />
           <Login />
           <Footer />
         </Route>
 
         <Route exact path="/inscription">
+          <Header />
           <Signin />
           <Footer />
         </Route>
 
         <Route exact path="/profil">
           <Redirect from="/profil" to="/connexion" />
-          <HeaderProfilUser />
+          <Header />
           <ProfilUser />
           <Footer />
         </Route>
 
         <Route exact path="/profilpage">
           <Redirect from="/profilpage" to="/connexion" />
-          <HeaderDetailsProfil />
+          <Header />
           <DetailsProfil />
           <Footer />
         </Route>
 
         <Route exact path="/travel">
-          <HeaderDetailsCard />
+          <Header />
           <DetailsCard />
           <Footer />
         </Route>
 
         <Route exact path="/contact">
-          <HeaderContact />
+          <Header />
           <Contact />
           <Footer />
         </Route>
@@ -206,7 +209,9 @@ const App = ({
         </Route>
 
         <Route path="*">
+          <Header/>
           <NotFoundPage />
+          <Footer/>
         </Route>
 
       </Switch>

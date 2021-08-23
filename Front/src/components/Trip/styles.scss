@@ -4,36 +4,35 @@ body {
   .app {
     @media screen and (max-width: 941px) {  
       .trip {
+        margin-top: 2rem;
         position: relative;
-        background: vars.$color-light;
         top: -150px;
 
         &-form {
           display: flex;
           flex-direction: column;
           justify-content: center;
+          background: vars.$color-light;
           max-width: 80%;
-          margin: 2rem auto;
+          margin: 0 auto;
           box-shadow: vars.$box-shadow;
           border-radius: vars.$border-radius-global;
           
 
           &_title {
-            // max-width: 80%;
-            // margin: 0 auto;
             text-align: center;
             background-color: vars.$color;
             border-radius: vars.$border-radius-top;
             border: none;
-            padding: 0.5rem;
-            font-size: 1.5rem;
+            padding: 1.4rem;
+            font-size: 1.5em;
             color: vars.$color-light;
             font-weight: bold;
             //border-radius: 10px 10px 0 0;
           }
             
           &_input, &_select, &_date {
-            font-size: 1rem;
+            font-size: 1em;
             border: none;
             padding: 1.2rem;
             font-family: vars.$font;
@@ -50,9 +49,11 @@ body {
           &_submit {
             background-color: vars.$color;
             border-radius: vars.$border-radius-bottom;
+            text-shadow: 0.1em 0.1em 0.2em vars.$color-grey_more;
+            text-overflow: clip;
             border: none;
-            padding: 0.5rem;
-            font-size: 1.5rem;
+            padding: 1.4rem;
+            font-size: 1.3em;
             color: vars.$color-light;
             font-weight: bold;
           }

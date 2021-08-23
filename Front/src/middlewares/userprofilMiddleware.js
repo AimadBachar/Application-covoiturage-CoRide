@@ -121,14 +121,9 @@ case  FETCH_ACTIVITIES:
               localStorage.removeItem("tokens");
               localStorage.setItem("tokens",JSON.stringify(user));
 
-              const success = activeModal({
-                header:"Félicitation",
-                message:"L'activitée a bien été ajoutée!"
-              })
 
               store.dispatch(updateUser(user));
               store.dispatch(action);
-              store.dispatch(success);
         
             })
             .catch((err) => {

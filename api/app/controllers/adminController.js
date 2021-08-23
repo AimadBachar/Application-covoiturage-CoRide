@@ -12,8 +12,14 @@ module.exports = (req,res,next)=>{
     const {user,password} = req.body;
 
     if(user === process.env.USER_FRONT && password === process.env.PASS_FRONT){
-        const token = jwt.sign({id: process.env.ADMIN_ID}, process.env.TOKEN_SECRET);
-        res.json({token});
+
+        const userId = Date.now();
+
+        const token = jwt.sign({id: userId,admin:true}, process.env.TOKEN_SECRET);
+        res.json({
+            id: userId,
+            token: token
+        });
     } else{
         res.status(401).json("Error username or password");
     }

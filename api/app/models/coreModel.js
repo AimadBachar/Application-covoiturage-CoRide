@@ -96,7 +96,7 @@ class coreModel {
             }
 
             if(this.tableName === "user" && obj?.view){
-                sqlQuery.text = "SELECT json_user FROM users_view WHERE (json_user->>'id')::int = $1;"
+                sqlQuery.text = "SELECT * FROM users_view WHERE json_extract_path(*,'id')::int = $1;"
             }
 
             const {rows} = await pool.query(sqlQuery);
@@ -131,8 +131,6 @@ class coreModel {
             }
 
             const {rows} = await pool.query(sqlQuery);
-
-            console.log(rows);
 
             if(!this.id && rows){
                 this.id = rows[0].id || rows[0].insert_user;    

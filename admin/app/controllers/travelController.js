@@ -1,4 +1,4 @@
-const fetch = require("node-fetch");
+const methodFetch = require("../services/fetch");
 
 const travelController = {
 
@@ -8,18 +8,15 @@ const travelController = {
      * @param {response} res 
      * @param {function} next 
      */
-    async getAll(req,res,next){
+    async getAll(req, res, next) {
 
-        const results = await fetch("http://18.235.248.88:3000/api/v1/travels",{
-            method: "GET",
-            headers: {
-                Authorization: `Bearer ${req.session.user.token}`
-            }
+        const travels = await methodFetch("GET", "/api/v1/travels", {
+            Authorization: `Bearer ${req.session.user.token}`
         });
 
-        const travels = await results.json();
-
-        res.render("travels",{travels});
+        res.render("travels", {
+            travels: Object.keys(travels).length ? travels : []
+        });
     },
 
     /**
@@ -28,24 +25,24 @@ const travelController = {
      * @param {response} res 
      * @param {function} next 
      */
-     async delete(req, res, next) {
+    async delete(req, res, next) {
 
         try {
             const {
                 id
             } = req.query;
             const body = {
-                id: parseInt(id,10)
+                id: parseInt(id, 10)
             };
 
-            await fetch("http://18.235.248.88:3000/api/v1/travels", {
-                method: "DELETE",
-                headers: {
-                    "Content-Type":"application/json",
+            const check = await methodFetch("DELETE", `/api/v1/admin/${req.session.user.id}/travels`, {
+                    "Content-Type": "application/json",
                     "Authorization": `Bearer ${req.session.user.token}`
                 },
-                body: JSON.stringify(body)
-            });
+                body
+            );
+
+            console.log(check)
 
             res.redirect("/coride/admin/travels");
         } catch (err) {
