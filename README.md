@@ -23,3 +23,11 @@ Front-end :
 - Semantic-ui
 - Axios
 - scss
+
+### L'équipe 
+L’équipe du  projet est constituée de trois développeurs  front et un développeur back.
+Rôle des membres de l’équipe : 
+- Anna SION :  Product Owner
+- Aimad BACHAR: Lead Dev Front
+- Laurent SAVARIT : Scrum Master, Lead Dev Back
+- Julien GUILLERM : Git Master
